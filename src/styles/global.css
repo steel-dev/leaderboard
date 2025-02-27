@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+/* Terminal-style base styles */
+:root {
+  --font-mono: 'IBM Plex Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  --color-bg: #000000;
+  --color-text: #00ff00;
+  --color-dim: #00aa00;
+  --color-accent: #00ffff;
+  --color-error: #ff0000;
+  --color-success: #00ff00;
+  --grid-color: rgba(0, 255, 0, 0.05);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  line-height: 1.5;
+  font-size: 14px;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Terminal-style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dim);
+  border: 1px solid var(--color-text);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text);
+}
+
+/* Terminal-style selection */
+::selection {
+  background: var(--color-text);
+  color: var(--color-bg);
+}

@@ -1,0 +1,56 @@
+---
+interface LeaderboardEntry {
+  rank: number;
+  model: string;
+  accuracy: string;
+  organization: string;
+}
+
+interface Props {
+  entries: LeaderboardEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="font-mono">
+  <!-- Terminal-style header -->
+  <div class="mb-2 text-dim text-xs">
+    <div class="flex">
+      <div class="w-[10%]">RANK</div>
+      <div class="w-[40%]">MODEL</div>
+      <div class="w-[20%]">ACCURACY</div>
+      <div class="w-[30%]">ORGANIZATION</div>
+    </div>
+  </div>
+
+  <!-- Terminal-style separator -->
+  <div class="border-b border-text border-opacity-30 mb-2"></div>
+
+  <!-- Terminal-style table rows -->
+  <div class="space-y-2">
+    {
+      entries.map((entry) => (
+        <div class="flex items-center py-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200">
+          <div class="w-[10%] flex items-center">
+            <span class="text-text mr-2">{entry.rank}</span>
+            <span class="text-success text-xs">▲</span>
+          </div>
+          <div class="w-[40%] text-text font-bold truncate">{entry.model}</div>
+          <div class="w-[20%]">
+            <span class={`${parseInt(entry.accuracy) < 50 ? 'text-error' : 'text-success'}`}>
+              {entry.accuracy}
+            </span>
+          </div>
+          <div class="w-[30%] text-dim uppercase">{entry.organization}</div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Terminal-style footer -->
+  <div class="mt-6 text-xs text-dim">
+    <div>// END OF LEADERBOARD</div>
+    <div class="mt-1">TOTAL ENTRIES: {entries.length}</div>
+  </div>
+</div>
