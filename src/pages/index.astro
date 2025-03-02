@@ -1,38 +1,42 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LeaderboardTable from '../components/LeaderboardTable.astro';
+import Layout from "../layouts/Layout.astro";
+import LeaderboardTable from "../components/LeaderboardTable.astro";
+import headSvg from "../assets/head.svg";
 
 // Sample data for the leaderboard
 const leaderboardEntries = [
   {
     rank: 1,
-    model: 'Chocolate (Early Grok-3)',
-    accuracy: '88%',
-    organization: 'XAI',
+    model: "CHOCOLATE (EARLY GROK-3)",
+    accuracy: "88%",
+    organization: "XAI",
+    isNew: true,
+    isSota: true,
   },
   {
     rank: 2,
-    model: 'Gemini 2.0-Flash-Thinking-Exp-01-21',
-    accuracy: '79%',
-    organization: 'GOOGLE',
+    model: "GEMINI-2.0-FLASH-THINKING-STUFF",
+    accuracy: "79%",
+    organization: "GOOGLE",
+    isNew: true,
   },
   {
     rank: 3,
-    model: 'Gemini-2.0-Pro-Exp-02-05',
-    accuracy: '70%',
-    organization: 'GOOGLE',
+    model: "GEMINI-2.0-FLASH-THINKING-STUFF",
+    accuracy: "70%",
+    organization: "GOOGLE",
   },
   {
     rank: 4,
-    model: 'ChatGPT-4o-latest (2025-01-29)',
-    accuracy: '66%',
-    organization: 'OPENAI',
+    model: "GEMINI-2.0-FLASH-THINKING-STUFF",
+    accuracy: "66%",
+    organization: "OPENAI",
   },
   {
     rank: 5,
-    model: 'DeepSeek-R1',
-    accuracy: '44%',
-    organization: 'DEEPSEEK',
+    model: "DEEPSEEK-AI",
+    accuracy: "44%",
+    organization: "DEEPSEEK",
   },
 ];
 
@@ -41,57 +45,34 @@ const leaderboardEntries = [
 ---
 
 <Layout title="AI Agent Leaderboard | Steel.dev">
-  <div class="max-w-7xl mx-auto py-6 px-4 md:px-6">
-    <div class="flex flex-col md:flex-row md:gap-12">
-      <!-- Left column (1/3) for title and subtitle -->
-      <div class="w-full md:w-1/3 pr-0 mb-10 md:mb-0">
-        <div class="sticky top-8 font-mono">
-          <pre
-            class="text-accent text-xs mb-4">
-  _______ _______ _______ _______ ___ 
- |     __|_     _|    ___|    ___|   |
- |__     | |   | |    ___|    ___|   |
- |_______| |___| |_______|_______|___|
-          </pre>
+  <div>
+    <div class="flex justify-between items-center mb-4">
+      <div class="flex flex-col gap-8">
+        <div class="flex justify-between">
+          <div class="flex flex-col gap-1">
+            <h1 class="text-5xl md:text-5xl font-mono tracking-tight mb-0">
+              Steel.dev<span class="text-accent">®</span>
+            </h1>
 
-          <h1 class="text-2xl md:text-3xl font-mono tracking-tight mb-2">
-            STEEL.DEV<span class="text-accent animate-terminal-blink">_</span>
-          </h1>
-          <h2 class="text-lg md:text-xl font-mono tracking-tight mb-6 text-dim">
-            > AGENT COMPARISON
-          </h2>
-
-          <div class="border border-text border-opacity-30 p-4 mb-8">
-            <p class="text-sm leading-relaxed text-text mb-0">
-              <span class="text-dim">$</span> Steel encompasses a range of agent-use cases and here are
-              the success metrics we were able to track between various agent implementations.
-            </p>
+            <h2 class="text-5xl md:text-5xl font-mono tracking-tight text-text">
+              Agent Comparison
+            </h2>
           </div>
 
-          <div class="text-xs text-dim mb-6">
-            <div class="mb-1">// SYSTEM INFO</div>
-            <div class="mb-1">VERSION: 1.0.0</div>
-            <div class="mb-1">STATUS: ONLINE</div>
-            <div>UPTIME: 99.98%</div>
+          <div>
+            <img src={headSvg.src} alt="Steel.dev Logo" width="100" height="100" />
           </div>
         </div>
-      </div>
-
-      <!-- Right column (2/3) for the table -->
-      <div class="w-full md:w-2/3">
-        <div
-          class="flex justify-between items-center mb-6 border-b border-text border-opacity-30 pb-2"
-        >
-          <h2 class="text-xl font-mono tracking-tight text-text">
-            LEADERBOARD<span class="text-accent animate-terminal-blink">_</span>
-          </h2>
-          <div class="flex items-center">
-            <span class="text-dim text-xs mr-2">ENTRIES:</span>
-            <span class="text-text text-xs font-bold">05</span>
-          </div>
+        <div class="text-left">
+          Steel encompasses a range of agent-use and here are the success metrics we were able to
+          track between various agent uses
         </div>
-        <LeaderboardTable entries={leaderboardEntries} />
       </div>
     </div>
+  </div>
+
+  <!-- Leaderboard Table -->
+  <div class="mb-8 mt-8">
+    <LeaderboardTable entries={leaderboardEntries} />
   </div>
 </Layout>

@@ -25,10 +25,10 @@ const { title = 'AI Agent Leaderboard | Steel.dev' } = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <body class="w-full h-full m-0 p-0 font-mono bg-background text-text">
-    <div class="flex flex-col min-h-screen">
+  <body class="w-full min-h-screen m-0 p-0 font-mono bg-background text-text max-w-3xl mx-auto px-4 py-5">
+    <div class="flex flex-col">
       <Header />
-      <main class="flex-1 py-4 relative">
+      <main class="flex-1 py-4 relative flex flex-col items-center">
         <div
           class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-terminal-grid"
         >

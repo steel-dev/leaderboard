@@ -4,6 +4,8 @@ interface LeaderboardEntry {
   model: string;
   accuracy: string;
   organization: string;
+  isNew?: boolean;
+  isSota?: boolean;
 }
 
 interface Props {
@@ -13,44 +15,68 @@ interface Props {
 const { entries } = Astro.props;
 ---
 
-<div class="font-mono">
-  <!-- Terminal-style header -->
-  <div class="mb-2 text-dim text-xs">
-    <div class="flex">
-      <div class="w-[10%]">RANK</div>
-      <div class="w-[40%]">MODEL</div>
-      <div class="w-[20%]">ACCURACY</div>
-      <div class="w-[30%]">ORGANIZATION</div>
+<div class="flex flex-col w-full">
+  <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
+    <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full">
+      <div class="flex flex-col gap-1 flex-1">
+        {[0, 1, 2, 3, 4].map((index) => <div class="bg-black h-0.5 w-full" />)}
+      </div>
+      <div class="bg-text text-black py-1 px-4 font-bold">LEADERBOARD [01]</div>
+      <div class="flex flex-col gap-1 flex-1">
+        {[0, 1, 2, 3, 4].map((index) => <div class="bg-black h-0.5 w-full" />)}
+      </div>
+    </div>
+
+    <div class="text-text pt-4 pb-2 px-3">
+      <div class="grid grid-cols-[1fr_4fr_2fr_3fr] gap-2 w-full">
+        <div>RANK</div>
+        <div>MODEL</div>
+        <div>ACCURACY</div>
+        <div>ORGANIZATION</div>
+      </div>
+    </div>
+
+    <div class="space-y-2 pb-4 px-3">
+      {
+        entries.map((entry) => (
+          <div class="grid grid-cols-[1fr_4fr_2fr_3fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
+            <div class="text-text">{entry.rank}</div>
+            <div class="text-text uppercase flex flex-wrap items-start">
+              <div class="flex items-center">
+                {entry.model}
+                {entry.isNew && (
+                  <span class="ml-2 text-xs flex px-[0.625rem] py-1 justify-center items-center gap-[0.625rem] rounded-[62.5rem] border border-[#03FF32]">
+                    NEW
+                  </span>
+                )}
+              </div>
+            </div>
+            <div class="flex items-center">
+              <span class={`${parseInt(entry.accuracy) < 50 ? "text-error" : "text-success"}`}>
+                {entry.accuracy}
+              </span>
+              {entry.isSota && (
+                <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.625rem] rounded-[62.5rem] border border-[#03FF32]">
+                  ▲ SOTA
+                </span>
+              )}
+            </div>
+            <div class="text-dim uppercase">{entry.organization}</div>
+          </div>
+        ))
+      }
     </div>
   </div>
 
-  <!-- Terminal-style separator -->
-  <div class="border-b border-text border-opacity-30 mb-2"></div>
-
-  <!-- Terminal-style table rows -->
-  <div class="space-y-2">
-    {
-      entries.map((entry) => (
-        <div class="flex items-center py-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200">
-          <div class="w-[10%] flex items-center">
-            <span class="text-text mr-2">{entry.rank}</span>
-            <span class="text-success text-xs">▲</span>
-          </div>
-          <div class="w-[40%] text-text font-bold truncate">{entry.model}</div>
-          <div class="w-[20%]">
-            <span class={`${parseInt(entry.accuracy) < 50 ? 'text-error' : 'text-success'}`}>
-              {entry.accuracy}
-            </span>
-          </div>
-          <div class="w-[30%] text-dim uppercase">{entry.organization}</div>
-        </div>
-      ))
-    }
-  </div>
-
-  <!-- Terminal-style footer -->
-  <div class="mt-6 text-xs text-dim">
-    <div>// END OF LEADERBOARD</div>
-    <div class="mt-1">TOTAL ENTRIES: {entries.length}</div>
+  <div
+    class="p-3 border border-text border-opacity-30 bg-background bg-opacity-50 mt-4 max-w-4xl w-full"
+  >
+    <div class="flex items-start gap-4">
+      <span class="text-accent">▲</span>
+      <p class="text-text">
+        SOTA (STATE OF THE ART): REFERS TO THE MOST ADVANCED AND INNOVATIVE TECHNIQUES, METHODS, OR
+        TECHNOLOGIES CURRENTLY AVAILABLE IN A SPECIFIC FIELD.
+      </p>
+    </div>
   </div>
 </div>

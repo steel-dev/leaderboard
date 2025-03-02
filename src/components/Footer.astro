@@ -1,18 +1,24 @@
 ---
 const currentYear = new Date().getFullYear();
+const currentTime = new Date().toLocaleTimeString('en-US', {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false,
+});
 ---
 
-<footer class="border-t border-text border-opacity-30 py-3 px-4 md:px-6 mt-auto">
+<footer>
   <div
-    class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-3 md:flex-row md:gap-6 text-xs font-mono text-dim"
+    class="flex justify-between items-center flex-wrap gap-3 text-xs font-mono text-dim"
   >
     <div>
-      /* © STEEL.DEV {currentYear} */
+      {currentTime}
     </div>
     <div>
-      <span class="text-success mr-1">■</span> SYS:OPERATIONAL
+      <span class="text-success mr-1">■</span> SYS: OPERATIONAL
     </div>
-    <div>DATA:SCRAPED:STEEL</div>
-    <div>LAST:UPDATE:2025-02-27</div>
+    <div>UPTIME: 99.99%</div>
+    <div>VER: 1.0.4-A-BETA</div>
   </div>
 </footer>
