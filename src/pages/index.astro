@@ -3,40 +3,39 @@ import Layout from "../layouts/Layout.astro";
 import LeaderboardTable from "../components/LeaderboardTable.astro";
 import headSvg from "../assets/head.svg";
 
-// Sample data for the leaderboard
+// Web Agent Accuracy data
 const leaderboardEntries = [
   {
     rank: 1,
-    model: "CHOCOLATE (EARLY GROK-3)",
-    accuracy: "88%",
-    organization: "XAI",
+    model: "Browser Use",
+    accuracy: "89%",
+    organization: "Independent",
     isNew: true,
     isSota: true,
   },
   {
     rank: 2,
-    model: "GEMINI-2.0-FLASH-THINKING-STUFF",
-    accuracy: "79%",
-    organization: "GOOGLE",
-    isNew: true,
+    model: "Operator",
+    accuracy: "87%",
+    organization: "OpenAI",
   },
   {
     rank: 3,
-    model: "GEMINI-2.0-FLASH-THINKING-STUFF",
-    accuracy: "70%",
-    organization: "GOOGLE",
+    model: "Runner H 0.1",
+    accuracy: "67%",
+    organization: "H Company",
   },
   {
     rank: 4,
-    model: "GEMINI-2.0-FLASH-THINKING-STUFF",
-    accuracy: "66%",
-    organization: "OPENAI",
+    model: "Computer Use",
+    accuracy: "52%",
+    organization: "Anthropic",
   },
   {
     rank: 5,
-    model: "DEEPSEEK-AI",
-    accuracy: "44%",
-    organization: "DEEPSEEK",
+    model: "Web Voyager",
+    accuracy: "50%",
+    organization: "Research",
   },
 ];
 
@@ -55,7 +54,7 @@ const leaderboardEntries = [
             </h1>
 
             <h2 class="text-5xl md:text-5xl font-mono tracking-tight text-text">
-              Agent Comparison
+              Web Agent Accuracy
             </h2>
           </div>
 
@@ -64,8 +63,8 @@ const leaderboardEntries = [
           </div>
         </div>
         <div class="text-left">
-          Steel encompasses a range of agent-use and here are the success metrics we were able to
-          track between various agent uses
+          Comparison of different web agent technologies and their accuracy rates in completing
+          web-based tasks
         </div>
       </div>
     </div>
