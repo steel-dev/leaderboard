@@ -18,8 +18,8 @@ export default {
         },
       },
       fontFamily: {
-        mono: ["IBM Plex Mono", "Menlo", "Monaco", "Courier New", "monospace"],
-        sans: ["IBM Plex Mono", "Menlo", "Monaco", "Courier New", "monospace"],
+        mono: ["JetBrains Mono", "Menlo", "Monaco", "Courier New", "monospace"],
+        sans: ['"Geist"', "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "gradient-accent": "linear-gradient(90deg, #00ffff, #00ff00)",

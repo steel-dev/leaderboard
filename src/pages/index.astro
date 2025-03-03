@@ -44,16 +44,16 @@ const leaderboardEntries = [
 ---
 
 <Layout title="AI Agent Leaderboard | Steel.dev">
-  <div>
-    <div class="flex justify-between items-center mb-4">
+  <div class="w-full max-w-4xl">
+    <div class="mb-4">
       <div class="flex flex-col gap-8">
-        <div class="flex justify-between">
+        <div class="flex justify-between w-full">
           <div class="flex flex-col gap-1">
-            <h1 class="text-5xl md:text-5xl font-mono tracking-tight mb-0">
+            <h1 class="text-5xl md:text-5xl font-sans tracking-tight mb-0">
               Steel.dev<span class="text-accent">®</span>
             </h1>
 
-            <h2 class="text-5xl md:text-5xl font-mono tracking-tight text-text">
+            <h2 class="text-5xl md:text-5xl font-sans tracking-tight text-text">
               Web Agent Accuracy
             </h2>
           </div>
@@ -62,7 +62,7 @@ const leaderboardEntries = [
             <img src={headSvg.src} alt="Steel.dev Logo" width="100" height="100" />
           </div>
         </div>
-        <div class="text-left">
+        <div class="text-left font-sans">
           Comparison of different web agent technologies and their accuracy rates in completing
           web-based tasks
         </div>
@@ -71,7 +71,7 @@ const leaderboardEntries = [
   </div>
 
   <!-- Leaderboard Table -->
-  <div class="mb-8 mt-8">
+  <div class="w-full mt-8">
     <LeaderboardTable entries={leaderboardEntries} />
   </div>
 </Layout>

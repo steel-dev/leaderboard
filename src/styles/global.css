@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* Terminal-style base styles */
 :root {
-  --font-mono: 'IBM Plex Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  --font-mono: "JetBrains Mono", "Menlo", "Monaco", "Courier New", monospace;
   --color-bg: #000000;
   --color-text: #00ff00;
   --color-dim: #00aa00;
