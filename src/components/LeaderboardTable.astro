@@ -53,8 +53,9 @@ const { entries } = Astro.props;
                 {entry.accuracy}
               </span>
               {entry.isSota && (
-                <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.625rem] rounded-[62.5rem] border border-[#03FF32]">
-                  ▲ SOTA
+                <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.25rem] rounded-[62.5rem] border border-[#03FF32]">
+                  <span class="flex items-center text-[0.5625rem]">▲</span>
+                  <span>SOTA</span>
                 </span>
               )}
             </div>
