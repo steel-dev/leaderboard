@@ -17,11 +17,8 @@ const { entries } = Astro.props;
 
 <div class="flex flex-col w-full">
   <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
-    <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full">
-      <div class="flex flex-col gap-1 flex-1">
-        {[0, 1, 2, 3, 4].map((index) => <div class="bg-black h-0.5 w-full" />)}
-      </div>
-      <div class="bg-text text-black py-1 px-4 font-bold">LEADERBOARD [01]</div>
+    <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
+      <div class="bg-text text-black font-bold">LEADERBOARD</div>
       <div class="flex flex-col gap-1 flex-1">
         {[0, 1, 2, 3, 4].map((index) => <div class="bg-black h-0.5 w-full" />)}
       </div>
