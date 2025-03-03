@@ -1,24 +1,32 @@
 ---
-const currentYear = new Date().getFullYear();
-const currentTime = new Date().toLocaleTimeString('en-US', {
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
+const currentTime = new Date().toLocaleTimeString("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
   hour12: false,
 });
+
+const { execSync } = await import("child_process");
+const hash = execSync("git log -1 --pretty=format:%h src/lib/leaderboard.ts").toString().trim();
 ---
 
 <footer>
-  <div
-    class="flex justify-between items-center flex-wrap gap-3 text-xs font-mono text-dim"
-  >
+  <div class="flex justify-between items-center text-xs font-mono text-dim uppercase">
+    <div>{currentTime}</div>
     <div>
-      {currentTime}
+      <a href="https://github.com/MinorJerry/WebVoyager" target="_blank" class="hover:text-white"
+        >WEBVOYAGER</a
+      >
     </div>
     <div>
-      <span class="text-success mr-1">■</span> SYS: OPERATIONAL
+      <a href="https://webarena.dev/" target="_blank" class="hover:text-white">WEBARENA</a>
     </div>
-    <div>UPTIME: 99.99%</div>
-    <div>VER: 1.0.4-A-BETA</div>
+    <div>
+      <a
+        href={`https://github.com/steel-dev/leaderboard/blob/main/src/lib/leaderboard.ts`}
+        target="_blank"
+        class="hover:text-white">@{hash}</a
+      >
+    </div>
   </div>
 </footer>
