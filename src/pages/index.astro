@@ -2,42 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import LeaderboardTable from "../components/LeaderboardTable.astro";
 import headSvg from "../assets/head.svg";
-
-// Web Agent Accuracy data
-const leaderboardEntries = [
-  {
-    rank: 1,
-    model: "Browser Use",
-    accuracy: "89%",
-    organization: "Independent",
-    isNew: true,
-    isSota: true,
-  },
-  {
-    rank: 2,
-    model: "Operator",
-    accuracy: "87%",
-    organization: "OpenAI",
-  },
-  {
-    rank: 3,
-    model: "Runner H 0.1",
-    accuracy: "67%",
-    organization: "H Company",
-  },
-  {
-    rank: 4,
-    model: "Computer Use",
-    accuracy: "52%",
-    organization: "Anthropic",
-  },
-  {
-    rank: 5,
-    model: "Web Voyager",
-    accuracy: "50%",
-    organization: "Research",
-  },
-];
+import { leaderboardEntries } from "../lib/leaderboard";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.

@@ -1,18 +1,18 @@
 ---
-interface LeaderboardEntry {
-  rank: number;
-  model: string;
-  accuracy: string;
-  organization: string;
-  isNew?: boolean;
-  isSota?: boolean;
-}
+import type { LeaderboardEntry } from "../lib/leaderboard";
 
 interface Props {
   entries: LeaderboardEntry[];
 }
 
 const { entries } = Astro.props;
+
+// Sort entries by Web Voyager score by default
+const sortedEntries = [...entries].sort((a, b) => {
+  if (a.webVoyager.score === "N/A") return -1;
+  if (b.webVoyager.score === "N/A") return 1;
+  return parseFloat(b.webVoyager.score) - parseFloat(a.webVoyager.score);
+});
 ---
 
 <div class="flex flex-col w-full">
@@ -27,19 +27,33 @@ const { entries } = Astro.props;
     <div class="overflow-x-auto md:overflow-visible">
       <div class="min-w-[800px] md:min-w-0">
         <div class="text-text pt-4 pb-2 px-3">
-          <div class="grid grid-cols-[1fr_4fr_2fr_3fr] gap-2 w-full">
+          <div class="grid grid-cols-[1fr_4fr_2fr_2fr] gap-2 w-full">
             <div>RANK</div>
             <div>MODEL</div>
-            <div>ACCURACY</div>
-            <div>ORGANIZATION</div>
+            <div
+              class="flex items-center gap-1 cursor-pointer hover:text-accent transition-colors"
+              data-sort="webVoyager"
+            >
+              WEB VOYAGER
+              <span class="text-xs opacity-100">▲</span>
+            </div>
+            <div
+              class="flex items-center gap-1 cursor-pointer hover:text-accent transition-colors"
+              data-sort="webArena"
+            >
+              WEB ARENA
+              <span class="text-xs opacity-50">▲</span>
+            </div>
           </div>
         </div>
 
-        <div class="space-y-2 pb-4 px-3">
+        <div class="space-y-2 pb-4 px-3" id="entries-container">
           {
-            entries.map((entry) => (
-              <div class="grid grid-cols-[1fr_4fr_2fr_3fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
-                <div class="text-text">{entry.rank}</div>
+            sortedEntries.map((entry, index) => (
+              <div class="grid grid-cols-[1fr_4fr_2fr_2fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
+                <div class="text-text" data-rank>
+                  {index + 1}
+                </div>
                 <div class="text-text uppercase flex flex-wrap items-start">
                   <div class="flex items-center">
                     {entry.model}
@@ -50,10 +64,71 @@ const { entries } = Astro.props;
                     )}
                   </div>
                 </div>
-                <div class="flex items-center">
-                  <span class={`${parseInt(entry.accuracy) < 50 ? "text-error" : "text-success"}`}>
-                    {entry.accuracy}
+                <div class="flex items-center gap-2">
+                  <span
+                    class={`${entry.webVoyager.score === "N/A" ? "text-dim" : parseInt(entry.webVoyager.score.replace("%", "")) < 50 ? "text-error" : "text-success"}`}
+                    data-score="webVoyager"
+                  >
+                    {entry.webVoyager.score}
                   </span>
+                  {entry.webVoyager.source !== "N/A" && (
+                    <a
+                      href={entry.webVoyager.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-xs text-dim hover:text-accent transition-colors flex items-center gap-1"
+                      title="View source"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+                <div class="flex items-center gap-2">
+                  <span
+                    class={`${entry.webArena.score === "N/A" ? "text-dim" : parseInt(entry.webArena.score.replace("%", "")) < 50 ? "text-error" : "text-success"}`}
+                    data-score="webArena"
+                  >
+                    {entry.webArena.score}
+                  </span>
+                  {entry.webArena.source !== "N/A" && (
+                    <a
+                      href={entry.webArena.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-xs text-dim hover:text-accent transition-colors flex items-center gap-1"
+                      title="View source"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                    </a>
+                  )}
                   {entry.isSota && (
                     <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.25rem] rounded-[62.5rem] border border-[#03FF32]">
                       <span class="flex items-center text-[0.5625rem]">▲</span>
@@ -61,7 +136,6 @@ const { entries } = Astro.props;
                     </span>
                   )}
                 </div>
-                <div class="text-dim uppercase">{entry.organization}</div>
               </div>
             ))
           }
@@ -83,3 +157,75 @@ const { entries } = Astro.props;
     </div>
   </div>
 </div>
+
+<script>
+  let currentSort: "webArena" | "webVoyager" = "webVoyager";
+  let sortDirection: "asc" | "desc" = "desc";
+  let entries = document.querySelectorAll("#entries-container > div");
+
+  function parseScore(score: string): number | null {
+    const trimmed = score.trim();
+    if (trimmed === "N/A") return null;
+    return parseFloat(trimmed.replace("%", ""));
+  }
+
+  function updateRankNumbers() {
+    const rankElements = document.querySelectorAll("[data-rank]");
+    rankElements.forEach((element, index) => {
+      element.textContent = (index + 1).toString();
+    });
+  }
+
+  function sortTable(sortBy: "webArena" | "webVoyager", direction: "asc" | "desc") {
+    const container = document.getElementById("entries-container");
+    if (!container) return;
+
+    const sortedEntries = Array.from(entries).sort((a, b) => {
+      const scoreA = a.querySelector(`[data-score="${sortBy}"]`)?.textContent || "N/A";
+      const scoreB = b.querySelector(`[data-score="${sortBy}"]`)?.textContent || "N/A";
+
+      const numA = parseScore(scoreA);
+      const numB = parseScore(scoreB);
+
+      // Always push "N/A" values to the bottom
+      if (numA === null && numB === null) return 0;
+      if (numA === null) return 1;
+      if (numB === null) return -1;
+
+      // Numeric sort based on the chosen direction
+      return direction === "desc" ? numB - numA : numA - numB;
+    });
+
+    container.innerHTML = "";
+    sortedEntries.forEach((entry) => container.appendChild(entry));
+    entries = document.querySelectorAll("#entries-container > div");
+    updateRankNumbers();
+  }
+
+  function updateSortIndicators() {
+    document.querySelectorAll("[data-sort]").forEach((header) => {
+      const sortBy = header.getAttribute("data-sort") as "webArena" | "webVoyager" | null;
+      const arrow = header.querySelector("span");
+      if (arrow && sortBy) {
+        arrow.style.opacity = sortBy === currentSort ? "1" : "0.5";
+        arrow.textContent = sortBy === currentSort && sortDirection === "asc" ? "▼" : "▲";
+      }
+    });
+  }
+
+  document.querySelectorAll("[data-sort]").forEach((header) => {
+    header.addEventListener("click", () => {
+      const sortBy = header.getAttribute("data-sort") as "webArena" | "webVoyager" | null;
+      if (!sortBy) return;
+
+      if (sortBy === currentSort) {
+        sortDirection = sortDirection === "desc" ? "asc" : "desc";
+      } else {
+        currentSort = sortBy;
+        sortDirection = "desc";
+      }
+      updateSortIndicators();
+      sortTable(currentSort, sortDirection);
+    });
+  });
+</script>
