@@ -24,45 +24,49 @@ const { entries } = Astro.props;
       </div>
     </div>
 
-    <div class="text-text pt-4 pb-2 px-3">
-      <div class="grid grid-cols-[1fr_4fr_2fr_3fr] gap-2 w-full">
-        <div>RANK</div>
-        <div>MODEL</div>
-        <div>ACCURACY</div>
-        <div>ORGANIZATION</div>
-      </div>
-    </div>
-
-    <div class="space-y-2 pb-4 px-3">
-      {
-        entries.map((entry) => (
-          <div class="grid grid-cols-[1fr_4fr_2fr_3fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
-            <div class="text-text">{entry.rank}</div>
-            <div class="text-text uppercase flex flex-wrap items-start">
-              <div class="flex items-center">
-                {entry.model}
-                {entry.isNew && (
-                  <span class="ml-2 text-xs flex px-[0.625rem] py-1 justify-center items-center gap-[0.625rem] rounded-[62.5rem] border border-[#03FF32]">
-                    NEW
-                  </span>
-                )}
-              </div>
-            </div>
-            <div class="flex items-center">
-              <span class={`${parseInt(entry.accuracy) < 50 ? "text-error" : "text-success"}`}>
-                {entry.accuracy}
-              </span>
-              {entry.isSota && (
-                <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.25rem] rounded-[62.5rem] border border-[#03FF32]">
-                  <span class="flex items-center text-[0.5625rem]">▲</span>
-                  <span>SOTA</span>
-                </span>
-              )}
-            </div>
-            <div class="text-dim uppercase">{entry.organization}</div>
+    <div class="overflow-x-auto md:overflow-visible">
+      <div class="min-w-[800px] md:min-w-0">
+        <div class="text-text pt-4 pb-2 px-3">
+          <div class="grid grid-cols-[1fr_4fr_2fr_3fr] gap-2 w-full">
+            <div>RANK</div>
+            <div>MODEL</div>
+            <div>ACCURACY</div>
+            <div>ORGANIZATION</div>
           </div>
-        ))
-      }
+        </div>
+
+        <div class="space-y-2 pb-4 px-3">
+          {
+            entries.map((entry) => (
+              <div class="grid grid-cols-[1fr_4fr_2fr_3fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
+                <div class="text-text">{entry.rank}</div>
+                <div class="text-text uppercase flex flex-wrap items-start">
+                  <div class="flex items-center">
+                    {entry.model}
+                    {entry.isNew && (
+                      <span class="ml-2 text-xs flex px-[0.625rem] py-[0.25rem] justify-center items-center gap-[0.625rem] rounded-[62.5rem] border border-[#03FF32] leading-none">
+                        NEW
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <span class={`${parseInt(entry.accuracy) < 50 ? "text-error" : "text-success"}`}>
+                    {entry.accuracy}
+                  </span>
+                  {entry.isSota && (
+                    <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.25rem] rounded-[62.5rem] border border-[#03FF32]">
+                      <span class="flex items-center text-[0.5625rem]">▲</span>
+                      <span>SOTA</span>
+                    </span>
+                  )}
+                </div>
+                <div class="text-dim uppercase">{entry.organization}</div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 
