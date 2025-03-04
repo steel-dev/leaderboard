@@ -16,7 +16,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   {
     rank: 1,
     model: "Kura",
-    company: "Unknown",
+    company: "Kura",
     webVoyager: {
       score: "87%",
       source: "https://www.trykura.com/benchmarks",
