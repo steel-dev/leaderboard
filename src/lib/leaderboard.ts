@@ -45,6 +45,18 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://www.trykura.com",
   },
   {
+    model: "Skyvern 2.0",
+    organization: "Skyvern",
+    webVoyager: {
+      score: "85.85%",
+      source:
+        "https://blog.skyvern.com/skyvern-2-0-state-of-the-art-web-navigation-with-85-8-on-webvoyager-eval/",
+    },
+    isNew: true,
+    github: "https://github.com/Skyvern-AI/Skyvern",
+    homepage: "https://www.skyvern.com",
+  },
+  {
     model: "Project Mariner",
     organization: "Google",
     webVoyager: {
