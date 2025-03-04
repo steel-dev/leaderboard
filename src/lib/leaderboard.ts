@@ -8,7 +8,7 @@ export interface LeaderboardEntry {
   };
   isNew?: boolean;
   isSota?: boolean;
-  isOpenSource: boolean;
+  github: string | null;
   homepage: string;
 }
 
@@ -23,7 +23,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     },
     isNew: true,
     isSota: true,
-    isOpenSource: true,
+    github: null,
     homepage: "https://www.trykura.com",
   },
   {
@@ -36,7 +36,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     },
     isNew: true,
     isSota: true,
-    isOpenSource: true,
+    github: "https://github.com/browser-use/browser-use",
     homepage: "https://browser-use.com",
   },
   {
@@ -47,7 +47,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
       score: "83.5%",
       source: "https://deepmind.google/technologies/project-mariner/",
     },
-    isOpenSource: false,
+    github: null,
     homepage: "https://deepmind.google/technologies/project-mariner/",
   },
   {
@@ -58,7 +58,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
       score: "82%",
       source: "https://convergence.ai/training-web-agents-with-web-world-models-dec-2024/",
     },
-    isOpenSource: false,
+    github: null,
     homepage: "https://convergence.ai",
   },
   {
@@ -69,7 +69,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
       score: "73.1%",
       source: "https://www.emergence.ai/blog/agent-e-sota",
     },
-    isOpenSource: false,
+    github: null,
     homepage: "https://www.emergence.ai",
   },
   {
@@ -80,7 +80,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
       score: "67%",
       source: "https://www.hcompany.ai/blog/a-research-update",
     },
-    isOpenSource: false,
+    github: null,
     homepage: "https://www.hcompany.ai",
   },
   {
@@ -91,7 +91,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
       score: "60.6%",
       source: "https://arxiv.org/abs/2404.05902",
     },
-    isOpenSource: false,
+    github: null,
     homepage: "https://arxiv.org/abs/2404.05902",
   },
   {
@@ -102,7 +102,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
       score: "59.1%",
       source: "https://arxiv.org/abs/2401.13919",
     },
-    isOpenSource: true,
+    github: "https://github.com/MinorJerry/WebVoyager",
     homepage: "https://github.com/MinorJerry/WebVoyager",
   },
   {
@@ -113,7 +113,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
       score: "52%",
       source: "https://www.hcompany.ai/blog/a-research-update",
     },
-    isOpenSource: false,
+    github: null,
     homepage: "https://www.anthropic.com/news/3-5-models-and-computer-use",
   },
 ];
