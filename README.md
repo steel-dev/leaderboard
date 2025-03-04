@@ -1,6 +1,6 @@
-# WebVoyager Benchmark Leaderboard
+# Browser Agent Leaderboard
 
-This repository presents the current standings of various web agents evaluated on the **WebVoyager** benchmark. The WebVoyager benchmark comprises 643 tasks across 15 popular websites, assessing agents' abilities to perform diverse web navigation and interaction tasks.
+This repository presents the current standings of various web agents evaluated on the **WebVoyager** benchmark ([paper](https://arxiv.org/abs/2401.13919)). The WebVoyager benchmark comprises 643 tasks across 15 popular websites, assessing agents' abilities to perform diverse web navigation and interaction tasks.
 
 ## Leaderboard
 
@@ -14,7 +14,7 @@ This repository presents the current standings of various web agents evaluated o
 | 6 | Runner H 0.1   | H Company     | 67%             | [Source](https://www.hcompany.ai/blog/a-research-update) | No          |     |      |
 | 7 | WILBUR         | Unknown       | 60.6%           | [Source](https://arxiv.org/abs/2404.05902) | No          |     |      |
 | 8 | WebVoyager     | Unknown       | 59.1%           | [Source](https://arxiv.org/abs/2401.13919) | Yes         |     |      |
-| 9 | Computer Use   | H Company     | 52%             | [Source](https://www.hcompany.ai/blog/a-research-update) | No          |     |      |
+| 9 | Computer Use   | Anthropic     | 52%             | [Source](https://www.hcompany.ai/blog/a-research-update) | No          |     |      |
 
 **Notes:**
 
