@@ -1,48 +1,30 @@
-# Astro Starter Kit: Basics
+# WebVoyager Benchmark Leaderboard
 
-```sh
-npm create astro@latest -- --template basics
-```
+This repository presents the current standings of various web agents evaluated on the **WebVoyager** benchmark. The WebVoyager benchmark comprises 643 tasks across 15 popular websites, assessing agents' abilities to perform diverse web navigation and interaction tasks.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Leaderboard
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+| Rank | Model           | Company        | WebVoyager Score | Source                                                                                            | Open Source | New | SOTA |
+| ---- | --------------- | -------------- | ---------------- | ------------------------------------------------------------------------------------------------- | ----------- | --- | ---- |
+| 1 | Kura           | Kura          | 87%             | [Source](https://www.trykura.com/benchmarks) | No          | Yes | Yes  |
+| 2 | Browser Use    | Browser Use   | 89.1%           | [Source](https://browser-use.com/posts/sota-technical-report) | Yes         | Yes | Yes  |
+| 3 | Project Mariner | Google        | 83.5%           | [Source](https://deepmind.google/technologies/project-mariner/) | No          |     |      |
+| 4 | Proxy          | Convergence AI | 82%             | [Source](https://convergence.ai/training-web-agents-with-web-world-models-dec-2024/) | No          |     |      |
+| 5 | Agent-E        | Emergence     | 73.1%           | [Source](https://www.emergence.ai/blog/agent-e-sota) | No          |     |      |
+| 6 | Runner H 0.1   | H Company     | 67%             | [Source](https://www.hcompany.ai/blog/a-research-update) | No          |     |      |
+| 7 | WILBUR         | Unknown       | 60.6%           | [Source](https://arxiv.org/abs/2404.05902) | No          |     |      |
+| 8 | WebVoyager     | Unknown       | 59.1%           | [Source](https://arxiv.org/abs/2401.13919) | Yes         |     |      |
+| 9 | Computer Use   | H Company     | 52%             | [Source](https://www.hcompany.ai/blog/a-research-update) | No          |     |      |
+**Notes:**
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- **Open Source**: Indicates whether the model's source code is publicly available.
+- **New**: Denotes recently introduced models.
+- **SOTA**: Signifies models that have achieved state-of-the-art performance.
 
-## 🚀 Project Structure
+## Contributing
 
-Inside of your Astro project, you'll see the following folders and files:
+We encourage contributions to keep this leaderboard up-to-date. If you have information about new models or updated scores, please submit a pull request or open an issue.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## License
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This project is licensed under the MIT License.
