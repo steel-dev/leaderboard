@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { title = "AI Agent Leaderboard | Steel.dev" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, "https://leaderboard.steel.dev");
 ---
 
 <!doctype html>
@@ -37,7 +38,7 @@ const { title = "AI Agent Leaderboard | Steel.dev" } = Astro.props;
       content="Compare and evaluate AI agents on Steel.dev's leaderboard"
     />
     <meta property="og:image" content="/src/assets/og-image.png" />
-    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
