@@ -12,6 +12,16 @@ export interface LeaderboardEntry {
 export const leaderboardEntries: LeaderboardEntry[] = [
   {
     rank: 1,
+    model: "Kura",
+    webVoyager: {
+      score: "87%",
+      source: "https://github.com/MinorJerry/WebVoyager",
+    },
+    isNew: true,
+    isSota: true,
+  },
+  {
+    rank: 2,
     model: "Browser Use",
     webVoyager: {
       score: "89.1%",
@@ -21,20 +31,11 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     isSota: true,
   },
   {
-    rank: 2,
-    model: "Agent-E",
-    webVoyager: {
-      score: "73.1%",
-      source: "https://www.emergence.ai/blog/agent-e-sota",
-    },
-  },
-  {
     rank: 3,
     model: "Project Mariner",
     webVoyager: {
       score: "83.5%",
-      source:
-        "https://tech.slashdot.org/story/24/12/11/1648248/google-unveils-project-mariner-ai-agents-to-use-the-web-for-you",
+      source: "https://deepmind.google/technologies/project-mariner/",
     },
   },
   {
@@ -47,6 +48,14 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     rank: 5,
+    model: "Agent-E",
+    webVoyager: {
+      score: "73.1%",
+      source: "https://www.emergence.ai/blog/agent-e-sota",
+    },
+  },
+  {
+    rank: 6,
     model: "Runner H 0.1",
     webVoyager: {
       score: "67%",
@@ -54,7 +63,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     },
   },
   {
-    rank: 6,
+    rank: 7,
     model: "WILBUR",
     webVoyager: {
       score: "60.6%",
@@ -62,7 +71,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     },
   },
   {
-    rank: 7,
+    rank: 8,
     model: "WebVoyager",
     webVoyager: {
       score: "59.1%",
@@ -70,7 +79,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     },
   },
   {
-    rank: 8,
+    rank: 9,
     model: "Computer Use",
     webVoyager: {
       score: "52%",
