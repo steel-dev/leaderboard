@@ -14,15 +14,17 @@ const hash = execSync("git log -1 --pretty=format:%h src/lib/leaderboard.ts").to
   <div class="flex justify-between items-center text-xs font-mono text-dim uppercase">
     <div>{currentTime}</div>
     <div>
-      <a href="https://github.com/MinorJerry/WebVoyager" target="_blank" class="hover:text-white"
-        >WEBVOYAGER</a
+      <a
+        href="https://github.com/MinorJerry/WebVoyager"
+        target="_blank"
+        class="hover:text-accent hover:underline transition-colors">WEBVOYAGER</a
       >
     </div>
     <div>
       <a
         href={`https://github.com/steel-dev/leaderboard/blob/main/src/lib/leaderboard.ts`}
         target="_blank"
-        class="hover:text-white">@{hash}</a
+        class="hover:text-accent hover:underline transition-colors">@{hash}</a
       >
     </div>
   </div>

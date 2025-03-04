@@ -46,7 +46,7 @@ const highestScore = Math.max(
                         href={entry.homepage}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="hover:text-accent transition-colors"
+                        class="hover:text-accent hover:underline transition-colors"
                       >
                         {entry.model}
                       </a>
@@ -81,36 +81,14 @@ const highestScore = Math.max(
                     </div>
                   </div>
                   <div class="flex items-center gap-2">
-                    <span
-                      class={`${entry.webVoyager.score === "N/A" ? "text-dim" : parseInt(entry.webVoyager.score.replace("%", "")) < 50 ? "text-error" : "text-success"}`}
+                    <a
+                      href={entry.webVoyager.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`${entry.webVoyager.score === "N/A" ? "text-dim" : parseInt(entry.webVoyager.score.replace("%", "")) < 50 ? "text-error" : "text-success"} hover:text-accent hover:underline transition-colors`}
                     >
                       {entry.webVoyager.score}
-                    </span>
-                    {entry.webVoyager.source !== "N/A" && (
-                      <a
-                        href={entry.webVoyager.source}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-xs text-dim hover:text-accent transition-colors flex items-center gap-1"
-                        title="View source"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                          <polyline points="15 3 21 3 21 9" />
-                          <line x1="10" y1="14" x2="21" y2="3" />
-                        </svg>
-                      </a>
-                    )}
+                    </a>
                     {isSota && (
                       <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.25rem] rounded-[62.5rem] border border-[#03FF32]">
                         <span class="flex items-center text-[0.5625rem]">▲</span>
