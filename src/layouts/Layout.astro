@@ -16,7 +16,7 @@ const { title = "AI Agent Leaderboard | Steel.dev" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="src/assets/logo.png" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,9 +32,9 @@ const { title = "AI Agent Leaderboard | Steel.dev" } = Astro.props;
   </head>
   <body class="w-full m-0 p-0 font-mono bg-background text-text max-w-3xl mx-auto">
     <PostHogInit />
-    <div class="flex flex-col min-h-screen px-4 py-5 justify-between gap-18 md:gap-0">
+    <div class="flex flex-col min-h-screen px-4 py-5 justify-items-start gap-18 md:gap-12">
       <Header />
-      <main class="flex-1 py-4 relative flex flex-col items-center justify-center">
+      <main class="flex-1 py-4 relative flex flex-col items-center justify-start">
         <div
           class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-terminal-grid"
         >
