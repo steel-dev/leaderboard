@@ -1,0 +1,11 @@
+<script>
+  import posthog from "posthog-js";
+  
+
+  posthog.init("phc_PumPuTvlJ2f7BHLG2MDCnjzg3dsBVv0AwxWwWUZxFPx", {
+    api_host: "https://us.i.posthog.com",
+    loaded: (posthog) => {
+      if (import.meta.env.DEV) posthog.debug();
+    },
+  });
+</script>
