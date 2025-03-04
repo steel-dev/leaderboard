@@ -24,7 +24,7 @@ Steel is an open-source browser API purpose-built for AI agents.
 
 **Notes:**
 
-- **Open Source**: Indicates whether the model's source code is publicly available.
+- **Open Source**: Indicates whether the agent's source code is publicly available.
 - **New**: Denotes recently introduced models.
 - **SOTA**: Signifies models that have achieved state-of-the-art performance.
 
