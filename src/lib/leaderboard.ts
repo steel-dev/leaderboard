@@ -95,7 +95,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "Computer Use",
-    company: "H Company",
+    company: "Anthropic",
     webVoyager: {
       score: "52%",
       source: "https://www.hcompany.ai/blog/a-research-update",
