@@ -4,8 +4,7 @@ This repository presents the current standings of various web agents evaluated o
 
 ---
 ![Steel.dev - Open-source Browser API for AI Agents & Apps](/public/github_hero.png)
-For developers aiming to build AI web agents that interact seamlessly with the web, Steel.dev offers an open-source browser API designed specifically for AI applications. It simplifies browser automation, allowing you to focus on developing your AI models without the complexities of browser infrastructure.
-
+Steel is an open-source browser API purpose-built for AI agents.
 
 ## Leaderboard
 
