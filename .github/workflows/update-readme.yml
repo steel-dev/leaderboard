@@ -1,0 +1,37 @@
+name: Update README
+
+on:
+  push:
+    paths:
+      - "src/lib/leaderboard.ts"
+  pull_request:
+    paths:
+      - "src/lib/leaderboard.ts"
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update README
+        run: npm run update-readme
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "docs: update leaderboard in README"
+          title: "docs: update leaderboard in README"
+          body: "Automatically updating README with latest leaderboard information"
+          branch: update-readme
+          delete-branch: true
