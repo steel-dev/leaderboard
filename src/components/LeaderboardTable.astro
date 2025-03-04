@@ -20,21 +20,29 @@ const { entries } = Astro.props;
     <div class="overflow-x-auto md:overflow-visible">
       <div class="min-w-[800px] md:min-w-0">
         <div class="text-text pt-4 pb-2 px-3">
-          <div class="grid grid-cols-[1fr_4fr_2fr] gap-2 w-full">
+          <div class="grid grid-cols-[1fr_3fr_2fr_2fr] gap-2 w-full">
             <div>RANK</div>
             <div>MODEL</div>
             <div class="flex items-center gap-1">WEB VOYAGER</div>
+            <div>COMPANY</div>
           </div>
         </div>
 
         <div class="space-y-2 pb-4 px-3" id="entries-container">
           {
             entries.map((entry, index) => (
-              <div class="grid grid-cols-[1fr_4fr_2fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
+              <div class="grid grid-cols-[1fr_3fr_2fr_2fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
                 <div class="text-text">{entry.rank}</div>
                 <div class="text-text uppercase flex flex-wrap items-start">
                   <div class="flex items-center">
-                    {entry.model}
+                    <a
+                      href={entry.homepage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:text-accent transition-colors"
+                    >
+                      {entry.model}
+                    </a>
                     {entry.isNew && (
                       <span class="ml-2 text-xs flex px-[0.625rem] py-[0.25rem] justify-center items-center gap-[0.625rem] rounded-[62.5rem] border border-[#03FF32] leading-none">
                         NEW
@@ -80,6 +88,7 @@ const { entries } = Astro.props;
                     </span>
                   )}
                 </div>
+                <div class="text-text">{entry.company}</div>
               </div>
             ))
           }
