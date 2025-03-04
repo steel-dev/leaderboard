@@ -1,6 +1,6 @@
 export interface LeaderboardEntry {
   model: string;
-  company: string;
+  organization: string;
   webVoyager: {
     score: string;
     source: string;
@@ -13,7 +13,7 @@ export interface LeaderboardEntry {
 export const leaderboardEntries: LeaderboardEntry[] = [
   {
     model: "Browser Use",
-    company: "Browser Use",
+    organization: "Browser Use",
     webVoyager: {
       score: "89.1%",
       source: "https://browser-use.com/posts/sota-technical-report",
@@ -24,7 +24,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "Kura",
-    company: "Kura",
+    organization: "Kura",
     webVoyager: {
       score: "87%",
       source: "https://www.trykura.com/benchmarks",
@@ -35,7 +35,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "Project Mariner",
-    company: "Google",
+    organization: "Google",
     webVoyager: {
       score: "83.5%",
       source: "https://deepmind.google/technologies/project-mariner/",
@@ -45,7 +45,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "Proxy",
-    company: "Convergence AI",
+    organization: "Convergence AI",
     webVoyager: {
       score: "82%",
       source: "https://convergence.ai/training-web-agents-with-web-world-models-dec-2024/",
@@ -55,7 +55,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "Agent-E",
-    company: "Emergence",
+    organization: "Emergence AI",
     webVoyager: {
       score: "73.1%",
       source: "https://www.emergence.ai/blog/agent-e-sota",
@@ -65,7 +65,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "Runner H 0.1",
-    company: "H Company",
+    organization: "H Company",
     webVoyager: {
       score: "67%",
       source: "https://www.hcompany.ai/blog/a-research-update",
@@ -75,7 +75,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "WILBUR",
-    company: "Unknown",
+    organization: "Academic Research",
     webVoyager: {
       score: "60.6%",
       source: "https://arxiv.org/abs/2404.05902",
@@ -85,7 +85,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "WebVoyager",
-    company: "Unknown",
+    organization: "Academic Research",
     webVoyager: {
       score: "59.1%",
       source: "https://arxiv.org/abs/2401.13919",
@@ -95,7 +95,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
   },
   {
     model: "Computer Use",
-    company: "Anthropic",
+    organization: "Anthropic",
     webVoyager: {
       score: "52%",
       source: "https://www.hcompany.ai/blog/a-research-update",

@@ -5,7 +5,7 @@ import { leaderboardEntries } from "../lib/leaderboard.js";
 const README_PATH = path.join(process.cwd(), "README.md");
 
 function generateTableMarkdown(entries: typeof leaderboardEntries): string {
-  const header = `| Rank | Model           | Company        | WebVoyager Score | Source                                                                                            | Open Source | New | SOTA |
+  const header = `| Rank | Model           | Organization   | WebVoyager Score | Source                                                                                            | Open Source | New | SOTA |
 | ---- | --------------- | -------------- | ---------------- | ------------------------------------------------------------------------------------------------- | ----------- | --- | ---- |`;
 
   const highestScore = Math.max(
@@ -20,7 +20,7 @@ function generateTableMarkdown(entries: typeof leaderboardEntries): string {
       const isSota =
         parseFloat(entry.webVoyager.score.replace("%", "")) === highestScore ? "Yes" : "";
 
-      return `| ${rank} | ${entry.model.padEnd(14)} | ${entry.company.padEnd(13)} | ${entry.webVoyager.score.padEnd(15)} | [Source](${entry.webVoyager.source}) | ${openSource.padEnd(11)} | ${isNew.padEnd(3)} | ${isSota.padEnd(4)} |`;
+      return `| ${rank} | ${entry.model.padEnd(14)} | ${entry.organization.padEnd(13)} | ${entry.webVoyager.score.padEnd(15)} | [Source](${entry.webVoyager.source}) | ${openSource.padEnd(11)} | ${isNew.padEnd(3)} | ${isSota.padEnd(4)} |`;
     })
     .join("\n");
 
