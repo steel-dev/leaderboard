@@ -23,6 +23,17 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://browser-use.com",
   },
   {
+    model: "Operator",
+    organization: "OpenAI",
+    webVoyager: {
+      score: "87%",
+      source: "https://openai.com/index/introducing-operator/",
+    },
+    isNew: true,
+    github: null,
+    homepage: "hhttps://operator.chatgpt.com/",
+  },
+  {
     model: "Kura",
     organization: "Kura",
     webVoyager: {
