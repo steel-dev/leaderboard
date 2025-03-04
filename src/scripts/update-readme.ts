@@ -8,13 +8,19 @@ function generateTableMarkdown(entries: typeof leaderboardEntries): string {
   const header = `| Rank | Model           | Company        | WebVoyager Score | Source                                                                                            | Open Source | New | SOTA |
 | ---- | --------------- | -------------- | ---------------- | ------------------------------------------------------------------------------------------------- | ----------- | --- | ---- |`;
 
+  const highestScore = Math.max(
+    ...entries.map((entry) => parseFloat(entry.webVoyager.score.replace("%", "")))
+  );
+
   const rows = entries
-    .map((entry) => {
+    .map((entry, index) => {
+      const rank = index + 1;
       const openSource = entry.github ? "Yes" : "No";
       const isNew = entry.isNew ? "Yes" : "";
-      const isSota = entry.isSota ? "Yes" : "";
+      const isSota =
+        parseFloat(entry.webVoyager.score.replace("%", "")) === highestScore ? "Yes" : "";
 
-      return `| ${entry.rank} | ${entry.model.padEnd(14)} | ${entry.company.padEnd(13)} | ${entry.webVoyager.score.padEnd(15)} | [Source](${entry.webVoyager.source}) | ${openSource.padEnd(11)} | ${isNew.padEnd(3)} | ${isSota.padEnd(4)} |`;
+      return `| ${rank} | ${entry.model.padEnd(14)} | ${entry.company.padEnd(13)} | ${entry.webVoyager.score.padEnd(15)} | [Source](${entry.webVoyager.source}) | ${openSource.padEnd(11)} | ${isNew.padEnd(3)} | ${isSota.padEnd(4)} |`;
     })
     .join("\n");
 
@@ -25,13 +31,23 @@ function updateReadme() {
   const readmeContent = fs.readFileSync(README_PATH, "utf-8");
   const tableMarkdown = generateTableMarkdown(leaderboardEntries);
 
-  // Replace the existing table with the new one, being more specific about the table boundaries
-  const updatedContent = readmeContent.replace(
-    /\| Rank \| Model.*?\n\| ---- \|.*?\n(\| \d+ \|.*\n)*?(?=\n\*\*Notes:\*\*)/s,
-    tableMarkdown
-  );
+  const tableStart = readmeContent.indexOf("| Rank | Model");
+  const notesStart = readmeContent.indexOf("**Notes:**", tableStart);
 
-  fs.writeFileSync(README_PATH, updatedContent);
+  if (tableStart === -1 || notesStart === -1) {
+    console.error("Could not find table section in README");
+    return;
+  }
+
+  const updatedContent =
+    readmeContent.slice(0, tableStart) + tableMarkdown + "\n\n" + readmeContent.slice(notesStart);
+
+  const cleanedContent = updatedContent
+    .replace(/\|\|.*\n/g, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .replace(/\*\*Notes:\*\*\*\*Notes:\*\*/g, "**Notes:**");
+
+  fs.writeFileSync(README_PATH, cleanedContent);
   console.log("README.md has been updated successfully!");
 }
 

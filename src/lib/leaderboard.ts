@@ -1,5 +1,4 @@
 export interface LeaderboardEntry {
-  rank: number;
   model: string;
   company: string;
   webVoyager: {
@@ -7,27 +6,12 @@ export interface LeaderboardEntry {
     source: string;
   };
   isNew?: boolean;
-  isSota?: boolean;
   github: string | null;
   homepage: string;
 }
 
 export const leaderboardEntries: LeaderboardEntry[] = [
   {
-    rank: 1,
-    model: "Kura",
-    company: "Kura",
-    webVoyager: {
-      score: "87%",
-      source: "https://www.trykura.com/benchmarks",
-    },
-    isNew: true,
-    isSota: true,
-    github: null,
-    homepage: "https://www.trykura.com",
-  },
-  {
-    rank: 2,
     model: "Browser Use",
     company: "Browser Use",
     webVoyager: {
@@ -35,12 +19,21 @@ export const leaderboardEntries: LeaderboardEntry[] = [
       source: "https://browser-use.com/posts/sota-technical-report",
     },
     isNew: true,
-    isSota: true,
     github: "https://github.com/browser-use/browser-use",
     homepage: "https://browser-use.com",
   },
   {
-    rank: 3,
+    model: "Kura",
+    company: "Kura",
+    webVoyager: {
+      score: "87%",
+      source: "https://www.trykura.com/benchmarks",
+    },
+    isNew: true,
+    github: null,
+    homepage: "https://www.trykura.com",
+  },
+  {
     model: "Project Mariner",
     company: "Google",
     webVoyager: {
@@ -51,7 +44,6 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://deepmind.google/technologies/project-mariner/",
   },
   {
-    rank: 4,
     model: "Proxy",
     company: "Convergence AI",
     webVoyager: {
@@ -62,7 +54,6 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://convergence.ai",
   },
   {
-    rank: 5,
     model: "Agent-E",
     company: "Emergence",
     webVoyager: {
@@ -73,7 +64,6 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://www.emergence.ai",
   },
   {
-    rank: 6,
     model: "Runner H 0.1",
     company: "H Company",
     webVoyager: {
@@ -84,7 +74,6 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://www.hcompany.ai",
   },
   {
-    rank: 7,
     model: "WILBUR",
     company: "Unknown",
     webVoyager: {
@@ -95,7 +84,6 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://arxiv.org/abs/2404.05902",
   },
   {
-    rank: 8,
     model: "WebVoyager",
     company: "Unknown",
     webVoyager: {
@@ -106,7 +94,6 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://github.com/MinorJerry/WebVoyager",
   },
   {
-    rank: 9,
     model: "Computer Use",
     company: "H Company",
     webVoyager: {
