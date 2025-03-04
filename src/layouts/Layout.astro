@@ -29,6 +29,23 @@ const { title = "AI Agent Leaderboard | Steel.dev" } = Astro.props;
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Compare and evaluate AI agents on Steel.dev's leaderboard"
+    />
+    <meta property="og:image" content="/src/assets/og-image.png" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Compare and evaluate AI agents on Steel.dev's leaderboard"
+    />
+    <meta name="twitter:image" content="/src/assets/og-image.png" />
   </head>
   <body class="w-full m-0 p-0 font-mono bg-background text-text max-w-3xl mx-auto">
     <PostHogInit />
