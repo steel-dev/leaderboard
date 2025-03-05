@@ -24,7 +24,9 @@ const highestScore = Math.max(
     <div class="overflow-x-auto md:overflow-visible">
       <div class="min-w-[800px] md:min-w-0">
         <div class="text-text pt-4 pb-2 px-3">
-          <div class="grid grid-cols-[1fr_3fr_2fr_2fr] gap-2 w-full">
+          <div
+            class="grid grid-cols-[0.5fr_1fr_1fr_1.5fr] md:grid-cols-[0.5fr_2fr_1fr_1.5fr] gap-2 w-full"
+          >
             <div>RANK</div>
             <div>MODEL</div>
             <div class="flex items-center gap-1">WEB VOYAGER</div>
@@ -38,7 +40,7 @@ const highestScore = Math.max(
               const isSota = parseFloat(entry.webVoyager.score.replace("%", "")) === highestScore;
               const rank = index + 1; // Calculate rank based on array index
               return (
-                <div class="grid grid-cols-[1fr_3fr_2fr_2fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
+                <div class="grid grid-cols-[0.5fr_1fr_1fr_1.5fr] md:grid-cols-[0.5fr_2fr_1fr_1.5fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
                   <div class="text-text">{rank}</div>
                   <div class="text-text uppercase flex flex-wrap items-start">
                     <div class="flex items-center gap-2">
@@ -112,8 +114,9 @@ const highestScore = Math.max(
   >
     <div class="flex items-start gap-4">
       <p class="text-text">
-        <a href="https://steel.dev" class="hover:opacity-80 underline hover:text-white transition-all"
-          >STEEL.DEV</a
+        <a
+          href="https://steel.dev"
+          class="hover:opacity-80 underline hover:text-white transition-all">STEEL.DEV</a
         >: STEEL IS AN OPEN-SOURCE BROWSER API PURPOSE-BUILT FOR AI AGENTS.
       </p>
     </div>
