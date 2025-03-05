@@ -31,7 +31,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     },
     isNew: true,
     github: null,
-    homepage: "hhttps://operator.chatgpt.com/",
+    homepage: "https://operator.chatgpt.com/",
   },
   {
     model: "Kura",
