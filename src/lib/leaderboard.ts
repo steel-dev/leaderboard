@@ -71,7 +71,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     organization: "Convergence AI",
     webVoyager: {
       score: "82%",
-      source: "https://convergence.ai/training-web-agents-with-web-world-agents-dec-2024/",
+      source: "https://convergence.ai/training-web-agents-with-web-world-models-dec-2024/",
     },
     github: null,
     homepage: "https://convergence.ai",

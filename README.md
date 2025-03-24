@@ -15,7 +15,7 @@ Steel is an open-source browser API purpose-built for AI agents.
 | 3 | Kura           | Kura          | 87%             | [Source](https://www.trykura.com/benchmarks) | No          | Yes |      |
 | 4 | Skyvern 2.0    | Skyvern       | 85.85%          | [Source](https://blog.skyvern.com/skyvern-2-0-state-of-the-art-web-navigation-with-85-8-on-webvoyager-eval/) | Yes         | Yes |      |
 | 5 | Project Mariner | Google        | 83.5%           | [Source](https://deepmind.google/technologies/project-mariner/) | No          |     |      |
-| 6 | Proxy          | Convergence AI | 82%             | [Source](https://convergence.ai/training-web-agents-with-web-world-agents-dec-2024/) | No          |     |      |
+| 6 | Proxy          | Convergence AI | 82%             | [Source](https://convergence.ai/training-web-agents-with-web-world-models-dec-2024/) | No          |     |      |
 | 7 | Agent-E        | Emergence AI  | 73.1%           | [Source](https://www.emergence.ai/blog/agent-e-sota) | No          |     |      |
 | 8 | Runner H 0.1   | H Company     | 67%             | [Source](https://www.hcompany.ai/blog/a-research-update) | No          |     |      |
 | 9 | WILBUR         | Academic Research | 60.6%           | [Source](https://arxiv.org/abs/2404.05902) | No          |     |      |
