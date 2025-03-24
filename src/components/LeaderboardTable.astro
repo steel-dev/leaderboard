@@ -28,7 +28,7 @@ const highestScore = Math.max(
             class="grid grid-cols-[0.5fr_1fr_1fr_1.5fr] md:grid-cols-[0.5fr_2fr_1fr_1.5fr] gap-2 w-full"
           >
             <div>RANK</div>
-            <div>MODEL</div>
+            <div>AGENT</div>
             <div class="flex items-center gap-1">WEB VOYAGER</div>
             <div>ORGANIZATION</div>
           </div>
@@ -50,7 +50,7 @@ const highestScore = Math.max(
                         rel="noopener noreferrer"
                         class="hover:text-accent hover:underline transition-colors"
                       >
-                        {entry.model}
+                        {entry.agent}
                       </a>
                       {entry.github && (
                         <a

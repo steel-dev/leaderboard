@@ -1,5 +1,5 @@
 export interface LeaderboardEntry {
-  model: string;
+  agent: string;
   organization: string;
   webVoyager: {
     score: string;
@@ -12,7 +12,7 @@ export interface LeaderboardEntry {
 
 export const leaderboardEntries: LeaderboardEntry[] = [
   {
-    model: "Browser Use",
+    agent: "Browser Use",
     organization: "Browser Use",
     webVoyager: {
       score: "89.1%",
@@ -23,7 +23,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://browser-use.com",
   },
   {
-    model: "Operator",
+    agent: "Operator",
     organization: "OpenAI",
     webVoyager: {
       score: "87%",
@@ -34,7 +34,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://operator.chatgpt.com/",
   },
   {
-    model: "Kura",
+    agent: "Kura",
     organization: "Kura",
     webVoyager: {
       score: "87%",
@@ -45,7 +45,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://www.trykura.com",
   },
   {
-    model: "Skyvern 2.0",
+    agent: "Skyvern 2.0",
     organization: "Skyvern",
     webVoyager: {
       score: "85.85%",
@@ -57,7 +57,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://www.skyvern.com",
   },
   {
-    model: "Project Mariner",
+    agent: "Project Mariner",
     organization: "Google",
     webVoyager: {
       score: "83.5%",
@@ -67,17 +67,17 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://deepmind.google/technologies/project-mariner/",
   },
   {
-    model: "Proxy",
+    agent: "Proxy",
     organization: "Convergence AI",
     webVoyager: {
       score: "82%",
-      source: "https://convergence.ai/training-web-agents-with-web-world-models-dec-2024/",
+      source: "https://convergence.ai/training-web-agents-with-web-world-agents-dec-2024/",
     },
     github: null,
     homepage: "https://convergence.ai",
   },
   {
-    model: "Agent-E",
+    agent: "Agent-E",
     organization: "Emergence AI",
     webVoyager: {
       score: "73.1%",
@@ -87,7 +87,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://www.emergence.ai",
   },
   {
-    model: "Runner H 0.1",
+    agent: "Runner H 0.1",
     organization: "H Company",
     webVoyager: {
       score: "67%",
@@ -97,7 +97,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://www.hcompany.ai",
   },
   {
-    model: "WILBUR",
+    agent: "WILBUR",
     organization: "Academic Research",
     webVoyager: {
       score: "60.6%",
@@ -107,7 +107,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://arxiv.org/abs/2404.05902",
   },
   {
-    model: "WebVoyager",
+    agent: "WebVoyager",
     organization: "Academic Research",
     webVoyager: {
       score: "59.1%",
@@ -117,13 +117,13 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://github.com/MinorJerry/WebVoyager",
   },
   {
-    model: "Computer Use",
+    agent: "Computer Use",
     organization: "Anthropic",
     webVoyager: {
       score: "52%",
       source: "https://www.hcompany.ai/blog/a-research-update",
     },
     github: null,
-    homepage: "https://www.anthropic.com/news/3-5-models-and-computer-use",
+    homepage: "https://www.anthropic.com/news/3-5-agents-and-computer-use",
   },
 ];
