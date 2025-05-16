@@ -16,7 +16,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     organization: "Laminar",
     webVoyager: {
       score: "92%",
-      source: "https://github.com/lmnr-ai/index",
+      source: "https://x.com/skull8888888888/status/1910763169489764374",
     },
     isNew: true,
     github: "https://github.com/lmnr-ai/index",
