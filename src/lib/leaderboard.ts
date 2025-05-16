@@ -12,6 +12,17 @@ export interface LeaderboardEntry {
 
 export const leaderboardEntries: LeaderboardEntry[] = [
   {
+    agent: "Index",
+    organization: "Laminar",
+    webVoyager: {
+      score: "92%",
+      source: "https://x.com/skull8888888888/status/1910763169489764374",
+    },
+    isNew: true,
+    github: "https://github.com/lmnr-ai/index",
+    homepage: "https://github.com/lmnr-ai/index",
+  },
+  {
     agent: "Browser Use",
     organization: "Browser Use",
     webVoyager: {
