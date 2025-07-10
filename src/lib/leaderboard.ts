@@ -12,6 +12,17 @@ export interface LeaderboardEntry {
 
 export const leaderboardEntries: LeaderboardEntry[] = [
   {
+    agent: "Magnitude",
+    organization: "Magnitude",
+    webVoyager: {
+      score: "93.9%",
+      source: "https://github.com/magnitudedev/webvoyager",
+    },
+    isNew: true,
+    github: "https://github.com/magnitudedev/magnitude",
+    homepage: "https://magnitude.run",
+  },
+  {
     agent: "Browser Use",
     organization: "Browser Use",
     webVoyager: {
