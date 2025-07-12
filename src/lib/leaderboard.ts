@@ -16,7 +16,7 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     organization: "Magnitude",
     webVoyager: {
       score: "93.9%",
-      source: "https://github.com/magnitudedev/webvoyager",
+      source: "https://magnitude.run/webvoyager",
     },
     isNew: true,
     github: "https://github.com/magnitudedev/magnitude",
