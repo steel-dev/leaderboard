@@ -10,8 +10,8 @@ Steel is an open-source browser API purpose-built for AI agents.
 
 | Rank | Agent           | Organization   | WebVoyager Score | Source                                                                                            | Open Source | New | SOTA |
 | ---- | --------------- | -------------- | ---------------- | ------------------------------------------------------------------------------------------------- | ----------- | --- | ---- |
-| 1 | Magnitude    | Magnitude   | 93.9%           | [Source](https://magnitude.run/webvoyager) | Yes         | Yes | Yes  |
-| 2 | Browser Use    | Browser Use   | 89.1%           | [Source](https://browser-use.com/posts/sota-technical-report) | Yes         | Yes |     |
+| 1 | Magnitude      | Magnitude     | 93.9%           | [Source](https://magnitude.run/webvoyager) | Yes         | Yes | Yes  |
+| 2 | Browser Use    | Browser Use   | 89.1%           | [Source](https://browser-use.com/posts/sota-technical-report) | Yes         | Yes |      |
 | 3 | Operator       | OpenAI        | 87%             | [Source](https://openai.com/index/introducing-operator/) | No          | Yes |      |
 | 4 | Kura           | Kura          | 87%             | [Source](https://www.trykura.com/benchmarks) | No          | Yes |      |
 | 5 | Skyvern 2.0    | Skyvern       | 85.85%          | [Source](https://blog.skyvern.com/skyvern-2-0-state-of-the-art-web-navigation-with-85-8-on-webvoyager-eval/) | Yes         | Yes |      |
