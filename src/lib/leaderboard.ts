@@ -23,6 +23,17 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     homepage: "https://magnitude.run",
   },
   {
+    agent: "Aime Browser-USE",
+    organization: "Aime",
+    webVoyager: {
+      score: "92.34%",
+      source: "https://aime-browser-use.github.io/",
+    },
+    isNew: true,
+    github: null,
+    homepage: "https://aime-browser-use.github.io/",
+  },
+  {
     agent: "Browser Use",
     organization: "Browser Use",
     webVoyager: {
