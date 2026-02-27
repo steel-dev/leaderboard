@@ -1,0 +1,122 @@
+---
+const faqs = [
+  {
+    q: "What is the WebVoyager benchmark for AI browser agents?",
+    a: "WebVoyager is the standard benchmark for evaluating browser agents, introduced in the 2024 paper <a href='https://arxiv.org/abs/2401.13919'>WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models</a>. It consists of 643 tasks across 15 websites including Google, Amazon, GitHub, Reddit, and Wikipedia. Tasks cover form filling, navigation, search, and shopping. GPT-4V evaluates each task by analyzing the final page state. Scores represent the percentage of tasks completed successfully. As of February 2026, the highest score is 97.1% held by Surfer 2 from H Company.",
+  },
+  {
+    q: "Can WebVoyager scores be compared across different agents?",
+    a: "Not always. Three factors affect comparability: dataset size (full 643 tasks vs filtered subsets), evaluator (GPT-4V vs custom methods), and verification (third-party vs self-reported). Filtered subsets typically produce higher scores. Click any leaderboard row to see methodology. The most reliable comparisons use full dataset, GPT-4V evaluation, and third-party verification.",
+  },
+  {
+    q: "What is Steel.dev?",
+    a: "Steel is browser infrastructure for AI agents - cloud browser sessions controlled through code. The Session works like a fresh incognito window running in the cloud. Steel provides anti-bot capabilities including CAPTCHA solving, proxy rotation, and fingerprint management, plus observability features like live viewing and replay. Steel offers a REST API, Python SDK, and Node SDK for web scraping, form automation, and research agents. Learn more at <a href='https://steel.dev'>steel.dev</a>, the <a href='https://steel.dev/blog/beginner-s-guide-to-steel'>beginner's guide</a>, or <a href='https://docs.steel.dev'>docs</a>.",
+  },
+  {
+    q: "What is the best AI browser agent in 2026?",
+    a: "By WebVoyager score: Surfer 2 at 97.1% (H Company), Magnitude at 93.9%, AIME Browser-Use at 92.34%, Browserable at 90.4%, Browser Use at 89.1%, OpenAI Operator at 87%, Skyvern 2.0 at 85.85%, and Google Project Mariner at 83.5%. Surfer-H (92.2%) is a multi-attempt benchmark (10 attempts), so it is not directly comparable to single-run percentages. Surfer 2 leads accuracy. Browser Use and Skyvern are strong open-source options. Rankings update as new results are submitted.",
+  },
+  {
+    q: "What is the difference between OpenAI Operator, Browser Use, and other AI browser agents?",
+    a: "The main agents differ in accuracy and positioning. OpenAI Operator (87%, GPT-4o) is a consumer product in ChatGPT. Browser Use (89.1%) is open-source and supports multiple models. Surfer 2 (97.1%) leads with a proprietary enterprise model. Skyvern 2.0 (85.85%) is open-source with strong visual reasoning. Google Mariner (83.5%, Gemini) integrates with Chrome. For custom agents, <a href='https://steel.dev'>Steel</a> provides the browser infrastructure layer.",
+  },
+  {
+    q: "How do AI browser agents work?",
+    a: "Browser agents combine LLMs with browser automation to complete web tasks. A vision model sees the webpage via screenshots or DOM. A reasoning model decides actions like clicking, typing, or scrolling. An execution layer drives the browser via Chrome DevTools Protocol or Playwright. A memory component tracks state across steps. Most agents run on cloud infrastructure like <a href='https://steel.dev'>Steel</a> for reliability and anti-bot handling.",
+  },
+  {
+    q: "What websites can AI browser agents navigate?",
+    a: "Agents can navigate any website. WebVoyager evaluates on 15 specific sites: Amazon, eBay, Google, Google Maps, Wikipedia, Reddit, Twitter/X, GitHub, ArXiv, and Booking.com. Real-world challenges include CAPTCHAs, bot detection, dynamic content, auth flows, and rate limiting. Production agents use infrastructure like <a href='https://steel.dev'>Steel</a> for <a href='https://steel.dev/blog/anti-bot-defense'>anti-bot measures</a> and proxy rotation.",
+  },
+  {
+    q: "How is the WebVoyager score calculated?",
+    a: "Score = (tasks completed / total tasks) x 100. An agent scoring 97.1% completed 624 of 643 tasks correctly. GPT-4V evaluates each task by analyzing the final page state to determine if the goal was achieved - correct page reached, information displayed, forms filled accurately, and flows completed.",
+  },
+  {
+    q: "What does SOTA mean?",
+    a: "SOTA stands for State of the Art - the highest-performing result on a benchmark. On this leaderboard, the SOTA badge is awarded to the agent with the highest WebVoyager score and transfers automatically when a new high score is submitted. As of February 2026, the SOTA holder is Surfer 2 by H Company at 97.1%.",
+  },
+  {
+    q: "Are OpenAI Operator and Google Project Mariner on this leaderboard?",
+    a: "Yes. OpenAI Operator scores 87% (ranked 6th) and Google Project Mariner scores 83.5% (ranked 8th). Both are consumer products integrated into their ecosystems - Operator via ChatGPT, Mariner via Chrome. They score lower than specialized agents like Surfer 2 (97.1%) because they prioritize broad capability over benchmark optimization.",
+  },
+  {
+    q: "How do I build my own AI browser agent?",
+    a: "Three layers are needed. Browser infrastructure: <a href='https://steel.dev'>Steel</a> provides managed sessions, proxies, anti-bot handling, and replay. AI layer: a vision-capable model like GPT-4o, Claude, or Gemini with prompting for action selection. Orchestration: frameworks like Browser Use or Skyvern handle clicking, typing, and state tracking. See the <a href='https://steel.dev/blog/production-agents'>production agents guide</a>. Once your agent has a verifiable WebVoyager score, open a pull request on GitHub.",
+  },
+  {
+    q: "Is a higher WebVoyager score always better for production use?",
+    a: "Not necessarily. WebVoyager measures task completion on a fixed website set under controlled conditions. Production depends on factors not captured by the benchmark - latency, cost per task, CAPTCHA handling, anti-bot resilience, and generalization to new websites. An agent optimized for benchmark scores may overfit. Use the leaderboard as a directional signal and test on your actual target websites.",
+  },
+  {
+    q: "Why is WebVoyager used instead of other benchmarks?",
+    a: "WebVoyager is the most widely adopted public benchmark for browser agents, enabling cross-agent comparison. Other benchmarks exist - Mind2Web (2000+ tasks), OSWorld (desktop interaction), WorkArena (enterprise apps) - but have seen less adoption. WebVoyager's real-world task design, consistent GPT-4V evaluation, and widespread usage make it the current standard.",
+  },
+  {
+    q: "What is Browser Use's WebVoyager benchmark score?",
+    a: "Browser Use scores 89.1% on WebVoyager, ranking 5th overall. It's an open-source framework supporting GPT-4, Claude, and other LLMs via API. Many teams pair Browser Use with <a href='https://steel.dev'>Steel</a> for production infrastructure and anti-bot handling.",
+  },
+  {
+    q: "What is OpenAI Operator's WebVoyager benchmark score?",
+    a: "OpenAI Operator scores 87% on WebVoyager, ranking 6th overall. Built into ChatGPT Pro, it uses GPT-4o for vision and reasoning. Operator requires no setup and handles web tasks like booking reservations and filling forms.",
+  },
+  {
+    q: "What is Skyvern's WebVoyager benchmark score?",
+    a: "Skyvern 2.0 scores 85.85% on WebVoyager, ranking 7th overall. It's an open-source agent emphasizing visual understanding for complex layouts. Skyvern works with any LLM backend and integrates with <a href='https://steel.dev'>Steel</a> for production infrastructure.",
+  },
+  {
+    q: "What is Google Project Mariner's WebVoyager benchmark score?",
+    a: "Google Project Mariner scores 83.5% on WebVoyager, ranking 8th overall. Built on Gemini and integrated with Chrome, it handles web navigation and form filling. Currently in limited availability.",
+  },
+  {
+    q: "What is Surfer 2's WebVoyager benchmark score?",
+    a: "Surfer 2 by H Company holds the current SOTA at 97.1% on WebVoyager for pass@1 (as of February 2026), while the same benchmark also reports 100% at pass@10. The gap to the next agent at 93.9% makes it the clear leader for accuracy-focused use cases.",
+  },
+  {
+    q: "How often is the leaderboard updated?",
+    a: "The leaderboard updates as new benchmark results are published. New results appear weekly. If you know of a missing agent or score, pull requests and issues are welcome on GitHub.",
+  },
+  {
+    q: "How do I add my agent to the leaderboard?",
+    a: "Open a pull request on GitHub with your entry. You need a publicly verifiable WebVoyager score, a link to the source (paper or blog post), and a homepage or GitHub repo for your agent.",
+  },
+];
+---
+
+<div class="w-full max-w-4xl mt-12">
+  <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
+    <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
+      <div class="bg-text text-black font-bold">FAQ</div>
+      <div class="flex flex-col gap-1 flex-1">
+        {[0, 1, 2, 3, 4].map(() => <div class="bg-black h-[0.0625rem] w-full" />)}
+      </div>
+    </div>
+
+    <div class="divide-y divide-text divide-opacity-10">
+      {
+        faqs.map((item) => (
+          <details class="group px-3 py-3 cursor-pointer">
+            <summary class="flex justify-between items-center list-none cursor-pointer hover:text-accent transition-colors duration-200 uppercase text-sm">
+              <span>{item.q}</span>
+              <span class="text-dim group-open:text-accent transition-colors ml-4 shrink-0">
+                <span class="group-open:hidden">[+]</span>
+                <span class="hidden group-open:inline">[-]</span>
+              </span>
+            </summary>
+            <div class="mt-3 text-dim text-sm leading-relaxed border-t border-text border-opacity-10 pt-3 faq-answer" set:html={item.a}>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .faq-answer :global(a) {
+    color: #00b200;
+    text-decoration: underline dotted;
+    text-decoration-color: #00b200;
+    text-underline-offset: 2px;
+  }
+</style>

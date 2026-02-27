@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
-    "astro": "^5.4.0",
+    "astro": "^5.18.0",
     "posthog-js": "^1.225.1",
     "tailwindcss": "^4.0.9"
   },

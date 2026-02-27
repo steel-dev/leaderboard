@@ -1,0 +1,73 @@
+name: Submit new WebVoyager result
+description: Propose a new result to add to the leaderboard.
+title: "[New Result] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a **new** benchmark result for the leaderboard.
+        Please include public links so maintainers can verify it.
+
+  - type: input
+    id: agent
+    attributes:
+      label: Agent name
+      placeholder: "Surfer 2"
+    validations:
+      required: true
+
+  - type: input
+    id: organization
+    attributes:
+      label: Organization
+      placeholder: "H Company"
+    validations:
+      required: true
+
+  - type: input
+    id: score
+    attributes:
+      label: WebVoyager score
+      description: Use the exact published value (example: `97.1%`).
+      placeholder: "87%"
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Source URL
+      description: Public page/paper/report showing the result.
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: input
+    id: homepage
+    attributes:
+      label: Agent homepage URL
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: input
+    id: github
+    attributes:
+      label: GitHub repository URL (optional)
+      placeholder: "https://github.com/org/repo"
+
+  - type: textarea
+    id: methodology_notes
+    attributes:
+      label: Methodology notes (optional)
+      description: Include dataset/evaluator details if available.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checklist
+      options:
+        - label: I confirm the score is from a WebVoyager evaluation.
+          required: true
+        - label: I confirm the source link is public and includes enough detail to verify the claim.
+          required: true

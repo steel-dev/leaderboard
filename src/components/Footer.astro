@@ -1,9 +1,8 @@
 ---
-const currentTime = new Date().toLocaleTimeString("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  hour12: false,
+const currentTime = new Date().toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
 });
 
 const { execSync } = await import("child_process");
@@ -17,6 +16,7 @@ const hash = execSync("git log -1 --pretty=format:%h src/lib/leaderboard.ts").to
       <a
         href="https://github.com/MinorJerry/WebVoyager"
         target="_blank"
+        rel="noopener noreferrer nofollow"
         class="hover:text-accent hover:underline transition-colors">WEBVOYAGER</a
       >
     </div>
@@ -24,6 +24,7 @@ const hash = execSync("git log -1 --pretty=format:%h src/lib/leaderboard.ts").to
       <a
         href={`https://github.com/steel-dev/leaderboard/blob/main/src/lib/leaderboard.ts`}
         target="_blank"
+        rel="noopener noreferrer"
         class="hover:text-accent hover:underline transition-colors">@{hash}</a
       >
     </div>

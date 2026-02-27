@@ -10,6 +10,31 @@ const { entries } = Astro.props;
 const highestScore = Math.max(
   ...entries.map((entry) => parseFloat(entry.webVoyager.score.replace("%", "")))
 );
+
+const datasetLabel: Record<string, string> = {
+  "full-643": "Full 643-task suite",
+  "filtered": "Filtered subset",
+  "custom": "Custom dataset",
+  "webvoyager30": "WebVoyager30 subset",
+};
+
+const evaluatorLabel: Record<string, string> = {
+  "gpt-4v": "GPT-4V judge",
+  "human": "Human eval",
+  "custom": "Custom evaluator",
+};
+
+function getLinkRel(url: string): string {
+  try {
+    const hostname = new URL(url).hostname.toLowerCase().replace(/^www\./, "");
+    const isSteelDomain = hostname === "steel.dev" || hostname.endsWith(".steel.dev");
+    return isSteelDomain
+      ? "noopener noreferrer"
+      : "noopener noreferrer nofollow";
+  } catch {
+    return "noopener noreferrer nofollow";
+  }
+}
 ---
 
 <div class="flex flex-col w-full">
@@ -17,7 +42,7 @@ const highestScore = Math.max(
     <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
       <div class="bg-text text-black font-bold">LEADERBOARD</div>
       <div class="flex flex-col gap-1 flex-1">
-        {[0, 1, 2, 3, 4].map((index) => <div class="bg-black h-[0.0625rem] w-full" />)}
+        {[0, 1, 2, 3, 4].map(() => <div class="bg-black h-[0.0625rem] w-full" />)}
       </div>
     </div>
 
@@ -34,73 +59,121 @@ const highestScore = Math.max(
           </div>
         </div>
 
-        <div class="space-y-2 pb-4 px-3" id="entries-container">
+        <div class="pb-4 px-3" id="entries-container">
           {
             entries.map((entry, index) => {
               const isSota = parseFloat(entry.webVoyager.score.replace("%", "")) === highestScore;
-              const rank = index + 1; // Calculate rank based on array index
+              const rank = index + 1;
+              const m = entry.methodology;
               return (
-                <div class="grid grid-cols-[0.5fr_1fr_1fr_1.5fr] md:grid-cols-[0.5fr_2fr_1fr_1.5fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full">
-                  <div class="text-text">{rank}</div>
-                  <div class="text-text uppercase flex flex-wrap items-start">
+                <details class="group">
+                  <summary class="grid grid-cols-[0.5fr_1fr_1fr_1.5fr] md:grid-cols-[0.5fr_2fr_1fr_1.5fr] gap-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-200 w-full py-1 list-none cursor-pointer">
+                    <div class="text-text flex items-center gap-1">
+                      {rank}
+                    </div>
+                    <div class="text-text uppercase flex flex-wrap items-center">
+                      <div class="flex items-center gap-2">
+                        <a
+                          href={entry.homepage}
+                          target="_blank"
+                          rel={getLinkRel(entry.homepage)}
+                          class="hover:text-accent hover:underline transition-colors"
+                          onclick="event.stopPropagation()"
+                        >
+                          {entry.agent}
+                        </a>
+                        {entry.github && (
+                          <a
+                            href={entry.github}
+                            target="_blank"
+                            rel={getLinkRel(entry.github)}
+                            class="text-xs text-dim hover:text-accent transition-colors flex items-center gap-1"
+                            title="View on GitHub"
+                            onclick="event.stopPropagation()"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                            </svg>
+                          </a>
+                        )}
+                        {entry.isNew && (
+                          <span class="ml-2 text-xs flex px-[0.625rem] py-[0.25rem] justify-center items-center gap-[0.625rem] rounded-[62.5rem] border border-[#03FF32] leading-none">
+                            NEW
+                          </span>
+                        )}
+                      </div>
+                    </div>
                     <div class="flex items-center gap-2">
                       <a
-                        href={entry.homepage}
+                        href={entry.webVoyager.source}
                         target="_blank"
-                        rel="noopener noreferrer"
-                        class="hover:text-accent hover:underline transition-colors"
+                        rel={getLinkRel(entry.webVoyager.source)}
+                        class={`${entry.webVoyager.score === "N/A" ? "text-dim" : parseInt(entry.webVoyager.score.replace("%", "")) < 50 ? "text-error" : "text-success"} hover:text-accent hover:underline transition-colors`}
+                        onclick="event.stopPropagation()"
                       >
-                        {entry.agent}
+                        {entry.webVoyager.score}
                       </a>
-                      {entry.github && (
-                        <a
-                          href={entry.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="text-xs text-dim hover:text-accent transition-colors flex items-center gap-1"
-                          title="View on GitHub"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="12"
-                            height="12"
-                            id="Discord-Logo"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                          </svg>
-                        </a>
-                      )}
-                      {entry.isNew && (
-                        <span class="ml-2 text-xs flex px-[0.625rem] py-[0.25rem] justify-center items-center gap-[0.625rem] rounded-[62.5rem] border border-[#03FF32] leading-none">
-                          NEW
+                      {isSota && (
+                        <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.25rem] rounded-[62.5rem] border border-[#03FF32]">
+                          <span class="flex items-center text-[0.5625rem]">▲</span>
+                          <span>SOTA</span>
                         </span>
                       )}
                     </div>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <a
-                      href={entry.webVoyager.source}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class={`${entry.webVoyager.score === "N/A" ? "text-dim" : parseInt(entry.webVoyager.score.replace("%", "")) < 50 ? "text-error" : "text-success"} hover:text-accent hover:underline transition-colors`}
-                    >
-                      {entry.webVoyager.score}
-                    </a>
-                    {isSota && (
-                      <span class="ml-2 text-xs text-accent flex px-[0.625rem] py-1 justify-center items-center gap-[0.25rem] rounded-[62.5rem] border border-[#03FF32]">
-                        <span class="flex items-center text-[0.5625rem]">▲</span>
-                        <span>SOTA</span>
+                    <div class="text-text flex items-center justify-between">
+                      {entry.organization}
+                      <span class="hidden text-dim text-xs group-open:text-accent transition-colors mr-1">
+                        <span class="group-open:hidden">[+]</span>
+                        <span class="hidden group-open:inline">[-]</span>
                       </span>
+                    </div>
+                  </summary>
+                  <div class="hidden border-t border-text border-opacity-10 mx-0 mb-1 px-2 py-3 bg-text bg-opacity-5 text-xs text-dim uppercase">
+                    {m ? (
+                      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-2">
+                        <div>
+                          <div class="text-text mb-0.5">DATASET</div>
+                          <div class={m.dataset !== "full-643" ? "text-[#ffaa00]" : ""}>
+                            {datasetLabel[m.dataset]}
+                          </div>
+                        </div>
+                        <div>
+                          <div class="text-text mb-0.5">EVALUATOR</div>
+                          <div>{evaluatorLabel[m.evaluator]}</div>
+                        </div>
+                        <div>
+                          <div class="text-text mb-0.5">SOURCE</div>
+                          <div class={m.selfReported ? "text-[#ffaa00]" : "text-success"}>
+                            {m.selfReported ? "Self-reported" : "Third-party"}
+                          </div>
+                        </div>
+                        {m.model && (
+                          <div>
+                            <div class="text-text mb-0.5">MODEL</div>
+                            <div>{m.model}</div>
+                          </div>
+                        )}
+                        {m.notes && (
+                          <div class="col-span-2 md:col-span-4 mt-1 border-t border-text border-opacity-10 pt-2 normal-case text-[#ffaa00]">
+                            {m.notes}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div class="text-dim">No methodology data available.</div>
                     )}
                   </div>
-                  <div class="text-text">{entry.organization}</div>
-                </div>
+                </details>
               );
             })
           }
@@ -120,5 +193,22 @@ const highestScore = Math.max(
         >: STEEL IS AN OPEN-SOURCE BROWSER API PURPOSE-BUILT FOR AI AGENTS.
       </p>
     </div>
+  </div>
+
+  <div
+    class="p-3 border border-text border-opacity-30 border-t-0 bg-background bg-opacity-50 max-w-4xl w-full"
+  >
+    <p class="text-dim text-xs leading-relaxed uppercase">
+      <span class="text-text">⚠ METHODOLOGY NOTE —</span> SCORES ARE NOT ALWAYS DIRECTLY COMPARABLE.
+      ORGANIZATIONS USE DIFFERENT VARIANTS OF THE WEBVOYAGER DATASET (FULL 643-TASK SUITE VS. FILTERED
+      SUBSETS), DIFFERENT EVALUATORS (GPT-4V JUDGE VS. CUSTOM), AND SOME RESULTS ARE SELF-REPORTED
+      RATHER THAN INDEPENDENTLY VERIFIED. CLICK ANY SCORE TO VIEW ITS ORIGINAL SOURCE. IF YOU SPOT AN
+      ERROR OR WANT TO SUBMIT A RESULT, <a
+        href="https://github.com/steel-dev/leaderboard"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        class="text-text underline hover:text-accent transition-colors">OPEN A PR ON GITHUB</a
+      >.
+    </p>
   </div>
 </div>

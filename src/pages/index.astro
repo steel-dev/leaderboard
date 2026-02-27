@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import LeaderboardTable from "../components/LeaderboardTable.astro";
+import FAQ from "../components/FAQ.astro";
 import cursorSvg from "../assets/cursor.svg";
 import { leaderboardEntries } from "../lib/leaderboard";
 
@@ -39,4 +40,6 @@ import { leaderboardEntries } from "../lib/leaderboard";
   <div class="w-full mt-8">
     <LeaderboardTable entries={leaderboardEntries} />
   </div>
+
+  <FAQ />
 </Layout>
