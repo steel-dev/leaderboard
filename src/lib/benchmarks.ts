@@ -81,7 +81,7 @@ export function getBenchmarkPath(name: string): string {
 
 export const benchmarks: BenchmarkEntry[] = [
 
-  // ── WEB NAVIGATION ──────────────────────────────────────────────────
+  // WEB NAVIGATION
   {
     category: "WEB NAV",
     name: "WebVoyager",
@@ -188,7 +188,7 @@ export const benchmarks: BenchmarkEntry[] = [
     human: "N/A", selfHosted: false,
   },
 
-  // ── RESEARCH ────────────────────────────────────────────────────────
+  // RESEARCH
   {
     category: "RESEARCH",
     name: "BrowseComp",
@@ -211,7 +211,7 @@ export const benchmarks: BenchmarkEntry[] = [
     human: "N/A", selfHosted: false,
   },
 
-  // ── DESKTOP / OS ────────────────────────────────────────────────────
+  // DESKTOP / OS
   {
     category: "DESKTOP",
     name: "OSWorld",
@@ -279,7 +279,7 @@ export const benchmarks: BenchmarkEntry[] = [
     human: "N/A", selfHosted: true,
   },
 
-  // ── SOFTWARE ENGINEERING & CODING ───────────────────────────────────
+  // SOFTWARE ENGINEERING & CODING
   {
     category: "CODING",
     name: "SWE-bench Verified",
@@ -390,7 +390,7 @@ export const benchmarks: BenchmarkEntry[] = [
     human: "N/A", selfHosted: false,
   },
 
-  // ── TOOL USE & API INTERACTION ───────────────────────────────────────
+  // TOOL USE & API INTERACTION
   {
     category: "TOOL USE",
     name: "ToolBench",
@@ -458,7 +458,7 @@ export const benchmarks: BenchmarkEntry[] = [
     human: "N/A", selfHosted: false,
   },
 
-  // ── GENERAL AGENCY & REASONING ───────────────────────────────────────
+  // GENERAL AGENCY & REASONING
   {
     category: "GENERAL",
     name: "GAIA",
@@ -566,7 +566,7 @@ export const benchmarks: BenchmarkEntry[] = [
     human: "N/A", selfHosted: true,
   },
 
-  // ── SPECIALIZED ─────────────────────────────────────────────────────
+  // SPECIALIZED
   {
     category: "SPECIALIZED",
     name: "Sotopia",

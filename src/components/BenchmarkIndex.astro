@@ -1,0 +1,270 @@
+---
+import { indexEntries, indexBenchmarks, indexCategories } from "../lib/index-data";
+import { categoryColors } from "../lib/benchmarks";
+---
+
+<div class="flex flex-col w-full">
+  <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
+
+    <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
+      <div class="bg-text text-black font-bold">BENCHMARK INDEX</div>
+      <div class="flex flex-col gap-1 flex-1">
+        {[0,1,2,3,4].map(() => <div class="bg-black h-[0.0625rem] w-full" />)}
+      </div>
+      <div id="result-count" class="text-black text-xs font-mono">{indexEntries.length} RESULTS</div>
+    </div>
+
+    <!-- Search -->
+    <div class="px-3 pt-3 pb-2 border-b border-text border-opacity-20">
+      <input
+        id="search-input"
+        type="text"
+        placeholder="SEARCH AGENT, ORG, BENCHMARK..."
+        class="w-full bg-black border border-text border-opacity-30 text-text font-mono text-xs px-3 py-2 placeholder:text-dim focus:outline-none focus:border-text"
+      />
+    </div>
+
+    <!-- Category filter pills -->
+    <div class="px-3 py-2 border-b border-text border-opacity-20 flex gap-2 flex-wrap">
+      {indexCategories.map((cat) => (
+        <button
+          class={`cat-filter-btn font-mono text-xs px-3 py-1 border transition-colors duration-150 uppercase tracking-wider ${cat === "ALL" ? "border-text text-black bg-[var(--color-text)]" : "border-text border-opacity-30 text-dim hover:text-text hover:border-text"}`}
+          data-cat={cat}
+        >{cat}</button>
+      ))}
+    </div>
+
+    <!-- Benchmark filter pills -->
+    <div class="px-3 py-2 border-b border-text border-opacity-20 flex gap-2 flex-wrap items-center">
+      <span class="text-dim text-[10px] font-mono uppercase self-center">BENCH:</span>
+      <button class="bench-filter-btn font-mono text-[10px] px-2 py-0.5 border border-text text-black bg-[var(--color-text)] uppercase" data-bench="ALL">ALL</button>
+      {indexBenchmarks.map((b) => (
+        <button
+          class="bench-filter-btn font-mono text-[10px] px-2 py-0.5 border border-text border-opacity-30 text-dim hover:text-text hover:border-text transition-colors uppercase"
+          data-bench={b}
+        >{b}</button>
+      ))}
+    </div>
+
+    <!-- Column headers -->
+    <div class="text-dim text-[10px] font-mono uppercase px-3 py-2 border-b border-text border-opacity-20 hidden md:grid grid-cols-[1.5fr_1fr_1.2fr_0.7fr_0.5fr_0.5fr] gap-2 items-center">
+      <div>AGENT</div>
+      <div>ORGANIZATION</div>
+      <!-- Category header -->
+      <div>
+        <button id="cat-col-btn" class="hover:text-text transition-colors flex items-center gap-1 uppercase" title="Click to filter by category">
+          CATEGORY / BENCHMARK
+          <span id="cat-col-indicator" class="text-[8px] text-accent"></span>
+        </button>
+      </div>
+      <!-- Score header -->
+      <button id="score-sort-btn" class="text-right flex items-center justify-end gap-1 hover:text-text transition-colors w-full uppercase" title="Sort by score">
+        SCORE
+        <span id="sort-indicator" class="text-[8px] text-accent">↓</span>
+      </button>
+      <div class="text-center">SRC</div>
+      <div class="text-center">OSS</div>
+    </div>
+
+    <!-- Table rows -->
+    <div id="index-list">
+      {indexEntries.map((entry) => (
+        <div
+          class="index-row border-b border-text border-opacity-10 last:border-b-0 px-3 py-2 hover:bg-text hover:bg-opacity-5 transition-colors duration-150 grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1.2fr_0.7fr_0.5fr_0.5fr] gap-1 md:gap-2 items-center"
+          data-cat={entry.benchmarkCategory}
+          data-bench={entry.benchmark}
+          data-search={`${entry.agent} ${entry.organization} ${entry.benchmark}`.toLowerCase()}
+          data-score={entry.scoreNum}
+        >
+          <div class="flex items-center gap-2">
+            <span class="text-text font-mono text-xs uppercase">{entry.agent}</span>
+            {entry.isNew && (
+              <span class="text-[9px] font-mono px-1.5 py-0.5 border border-[#03FF32] text-[#03FF32] leading-none">NEW</span>
+            )}
+          </div>
+          <div class="text-dim font-mono text-xs">{entry.organization}</div>
+          <div class="flex items-center gap-2">
+            <button
+              class="cat-inline-btn text-[9px] font-mono uppercase hover:opacity-70 transition-opacity cursor-pointer"
+              style={`color: ${categoryColors[entry.benchmarkCategory]}`}
+              data-filter-cat={entry.benchmarkCategory}
+              title={`Filter by ${entry.benchmarkCategory}`}
+            >{entry.benchmarkCategory}</button>
+            <span class="text-dim font-mono text-xs">{entry.benchmark}</span>
+          </div>
+          <div class="md:text-right">
+            <a
+              href={entry.source}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-text font-mono font-bold text-xs hover:text-accent hover:underline transition-colors"
+            >{entry.score}</a>
+          </div>
+          <div class="md:text-center">
+            <span class={`font-mono text-[9px] uppercase ${entry.selfReported ? "text-[#ffaa00]" : "text-success"}`}>
+              {entry.selfReported ? "SELF" : "3RD"}
+            </span>
+          </div>
+          <div class="md:text-center">
+            <span class={`font-mono text-[9px] uppercase ${entry.openSource ? "text-success" : "text-dim"}`}>
+              {entry.openSource ? "YES" : "NO"}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="hidden px-3 py-8 text-center text-dim font-mono text-xs uppercase">
+      NO RESULTS MATCHING FILTERS
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="p-3 border border-text border-opacity-30 border-t-0 bg-background bg-opacity-50 max-w-4xl w-full">
+    <p class="text-dim text-xs leading-relaxed uppercase">
+      SRC: SELF = SELF-REPORTED · 3RD = INDEPENDENTLY VERIFIED · OSS = OPEN SOURCE ·
+      CLICK SCORE HEADER TO SORT · CLICK CATEGORY BADGE TO FILTER ·
+      <a href="https://github.com/steel-dev/leaderboard" target="_blank" rel="noopener noreferrer"
+         class="text-text underline hover:text-accent transition-colors ml-1">SUBMIT A RESULT →</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  // state
+  const rows         = Array.from(document.querySelectorAll<HTMLElement>(".index-row"));
+  const catBtns      = document.querySelectorAll<HTMLButtonElement>(".cat-filter-btn");
+  const benchBtns    = document.querySelectorAll<HTMLButtonElement>(".bench-filter-btn");
+  const searchInput  = document.getElementById("search-input") as HTMLInputElement;
+  const emptyState   = document.getElementById("empty-state")!;
+  const list         = document.getElementById("index-list")!;
+  const resultCount  = document.getElementById("result-count")!;
+  const sortBtn      = document.getElementById("score-sort-btn")!;
+  const sortInd      = document.getElementById("sort-indicator")!;
+  const catColBtn    = document.getElementById("cat-col-btn")!;
+  const catColInd    = document.getElementById("cat-col-indicator")!;
+
+  // import category list from rendered HTML order (unique values from rows)
+  const allCategories = ["ALL", ...Array.from(
+    new Set(rows.map(r => r.dataset.cat!))
+  )];
+
+  let activeCat   = "ALL";
+  let activeBench = "ALL";
+  let searchQuery = "";
+  let sortDir: "desc" | "asc" | "none" = "none"; // none = original order
+  let catCycleIdx = 0; // for cycling through categories via column header
+
+  // store original DOM order
+  const originalOrder = [...rows];
+
+  // helpers
+  function applyAll() {
+    let visible = 0;
+
+    // determine sorted order
+    let ordered: HTMLElement[];
+    if (sortDir === "none") {
+      ordered = [...originalOrder];
+    } else {
+      ordered = [...rows].sort((a, b) => {
+        const sa = parseFloat(a.dataset.score ?? "0");
+        const sb = parseFloat(b.dataset.score ?? "0");
+        return sortDir === "desc" ? sb - sa : sa - sb;
+      });
+    }
+
+    // reorder in DOM
+    ordered.forEach(r => list.appendChild(r));
+
+    // filter visibility
+    ordered.forEach((row) => {
+      const catMatch   = activeCat   === "ALL" || row.dataset.cat   === activeCat;
+      const benchMatch = activeBench === "ALL" || row.dataset.bench === activeBench;
+      const sMatch     = !searchQuery || (row.dataset.search ?? "").includes(searchQuery);
+      const show = catMatch && benchMatch && sMatch;
+      row.style.display = show ? "" : "none";
+      if (show) visible++;
+    });
+
+    emptyState.classList.toggle("hidden", visible > 0);
+    resultCount.textContent = `${visible} RESULTS`;
+  }
+
+  function setActiveBtns(
+    btns: NodeListOf<HTMLButtonElement>,
+    key: string,
+    value: string
+  ) {
+    btns.forEach((b) => {
+      const active = b.dataset[key] === value;
+      b.classList.toggle("border-text",              active);
+      b.classList.toggle("text-black",               active);
+      b.classList.toggle("bg-[var(--color-text)]",   active);
+      b.classList.toggle("border-opacity-30",       !active);
+      b.classList.toggle("text-dim",                !active);
+    });
+  }
+
+  function setCat(cat: string) {
+    activeCat = cat;
+    setActiveBtns(catBtns, "cat", cat);
+    // sync catColInd
+    catColInd.textContent = cat === "ALL" ? "" : `[${cat}]`;
+    // sync cycle index
+    catCycleIdx = allCategories.indexOf(cat);
+    if (catCycleIdx < 0) catCycleIdx = 0;
+    applyAll();
+  }
+
+  // category filter pills
+  catBtns.forEach((btn) => {
+    btn.addEventListener("click", () => setCat(btn.dataset.cat!));
+  });
+
+  // inline category badges in rows
+  document.querySelectorAll<HTMLButtonElement>(".cat-inline-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cat = btn.dataset.filterCat!;
+      // toggle off if already active
+      setCat(activeCat === cat ? "ALL" : cat);
+    });
+  });
+
+  // category column header
+  catColBtn.addEventListener("click", () => {
+    catCycleIdx = (catCycleIdx + 1) % allCategories.length;
+    setCat(allCategories[catCycleIdx]);
+  });
+
+  // benchmark filter pills
+  benchBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activeBench = btn.dataset.bench!;
+      setActiveBtns(benchBtns, "bench", activeBench);
+      applyAll();
+    });
+  });
+
+  // search
+  searchInput.addEventListener("input", () => {
+    searchQuery = searchInput.value.toLowerCase().trim();
+    applyAll();
+  });
+
+  // score sort
+  sortBtn.addEventListener("click", () => {
+    if (sortDir === "none" || sortDir === "asc") {
+      sortDir = "desc";
+      sortInd.textContent = "↓";
+    } else {
+      sortDir = "asc";
+      sortInd.textContent = "↑";
+    }
+    applyAll();
+  });
+
+  // initial render (no sort, no filter)
+  applyAll();
+</script>
