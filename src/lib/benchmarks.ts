@@ -29,9 +29,10 @@ export const categories = [
 ] as const;
 
 export type Category = typeof categories[number];
-export type BenchmarkCategory = Exclude<Category, "ALL">;
+export type RoutedCategory = Exclude<Category, "ALL">;
+export type BenchmarkCategory = BenchmarkEntry["category"];
 
-export const categorySlugs: Record<BenchmarkCategory, string> = {
+export const categorySlugs: Record<RoutedCategory, string> = {
   "WEB NAV": "web-navigation",
   "DESKTOP": "desktop-control",
   "CODING": "coding",
@@ -42,13 +43,40 @@ export const categorySlugs: Record<BenchmarkCategory, string> = {
 
 export const slugToCategory = Object.fromEntries(
   Object.entries(categorySlugs).map(([category, slug]) => [slug, category]),
-) as Record<string, BenchmarkCategory>;
+) as Record<string, RoutedCategory>;
+
+export const categoryRouteLabels: Record<RoutedCategory, string> = {
+  "WEB NAV": "Web navigation",
+  DESKTOP: "Desktop control",
+  CODING: "Coding",
+  "TOOL USE": "Tool use",
+  GENERAL: "General reasoning",
+  SPECIALIZED: "Specialized",
+};
+
+export const benchmarkDomainLabels: Record<BenchmarkCategory, string> = {
+  "WEB NAV": "Web navigation",
+  RESEARCH: "Deep research",
+  DESKTOP: "Desktop control",
+  CODING: "Coding agent",
+  "TOOL USE": "Tool use",
+  GENERAL: "General reasoning",
+  SPECIALIZED: "Specialized agent",
+};
+
+export function getCategoryPath(category: RoutedCategory): string {
+  return `/registry/${categorySlugs[category]}`;
+}
 
 export function getBenchmarkAnchorId(name: string): string {
   return name
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+export function getBenchmarkPath(name: string): string {
+  return `/registry/benchmarks/${getBenchmarkAnchorId(name)}`;
 }
 
 export const benchmarks: BenchmarkEntry[] = [

@@ -3,8 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import BenchmarkRegistry from "./BenchmarkRegistry.astro";
 import {
   benchmarks,
+  categoryRouteLabels,
   categorySlugs,
-  getBenchmarkAnchorId,
+  getBenchmarkPath,
   type Category,
 } from "../lib/benchmarks";
 
@@ -25,41 +26,54 @@ const pagePath =
 const pageDescription =
   "AI agent eval registry and benchmark leaderboard. Compare evaluation suites, tests, frameworks, tasks, evaluators, and top scores across web navigation, coding, desktop control, tool use, deep research, and general reasoning.";
 
+const activeCategoryLabel = activeCategory === "ALL" ? null : categoryRouteLabels[activeCategory];
+
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+}
+
 const faqItems = [
   {
+    id: "what-are-agent-benchmarks",
     question: "What are AI agent benchmarks?",
-    answer:
-      "AI agent benchmarks are evaluations that measure whether an agent can complete multi-step tasks in an environment such as a browser, terminal, desktop, or tool stack. Unlike single-prompt model tests, they focus on action quality, task completion, recovery from mistakes, and end-to-end execution.",
+    answerHtml:
+      'AI agent benchmarks are evaluations that measure whether an agent can complete multi-step tasks in an environment such as a <a href="/registry/web-navigation" class="text-text underline hover:text-accent transition-colors">browser</a>, <a href="/registry/coding#terminal-bench-2-0" class="text-text underline hover:text-accent transition-colors">terminal</a>, <a href="/registry/desktop-control" class="text-text underline hover:text-accent transition-colors">desktop</a>, or <a href="/registry/tool-use" class="text-text underline hover:text-accent transition-colors">tool stack</a>. Unlike single-prompt model tests, they focus on action quality, task completion, recovery from mistakes, and end-to-end execution.',
   },
   {
+    id: "what-is-an-agent-eval-registry",
     question: "What is an agent eval registry?",
-    answer:
-      "An agent eval registry is a curated index of AI agent benchmarks, evaluations, leaderboards, test suites, and frameworks. Instead of covering just one benchmark family, it helps you compare multiple agent evaluation options in one place by task domain, evaluator type, score format, and benchmark scope.",
+    answerHtml:
+      'An agent eval registry is a curated index of AI agent benchmarks, evaluations, leaderboards, test suites, and frameworks. Instead of covering just one benchmark family, it helps you compare multiple evaluation options across <a href="/registry/web-navigation" class="text-text underline hover:text-accent transition-colors">web navigation</a>, <a href="/registry/coding" class="text-text underline hover:text-accent transition-colors">coding</a>, <a href="/registry/desktop-control" class="text-text underline hover:text-accent transition-colors">desktop control</a>, and <a href="/registry/tool-use" class="text-text underline hover:text-accent transition-colors">tool use</a> in one place.',
   },
   {
+    id: "how-do-you-evaluate-ai-agents",
     question: "How do you evaluate AI agents?",
-    answer:
-      "You evaluate AI agents by testing them on multi-step tasks in realistic environments and measuring whether they reach the correct end state. Strong agent evaluations usually track task success, evaluator design, reliability, cost, latency, and recovery from mistakes. The right eval framework depends on whether you care about browser use, coding, tool use, desktop control, or general reasoning.",
+    answerHtml:
+      'You evaluate AI agents by testing them on multi-step tasks in realistic environments and measuring whether they reach the correct end state. Strong agent evaluations usually track task success, evaluator design, reliability, cost, latency, and recovery from mistakes. The right eval framework depends on whether you care about <a href="/registry/web-navigation#webvoyager" class="text-text underline hover:text-accent transition-colors">browser use</a>, <a href="/registry/coding#swe-bench-verified" class="text-text underline hover:text-accent transition-colors">coding</a>, <a href="/registry/tool-use#toolbench" class="text-text underline hover:text-accent transition-colors">tool use</a>, desktop control, or general reasoning.',
   },
   {
+    id: "best-benchmark-for-coding-agents",
     question: "What is the best benchmark for coding agents?",
-    answer:
-      "There is no single best benchmark for every use case, but SWE-bench Verified is widely treated as the most trusted benchmark for coding agents because it uses real repository issues and executable test suites. Terminal-Bench is also useful when you want to evaluate autonomous agents in command-line and systems workflows.",
+    answerHtml:
+      'There is no single best benchmark for every use case, but <a href="/registry/coding#swe-bench-verified" class="text-text underline hover:text-accent transition-colors">SWE-bench Verified</a> is widely treated as the most trusted benchmark for coding agents because it uses real repository issues and executable test suites. <a href="/registry/coding#terminal-bench-2-0" class="text-text underline hover:text-accent transition-colors">Terminal-Bench</a> is also useful when you want to evaluate autonomous agents in command-line and systems workflows.',
   },
   {
+    id: "browser-vs-coding-benchmarks",
     question: "How do browser agent benchmarks differ from coding benchmarks?",
-    answer:
-      "Browser agent benchmarks evaluate interaction with websites, page state, navigation, and visual or DOM-grounded actions. Coding benchmarks evaluate repository understanding, file edits, tool use, debugging, and test execution. Both are agent evaluations, but they stress very different environments and failure modes.",
+    answerHtml:
+      'Browser agent benchmarks evaluate interaction with websites, page state, navigation, and visual or DOM-grounded actions. Coding benchmarks evaluate repository understanding, file edits, tool use, debugging, and test execution. Compare <a href="/registry/web-navigation#webvoyager" class="text-text underline hover:text-accent transition-colors">WebVoyager</a> with <a href="/registry/coding#swe-bench-verified" class="text-text underline hover:text-accent transition-colors">SWE-bench Verified</a> to see how different the environments and failure modes are.',
   },
   {
+    id: "what-does-self-hosted-mean",
     question: "What does self-hosted mean in an agent benchmark?",
-    answer:
-      "Self-hosted means the benchmark environment can be run in a controlled local or containerized setup instead of depending entirely on live public services. That usually improves reproducibility and evaluation stability, but may be less representative of the messy real web or production software.",
+    answerHtml:
+      'Self-hosted means the benchmark environment can be run in a controlled local or containerized setup instead of depending entirely on live public services. That usually improves reproducibility and evaluation stability, but may be less representative of the messy real web or production software. Benchmarks like <a href="/registry/web-navigation#webarena" class="text-text underline hover:text-accent transition-colors">WebArena</a> and <a href="/registry/desktop-control#osworld" class="text-text underline hover:text-accent transition-colors">OSWorld</a> are good examples.',
   },
   {
+    id: "why-scores-differ",
     question: "Why do benchmark scores differ across evaluators?",
-    answer:
-      "Benchmark scores differ because evaluators measure success in different ways. Some use exact match, some use executable test suites, some verify environment state, and others rely on human review or LLM judges. A score on one benchmark or evaluator is not directly comparable to a score produced by a different evaluation method.",
+    answerHtml:
+      'Benchmark scores differ because evaluators measure success in different ways. Some use exact match, some use executable test suites, some verify environment state, and others rely on human review or LLM judges. A score on one benchmark or evaluator is not directly comparable to a score produced by a different evaluation method. Use the <a href="/registry#how-to-read-registry" class="text-text underline hover:text-accent transition-colors">How to read this registry</a> note before comparing results.',
   },
 ] as const;
 
@@ -67,9 +81,9 @@ const itemListSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ItemList",
   name:
-    activeCategory === "ALL"
+    activeCategoryLabel === null
       ? "AI Agent Benchmark Registry"
-      : `${activeCategory} AI Agent Benchmark Registry`,
+      : `${activeCategoryLabel} AI Agent Benchmark Registry`,
   description:
     "Curated AI agent eval registry and benchmark leaderboard covering evaluation suites, tests, and frameworks for web navigation, coding, desktop control, tool use, research, and general reasoning.",
   url: `https://leaderboard.steel.dev${pagePath}`,
@@ -81,7 +95,7 @@ const itemListSchema = JSON.stringify({
       "@type": "Thing",
       name: benchmark.name,
       description: benchmark.description,
-      url: `https://leaderboard.steel.dev${pagePath}#${getBenchmarkAnchorId(benchmark.name)}`,
+      url: `https://leaderboard.steel.dev${getBenchmarkPath(benchmark.name)}`,
       category: benchmark.category,
       ...(benchmark.benchmarkOrg
         ? {
@@ -108,7 +122,7 @@ const faqSchema = JSON.stringify({
     name: item.question,
     acceptedAnswer: {
       "@type": "Answer",
-      text: item.answer,
+      text: stripHtml(item.answerHtml),
     },
   })),
 });
@@ -122,6 +136,13 @@ const faqSchema = JSON.stringify({
   <div class="w-full max-w-4xl">
     <div class="mb-8">
       <div class="flex flex-col gap-4">
+        {activeCategoryLabel && (
+          <nav aria-label="Breadcrumb" class="text-xs font-mono uppercase tracking-widest text-dim">
+            <a href="/registry" class="hover:text-accent transition-colors">Registry</a>
+            <span class="mx-2 text-dim">/</span>
+            <span class="text-text">{activeCategoryLabel}</span>
+          </nav>
+        )}
         <div class="flex flex-col gap-1">
           <div class="text-xl md:text-2xl font-sans tracking-tight mb-0">
             Steel.dev<span class="text-accent">®</span>
@@ -140,6 +161,27 @@ const faqSchema = JSON.stringify({
     </div>
   </div>
 
+  <section
+    id="how-to-read-registry"
+    class="w-full max-w-4xl mb-8 border border-text border-opacity-30 p-4 md:p-5"
+  >
+    <h2 class="text-base md:text-lg font-sans tracking-tight text-text mb-2">
+      How to read this registry
+    </h2>
+    <p class="text-sm md:text-[15px] leading-relaxed text-dim">
+      Compare results only when task scope and evaluation method are reasonably comparable.
+      Reproducible suites like{" "}
+      <a href="/registry/web-navigation#webarena" class="text-text underline hover:text-accent transition-colors">WebArena</a>{" "}
+      are easier to rerun, while live-web evals like{" "}
+      <a href="/registry/web-navigation#webvoyager" class="text-text underline hover:text-accent transition-colors">WebVoyager</a>{" "}
+      better capture production drift. Start with the category routes for{" "}
+      <a href="/registry/web-navigation" class="text-text underline hover:text-accent transition-colors">web navigation</a>,{" "}
+      <a href="/registry/coding" class="text-text underline hover:text-accent transition-colors">coding</a>, and{" "}
+      <a href="/registry/tool-use" class="text-text underline hover:text-accent transition-colors">tool use</a>{" "}
+      before comparing leaderboard numbers across very different evaluation suites.
+    </p>
+  </section>
+
   <div class="w-full mt-8">
     <BenchmarkRegistry activeCategory={activeCategory} />
   </div>
@@ -155,7 +197,7 @@ const faqSchema = JSON.stringify({
 
       <div class="divide-y divide-text divide-opacity-10">
         {faqItems.map((item) => (
-          <details class="group px-3 py-3 cursor-pointer">
+          <details id={item.id} class="group px-3 py-3 cursor-pointer">
             <summary class="flex justify-between items-center list-none cursor-pointer hover:text-accent transition-colors duration-200 uppercase text-sm">
               <span>{item.question}</span>
               <span class="text-dim group-open:text-accent transition-colors ml-4 shrink-0">
@@ -163,8 +205,10 @@ const faqSchema = JSON.stringify({
                 <span class="hidden group-open:inline">[-]</span>
               </span>
             </summary>
-            <div class="mt-3 text-dim text-sm leading-relaxed border-t border-text border-opacity-10 pt-3">
-              {item.answer}
+            <div
+              class="mt-3 text-dim text-sm leading-relaxed border-t border-text border-opacity-10 pt-3"
+              set:html={item.answerHtml}
+            >
             </div>
           </details>
         ))}

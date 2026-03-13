@@ -1,9 +1,12 @@
 ---
 import {
   benchmarks,
+  benchmarkDomainLabels,
   categories,
   categoryColors,
   categorySlugs,
+  getBenchmarkPath,
+  getCategoryPath,
   getBenchmarkAnchorId,
   type Category,
 } from "../lib/benchmarks";
@@ -19,50 +22,34 @@ const categorySections = [
   {
     category: "WEB NAV",
     title: "Web navigation benchmarks",
-    body:
-      "Web navigation benchmarks measure how well an AI agent can complete multi-step tasks across real or simulated websites. A strong AI web navigation benchmark tests clicking, typing, reading dynamic content, handling popups, and recovering from mistakes while staying grounded in page state. These evaluations matter because browsing agents often fail on simple flows like checkout, account setup, or search refinement. The best web navigation benchmarks define clear success criteria, use realistic tasks, and separate memorization from generalization. When comparing benchmark quality, look at domain coverage, evaluator type, refresh cadence, and whether the environment reflects the modern web rather than toy pages.",
+    bodyHtml: `Web navigation benchmarks test whether an agent can complete real browsing tasks across live or simulated websites without losing track of page state. They matter because browser agents often fail on ordinary flows such as search refinement, checkout, or form completion. A good browser-agent evaluation suite should combine realistic tasks, clear success criteria, and environments that do not reward memorized shortcuts. If you want a practical starting point, compare <a href="${getCategoryPath("WEB NAV")}#${getBenchmarkAnchorId("WebVoyager")}" class="text-text underline hover:text-accent transition-colors">WebVoyager</a> for live-site evaluation with <a href="${getCategoryPath("WEB NAV")}#${getBenchmarkAnchorId("WebArena")}" class="text-text underline hover:text-accent transition-colors">WebArena</a> for a more reproducible setup. If your agents also operate outside the browser, it is worth checking the <a href="${getCategoryPath("DESKTOP")}" class="text-text underline hover:text-accent transition-colors">desktop control benchmarks</a> as a companion category.`,
   },
   {
     category: "CODING",
     title: "Coding agent benchmarks",
-    body:
-      "Coding agent benchmarks evaluate whether an agent can understand a codebase, edit files, run tools, fix bugs, and satisfy tests under realistic software constraints. The best coding agent benchmarks go beyond isolated coding puzzles and measure repository-level performance: reading unfamiliar modules, making targeted changes, following instructions, and avoiding regressions. If you are comparing the best coding agent benchmarks, focus on task realism, grading quality, and whether success is determined by executable outcomes such as unit tests or hidden evaluations. A useful coding benchmark registry should make it easy to compare scope, evaluator design, language coverage, and leaderboard leaders in one place.",
+    bodyHtml: `Coding agent benchmarks should look less like puzzle sets and more like real software work. The strongest ones test repository understanding, file edits, tool use, debugging, and whether changes satisfy executable checks without breaking surrounding code. When you compare coding-agent evals, task realism and grading quality matter more than flashy single-shot scores. For most teams, <a href="${getCategoryPath("CODING")}#${getBenchmarkAnchorId("SWE-bench Verified")}" class="text-text underline hover:text-accent transition-colors">SWE-bench Verified</a> is the obvious starting point, while <a href="${getCategoryPath("CODING")}#${getBenchmarkAnchorId("Terminal-Bench 2.0")}" class="text-text underline hover:text-accent transition-colors">Terminal-Bench</a> is useful if command-line workflows are part of the product. If your agents spend as much time calling tools as editing code, compare them with the <a href="${getCategoryPath("TOOL USE")}" class="text-text underline hover:text-accent transition-colors">tool-use benchmarks</a> too.`,
   },
   {
     category: "DESKTOP",
     title: "Desktop control benchmarks",
-    body:
-      "Desktop control benchmarks test whether an agent can operate a full graphical environment instead of a single browser tab or API sandbox. A serious desktop control benchmark for agents includes tasks such as opening applications, managing files, switching windows, entering structured data, and combining local and web actions in one flow. These benchmarks matter because many real workflows span email, spreadsheets, terminals, documents, and browsers at once. The strongest evaluations measure robustness against timing issues, noisy interfaces, and partial observability rather than ideal scripted conditions. Good registries surface which benchmarks focus on office productivity, computer use, or broader operating-system control.",
+    bodyHtml: `Desktop control benchmarks matter when an agent has to operate a full graphical environment instead of a single browser tab or an API-only sandbox. Strong desktop evaluations cover opening applications, managing files, switching windows, entering data, and coordinating work across local tools and the web. They are especially useful for understanding whether a system can recover from timing issues, noisy interfaces, and partial observability. A good place to start is <a href="${getCategoryPath("DESKTOP")}#${getBenchmarkAnchorId("OSWorld")}" class="text-text underline hover:text-accent transition-colors">OSWorld</a>, then compare it with platform-focused suites such as <a href="${getCategoryPath("DESKTOP")}#${getBenchmarkAnchorId("Windows Agent Arena")}" class="text-text underline hover:text-accent transition-colors">Windows Agent Arena</a>. If your workflow lives mostly in the browser, the <a href="${getCategoryPath("WEB NAV")}" class="text-text underline hover:text-accent transition-colors">web navigation benchmarks</a> are often a better first filter.`,
   },
   {
     category: "TOOL USE",
     title: "Tool-use benchmarks",
-    body:
-      "Tool-use benchmarks measure whether an agent can select the right tools, call them with correct arguments, interpret results, and chain multiple actions toward a goal. Agent tool use evaluation is critical because production agents rarely succeed through raw text reasoning alone. They need to search, execute code, query APIs, inspect files, and decide when another tool call is necessary. The best tool-use benchmarks separate tool selection from execution quality and expose whether failure came from planning, parsing, or recovery. If you are comparing agent tool use evaluation suites, look for clear task completion metrics, realistic multi-step dependencies, and transparent evaluation methodology.",
+    bodyHtml: `Tool-use benchmarks focus on whether an agent can pick the right tool, call it correctly, interpret the result, and keep going when the workflow spans several steps. That matters in production because most useful agents do not win through raw text reasoning alone; they search, execute code, inspect files, query APIs, and chain actions. Good tool-use evals make it clear whether failure came from planning, parsing, or state management. If you want a broad reference point, start with <a href="${getCategoryPath("TOOL USE")}#${getBenchmarkAnchorId("ToolBench")}" class="text-text underline hover:text-accent transition-colors">ToolBench</a> and <a href="${getCategoryPath("TOOL USE")}#${getBenchmarkAnchorId("Tau-bench")}" class="text-text underline hover:text-accent transition-colors">Tau-bench</a>. If the agent also needs to reason deeply between tool calls, compare the results against the <a href="${getCategoryPath("GENERAL")}" class="text-text underline hover:text-accent transition-colors">general reasoning benchmarks</a>.`,
   },
   {
     category: "GENERAL",
     title: "General reasoning benchmarks",
-    body:
-      "General reasoning benchmarks aim to measure broad cognitive performance across math, logic, planning, reading comprehension, and problem solving. For agent builders, these benchmarks are useful but incomplete: they reveal baseline reasoning strength, yet they do not always predict success in messy environments with tools, interfaces, and long-horizon tasks. The most informative general reasoning benchmarks define difficult tasks with unambiguous answers and minimize contamination from training data exposure. When comparing them, look at answer format, domain breadth, scoring rigor, and whether the benchmark emphasizes final-answer accuracy or interactive reasoning. Registries help by putting general reasoning results in context with web, coding, and desktop benchmarks.",
+    bodyHtml: `General reasoning benchmarks are useful because they show how well a model handles math, logic, planning, reading comprehension, and hard problem solving before environment noise gets involved. They are not the whole story for agents, but they do provide a baseline for how much raw reasoning power a system brings into browser, coding, or desktop tasks. The most informative evals keep answers verifiable and resist contamination from training data exposure. If you want a broad sense of agent capability, compare <a href="${getCategoryPath("GENERAL")}#${getBenchmarkAnchorId("GAIA")}" class="text-text underline hover:text-accent transition-colors">GAIA</a> with <a href="${getCategoryPath("GENERAL")}#${getBenchmarkAnchorId("AgentBench")}" class="text-text underline hover:text-accent transition-colors">AgentBench</a>, then read those results next to the more execution-heavy <a href="${getCategoryPath("WEB NAV")}" class="text-text underline hover:text-accent transition-colors">web navigation</a> and <a href="${getCategoryPath("CODING")}" class="text-text underline hover:text-accent transition-colors">coding benchmarks</a>.`,
   },
   {
     category: "SPECIALIZED",
     title: "Specialized agent benchmarks",
-    body:
-      "Specialized agent benchmarks focus on narrow but commercially important domains such as deep research, data extraction, customer support workflows, finance, science, or long-context document analysis. These evaluations matter because frontier agent performance is often uneven: a model that looks strong on broad leaderboards may still fail in domain-specific settings with strict evidence requirements or unusual interfaces. The best specialized agent benchmarks define a concrete environment, clear artifacts of success, and realistic constraints like citation fidelity, domain terminology, or long-horizon research synthesis. A strong registry should highlight this category separately so users can compare scope, evaluator type, and leaderboard signals across vertical tasks.",
+    bodyHtml: `Specialized agent benchmarks focus on narrow but commercially important workflows such as scientific work, social simulation, medical tasks, customer support, and other domain-heavy settings. These evaluations are useful because broad leaderboard strength often hides uneven performance once the agent has to follow domain rules, preserve citations, or navigate unusual interfaces. A specialized eval should define a concrete environment, clear artifacts of success, and constraints that actually resemble the target workflow. To get oriented, look at <a href="${getCategoryPath("SPECIALIZED")}#${getBenchmarkAnchorId("MedAgentBench")}" class="text-text underline hover:text-accent transition-colors">MedAgentBench</a> or <a href="${getCategoryPath("SPECIALIZED")}#${getBenchmarkAnchorId("Sotopia")}" class="text-text underline hover:text-accent transition-colors">Sotopia</a>, then compare those results with the broader <a href="${getCategoryPath("GENERAL")}" class="text-text underline hover:text-accent transition-colors">general reasoning benchmarks</a> before drawing product conclusions.`,
   },
 ] as const;
-
-const benchmarkDomainLabels: Record<Exclude<Category, "ALL">, string> = {
-  "WEB NAV": "Web navigation",
-  RESEARCH: "Deep research",
-  DESKTOP: "Desktop control",
-  CODING: "Coding agent",
-  "TOOL USE": "Tool use",
-  GENERAL: "General reasoning",
-  SPECIALIZED: "Specialized agent",
-};
 ---
 
 <div class="flex flex-col w-full">
@@ -101,7 +88,11 @@ const benchmarkDomainLabels: Record<Exclude<Category, "ALL">, string> = {
           style={`display: ${activeCategory === section.category ? "block" : "none"};`}
         >
           <h2 class="text-lg md:text-xl font-sans tracking-tight text-text mb-2">{section.title}</h2>
-          <p class="text-sm md:text-[15px] leading-relaxed text-dim">{section.body}</p>
+          <div
+            class="text-sm md:text-[15px] leading-relaxed text-dim"
+            set:html={section.bodyHtml}
+          >
+          </div>
         </article>
       ))}
     </div>
@@ -131,7 +122,11 @@ const benchmarkDomainLabels: Record<Exclude<Category, "ALL">, string> = {
                   <span class="text-dim"> - {b.selfHosted ? "Self-hosted" : "Public"}</span>
                 </div>
 
-                <div class="text-text font-mono font-bold uppercase mb-2">{b.name}</div>
+                <div class="text-text font-mono font-bold uppercase mb-2">
+                  <a href={getBenchmarkPath(b.name)} class="hover:text-accent transition-colors">
+                    {b.name}
+                  </a>
+                </div>
                 {b.benchmarkOrg && (
                   <div class="text-dim text-[10px] font-mono uppercase tracking-widest mb-2">
                     Benchmark By {b.benchmarkOrg}
@@ -205,35 +200,34 @@ const benchmarkDomainLabels: Record<Exclude<Category, "ALL">, string> = {
     </p>
   </div>
 
-  <section class="mt-10 border border-text border-opacity-30 max-w-4xl w-full p-4 md:p-6">
+  <section
+    id="what-is-an-ai-agent-benchmark"
+    class="mt-10 border border-text border-opacity-30 max-w-4xl w-full p-4 md:p-6"
+  >
     <h2 class="text-lg md:text-2xl font-sans tracking-tight text-text mb-4">
       What is an AI agent benchmark?
     </h2>
     <div class="flex flex-col gap-4 text-sm md:text-[15px] leading-relaxed text-dim">
       <p>
-        An AI agent benchmark is a structured test suite used to measure how well an agent can
-        complete tasks in an environment, not just generate plausible text. Instead of grading a
-        single answer, an agent benchmark usually evaluates a sequence of actions such as browsing
-        websites, editing code, using tools, controlling software, or combining research and
-        reasoning over multiple steps. If you are asking what an AI agent benchmark is, the short
-        answer is that it measures goal completion under realistic constraints.
+        An AI agent benchmark, eval, or evaluation suite is a structured way to test how well an
+        agent completes tasks in an environment, not just how well a model writes a plausible
+        answer. Instead of grading one response, these tests look at sequences of actions across
+        websites, codebases, tools, desktops, or research workflows. In practice, they measure
+        whether the system can make progress, stay grounded, and reach the correct end state.
       </p>
       <p>
-        That is the main difference between an agent benchmark and a standard LLM benchmark. A
-        typical LLM eval checks whether a model can answer a prompt correctly. An agent benchmark
-        vs LLM benchmark comparison is more about execution: can the system plan, recover from
-        errors, choose the right actions, and reach the correct end state? Strong benchmarks often
-        measure not only accuracy, but also task success rate, cost, latency, and reliability over
-        long horizons.
+        That is the main difference between an agent benchmark and a standard LLM eval. A classic
+        LLM test asks whether the model produced the right answer to a prompt. An agent evaluation
+        asks whether the system can plan, recover from mistakes, use the right tools, and complete
+        a workflow under realistic constraints. Strong benchmark leaderboards often track not only
+        accuracy, but also task success, reliability, latency, and cost.
       </p>
       <p>
-        Common evaluation methods include exact-match grading, test-suite execution, environment
-        state verification, human review, and LLM-as-judge scoring for open-ended tasks. Each
-        method has tradeoffs between rigor, scalability, and realism. Self-hosted vs public
-        benchmarks also matter. Self-hosted environments are easier to reproduce and control,
-        while public-web or live-software benchmarks better reflect real-world drift, layout
-        changes, and operational messiness. If you want to know how to evaluate AI agents well,
-        you usually need both types.
+        Common methods include exact-match grading, executable test suites, environment-state
+        checks, human review, and LLM-as-judge scoring for open-ended work. Each has tradeoffs in
+        rigor, scalability, and realism. Self-hosted suites are easier to rerun and compare over
+        time, while public-web or live-software evaluations better reflect drift and production
+        messiness. The best way to evaluate AI agents is usually to combine both.
       </p>
     </div>
   </section>
