@@ -1,0 +1,144 @@
+---
+import { benchmarks, categories, categoryColors } from "../lib/benchmarks";
+---
+
+<div class="flex flex-col w-full">
+  <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
+
+    <!-- Header bar -->
+    <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
+      <div class="bg-text text-black font-bold">REGISTRY</div>
+      <div class="flex flex-col gap-1 flex-1">
+        {[0, 1, 2, 3, 4].map(() => <div class="bg-black h-[0.0625rem] w-full" />)}
+      </div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex gap-2 flex-wrap px-3 pt-3 pb-2 border-b border-text border-opacity-20">
+      {categories.map((cat) => (
+        <button
+          class={`filter-btn font-mono text-xs px-3 py-1 border transition-colors duration-200 uppercase tracking-wider ${cat === "ALL" ? "border-text text-black bg-[var(--color-text)]" : "border-text border-opacity-30 text-dim hover:text-text hover:border-text"}`}
+          data-filter={cat}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Benchmark cards -->
+    <div class="divide-y divide-text divide-opacity-10" id="benchmark-list">
+      {benchmarks.map((b) => (
+        <div
+          class="benchmark-card px-4 py-4 hover:bg-text hover:bg-opacity-5 transition-colors duration-200"
+          data-category={b.category}
+        >
+          <div class="flex flex-col md:flex-row md:items-start gap-4">
+
+            <!-- Left: main info -->
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span
+                  class="text-[10px] font-mono uppercase tracking-widest"
+                  style={`color: ${categoryColors[b.category]}`}
+                >
+                  {b.category}
+                </span>
+                {b.selfHosted && (
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-dim border border-text border-opacity-20 px-1.5 py-0.5">
+                    SELF-HOSTED
+                  </span>
+                )}
+              </div>
+
+              <div class="text-text font-mono font-bold uppercase mb-2">{b.name}</div>
+              <p class="text-dim text-xs leading-relaxed max-w-xl mb-3">{b.description}</p>
+
+              <!-- Links -->
+              <div class="flex flex-wrap gap-4 text-xs font-mono">
+                <a
+                  href={b.paper}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-dim hover:text-accent transition-colors uppercase"
+                >
+                  [PAPER]
+                </a>
+                {b.github && (
+                  <a
+                    href={b.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-dim hover:text-accent transition-colors uppercase"
+                  >
+                    [GITHUB]
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <!-- Right: stats -->
+            <div class="flex md:flex-col gap-4 md:gap-3 md:text-right shrink-0 md:min-w-[120px]">
+              <div>
+                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Top Score</div>
+                <div class="text-text font-mono font-bold text-sm">{b.topScore}</div>
+                <div class="text-dim text-[10px] font-mono">{b.topAgent}</div>
+              </div>
+              <div>
+                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Human</div>
+                <div class="text-dim font-mono text-sm">{b.human}</div>
+              </div>
+              <div class="hidden md:block">
+                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Tasks</div>
+                <div class="text-dim font-mono text-sm">{b.tasks}</div>
+              </div>
+              <div class="hidden md:block">
+                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Evaluator</div>
+                <div class="text-dim font-mono text-[10px]">{b.evaluator}</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Footer note -->
+  <div class="p-3 border border-text border-opacity-30 border-t-0 bg-background bg-opacity-50 max-w-4xl w-full">
+    <p class="text-dim text-xs leading-relaxed uppercase">
+      MISSING A BENCHMARK?{" "}
+      <a
+        href="https://github.com/steel-dev/leaderboard"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-text underline hover:text-accent transition-colors"
+      >
+        OPEN A PR ON GITHUB
+      </a>{" "}
+      TO ADD IT TO THE REGISTRY.
+    </p>
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const cards = document.querySelectorAll<HTMLElement>(".benchmark-card");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+
+      buttons.forEach((b) => {
+        b.classList.remove("border-text", "text-black", "bg-[var(--color-text)]");
+        b.classList.add("border-opacity-30", "text-dim");
+      });
+      btn.classList.add("border-text", "text-black", "bg-[var(--color-text)]");
+      btn.classList.remove("border-opacity-30", "text-dim");
+
+      cards.forEach((card) => {
+        card.style.display =
+          filter === "ALL" || card.dataset.category === filter ? "" : "none";
+      });
+    });
+  });
+</script>
