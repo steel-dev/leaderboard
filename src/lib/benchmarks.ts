@@ -25,7 +25,7 @@ export const categoryColors: Record<BenchmarkEntry["category"], string> = {
 };
 
 export const categories = [
-  "ALL", "WEB NAV", "DESKTOP", "CODING", "TOOL USE", "GENERAL", "SPECIALIZED"
+  "ALL", "RESEARCH", "WEB NAV", "DESKTOP", "CODING", "TOOL USE", "GENERAL", "SPECIALIZED"
 ] as const;
 
 export type Category = typeof categories[number];
@@ -34,6 +34,7 @@ export type BenchmarkCategory = BenchmarkEntry["category"];
 
 export const categorySlugs: Record<RoutedCategory, string> = {
   "WEB NAV": "web-navigation",
+  "RESEARCH": "research",
   "DESKTOP": "desktop-control",
   "CODING": "coding",
   "TOOL USE": "tool-use",
