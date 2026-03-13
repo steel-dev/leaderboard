@@ -14,3 +14,5 @@
 - Replaced generic `[PAPER]` / `[GITHUB]` labels with descriptive link text. (To make source links more meaningful for users and search engines.)
 - Fixed spacing and underline issues in inline linked copy. (To clean up visual polish and avoid awkward underlined whitespace.)
 - Replaced the footer `WEBVOYAGER` link with `STEEL.DEV`. (To point the footer CTA at the company site instead of an unrelated external repo.)
+- Added `benchmarkDomainLabels`, `categorySlugs`, `getCategoryPath`, `getBenchmarkPath`, and `getBenchmarkAnchorId` exports to `benchmarks.ts`. (To support URL generation, anchor linking, and human-readable labels across registry pages and the benchmark index without duplicating logic.)
+- Expanded registry to 40+ benchmarks across 7 categories including new entries: WebChoreArena, BrowserGym, AssistantBench, WorkArena, WebShop, Vending-Bench, CharacterEval, FORTRESS, MultiAgentBench, AgentHarm, LiveBench, SimpleQA, AgentBoard, OdysseyBench, and AppWorld. (To give the registry comprehensive coverage beyond the most well-known benchmarks.)
