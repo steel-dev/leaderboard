@@ -1,0 +1,16 @@
+# Registry Updates - 2026-03-13
+
+- Updated the registry page title, `h1`, and intro copy. (To align the page with the AI agent benchmark registry positioning and improve search relevance.)
+- Added URL-backed category pages like `/registry/web-navigation`, `/registry/coding`, and related routes. (To make each category indexable, shareable, and SEO-friendly instead of relying only on client-side filters.)
+- Added category-specific explanatory sections for registry categories. (To add crawlable context and help category pages rank for mid-tail queries.)
+- Added a "What is an AI agent benchmark?" explainer section below the registry. (To capture top-of-funnel informational search intent and explain the page to new visitors.)
+- Broadened registry copy to include `eval`, `evaluation`, `suite`, `framework`, and `leaderboard` terminology. (To match how users actually search, not just the word "benchmark".)
+- Added internal links from FAQ and category copy to category routes and benchmark anchors. (To strengthen internal linking, help crawlers discover pages, and improve navigation.)
+- Added a "How to read this registry" guidance strip. (To clarify how to compare benchmarks and make the page feel more editorial and trustworthy.)
+- Added breadcrumbs for category routes. (To improve hierarchy, UX, and crawl understanding on deeper registry pages.)
+- Added real canonical tags and page-specific meta descriptions. (To improve SEO hygiene and avoid weak default metadata across pages.)
+- Generated benchmark detail pages from `benchmarks.ts` under `/registry/benchmarks/...`. (To create long-tail landing pages for individual benchmarks without manual page maintenance.)
+- Improved benchmark cards with clearer taxonomy labels, clearer stats labels, benchmark-name detail links, and better button placement. (To make the registry easier to scan and cleaner visually.)
+- Replaced generic `[PAPER]` / `[GITHUB]` labels with descriptive link text. (To make source links more meaningful for users and search engines.)
+- Fixed spacing and underline issues in inline linked copy. (To clean up visual polish and avoid awkward underlined whitespace.)
+- Replaced the footer `WEBVOYAGER` link with `STEEL.DEV`. (To point the footer CTA at the company site instead of an unrelated external repo.)
