@@ -180,31 +180,11 @@ const categorySections = [
                 </a>
               )}
             </div>
-
-            <!-- Stats -->
-            <div class="flex md:flex-col gap-4 md:gap-3 md:text-right shrink-0 md:min-w-[120px]">
-              <div>
-                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Top Score</div>
-                <div class="text-text font-mono font-bold text-sm">{b.topScore}</div>
-                <div class="text-dim text-[10px] font-mono">{b.topAgent}</div>
-              </div>
-              <div>
-                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Human</div>
-                <div class="text-dim font-mono text-sm">{b.human}</div>
-              </div>
-              <div class="hidden md:block">
-                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Tasks</div>
-                <div class="text-dim font-mono text-sm">{b.tasks}</div>
-              </div>
-              <div class="hidden md:block">
-                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Evaluator</div>
-                <div class="text-dim font-mono text-[10px]">{b.evaluator}</div>
-              </div>
-            </div>
-
           </div>
         </div>
+      ))}
     </div>
+  </div>
 
   <!-- Footer -->
   <div class="p-3 border border-text border-opacity-30 border-t-0 bg-background bg-opacity-50 max-w-4xl w-full">
@@ -253,6 +233,7 @@ const categorySections = [
       </p>
     </div>
   </section>
+</div>
 
 <script>
   const buttons = document.querySelectorAll<HTMLAnchorElement>(".filter-btn");

@@ -48,6 +48,7 @@ export const slugToCategory = Object.fromEntries(
 
 export const categoryRouteLabels: Record<RoutedCategory, string> = {
   "WEB NAV": "Web navigation",
+  "RESEARCH": "Research",
   DESKTOP: "Desktop control",
   CODING: "Coding",
   "TOOL USE": "Tool use",
