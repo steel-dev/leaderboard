@@ -1,16 +1,124 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import BenchmarkRegistry from "./BenchmarkRegistry.astro";
-import type { Category } from "../lib/benchmarks";
+import {
+  benchmarks,
+  categorySlugs,
+  getBenchmarkAnchorId,
+  type Category,
+} from "../lib/benchmarks";
 
 interface Props {
   activeCategory?: Category;
 }
 
 const { activeCategory = "ALL" } = Astro.props;
+
+const visibleBenchmarks =
+  activeCategory === "ALL"
+    ? benchmarks
+    : benchmarks.filter((benchmark) => benchmark.category === activeCategory);
+
+const pagePath =
+  activeCategory === "ALL" ? "/registry" : `/registry/${categorySlugs[activeCategory]}`;
+
+const pageDescription =
+  "AI agent eval registry and benchmark leaderboard. Compare evaluation suites, tests, frameworks, tasks, evaluators, and top scores across web navigation, coding, desktop control, tool use, deep research, and general reasoning.";
+
+const faqItems = [
+  {
+    question: "What are AI agent benchmarks?",
+    answer:
+      "AI agent benchmarks are evaluations that measure whether an agent can complete multi-step tasks in an environment such as a browser, terminal, desktop, or tool stack. Unlike single-prompt model tests, they focus on action quality, task completion, recovery from mistakes, and end-to-end execution.",
+  },
+  {
+    question: "What is an agent eval registry?",
+    answer:
+      "An agent eval registry is a curated index of AI agent benchmarks, evaluations, leaderboards, test suites, and frameworks. Instead of covering just one benchmark family, it helps you compare multiple agent evaluation options in one place by task domain, evaluator type, score format, and benchmark scope.",
+  },
+  {
+    question: "How do you evaluate AI agents?",
+    answer:
+      "You evaluate AI agents by testing them on multi-step tasks in realistic environments and measuring whether they reach the correct end state. Strong agent evaluations usually track task success, evaluator design, reliability, cost, latency, and recovery from mistakes. The right eval framework depends on whether you care about browser use, coding, tool use, desktop control, or general reasoning.",
+  },
+  {
+    question: "What is the best benchmark for coding agents?",
+    answer:
+      "There is no single best benchmark for every use case, but SWE-bench Verified is widely treated as the most trusted benchmark for coding agents because it uses real repository issues and executable test suites. Terminal-Bench is also useful when you want to evaluate autonomous agents in command-line and systems workflows.",
+  },
+  {
+    question: "How do browser agent benchmarks differ from coding benchmarks?",
+    answer:
+      "Browser agent benchmarks evaluate interaction with websites, page state, navigation, and visual or DOM-grounded actions. Coding benchmarks evaluate repository understanding, file edits, tool use, debugging, and test execution. Both are agent evaluations, but they stress very different environments and failure modes.",
+  },
+  {
+    question: "What does self-hosted mean in an agent benchmark?",
+    answer:
+      "Self-hosted means the benchmark environment can be run in a controlled local or containerized setup instead of depending entirely on live public services. That usually improves reproducibility and evaluation stability, but may be less representative of the messy real web or production software.",
+  },
+  {
+    question: "Why do benchmark scores differ across evaluators?",
+    answer:
+      "Benchmark scores differ because evaluators measure success in different ways. Some use exact match, some use executable test suites, some verify environment state, and others rely on human review or LLM judges. A score on one benchmark or evaluator is not directly comparable to a score produced by a different evaluation method.",
+  },
+] as const;
+
+const itemListSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name:
+    activeCategory === "ALL"
+      ? "AI Agent Benchmark Registry"
+      : `${activeCategory} AI Agent Benchmark Registry`,
+  description:
+    "Curated AI agent eval registry and benchmark leaderboard covering evaluation suites, tests, and frameworks for web navigation, coding, desktop control, tool use, research, and general reasoning.",
+  url: `https://leaderboard.steel.dev${pagePath}`,
+  numberOfItems: visibleBenchmarks.length,
+  itemListElement: visibleBenchmarks.map((benchmark, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Thing",
+      name: benchmark.name,
+      description: benchmark.description,
+      url: `https://leaderboard.steel.dev${pagePath}#${getBenchmarkAnchorId(benchmark.name)}`,
+      category: benchmark.category,
+      ...(benchmark.benchmarkOrg
+        ? {
+            creator: {
+              "@type": "Organization",
+              name: benchmark.benchmarkOrg,
+            },
+          }
+        : {}),
+      ...(benchmark.paper
+        ? {
+            sameAs: benchmark.paper,
+          }
+        : {}),
+    },
+  })),
+});
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+});
 ---
 
-<Layout title="AI Agent Benchmark Registry | Web, Coding, Desktop & Tool-Use Benchmarks | Steel.dev">
+<Layout
+  title="AI Agent Benchmark Registry | Web, Coding, Desktop & Tool-Use Benchmarks | Steel.dev"
+  description={pageDescription}
+  structuredData={[itemListSchema, faqSchema]}
+>
   <div class="w-full max-w-4xl">
     <div class="mb-8">
       <div class="flex flex-col gap-4">
@@ -23,9 +131,10 @@ const { activeCategory = "ALL" } = Astro.props;
           </h1>
         </div>
         <p class="text-left font-sans md:text-lg">
-          Explore ultimate registry of AI agent benchmarks for web navigation, coding, desktop
-          control, tool use, deep research, and general reasoning. Compare tasks, evaluators, top
-          scores, and benchmark scope in one place.
+          Explore an AI agent eval registry and benchmark leaderboard covering web navigation,
+          coding, desktop control, tool use, deep research, and general reasoning. Compare
+          evaluation suites, tests, frameworks, tasks, evaluators, top scores, and benchmark scope
+          in one place.
         </p>
       </div>
     </div>
@@ -33,5 +142,33 @@ const { activeCategory = "ALL" } = Astro.props;
 
   <div class="w-full mt-8">
     <BenchmarkRegistry activeCategory={activeCategory} />
+  </div>
+
+  <div class="w-full max-w-4xl mt-12">
+    <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
+      <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
+        <div class="bg-text text-black font-bold">FAQ</div>
+        <div class="flex flex-col gap-1 flex-1">
+          {[0, 1, 2, 3, 4].map(() => <div class="bg-black h-[0.0625rem] w-full" />)}
+        </div>
+      </div>
+
+      <div class="divide-y divide-text divide-opacity-10">
+        {faqItems.map((item) => (
+          <details class="group px-3 py-3 cursor-pointer">
+            <summary class="flex justify-between items-center list-none cursor-pointer hover:text-accent transition-colors duration-200 uppercase text-sm">
+              <span>{item.question}</span>
+              <span class="text-dim group-open:text-accent transition-colors ml-4 shrink-0">
+                <span class="group-open:hidden">[+]</span>
+                <span class="hidden group-open:inline">[-]</span>
+              </span>
+            </summary>
+            <div class="mt-3 text-dim text-sm leading-relaxed border-t border-text border-opacity-10 pt-3">
+              {item.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
   </div>
 </Layout>

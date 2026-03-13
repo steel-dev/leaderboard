@@ -6,10 +6,21 @@ import PostHogInit from "../components/PostHogInit.astro";
 
 interface Props {
   title?: string;
+  description?: string;
+  structuredData?: string | string[] | null;
 }
 
-const { title = "AI Agent Leaderboard | Steel.dev" } = Astro.props;
+const {
+  title = "AI Agent Leaderboard | Steel.dev",
+  description = "Compare and evaluate AI agents on Steel.dev's leaderboard",
+  structuredData = null,
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, "https://leaderboard.steel.dev");
+const structuredDataItems = Array.isArray(structuredData)
+  ? structuredData.filter(Boolean)
+  : structuredData
+    ? [structuredData]
+    : [];
 ---
 
 <!doctype html>
@@ -34,23 +45,21 @@ const canonicalURL = new URL(Astro.url.pathname, "https://leaderboard.steel.dev"
       rel="stylesheet"
     />
     <title>{title}</title>
+    <meta name="description" content={description} />
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content={title} />
-    <meta
-      property="og:description"
-      content="Compare and evaluate AI agents on Steel.dev's leaderboard"
-    />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content="/og-image.png" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta
-      name="twitter:description"
-      content="Compare and evaluate AI agents on Steel.dev's leaderboard"
-    />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/og-image.png" />
+    {structuredDataItems.map((item) => (
+      <script type="application/ld+json" set:html={item} />
+    ))}
   </head>
   <body class="w-full m-0 p-0 font-mono bg-background text-text max-w-3xl mx-auto">
     <PostHogInit />

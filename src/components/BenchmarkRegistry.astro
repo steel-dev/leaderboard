@@ -4,6 +4,7 @@ import {
   categories,
   categoryColors,
   categorySlugs,
+  getBenchmarkAnchorId,
   type Category,
 } from "../lib/benchmarks";
 
@@ -53,14 +54,14 @@ const categorySections = [
   },
 ] as const;
 
-const benchmarkDescriptionPrefixes: Record<Exclude<Category, "ALL">, string> = {
-  "WEB NAV": "A benchmark for browser agents and autonomous web navigation,",
-  "RESEARCH": "A benchmark for research agents and deep web investigation,",
-  "DESKTOP": "An evaluation for autonomous agents operating desktop environments,",
-  "CODING": "A coding agent benchmark for software engineering and CLI workflows,",
-  "TOOL USE": "An LLM agent benchmark for tool use and agentic system orchestration,",
-  "GENERAL": "An LLM agent benchmark for broad reasoning and autonomous task execution,",
-  "SPECIALIZED": "A specialized agentic system benchmark for domain-specific autonomous work,",
+const benchmarkDomainLabels: Record<Exclude<Category, "ALL">, string> = {
+  "WEB NAV": "Web navigation",
+  RESEARCH: "Deep research",
+  DESKTOP: "Desktop control",
+  CODING: "Coding agent",
+  "TOOL USE": "Tool use",
+  GENERAL: "General reasoning",
+  SPECIALIZED: "Specialized agent",
 };
 ---
 
@@ -109,82 +110,79 @@ const benchmarkDescriptionPrefixes: Record<Exclude<Category, "ALL">, string> = {
     <div class="divide-y divide-text divide-opacity-10" id="benchmark-list">
       {benchmarks.map((b) => (
         <div
+          id={getBenchmarkAnchorId(b.name)}
           class="benchmark-card px-4 py-4 hover:bg-text hover:bg-opacity-5 transition-colors duration-200"
           data-category={b.category}
           style={`display: ${activeCategory === "ALL" || activeCategory === b.category ? "block" : "none"};`}
         >
-          <div class="flex flex-col md:flex-row md:items-start gap-4">
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-col md:flex-row md:items-start gap-4">
 
-            <!-- Left: main info -->
-            <div class="flex-1 min-w-0">
-              <div class="flex flex-wrap items-center gap-2 mb-2">
-                <span
-                  class="text-[10px] font-mono uppercase tracking-widest"
-                  style={`color: ${categoryColors[b.category]}`}
+              <!-- Left: main info -->
+              <div class="flex-1 min-w-0">
+                <div
+                  class="text-[10px] font-mono tracking-widest uppercase mb-2"
                 >
-                  {b.category}
-                </span>
-                {b.selfHosted && (
-                  <span class="text-[10px] font-mono uppercase tracking-widest text-dim border border-text border-opacity-20 px-1.5 py-0.5">
-                    SELF-HOSTED
+                  <span
+                    style={`color: ${b.category === "WEB NAV" ? "var(--color-accent)" : categoryColors[b.category]}`}
+                  >
+                    {benchmarkDomainLabels[b.category]} benchmark
                   </span>
+                  <span class="text-dim"> - {b.selfHosted ? "Self-hosted" : "Public"}</span>
+                </div>
+
+                <div class="text-text font-mono font-bold uppercase mb-2">{b.name}</div>
+                {b.benchmarkOrg && (
+                  <div class="text-dim text-[10px] font-mono uppercase tracking-widest mb-2">
+                    Benchmark By {b.benchmarkOrg}
+                  </div>
                 )}
+                <p class="text-dim text-xs leading-relaxed max-w-xl">{b.description}</p>
               </div>
 
-              <div class="text-text font-mono font-bold uppercase mb-2">{b.name}</div>
-              {b.benchmarkOrg && (
-                <div class="text-dim text-[10px] font-mono uppercase tracking-widest mb-2">
-                  Benchmark By {b.benchmarkOrg}
+              <!-- Right: stats -->
+              <dl class="flex md:flex-col gap-4 md:gap-3 md:text-right shrink-0 md:min-w-[148px]">
+                <div class="hidden md:block">
+                  <dt class="text-dim text-[10px] uppercase font-mono mb-0.5">Evaluation Method</dt>
+                  <dd class="text-dim font-mono text-[10px]">{b.evaluator}</dd>
                 </div>
-              )}
-              <p class="text-dim text-xs leading-relaxed max-w-xl mb-3">
-                {benchmarkDescriptionPrefixes[b.category]} {b.description}
-              </p>
+                <div>
+                  <dt class="text-dim text-[10px] uppercase font-mono mb-0.5">Top Model Score</dt>
+                  <dd class="text-text font-mono font-bold text-sm">{b.topScore}</dd>
+                  <div class="text-dim text-[10px] font-mono">{b.topAgent}</div>
+                </div>
+                <div>
+                  <dt class="text-dim text-[10px] uppercase font-mono mb-0.5">Human Score</dt>
+                  <dd class="text-dim font-mono text-sm">{b.human}</dd>
+                </div>
+                <div class="hidden md:block">
+                  <dt class="text-dim text-[10px] uppercase font-mono mb-0.5">Task Count</dt>
+                  <dd class="text-dim font-mono text-sm">{b.tasks}</dd>
+                </div>
+              </dl>
+            </div>
 
-              <!-- Links -->
-              <div class="flex flex-wrap gap-4 text-xs font-mono">
+            <!-- Links -->
+            <div class="grid gap-3 text-xs font-mono md:grid-cols-2">
+              <a
+                href={b.paper}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-w-0 items-center justify-center border border-text border-opacity-20 px-2 py-1 text-center leading-tight text-dim hover:text-accent hover:border-accent transition-colors"
+              >
+                View {b.name} benchmark paper
+              </a>
+              {b.github && (
                 <a
-                  href={b.paper}
+                  href={b.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center border border-text border-opacity-20 px-2 py-1 text-dim hover:text-accent hover:border-accent transition-colors"
+                  class="inline-flex min-w-0 items-center justify-center border border-text border-opacity-20 px-2 py-1 text-center leading-tight text-dim hover:text-accent hover:border-accent transition-colors"
                 >
-                  View {b.name} benchmark paper
+                  {b.name} GitHub repository
                 </a>
-                {b.github && (
-                  <a
-                    href={b.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center border border-text border-opacity-20 px-2 py-1 text-dim hover:text-accent hover:border-accent transition-colors"
-                  >
-                    {b.name} GitHub repository
-                  </a>
-                )}
-              </div>
+              )}
             </div>
-
-            <!-- Right: stats -->
-            <div class="flex md:flex-col gap-4 md:gap-3 md:text-right shrink-0 md:min-w-[120px]">
-              <div>
-                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Top Score</div>
-                <div class="text-text font-mono font-bold text-sm">{b.topScore}</div>
-                <div class="text-dim text-[10px] font-mono">{b.topAgent}</div>
-              </div>
-              <div>
-                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Human</div>
-                <div class="text-dim font-mono text-sm">{b.human}</div>
-              </div>
-              <div class="hidden md:block">
-                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Tasks</div>
-                <div class="text-dim font-mono text-sm">{b.tasks}</div>
-              </div>
-              <div class="hidden md:block">
-                <div class="text-dim text-[10px] uppercase font-mono mb-0.5">Evaluator</div>
-                <div class="text-dim font-mono text-[10px]">{b.evaluator}</div>
-              </div>
-            </div>
-
           </div>
         </div>
       ))}

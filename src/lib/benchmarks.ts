@@ -44,6 +44,13 @@ export const slugToCategory = Object.fromEntries(
   Object.entries(categorySlugs).map(([category, slug]) => [slug, category]),
 ) as Record<string, BenchmarkCategory>;
 
+export function getBenchmarkAnchorId(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export const benchmarks: BenchmarkEntry[] = [
 
   // ── WEB NAVIGATION ──────────────────────────────────────────────────
