@@ -1,0 +1,20 @@
+---
+import RegistryPage from "../../components/RegistryPage.astro";
+import { categorySlugs, slugToCategory } from "../../lib/benchmarks";
+
+export function getStaticPaths() {
+  return Object.entries(categorySlugs).map(([category, slug]) => ({
+    params: { category: slug },
+    props: { activeCategory: category },
+  }));
+}
+
+const { activeCategory } = Astro.props;
+const categoryFromParam = slugToCategory[Astro.params.category ?? ""];
+
+if (!activeCategory || categoryFromParam !== activeCategory) {
+  return Astro.redirect("/registry");
+}
+---
+
+<RegistryPage activeCategory={activeCategory} />

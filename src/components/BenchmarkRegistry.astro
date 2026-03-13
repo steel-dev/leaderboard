@@ -1,5 +1,67 @@
 ---
-import { benchmarks, categories, categoryColors } from "../lib/benchmarks";
+import {
+  benchmarks,
+  categories,
+  categoryColors,
+  categorySlugs,
+  type Category,
+} from "../lib/benchmarks";
+
+interface Props {
+  activeCategory?: Category;
+}
+
+const { activeCategory = "ALL" } = Astro.props;
+const initialShowSection = activeCategory !== "ALL";
+
+const categorySections = [
+  {
+    category: "WEB NAV",
+    title: "Web navigation benchmarks",
+    body:
+      "Web navigation benchmarks measure how well an AI agent can complete multi-step tasks across real or simulated websites. A strong AI web navigation benchmark tests clicking, typing, reading dynamic content, handling popups, and recovering from mistakes while staying grounded in page state. These evaluations matter because browsing agents often fail on simple flows like checkout, account setup, or search refinement. The best web navigation benchmarks define clear success criteria, use realistic tasks, and separate memorization from generalization. When comparing benchmark quality, look at domain coverage, evaluator type, refresh cadence, and whether the environment reflects the modern web rather than toy pages.",
+  },
+  {
+    category: "CODING",
+    title: "Coding agent benchmarks",
+    body:
+      "Coding agent benchmarks evaluate whether an agent can understand a codebase, edit files, run tools, fix bugs, and satisfy tests under realistic software constraints. The best coding agent benchmarks go beyond isolated coding puzzles and measure repository-level performance: reading unfamiliar modules, making targeted changes, following instructions, and avoiding regressions. If you are comparing the best coding agent benchmarks, focus on task realism, grading quality, and whether success is determined by executable outcomes such as unit tests or hidden evaluations. A useful coding benchmark registry should make it easy to compare scope, evaluator design, language coverage, and leaderboard leaders in one place.",
+  },
+  {
+    category: "DESKTOP",
+    title: "Desktop control benchmarks",
+    body:
+      "Desktop control benchmarks test whether an agent can operate a full graphical environment instead of a single browser tab or API sandbox. A serious desktop control benchmark for agents includes tasks such as opening applications, managing files, switching windows, entering structured data, and combining local and web actions in one flow. These benchmarks matter because many real workflows span email, spreadsheets, terminals, documents, and browsers at once. The strongest evaluations measure robustness against timing issues, noisy interfaces, and partial observability rather than ideal scripted conditions. Good registries surface which benchmarks focus on office productivity, computer use, or broader operating-system control.",
+  },
+  {
+    category: "TOOL USE",
+    title: "Tool-use benchmarks",
+    body:
+      "Tool-use benchmarks measure whether an agent can select the right tools, call them with correct arguments, interpret results, and chain multiple actions toward a goal. Agent tool use evaluation is critical because production agents rarely succeed through raw text reasoning alone. They need to search, execute code, query APIs, inspect files, and decide when another tool call is necessary. The best tool-use benchmarks separate tool selection from execution quality and expose whether failure came from planning, parsing, or recovery. If you are comparing agent tool use evaluation suites, look for clear task completion metrics, realistic multi-step dependencies, and transparent evaluation methodology.",
+  },
+  {
+    category: "GENERAL",
+    title: "General reasoning benchmarks",
+    body:
+      "General reasoning benchmarks aim to measure broad cognitive performance across math, logic, planning, reading comprehension, and problem solving. For agent builders, these benchmarks are useful but incomplete: they reveal baseline reasoning strength, yet they do not always predict success in messy environments with tools, interfaces, and long-horizon tasks. The most informative general reasoning benchmarks define difficult tasks with unambiguous answers and minimize contamination from training data exposure. When comparing them, look at answer format, domain breadth, scoring rigor, and whether the benchmark emphasizes final-answer accuracy or interactive reasoning. Registries help by putting general reasoning results in context with web, coding, and desktop benchmarks.",
+  },
+  {
+    category: "SPECIALIZED",
+    title: "Specialized agent benchmarks",
+    body:
+      "Specialized agent benchmarks focus on narrow but commercially important domains such as deep research, data extraction, customer support workflows, finance, science, or long-context document analysis. These evaluations matter because frontier agent performance is often uneven: a model that looks strong on broad leaderboards may still fail in domain-specific settings with strict evidence requirements or unusual interfaces. The best specialized agent benchmarks define a concrete environment, clear artifacts of success, and realistic constraints like citation fidelity, domain terminology, or long-horizon research synthesis. A strong registry should highlight this category separately so users can compare scope, evaluator type, and leaderboard signals across vertical tasks.",
+  },
+] as const;
+
+const benchmarkDescriptionPrefixes: Record<Exclude<Category, "ALL">, string> = {
+  "WEB NAV": "A benchmark for browser agents and autonomous web navigation,",
+  "RESEARCH": "A benchmark for research agents and deep web investigation,",
+  "DESKTOP": "An evaluation for autonomous agents operating desktop environments,",
+  "CODING": "A coding agent benchmark for software engineering and CLI workflows,",
+  "TOOL USE": "An LLM agent benchmark for tool use and agentic system orchestration,",
+  "GENERAL": "An LLM agent benchmark for broad reasoning and autonomous task execution,",
+  "SPECIALIZED": "A specialized agentic system benchmark for domain-specific autonomous work,",
+};
 ---
 
 <div class="flex flex-col w-full">
@@ -16,12 +78,30 @@ import { benchmarks, categories, categoryColors } from "../lib/benchmarks";
     <!-- Filter tabs -->
     <div class="flex gap-2 flex-wrap px-3 pt-3 pb-2 border-b border-text border-opacity-20">
       {categories.map((cat) => (
-        <button
-          class={`filter-btn font-mono text-xs px-3 py-1 border transition-colors duration-200 uppercase tracking-wider ${cat === "ALL" ? "border-text text-black bg-[var(--color-text)]" : "border-text border-opacity-30 text-dim hover:text-text hover:border-text"}`}
+        <a
+          href={cat === "ALL" ? "/registry" : `/registry/${categorySlugs[cat]}`}
+          class={`filter-btn font-mono text-xs px-3 py-1 border transition-colors duration-200 uppercase tracking-wider ${cat === activeCategory ? "border-text text-black bg-[var(--color-text)]" : "border-text border-opacity-30 text-dim hover:text-text hover:border-text"}`}
           data-filter={cat}
         >
           {cat}
-        </button>
+        </a>
+      ))}
+    </div>
+
+    <div
+      class="px-4 py-4 border-b border-text border-opacity-10"
+      id="category-sections"
+      style={`display: ${initialShowSection ? "block" : "none"};`}
+    >
+      {categorySections.map((section) => (
+        <article
+          class="category-section"
+          data-category={section.category}
+          style={`display: ${activeCategory === section.category ? "block" : "none"};`}
+        >
+          <h2 class="text-lg md:text-xl font-sans tracking-tight text-text mb-2">{section.title}</h2>
+          <p class="text-sm md:text-[15px] leading-relaxed text-dim">{section.body}</p>
+        </article>
       ))}
     </div>
 
@@ -31,6 +111,7 @@ import { benchmarks, categories, categoryColors } from "../lib/benchmarks";
         <div
           class="benchmark-card px-4 py-4 hover:bg-text hover:bg-opacity-5 transition-colors duration-200"
           data-category={b.category}
+          style={`display: ${activeCategory === "ALL" || activeCategory === b.category ? "block" : "none"};`}
         >
           <div class="flex flex-col md:flex-row md:items-start gap-4">
 
@@ -51,7 +132,14 @@ import { benchmarks, categories, categoryColors } from "../lib/benchmarks";
               </div>
 
               <div class="text-text font-mono font-bold uppercase mb-2">{b.name}</div>
-              <p class="text-dim text-xs leading-relaxed max-w-xl mb-3">{b.description}</p>
+              {b.benchmarkOrg && (
+                <div class="text-dim text-[10px] font-mono uppercase tracking-widest mb-2">
+                  Benchmark By {b.benchmarkOrg}
+                </div>
+              )}
+              <p class="text-dim text-xs leading-relaxed max-w-xl mb-3">
+                {benchmarkDescriptionPrefixes[b.category]} {b.description}
+              </p>
 
               <!-- Links -->
               <div class="flex flex-wrap gap-4 text-xs font-mono">
@@ -59,18 +147,18 @@ import { benchmarks, categories, categoryColors } from "../lib/benchmarks";
                   href={b.paper}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-dim hover:text-accent transition-colors uppercase"
+                  class="inline-flex items-center border border-text border-opacity-20 px-2 py-1 text-dim hover:text-accent hover:border-accent transition-colors"
                 >
-                  [PAPER]
+                  View {b.name} benchmark paper
                 </a>
                 {b.github && (
                   <a
                     href={b.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-dim hover:text-accent transition-colors uppercase"
+                    class="inline-flex items-center border border-text border-opacity-20 px-2 py-1 text-dim hover:text-accent hover:border-accent transition-colors"
                   >
-                    [GITHUB]
+                    {b.name} GitHub repository
                   </a>
                 )}
               </div>
@@ -118,11 +206,46 @@ import { benchmarks, categories, categoryColors } from "../lib/benchmarks";
       TO ADD IT TO THE REGISTRY.
     </p>
   </div>
+
+  <section class="mt-10 border border-text border-opacity-30 max-w-4xl w-full p-4 md:p-6">
+    <h2 class="text-lg md:text-2xl font-sans tracking-tight text-text mb-4">
+      What is an AI agent benchmark?
+    </h2>
+    <div class="flex flex-col gap-4 text-sm md:text-[15px] leading-relaxed text-dim">
+      <p>
+        An AI agent benchmark is a structured test suite used to measure how well an agent can
+        complete tasks in an environment, not just generate plausible text. Instead of grading a
+        single answer, an agent benchmark usually evaluates a sequence of actions such as browsing
+        websites, editing code, using tools, controlling software, or combining research and
+        reasoning over multiple steps. If you are asking what an AI agent benchmark is, the short
+        answer is that it measures goal completion under realistic constraints.
+      </p>
+      <p>
+        That is the main difference between an agent benchmark and a standard LLM benchmark. A
+        typical LLM eval checks whether a model can answer a prompt correctly. An agent benchmark
+        vs LLM benchmark comparison is more about execution: can the system plan, recover from
+        errors, choose the right actions, and reach the correct end state? Strong benchmarks often
+        measure not only accuracy, but also task success rate, cost, latency, and reliability over
+        long horizons.
+      </p>
+      <p>
+        Common evaluation methods include exact-match grading, test-suite execution, environment
+        state verification, human review, and LLM-as-judge scoring for open-ended tasks. Each
+        method has tradeoffs between rigor, scalability, and realism. Self-hosted vs public
+        benchmarks also matter. Self-hosted environments are easier to reproduce and control,
+        while public-web or live-software benchmarks better reflect real-world drift, layout
+        changes, and operational messiness. If you want to know how to evaluate AI agents well,
+        you usually need both types.
+      </p>
+    </div>
+  </section>
 </div>
 
 <script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const buttons = document.querySelectorAll<HTMLAnchorElement>(".filter-btn");
   const cards = document.querySelectorAll<HTMLElement>(".benchmark-card");
+  const sectionContainer = document.querySelector<HTMLElement>("#category-sections");
+  const sections = document.querySelectorAll<HTMLElement>(".category-section");
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -138,6 +261,16 @@ import { benchmarks, categories, categoryColors } from "../lib/benchmarks";
       cards.forEach((card) => {
         card.style.display =
           filter === "ALL" || card.dataset.category === filter ? "" : "none";
+      });
+
+      const showSection = filter !== "ALL";
+      if (sectionContainer) {
+        sectionContainer.style.display = showSection ? "" : "none";
+      }
+
+      sections.forEach((section) => {
+        section.style.display =
+          showSection && section.dataset.category === filter ? "" : "none";
       });
     });
   });

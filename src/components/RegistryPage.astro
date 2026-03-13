@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BenchmarkRegistry from "./BenchmarkRegistry.astro";
+import type { Category } from "../lib/benchmarks";
+
+interface Props {
+  activeCategory?: Category;
+}
+
+const { activeCategory = "ALL" } = Astro.props;
+---
+
+<Layout title="AI Agent Benchmark Registry | Web, Coding, Desktop & Tool-Use Benchmarks | Steel.dev">
+  <div class="w-full max-w-4xl">
+    <div class="mb-8">
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+          <div class="text-xl md:text-2xl font-sans tracking-tight mb-0">
+            Steel.dev<span class="text-accent">®</span>
+          </div>
+          <h1 class="text-2xl md:text-4xl font-sans tracking-tight text-text">
+            AI Agent Benchmark Registry
+          </h1>
+        </div>
+        <p class="text-left font-sans md:text-lg">
+          Explore ultimate registry of AI agent benchmarks for web navigation, coding, desktop
+          control, tool use, deep research, and general reasoning. Compare tasks, evaluators, top
+          scores, and benchmark scope in one place.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full mt-8">
+    <BenchmarkRegistry activeCategory={activeCategory} />
+  </div>
+</Layout>
