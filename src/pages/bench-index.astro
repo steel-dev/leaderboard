@@ -117,4 +117,22 @@ const structuredData = [datasetSchema, itemListSchema, breadcrumbSchema];
   <div class="w-full flex flex-col gap-0">
     <BenchmarkIndex />
   </div>
+  
 </Layout>
+
+<style>
+  .faq-answer :global(a) {
+    color: #00b200;
+    text-decoration: underline dotted;
+    text-decoration-color: #00b200;
+    text-underline-offset: 2px;
+  }
+  .faq-answer :global(strong) {
+    color: var(--color-text);
+  }
+  .faq-answer :global(code) {
+    font-family: inherit;
+    background: rgba(255,255,255,0.05);
+    padding: 0 3px;
+  }
+</style>

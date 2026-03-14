@@ -1,11 +1,12 @@
 ---
-import { indexEntries, indexBenchmarks, indexCategories } from "../lib/index-data";
 import { categoryColors } from "../lib/benchmarks";
+import { indexEntries, indexBenchmarks, indexCategories } from "../lib/index-data";
 ---
 
 <div class="flex flex-col w-full">
   <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
 
+    <!-- Header -->
     <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
       <div class="bg-text text-black font-bold">BENCHMARK INDEX</div>
       <div class="flex flex-col gap-1 flex-1">
@@ -128,6 +129,63 @@ import { categoryColors } from "../lib/benchmarks";
       <a href="https://github.com/steel-dev/leaderboard" target="_blank" rel="noopener noreferrer"
          class="text-text underline hover:text-accent transition-colors ml-1">SUBMIT A RESULT →</a>
     </p>
+  </div>
+  <div class="w-full max-w-4xl mt-12">
+    <div class="font-mono border border-text border-opacity-30 w-full">
+      <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
+        <div class="bg-text text-black font-bold">FAQ</div>
+        <div class="flex flex-col gap-1 flex-1">
+          {[0,1,2,3,4].map(() => <div class="bg-black h-[0.0625rem] w-full" />)}
+        </div>
+      </div>
+      <div class="divide-y divide-text divide-opacity-10">
+        {[
+          {
+            q: "What is an AI agent benchmark index?",
+            a: "A benchmark index collects results from multiple evaluations in one place so you can compare agents across different task types without visiting each benchmark's leaderboard separately. This index tracks results across web navigation, desktop control, coding, research, tool use, general reasoning, and specialized categories.",
+          },
+          {
+            q: "Why can't I compare scores across different benchmarks?",
+            a: "Each benchmark measures something different under different conditions. A 70% on WebArena (programmatic evaluation, self-hosted Docker) and a 70% on WebVoyager (GPT-4V judge, live websites) are not equivalent — tasks, environments, graders, and difficulty levels all differ. Use scores within a single benchmark for head-to-head comparison.",
+          },
+          {
+            q: "What is the difference between self-reported and third-party verified scores?",
+            a: "A self-reported (SELF) score was published by the organization that built the agent. These may be accurate but harder to verify — organizations sometimes use custom evaluation settings, filtered subsets, or different prompt configurations. A third-party verified (3RD) score was independently evaluated by the benchmark authors, an academic lab, or a neutral platform like Princeton HAL. Prefer 3RD scores when comparing agents head-to-head.",
+          },
+          {
+            q: "Which benchmark should I use to evaluate a browser agent?",
+            a: "Start with <strong>WebVoyager</strong> — it's the most widely adopted, uses live websites, and has the most agents benchmarked for easy comparison. If you need reproducibility and programmatic grading with no LLM judge, use <strong>WebArena</strong> instead. For cost-aware evaluation with independent verification, use <strong>Online-Mind2Web</strong> via Princeton HAL.",
+          },
+          {
+            q: "Which benchmark should I use to evaluate a coding agent?",
+            a: "<strong>SWE-bench Verified</strong> is the most trusted signal — 500 human-verified GitHub issues from real Python repos, programmatically graded. For a faster, cheaper proxy use <strong>SWE-bench Lite</strong>. For command-line and sysadmin work, use <strong>Terminal-Bench 2.0</strong>.",
+          },
+          {
+            q: "Which benchmark should I use to evaluate a desktop automation agent?",
+            a: "<strong>OSWorld</strong> is the most comprehensive — 369 cross-application tasks across Ubuntu, Windows, and macOS with execution-based evaluation. For platform-specific depth, <strong>Windows Agent Arena</strong> covers Windows 11 via Azure VMs and <strong>AndroidWorld</strong> covers 20 real Android apps.",
+          },
+          {
+            q: "Why are scores on some benchmarks so low?",
+            a: "Some benchmarks are intentionally hard. BrowseComp was designed so most agents fail — the best scores hover around 60%. ARC-AGI-2 sits at ~4% for top models because it tests genuine visual reasoning that resists memorization. Low scores signal a benchmark still has meaningful room for improvement, making it more useful for tracking progress.",
+          },
+          {
+            q: "How do I add a result to this index?",
+            a: "Open a pull request on <a href='https://github.com/steel-dev/leaderboard'>GitHub</a> adding an entry to <code>src/lib/index-data.ts</code>. Include the agent name, organization, benchmark, score, a source link, and whether the result is self-reported or independently verified.",
+          },
+        ].map((item) => (
+          <details class="group px-3 py-3 cursor-pointer">
+            <summary class="flex justify-between items-center list-none cursor-pointer hover:text-accent transition-colors duration-200 uppercase text-sm">
+              <span>{item.q}</span>
+              <span class="text-dim group-open:text-accent transition-colors ml-4 shrink-0">
+                <span class="group-open:hidden">[+]</span>
+                <span class="hidden group-open:inline">[-]</span>
+              </span>
+            </summary>
+            <div class="mt-3 text-dim text-sm leading-relaxed border-t border-text border-opacity-10 pt-3 faq-answer" set:html={item.a} />
+          </details>
+        ))}
+      </div>
+    </div>
   </div>
 </div>
 
