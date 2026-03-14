@@ -1,22 +1,59 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import BenchmarkIndex from "../components/BenchmarkIndex.astro";
+import { indexEntries, indexBenchmarks } from "../lib/index-data";
+
+const title = "AI Agent Benchmark Results Index | Steel.dev";
+const description =
+  "All AI agent benchmark results in one place. Compare scores across WebVoyager, WebArena, OSWorld, SWE-bench, GAIA, BrowseComp and more. Filter by category, benchmark, or agent name.";
+
+const structuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  name: "AI Agent Benchmark Results Index",
+  description:
+    "A comprehensive index of AI agent benchmark results across web navigation, desktop control, coding, research, tool use, and general reasoning benchmarks.",
+  url: "https://leaderboard.steel.dev/benchmark-index",
+  creator: {
+    "@type": "Organization",
+    name: "Steel.dev",
+    url: "https://steel.dev",
+  },
+  keywords: [
+    "AI agent benchmark",
+    "LLM benchmark",
+    "agent evaluation",
+    "WebVoyager leaderboard",
+    "WebArena leaderboard",
+    "OSWorld leaderboard",
+    "SWE-bench results",
+    "GAIA benchmark",
+    "BrowseComp results",
+    "AI agent leaderboard",
+  ],
+  variableMeasured: indexBenchmarks.map((b) => ({
+    "@type": "PropertyValue",
+    name: b,
+  })),
+});
 ---
 
-<Layout title="Benchmark Index | Steel.dev">
+<Layout title={title} description={description} structuredData={structuredData}>
   <div class="w-full max-w-4xl">
     <div class="mb-8">
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-          <h1 class="text-xl md:text-2xl font-sans tracking-tight mb-0">
+          <p class="text-xl md:text-2xl font-sans tracking-tight mb-0">
             Steel.dev<span class="text-accent">®</span>
+          </p>
+          <h1 class="text-2xl md:text-4xl font-sans tracking-tight text-text">
+            AI Agent Benchmark Index
           </h1>
-          <h2 class="text-2xl md:text-4xl font-sans tracking-tight text-text">
-            Benchmark Index
-          </h2>
         </div>
         <p class="text-left font-sans md:text-lg">
-          All known AI agent benchmark results in one place. Filter by category, benchmark, or search by agent name.
+          {indexEntries.length} results across {indexBenchmarks.length} benchmarks —
+          WebVoyager, WebArena, OSWorld, SWE-bench, GAIA, BrowseComp, and more.
+          Filter by category, benchmark, or search by agent or organization name.
         </p>
       </div>
     </div>
