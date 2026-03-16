@@ -1,0 +1,150 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BenchmarkIndex from "../components/BenchmarkIndex.astro";
+import cursorSvg from "../assets/cursor.svg";
+import { indexEntries, indexBenchmarks } from "../lib/index-data";
+
+const title = "AI Agent Benchmark Results Index | Steel.dev";
+const description =
+  "All AI agent benchmark results in one place. Compare scores across WebVoyager, WebArena, OSWorld, SWE-bench, GAIA, BrowseComp and more. Filter by category, benchmark, or agent name.";
+
+const BASE_URL = "https://leaderboard.steel.dev";
+
+const datasetSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  name: "AI Agent Benchmark Results Index",
+  description:
+    "A comprehensive, filterable index of AI agent benchmark results across web navigation, desktop control, coding, research, tool use, and general reasoning benchmarks. Includes self-reported and independently verified scores.",
+  url: `${BASE_URL}/results`,
+  dateModified: new Date().toISOString().split("T")[0],
+  creator: {
+    "@type": "Organization",
+    name: "Steel.dev",
+    url: "https://steel.dev",
+  },
+  license: "https://creativecommons.org/licenses/by/4.0/",
+  keywords: [
+    "AI agent benchmark",
+    "LLM benchmark leaderboard",
+    "agent evaluation",
+    "WebVoyager results",
+    "WebArena leaderboard",
+    "OSWorld leaderboard",
+    "SWE-bench results",
+    "GAIA benchmark scores",
+    "BrowseComp results",
+    "AI agent leaderboard",
+    "browser agent benchmark",
+    "coding agent benchmark",
+    "desktop agent benchmark",
+  ],
+  variableMeasured: indexBenchmarks.map((b) => ({
+    "@type": "PropertyValue",
+    name: b + " score",
+    description: `Agent scores on the ${b} benchmark`,
+  })),
+  distribution: {
+    "@type": "DataDownload",
+    encodingFormat: "text/html",
+    contentUrl: `${BASE_URL}/results`,
+  },
+});
+
+const itemListSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "AI Agent Benchmarks",
+  description: "List of AI agent benchmarks tracked in the Steel.dev benchmark index",
+  numberOfItems: indexBenchmarks.length,
+  itemListElement: indexBenchmarks.map((b, i) => {
+    const entries = indexEntries.filter((e) => e.benchmark === b);
+    const top = entries.sort((a, z) => z.scoreNum - a.scoreNum)[0];
+    return {
+      "@type": "ListItem",
+      position: i + 1,
+      name: b,
+      description: top
+        ? `Top score: ${top.score} by ${top.agent} (${top.organization})`
+        : b,
+      url: `${BASE_URL}/results`,
+    };
+  }),
+});
+
+const breadcrumbSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Steel.dev Leaderboard",
+      item: BASE_URL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Benchmark Index",
+      item: `${BASE_URL}/results`,
+    },
+  ],
+});
+
+const structuredData = [datasetSchema, itemListSchema, breadcrumbSchema];
+---
+
+<Layout title={title} description={description} structuredData={structuredData}>
+  <div class="w-full max-w-4xl">
+    <div class="mb-8">
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col md:flex-row justify-start w-full md:items-start">
+          <div class="flex flex-col gap-1 order-2 md:order-1">
+            <p class="text-xl md:text-2xl font-sans tracking-tight mb-0">
+              Steel.dev<span class="text-accent">®</span>
+            </p>
+            <h1 class="text-2xl md:text-4xl font-sans tracking-tight text-text">
+              AI Agent Benchmark Results Index
+            </h1>
+          </div>
+
+          <div class="order-1 md:order-2 mb-3 md:mb-0">
+            <img src={cursorSvg.src} alt="Steel.dev Logo" width="60" height="60" />
+          </div>
+        </div>
+        <p class="text-left font-sans md:text-lg">
+          Browse {indexEntries.length} reported results across {indexBenchmarks.length} benchmarks —
+          WebVoyager, WebArena, OSWorld, SWE-bench, GAIA, BrowseComp, and more.
+          Filter by category, benchmark, or search by agent or organization name.
+        </p>
+        <p class="text-sm md:text-[15px] leading-relaxed text-dim">
+          Need benchmark definitions, evaluator details, and links to papers before comparing
+          scores? Start with the{" "}
+          <a href="/registry" class="text-text underline hover:text-accent transition-colors">Benchmark Registry</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full flex flex-col gap-0">
+    <BenchmarkIndex />
+  </div>
+  
+</Layout>
+
+<style>
+  .faq-answer :global(a) {
+    color: #00b200;
+    text-decoration: underline dotted;
+    text-decoration-color: #00b200;
+    text-underline-offset: 2px;
+  }
+  .faq-answer :global(strong) {
+    color: var(--color-text);
+  }
+  .faq-answer :global(code) {
+    font-family: inherit;
+    background: rgba(255,255,255,0.05);
+    padding: 0 3px;
+  }
+</style>

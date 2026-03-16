@@ -1,15 +1,63 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import LeaderboardTable from "../components/LeaderboardTable.astro";
-import FAQ from "../components/FAQ.astro";
+import FAQ, { faqs } from "../components/FAQ.astro";
 import cursorSvg from "../assets/cursor.svg";
 import { leaderboardEntries } from "../lib/leaderboard";
+
+const itemListSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "AI Browser Agent Leaderboard",
+  description:
+    "Leaderboard of AI browser agents ranked by WebVoyager benchmark score.",
+  url: "https://leaderboard.steel.dev/",
+  numberOfItems: leaderboardEntries.length,
+  itemListElement: leaderboardEntries.map((entry, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "SoftwareApplication",
+      name: entry.agent,
+      applicationCategory: "Browser Agent",
+      creator: {
+        "@type": "Organization",
+        name: entry.organization,
+      },
+      url: entry.homepage,
+      sameAs: entry.webVoyager.source,
+      ...(entry.github ? { codeRepository: entry.github } : {}),
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: parseFloat(entry.webVoyager.score.replace("%", "")),
+        bestRating: 100,
+        ratingCount: 1,
+      },
+    },
+  })),
+});
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a.replace(/<[^>]+>/g, ""),
+    },
+  })),
+});
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="AI Browser Agent Leaderboard | Steel.dev">
+<Layout
+  title="AI Browser Agent Leaderboard | Steel.dev"
+  structuredData={[itemListSchema, faqSchema]}
+>
   <div class="w-full max-w-4xl">
     <div class="mb-4">
       <div class="flex flex-col gap-4">

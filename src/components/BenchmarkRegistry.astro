@@ -1,0 +1,271 @@
+---
+import {
+  benchmarks,
+  benchmarkDomainLabels,
+  categories,
+  categoryColors,
+  categorySlugs,
+  getBenchmarkPath,
+  getCategoryPath,
+  getBenchmarkAnchorId,
+  type Category,
+} from "../lib/benchmarks";
+
+interface Props {
+  activeCategory?: Category;
+}
+
+const { activeCategory = "ALL" } = Astro.props;
+const initialShowSection = activeCategory !== "ALL";
+
+const categorySections = [
+  {
+    category: "WEB NAV",
+    title: "Web navigation benchmarks",
+    bodyHtml: `Web navigation benchmarks test whether an agent can complete real browsing tasks across live or simulated websites without losing track of page state. They matter because browser agents often fail on ordinary flows such as search refinement, checkout, or form completion. A good browser-agent evaluation suite should combine realistic tasks, clear success criteria, and environments that do not reward memorized shortcuts. If you want a practical starting point, compare <a href="${getCategoryPath("WEB NAV")}#${getBenchmarkAnchorId("WebVoyager")}" class="text-text underline hover:text-accent transition-colors">WebVoyager</a> for live-site evaluation with <a href="${getCategoryPath("WEB NAV")}#${getBenchmarkAnchorId("WebArena")}" class="text-text underline hover:text-accent transition-colors">WebArena</a> for a more reproducible setup. If your agents also operate outside the browser, it is worth checking the <a href="${getCategoryPath("DESKTOP")}" class="text-text underline hover:text-accent transition-colors">desktop control benchmarks</a> as a companion category.`,
+  },
+  {
+    category: "CODING",
+    title: "Coding agent benchmarks",
+    bodyHtml: `Coding agent benchmarks should look less like puzzle sets and more like real software work. The strongest ones test repository understanding, file edits, tool use, debugging, and whether changes satisfy executable checks without breaking surrounding code. When you compare coding-agent evals, task realism and grading quality matter more than flashy single-shot scores. For most teams, <a href="${getCategoryPath("CODING")}#${getBenchmarkAnchorId("SWE-bench Verified")}" class="text-text underline hover:text-accent transition-colors">SWE-bench Verified</a> is the obvious starting point, while <a href="${getCategoryPath("CODING")}#${getBenchmarkAnchorId("Terminal-Bench 2.0")}" class="text-text underline hover:text-accent transition-colors">Terminal-Bench</a> is useful if command-line workflows are part of the product. If your agents spend as much time calling tools as editing code, compare them with the <a href="${getCategoryPath("TOOL USE")}" class="text-text underline hover:text-accent transition-colors">tool-use benchmarks</a> too.`,
+  },
+  {
+    category: "DESKTOP",
+    title: "Desktop control benchmarks",
+    bodyHtml: `Desktop control benchmarks matter when an agent has to operate a full graphical environment instead of a single browser tab or an API-only sandbox. Strong desktop evaluations cover opening applications, managing files, switching windows, entering data, and coordinating work across local tools and the web. They are especially useful for understanding whether a system can recover from timing issues, noisy interfaces, and partial observability. A good place to start is <a href="${getCategoryPath("DESKTOP")}#${getBenchmarkAnchorId("OSWorld")}" class="text-text underline hover:text-accent transition-colors">OSWorld</a>, then compare it with platform-focused suites such as <a href="${getCategoryPath("DESKTOP")}#${getBenchmarkAnchorId("Windows Agent Arena")}" class="text-text underline hover:text-accent transition-colors">Windows Agent Arena</a>. If your workflow lives mostly in the browser, the <a href="${getCategoryPath("WEB NAV")}" class="text-text underline hover:text-accent transition-colors">web navigation benchmarks</a> are often a better first filter.`,
+  },
+  {
+    category: "TOOL USE",
+    title: "Tool-use benchmarks",
+    bodyHtml: `Tool-use benchmarks focus on whether an agent can pick the right tool, call it correctly, interpret the result, and keep going when the workflow spans several steps. That matters in production because most useful agents do not win through raw text reasoning alone; they search, execute code, inspect files, query APIs, and chain actions. Good tool-use evals make it clear whether failure came from planning, parsing, or state management. If you want a broad reference point, start with <a href="${getCategoryPath("TOOL USE")}#${getBenchmarkAnchorId("ToolBench")}" class="text-text underline hover:text-accent transition-colors">ToolBench</a> and <a href="${getCategoryPath("TOOL USE")}#${getBenchmarkAnchorId("Tau-bench")}" class="text-text underline hover:text-accent transition-colors">Tau-bench</a>. If the agent also needs to reason deeply between tool calls, compare the results against the <a href="${getCategoryPath("GENERAL")}" class="text-text underline hover:text-accent transition-colors">general reasoning benchmarks</a>.`,
+  },
+  {
+    category: "GENERAL",
+    title: "General reasoning benchmarks",
+    bodyHtml: `General reasoning benchmarks are useful because they show how well a model handles math, logic, planning, reading comprehension, and hard problem solving before environment noise gets involved. They are not the whole story for agents, but they do provide a baseline for how much raw reasoning power a system brings into browser, coding, or desktop tasks. The most informative evals keep answers verifiable and resist contamination from training data exposure. If you want a broad sense of agent capability, compare <a href="${getCategoryPath("GENERAL")}#${getBenchmarkAnchorId("GAIA")}" class="text-text underline hover:text-accent transition-colors">GAIA</a> with <a href="${getCategoryPath("GENERAL")}#${getBenchmarkAnchorId("AgentBench")}" class="text-text underline hover:text-accent transition-colors">AgentBench</a>, then read those results next to the more execution-heavy <a href="${getCategoryPath("WEB NAV")}" class="text-text underline hover:text-accent transition-colors">web navigation</a> and <a href="${getCategoryPath("CODING")}" class="text-text underline hover:text-accent transition-colors">coding benchmarks</a>.`,
+  },
+  {
+    category: "SPECIALIZED",
+    title: "Specialized agent benchmarks",
+    bodyHtml: `Specialized agent benchmarks focus on narrow but commercially important workflows such as scientific work, social simulation, medical tasks, customer support, and other domain-heavy settings. These evaluations are useful because broad leaderboard strength often hides uneven performance once the agent has to follow domain rules, preserve citations, or navigate unusual interfaces. A specialized eval should define a concrete environment, clear artifacts of success, and constraints that actually resemble the target workflow. To get oriented, look at <a href="${getCategoryPath("SPECIALIZED")}#${getBenchmarkAnchorId("MedAgentBench")}" class="text-text underline hover:text-accent transition-colors">MedAgentBench</a> or <a href="${getCategoryPath("SPECIALIZED")}#${getBenchmarkAnchorId("Sotopia")}" class="text-text underline hover:text-accent transition-colors">Sotopia</a>, then compare those results with the broader <a href="${getCategoryPath("GENERAL")}" class="text-text underline hover:text-accent transition-colors">general reasoning benchmarks</a> before drawing product conclusions.`,
+  },
+] as const;
+---
+
+<div class="flex flex-col w-full">
+  <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
+
+    <!-- Header bar -->
+    <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
+      <div class="bg-text text-black font-bold">REGISTRY</div>
+      <div class="flex flex-col gap-1 flex-1">
+        {[0, 1, 2, 3, 4].map(() => <div class="bg-black h-[0.0625rem] w-full" />)}
+      </div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex gap-2 flex-wrap px-3 pt-3 pb-2 border-b border-text border-opacity-20">
+      {categories.map((cat) => (
+        <a
+          href={cat === "ALL" ? "/registry" : `/registry/${categorySlugs[cat]}`}
+          class={`filter-btn font-mono text-xs px-3 py-1 border transition-colors duration-200 uppercase tracking-wider ${cat === activeCategory ? "border-text text-black bg-[var(--color-text)]" : "border-text border-opacity-30 text-dim hover:text-text hover:border-text"}`}
+          data-filter={cat}
+        >
+          {cat}
+        </a>
+      ))}
+    </div>
+
+    <div
+      class="px-4 py-4 border-b border-text border-opacity-10"
+      id="category-sections"
+      style={`display: ${initialShowSection ? "block" : "none"};`}
+    >
+      {categorySections.map((section) => (
+        <article
+          class="category-section"
+          data-category={section.category}
+          style={`display: ${activeCategory === section.category ? "block" : "none"};`}
+        >
+          <h2 class="text-lg md:text-xl font-sans tracking-tight text-text mb-2">{section.title}</h2>
+          <div
+            class="text-sm md:text-[15px] leading-relaxed text-dim"
+            set:html={section.bodyHtml}
+          >
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Benchmark cards -->
+    <div class="divide-y divide-text divide-opacity-10" id="benchmark-list">
+      {benchmarks.map((b) => (
+        <div
+          id={getBenchmarkAnchorId(b.name)}
+          class="benchmark-card px-4 py-4 hover:bg-text hover:bg-opacity-5 transition-colors duration-200"
+          data-category={b.category}
+          style={`display: ${activeCategory === "ALL" || activeCategory === b.category ? "block" : "none"};`}
+        >
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-col md:flex-row md:items-start gap-4">
+
+            <!-- Main info -->
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span
+                  class="text-[10px] font-mono uppercase tracking-widest"
+                  style={`color: ${categoryColors[b.category]}`}
+                >
+                  <span
+                    style={`color: ${b.category === "WEB NAV" ? "var(--color-accent)" : categoryColors[b.category]}`}
+                  >
+                    {benchmarkDomainLabels[b.category]} benchmark
+                  </span>
+                  <span class="text-dim"> - {b.selfHosted ? "Self-hosted" : "Public"}</span>
+                </div>
+
+                <div class="text-text font-mono font-bold uppercase mb-2">
+                  <a href={getBenchmarkPath(b.name)} class="hover:text-accent transition-colors">
+                    {b.name}
+                  </a>
+                </div>
+                {b.benchmarkOrg && (
+                  <div class="text-dim text-[10px] font-mono uppercase tracking-widest mb-2">
+                    Benchmark By {b.benchmarkOrg}
+                  </div>
+                )}
+                <p class="text-dim text-xs leading-relaxed max-w-xl">{b.description}</p>
+              </div>
+
+              <!-- Right: stats -->
+              <dl class="flex md:flex-col gap-4 md:gap-3 md:text-right shrink-0 md:min-w-[148px]">
+                <div class="hidden md:block">
+                  <dt class="text-dim text-[10px] uppercase font-mono mb-0.5">Evaluation Method</dt>
+                  <dd class="text-dim font-mono text-[10px]">{b.evaluator}</dd>
+                </div>
+                <div>
+                  <dt class="text-dim text-[10px] uppercase font-mono mb-0.5">Top Model Score</dt>
+                  <dd class="text-text font-mono font-bold text-sm">{b.topScore}</dd>
+                  <div class="text-dim text-[10px] font-mono">{b.topAgent}</div>
+                </div>
+                <div>
+                  <dt class="text-dim text-[10px] uppercase font-mono mb-0.5">Human Score</dt>
+                  <dd class="text-dim font-mono text-sm">{b.human}</dd>
+                </div>
+                <div class="hidden md:block">
+                  <dt class="text-dim text-[10px] uppercase font-mono mb-0.5">Task Count</dt>
+                  <dd class="text-dim font-mono text-sm">{b.tasks}</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Links -->
+            <div class="grid gap-3 text-xs font-mono md:grid-cols-2">
+              <a
+                href={b.paper}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-w-0 items-center justify-center border border-text border-opacity-20 px-2 py-1 text-center leading-tight text-dim hover:text-accent hover:border-accent transition-colors"
+              >
+                View {b.name} benchmark paper
+              </a>
+              {b.github && (
+                <a
+                  href={b.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-w-0 items-center justify-center border border-text border-opacity-20 px-2 py-1 text-center leading-tight text-dim hover:text-accent hover:border-accent transition-colors"
+                >
+                  {b.name} GitHub repository
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="p-3 border border-text border-opacity-30 border-t-0 bg-background bg-opacity-50 max-w-4xl w-full">
+    <p class="text-dim text-xs leading-relaxed uppercase">
+      MISSING A BENCHMARK?{" "}
+      <a
+        href="https://github.com/steel-dev/leaderboard"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-text underline hover:text-accent transition-colors"
+      >
+        OPEN A PR ON GITHUB
+      </a>{" "}
+      TO ADD IT TO THE REGISTRY.
+    </p>
+  </div>
+
+  <section
+    id="what-is-an-ai-agent-benchmark"
+    class="mt-10 border border-text border-opacity-30 max-w-4xl w-full p-4 md:p-6"
+  >
+    <h2 class="text-lg md:text-2xl font-sans tracking-tight text-text mb-4">
+      What is an AI agent benchmark?
+    </h2>
+    <div class="flex flex-col gap-4 text-sm md:text-[15px] leading-relaxed text-dim">
+      <p>
+        An AI agent benchmark, eval, or evaluation suite is a structured way to test how well an
+        agent completes tasks in an environment, not just how well a model writes a plausible
+        answer. Instead of grading one response, these tests look at sequences of actions across
+        websites, codebases, tools, desktops, or research workflows. In practice, they measure
+        whether the system can make progress, stay grounded, and reach the correct end state.
+      </p>
+      <p>
+        That is the main difference between an agent benchmark and a standard LLM eval. A classic
+        LLM test asks whether the model produced the right answer to a prompt. An agent evaluation
+        asks whether the system can plan, recover from mistakes, use the right tools, and complete
+        a workflow under realistic constraints. Strong benchmark leaderboards often track not only
+        accuracy, but also task success, reliability, latency, and cost.
+      </p>
+      <p>
+        Common methods include exact-match grading, executable test suites, environment-state
+        checks, human review, and LLM-as-judge scoring for open-ended work. Each has tradeoffs in
+        rigor, scalability, and realism. Self-hosted suites are easier to rerun and compare over
+        time, while public-web or live-software evaluations better reflect drift and production
+        messiness. The best way to evaluate AI agents is usually to combine both.
+      </p>
+    </div>
+  </section>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLAnchorElement>(".filter-btn");
+  const cards = document.querySelectorAll<HTMLElement>(".benchmark-card");
+  const sectionContainer = document.querySelector<HTMLElement>("#category-sections");
+  const sections = document.querySelectorAll<HTMLElement>(".category-section");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+
+      buttons.forEach((b) => {
+        b.classList.remove("border-text", "text-black", "bg-[var(--color-text)]");
+        b.classList.add("border-opacity-30", "text-dim");
+      });
+      btn.classList.add("border-text", "text-black", "bg-[var(--color-text)]");
+      btn.classList.remove("border-opacity-30", "text-dim");
+
+      cards.forEach((card) => {
+        card.style.display =
+          filter === "ALL" || card.dataset.category === filter ? "" : "none";
+      });
+
+      const showSection = filter !== "ALL";
+      if (sectionContainer) {
+        sectionContainer.style.display = showSection ? "" : "none";
+      }
+
+      sections.forEach((section) => {
+        section.style.display =
+          showSection && section.dataset.category === filter ? "" : "none";
+      });
+    });
+  });
+</script>
