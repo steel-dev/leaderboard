@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import BenchmarkIndex from "../components/BenchmarkIndex.astro";
+import cursorSvg from "../assets/cursor.svg";
 import { indexEntries, indexBenchmarks } from "../lib/index-data";
 
 const title = "AI Agent Benchmark Results Index | Steel.dev";
@@ -15,7 +16,7 @@ const datasetSchema = JSON.stringify({
   name: "AI Agent Benchmark Results Index",
   description:
     "A comprehensive, filterable index of AI agent benchmark results across web navigation, desktop control, coding, research, tool use, and general reasoning benchmarks. Includes self-reported and independently verified scores.",
-  url: `${BASE_URL}/benchmark-index`,
+  url: `${BASE_URL}/results`,
   dateModified: new Date().toISOString().split("T")[0],
   creator: {
     "@type": "Organization",
@@ -46,7 +47,7 @@ const datasetSchema = JSON.stringify({
   distribution: {
     "@type": "DataDownload",
     encodingFormat: "text/html",
-    contentUrl: `${BASE_URL}/benchmark-index`,
+    contentUrl: `${BASE_URL}/results`,
   },
 });
 
@@ -66,7 +67,7 @@ const itemListSchema = JSON.stringify({
       description: top
         ? `Top score: ${top.score} by ${top.agent} (${top.organization})`
         : b,
-      url: `${BASE_URL}/benchmark-index`,
+      url: `${BASE_URL}/results`,
     };
   }),
 });
@@ -85,7 +86,7 @@ const breadcrumbSchema = JSON.stringify({
       "@type": "ListItem",
       position: 2,
       name: "Benchmark Index",
-      item: `${BASE_URL}/benchmark-index`,
+      item: `${BASE_URL}/results`,
     },
   ],
 });
@@ -97,18 +98,29 @@ const structuredData = [datasetSchema, itemListSchema, breadcrumbSchema];
   <div class="w-full max-w-4xl">
     <div class="mb-8">
       <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-1">
-          <p class="text-xl md:text-2xl font-sans tracking-tight mb-0">
-            Steel.dev<span class="text-accent">®</span>
-          </p>
-          <h1 class="text-2xl md:text-4xl font-sans tracking-tight text-text">
-            AI Agent Benchmark Index
-          </h1>
+        <div class="flex flex-col md:flex-row justify-start w-full md:items-start">
+          <div class="flex flex-col gap-1 order-2 md:order-1">
+            <p class="text-xl md:text-2xl font-sans tracking-tight mb-0">
+              Steel.dev<span class="text-accent">®</span>
+            </p>
+            <h1 class="text-2xl md:text-4xl font-sans tracking-tight text-text">
+              AI Agent Benchmark Results Index
+            </h1>
+          </div>
+
+          <div class="order-1 md:order-2 mb-3 md:mb-0">
+            <img src={cursorSvg.src} alt="Steel.dev Logo" width="60" height="60" />
+          </div>
         </div>
         <p class="text-left font-sans md:text-lg">
-          {indexEntries.length} results across {indexBenchmarks.length} benchmarks —
+          Browse {indexEntries.length} reported results across {indexBenchmarks.length} benchmarks —
           WebVoyager, WebArena, OSWorld, SWE-bench, GAIA, BrowseComp, and more.
           Filter by category, benchmark, or search by agent or organization name.
+        </p>
+        <p class="text-sm md:text-[15px] leading-relaxed text-dim">
+          Need benchmark definitions, evaluator details, and links to papers before comparing
+          scores? Start with the{" "}
+          <a href="/registry" class="text-text underline hover:text-accent transition-colors">Benchmark Registry</a>.
         </p>
       </div>
     </div>

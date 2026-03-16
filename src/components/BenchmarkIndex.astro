@@ -1,5 +1,5 @@
 ---
-import { categoryColors } from "../lib/benchmarks";
+import { categoryColors, getBenchmarkPath } from "../lib/benchmarks";
 import { indexEntries, indexBenchmarks, indexCategories } from "../lib/index-data";
 ---
 
@@ -91,7 +91,11 @@ import { indexEntries, indexBenchmarks, indexCategories } from "../lib/index-dat
               data-filter-cat={entry.benchmarkCategory}
               title={`Filter by ${entry.benchmarkCategory}`}
             >{entry.benchmarkCategory}</button>
-            <span class="text-dim font-mono text-xs">{entry.benchmark}</span>
+            <a
+              href={getBenchmarkPath(entry.benchmark)}
+              class="text-dim font-mono text-xs hover:text-accent hover:underline transition-colors"
+              title={`Open ${entry.benchmark} in the registry`}
+            >{entry.benchmark}</a>
           </div>
           <div class="md:text-right">
             <a

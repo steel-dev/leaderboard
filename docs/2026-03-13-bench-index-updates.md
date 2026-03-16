@@ -1,6 +1,6 @@
 # Benchmark Index Updates - 2026-03-13
 
-- Added new `/benchmark-index` page with a unified table of all agent benchmark results across all categories. (To give users a single place to compare results across benchmarks without navigating between pages.)
+- Added new `/results` page with a unified table of all agent benchmark results across all categories. (To give users a single place to compare results across benchmarks without navigating between pages.)
 - Created `src/lib/index-data.ts` with a typed `IndexEntry` interface including `agent`, `organization`, `benchmark`, `benchmarkCategory`, `score`, `scoreNum`, `source`, `selfReported`, `openSource`, and `isNew` fields. (To keep index data structured, typed, and easy to extend as new results come in.)
 - Added 75+ entries across 15 benchmarks: WebVoyager, WebArena, Online-Mind2Web, BrowseComp, GAIA, OSWorld, AndroidWorld, SWE-bench Verified, MLE-bench, GPQA Diamond, ARC-AGI-2, ToolBench, AgentBench, and more. (To give the index comprehensive coverage of the current agent benchmark landscape.)
 - Populated WebArena entries from the community-maintained Google Sheets leaderboard, including DeepSeek v3.2 (74.3%), OpAgent (71.6%), ColorBrowserAgent (71.2%), Claude Code + GBOX (68%), DeepSky (66.9%), and 15+ more entries down to GPT-4 baseline. (To reflect the most complete and up-to-date WebArena standings.)
