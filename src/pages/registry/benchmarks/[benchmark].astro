@@ -10,6 +10,7 @@ import {
   getBenchmarkPath,
   getCategoryPath,
 } from "../../../lib/benchmarks";
+import { getBenchmarkSummary } from "../../../lib/benchmark-summaries";
 
 export function getStaticPaths() {
   return benchmarks.map((benchmark) => ({
@@ -19,6 +20,8 @@ export function getStaticPaths() {
 }
 
 const { benchmark } = Astro.props;
+
+const summaryParagraphs = getBenchmarkSummary(getBenchmarkAnchorId(benchmark.name));
 
 const pagePath = getBenchmarkPath(benchmark.name);
 const categoryHasRoute = benchmark.category in categorySlugs;
@@ -174,6 +177,19 @@ const breadcrumbSchema = JSON.stringify({
       </div>
     </div>
   </section>
+
+  {summaryParagraphs && (
+    <section class="w-full max-w-4xl mt-8 border border-text border-opacity-30 p-4 md:p-5">
+      <h2 class="text-base md:text-lg font-sans tracking-tight text-text mb-2">
+        About this benchmark
+      </h2>
+      {summaryParagraphs.map((p) => (
+        <p class="text-sm md:text-[15px] leading-relaxed text-dim mb-3 last:mb-0">
+          {p}
+        </p>
+      ))}
+    </section>
+  )}
 
   <section class="w-full max-w-4xl mt-8 border border-text border-opacity-30 p-4 md:p-5">
     <h2 class="text-base md:text-lg font-sans tracking-tight text-text mb-2">
