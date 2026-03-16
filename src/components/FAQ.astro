@@ -2,7 +2,7 @@
 export const faqs = [
   {
     q: "What is the WebVoyager benchmark for AI browser agents?",
-    a: "WebVoyager is the standard benchmark for evaluating browser agents, introduced in the 2024 paper <a href='https://arxiv.org/abs/2401.13919'>WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models</a>. It consists of 643 tasks across 15 websites including Google, Amazon, GitHub, Reddit, and Wikipedia. Tasks cover form filling, navigation, search, and shopping. GPT-4V evaluates each task by analyzing the final page state. Scores represent the percentage of tasks completed successfully. As of February 2026, the highest score is 97.1% held by Surfer 2 from H Company.",
+    a: "WebVoyager is the standard benchmark for evaluating browser agents, introduced in the 2024 paper <a href='https://arxiv.org/abs/2401.13919' target='_blank' rel='noopener noreferrer'>WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models</a>. It consists of 643 tasks across 15 websites including Google, Amazon, GitHub, Reddit, and Wikipedia. Tasks cover form filling, navigation, search, and shopping. GPT-4V evaluates each task by analyzing the final page state. Scores represent the percentage of tasks completed successfully. As of February 2026, the highest score is 97.1% held by Surfer 2 from H Company.",
   },
   {
     q: "Can WebVoyager scores be compared across different agents?",
@@ -10,7 +10,7 @@ export const faqs = [
   },
   {
     q: "What is Steel.dev?",
-    a: "Steel is browser infrastructure for AI agents - cloud browser sessions controlled through code. The Session works like a fresh incognito window running in the cloud. Steel provides anti-bot capabilities including CAPTCHA solving, proxy rotation, and fingerprint management, plus observability features like live viewing and replay. Steel offers a REST API, Python SDK, and Node SDK for web scraping, form automation, and research agents. Learn more at <a href='https://steel.dev'>steel.dev</a>, the <a href='https://steel.dev/blog/beginner-s-guide-to-steel'>beginner's guide</a>, or <a href='https://docs.steel.dev'>docs</a>.",
+    a: "Steel is browser infrastructure for AI agents - cloud browser sessions controlled through code. The Session works like a fresh incognito window running in the cloud. Steel provides anti-bot capabilities including CAPTCHA solving, proxy rotation, and fingerprint management, plus observability features like live viewing and replay. Steel offers a REST API, Python SDK, and Node SDK for web scraping, form automation, and research agents. Learn more at <a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=faq-what-is-steel' target='_blank' rel='noopener noreferrer'>steel.dev</a>, the <a href='https://steel.dev/blog/beginner-s-guide-to-steel?utm_source=leaderboard&utm_medium=website&utm_content=faq-what-is-steel' target='_blank' rel='noopener noreferrer'>beginner's guide</a>, or <a href='https://docs.steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=faq-what-is-steel' target='_blank' rel='noopener noreferrer'>docs</a>.",
   },
   {
     q: "What is the best AI browser agent in 2026?",
@@ -18,15 +18,15 @@ export const faqs = [
   },
   {
     q: "What is the difference between OpenAI Operator, Browser Use, and other AI browser agents?",
-    a: "The main agents differ in accuracy and positioning. OpenAI Operator (87%, GPT-4o) is a consumer product in ChatGPT. Browser Use (89.1%) is open-source and supports multiple models. Surfer 2 (97.1%) leads with a proprietary enterprise model. Skyvern 2.0 (85.85%) is open-source with strong visual reasoning. Google Mariner (83.5%, Gemini) integrates with Chrome. For custom agents, <a href='https://steel.dev'>Steel</a> provides the browser infrastructure layer.",
+    a: "The main agents differ in accuracy and positioning. OpenAI Operator (87%, GPT-4o) is a consumer product in ChatGPT. Browser Use (89.1%) is open-source and supports multiple models. Surfer 2 (97.1%) leads with a proprietary enterprise model. Skyvern 2.0 (85.85%) is open-source with strong visual reasoning. Google Mariner (83.5%, Gemini) integrates with Chrome. For custom agents, <a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=faq-agent-comparison' target='_blank' rel='noopener noreferrer'>Steel</a> provides the browser infrastructure layer.",
   },
   {
     q: "How do AI browser agents work?",
-    a: "Browser agents combine LLMs with browser automation to complete web tasks. A vision model sees the webpage via screenshots or DOM. A reasoning model decides actions like clicking, typing, or scrolling. An execution layer drives the browser via Chrome DevTools Protocol or Playwright. A memory component tracks state across steps. Most agents run on cloud infrastructure like <a href='https://steel.dev'>Steel</a> for reliability and anti-bot handling.",
+    a: "Browser agents combine LLMs with browser automation to complete web tasks. A vision model sees the webpage via screenshots or DOM. A reasoning model decides actions like clicking, typing, or scrolling. An execution layer drives the browser via Chrome DevTools Protocol or Playwright. A memory component tracks state across steps. Most agents run on cloud infrastructure like <a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=faq-how-agents-work' target='_blank' rel='noopener noreferrer'>Steel</a> for reliability and anti-bot handling.",
   },
   {
     q: "What websites can AI browser agents navigate?",
-    a: "Agents can navigate any website. WebVoyager evaluates on 15 specific sites: Amazon, eBay, Google, Google Maps, Wikipedia, Reddit, Twitter/X, GitHub, ArXiv, and Booking.com. Real-world challenges include CAPTCHAs, bot detection, dynamic content, auth flows, and rate limiting. Production agents use infrastructure like <a href='https://steel.dev'>Steel</a> for <a href='https://steel.dev/blog/anti-bot-defense'>anti-bot measures</a> and proxy rotation.",
+    a: "Agents can navigate any website. WebVoyager evaluates on 15 specific sites: Amazon, eBay, Google, Google Maps, Wikipedia, Reddit, Twitter/X, GitHub, ArXiv, and Booking.com. Real-world challenges include CAPTCHAs, bot detection, dynamic content, auth flows, and rate limiting. Production agents use infrastructure like <a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=faq-websites' target='_blank' rel='noopener noreferrer'>Steel</a> for <a href='https://steel.dev/blog/anti-bot-defense?utm_source=leaderboard&utm_medium=website&utm_content=faq-websites' target='_blank' rel='noopener noreferrer'>anti-bot measures</a> and proxy rotation.",
   },
   {
     q: "How is the WebVoyager score calculated?",
@@ -42,7 +42,7 @@ export const faqs = [
   },
   {
     q: "How do I build my own AI browser agent?",
-    a: "Three layers are needed. Browser infrastructure: <a href='https://steel.dev'>Steel</a> provides managed sessions, proxies, anti-bot handling, and replay. AI layer: a vision-capable model like GPT-4o, Claude, or Gemini with prompting for action selection. Orchestration: frameworks like Browser Use or Skyvern handle clicking, typing, and state tracking. See the <a href='https://steel.dev/blog/production-agents'>production agents guide</a>. Once your agent has a verifiable WebVoyager score, open a pull request on GitHub.",
+    a: "Three layers are needed. Browser infrastructure: <a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=faq-build-agent' target='_blank' rel='noopener noreferrer'>Steel</a> provides managed sessions, proxies, anti-bot handling, and replay. AI layer: a vision-capable model like GPT-4o, Claude, or Gemini with prompting for action selection. Orchestration: frameworks like Browser Use or Skyvern handle clicking, typing, and state tracking. See the <a href='https://steel.dev/blog/production-agents?utm_source=leaderboard&utm_medium=website&utm_content=faq-build-agent' target='_blank' rel='noopener noreferrer'>production agents guide</a>. Once your agent has a verifiable WebVoyager score, open a pull request on GitHub.",
   },
   {
     q: "Is a higher WebVoyager score always better for production use?",
@@ -54,7 +54,7 @@ export const faqs = [
   },
   {
     q: "What is Browser Use's WebVoyager benchmark score?",
-    a: "Browser Use scores 89.1% on WebVoyager, ranking 5th overall. It's an open-source framework supporting GPT-4, Claude, and other LLMs via API. Many teams pair Browser Use with <a href='https://steel.dev'>Steel</a> for production infrastructure and anti-bot handling.",
+    a: "Browser Use scores 89.1% on WebVoyager, ranking 5th overall. It's an open-source framework supporting GPT-4, Claude, and other LLMs via API. Many teams pair Browser Use with <a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=faq-browser-use' target='_blank' rel='noopener noreferrer'>Steel</a> for production infrastructure and anti-bot handling.",
   },
   {
     q: "What is OpenAI Operator's WebVoyager benchmark score?",
@@ -62,7 +62,7 @@ export const faqs = [
   },
   {
     q: "What is Skyvern's WebVoyager benchmark score?",
-    a: "Skyvern 2.0 scores 85.85% on WebVoyager, ranking 7th overall. It's an open-source agent emphasizing visual understanding for complex layouts. Skyvern works with any LLM backend and integrates with <a href='https://steel.dev'>Steel</a> for production infrastructure.",
+    a: "Skyvern 2.0 scores 85.85% on WebVoyager, ranking 7th overall. It's an open-source agent emphasizing visual understanding for complex layouts. Skyvern works with any LLM backend and integrates with <a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=faq-skyvern' target='_blank' rel='noopener noreferrer'>Steel</a> for production infrastructure.",
   },
   {
     q: "What is Google Project Mariner's WebVoyager benchmark score?",
