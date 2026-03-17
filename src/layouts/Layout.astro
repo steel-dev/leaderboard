@@ -62,6 +62,14 @@ const structuredDataItems = Array.isArray(structuredData)
     {structuredDataItems.map((item) => (
       <script type="application/ld+json" set:html={item} />
     ))}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-88TGJXEHJ6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-88TGJXEHJ6');
+    </script>
   </head>
   <body class="w-full m-0 p-0 font-mono bg-background text-text max-w-3xl mx-auto">
     <PostHogInit />
