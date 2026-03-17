@@ -12,6 +12,7 @@
     "update-readme": "tsc -p tsconfig.script.json && node dist/scripts/update-readme.js"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.1",
     "@tailwindcss/vite": "^4.0.9",
     "astro": "^5.18.0",
     "posthog-js": "^1.225.1",
