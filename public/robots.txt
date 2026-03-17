@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leaderboard.steel.dev/sitemap-index.xml
+LLMs: https://leaderboard.steel.dev/llms.txt

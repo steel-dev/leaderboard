@@ -1,0 +1,28 @@
+# Steel Agent Leaderboard
+
+> A community-maintained leaderboard and benchmark registry for AI agents. Tracks performance across web navigation, coding, desktop control, tool use, research, and general reasoning benchmarks.
+
+Maintained by Steel (https://steel.dev). All data is community-sourced and independently verified where possible. The leaderboard covers 50+ benchmarks and hundreds of agent results.
+
+## Leaderboard
+
+- [WebVoyager Leaderboard](https://leaderboard.steel.dev/index.md): Rankings of web navigation agents on the WebVoyager benchmark, the most widely adopted web agent evaluation.
+
+## Results Index
+
+- [All Results](https://leaderboard.steel.dev/results.md): All agent benchmark results across every tracked benchmark, filterable by category, benchmark, and agent.
+
+## Benchmark Registry
+
+- [Full Registry](https://leaderboard.steel.dev/registry.md): All benchmarks across all categories with descriptions, top agents, scores, and metadata.
+- [Web Navigation](https://leaderboard.steel.dev/registry/web-navigation.md): WebVoyager, WebArena, VisualWebArena, BrowserGym, AssistantBench, and more.
+- [Research](https://leaderboard.steel.dev/registry/research.md): BrowseComp, MMSearch-Plus, and deep research agent benchmarks.
+- [Desktop Control](https://leaderboard.steel.dev/registry/desktop-control.md): OSWorld, AndroidWorld, Windows Agent Arena, macOSWorld, and more.
+- [Coding](https://leaderboard.steel.dev/registry/coding.md): SWE-bench Verified, HumanEval+, MLE-bench, Aider Benchmark, and more.
+- [Tool Use](https://leaderboard.steel.dev/registry/tool-use.md): ToolBench, Tau-bench, MCP Atlas, Gorilla APIBench, and more.
+- [General Reasoning](https://leaderboard.steel.dev/registry/general-reasoning.md): GAIA, ARC-AGI-2, GPQA Diamond, Humanity's Last Exam, and more.
+- [Specialized](https://leaderboard.steel.dev/registry/specialized.md): Sotopia, AgentHarm, MedAgentBench, FORTRESS, and more.
+
+## Optional
+
+- [Full context file](https://leaderboard.steel.dev/llms-full.txt): All leaderboard data, benchmark descriptions, and results in a single markdown file optimized for LLM context.
