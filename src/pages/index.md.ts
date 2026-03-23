@@ -2,34 +2,35 @@
 // ABOUTME: Follows the llms.txt spec - accessible at /index.md.
 
 import type { APIRoute } from "astro";
-import { leaderboardEntries } from "../lib/leaderboard";
+import { benchmarkCategoryLabels, getAllBenchmarkPages, getTopResult } from "../lib/benchmark-hub";
 
 export const GET: APIRoute = () => {
+  const pages = getAllBenchmarkPages();
   const lines: string[] = [];
 
-  lines.push("# Steel Agent Leaderboard — WebVoyager");
+  lines.push("# Steel Benchmark Hub");
   lines.push("");
-  lines.push("> Rankings of web navigation agents on the WebVoyager benchmark.");
+  lines.push("> Benchmark-specific leaderboards for agent and model evaluation.");
   lines.push("> Source: https://leaderboard.steel.dev | Maintained by Steel (https://steel.dev)");
   lines.push("");
-  lines.push("WebVoyager is the most widely adopted web agent benchmark — 643 tasks across 15 live public websites, evaluated by a GPT-4V judge. It is the de facto standard for comparing commercial and research web agents.");
+  lines.push("Canonical benchmark pages:");
   lines.push("");
-  lines.push("| Rank | Agent | Organization | Score | Homepage |");
-  lines.push("|------|-------|--------------|-------|----------|");
+  lines.push("| Benchmark | Category | Top tracked row | Updated | URL |");
+  lines.push("|-----------|----------|------------------|---------|-----|");
 
-  leaderboardEntries.forEach((entry, i) => {
+  pages.forEach((page) => {
+    const top = getTopResult(page.results);
     lines.push(
-      `| ${i + 1} | ${entry.agent}${entry.isNew ? " ✦" : ""} | ${entry.organization} | ${entry.webVoyager.score} | ${entry.homepage} |`
+      `| ${page.meta.name} | ${benchmarkCategoryLabels[page.meta.category]} | ${top ? `${top.systemName} (${top.scoreDisplay})` : "N/A"} | ${page.meta.lastUpdated} | https://leaderboard.steel.dev/leaderboards/${page.meta.slug}/ |`
     );
   });
 
   lines.push("");
-  lines.push("✦ = recently added");
+  lines.push("## Featured");
   lines.push("");
-  lines.push("## See Also");
+  lines.push("- WebVoyager remains the flagship benchmark module on the homepage.");
+  lines.push("- Each benchmark page follows: About -> Leaderboard -> FAQ.");
   lines.push("");
-  lines.push("- [All benchmark results](https://leaderboard.steel.dev/results.md)");
-  lines.push("- [Benchmark registry](https://leaderboard.steel.dev/registry.md)");
   lines.push("- [Full context file](https://leaderboard.steel.dev/llms-full.txt)");
 
   return new Response(lines.join("\n"), {

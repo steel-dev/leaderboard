@@ -1,0 +1,54 @@
+---
+import type { BenchmarkFaqItem } from "../lib/benchmark-hub";
+
+interface Props {
+  items: BenchmarkFaqItem[];
+  heading?: string;
+}
+
+const { items, heading = "Frequently asked questions" } = Astro.props;
+---
+
+<section class="table-shell w-full">
+  <div class="lb-header px-4 py-3">
+    <h2 class="m-0 text-sm font-semibold text-[var(--color-text-strong)]">{heading}</h2>
+  </div>
+  <div>
+    {items.map((item) => (
+      <details class="faq-item px-4 py-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-[var(--color-text-strong)] hover:text-[var(--color-accent)]">
+          <span>{item.q}</span>
+          <span class="muted shrink-0">
+            <span class="inline details-closed">+</span>
+            <span class="hidden details-open">-</span>
+          </span>
+        </summary>
+        <div
+          class="faq-answer mt-3 border-l-2 border-[color:color-mix(in_srgb,var(--color-border)_35%,transparent)] pl-3 text-sm leading-relaxed muted"
+          set:html={item.a}
+        >
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  details[open] .details-closed {
+    display: none;
+  }
+
+  details[open] .details-open {
+    display: inline;
+  }
+
+  .faq-answer :global(a) {
+    color: var(--color-link);
+    text-decoration-color: color-mix(in srgb, var(--color-link) 40%, transparent);
+  }
+
+  .faq-answer :global(a:hover) {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+</style>

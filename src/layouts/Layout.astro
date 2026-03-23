@@ -21,10 +21,16 @@ const structuredDataItems = Array.isArray(structuredData)
   : structuredData
     ? [structuredData]
     : [];
+const googleTagInit = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", "G-88TGJXEHJ6");
+`;
 ---
 
 <!doctype html>
-<html lang="en" class="w-full h-full">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -34,16 +40,6 @@ const structuredDataItems = Array.isArray(structuredData)
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
@@ -64,22 +60,13 @@ const structuredDataItems = Array.isArray(structuredData)
     ))}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-88TGJXEHJ6"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-88TGJXEHJ6');
-    </script>
+    <script is:inline set:html={googleTagInit}></script>
   </head>
-  <body class="w-full m-0 p-0 font-mono bg-background text-text max-w-3xl mx-auto">
+  <body>
     <PostHogInit />
-    <div class="flex flex-col min-h-screen px-4 py-5 justify-items-start gap-18 md:gap-12">
+    <div class="page-shell flex min-h-screen flex-col gap-10 py-6 md:gap-12 md:py-8">
       <Header />
-      <main class="flex-1 py-4 relative flex flex-col items-center justify-start">
-        <div
-          class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-terminal-grid"
-        >
-        </div>
+      <main class="flex-1 py-2">
         <slot />
       </main>
       <Footer />

@@ -6,26 +6,28 @@ const currentTime = new Date().toLocaleDateString("en-US", {
 });
 
 const { execSync } = await import("child_process");
-const hash = execSync("git log -1 --pretty=format:%h src/lib/leaderboard.ts").toString().trim();
+const hash = execSync("git log -1 --pretty=format:%h src/lib/benchmark-hub.ts").toString().trim();
 ---
 
 <footer>
-  <div class="flex justify-between items-center text-xs font-mono text-dim uppercase">
-    <div>Last updated: {currentTime}</div>
+  <div
+    class="flex flex-col gap-2 border-t border-[color:color-mix(in_srgb,var(--color-border)_45%,transparent)] pt-4 text-xs md:flex-row md:items-center md:justify-between"
+  >
+    <div class="muted">Last updated: {currentTime}</div>
     <div>
       <a
         href="https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=footer"
         target="_blank"
         rel="noopener noreferrer"
-        class="hover:text-accent hover:underline transition-colors">STEEL.DEV</a
+        class="no-underline text-[var(--color-text)] hover:text-[var(--color-accent)]">Steel.dev</a
       >
     </div>
     <div>
       <a
-        href={`https://github.com/steel-dev/leaderboard/blob/main/src/lib/leaderboard.ts`}
+        href={`https://github.com/steel-dev/leaderboard/blob/main/src/lib/benchmark-hub.ts`}
         target="_blank"
         rel="noopener noreferrer"
-        class="hover:text-accent hover:underline transition-colors">@{hash}</a
+        class="no-underline text-[var(--color-text)] hover:text-[var(--color-accent)]">@{hash}</a
       >
     </div>
   </div>

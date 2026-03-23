@@ -83,40 +83,45 @@ export const faqs = [
 ];
 ---
 
-<div class="w-full max-w-4xl mt-12">
-  <div class="font-mono border border-text border-opacity-30 max-w-4xl w-full">
-    <div class="bg-[var(--color-text)] p-[0.62rem] flex w-full items-center gap-[0.62rem]">
-      <div class="bg-text text-black font-bold">FAQ</div>
-      <div class="flex flex-col gap-1 flex-1">
-        {[0, 1, 2, 3, 4].map(() => <div class="bg-black h-[0.0625rem] w-full" />)}
-      </div>
+<div class="mt-12 w-full">
+  <div class="table-shell w-full">
+    <div class="lb-header px-4 py-3">
+      <h3 class="m-0 text-sm font-semibold text-[var(--color-text-strong)]">Frequently asked questions</h3>
     </div>
-
-    <div class="divide-y divide-text divide-opacity-10">
-      {
-        faqs.map((item) => (
-          <details class="group px-3 py-3 cursor-pointer">
-            <summary class="flex justify-between items-center list-none cursor-pointer hover:text-accent transition-colors duration-200 uppercase text-sm">
-              <span>{item.q}</span>
-              <span class="text-dim group-open:text-accent transition-colors ml-4 shrink-0">
-                <span class="group-open:hidden">[+]</span>
-                <span class="hidden group-open:inline">[-]</span>
-              </span>
-            </summary>
-            <div class="mt-3 text-dim text-sm leading-relaxed border-t border-text border-opacity-10 pt-3 faq-answer" set:html={item.a}>
-            </div>
-          </details>
-        ))
-      }
+    <div>
+      {faqs.map((item) => (
+        <details class="faq-item px-4 py-3">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-[var(--color-text-strong)] hover:text-[var(--color-accent)]">
+            <span>{item.q}</span>
+            <span class="muted shrink-0">
+              <span class="inline details-closed">+</span>
+              <span class="hidden details-open">-</span>
+            </span>
+          </summary>
+          <div class="faq-answer mt-3 border-l-2 border-[color:color-mix(in_srgb,var(--color-border)_35%,transparent)] pl-3 text-sm leading-relaxed muted" set:html={item.a}>
+          </div>
+        </details>
+      ))}
     </div>
   </div>
 </div>
 
 <style>
+  details[open] .details-closed {
+    display: none;
+  }
+
+  details[open] .details-open {
+    display: inline;
+  }
+
   .faq-answer :global(a) {
-    color: #00b200;
-    text-decoration: underline dotted;
-    text-decoration-color: #00b200;
-    text-underline-offset: 2px;
+    color: var(--color-link);
+    text-decoration-color: color-mix(in srgb, var(--color-link) 40%, transparent);
+  }
+
+  .faq-answer :global(a:hover) {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
   }
 </style>

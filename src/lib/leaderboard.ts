@@ -5,6 +5,13 @@ export interface LeaderboardEntry {
     score: string;
     source: string;
   };
+  methodology?: {
+    dataset: "full-643" | "filtered" | "custom" | "webvoyager30";
+    evaluator: "gpt-4v" | "human" | "custom";
+    selfReported: boolean;
+    model?: string;
+    notes?: string;
+  };
   isNew?: boolean;
   github: string | null;
   homepage: string;
@@ -93,7 +100,8 @@ export const leaderboardEntries: LeaderboardEntry[] = [
     organization: "Skyvern",
     webVoyager: {
       score: "85.85%",
-      source: "https://blog.skyvern.com/skyvern-2-0-state-of-the-art-web-navigation-with-85-8-on-webvoyager-eval/",
+      source:
+        "https://blog.skyvern.com/skyvern-2-0-state-of-the-art-web-navigation-with-85-8-on-webvoyager-eval/",
     },
     isNew: false,
     github: "https://github.com/Skyvern-AI/Skyvern",

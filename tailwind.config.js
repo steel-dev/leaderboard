@@ -4,32 +4,46 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#000000",
-        text: "#00ff00",
-        dim: "#00aa00",
-        accent: "#00ffff",
-        error: "#ff0000",
-        success: "#00ff00",
-        green: "#03FF32",
+        background: "var(--color-bg)",
+        text: "var(--color-text)",
+        dim: "var(--color-text-muted)",
+        accent: "var(--color-accent)",
+        error: "var(--color-error)",
+        success: "var(--color-success)",
+        green: "var(--color-success)",
         gray: {
-          DEFAULT: "#00aa00",
-          dark: "#005500",
-          light: "#00cc00",
+          DEFAULT: "var(--color-text-muted)",
+          dark: "var(--color-text)",
+          light: "var(--color-surface-strong)",
         },
       },
       fontFamily: {
-        mono: ["JetBrains Mono", "Menlo", "Monaco", "Courier New", "monospace"],
-        sans: ['"Geist"', "system-ui", "sans-serif"],
+        mono: [
+          "ui-monospace",
+          // "SFMono-Regular",
+          // "SF Mono",
+          "Menlo",
+          "Consolas",
+          "Liberation Mono",
+          "monospace",
+        ],
+        sans: [
+          "ui-monospace",
+          "SFMono-Regular",
+          "SF Mono",
+          "Menlo",
+          "Consolas",
+          "Liberation Mono",
+          "monospace",
+        ],
       },
       backgroundImage: {
-        "gradient-accent": "linear-gradient(90deg, #00ffff, #00ff00)",
-        "gradient-logo": "linear-gradient(135deg, #00ffff, #00ff00, #00aaaa)",
-        "gradient-button": "linear-gradient(83.21deg, #00ff00 0%, #00ffff 100%)",
-        "terminal-grid":
-          "linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px)",
+        "gradient-accent": "linear-gradient(90deg, #9de3f1, #78c8d8)",
+        "gradient-logo": "linear-gradient(135deg, #9de3f1, #c2eef7, #86d5e4)",
+        "gradient-button": "linear-gradient(83.21deg, #9de3f1 0%, #81cfde 100%)",
       },
       animation: {
-        "terminal-blink": "blink 1s step-end infinite",
+        "terminal-blink": "blink 1.25s step-end infinite",
       },
       keyframes: {
         blink: {

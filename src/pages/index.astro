@@ -1,38 +1,38 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import LeaderboardTable from "../components/LeaderboardTable.astro";
-import FAQ, { faqs } from "../components/FAQ.astro";
-import cursorSvg from "../assets/cursor.svg";
-import { leaderboardEntries } from "../lib/leaderboard";
+import BenchmarkResultsTable from "../components/BenchmarkResultsTable.astro";
+import FaqList from "../components/FaqList.astro";
+import {
+  benchmarkCategoryLabels,
+  getAllBenchmarkPages,
+  getTopResult,
+  homeFaqs,
+} from "../lib/benchmark-hub";
 
-const itemListSchema = JSON.stringify({
+const pages = getAllBenchmarkPages();
+const webVoyager = pages.find((page) => page.meta.slug === "webvoyager");
+
+if (!webVoyager) {
+  throw new Error("Missing required benchmark page data for webvoyager");
+}
+
+const featuredTop = getTopResult(webVoyager.results);
+
+const benchmarkIndexSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "AI Browser Agent Leaderboard",
+  name: "AI Benchmark Hub",
   description:
-    "Leaderboard of AI browser agents ranked by WebVoyager benchmark score.",
+    "Benchmark hub with canonical leaderboard pages for web agents, computer use, research, and coding.",
   url: "https://leaderboard.steel.dev/",
-  numberOfItems: leaderboardEntries.length,
-  itemListElement: leaderboardEntries.map((entry, index) => ({
+  numberOfItems: pages.length,
+  itemListElement: pages.map((page, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
-      "@type": "SoftwareApplication",
-      name: entry.agent,
-      applicationCategory: "Browser Agent",
-      creator: {
-        "@type": "Organization",
-        name: entry.organization,
-      },
-      url: entry.homepage,
-      sameAs: entry.webVoyager.source,
-      ...(entry.github ? { codeRepository: entry.github } : {}),
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: parseFloat(entry.webVoyager.score.replace("%", "")),
-        bestRating: 100,
-        ratingCount: 1,
-      },
+      "@type": "WebPage",
+      name: `${page.meta.name} leaderboard`,
+      url: `https://leaderboard.steel.dev/leaderboards/${page.meta.slug}/`,
     },
   })),
 });
@@ -40,7 +40,7 @@ const itemListSchema = JSON.stringify({
 const faqSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((item) => ({
+  mainEntity: homeFaqs.map((item) => ({
     "@type": "Question",
     name: item.q,
     acceptedAnswer: {
@@ -50,44 +50,91 @@ const faqSchema = JSON.stringify({
   })),
 });
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout
-  title="AI Browser Agent Leaderboard | Steel.dev"
-  structuredData={[itemListSchema, faqSchema]}
+  title="AI Benchmark Leaderboards Hub | Steel.dev"
+  description="Explore benchmark-specific leaderboards for browser agents, computer use, research/search, and coding benchmarks."
+  structuredData={[benchmarkIndexSchema, faqSchema]}
 >
-  <div class="w-full max-w-4xl">
-    <div class="mb-4">
-      <div class="flex flex-col gap-4">
-        <div class="flex flex-col md:flex-row justify-start w-full md:items-start">
-          <div class="flex flex-col gap-1 order-2 md:order-1">
-            <h1 class="text-xl md:text-2xl font-sans tracking-tight mb-0">
-              Steel.dev<span class="text-accent">®</span>
-            </h1>
-
-            <h2 class="text-2xl md:text-4xl font-sans tracking-tight text-text">
-              Browser Agent Leaderboard
-            </h2>
-          </div>
-
-          <div class="order-1 md:order-2 mb-3 md:mb-0">
-            <img src={cursorSvg.src} alt="Steel.dev Logo" width="60" height="60" />
-          </div>
-        </div>
-        <div class="text-left font-sans md:text-lg">
-          See how various AI browser agents stack up based on their accuracy in completing web-based
-          tasks on the WebVoyager benchmark.
-        </div>
-      </div>
+  <section class="section-frame w-full p-5 md:p-6">
+    <h1 class="mb-4 border-l-2 border-[var(--color-accent)] pl-4 text-lg font-semibold text-[var(--color-text-strong)] md:text-xl">
+      steel.dev benchmark hub
+    </h1>
+    <h2 class="mb-4 w-fit text-2xl font-semibold text-[var(--color-text-strong)] underline decoration-[color:color-mix(in_srgb,var(--color-border)_45%,transparent)] underline-offset-4 md:text-4xl">
+      Benchmark Leaderboards
+    </h2>
+    <p class="max-w-3xl">
+      Compare benchmark-specific leaderboards with clear scope labels and source-linked rows.
+      WebVoyager remains the flagship module, and each benchmark has a canonical page at{" "}
+      <span class="code-inline">/leaderboards/&lt;slug&gt;/</span>.
+    </p>
+    <p class="dotted-rule mt-4 text-xs">................................................................................</p>
+    <div class="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm">
+      <span><span class="muted">wave 1:</span> webvoyager, osworld, browsecomp, webarena, swe-bench-verified</span>
+      <span><span class="muted">pages:</span> {pages.length}</span>
+      <span><span class="muted">source:</span> public links and benchmark trackers</span>
     </div>
+  </section>
+
+  <section class="section-frame mt-8 w-full p-5 md:p-6">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <h2 class="m-0 text-xl font-semibold text-[var(--color-text-strong)]">Featured WebVoyager</h2>
+      <a href="/leaderboards/webvoyager/" class="btn-primary">View full leaderboard</a>
+    </div>
+    <p class="mt-3">
+      WebVoyager measures end-to-end browser task completion across live websites. It is widely used
+      for comparing production-style browser agent systems.
+    </p>
+    {featuredTop && (
+      <p class="mt-3 text-sm">
+        <span class="muted">Current top system:</span>{" "}
+        <strong>{featuredTop.systemName}</strong> ({featuredTop.scoreDisplay})
+      </p>
+    )}
+  </section>
+
+  <div class="mt-8 w-full">
+    <BenchmarkResultsTable rows={webVoyager.results} scope={webVoyager.meta.scope} heading="WebVoyager leaderboard" />
   </div>
 
-  <!-- Leaderboard Table -->
-  <div class="w-full mt-8">
-    <LeaderboardTable entries={leaderboardEntries} />
-  </div>
+  <section class="mt-8 w-full">
+    <h2 class="mb-4 text-xl font-semibold text-[var(--color-text-strong)]">Explore benchmarks</h2>
+    <div class="grid gap-4 md:grid-cols-2">
+      {pages.map((page) => {
+        const top = getTopResult(page.results);
+        return (
+          <article class="section-frame p-4">
+            <p class="m-0 text-xs uppercase tracking-[0.04em] muted">
+              {benchmarkCategoryLabels[page.meta.category]}
+            </p>
+            <h3 class="mb-2 mt-1 text-lg text-[var(--color-text-strong)]">{page.meta.name}</h3>
+            <p class="m-0 text-sm muted">{page.meta.about[0]}</p>
+            <p class="mb-0 mt-3 text-sm">
+              <span class="muted">Top:</span>{" "}
+              {top ? `${top.systemName} (${top.scoreDisplay})` : "No tracked result"}
+            </p>
+            {page.meta.importantNotes[0] && <p class="mb-0 mt-1 text-xs muted">Caveat: {page.meta.importantNotes[0]}</p>}
+            <p class="mb-0 mt-3">
+              <a href={`/leaderboards/${page.meta.slug}/`} class="no-underline">
+                Open {page.meta.name} leaderboard
+              </a>
+            </p>
+          </article>
+        );
+      })}
+    </div>
+  </section>
 
-  <FAQ />
+  <section class="dashed-frame mt-8 w-full p-4">
+    <p class="m-0 text-sm leading-relaxed muted">
+      <span class="text-[var(--color-text-strong)]">Methodology reminder:</span> some benchmarks
+      measure model capability, while others measure full systems (model + tools + policy). Mixed
+      pages include both and should be read as directional unless setups are fully aligned.
+    </p>
+  </section>
+
+  <div class="mt-8 w-full">
+    <FaqList items={homeFaqs} />
+  </div>
 </Layout>

@@ -1,0 +1,165 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BenchmarkResultsTable from "../../components/BenchmarkResultsTable.astro";
+import FaqList from "../../components/FaqList.astro";
+import {
+  buildBenchmarkFaqFacts,
+  generateBenchmarkFaq,
+  getAllBenchmarkPages,
+  getBenchmarkPage,
+} from "../../lib/benchmark-hub";
+
+export function getStaticPaths() {
+  return getAllBenchmarkPages().map((page) => ({
+    params: { slug: page.meta.slug },
+  }));
+}
+
+const slug = Astro.params.slug ?? "";
+const page = getBenchmarkPage(slug);
+
+if (!page) {
+  return Astro.redirect("/");
+}
+
+const faqItems = generateBenchmarkFaq(page.meta, buildBenchmarkFaqFacts(page));
+const pageUrl = `https://leaderboard.steel.dev/leaderboards/${page.meta.slug}/`;
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a.replace(/<[^>]+>/g, ""),
+    },
+  })),
+});
+
+const itemListSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `${page.meta.name} leaderboard`,
+  description: `Tracked results for ${page.meta.name}.`,
+  url: pageUrl,
+  numberOfItems: page.results.length,
+  itemListElement: page.results.map((result) => ({
+    "@type": "ListItem",
+    position: result.rank,
+    item: {
+      "@type": "Thing",
+      name: result.systemName,
+      url: result.sourceUrl,
+    },
+  })),
+});
+
+const breadcrumbSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Benchmark Hub",
+      item: "https://leaderboard.steel.dev/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Leaderboards Hub",
+      item: "https://leaderboard.steel.dev/",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: page.meta.name,
+      item: pageUrl,
+    },
+  ],
+});
+---
+
+<Layout
+  title={`${page.meta.name} Leaderboard | Steel.dev`}
+  description={`${page.meta.name} benchmark leaderboard with methodology notes, source-linked rows, and generated FAQ guidance.`}
+  structuredData={[faqSchema, itemListSchema, breadcrumbSchema]}
+>
+  <section class="section-frame w-full p-5 md:p-6">
+    <p class="m-0 text-xs uppercase tracking-[0.04em] muted">Canonical benchmark page</p>
+    <h1 class="mb-3 mt-2 text-2xl font-semibold text-[var(--color-text-strong)] md:text-4xl">
+      {page.meta.name} leaderboard
+    </h1>
+    <p class="m-0 max-w-3xl">
+      Benchmark page for <strong>{page.meta.name}</strong> with standardized structure: about,
+      leaderboard table, and FAQ.
+    </p>
+    <p class="mb-0 mt-3 text-sm">
+      <span class="muted">Last updated:</span> {page.meta.lastUpdated}
+    </p>
+  </section>
+
+  <section class="section-frame mt-8 w-full p-5 md:p-6">
+    <h2 class="m-0 text-xl font-semibold text-[var(--color-text-strong)]">About this benchmark</h2>
+    <div class="mt-3 space-y-3">
+      {page.meta.about.map((paragraph) => (
+        <p class="m-0">{paragraph}</p>
+      ))}
+    </div>
+
+    {page.meta.importantNotes.length > 0 && (
+      <div class="dashed-frame mt-4 p-3">
+        {page.meta.importantNotes.map((note) => (
+          <p class="m-0 text-sm muted">{note}</p>
+        ))}
+      </div>
+    )}
+
+    <h3 class="mb-2 mt-5 text-base font-semibold text-[var(--color-text-strong)]">Methodology</h3>
+    <ul class="m-0 list-disc space-y-1 pl-5">
+      {page.meta.methodology.map((item) => (
+        <li class="text-sm muted">{item}</li>
+      ))}
+    </ul>
+
+    <h3 class="mb-2 mt-5 text-base font-semibold text-[var(--color-text-strong)]">Links</h3>
+    <ul class="m-0 list-disc space-y-1 pl-5">
+      {page.meta.links.map((link) => (
+        <li class="text-sm">
+          <a href={link.url} target="_blank" rel="noopener noreferrer nofollow">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <div class="mt-8 w-full">
+    <BenchmarkResultsTable rows={page.results} scope={page.meta.scope} heading={`${page.meta.name} results`} />
+  </div>
+
+  {page.meta.relatedBenchmarks.length > 0 && (
+    <section class="section-frame mt-8 w-full p-4">
+      <h2 class="m-0 text-base font-semibold text-[var(--color-text-strong)]">Related benchmarks</h2>
+      <p class="mb-0 mt-2 text-sm muted">
+        Compare this benchmark with related pages from the hub:
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        {page.meta.relatedBenchmarks.map((relatedSlug) => (
+          <a class="badge no-underline" href={`/leaderboards/${relatedSlug}/`}>
+            {relatedSlug}
+          </a>
+        ))}
+      </div>
+      <p class="mb-0 mt-3 text-sm">
+        <a href="/">Back to benchmark hub</a>
+      </p>
+    </section>
+  )}
+
+  <div class="mt-8 w-full">
+    <FaqList items={faqItems} />
+  </div>
+</Layout>
