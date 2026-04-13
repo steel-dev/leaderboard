@@ -306,6 +306,17 @@ export const benchmarks: BenchmarkEntry[] = [
   },
   {
     category: "CODING",
+    name: "SWE-bench Pro",
+    description: "Successor to SWE-bench Verified with a larger, harder, contamination-resistant task set drawn from real-world GitHub issues across diverse repositories. Includes a public set and a held-out private set to mitigate training-data leakage.",
+    benchmarkOrg: "Scale AI",
+    topAgent: "GPT-5.3-Codex (CLI)", topOrg: "OpenAI", topScore: "57.0%",
+    tasks: "1865", evaluator: "Test suite",
+    paper: "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    github: null,
+    human: "N/A", selfHosted: false,
+  },
+  {
+    category: "CODING",
     name: "Terminal-Bench 2.0",
     description: "Purely terminal-based coding and system tasks with no GUI. Tests command-line proficiency across bash, Python, and system administration. Harder and more realistic than sandbox coding benchmarks.",
     benchmarkOrg: "Harbor",
