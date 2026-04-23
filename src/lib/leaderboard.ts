@@ -12,6 +12,17 @@ export interface LeaderboardEntry {
 
 export const leaderboardEntries: LeaderboardEntry[] = [
   {
+    agent: "Jina",
+    organization: "Om Labs",
+    webVoyager: {
+      score: "98.9%",
+      source: "https://webvoyager.omlabs.xyz",
+    },
+    isNew: true,
+    github: null,
+    homepage: "https://webvoyager.omlabs.xyz",
+  },
+  {
     agent: "Alumnium",
     organization: "Alumnium",
     webVoyager: {

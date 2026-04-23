@@ -2,7 +2,7 @@
 export const faqs = [
   {
     q: "What is the WebVoyager benchmark for AI browser agents?",
-    a: "WebVoyager is the standard benchmark for evaluating browser agents, introduced in the 2024 paper <a href='https://arxiv.org/abs/2401.13919' target='_blank' rel='noopener noreferrer'>WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models</a>. It consists of 643 tasks across 15 websites including Google, Amazon, GitHub, Reddit, and Wikipedia. Tasks cover form filling, navigation, search, and shopping. GPT-4V evaluates each task by analyzing the final page state. Scores represent the percentage of tasks completed successfully. As of February 2026, the highest score is 97.1% held by Surfer 2 from H Company.",
+    a: "WebVoyager is the standard benchmark for evaluating browser agents, introduced in the 2024 paper <a href='https://arxiv.org/abs/2401.13919' target='_blank' rel='noopener noreferrer'>WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models</a>. It consists of 643 tasks across 15 websites including Google, Amazon, GitHub, Reddit, and Wikipedia. Tasks cover form filling, navigation, search, and shopping. GPT-4V evaluates each task by analyzing the final page state. Scores represent the percentage of tasks completed successfully. As of April 2026, the highest score is 98.9% held by Jina from Om Labs.",
   },
   {
     q: "Can WebVoyager scores be compared across different agents?",
@@ -14,7 +14,7 @@ export const faqs = [
   },
   {
     q: "What is the best AI browser agent in 2026?",
-    a: "By WebVoyager score: Surfer 2 at 97.1% (H Company), Magnitude at 93.9%, AIME Browser-Use at 92.34%, Browserable at 90.4%, Browser Use at 89.1%, OpenAI Operator at 87%, Skyvern 2.0 at 85.85%, and Google Project Mariner at 83.5%. Surfer-H (92.2%) is a multi-attempt benchmark (10 attempts), so it is not directly comparable to single-run percentages. Surfer 2 leads accuracy. Browser Use and Skyvern are strong open-source options. Rankings update as new results are submitted.",
+    a: "By WebVoyager score: Jina at 98.9% (Om Labs), Alumnium at 98.5%, Surfer 2 at 97.1% (H Company), Magnitude at 93.9%, AIME Browser-Use at 92.34%, Browserable at 90.4%, Browser Use at 89.1%, OpenAI Operator at 87%, Skyvern 2.0 at 85.85%, and Google Project Mariner at 83.5%. Surfer-H (92.2%) is a multi-attempt benchmark (10 attempts), so it is not directly comparable to single-run percentages. Jina leads accuracy. Browser Use and Skyvern are strong open-source options. Rankings update as new results are submitted.",
   },
   {
     q: "What is the difference between OpenAI Operator, Browser Use, and other AI browser agents?",
@@ -34,11 +34,11 @@ export const faqs = [
   },
   {
     q: "What does SOTA mean?",
-    a: "SOTA stands for State of the Art - the highest-performing result on a benchmark. On this leaderboard, the SOTA badge is awarded to the agent with the highest WebVoyager score and transfers automatically when a new high score is submitted. As of February 2026, the SOTA holder is Surfer 2 by H Company at 97.1%.",
+    a: "SOTA stands for State of the Art - the highest-performing result on a benchmark. On this leaderboard, the SOTA badge is awarded to the agent with the highest WebVoyager score and transfers automatically when a new high score is submitted. As of April 2026, the SOTA holder is Jina by Om Labs at 98.9%.",
   },
   {
     q: "Are OpenAI Operator and Google Project Mariner on this leaderboard?",
-    a: "Yes. OpenAI Operator scores 87% (ranked 6th) and Google Project Mariner scores 83.5% (ranked 8th). Both are consumer products integrated into their ecosystems - Operator via ChatGPT, Mariner via Chrome. They score lower than specialized agents like Surfer 2 (97.1%) because they prioritize broad capability over benchmark optimization.",
+    a: "Yes. OpenAI Operator scores 87% and Google Project Mariner scores 83.5%. Both are consumer products integrated into their ecosystems - Operator via ChatGPT, Mariner via Chrome. They score lower than specialized agents like Jina (98.9%) because they prioritize broad capability over benchmark optimization.",
   },
   {
     q: "How do I build my own AI browser agent?",
@@ -67,6 +67,10 @@ export const faqs = [
   {
     q: "What is Google Project Mariner's WebVoyager benchmark score?",
     a: "Google Project Mariner scores 83.5% on WebVoyager, ranking 8th overall. Built on Gemini and integrated with Chrome, it handles web navigation and form filling. Currently in limited availability.",
+  },
+  {
+    q: "What is Jina's WebVoyager benchmark score?",
+    a: "Jina by Om Labs holds the current SOTA at 98.9% on WebVoyager (603 of 610 tasks) as of April 2026. Jina pairs Claude Opus 4.7 as the browser agent with GPT 5.4 Nano as the Jina MCP planner, judged by gpt-5 vision against up to 15 screenshots per task. Per-task transcripts, screenshots, and judge rationales are published at <a href='https://webvoyager.omlabs.xyz' target='_blank' rel='noopener noreferrer'>webvoyager.omlabs.xyz</a>.",
   },
   {
     q: "What is Surfer 2's WebVoyager benchmark score?",
