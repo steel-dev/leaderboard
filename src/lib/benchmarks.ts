@@ -88,7 +88,7 @@ export const benchmarks: BenchmarkEntry[] = [
     category: "WEB NAV",
     name: "WebVoyager",
     description: "643 tasks across 15 live public websites. Evaluated by GPT-4V judge. The most widely adopted web agent benchmark — de facto standard for comparing commercial and research agents.",
-    topAgent: "Surfer 2", topOrg: "H Company", topScore: "97.1%",
+    topAgent: "Jina", topOrg: "Om Labs", topScore: "98.9%",
     tasks: "643", evaluator: "GPT-4V",
     paper: "https://arxiv.org/abs/2401.13919",
     github: "https://github.com/MinorJerry/WebVoyager",
