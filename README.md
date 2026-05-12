@@ -16,17 +16,17 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
-Browser agents · Agent scope · 21 entries tracked
+Browser agents · Agent scope · 20 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Jina **(new)** | Om Labs | [98.9%](https://webvoyager.omlabs.xyz/) |
-| 2 | Alumnium **(new)** | Alumnium | [98.6%](https://alumnium.ai/) |
-| 3 | Surfer 2 **(new)** | H Company | [97.1%](https://hcompany.ai/surfer-2) |
-| 4 | Magnitude | Magnitude | [93.9%](https://magnitude.run/webvoyager) |
-| 5 | AIME Browser-Use **(new)** | Aime | [92.34%](https://aime-browser-use.github.io/) |
+| 1 | Alumnium **(new)** | Alumnium | [98.6%](https://alumnium.ai/) |
+| 2 | Surfer 2 **(new)** | H Company | [97.1%](https://hcompany.ai/surfer-2) |
+| 3 | Magnitude | Magnitude | [93.9%](https://magnitude.run/webvoyager) |
+| 4 | AIME Browser-Use **(new)** | Aime | [92.34%](https://aime-browser-use.github.io/) |
+| 5 | Surfer-H + Holo1 **(new)** | H Company | [92.2%](https://arxiv.org/pdf/2506.02865) |
 
-[See all 21 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
+[See all 20 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 ---
 
