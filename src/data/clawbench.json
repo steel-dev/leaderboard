@@ -1,70 +1,76 @@
 {
-"clawbench": [
+  "clawbench": [
     {
-        "rank": 1,
-        "systemName": "Claude Sonnet 4.6",
-        "organization": "Anthropic",
-        "scoreDisplay": "33.3%",
-        "scoreValue": 33.3,
-        "sourceUrl": "https://arxiv.org/abs/2604.08523",
-        "notesShort": "Native multi-modal reasoning with high success in Finance and Academic tasks."
+      "rank": 1,
+      "systemName": "Claude Sonnet 4.6",
+      "organization": "Anthropic",
+      "scoreDisplay": "33.3%",
+      "scoreValue": 33.3,
+      "sourceUrl": "https://arxiv.org/abs/2604.08523",
+      "notesShort": "Native multi-modal reasoning with high success in Finance and Academic tasks.",
+      "reportedAt": "2026-04-09"
     },
     {
-        "rank": 2,
-        "systemName": "GLM-5",
-        "organization": "Z.ai",
-        "scoreDisplay": "24.2%",
-        "scoreValue": 24.2,
-        "sourceUrl": "https://arxiv.org/abs/2604.08523",
-        "notesShort": "Strongest text-only baseline; high performance in Developer-centric workflows.",
-        "isNew": true
+      "rank": 2,
+      "systemName": "GLM-5",
+      "organization": "Z.ai",
+      "scoreDisplay": "24.2%",
+      "scoreValue": 24.2,
+      "sourceUrl": "https://arxiv.org/abs/2604.08523",
+      "notesShort": "Strongest text-only baseline; high performance in Developer-centric workflows.",
+      "reportedAt": "2026-04-09",
+      "isNew": true
     },
     {
-        "rank": 3,
-        "systemName": "Gemini 3 Flash",
-        "organization": "Google",
-        "scoreDisplay": "19.0%",
-        "scoreValue": 19.0,
-        "sourceUrl": "https://arxiv.org/abs/2604.08523",
-        "notesShort": "Efficiency-optimized vision model with consistent performance in Travel categories."
+      "rank": 3,
+      "systemName": "Gemini 3 Flash",
+      "organization": "Google",
+      "scoreDisplay": "19.0%",
+      "scoreValue": 19.0,
+      "sourceUrl": "https://arxiv.org/abs/2604.08523",
+      "notesShort": "Efficiency-optimized vision model with consistent performance in Travel categories.",
+      "reportedAt": "2026-04-09"
     },
     {
-        "rank": 4,
-        "systemName": "Claude Haiku 4.5",
-        "organization": "Anthropic",
-        "scoreDisplay": "18.3%",
-        "scoreValue": 18.3,
-        "sourceUrl": "https://arxiv.org/abs/2604.08523",
-        "notesShort": "Balanced agentic loop demonstrating strong reasoning in Academic task groups."
+      "rank": 4,
+      "systemName": "Claude Haiku 4.5",
+      "organization": "Anthropic",
+      "scoreDisplay": "18.3%",
+      "scoreValue": 18.3,
+      "sourceUrl": "https://arxiv.org/abs/2604.08523",
+      "notesShort": "Balanced agentic loop demonstrating strong reasoning in Academic task groups.",
+      "reportedAt": "2026-04-09"
     },
     {
-        "rank": 5,
-        "systemName": "GPT-5.4",
-        "organization": "OpenAI",
-        "scoreDisplay": "6.5%",
-        "scoreValue": 6.5,
-        "sourceUrl": "https://arxiv.org/abs/2604.08523",
-        "notesShort": "Large-scale reasoning model baseline; highlights difficulty of live-web transactions."
+      "rank": 5,
+      "systemName": "GPT-5.4",
+      "organization": "OpenAI",
+      "scoreDisplay": "6.5%",
+      "scoreValue": 6.5,
+      "sourceUrl": "https://arxiv.org/abs/2604.08523",
+      "notesShort": "Large-scale reasoning model baseline; highlights difficulty of live-web transactions.",
+      "reportedAt": "2026-04-09"
     },
     {
-        "rank": 6,
-        "systemName": "Gemini 3.1 Flash Lite",
-        "organization": "Google",
-        "scoreDisplay": "3.3%",
-        "scoreValue": 3.3,
-        "sourceUrl": "https://arxiv.org/abs/2604.08523",
-        "notesShort": "Lightweight inference model tested on real-world multi-step website interactions.",
-        "isNew": true
+      "rank": 6,
+      "systemName": "Gemini 3.1 Flash Lite",
+      "organization": "Google",
+      "scoreDisplay": "3.3%",
+      "scoreValue": 3.3,
+      "sourceUrl": "https://arxiv.org/abs/2604.08523",
+      "notesShort": "Lightweight inference model tested on real-world multi-step website interactions.",
+      "reportedAt": "2026-04-09",
+      "isNew": true
     },
     {
-        "rank": 7,
-        "systemName": "Kimi K2.5",
-        "organization": "Moonshot AI",
-        "scoreDisplay": "0.7%",
-        "scoreValue": 0.7,
-        "sourceUrl": "https://arxiv.org/abs/2604.08523",
-        "notesShort": "Early-stage agentic baseline demonstrating challenges in state-changing operations.",
-        "isNew": true
+      "rank": 7,
+      "systemName": "Kimi K2.5",
+      "organization": "Moonshot AI",
+      "scoreDisplay": "0.7%",
+      "scoreValue": 0.7,
+      "sourceUrl": "https://arxiv.org/abs/2604.08523",
+      "notesShort": "Early-stage agentic baseline demonstrating challenges in state-changing operations.",
+      "reportedAt": "2026-04-09"
     }
   ]
 }

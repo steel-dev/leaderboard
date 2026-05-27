@@ -53,12 +53,7 @@ ${benchmarkCategoryLabels[meta.category]} · ${benchmarkScopeLabels[meta.scope]}
 }
 
 function renderAllBenchmarks(): string {
-  const pages = getAllBenchmarkPages();
-  const featured = pages.filter((p) => p.meta.featuredOnHome);
-  const others = pages.filter((p) => !p.meta.featuredOnHome);
-  const ordered = [...featured, ...others];
-
-  return ordered.map(renderBenchmark).join("\n\n---\n\n");
+  return getAllBenchmarkPages().map(renderBenchmark).join("\n\n---\n\n");
 }
 
 function updateReadme(): void {
@@ -67,9 +62,7 @@ function updateReadme(): void {
   const end = readme.indexOf(END_MARKER);
 
   if (start === -1 || end === -1 || end < start) {
-    throw new Error(
-      `Could not locate ${START_MARKER} / ${END_MARKER} markers in README.md`
-    );
+    throw new Error(`Could not locate ${START_MARKER} / ${END_MARKER} markers in README.md`);
   }
 
   const before = readme.slice(0, start + START_MARKER.length);

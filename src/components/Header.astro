@@ -1,54 +1,268 @@
-<header class="border-b border-[color:color-mix(in_srgb,var(--color-border)_45%,transparent)] pb-4">
-  <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-    <a href="/" class="no-underline">
-      <span class="text-sm font-semibold tracking-tight text-[var(--color-text-strong)]">steel.dev</span>
-      <span class="ml-2 text-xs muted">browser agent leaderboards</span>
+---
+import { getAllBenchmarkPages } from "../lib/benchmark-hub";
+
+const dropdownBenchmarks = getAllBenchmarkPages().slice(0, 3);
+---
+
+<header class="py-8">
+  <div
+    class="flex min-h-8 flex-col gap-4 px-0 md:flex-row md:items-center md:justify-between md:px-6"
+  >
+    <a href="/" class="flex items-center gap-6 no-underline" aria-label="Steel leaderboard home">
+      <img src="/logo.png" alt="" class="h-8 w-11 object-contain" />
+      <span class="sr-only">Steel leaderboards</span>
     </a>
 
-    <nav aria-label="Primary">
-      <ul class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm">
-        <li><a href="/" class="no-underline text-[var(--color-text)] hover:text-[var(--color-accent)]">Home</a></li>
-        <li class="muted" aria-hidden="true">|</li>
+    <nav aria-label="Primary" class="md:-ml-auto md:mr-auto md:pl-6">
+      <ul
+        class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-[0.8125rem] font-bold leading-6"
+      >
         <li>
           <a
-            href="/leaderboards/webvoyager/"
-            class="no-underline text-[var(--color-text)] hover:text-[var(--color-accent)]"
+            href="/"
+            class="no-underline text-[var(--color-text)] hover:text-[var(--color-text-strong)]"
+            >Home</a
           >
-            WebVoyager
-          </a>
         </li>
-        <li class="muted" aria-hidden="true">|</li>
+        <li class="dim" aria-hidden="true">|</li>
+        <li class="benchmarks-menu">
+          <a
+            href="/"
+            class="benchmarks-menu-trigger no-underline text-[var(--color-text)] hover:text-[var(--color-text-strong)]"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Benchmarks
+            <svg
+              class="benchmarks-menu-chevron"
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="benchmarks-dropdown" role="menu">
+            <ul class="benchmarks-dropdown-list">
+              {
+                dropdownBenchmarks.map((page) => (
+                  <li>
+                    <a
+                      href={`/leaderboards/${page.meta.slug}/`}
+                      class="benchmarks-dropdown-item"
+                      role="menuitem"
+                    >
+                      <span class="benchmarks-dropdown-title">{page.meta.name}</span>
+                      <span class="benchmarks-dropdown-desc">{page.meta.description}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+            <a href="/" class="benchmarks-dropdown-footer" role="menuitem">
+              View all benchmarks
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </li>
+        <li class="dim" aria-hidden="true">|</li>
         <li>
           <a
             href="https://github.com/steel-dev/leaderboard"
             target="_blank"
             rel="noopener noreferrer"
-            class="no-underline text-[var(--color-text)] hover:text-[var(--color-accent)]"
+            class="no-underline text-[var(--color-text)] hover:text-[var(--color-text-strong)]"
           >
-            GitHub
-          </a>
-        </li>
-        <li class="muted" aria-hidden="true">|</li>
-        <li>
-          <a
-            href="https://github.com/steel-dev/steel-browser"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="no-underline text-[var(--color-text)] hover:text-[var(--color-accent)]"
-          >
-            Steel Browser
+            Contribute
           </a>
         </li>
       </ul>
     </nav>
 
-    <a
-      href="https://discord.gg/steel-dev"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn-primary w-fit"
-    >
-      Join Discord
-    </a>
+    <nav aria-label="Steel links">
+      <ul
+        class="m-0 flex list-none flex-wrap items-center gap-3 p-0 text-[0.8125rem] font-bold leading-6"
+      >
+        <li>
+          <a
+            href="https://discord.gg/steel-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="header-icon-link"
+            aria-label="Join Steel Discord"
+            title="Discord"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.515.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.6986.7719 1.3634 1.225 1.9942a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"
+              />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=header"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Try Steel
+            <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
+
+<style>
+  .header-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    transition:
+      color 120ms ease,
+      background-color 120ms ease;
+  }
+
+  .header-icon-link:hover,
+  .header-icon-link:focus-visible {
+    color: var(--color-text-strong);
+    background: var(--color-surface);
+    outline: none;
+  }
+
+  .benchmarks-menu {
+    position: relative;
+  }
+
+  .benchmarks-menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .benchmarks-menu-chevron {
+    transition: transform 160ms ease;
+  }
+
+  .benchmarks-menu:hover .benchmarks-menu-chevron,
+  .benchmarks-menu:focus-within .benchmarks-menu-chevron {
+    transform: rotate(180deg);
+  }
+
+  .benchmarks-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    min-width: 18rem;
+    padding: 0.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition:
+      opacity 140ms ease,
+      transform 140ms ease,
+      visibility 0s linear 140ms;
+    z-index: 30;
+  }
+
+  .benchmarks-menu:hover .benchmarks-dropdown,
+  .benchmarks-menu:focus-within .benchmarks-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition:
+      opacity 140ms ease,
+      transform 140ms ease,
+      visibility 0s linear 0s;
+  }
+
+  .benchmarks-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .benchmarks-dropdown-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 0.5rem 0.625rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    transition: background-color 120ms ease;
+  }
+
+  .benchmarks-dropdown-item:hover,
+  .benchmarks-dropdown-item:focus-visible {
+    background: color-mix(in srgb, var(--color-surface-strong) 80%, var(--color-bg));
+    outline: none;
+  }
+
+  .benchmarks-dropdown-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-strong);
+    line-height: 1.25rem;
+  }
+
+  .benchmarks-dropdown-desc {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-text-dim);
+    line-height: 1.1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .benchmarks-dropdown-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.375rem;
+    padding: 0.5rem 0.625rem;
+    border-top: 1px solid var(--color-border-subtle);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: 0 0 0.375rem 0.375rem;
+    transition: color 120ms ease;
+  }
+
+  .benchmarks-dropdown-footer:hover,
+  .benchmarks-dropdown-footer:focus-visible {
+    color: var(--color-accent);
+    outline: none;
+  }
+</style>

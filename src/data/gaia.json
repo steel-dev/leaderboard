@@ -6,110 +6,211 @@
       "organization": "Alibaba Cloud",
       "scoreDisplay": "92.36%",
       "scoreValue": 92.36,
-      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/",
-      "notesShort": "Official GAIA leaderboard submission; multi-model ensemble using Qwen, Claude 4.6, GPT-5, DeepSeek 3.2.",
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission; multi-model ensemble using Qwen, Claude 4.6, GPT-5, DeepSeek 3.2, Gemini 3 Pro, and Kimi K2.5.",
+      "reportedAt": "2026-03-11",
       "isNew": true
     },
     {
-      "rank": 2,
+      "rank": 1,
       "systemName": "openJiuwen-deepagent",
-      "organization": "openJiuwen",
-      "scoreDisplay": "91.69%",
-      "scoreValue": 91.69,
+      "organization": "Suzhou AI Lab / Shuqian Tech",
+      "scoreDisplay": "92.36%",
+      "scoreValue": 92.36,
       "sourceUrl": "https://gitcode.com/openJiuwen/agent-store/tree/main/community/deepagent",
-      "notesShort": "Official GAIA leaderboard; GPT-5 and Gemini 3 Pro backbone.",
+      "notesShort": "Official GAIA leaderboard submission; GPT-5 agent with o3 hints/summary plus Gemini 2.5 Pro and Claude tool roles.",
+      "reportedAt": "2026-03-11",
       "isNew": true
     },
     {
       "rank": 3,
+      "systemName": "openJiuwen-deepagent (GPT5/Gemini)",
+      "organization": "openJiuwen",
+      "scoreDisplay": "91.69%",
+      "scoreValue": 91.69,
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission; GPT-5 and Gemini 3 Pro backbone.",
+      "reportedAt": "2026-02-09"
+    },
+    {
+      "rank": 4,
       "systemName": "Lemon Agent",
       "organization": "Lenovo CTO Org",
       "scoreDisplay": "91.36%",
       "scoreValue": 91.36,
       "sourceUrl": "https://github.com/Open-Lemon/LemonAgent",
-      "notesShort": "Official GAIA leaderboard; open-source agent using GPT-5, Gemini 3 Pro, and o3.",
-      "isNew": true
+      "notesShort": "Official GAIA leaderboard submission; open-source Lemon agent using GPT-5, Gemini 3 Pro, and o3.",
+      "reportedAt": "2026-02-06"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "systemName": "JoinAI V2.2",
       "organization": "JoinAI-CMCC",
       "scoreDisplay": "90.7%",
       "scoreValue": 90.7,
-      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/",
-      "notesShort": "Official GAIA leaderboard; multi-model ensemble with GPT-5, Gemini 3 Pro, DeepSeek 3.1, Qwen 3."
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard; multi-model ensemble with GPT-5, Gemini 3 Pro, DeepSeek 3.1, Qwen 3.",
+      "reportedAt": "2026-01-14"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "systemName": "Nemotron-ToolOrchestra",
       "organization": "NVIDIA",
       "scoreDisplay": "90.37%",
       "scoreValue": 90.37,
       "sourceUrl": "https://research.nvidia.com/labs/lpr/ToolOrchestra/",
-      "notesShort": "Official GAIA leaderboard; open-source orchestrator model routing tasks to specialized tools."
+      "notesShort": "Official GAIA leaderboard; Nemotron Tool-Orchestrator 8B routes tasks to specialized tools and frontier models.",
+      "reportedAt": "2026-01-06"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "JoinAI V2.1",
       "organization": "JoinAI-CMCC",
       "scoreDisplay": "90.03%",
       "scoreValue": 90.03,
-      "sourceUrl": "https://huggingface.co/spaces/gaia-benchmark/leaderboard",
-      "notesShort": "GAIA test set average score; reported on gaia-benchmark HF leaderboard."
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "GAIA test set average score; reported on gaia-benchmark HF leaderboard.",
+      "reportedAt": "2026-01-13"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "SU Zero (Shuqian Pro)",
       "organization": "Shuqian Tech",
       "scoreDisplay": "90.03%",
       "scoreValue": 90.03,
-      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/",
-      "notesShort": "Official GAIA leaderboard submission."
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission.",
+      "reportedAt": "2025-12-23"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "HALO V1217-1",
       "organization": "Microsoft AI Asia",
       "scoreDisplay": "89.37%",
       "scoreValue": 89.37,
-      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/",
-      "notesShort": "Official GAIA leaderboard submission from Microsoft AI Asia."
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission from Microsoft AI Asia.",
+      "reportedAt": "2025-12-17"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "ShawnAgent v3.1",
       "organization": "Independent",
       "scoreDisplay": "89.37%",
       "scoreValue": 89.37,
-      "sourceUrl": "https://huggingface.co/spaces/gaia-benchmark/leaderboard",
-      "notesShort": "GAIA test set average score; reported on gaia-benchmark HF leaderboard."
-    },
-    {
-      "rank": 10,
-      "systemName": "Deep Research (o3)",
-      "organization": "OpenAI",
-      "scoreDisplay": "~87%",
-      "scoreValue": 87.0,
-      "sourceUrl": "https://openai.com/index/introducing-deep-research/",
-      "notesShort": "Self-reported at Deep Research launch; reached new SOTA on GAIA at time of release."
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "GAIA test set average score; reported on gaia-benchmark HF leaderboard.",
+      "reportedAt": "2026-01-16"
     },
     {
       "rank": 11,
+      "systemName": "HALO V1217",
+      "organization": "Microsoft AI Asia",
+      "scoreDisplay": "89.04%",
+      "scoreValue": 89.04,
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission from Microsoft AI Asia.",
+      "reportedAt": "2025-12-17"
+    },
+    {
+      "rank": 11,
+      "systemName": "Su Zero + SQ Pro",
+      "organization": "Suzhou AI Lab / Shuqian Tech",
+      "scoreDisplay": "89.04%",
+      "scoreValue": 89.04,
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission using GPT, Gemini, and Claude.",
+      "reportedAt": "2025-12-11"
+    },
+    {
+      "rank": 11,
+      "systemName": "JoinAI V2",
+      "organization": "JoinAI-CMCC",
+      "scoreDisplay": "89.04%",
+      "scoreValue": 89.04,
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission using GPT, Gemini, DeepSeek, and Qwen.",
+      "reportedAt": "2025-12-28"
+    },
+    {
+      "rank": 11,
+      "systemName": "ShawnAgent v3.0",
+      "organization": "Independent",
+      "scoreDisplay": "89.04%",
+      "scoreValue": 89.04,
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission using GPT-5.2, Claude Sonnet 4.5, and Gemini 3 Pro.",
+      "reportedAt": "2026-01-14"
+    },
+    {
+      "rank": 15,
+      "systemName": "Lemon Agent v1.0.8",
+      "organization": "Lenovo CTO Org",
+      "scoreDisplay": "88.37%",
+      "scoreValue": 88.37,
+      "sourceUrl": "https://github.com/Open-Lemon/LemonAgent",
+      "notesShort": "Earlier official GAIA leaderboard Lemon Agent submission using GPT-5, o3, and Gemini 3 Pro.",
+      "reportedAt": "2025-12-04"
+    },
+    {
+      "rank": 16,
+      "systemName": "Su Zero + Shuqian Lite",
+      "organization": "Suzhou AI Lab / Shuqian Tech",
+      "scoreDisplay": "87.38%",
+      "scoreValue": 87.38,
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission using Gemini 3, Claude Sonnet 4.5, and GPT-5.1.",
+      "reportedAt": "2025-12-07"
+    },
+    {
+      "rank": 17,
+      "systemName": "Co-Sight v2.1.0",
+      "organization": "ZTE-AICloud",
+      "scoreDisplay": "87.04%",
+      "scoreValue": 87.04,
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission using ZTE Nebula LLM, Claude Sonnet 4, and Gemini 2.5 Pro.",
+      "reportedAt": "2025-10-13"
+    },
+    {
+      "rank": 18,
+      "systemName": "JoinAI V1.1",
+      "organization": "JoinAI",
+      "scoreDisplay": "86.71%",
+      "scoreValue": 86.71,
+      "sourceUrl": "https://gaia-benchmark-leaderboard.hf.space/ant_test",
+      "notesShort": "Official GAIA leaderboard submission using JoinLLM, GPT-4.1, DeepSeek V3.1, and Gemini 2.5 Pro.",
+      "reportedAt": "2025-10-09"
+    },
+    {
+      "rank": 19,
       "systemName": "Manus",
       "organization": "Monica AI",
       "scoreDisplay": "86.5%",
       "scoreValue": 86.5,
       "sourceUrl": "https://manus.im/",
-      "notesShort": "Self-reported; multi-agent system with parallel tool use across browser, code, and file tools."
+      "notesShort": "Self-reported; multi-agent system with parallel tool use across browser, code, and file tools.",
+      "reportedAt": "2025-03-06"
     },
     {
-      "rank": 12,
-      "systemName": "GPT-4o (Deep Research)",
+      "rank": 20,
+      "systemName": "Deep Research (o3, cons@64)",
       "organization": "OpenAI",
-      "scoreDisplay": "72.0%",
-      "scoreValue": 72.0,
+      "scoreDisplay": "72.57%",
+      "scoreValue": 72.57,
       "sourceUrl": "https://openai.com/index/introducing-deep-research/",
-      "notesShort": "Baseline row from Deep Research launch post; earlier generation model for reference."
+      "notesShort": "OpenAI Deep Research consistency-over-64-samples result reported in the launch post.",
+      "reportedAt": "2025-02-02"
+    },
+    {
+      "rank": 21,
+      "systemName": "Deep Research (o3)",
+      "organization": "OpenAI",
+      "scoreDisplay": "67.36%",
+      "scoreValue": 67.36,
+      "sourceUrl": "https://openai.com/index/introducing-deep-research/",
+      "notesShort": "OpenAI Deep Research pass@1 result on GAIA; launch post also reports 72.57% with consistency over 64 samples.",
+      "reportedAt": "2025-02-02"
     }
   ]
 }

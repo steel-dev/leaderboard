@@ -7,155 +7,220 @@
       "scoreDisplay": "97.0%",
       "scoreValue": 97.0,
       "sourceUrl": "https://browser-use.com/posts/online-mind2web-benchmark",
-      "notesShort": "Self-reported using a custom agentic judge built on Claude Agent SDK; OpenAI's score uses a different screenshot-based judge \u2014 not directly comparable.",
+      "notesShort": "Self-reported using a custom agentic judge built on Claude Agent SDK; OpenAI's score uses a different screenshot-based judge — not directly comparable.",
+      "reportedAt": "2026-03-25",
       "isNew": true
     },
     {
       "rank": 2,
+      "systemName": "GPT-5.4 Native Computer Use",
+      "organization": "OpenAI",
+      "scoreDisplay": "93.0%",
+      "scoreValue": 93.0,
+      "sourceUrl": "https://openai.com/index/introducing-gpt-5-4/",
+      "notesShort": "OpenAI-reported native computer-use score from GPT-5.4 launch announcement; per Browser Use leaderboard, raw data is not public.",
+      "reportedAt": "2026-03-05"
+    },
+    {
+      "rank": 3,
       "systemName": "ABP + Claude Opus 4.6",
       "organization": "theredsix",
       "scoreDisplay": "90.53%",
       "scoreValue": 90.53,
       "sourceUrl": "https://github.com/theredsix/abp-online-mind2web-results",
       "notesShort": "Agent Browser Protocol with Claude Opus 4.6; all 300 task results published publicly. Previous SOTA was 78.7%.",
-      "isNew": true
+      "reportedAt": "2026-03-03"
     },
     {
-      "rank": 3,
+      "rank": 4,
       "systemName": "TinyFish",
       "organization": "TinyFish AI",
       "scoreDisplay": "90.0%",
       "scoreValue": 90.0,
       "sourceUrl": "https://www.tinyfish.ai/blog/mind2web",
       "notesShort": "All 300 task runs published publicly; outperformed Gemini by 21 points and OpenAI Operator by 29 points at time of submission.",
-      "isNew": true
+      "reportedAt": "2026-02-12"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "systemName": "UI-TARS-2",
       "organization": "ByteDance / VLM-Research",
       "scoreDisplay": "88.2%",
       "scoreValue": 88.2,
       "sourceUrl": "https://arxiv.org/abs/2509.02544",
       "notesShort": "Native GUI agent trained with multi-turn RL; score from technical report, evaluated under standard Online-Mind2Web conditions.",
-      "isNew": true
+      "reportedAt": "2025-09-02"
     },
     {
-      "rank": 5,
+      "rank": 6,
+      "systemName": "OpenAGI Lux",
+      "organization": "OpenAGI Foundation",
+      "scoreDisplay": "83.6%",
+      "scoreValue": 83.6,
+      "sourceUrl": "https://agiopen.org/blog",
+      "notesShort": "Foundation computer-use model trained via Agentic Active Pre-training on OSGym; self-reported Online-Mind2Web score at launch.",
+      "reportedAt": "2025-12-01"
+    },
+    {
+      "rank": 7,
       "systemName": "Navigator",
       "organization": "Yutori",
       "scoreDisplay": "78.7%",
       "scoreValue": 78.7,
       "sourceUrl": "https://yutori.com/blog/introducing-navigator",
-      "notesShort": "Human-evaluation score; also achieves 64.7% on auto-evaluation (WebJudge). 3.3x faster per-step than Claude 4.5."
+      "notesShort": "Human-evaluation score; also achieves 64.7% on auto-evaluation (WebJudge). 3.3x faster per-step than Claude 4.5.",
+      "reportedAt": "2025-11-19"
     },
     {
-      "rank": 6,
+      "rank": 8,
+      "systemName": "ChatGPT Atlas Agent Mode",
+      "organization": "OpenAI",
+      "scoreDisplay": "71.0%",
+      "scoreValue": 71.0,
+      "sourceUrl": "https://openai.com/index/introducing-gpt-5-4/",
+      "notesShort": "OpenAI-reported Atlas browser Agent Mode score cited in GPT-5.4 announcement; underlying run data not public.",
+      "reportedAt": "2026-03-05"
+    },
+    {
+      "rank": 9,
       "systemName": "Gemini 2.5 Computer Use",
       "organization": "Google DeepMind",
       "scoreDisplay": "69.0%",
       "scoreValue": 69.0,
       "sourceUrl": "https://yutori.com/blog/introducing-navigator",
-      "notesShort": "Score reported by Yutori under identical evaluation settings; 57.3% on auto-evaluation (WebJudge)."
+      "notesShort": "Score reported by Yutori under identical evaluation settings; 57.3% on auto-evaluation (WebJudge).",
+      "reportedAt": "2025-10-07"
     },
     {
-      "rank": 7,
+      "rank": 10,
+      "systemName": "Stagehand (Gemini 2.5 CU)",
+      "organization": "Browserbase",
+      "scoreDisplay": "65.0%",
+      "scoreValue": 65.0,
+      "sourceUrl": "https://www.stagehand.dev/agent-evals",
+      "notesShort": "Stagehand SDK wrapping Gemini 2.5 Computer Use; score from Browserbase's public Computer Use evaluations leaderboard.",
+      "reportedAt": "2026-03-25",
+      "isNew": true
+    },
+    {
+      "rank": 11,
       "systemName": "OpenAI Operator",
       "organization": "OpenAI",
       "scoreDisplay": "61.3%",
       "scoreValue": 61.3,
       "sourceUrl": "https://arxiv.org/abs/2504.01382",
-      "notesShort": "Score from Online-Mind2Web paper; OpenAI did not publish judge, harness, or task-level results for independent verification."
+      "notesShort": "Score from Online-Mind2Web paper; OpenAI did not publish judge, harness, or task-level results for independent verification.",
+      "reportedAt": "2025-04-02"
     },
     {
-      "rank": 8,
+      "rank": 12,
       "systemName": "Claude 4.0",
       "organization": "Anthropic",
       "scoreDisplay": "61.0%",
       "scoreValue": 61.0,
       "sourceUrl": "https://yutori.com/blog/introducing-navigator",
-      "notesShort": "Human-evaluation score reported by Yutori; 47.7% on auto-evaluation (WebJudge)."
+      "notesShort": "Human-evaluation score reported by Yutori; 47.7% on auto-evaluation (WebJudge).",
+      "reportedAt": "2025-11-19"
     },
     {
-      "rank": 9,
+      "rank": 13,
       "systemName": "ACT-1-20250814",
       "organization": "Enhans",
       "scoreDisplay": "57.3%",
       "scoreValue": 57.3,
       "sourceUrl": "https://huggingface.co/spaces/osunlp/Online_Mind2Web_Leaderboard",
-      "notesShort": "Online-Mind2Web SR (Easy 81.9 / Med 54.5 / Hard 35.1); reported on osunlp HF leaderboard."
+      "notesShort": "Online-Mind2Web SR (Easy 81.9 / Med 54.5 / Hard 35.1); reported on osunlp HF leaderboard.",
+      "reportedAt": "2025-08-14"
     },
     {
-      "rank": 10,
+      "rank": 14,
       "systemName": "Claude Computer Use 3.7 (w/o thinking)",
       "organization": "Anthropic",
       "scoreDisplay": "56.3%",
       "scoreValue": 56.3,
       "sourceUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
-      "notesShort": "Online-Mind2Web SR (Easy 90.4 / Med 49.0 / Hard 32.4); reported on osunlp HF leaderboard."
+      "notesShort": "Online-Mind2Web SR (Easy 90.4 / Med 49.0 / Hard 32.4); reported on osunlp HF leaderboard.",
+      "reportedAt": "2025-02-24"
     },
     {
-      "rank": 11,
+      "rank": 15,
       "systemName": "Claude 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "55.0%",
       "scoreValue": 55.0,
       "sourceUrl": "https://yutori.com/blog/introducing-navigator",
-      "notesShort": "Human-evaluation score reported by Yutori under identical evaluation settings; 59.3% on auto-evaluation (WebJudge)."
+      "notesShort": "Human-evaluation score reported by Yutori under identical evaluation settings; 59.3% on auto-evaluation (WebJudge).",
+      "reportedAt": "2025-11-19"
     },
     {
-      "rank": 12,
+      "rank": 15,
+      "systemName": "Stagehand (Sonnet 4.5)",
+      "organization": "Browserbase",
+      "scoreDisplay": "55.0%",
+      "scoreValue": 55.0,
+      "sourceUrl": "https://www.stagehand.dev/agent-evals",
+      "notesShort": "Stagehand SDK with Claude Sonnet 4.5; score from Browserbase's public Computer Use evaluations leaderboard.",
+      "reportedAt": "2026-03-25"
+    },
+    {
+      "rank": 17,
       "systemName": "ACT-1-20250703",
       "organization": "Enhans",
       "scoreDisplay": "45.7%",
       "scoreValue": 45.7,
       "sourceUrl": "https://huggingface.co/spaces/osunlp/Online_Mind2Web_Leaderboard",
-      "notesShort": "Online-Mind2Web SR (Easy 65.1 / Med 46.2 / Hard 23.0); reported on osunlp HF leaderboard."
+      "notesShort": "Online-Mind2Web SR (Easy 65.1 / Med 46.2 / Hard 23.0); reported on osunlp HF leaderboard.",
+      "reportedAt": "2025-07-03"
     },
     {
-      "rank": 13,
+      "rank": 18,
       "systemName": "SeeAct (gpt-4o)",
       "organization": "OSU NLP",
       "scoreDisplay": "30.7%",
       "scoreValue": 30.7,
       "sourceUrl": "https://osu-nlp-group.github.io/SeeAct/",
-      "notesShort": "Online-Mind2Web SR (Easy 60.2 / Med 25.2 / Hard 8.1); reported on osu-nlp-group.github.io."
+      "notesShort": "Online-Mind2Web SR (Easy 60.2 / Med 25.2 / Hard 8.1); reported on osu-nlp-group.github.io.",
+      "reportedAt": "2024-01-16"
     },
     {
-      "rank": 14,
+      "rank": 19,
       "systemName": "Browser Use (gpt-4o)",
       "organization": "Browser Use",
       "scoreDisplay": "30.0%",
       "scoreValue": 30.0,
       "sourceUrl": "https://github.com/browser-use/browser-use",
-      "notesShort": "Online-Mind2Web SR (Easy 55.4 / Med 26.6 / Hard 8.1); reported on osunlp HF leaderboard."
+      "notesShort": "Online-Mind2Web SR (Easy 55.4 / Med 26.6 / Hard 8.1); reported on osunlp HF leaderboard.",
+      "reportedAt": "2024-11-06"
     },
     {
-      "rank": 14,
+      "rank": 19,
       "systemName": "HAL Leaderboard baseline (best open)",
       "organization": "Princeton / OSU",
       "scoreDisplay": "~30%",
       "scoreValue": 30.0,
       "sourceUrl": "https://hal.cs.princeton.edu/online_mind2web",
-      "notesShort": "Reference baseline from the HAL leaderboard tracker; illustrates the gap between frontier commercial systems and open models."
+      "notesShort": "Reference baseline from the HAL leaderboard tracker; illustrates the gap between frontier commercial systems and open models.",
+      "reportedAt": "2025-04"
     },
     {
-      "rank": 16,
+      "rank": 21,
       "systemName": "Claude Computer Use 3.5",
       "organization": "Anthropic",
       "scoreDisplay": "29.0%",
       "scoreValue": 29.0,
       "sourceUrl": "https://www.anthropic.com/news/3-5-models-and-computer-use",
-      "notesShort": "Online-Mind2Web SR (Easy 56.6 / Med 20.3 / Hard 14.9); reported on osunlp HF leaderboard."
+      "notesShort": "Online-Mind2Web SR (Easy 56.6 / Med 20.3 / Hard 14.9); reported on osunlp HF leaderboard.",
+      "reportedAt": "2024-10-22"
     },
     {
-      "rank": 17,
+      "rank": 22,
       "systemName": "Agent-E (gpt-4o)",
       "organization": "Emergence AI",
       "scoreDisplay": "28.0%",
       "scoreValue": 28.0,
       "sourceUrl": "https://github.com/EmergenceAI/Agent-E",
-      "notesShort": "Online-Mind2Web SR (Easy 49.4 / Med 26.6 / Hard 6.8); reported on osunlp HF leaderboard."
+      "notesShort": "Online-Mind2Web SR (Easy 49.4 / Med 26.6 / Hard 6.8); reported on osunlp HF leaderboard.",
+      "reportedAt": "2024-07-16"
     }
   ]
 }

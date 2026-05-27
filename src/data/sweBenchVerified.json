@@ -8,7 +8,7 @@
       "scoreValue": 93.9,
       "sourceUrl": "https://www.mindstudio.ai/blog/claude-mythos-benchmark-results-swe-bench-agentic-coding",
       "notesShort": "Utilizes Mythos reasoning loops to reach near-human resolution on verified tasks.",
-      "isNew": true
+      "reportedAt": "2026-04-09"
     },
     {
       "rank": 2,
@@ -18,7 +18,7 @@
       "scoreValue": 87.6,
       "sourceUrl": "https://www.anthropic.com/news/claude-opus-4-7",
       "notesShort": "Anthropic's April 2026 frontier release; optimized for long-context codebase understanding.",
-      "isNew": true
+      "reportedAt": "2026-04-16"
     },
     {
       "rank": 3,
@@ -27,7 +27,8 @@
       "scoreDisplay": "80.9%",
       "scoreValue": 80.9,
       "sourceUrl": "https://www.anthropic.com/news/claude-opus-4-5",
-      "notesShort": "Self-reported on the official leaderboard; high-throughput frontier model."
+      "notesShort": "Self-reported on the official leaderboard; high-throughput frontier model.",
+      "reportedAt": "2025-11-24"
     },
     {
       "rank": 4,
@@ -36,7 +37,8 @@
       "scoreDisplay": "80.8%",
       "scoreValue": 80.8,
       "sourceUrl": "https://www.anthropic.com/news/claude-opus-4-6",
-      "notesShort": "Self-reported by Anthropic; near-parity with Opus 4.5."
+      "notesShort": "Self-reported by Anthropic; near-parity with Opus 4.5.",
+      "reportedAt": "2026-02-05"
     },
     {
       "rank": 5,
@@ -46,6 +48,7 @@
       "scoreValue": 80.6,
       "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/",
       "notesShort": "Large-scale MoE model with specialized coding reinforcement learning.",
+      "reportedAt": "2026-04-24",
       "isNew": true
     },
     {
@@ -56,7 +59,7 @@
       "scoreValue": 80.6,
       "sourceUrl": "https://deepmind.google/models/gemini/pro/",
       "notesShort": "Self-reported by Google DeepMind at Gemini 3.1 Pro launch, February 2026.",
-      "isNew": true
+      "reportedAt": "2026-02-19"
     },
     {
       "rank": 7,
@@ -66,6 +69,7 @@
       "scoreValue": 80.2,
       "sourceUrl": "https://www.kimi.com/blog/kimi-k2-6",
       "notesShort": "Advanced reasoning model with integrated terminal and editor tools.",
+      "reportedAt": "2026-04-20",
       "isNew": true
     },
     {
@@ -75,7 +79,8 @@
       "scoreDisplay": "80.2%",
       "scoreValue": 80.2,
       "sourceUrl": "https://www.minimax.io/news/minimax-m25",
-      "notesShort": "Leading open-weight model on the official leaderboard."
+      "notesShort": "Leading open-weight model on the official leaderboard.",
+      "reportedAt": "2026-02-12"
     },
     {
       "rank": 9,
@@ -84,7 +89,8 @@
       "scoreDisplay": "80.0%",
       "scoreValue": 80.0,
       "sourceUrl": "https://openai.com/index/introducing-gpt-5-2/",
-      "notesShort": "Self-reported by OpenAI on the official leaderboard."
+      "notesShort": "Self-reported by OpenAI on the official leaderboard.",
+      "reportedAt": "2025-12-11"
     },
     {
       "rank": 10,
@@ -93,7 +99,8 @@
       "scoreDisplay": "79.6%",
       "scoreValue": 79.6,
       "sourceUrl": "https://www.anthropic.com/news/claude-sonnet-4-6",
-      "notesShort": "Self-reported; high efficiency with frontier-class coding performance."
+      "notesShort": "Self-reported; high efficiency with frontier-class coding performance.",
+      "reportedAt": "2026-02-17"
     },
     {
       "rank": 11,
@@ -102,7 +109,8 @@
       "scoreDisplay": "79.0%",
       "scoreValue": 79.0,
       "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
-      "notesShort": "SWE-bench Verified resolve rate; reported on huggingface.co."
+      "notesShort": "SWE-bench Verified resolve rate; reported on huggingface.co.",
+      "reportedAt": "2026-04-24"
     },
     {
       "rank": 12,
@@ -111,7 +119,8 @@
       "scoreDisplay": "78.8%",
       "scoreValue": 78.8,
       "sourceUrl": "https://qwen.ai/blog?id=qwen3.6",
-      "notesShort": "SWE-bench Verified resolve rate; reported on qwen.ai."
+      "notesShort": "SWE-bench Verified resolve rate; reported on qwen.ai.",
+      "reportedAt": "2026-04-02"
     },
     {
       "rank": 13,
@@ -120,7 +129,8 @@
       "scoreDisplay": "78.0%",
       "scoreValue": 78.0,
       "sourceUrl": "https://blog.google/products/gemini/gemini-3-flash/",
-      "notesShort": "SWE-bench Verified resolve rate; reported on blog.google."
+      "notesShort": "SWE-bench Verified resolve rate; reported on blog.google.",
+      "reportedAt": "2025-12-17"
     },
     {
       "rank": 13,
@@ -129,7 +139,8 @@
       "scoreDisplay": "78.0%",
       "scoreValue": 78.0,
       "sourceUrl": "https://mimo.xiaomi.com/mimo-v2-pro",
-      "notesShort": "SWE-bench Verified resolve rate; reported on mimo.xiaomi.com."
+      "notesShort": "SWE-bench Verified resolve rate; reported on mimo.xiaomi.com.",
+      "reportedAt": "2026-03-18"
     },
     {
       "rank": 15,
@@ -138,7 +149,8 @@
       "scoreDisplay": "77.8%",
       "scoreValue": 77.8,
       "sourceUrl": "https://docs.z.ai/guides/llm/glm-5",
-      "notesShort": "SWE-bench Verified resolve rate; reported on docs.z.ai."
+      "notesShort": "SWE-bench Verified resolve rate; reported on docs.z.ai.",
+      "reportedAt": "2026-02-11"
     }
   ]
 }

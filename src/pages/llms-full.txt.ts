@@ -35,15 +35,48 @@ export const GET: APIRoute = () => {
   for (const page of pages) {
     lines.push(`## ${page.meta.name}`);
     lines.push("");
+    lines.push(page.meta.description);
+    lines.push("");
     lines.push(`Category: ${benchmarkCategoryLabels[page.meta.category]}`);
     lines.push(`Scope: ${page.meta.scope}`);
     lines.push(`Last updated: ${page.meta.lastUpdated}`);
     lines.push("");
-    lines.push("| Rank | System | Score | Organization | Notes | Source |");
-    lines.push("|------|--------|-------|--------------|-------|--------|");
+    lines.push("About:");
+    page.meta.about.forEach((paragraph) => {
+      lines.push(`- ${paragraph}`);
+    });
+    lines.push("");
+
+    lines.push("Methodology:");
+    page.meta.methodology.forEach((item) => {
+      lines.push(`- ${item}`);
+    });
+    lines.push("");
+
+    lines.push("Example evaluation tasks:");
+    page.meta.taskExamples.forEach((item) => {
+      lines.push(`- "${item.quote}" (citation: ${item.sourceLabel}, ${item.sourceUrl})`);
+    });
+    if (page.meta.importantNotes.length > 0) {
+      lines.push("");
+      lines.push("Interpretation notes:");
+      page.meta.importantNotes.forEach((note) => {
+        lines.push(`- ${note}`);
+      });
+    }
+    lines.push("");
+
+    lines.push("Canonical links:");
+    page.meta.links.forEach((link) => {
+      lines.push(`- ${link.label}: ${link.url}`);
+    });
+    lines.push("");
+
+    lines.push("| Rank | System | Score | Organization | Notes | Source | Repo |");
+    lines.push("|------|--------|-------|--------------|-------|--------|------|");
     page.results.forEach((row) => {
       lines.push(
-        `| ${row.rank} | ${row.systemName} | ${row.scoreDisplay} | ${row.organization} | ${row.notesShort} | ${row.sourceUrl} |`
+        `| ${row.rank} | ${row.systemName} | ${row.scoreDisplay} | ${row.organization} | ${row.notesShort} | ${row.sourceUrl} | ${row.repoUrl ?? "—"} |`
       );
     });
     lines.push("");

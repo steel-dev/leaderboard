@@ -1,99 +1,104 @@
 {
-"agentBench": [
+  "agentBench": [
     {
-        "rank": 1,
-        "systemName": "AgentRL w/ Qwen2.5-32B-Instruct",
-        "organization": "Tsinghua University",
-        "scoreDisplay": "70.4%",
-        "scoreValue": 70.4,
-        "sourceUrl": "https://arxiv.org/abs/2510.04206",
-        "notesShort": "RL-trained on AgentBench FC environments; outperforms GPT-5 and Claude Sonnet 4 per paper.",
-        "isNew": true
+      "rank": 1,
+      "systemName": "AgentRL w/ Qwen2.5-32B-Instruct",
+      "organization": "Tsinghua University",
+      "scoreDisplay": "70.4%",
+      "scoreValue": 70.4,
+      "sourceUrl": "https://arxiv.org/abs/2510.04206",
+      "notesShort": "RL-trained on AgentBench FC environments; outperforms GPT-5 and Claude Sonnet 4 per paper.",
+      "reportedAt": "2025-10-05"
     },
     {
-        "rank": 2,
-        "systemName": "AgentRL w/ Qwen2.5-14B-Instruct",
-        "organization": "Tsinghua University",
-        "scoreDisplay": "67.7%",
-        "scoreValue": 67.7,
-        "sourceUrl": "https://arxiv.org/abs/2510.04206",
-        "notesShort": "RL-trained 14B model; evaluated on ALFWorld, DB, KG, OS, and Webshop environments.",
-        "isNew": true
+      "rank": 2,
+      "systemName": "AgentRL w/ Qwen2.5-14B-Instruct",
+      "organization": "Tsinghua University",
+      "scoreDisplay": "67.7%",
+      "scoreValue": 67.7,
+      "sourceUrl": "https://arxiv.org/abs/2510.04206",
+      "notesShort": "RL-trained 14B model; evaluated on ALFWorld, DB, KG, OS, and Webshop environments.",
+      "reportedAt": "2025-10-05"
     },
     {
-        "rank": 3,
-        "systemName": "AgentRL w/ GLM-4-9B-0414",
-        "organization": "Tsinghua University",
-        "scoreDisplay": "65.0%",
-        "scoreValue": 65.0,
-        "sourceUrl": "https://arxiv.org/abs/2510.04206",
-        "notesShort": "RL-trained on GLM-4-9B backbone; demonstrates cross-architecture generalization of AgentRL.",
-        "isNew": true
+      "rank": 3,
+      "systemName": "AgentRL w/ GLM-4-9B-0414",
+      "organization": "Tsinghua University",
+      "scoreDisplay": "65.0%",
+      "scoreValue": 65.0,
+      "sourceUrl": "https://arxiv.org/abs/2510.04206",
+      "notesShort": "RL-trained on GLM-4-9B backbone; demonstrates cross-architecture generalization of AgentRL.",
+      "reportedAt": "2025-10-05"
     },
     {
-        "rank": 4,
-        "systemName": "AgentRL w/ Qwen2.5-7B-Instruct",
-        "organization": "Tsinghua University",
-        "scoreDisplay": "62.0%",
-        "scoreValue": 62.0,
-        "sourceUrl": "https://arxiv.org/abs/2510.04206",
-        "notesShort": "RL-trained 7B model; competitive with much larger commercial models on AgentBench FC.",
-        "isNew": true
+      "rank": 4,
+      "systemName": "AgentRL w/ Qwen2.5-7B-Instruct",
+      "organization": "Tsinghua University",
+      "scoreDisplay": "62.0%",
+      "scoreValue": 62.0,
+      "sourceUrl": "https://arxiv.org/abs/2510.04206",
+      "notesShort": "RL-trained 7B model; competitive with much larger commercial models on AgentBench FC.",
+      "reportedAt": "2025-10-05"
     },
     {
-        "rank": 5,
-        "systemName": "AgentRL w/ Qwen2.5-3B-Instruct",
-        "organization": "Tsinghua University",
-        "scoreDisplay": "60.0%",
-        "scoreValue": 60.0,
-        "sourceUrl": "https://arxiv.org/abs/2510.04206",
-        "notesShort": "Smallest AgentRL model; shows RL training benefit extends to 3B parameter scale.",
-        "isNew": true
+      "rank": 5,
+      "systemName": "AgentRL w/ Qwen2.5-3B-Instruct",
+      "organization": "Tsinghua University",
+      "scoreDisplay": "60.0%",
+      "scoreValue": 60.0,
+      "sourceUrl": "https://arxiv.org/abs/2510.04206",
+      "notesShort": "Smallest AgentRL model; shows RL training benefit extends to 3B parameter scale.",
+      "reportedAt": "2025-10-05"
     },
     {
-        "rank": 6,
-        "systemName": "Claude Sonnet 4.5",
-        "organization": "Anthropic",
-        "scoreDisplay": "58.9%",
-        "scoreValue": 58.9,
-        "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
-        "notesShort": "Community leaderboard submission; evaluated on AgentBench FC function-calling task suite."
+      "rank": 6,
+      "systemName": "Claude Sonnet 4.5",
+      "organization": "Anthropic",
+      "scoreDisplay": "58.9%",
+      "scoreValue": 58.9,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
+      "notesShort": "Community leaderboard submission; evaluated on AgentBench FC function-calling task suite.",
+      "reportedAt": "2025-09-29"
     },
     {
-        "rank": 7,
-        "systemName": "Claude Sonnet 4.5 Thinking",
-        "organization": "Anthropic",
-        "scoreDisplay": "58.3%",
-        "scoreValue": 58.3,
-        "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
-        "notesShort": "Extended thinking variant; marginal drop vs base Sonnet 4.5 on FC tasks."
+      "rank": 7,
+      "systemName": "Claude Sonnet 4.5 Thinking",
+      "organization": "Anthropic",
+      "scoreDisplay": "58.3%",
+      "scoreValue": 58.3,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
+      "notesShort": "Extended thinking variant; marginal drop vs base Sonnet 4.5 on FC tasks.",
+      "reportedAt": "2025-09-29"
     },
     {
-        "rank": 8,
-        "systemName": "Claude Sonnet 4 Thinking",
-        "organization": "Anthropic",
-        "scoreDisplay": "58.2%",
-        "scoreValue": 58.2,
-        "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
-        "notesShort": "Community leaderboard submission; evaluated on AgentBench FC function-calling task suite."
+      "rank": 8,
+      "systemName": "Claude Sonnet 4 Thinking",
+      "organization": "Anthropic",
+      "scoreDisplay": "58.2%",
+      "scoreValue": 58.2,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
+      "notesShort": "Community leaderboard submission; evaluated on AgentBench FC function-calling task suite.",
+      "reportedAt": "2025-05-22"
     },
     {
-        "rank": 9,
-        "systemName": "Claude Sonnet 4",
-        "organization": "Anthropic",
-        "scoreDisplay": "57.4%",
-        "scoreValue": 57.4,
-        "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
-        "notesShort": "Community leaderboard submission; evaluated on AgentBench FC function-calling task suite."
+      "rank": 9,
+      "systemName": "Claude Sonnet 4",
+      "organization": "Anthropic",
+      "scoreDisplay": "57.4%",
+      "scoreValue": 57.4,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
+      "notesShort": "Community leaderboard submission; evaluated on AgentBench FC function-calling task suite.",
+      "reportedAt": "2025-05-22"
     },
     {
-        "rank": 10,
-        "systemName": "Claude Sonnet 3.7",
-        "organization": "Anthropic",
-        "scoreDisplay": "53.2%",
-        "scoreValue": 53.2,
-        "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
-        "notesShort": "Community leaderboard submission; earlier Anthropic generation included for progress reference."
+      "rank": 10,
+      "systemName": "Claude Sonnet 3.7",
+      "organization": "Anthropic",
+      "scoreDisplay": "53.2%",
+      "scoreValue": 53.2,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml",
+      "notesShort": "Community leaderboard submission; earlier Anthropic generation included for progress reference.",
+      "reportedAt": "2025-02-24"
     }
   ]
 }
