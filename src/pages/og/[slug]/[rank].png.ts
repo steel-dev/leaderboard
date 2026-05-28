@@ -148,7 +148,7 @@ export const GET: APIRoute = async ({ params }) => {
             type: "div",
             props: {
               style: { fontSize: "32px", color: TEXT_MUTED, marginBottom: "80px" },
-              children: `Developed by ${result.organization}`,
+              children: `by ${result.organization}`,
             },
           },
 
@@ -172,7 +172,7 @@ export const GET: APIRoute = async ({ params }) => {
                             letterSpacing: "0.2em",
                             marginBottom: "10px",
                           },
-                          children: "Efficiency Score",
+                          children: "Score",
                         },
                       },
                       {

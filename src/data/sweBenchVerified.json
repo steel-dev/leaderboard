@@ -12,6 +12,17 @@
     },
     {
       "rank": 2,
+      "systemName": "Claude Opus 4.8",
+      "organization": "Anthropic",
+      "scoreDisplay": "88.6%",
+      "scoreValue": 88.6,
+      "sourceUrl": "https://www.anthropic.com/news/claude-opus-4-8",
+      "notesShort": "Anthropic's May 2026 frontier release; standard configuration with thinking blocks included. Self-reported in the Opus 4.8 system card.",
+      "reportedAt": "2026-05-28",
+      "isNew": true
+    },
+    {
+      "rank": 3,
       "systemName": "Claude Opus 4.7",
       "organization": "Anthropic",
       "scoreDisplay": "87.6%",
@@ -21,7 +32,7 @@
       "reportedAt": "2026-04-16"
     },
     {
-      "rank": 3,
+      "rank": 4,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "80.9%",
@@ -31,7 +42,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "80.8%",
@@ -41,7 +52,7 @@
       "reportedAt": "2026-02-05"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "systemName": "DeepSeek-V4-Pro-Max",
       "organization": "DeepSeek",
       "scoreDisplay": "80.6%",
@@ -52,7 +63,7 @@
       "isNew": true
     },
     {
-      "rank": 5,
+      "rank": 6,
       "systemName": "Gemini 3.1 Pro",
       "organization": "Google DeepMind",
       "scoreDisplay": "80.6%",
@@ -62,7 +73,7 @@
       "reportedAt": "2026-02-19"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "Kimi K2.6",
       "organization": "Moonshot AI",
       "scoreDisplay": "80.2%",
@@ -73,7 +84,7 @@
       "isNew": true
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "MiniMax M2.5",
       "organization": "MiniMax",
       "scoreDisplay": "80.2%",
@@ -83,17 +94,17 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "systemName": "GPT-5.2",
       "organization": "OpenAI",
       "scoreDisplay": "80.0%",
-      "scoreValue": 80.0,
+      "scoreValue": 80,
       "sourceUrl": "https://openai.com/index/introducing-gpt-5-2/",
       "notesShort": "Self-reported by OpenAI on the official leaderboard.",
       "reportedAt": "2025-12-11"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "Claude Sonnet 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "79.6%",
@@ -103,17 +114,17 @@
       "reportedAt": "2026-02-17"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "systemName": "DeepSeek-V4-Flash-Max",
       "organization": "DeepSeek",
       "scoreDisplay": "79.0%",
-      "scoreValue": 79.0,
+      "scoreValue": 79,
       "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
       "notesShort": "SWE-bench Verified resolve rate; reported on huggingface.co.",
       "reportedAt": "2026-04-24"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "systemName": "Qwen3.6 Plus",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "78.8%",
@@ -123,27 +134,27 @@
       "reportedAt": "2026-04-02"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Gemini 3 Flash",
       "organization": "Google DeepMind",
       "scoreDisplay": "78.0%",
-      "scoreValue": 78.0,
+      "scoreValue": 78,
       "sourceUrl": "https://blog.google/products/gemini/gemini-3-flash/",
       "notesShort": "SWE-bench Verified resolve rate; reported on blog.google.",
       "reportedAt": "2025-12-17"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "MiMo-V2-Pro",
       "organization": "Xiaomi",
       "scoreDisplay": "78.0%",
-      "scoreValue": 78.0,
+      "scoreValue": 78,
       "sourceUrl": "https://mimo.xiaomi.com/mimo-v2-pro",
       "notesShort": "SWE-bench Verified resolve rate; reported on mimo.xiaomi.com.",
       "reportedAt": "2026-03-18"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "GLM-5",
       "organization": "Zhipu AI",
       "scoreDisplay": "77.8%",

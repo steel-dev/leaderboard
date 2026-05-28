@@ -74,6 +74,17 @@
     },
     {
       "rank": 8,
+      "systemName": "Claude Opus 4.8",
+      "organization": "Anthropic",
+      "scoreDisplay": "84.3%",
+      "scoreValue": 84.3,
+      "sourceUrl": "https://www.anthropic.com/news/claude-opus-4-8",
+      "notesShort": "Single-agent; web search, web fetch, code execution, adaptive thinking at max effort with context compaction (multi-agent configuration reaches 88.5%). Self-reported in the Opus 4.8 system card.",
+      "reportedAt": "2026-05-28",
+      "isNew": true
+    },
+    {
+      "rank": 9,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "83.7%",
@@ -83,7 +94,7 @@
       "reportedAt": "2026-04-07"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "systemName": "DeepSeek-V4-Pro-Max",
       "organization": "DeepSeek",
       "scoreDisplay": "83.4%",
@@ -94,7 +105,7 @@
       "reportedAt": "2026-04-24"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "GPT-5.4",
       "organization": "OpenAI",
       "scoreDisplay": "82.7%",
@@ -104,7 +115,7 @@
       "reportedAt": "2026-03-05"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "systemName": "Claude Opus 4.7",
       "organization": "Anthropic",
       "scoreDisplay": "79.3%",
@@ -114,7 +125,7 @@
       "reportedAt": "2026-04-16"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "systemName": "GLM-5.1",
       "organization": "Zhipu AI",
       "scoreDisplay": "79.3%",
@@ -125,7 +136,7 @@
       "reportedAt": "2026-04"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Qwen3.5-397B-A17B",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "78.6%",
@@ -136,7 +147,7 @@
       "reportedAt": "2026-02"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "Kimi K2.5",
       "organization": "Moonshot AI",
       "scoreDisplay": "78.4%",
@@ -147,7 +158,7 @@
       "reportedAt": "2026-02"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "GPT-5.2 Pro",
       "organization": "OpenAI",
       "scoreDisplay": "77.9%",
@@ -157,7 +168,7 @@
       "reportedAt": "2025-12-11"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "GPT-5.3-Codex",
       "organization": "OpenAI",
       "scoreDisplay": "77.3%",
@@ -167,7 +178,7 @@
       "reportedAt": "2026-03-05"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "Seed 2.0 Pro",
       "organization": "ByteDance",
       "scoreDisplay": "77.3%",
@@ -177,7 +188,7 @@
       "reportedAt": "2026-02-15"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "MiniMax M2.5",
       "organization": "MiniMax",
       "scoreDisplay": "76.3%",
@@ -188,7 +199,7 @@
       "reportedAt": "2026-04"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "GLM-5",
       "organization": "Zhipu AI",
       "scoreDisplay": "75.9%",
@@ -199,7 +210,7 @@
       "reportedAt": "2026-02"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "systemName": "Claude Sonnet 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "74.7%",
@@ -209,7 +220,7 @@
       "reportedAt": "2026-02-17"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "systemName": "DeepSeek-V4-Flash-Max",
       "organization": "DeepSeek",
       "scoreDisplay": "73.2%",
@@ -220,7 +231,7 @@
       "reportedAt": "2026-04-24"
     },
     {
-      "rank": 22,
+      "rank": 23,
       "systemName": "LongCat-Flash-Thinking-2601",
       "organization": "Meituan",
       "scoreDisplay": "73.1%",
@@ -231,7 +242,7 @@
       "reportedAt": "2026-01"
     },
     {
-      "rank": 23,
+      "rank": 24,
       "systemName": "Step-3.5-Flash",
       "organization": "StepFun",
       "scoreDisplay": "69.0%",
@@ -241,7 +252,7 @@
       "reportedAt": "2026-02"
     },
     {
-      "rank": 24,
+      "rank": 25,
       "systemName": "GLM-4.7",
       "organization": "Zhipu AI",
       "scoreDisplay": "67.5%",
@@ -252,7 +263,7 @@
       "reportedAt": "2025-12"
     },
     {
-      "rank": 25,
+      "rank": 26,
       "systemName": "GPT-5.2",
       "organization": "OpenAI",
       "scoreDisplay": "65.8%",
@@ -262,7 +273,7 @@
       "reportedAt": "2025-12-11"
     },
     {
-      "rank": 26,
+      "rank": 27,
       "systemName": "Qwen3.5-122B-A10B",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "63.8%",
@@ -273,7 +284,7 @@
       "reportedAt": "2026-02"
     },
     {
-      "rank": 27,
+      "rank": 28,
       "systemName": "MiniMax M2.1",
       "organization": "MiniMax",
       "scoreDisplay": "62.0%",
@@ -283,7 +294,7 @@
       "reportedAt": "2025-12"
     },
     {
-      "rank": 28,
+      "rank": 29,
       "systemName": "LongSeeker",
       "organization": "Academic Research",
       "scoreDisplay": "61.5%",
@@ -294,7 +305,7 @@
       "isNew": true
     },
     {
-      "rank": 29,
+      "rank": 30,
       "systemName": "Qwen3.5-27B",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "61.0%",
@@ -305,7 +316,7 @@
       "reportedAt": "2026-02"
     },
     {
-      "rank": 29,
+      "rank": 30,
       "systemName": "Qwen3.5-35B-A3B",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "61.0%",
@@ -316,7 +327,7 @@
       "reportedAt": "2026-02"
     },
     {
-      "rank": 31,
+      "rank": 32,
       "systemName": "Kimi K2-Thinking-0905",
       "organization": "Moonshot AI",
       "scoreDisplay": "60.2%",
@@ -327,7 +338,7 @@
       "reportedAt": "2025-11"
     },
     {
-      "rank": 32,
+      "rank": 33,
       "systemName": "Gemini 3 Pro",
       "organization": "Google",
       "scoreDisplay": "59.2%",
@@ -337,7 +348,7 @@
       "reportedAt": "2026-02-19"
     },
     {
-      "rank": 33,
+      "rank": 34,
       "systemName": "MiMo-V2-Flash",
       "organization": "Xiaomi",
       "scoreDisplay": "58.3%",
@@ -348,7 +359,7 @@
       "reportedAt": "2026-01"
     },
     {
-      "rank": 34,
+      "rank": 35,
       "systemName": "Parallel Ultra8x",
       "organization": "Parallel",
       "scoreDisplay": "58.0%",
@@ -358,7 +369,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 35,
+      "rank": 36,
       "systemName": "Parallel Ultra4x",
       "organization": "Parallel",
       "scoreDisplay": "56.0%",
@@ -368,7 +379,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 36,
+      "rank": 37,
       "systemName": "GPT-5",
       "organization": "OpenAI",
       "scoreDisplay": "54.9%",
@@ -378,7 +389,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 37,
+      "rank": 38,
       "systemName": "Parallel Basic + GPT-5.4 harness",
       "organization": "Parallel",
       "scoreDisplay": "53.0%",
@@ -388,7 +399,7 @@
       "reportedAt": "2026-04-21"
     },
     {
-      "rank": 38,
+      "rank": 39,
       "systemName": "o4-mini",
       "organization": "OpenAI",
       "scoreDisplay": "51.5%",
@@ -398,7 +409,7 @@
       "reportedAt": "2025-04-16"
     },
     {
-      "rank": 38,
+      "rank": 39,
       "systemName": "OpenAI Deep Research",
       "organization": "OpenAI",
       "scoreDisplay": "51.5%",
@@ -408,7 +419,7 @@
       "reportedAt": "2025-04-10"
     },
     {
-      "rank": 40,
+      "rank": 41,
       "systemName": "DeepSeek-V3.2",
       "organization": "DeepSeek",
       "scoreDisplay": "51.4%",
@@ -419,7 +430,7 @@
       "reportedAt": "2025-12-01"
     },
     {
-      "rank": 40,
+      "rank": 41,
       "systemName": "DeepSeek-V3.2 (Thinking)",
       "organization": "DeepSeek",
       "scoreDisplay": "51.4%",
@@ -430,7 +441,7 @@
       "reportedAt": "2025-12-01"
     },
     {
-      "rank": 42,
+      "rank": 43,
       "systemName": "Parallel Advanced + GPT-5.4 harness",
       "organization": "Parallel",
       "scoreDisplay": "51.0%",
@@ -440,7 +451,7 @@
       "reportedAt": "2026-04-21"
     },
     {
-      "rank": 42,
+      "rank": 43,
       "systemName": "Parallel Ultra2x",
       "organization": "Parallel",
       "scoreDisplay": "51.0%",
@@ -450,7 +461,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 44,
+      "rank": 45,
       "systemName": "o3",
       "organization": "OpenAI",
       "scoreDisplay": "49.7%",
@@ -460,7 +471,7 @@
       "reportedAt": "2025-04-16"
     },
     {
-      "rank": 45,
+      "rank": 46,
       "systemName": "Sarvam-105B",
       "organization": "Sarvam AI",
       "scoreDisplay": "49.5%",
@@ -471,7 +482,7 @@
       "reportedAt": "2026-03-06"
     },
     {
-      "rank": 46,
+      "rank": 47,
       "systemName": "SMTL",
       "organization": "Academic Research",
       "scoreDisplay": "48.6%",
@@ -481,7 +492,7 @@
       "reportedAt": "2026-02-27"
     },
     {
-      "rank": 47,
+      "rank": 48,
       "systemName": "MiroThinker v1.0-72B",
       "organization": "MiroMind",
       "scoreDisplay": "47.1%",
@@ -492,7 +503,7 @@
       "reportedAt": "2026-04-21"
     },
     {
-      "rank": 48,
+      "rank": 49,
       "systemName": "OpenSeeker-v2",
       "organization": "PolarSeeker",
       "scoreDisplay": "46.0%",
@@ -504,7 +515,7 @@
       "isNew": true
     },
     {
-      "rank": 48,
+      "rank": 49,
       "systemName": "WebAnchor-30B",
       "organization": "Academic Research",
       "scoreDisplay": "46.0%",
@@ -514,7 +525,7 @@
       "reportedAt": "2026-01-07"
     },
     {
-      "rank": 50,
+      "rank": 51,
       "systemName": "GLM-4.6",
       "organization": "Zhipu AI",
       "scoreDisplay": "45.1%",
@@ -525,7 +536,7 @@
       "reportedAt": "2025-10"
     },
     {
-      "rank": 51,
+      "rank": 52,
       "systemName": "Parallel Ultra",
       "organization": "Parallel",
       "scoreDisplay": "45.0%",
@@ -535,7 +546,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 52,
+      "rank": 53,
       "systemName": "Grok 4 Fast",
       "organization": "xAI",
       "scoreDisplay": "44.9%",
@@ -545,7 +556,7 @@
       "reportedAt": "2025-09-22"
     },
     {
-      "rank": 53,
+      "rank": 54,
       "systemName": "MiniMax M2",
       "organization": "MiniMax",
       "scoreDisplay": "44.0%",
@@ -556,7 +567,7 @@
       "reportedAt": "2025-10"
     },
     {
-      "rank": 54,
+      "rank": 55,
       "systemName": "Tongyi DeepResearch",
       "organization": "Alibaba Cloud / Tongyi Lab",
       "scoreDisplay": "43.4%",
@@ -567,7 +578,7 @@
       "reportedAt": "2025-09-16"
     },
     {
-      "rank": 55,
+      "rank": 56,
       "systemName": "GLM-4.7-Flash",
       "organization": "Zhipu AI",
       "scoreDisplay": "42.8%",
@@ -578,7 +589,7 @@
       "reportedAt": "2026-02"
     },
     {
-      "rank": 56,
+      "rank": 57,
       "systemName": "Tavily + GPT-5.4 harness",
       "organization": "Tavily",
       "scoreDisplay": "42.0%",
@@ -588,7 +599,7 @@
       "reportedAt": "2026-04-21"
     },
     {
-      "rank": 57,
+      "rank": 58,
       "systemName": "DeepSeek-V3.2-Exp",
       "organization": "DeepSeek",
       "scoreDisplay": "40.1%",
@@ -599,7 +610,7 @@
       "reportedAt": "2025-09-30"
     },
     {
-      "rank": 58,
+      "rank": 59,
       "systemName": "Exa + GPT-5.4 harness",
       "organization": "Exa",
       "scoreDisplay": "40.0%",
@@ -609,7 +620,7 @@
       "reportedAt": "2026-04-21"
     },
     {
-      "rank": 59,
+      "rank": 60,
       "systemName": "AgentFounder-30B",
       "organization": "Alibaba Cloud / Tongyi Lab",
       "scoreDisplay": "39.9%",
@@ -619,7 +630,7 @@
       "reportedAt": "2025-09-16"
     },
     {
-      "rank": 60,
+      "rank": 61,
       "systemName": "Sarvam-30B",
       "organization": "Sarvam AI",
       "scoreDisplay": "35.5%",
@@ -630,7 +641,7 @@
       "reportedAt": "2026-03-06"
     },
     {
-      "rank": 61,
+      "rank": 62,
       "systemName": "DeepMiner-32B",
       "organization": "Academic Research",
       "scoreDisplay": "33.5%",
@@ -640,7 +651,7 @@
       "reportedAt": "2025-10-09"
     },
     {
-      "rank": 62,
+      "rank": 63,
       "systemName": "Nemotron 3 Super (120B A12B)",
       "organization": "NVIDIA",
       "scoreDisplay": "31.3%",
@@ -651,7 +662,7 @@
       "reportedAt": "2026-03-11"
     },
     {
-      "rank": 63,
+      "rank": 64,
       "systemName": "DeepSeek-V3.1",
       "organization": "DeepSeek",
       "scoreDisplay": "30.0%",
@@ -662,7 +673,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 63,
+      "rank": 64,
       "systemName": "BrowseMaster",
       "organization": "Academic Research",
       "scoreDisplay": "30.0%",
@@ -672,7 +683,7 @@
       "reportedAt": "2025-08-12"
     },
     {
-      "rank": 65,
+      "rank": 66,
       "systemName": "OpenSeeker",
       "organization": "PolarSeeker",
       "scoreDisplay": "29.5%",
@@ -683,7 +694,7 @@
       "reportedAt": "2026-03-16"
     },
     {
-      "rank": 66,
+      "rank": 67,
       "systemName": "GLM-4.5",
       "organization": "Zhipu AI",
       "scoreDisplay": "26.4%",
@@ -694,7 +705,7 @@
       "reportedAt": "2025-07"
     },
     {
-      "rank": 67,
+      "rank": 68,
       "systemName": "GLM-4.5-Air",
       "organization": "Zhipu AI",
       "scoreDisplay": "21.3%",
@@ -705,7 +716,7 @@
       "reportedAt": "2025-07"
     },
     {
-      "rank": 68,
+      "rank": 69,
       "systemName": "WebExplorer-8B (RL)",
       "organization": "HKUST NLP Group",
       "scoreDisplay": "15.7%",
@@ -716,7 +727,7 @@
       "reportedAt": "2025-09-08"
     },
     {
-      "rank": 69,
+      "rank": 70,
       "systemName": "InfoAgent",
       "organization": "Academic Research",
       "scoreDisplay": "15.3%",
@@ -726,7 +737,7 @@
       "reportedAt": "2025-09-29"
     },
     {
-      "rank": 69,
+      "rank": 70,
       "systemName": "DeepDive-32B",
       "organization": "THUDM / Tsinghua University",
       "scoreDisplay": "15.3%",
@@ -737,7 +748,7 @@
       "reportedAt": "2025-09-12"
     },
     {
-      "rank": 71,
+      "rank": 72,
       "systemName": "Exa Research Pro",
       "organization": "Exa",
       "scoreDisplay": "14.0%",
@@ -747,7 +758,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 72,
+      "rank": 73,
       "systemName": "WebSailor-72B",
       "organization": "Alibaba Cloud / Tongyi Lab",
       "scoreDisplay": "12.0%",
@@ -758,7 +769,7 @@
       "reportedAt": "2025-07"
     },
     {
-      "rank": 73,
+      "rank": 74,
       "systemName": "WebSailor-32B",
       "organization": "Alibaba Cloud / Tongyi Lab",
       "scoreDisplay": "10.5%",
@@ -769,7 +780,7 @@
       "reportedAt": "2025-09-08"
     },
     {
-      "rank": 74,
+      "rank": 75,
       "systemName": "OpenAI o1",
       "organization": "OpenAI",
       "scoreDisplay": "9.9%",
@@ -779,7 +790,7 @@
       "reportedAt": "2025-04-10"
     },
     {
-      "rank": 75,
+      "rank": 76,
       "systemName": "DeepSeek-R1-0528",
       "organization": "DeepSeek",
       "scoreDisplay": "8.9%",
@@ -790,7 +801,7 @@
       "reportedAt": "2025-05-28"
     },
     {
-      "rank": 76,
+      "rank": 77,
       "systemName": "Claude Opus 4.1 (Parallel Task API benchmark)",
       "organization": "Anthropic",
       "scoreDisplay": "7.0%",
@@ -800,7 +811,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 77,
+      "rank": 78,
       "systemName": "WebSailor-7B",
       "organization": "Alibaba Cloud / Tongyi Lab",
       "scoreDisplay": "6.7%",
@@ -811,7 +822,7 @@
       "reportedAt": "2025-09-08"
     },
     {
-      "rank": 78,
+      "rank": 79,
       "systemName": "Perplexity Sonar Deep Research",
       "organization": "Perplexity",
       "scoreDisplay": "6.0%",
@@ -821,7 +832,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 79,
+      "rank": 80,
       "systemName": "GPT-4o + browsing",
       "organization": "OpenAI",
       "scoreDisplay": "1.9%",
@@ -831,7 +842,7 @@
       "reportedAt": "2025-04-10"
     },
     {
-      "rank": 80,
+      "rank": 81,
       "systemName": "GPT-4.5",
       "organization": "OpenAI",
       "scoreDisplay": "0.9%",
@@ -841,7 +852,7 @@
       "reportedAt": "2025-04-10"
     },
     {
-      "rank": 81,
+      "rank": 82,
       "systemName": "GPT-4o",
       "organization": "OpenAI",
       "scoreDisplay": "0.6%",
