@@ -2,6 +2,17 @@
   "osworld": [
     {
       "rank": 1,
+      "systemName": "Claude Opus 4.8",
+      "organization": "Anthropic",
+      "scoreDisplay": "83.4%",
+      "scoreValue": 83.4,
+      "sourceUrl": "https://www.anthropic.com/news/claude-opus-4-8",
+      "notesShort": "OSWorld-Verified pass@1 (361 tasks, 100 steps, max effort, multi-run avg) using Anthropic's revised harness (zoom-tool fix, 128K tokens/turn) — not directly comparable to older entries. Self-reported in the Opus 4.8 system card.",
+      "reportedAt": "2026-05-28",
+      "isNew": true
+    },
+    {
+      "rank": 2,
       "systemName": "Mythos Preview",
       "organization": "Anthropic",
       "scoreDisplay": "79.6%",
@@ -12,7 +23,7 @@
       "isNew": true
     },
     {
-      "rank": 2,
+      "rank": 3,
       "systemName": "OSAgent",
       "organization": "TheAGI Company",
       "scoreDisplay": "76.26%",
@@ -22,18 +33,18 @@
       "reportedAt": "2025-10-23"
     },
     {
-      "rank": 3,
+      "rank": 4,
       "systemName": "GPT-5.4",
       "organization": "OpenAI",
       "scoreDisplay": "75.0%",
-      "scoreValue": 75.0,
+      "scoreValue": 75,
       "sourceUrl": "https://openai.com/index/introducing-gpt-5-4/",
       "notesShort": "Self-reported at GPT-5.4 launch on OSWorld-Verified; awaiting independent verification.",
       "reportedAt": "2026-03-05",
       "isNew": true
     },
     {
-      "rank": 4,
+      "rank": 5,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "72.7%",
@@ -43,7 +54,7 @@
       "reportedAt": "2026-02-05"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "systemName": "Claude Sonnet 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "72.5%",
@@ -53,7 +64,7 @@
       "reportedAt": "2026-02-17"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "Qwen3 VL 235B",
       "organization": "Alibaba",
       "scoreDisplay": "66.7%",
@@ -63,7 +74,7 @@
       "reportedAt": "2025-09-23"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "66.3%",
@@ -73,7 +84,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "Kimi K2.5",
       "organization": "Moonshot AI",
       "scoreDisplay": "63.3%",
@@ -83,7 +94,7 @@
       "reportedAt": "2026-01-27"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "systemName": "GLM-5V-Turbo",
       "organization": "Zhipu AI",
       "scoreDisplay": "62.3%",
@@ -93,7 +104,7 @@
       "reportedAt": "2026-04-01"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "Claude Sonnet 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "61.4%",
@@ -103,7 +114,7 @@
       "reportedAt": "2025-09-29"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "systemName": "UiPath Screen Agent",
       "organization": "UiPath",
       "scoreDisplay": "53.6%",
@@ -113,7 +124,7 @@
       "reportedAt": "2026-01-14"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "systemName": "Claude Haiku 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "50.7%",
@@ -123,7 +134,7 @@
       "reportedAt": "2025-10-15"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Agent S2 + Claude 3.7",
       "organization": "Simular AI",
       "scoreDisplay": "34.5%",
@@ -133,7 +144,7 @@
       "reportedAt": "2025-03-12"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "OpenAI Operator (CUA)",
       "organization": "OpenAI",
       "scoreDisplay": "32.6%",
@@ -143,7 +154,7 @@
       "reportedAt": "2025-01-23"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "Qwen2.5 VL 72B Instruct",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "8.8%",
@@ -153,7 +164,7 @@
       "reportedAt": "2025-01-26"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "Qwen2.5 VL 32B Instruct",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "5.9%",

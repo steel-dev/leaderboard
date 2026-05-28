@@ -26,3 +26,6 @@ pnpm-debug.log*
 # local data extraction scripts (top-level only, not src/scripts)
 /scripts/
 .vercel
+
+# discovery prototype output (regenerated; not source of truth)
+.discovery/
