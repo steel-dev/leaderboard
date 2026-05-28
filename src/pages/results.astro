@@ -1,0 +1,776 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FaqList from "../components/FaqList.astro";
+import {
+  benchmarkCategoryLabels,
+  getAllBenchmarkPages,
+  type BenchmarkCategory,
+  type BenchmarkFaqItem,
+} from "../lib/benchmark-hub";
+
+const pages = getAllBenchmarkPages();
+
+interface FlatEntry {
+  benchmark: string;
+  benchmarkSlug: string;
+  category: BenchmarkCategory;
+  categoryLabel: string;
+  scope: string;
+  rank: number;
+  systemName: string;
+  organization: string;
+  scoreDisplay: string;
+  scoreValue: number | null;
+  sourceUrl: string;
+  repoUrl?: string;
+  notesShort: string;
+  reportedAt?: string;
+  reportedSortKey: string;
+}
+
+function reportedSortKey(reportedAt?: string): string {
+  if (!reportedAt) return "";
+  if (/^\d{4}-\d{2}$/.test(reportedAt)) return `${reportedAt}-01`;
+  return reportedAt;
+}
+
+const entries: FlatEntry[] = pages.flatMap((page) =>
+  page.results.map((row) => ({
+    benchmark: page.meta.name,
+    benchmarkSlug: page.meta.slug,
+    category: page.meta.category,
+    categoryLabel: benchmarkCategoryLabels[page.meta.category],
+    scope: page.meta.scope,
+    rank: row.rank,
+    systemName: row.systemName,
+    organization: row.organization,
+    scoreDisplay: row.scoreDisplay,
+    scoreValue: row.scoreValue,
+    sourceUrl: row.sourceUrl,
+    repoUrl: row.repoUrl,
+    notesShort: row.notesShort,
+    reportedAt: row.reportedAt,
+    reportedSortKey: reportedSortKey(row.reportedAt),
+  }))
+);
+
+entries.sort((a, b) => {
+  const dateCmp = b.reportedSortKey.localeCompare(a.reportedSortKey);
+  if (dateCmp !== 0) return dateCmp;
+  return a.rank - b.rank;
+});
+
+const totalResults = entries.length;
+const totalBenchmarks = pages.length;
+const categories: { key: BenchmarkCategory; label: string; count: number }[] = (
+  Object.keys(benchmarkCategoryLabels) as BenchmarkCategory[]
+)
+  .map((key) => ({
+    key,
+    label: benchmarkCategoryLabels[key],
+    count: entries.filter((e) => e.category === key).length,
+  }))
+  .filter((c) => c.count > 0);
+
+const benchmarkOptions = pages.map((page) => ({
+  slug: page.meta.slug,
+  name: page.meta.name,
+  category: page.meta.category,
+  count: page.results.length,
+}));
+
+const BASE_URL = "https://leaderboard.steel.dev";
+const pageUrl = `${BASE_URL}/results`;
+const pageTitle = `AI Agent Benchmark Results: All ${totalBenchmarks} Leaderboards in One Index | Steel.dev`;
+const pageDescription = `Browse ${totalResults} sourced AI agent benchmark results across ${totalBenchmarks} leaderboards — WebVoyager, WebArena, OSWorld, SWE-bench Verified, GAIA, BrowseComp and more. Filter by category, benchmark, or search by agent or organization.`;
+
+const datasetSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  name: "AI Agent Benchmark Results Index",
+  description: pageDescription,
+  url: pageUrl,
+  dateModified: new Date().toISOString().split("T")[0],
+  creator: {
+    "@type": "Organization",
+    name: "Steel.dev",
+    url: "https://steel.dev",
+  },
+  license: "https://creativecommons.org/licenses/by/4.0/",
+  keywords: [
+    "AI agent benchmark",
+    "LLM benchmark leaderboard",
+    "agent evaluation",
+    "WebVoyager results",
+    "WebArena leaderboard",
+    "OSWorld leaderboard",
+    "SWE-bench results",
+    "GAIA benchmark scores",
+    "BrowseComp results",
+    "AI agent leaderboard",
+    "browser agent benchmark",
+    "coding agent benchmark",
+    "computer use agent benchmark",
+  ],
+  variableMeasured: pages.map((page) => ({
+    "@type": "PropertyValue",
+    name: `${page.meta.name} score`,
+    description: `Agent scores on the ${page.meta.name} benchmark`,
+  })),
+  distribution: {
+    "@type": "DataDownload",
+    encodingFormat: "text/html",
+    contentUrl: pageUrl,
+  },
+});
+
+const itemListSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "AI Agent Benchmarks",
+  description: "List of AI agent benchmarks tracked in the Steel.dev results index",
+  numberOfItems: pages.length,
+  itemListElement: pages.map((page, i) => {
+    const top = page.results[0];
+    return {
+      "@type": "ListItem",
+      position: i + 1,
+      name: page.meta.name,
+      description: top
+        ? `Top score: ${top.scoreDisplay} by ${top.systemName} (${top.organization})`
+        : page.meta.name,
+      url: `${BASE_URL}/leaderboards/${page.meta.slug}/`,
+    };
+  }),
+});
+
+const breadcrumbSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Browser Agent Leaderboards",
+      item: `${BASE_URL}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "All Benchmark Results",
+      item: pageUrl,
+    },
+  ],
+});
+
+const resultsFaqs: BenchmarkFaqItem[] = [
+  {
+    q: "Are scores on this page comparable across benchmarks?",
+    a: "No. Each benchmark uses its own task set, evaluator, scoring metric, and scope (model vs. agent). A 90% on one benchmark and a 90% on another do not measure the same thing. Compare scores within a single benchmark, and read methodology notes on the individual <a href='/'>benchmark pages</a> before drawing conclusions.",
+  },
+  {
+    q: "Why is the default order by reported date rather than score?",
+    a: "Scores across different benchmarks aren't on the same scale, so a global score sort would be misleading. Sorting by reported date surfaces the freshest results first. When you filter to a single benchmark the order switches to within-benchmark rank, which is the meaningful comparison.",
+  },
+  {
+    q: "Are these scores independently verified?",
+    a: "Not always. Some rows are independently benchmarked and some are self-reported by the agent or model team. Every row links to its source (paper, model card, repository, or launch post). Use those links and any per-row notes to assess evidence level before drawing strong conclusions.",
+  },
+  {
+    q: "How is this index sourced and updated?",
+    a: "Rows are taken from public papers, model cards, repositories, and launch posts. New results appear as they are published — typically weekly. If you spot a missing agent or a stale score, open a pull request or issue on <a href='https://github.com/steel-dev/leaderboard' target='_blank' rel='noopener noreferrer'>GitHub</a>.",
+  },
+  {
+    q: "How do I add my agent or model to this list?",
+    a: "Open a pull request on <a href='https://github.com/steel-dev/leaderboard' target='_blank' rel='noopener noreferrer'>GitHub</a>. You need a publicly verifiable benchmark score, a link to the source (paper, post, or repo), and a homepage or repository for your agent.",
+  },
+  {
+    q: "Who maintains this leaderboard?",
+    a: "<a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=results-faq' target='_blank' rel='noopener noreferrer'>Steel</a> maintains it as an open reference for the browser-agent ecosystem. Steel is browser infrastructure for AI agents — cloud browser sessions with anti-bot handling, proxy rotation, and session replay. Contributions and corrections are welcome on <a href='https://github.com/steel-dev/leaderboard' target='_blank' rel='noopener noreferrer'>GitHub</a>.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: resultsFaqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a.replace(/<[^>]+>/g, ""),
+    },
+  })),
+});
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  structuredData={[datasetSchema, itemListSchema, breadcrumbSchema, faqSchema]}
+>
+  <article class="results-shell mx-auto w-full py-8">
+    <header class="results-hero">
+      <h1
+        class="m-0 text-[2rem] font-medium leading-9 tracking-[-0.045em] text-(--color-text-strong)"
+      >
+        AI Agent Benchmark Results — All Leaderboards
+      </h1>
+      <p class="mb-0 mt-4 max-w-3xl text-sm leading-6 muted">
+        Browse <strong>{totalResults}</strong> sourced results across <strong>{totalBenchmarks}</strong> AI
+        agent benchmarks — WebVoyager, WebArena, OSWorld, SWE-bench Verified, GAIA, BrowseComp, and more.
+        Every row links to the original paper, model card, repository, or launch post. Filter by category,
+        benchmark, or search by agent or organization name.
+      </p>
+      <p class="mb-0 mt-3 text-xs muted">
+        Need methodology, evaluator details, and example tasks before comparing scores? Open the
+        individual <a href="/">benchmark hub</a> page for any benchmark below.
+      </p>
+    </header>
+
+    <details class="comparability-notice mt-6">
+      <summary class="comparability-summary">
+        <span class="comparability-icon" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+            <path d="M12 9v4" />
+            <path d="M12 17h.01" />
+          </svg>
+        </span>
+        <span class="comparability-heading">
+          Scores on this page are <em>not</em> directly comparable across benchmarks.
+        </span>
+        <span class="comparability-toggle muted shrink-0" aria-hidden="true">
+          <span class="inline details-closed">+</span>
+          <span class="hidden details-open">−</span>
+        </span>
+      </summary>
+      <p class="comparability-text">
+        This index puts every result in one place for browsing — it does not normalize methodology.
+        Each benchmark uses its own task set, evaluator, scoring metric, and scope (model vs. agent).
+        A 90% on one benchmark does not mean the same thing as a 90% on another. Compare scores
+        <em>within</em> a single benchmark using the filters below, and read each benchmark's
+        methodology notes on its dedicated page before drawing conclusions.
+      </p>
+    </details>
+
+    <section class="mt-8 scroll-mt-8" id="filters" aria-label="Filter results">
+      <div class="filter-block">
+        <div class="filter-row">
+          <span class="filter-label">Category</span>
+          <div class="filter-chips" role="group" aria-label="Filter by category">
+            <button
+              type="button"
+              class="filter-chip is-active"
+              data-filter="category"
+              data-value="all"
+              aria-pressed="true"
+            >
+              All <span class="filter-chip-count">{totalResults}</span>
+            </button>
+            {
+              categories.map((c) => (
+                <button
+                  type="button"
+                  class="filter-chip"
+                  data-filter="category"
+                  data-value={c.key}
+                  aria-pressed="false"
+                >
+                  {c.label} <span class="filter-chip-count">{c.count}</span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <span class="filter-label">Benchmark</span>
+          <div class="filter-chips" role="group" aria-label="Filter by benchmark">
+            <button
+              type="button"
+              class="filter-chip is-active"
+              data-filter="benchmark"
+              data-value="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            {
+              benchmarkOptions.map((b) => (
+                <button
+                  type="button"
+                  class="filter-chip"
+                  data-filter="benchmark"
+                  data-value={b.slug}
+                  data-category={b.category}
+                  aria-pressed="false"
+                >
+                  {b.name} <span class="filter-chip-count">{b.count}</span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <label class="filter-label" for="results-search">Search</label>
+          <input
+            type="search"
+            id="results-search"
+            class="filter-search"
+            placeholder="Filter by agent name or organization…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+      </div>
+
+      <p class="results-meta mt-3 text-xs dim">
+        Showing <span data-results-count>{totalResults}</span> of {totalResults} results
+      </p>
+    </section>
+
+    <section class="table-shell mt-4 w-full" id="results-table">
+      <div class="lb-module-head flex flex-wrap items-center gap-3 px-3 py-2">
+        <h2 class="m-0 text-sm font-normal uppercase tracking-[-0.02em] text-(--color-accent)">
+          Results
+        </h2>
+        <div class="lb-head-lines" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span
+          class="results-sort-hint text-[0.6875rem] uppercase tracking-[0.04em] text-(--color-text-dim)"
+          data-sort-hint
+        >
+          Sorted by reported date
+        </span>
+      </div>
+
+      <div class="overflow-x-auto p-4 md:p-6">
+        <table class="results-table w-full min-w-[760px] border-collapse text-xs">
+          <thead
+            class="lb-header text-left text-[0.6875rem] uppercase tracking-[0.025em] text-(--color-text-dim)"
+          >
+            <tr>
+              <th class="px-3 py-2 font-semibold">Benchmark</th>
+              <th class="px-3 py-2 font-semibold">Rank</th>
+              <th class="px-3 py-2 font-semibold">System / Submission</th>
+              <th class="px-3 py-2 font-semibold">Score</th>
+              <th class="px-3 py-2 font-semibold">Organization</th>
+              <th class="px-3 py-2 font-semibold">Reported</th>
+              <th class="px-3 py-2 font-semibold">Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              entries.map((row) => (
+                <tr
+                  class="lb-row align-middle"
+                  data-category={row.category}
+                  data-benchmark={row.benchmarkSlug}
+                  data-rank={row.rank}
+                  data-reported={row.reportedSortKey}
+                  data-search={`${row.systemName} ${row.organization} ${row.benchmark}`.toLowerCase()}
+                >
+                  <td class="px-3 py-3 whitespace-nowrap">
+                    <a href={`/leaderboards/${row.benchmarkSlug}/`} class="benchmark-link">
+                      {row.benchmark}
+                    </a>
+                  </td>
+                  <td class="px-3 py-3 text-(--color-text-dim)">#{row.rank}</td>
+                  <td class="px-3 py-3 text-(--color-text-strong)">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="system-name">{row.systemName}</span>
+                      {row.notesShort && (
+                        <span class="results-note" title={row.notesShort} aria-label="Note">
+                          ⓘ
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                  <td class="px-3 py-3 font-semibold text-(--color-accent)">{row.scoreDisplay}</td>
+                  <td class="px-3 py-3 text-(--color-text-dim)">{row.organization}</td>
+                  <td class="px-3 py-3 whitespace-nowrap muted">{row.reportedAt ?? "—"}</td>
+                  <td class="px-3 py-3">
+                    <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer nofollow">
+                      Source
+                    </a>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <p
+        class="px-4 py-3 text-xs dim border-t border-(--color-border)"
+        data-empty-state
+        hidden
+      >
+        No results match these filters. Clear filters or try a different search.
+      </p>
+    </section>
+
+    <section class="results-footnote mt-10 text-sm leading-6 muted">
+      <p class="m-0">
+        Scores come from public papers, model cards, repositories, and launch posts. Comparisons are
+        most useful within a single benchmark — across benchmarks, evaluators, task sets, judges,
+        attempt budgets, and tool access can differ, so treat cross-benchmark rankings as
+        directional. Use the individual <a href="/">benchmark pages</a> for methodology and
+        interpretation notes.
+      </p>
+    </section>
+
+    <section id="faq" class="mt-10 scroll-mt-8">
+      <FaqList items={resultsFaqs} />
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .results-shell {
+    max-width: 67.5rem;
+  }
+
+  .results-hero {
+    max-width: 50rem;
+  }
+
+  .comparability-notice {
+    padding: 1rem 1.125rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--color-accent) 7%, var(--color-bg));
+  }
+
+  .comparability-summary {
+    display: flex;
+    gap: 0.875rem;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .comparability-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .comparability-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-accent);
+  }
+
+  .comparability-heading {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.35rem;
+    color: var(--color-text-strong);
+  }
+
+  .comparability-toggle {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .comparability-notice[open] .details-closed {
+    display: none;
+  }
+
+  .comparability-notice[open] .details-open {
+    display: inline;
+  }
+
+  .comparability-text {
+    margin: 0.625rem 0 0;
+    padding-left: calc(1.5rem + 0.875rem);
+    font-size: 0.8125rem;
+    line-height: 1.35rem;
+    color: var(--color-text);
+  }
+
+  .comparability-text em,
+  .comparability-heading em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+
+  .results-sort-hint {
+    margin-left: auto;
+    font-family: var(--font-mono);
+  }
+
+  .filter-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--color-surface) 30%, var(--color-bg));
+  }
+
+  .filter-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .filter-row {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+
+  .filter-label {
+    flex-shrink: 0;
+    width: 6rem;
+    padding-top: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-dim);
+  }
+
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    flex: 1;
+  }
+
+  .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    background: var(--color-bg);
+    color: var(--color-text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.1rem;
+    cursor: pointer;
+    transition:
+      color 120ms ease,
+      border-color 120ms ease,
+      background-color 120ms ease;
+  }
+
+  .filter-chip:hover {
+    color: var(--color-text-strong);
+    border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-border));
+  }
+
+  .filter-chip.is-active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 8%, var(--color-bg));
+  }
+
+  .filter-chip-count {
+    color: var(--color-text-dim);
+    font-size: 0.65rem;
+  }
+
+  .filter-chip.is-active .filter-chip-count {
+    color: color-mix(in srgb, var(--color-accent) 80%, var(--color-text-dim));
+  }
+
+  .filter-chip[data-hidden] {
+    display: none;
+  }
+
+  .filter-search {
+    flex: 1;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    background: var(--color-bg);
+    color: var(--color-text-strong);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+
+  .filter-search:focus-visible {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .benchmark-link {
+    color: var(--color-text-strong);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-border);
+  }
+
+  .benchmark-link:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .results-note {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    cursor: help;
+  }
+
+  .results-table tr[data-hidden] {
+    display: none;
+  }
+
+  .results-footnote a {
+    color: var(--color-text);
+  }
+</style>
+
+<script>
+  const table = document.getElementById("results-table");
+  if (table) {
+    const tbody = table.querySelector<HTMLTableSectionElement>("tbody");
+    const rows = Array.from(table.querySelectorAll<HTMLTableRowElement>("tbody tr"));
+    const countEl = document.querySelector<HTMLElement>("[data-results-count]");
+    const emptyEl = document.querySelector<HTMLElement>("[data-empty-state]");
+    const sortHintEl = document.querySelector<HTMLElement>("[data-sort-hint]");
+    const searchEl = document.querySelector<HTMLInputElement>("#results-search");
+    const benchmarkChips = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('[data-filter="benchmark"]')
+    );
+
+    const state = {
+      category: "all",
+      benchmark: "all",
+      query: "",
+    };
+
+    function compareByDateThenRank(a: HTMLTableRowElement, b: HTMLTableRowElement): number {
+      const dateCmp = (b.dataset.reported ?? "").localeCompare(a.dataset.reported ?? "");
+      if (dateCmp !== 0) return dateCmp;
+      return Number(a.dataset.rank ?? 0) - Number(b.dataset.rank ?? 0);
+    }
+
+    function compareByRank(a: HTMLTableRowElement, b: HTMLTableRowElement): number {
+      return Number(a.dataset.rank ?? 0) - Number(b.dataset.rank ?? 0);
+    }
+
+    function reorder(): void {
+      if (!tbody) return;
+      const cmp = state.benchmark === "all" ? compareByDateThenRank : compareByRank;
+      const sorted = rows.slice().sort(cmp);
+      for (const row of sorted) {
+        tbody.appendChild(row);
+      }
+      if (sortHintEl) {
+        sortHintEl.textContent =
+          state.benchmark === "all" ? "Sorted by reported date" : "Sorted by rank";
+      }
+    }
+
+    function apply(): void {
+      const q = state.query;
+      let visible = 0;
+      for (const row of rows) {
+        const matchCategory =
+          state.category === "all" || row.dataset.category === state.category;
+        const matchBenchmark =
+          state.benchmark === "all" || row.dataset.benchmark === state.benchmark;
+        const matchSearch = q === "" || (row.dataset.search ?? "").includes(q);
+        const show = matchCategory && matchBenchmark && matchSearch;
+        if (show) {
+          row.removeAttribute("data-hidden");
+          visible++;
+        } else {
+          row.setAttribute("data-hidden", "");
+        }
+      }
+      if (countEl) countEl.textContent = String(visible);
+      if (emptyEl) emptyEl.hidden = visible !== 0;
+    }
+
+    function syncBenchmarkChips(): void {
+      for (const chip of benchmarkChips) {
+        if (chip.dataset.value === "all") continue;
+        const chipCategory = chip.dataset.category ?? "";
+        if (state.category === "all" || chipCategory === state.category) {
+          chip.removeAttribute("data-hidden");
+        } else {
+          chip.setAttribute("data-hidden", "");
+          if (chip.dataset.value === state.benchmark) {
+            state.benchmark = "all";
+            const allBench = benchmarkChips.find((c) => c.dataset.value === "all");
+            for (const c of benchmarkChips) {
+              c.classList.toggle("is-active", c === allBench);
+              c.setAttribute("aria-pressed", String(c === allBench));
+            }
+          }
+        }
+      }
+    }
+
+    for (const chip of document.querySelectorAll<HTMLButtonElement>(
+      '[data-filter="category"], [data-filter="benchmark"]'
+    )) {
+      chip.addEventListener("click", () => {
+        const filter = chip.dataset.filter as "category" | "benchmark";
+        const value = chip.dataset.value ?? "all";
+        const previousBenchmark = state.benchmark;
+        state[filter] = value;
+        const peers = document.querySelectorAll<HTMLButtonElement>(
+          `[data-filter="${filter}"]`
+        );
+        for (const peer of peers) {
+          const isActive = peer === chip;
+          peer.classList.toggle("is-active", isActive);
+          peer.setAttribute("aria-pressed", String(isActive));
+        }
+        if (filter === "category") syncBenchmarkChips();
+        apply();
+        if (filter === "benchmark" && state.benchmark !== previousBenchmark) {
+          reorder();
+        } else if (
+          filter === "category" &&
+          state.benchmark === "all" &&
+          previousBenchmark !== "all"
+        ) {
+          reorder();
+        }
+      });
+    }
+
+    if (searchEl) {
+      searchEl.addEventListener("input", () => {
+        state.query = searchEl.value.trim().toLowerCase();
+        apply();
+      });
+    }
+  }
+</script>
