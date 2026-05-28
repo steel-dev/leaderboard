@@ -1,0 +1,37 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/registry/benchmarks/webvoyager", "destination": "/leaderboards/webvoyager/", "permanent": true },
+    { "source": "/registry/benchmarks/webvoyager/:path*", "destination": "/leaderboards/webvoyager/", "permanent": true },
+
+    { "source": "/registry/benchmarks/browsecomp", "destination": "/leaderboards/browsecomp/", "permanent": true },
+    { "source": "/registry/benchmarks/browsecomp/:path*", "destination": "/leaderboards/browsecomp/", "permanent": true },
+
+    { "source": "/registry/benchmarks/webarena", "destination": "/leaderboards/webarena/", "permanent": true },
+    { "source": "/registry/benchmarks/webarena/:path*", "destination": "/leaderboards/webarena/", "permanent": true },
+
+    { "source": "/registry/benchmarks/swe-bench-verified", "destination": "/leaderboards/swe-bench-verified/", "permanent": true },
+    { "source": "/registry/benchmarks/swe-bench-verified/:path*", "destination": "/leaderboards/swe-bench-verified/", "permanent": true },
+
+    { "source": "/registry/benchmarks/osworld", "destination": "/leaderboards/osworld/", "permanent": true },
+    { "source": "/registry/benchmarks/osworld/:path*", "destination": "/leaderboards/osworld/", "permanent": true },
+
+    { "source": "/registry/benchmarks/gaia", "destination": "/leaderboards/gaia/", "permanent": true },
+    { "source": "/registry/benchmarks/gaia/:path*", "destination": "/leaderboards/gaia/", "permanent": true },
+
+    { "source": "/registry/benchmarks/clawbench", "destination": "/leaderboards/clawbench/", "permanent": true },
+    { "source": "/registry/benchmarks/clawbench/:path*", "destination": "/leaderboards/clawbench/", "permanent": true },
+
+    { "source": "/registry/benchmarks/online-mind2web", "destination": "/leaderboards/online-mind2web/", "permanent": true },
+    { "source": "/registry/benchmarks/online-mind2web/:path*", "destination": "/leaderboards/online-mind2web/", "permanent": true },
+
+    { "source": "/registry/benchmarks/tau-bench", "destination": "/leaderboards/tau-bench/", "permanent": true },
+    { "source": "/registry/benchmarks/tau-bench/:path*", "destination": "/leaderboards/tau-bench/", "permanent": true },
+
+    { "source": "/registry/benchmarks/agentbench", "destination": "/leaderboards/agentbench/", "permanent": true },
+    { "source": "/registry/benchmarks/agentbench/:path*", "destination": "/leaderboards/agentbench/", "permanent": true },
+
+    { "source": "/registry", "destination": "/", "permanent": true },
+    { "source": "/registry/:path*", "destination": "/", "permanent": true }
+  ]
+}
