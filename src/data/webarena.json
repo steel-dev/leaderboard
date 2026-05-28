@@ -2,13 +2,14 @@
   "webarena": [
     {
       "rank": 1,
-      "systemName": "DeepSeek V3.2",
-      "organization": "DeepSeek",
+      "systemName": "WebTactix (DeepSeek v3.2)",
+      "organization": "WebTactix",
       "scoreDisplay": "74.3%",
       "scoreValue": 74.3,
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
-      "notesShort": "Community tracker; third-party verified open-source submission.",
-      "isNew": true
+      "sourceUrl": "https://paper-submission-anoymous.github.io/webtactix_introduction/",
+      "repoUrl": "https://github.com/paper-submission-anoymous/webtactix",
+      "notesShort": "Project page reports 594/812 correct tasks, or 74.34%; this is a WebTactix system using DeepSeek v3.2, not a bare model result.",
+      "reportedAt": "2026-02"
     },
     {
       "rank": 2,
@@ -16,28 +17,32 @@
       "organization": "CodeFuse AI",
       "scoreDisplay": "71.6%",
       "scoreValue": 71.6,
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
-      "notesShort": "Community tracker; third-party verified open-source submission.",
-      "isNew": true
+      "sourceUrl": "https://github.com/codefuse-ai/OpAgent",
+      "repoUrl": "https://github.com/codefuse-ai/OpAgent",
+      "notesShort": "Open-source multi-agent browser system; repository publishes the WebArena result and final trajectories.",
+      "reportedAt": "2026-01"
     },
     {
       "rank": 3,
       "systemName": "ColorBrowserAgent",
-      "organization": "ColorBrowser",
+      "organization": "MadeAgents",
       "scoreDisplay": "71.2%",
       "scoreValue": 71.2,
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
-      "notesShort": "Community tracker; third-party verified open-source submission.",
-      "isNew": true
+      "sourceUrl": "https://arxiv.org/abs/2601.07262",
+      "repoUrl": "https://github.com/MadeAgents/browser-agent",
+      "notesShort": "Human-like browser agent result; code and trajectories are public in the MadeAgents repository.",
+      "reportedAt": "2025-12"
     },
     {
       "rank": 4,
-      "systemName": "Claude Code + GBOX",
+      "systemName": "Claude Code + GBOX MCP",
       "organization": "GBOX AI",
       "scoreDisplay": "68.0%",
       "scoreValue": 68.0,
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
-      "notesShort": "Community tracker; Claude Code as backbone with GBOX scaffolding."
+      "sourceUrl": "https://github.com/babelcloud/webarena/blob/main/gbox/report.md",
+      "repoUrl": "https://github.com/babelcloud/webarena",
+      "notesShort": "Claude Code backed by GBOX MCP scaffolding; public report and trajectories are in the BabelCloud WebArena repository.",
+      "reportedAt": "2025-10-25"
     },
     {
       "rank": 5,
@@ -46,16 +51,18 @@
       "scoreDisplay": "66.9%",
       "scoreValue": 66.9,
       "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
-      "notesShort": "Self-reported on community tracker."
+      "notesShort": "Public tracker row; no separate public source or repository link was found in the tracker.",
+      "reportedAt": "2025-09"
     },
     {
       "rank": 6,
       "systemName": "Narada AI",
-      "organization": "Narada",
+      "organization": "Narada AI",
       "scoreDisplay": "64.2%",
       "scoreValue": 64.2,
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
-      "notesShort": "Self-reported on community tracker."
+      "sourceUrl": "https://narada.ai/blog/narada-ai-web-agent-operator",
+      "notesShort": "Narada blog and public tracker report the WebArena result; no public code repository was found.",
+      "reportedAt": "2025-10"
     },
     {
       "rank": 7,
@@ -63,8 +70,10 @@
       "organization": "IBM",
       "scoreDisplay": "61.7%",
       "scoreValue": 61.7,
-      "sourceUrl": "https://arxiv.org/abs/2502.18438",
-      "notesShort": "Third-party verified; IBM's agentic system evaluated via research paper."
+      "sourceUrl": "https://cuga.dev/",
+      "repoUrl": "https://github.com/cuga-project/cuga-agent",
+      "notesShort": "CUGA reports 61.7% on WebArena and publishes code, evaluation artifacts, and results.",
+      "reportedAt": "2025-02-17"
     },
     {
       "rank": 8,
@@ -73,8 +82,9 @@
       "scoreDisplay": "58.9%",
       "scoreValue": 58.9,
       "sourceUrl": "https://arxiv.org/html/2602.02276v1",
-      "notesShort": "Self-reported in Kimi K2.5 technical paper; GUI-based browsing without external tools.",
-      "isNew": true
+      "repoUrl": "https://huggingface.co/moonshotai/Kimi-K2.5",
+      "notesShort": "Technical report reports GUI-based browsing without external tools; Kimi K2.5 weights are publicly released.",
+      "reportedAt": "2026-02"
     },
     {
       "rank": 9,
@@ -82,8 +92,9 @@
       "organization": "OpenAI",
       "scoreDisplay": "58.1%",
       "scoreValue": 58.1,
-      "sourceUrl": "https://openai.com/index/introducing-operator/",
-      "notesShort": "Self-reported by OpenAI at Operator launch."
+      "sourceUrl": "https://openai.com/index/operator-system-card/",
+      "notesShort": "OpenAI Computer-Using Agent result reported with the Operator system card and public WebArena tracker.",
+      "reportedAt": "2025-01"
     },
     {
       "rank": 10,
@@ -91,17 +102,425 @@
       "organization": "Jace AI",
       "scoreDisplay": "57.1%",
       "scoreValue": 57.1,
-      "sourceUrl": "https://jace.ai/blog/awa-1-5-achieves-breakthrough-performance",
-      "notesShort": "Self-reported at product launch blog post."
+      "sourceUrl": "https://jace.ai/blog/awa-1-5-achieves-breakthrough-performance-on-web-arena-benchmark",
+      "notesShort": "Jace reports AWA 1.5 at 57.14% on WebArena; implementation is proprietary.",
+      "reportedAt": "2024-08"
     },
     {
       "rank": 11,
+      "systemName": "Plan-MCTS + GPT-5-mini",
+      "organization": "Academic Research",
+      "scoreDisplay": "55.3%",
+      "scoreValue": 55.3,
+      "sourceUrl": "https://arxiv.org/html/2602.14083v1",
+      "notesShort": "Plan-MCTS paper reports 55.3% on the full 812-task WebArena test set with GPT-5-mini.",
+      "reportedAt": "2026-02"
+    },
+    {
+      "rank": 12,
       "systemName": "WebOperator + GPT-4o",
-      "organization": "WebOperator",
+      "organization": "KAIST KAG NLP",
       "scoreDisplay": "54.6%",
       "scoreValue": 54.6,
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ/edit",
-      "notesShort": "WebArena success rate; reported on the WebArena Google Sheet leaderboard."
+      "sourceUrl": "https://arxiv.org/abs/2512.12692",
+      "repoUrl": "https://github.com/kagnlp/WebOperator",
+      "notesShort": "WebOperator paper and project report 54.6% with GPT-4o; code and experiment artifacts are public.",
+      "reportedAt": "2025-12"
+    },
+    {
+      "rank": 13,
+      "systemName": "ScribeAgent + GPT-4o",
+      "organization": "Academic Research",
+      "scoreDisplay": "53.0%",
+      "scoreValue": 53.0,
+      "sourceUrl": "https://arxiv.org/abs/2411.15004",
+      "notesShort": "ScribeAgent reports 53.0% with GPT-4o; the tracker marks data as proprietary.",
+      "reportedAt": "2024-12-24"
+    },
+    {
+      "rank": 14,
+      "systemName": "AgentSymbiotic",
+      "organization": "Academic Research",
+      "scoreDisplay": "52.1%",
+      "scoreValue": 52.1,
+      "sourceUrl": "https://www.arxiv.org/abs/2502.07942",
+      "repoUrl": "https://anonymous.4open.science/r/agent-0E80/README.md",
+      "notesShort": "AgentSymbiotic reports 52.1%; an anonymized public code artifact is linked from the tracker.",
+      "reportedAt": "2025-01"
+    },
+    {
+      "rank": 15,
+      "systemName": "Learn-by-Interact",
+      "organization": "Academic Research",
+      "scoreDisplay": "48.0%",
+      "scoreValue": 48.0,
+      "sourceUrl": "https://arxiv.org/abs/2501.10893",
+      "notesShort": "Paper reports 48.0% on WebArena; no public implementation repository was found.",
+      "reportedAt": "2025-01"
+    },
+    {
+      "rank": 16,
+      "systemName": "WebUncertainty + GPT-4-Turbo",
+      "organization": "Academic Research",
+      "scoreDisplay": "46.9%",
+      "scoreValue": 46.9,
+      "sourceUrl": "https://arxiv.org/html/2604.17821v1",
+      "repoUrl": "https://github.com/windbd/WebUncertainty",
+      "notesShort": "WebUncertainty reports 46.9% with GPT-4-Turbo on WebArena and publishes the project repository.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    },
+    {
+      "rank": 17,
+      "systemName": "AgentOccam-Judge",
+      "organization": "Amazon Science",
+      "scoreDisplay": "45.7%",
+      "scoreValue": 45.7,
+      "sourceUrl": "https://arxiv.org/abs/2410.13825",
+      "repoUrl": "https://github.com/amazon-science/AgentOccam",
+      "notesShort": "AgentOccam-Judge public tracker row; Amazon Science publishes the AgentOccam implementation.",
+      "reportedAt": "2024-10"
+    },
+    {
+      "rank": 18,
+      "systemName": "A3-Qwen3.5-9B",
+      "organization": "McGill NLP",
+      "scoreDisplay": "42.1%",
+      "scoreValue": 42.1,
+      "sourceUrl": "https://huggingface.co/spaces/ServiceNow/browsergym-leaderboard/discussions/12",
+      "repoUrl": "https://github.com/McGill-NLP/agent-as-annotators",
+      "notesShort": "BrowserGym leaderboard discussion reports 42.1%; the paper/model card table reports 41.5 under its project setup.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    },
+    {
+      "rank": 19,
+      "systemName": "GUI-API Hybrid Agent",
+      "organization": "Academic Research",
+      "scoreDisplay": "38.9%",
+      "scoreValue": 38.9,
+      "sourceUrl": "https://arxiv.org/abs/2410.16464",
+      "notesShort": "Latest arXiv version reports 38.9%; the public tracker still lists 35.8 for an earlier or alternate setup.",
+      "reportedAt": "2025-06"
+    },
+    {
+      "rank": 20,
+      "systemName": "WebPilot",
+      "organization": "Academic Research",
+      "scoreDisplay": "37.2%",
+      "scoreValue": 37.2,
+      "sourceUrl": "https://www.arxiv.org/pdf/2408.15978",
+      "notesShort": "Paper reports 37.2%; the public tracker notes no open-source code or trajectories were released.",
+      "reportedAt": "2024-08"
+    },
+    {
+      "rank": 21,
+      "systemName": "Agent Workflow Memory",
+      "organization": "Academic Research",
+      "scoreDisplay": "35.5%",
+      "scoreValue": 35.5,
+      "sourceUrl": "https://arxiv.org/pdf/2409.07429",
+      "repoUrl": "https://github.com/zorazrw/agent-workflow-memory",
+      "notesShort": "Workflow-memory agent result; public repository is available with the paper artifacts.",
+      "reportedAt": "2024-09"
+    },
+    {
+      "rank": 22,
+      "systemName": "SteP",
+      "organization": "ASAPP Research",
+      "scoreDisplay": "33.5%",
+      "scoreValue": 33.5,
+      "sourceUrl": "https://arxiv.org/abs/2310.03720",
+      "repoUrl": "https://github.com/asappresearch/webagents-step",
+      "notesShort": "Public tracker reports 33.5%; the SteP project publishes code and WebArena materials.",
+      "reportedAt": "2024-04"
+    },
+    {
+      "rank": 23,
+      "systemName": "TTI",
+      "organization": "Academic Research",
+      "scoreDisplay": "26.1%",
+      "scoreValue": 26.1,
+      "sourceUrl": "https://arxiv.org/abs/2506.07976",
+      "repoUrl": "https://huggingface.co/sjunhongs/tti_webarena/tree/main",
+      "notesShort": "Test-time interaction result; WebArena artifacts are public on Hugging Face.",
+      "reportedAt": "2025-06"
+    },
+    {
+      "rank": 24,
+      "systemName": "BrowserGym + GPT-4",
+      "organization": "ServiceNow Research",
+      "scoreDisplay": "23.5%",
+      "scoreValue": 23.5,
+      "sourceUrl": "https://arxiv.org/pdf/2403.07718.pdf",
+      "repoUrl": "https://github.com/ServiceNow/BrowserGym",
+      "notesShort": "BrowserGym/WorkArena paper reports this WebArena baseline; BrowserGym is open source.",
+      "reportedAt": "2024-04"
+    },
+    {
+      "rank": 25,
+      "systemName": "AgentTrek-1.0-32B",
+      "organization": "xLang AI",
+      "scoreDisplay": "22.4%",
+      "scoreValue": 22.4,
+      "sourceUrl": "https://agenttrek.github.io/",
+      "repoUrl": "https://github.com/xlang-ai/AgentTrek",
+      "notesShort": "AgentTrek project reports 22.4%; code, model, and data links are public.",
+      "reportedAt": "2025-01"
+    },
+    {
+      "rank": 26,
+      "systemName": "GPT-4 + Auto Eval",
+      "organization": "Academic Research",
+      "scoreDisplay": "20.2%",
+      "scoreValue": 20.2,
+      "sourceUrl": "https://arxiv.org/abs/2404.06474",
+      "notesShort": "Automatic evaluator study reports a GPT-4 WebArena result; no separate implementation repository was found.",
+      "reportedAt": "2024-04"
+    },
+    {
+      "rank": 27,
+      "systemName": "GPT-4o + Tree Search",
+      "organization": "Academic Research",
+      "scoreDisplay": "19.2%",
+      "scoreValue": 19.2,
+      "sourceUrl": "https://jykoh.com/search-agents",
+      "notesShort": "Tree-search agent result from the Search Agents project page.",
+      "reportedAt": "2024-06"
+    },
+    {
+      "rank": 28,
+      "systemName": "AutoWebGLM",
+      "organization": "THUDM",
+      "scoreDisplay": "18.2%",
+      "scoreValue": 18.2,
+      "sourceUrl": "https://arxiv.org/abs/2404.03648",
+      "repoUrl": "https://github.com/THUDM/AutoWebGLM",
+      "notesShort": "AutoWebGLM paper reports 18.2%; official repository includes WebArena evaluation materials.",
+      "reportedAt": "2024-04"
+    },
+    {
+      "rank": 29,
+      "systemName": "NNetNav",
+      "organization": "Stanford NLP",
+      "scoreDisplay": "16.3%",
+      "scoreValue": 16.3,
+      "sourceUrl": "https://arxiv.org/abs/2410.02907",
+      "repoUrl": "https://huggingface.co/stanfordnlp/llama8b-nnetnav-wa",
+      "notesShort": "NNetNav result with public model checkpoint linked from the tracker.",
+      "reportedAt": "2025-01"
+    },
+    {
+      "rank": 30,
+      "systemName": "gpt-4-0613 (no not-achievable hint)",
+      "organization": "OpenAI",
+      "scoreDisplay": "14.9%",
+      "scoreValue": 14.9,
+      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "notesShort": "Original WebArena baseline without providing the not-achievable task hint.",
+      "reportedAt": "2023-06"
+    },
+    {
+      "rank": 31,
+      "systemName": "gpt-4o-2024-05-13",
+      "organization": "OpenAI",
+      "scoreDisplay": "13.05%",
+      "scoreValue": 13.05,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
+      "notesShort": "Public tracker row from the WebArena team with the not-achievable task hint provided.",
+      "reportedAt": "2024-05"
+    },
+    {
+      "rank": 32,
+      "systemName": "gpt-4-0613 (with not-achievable hint)",
+      "organization": "OpenAI",
+      "scoreDisplay": "11.7%",
+      "scoreValue": 11.7,
+      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "notesShort": "Original WebArena GPT-4 baseline when the not-achievable task hint is provided.",
+      "reportedAt": "2023-06"
+    },
+    {
+      "rank": 33,
+      "systemName": "Patel et al. + GPT-4",
+      "organization": "Academic Research",
+      "scoreDisplay": "9.36%",
+      "scoreValue": 9.36,
+      "sourceUrl": "https://arxiv.org/abs/2405.20309",
+      "notesShort": "Patel et al. report a GPT-4 WebArena evaluation row in the public tracker.",
+      "reportedAt": "2024-05"
+    },
+    {
+      "rank": 34,
+      "systemName": "gpt-3.5-turbo-16k-0613",
+      "organization": "OpenAI",
+      "scoreDisplay": "8.87%",
+      "scoreValue": 8.87,
+      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "notesShort": "Original WebArena GPT-3.5 baseline.",
+      "reportedAt": "2023-03"
+    },
+    {
+      "rank": 35,
+      "systemName": "Qwen-1.5-chat-72b",
+      "organization": "Qwen",
+      "scoreDisplay": "7.14%",
+      "scoreValue": 7.14,
+      "sourceUrl": "https://arxiv.org/abs/2405.20309",
+      "repoUrl": "https://huggingface.co/Qwen/Qwen1.5-72B-Chat",
+      "notesShort": "Patel et al. tracker row for the open-weight Qwen 1.5 chat model.",
+      "reportedAt": "2023-09"
+    },
+    {
+      "rank": 36,
+      "systemName": "Gemini Pro",
+      "organization": "Google",
+      "scoreDisplay": "7.12%",
+      "scoreValue": 7.12,
+      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "notesShort": "WebArena tracker baseline for Gemini Pro; implementation is proprietary.",
+      "reportedAt": "2023-12"
+    },
+    {
+      "rank": 37,
+      "systemName": "Llama3-chat-70b",
+      "organization": "Meta",
+      "scoreDisplay": "7.02%",
+      "scoreValue": 7.02,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
+      "repoUrl": "https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct",
+      "notesShort": "Public tracker baseline for the open-weight Llama 3 70B Instruct model.",
+      "reportedAt": "2024-04-02"
+    },
+    {
+      "rank": 38,
+      "systemName": "Synatra-CodeLLama7b",
+      "organization": "Academic Research",
+      "scoreDisplay": "6.28%",
+      "scoreValue": 6.28,
+      "sourceUrl": "https://arxiv.org/pdf/2409.15637",
+      "notesShort": "Synatra CodeLlama-7B WebArena row from the paper and public tracker.",
+      "reportedAt": "2024-10"
+    },
+    {
+      "rank": 39,
+      "systemName": "Lemur-chat-70b",
+      "organization": "OpenLemur",
+      "scoreDisplay": "5.3%",
+      "scoreValue": 5.3,
+      "sourceUrl": "https://arxiv.org/abs/2310.06830",
+      "repoUrl": "https://huggingface.co/OpenLemur/lemur-70b-chat-v1",
+      "notesShort": "Lemur-chat-70B WebArena row; open model weights are available on Hugging Face.",
+      "reportedAt": "2023-10"
+    },
+    {
+      "rank": 40,
+      "systemName": "Agent-FLAN",
+      "organization": "InternLM",
+      "scoreDisplay": "4.68%",
+      "scoreValue": 4.68,
+      "sourceUrl": "https://arxiv.org/abs/2403.12881",
+      "repoUrl": "https://github.com/InternLM/Agent-FLAN",
+      "notesShort": "Agent-FLAN result from the paper and public tracker; code and model artifacts are public.",
+      "reportedAt": "2024-03"
+    },
+    {
+      "rank": 41,
+      "systemName": "CodeLlama-instruct-34b",
+      "organization": "Meta",
+      "scoreDisplay": "4.06%",
+      "scoreValue": 4.06,
+      "sourceUrl": "https://arxiv.org/abs/2310.06830",
+      "repoUrl": "https://huggingface.co/codellama/CodeLlama-34b-Instruct-hf",
+      "notesShort": "Lemur paper baseline for the public Code Llama 34B Instruct model.",
+      "reportedAt": "2023-08"
+    },
+    {
+      "rank": 42,
+      "systemName": "AgentLM-70b",
+      "organization": "THUDM",
+      "scoreDisplay": "3.81%",
+      "scoreValue": 3.81,
+      "sourceUrl": "https://arxiv.org/abs/2310.12823",
+      "repoUrl": "https://github.com/THUDM/AgentTuning",
+      "notesShort": "AgentTuning paper reports the AgentLM-70B WebArena result and links released AgentLM models.",
+      "reportedAt": "2023-10"
+    },
+    {
+      "rank": 43,
+      "systemName": "Llama3-chat-8b",
+      "organization": "Meta",
+      "scoreDisplay": "3.32%",
+      "scoreValue": 3.32,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
+      "repoUrl": "https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct",
+      "notesShort": "Public tracker baseline for the open-weight Llama 3 8B Instruct model.",
+      "reportedAt": "2024-04"
+    },
+    {
+      "rank": 44,
+      "systemName": "CodeAct Agent",
+      "organization": "Academic Research",
+      "scoreDisplay": "2.3%",
+      "scoreValue": 2.3,
+      "sourceUrl": "https://arxiv.org/abs/2402.01030",
+      "repoUrl": "https://github.com/xingyaoww/code-act",
+      "notesShort": "CodeAct paper reports a WebArena row; official CodeAct repository is public.",
+      "reportedAt": "2024-02"
+    },
+    {
+      "rank": 45,
+      "systemName": "AgentLM-13b",
+      "organization": "THUDM",
+      "scoreDisplay": "1.6%",
+      "scoreValue": 1.6,
+      "sourceUrl": "https://arxiv.org/abs/2310.12823",
+      "repoUrl": "https://github.com/THUDM/AgentTuning",
+      "notesShort": "AgentTuning paper reports the AgentLM-13B WebArena result and links released AgentLM models.",
+      "reportedAt": "2023-10"
+    },
+    {
+      "rank": 46,
+      "systemName": "Mixtral-8x7B",
+      "organization": "Mistral AI",
+      "scoreDisplay": "1.39%",
+      "scoreValue": 1.39,
+      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "repoUrl": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+      "notesShort": "Public tracker baseline for the open-weight Mixtral-8x7B Instruct model.",
+      "reportedAt": "2024-01"
+    },
+    {
+      "rank": 47,
+      "systemName": "AgentLM-7b",
+      "organization": "THUDM",
+      "scoreDisplay": "0.74%",
+      "scoreValue": 0.74,
+      "sourceUrl": "https://arxiv.org/abs/2310.12823",
+      "repoUrl": "https://github.com/THUDM/AgentTuning",
+      "notesShort": "AgentTuning paper reports the AgentLM-7B WebArena result and links released AgentLM models.",
+      "reportedAt": "2023-10"
+    },
+    {
+      "rank": 48,
+      "systemName": "FireAct",
+      "organization": "Academic Research",
+      "scoreDisplay": "0.25%",
+      "scoreValue": 0.25,
+      "sourceUrl": "https://arxiv.org/abs/2310.05915",
+      "notesShort": "FireAct WebArena row from the public tracker; no public WebArena implementation artifact was found.",
+      "reportedAt": "2023-10"
+    },
+    {
+      "rank": 49,
+      "systemName": "CodeLlama-instruct-7b",
+      "organization": "Meta",
+      "scoreDisplay": "0.0%",
+      "scoreValue": 0,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
+      "repoUrl": "https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf",
+      "notesShort": "Public tracker baseline for the public Code Llama 7B Instruct model.",
+      "reportedAt": "2023-08"
     }
   ]
 }

@@ -1,0 +1,43 @@
+<script>
+  const tocLinks = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>(".toc-list a[href^='#']")
+  );
+  const sections = tocLinks
+    .map((link) => {
+      const id = link.hash.slice(1);
+      return id ? document.getElementById(id) : null;
+    })
+    .filter((section): section is HTMLElement => Boolean(section));
+
+  function setActiveSection(id: string): void {
+    tocLinks.forEach((link) => {
+      if (link.hash === `#${id}`) {
+        link.setAttribute("aria-current", "true");
+        const tocList = link.closest<HTMLElement>(".toc-list");
+        if (tocList) {
+          tocList.style.setProperty("--toc-active-y", `${link.offsetTop}px`);
+          tocList.style.setProperty("--toc-active-height", `${link.offsetHeight}px`);
+        }
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  function updateActiveSection(): void {
+    const anchorY = window.scrollY + window.innerHeight * 0.28;
+    const activeSection = sections.reduce<HTMLElement | null>((current, section) => {
+      return section.offsetTop <= anchorY ? section : current;
+    }, sections[0] ?? null);
+
+    if (activeSection) {
+      setActiveSection(activeSection.id);
+    }
+  }
+
+  if (tocLinks.length > 0 && sections.length > 0) {
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+  }
+</script>

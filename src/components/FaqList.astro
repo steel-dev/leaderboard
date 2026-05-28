@@ -9,31 +9,54 @@ interface Props {
 const { items, heading = "Frequently asked questions" } = Astro.props;
 ---
 
-<section class="table-shell w-full">
-  <div class="lb-header px-4 py-3">
-    <h2 class="m-0 text-sm font-semibold text-[var(--color-text-strong)]">{heading}</h2>
+<section class="table-shell faq-shell w-full">
+  <div class="faq-module-head flex items-center gap-3 px-4 py-3">
+    <h2 class="m-0 text-sm font-semibold uppercase tracking-[-0.02em]">
+      {heading}
+    </h2>
+    <div class="lb-head-lines" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
   <div>
-    {items.map((item) => (
-      <details class="faq-item px-4 py-3">
-        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-[var(--color-text-strong)] hover:text-[var(--color-accent)]">
-          <span>{item.q}</span>
-          <span class="muted shrink-0">
-            <span class="inline details-closed">+</span>
-            <span class="hidden details-open">-</span>
-          </span>
-        </summary>
-        <div
-          class="faq-answer mt-3 border-l-2 border-[color:color-mix(in_srgb,var(--color-border)_35%,transparent)] pl-3 text-sm leading-relaxed muted"
-          set:html={item.a}
-        >
-        </div>
-      </details>
-    ))}
+    {
+      items.map((item) => (
+        <details class="faq-item px-4 py-3">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm text-(--color-text-strong) hover:text-(--color-text)">
+            <span>{item.q}</span>
+            <span class="muted shrink-0">
+              <span class="inline details-closed">+</span>
+              <span class="hidden details-open">-</span>
+            </span>
+          </summary>
+          <div
+            class="faq-answer mt-3 border-l-2 border-[color-mix(in_srgb,var(--color-border)_35%,transparent)] pl-3 text-sm leading-relaxed muted"
+            set:html={item.a}
+          />
+        </details>
+      ))
+    }
   </div>
 </section>
 
 <style>
+  .faq-module-head {
+    background: var(--color-text-strong);
+    color: var(--color-bg);
+  }
+
+  .faq-shell .faq-item:first-of-type {
+    border-top: 0;
+  }
+
+  .faq-module-head .lb-head-lines span {
+    background: var(--color-bg);
+  }
+
   details[open] .details-closed {
     display: none;
   }

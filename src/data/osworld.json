@@ -8,6 +8,7 @@
       "scoreValue": 79.6,
       "sourceUrl": "https://www.anthropic.com/glasswing",
       "notesShort": "Reported on Anthropic's Glasswing page.",
+      "reportedAt": "2026-04-07",
       "isNew": true
     },
     {
@@ -18,7 +19,7 @@
       "scoreValue": 76.26,
       "sourceUrl": "https://www.theagi.company/blog/osworld",
       "notesShort": "Self-reported October 2025; trained with RL on OSWorld VMs and internal browser environments.",
-      "isNew": true
+      "reportedAt": "2025-10-23"
     },
     {
       "rank": 3,
@@ -28,6 +29,7 @@
       "scoreValue": 75.0,
       "sourceUrl": "https://openai.com/index/introducing-gpt-5-4/",
       "notesShort": "Self-reported at GPT-5.4 launch on OSWorld-Verified; awaiting independent verification.",
+      "reportedAt": "2026-03-05",
       "isNew": true
     },
     {
@@ -38,7 +40,7 @@
       "scoreValue": 72.7,
       "sourceUrl": "https://www.anthropic.com/glasswing",
       "notesShort": "Reported on Anthropic's Glasswing page.",
-      "isNew": true
+      "reportedAt": "2026-02-05"
     },
     {
       "rank": 5,
@@ -48,7 +50,7 @@
       "scoreValue": 72.5,
       "sourceUrl": "https://www.anthropic.com/news/claude-sonnet-4-6",
       "notesShort": "Independently assessed; within 0.2 points of Opus 4.6 at significantly lower cost.",
-      "isNew": true
+      "reportedAt": "2026-02-17"
     },
     {
       "rank": 6,
@@ -58,7 +60,7 @@
       "scoreValue": 66.7,
       "sourceUrl": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B",
       "notesShort": "Strongest open-source model on OSWorld; self-reported.",
-      "isNew": true
+      "reportedAt": "2025-09-23"
     },
     {
       "rank": 7,
@@ -67,7 +69,8 @@
       "scoreDisplay": "66.3%",
       "scoreValue": 66.3,
       "sourceUrl": "https://www.anthropic.com/news/claude-opus-4-5",
-      "notesShort": "OSWorld-Verified self-reported result; reported on anthropic.com."
+      "notesShort": "OSWorld-Verified self-reported result; reported on anthropic.com.",
+      "reportedAt": "2025-11-24"
     },
     {
       "rank": 8,
@@ -76,7 +79,8 @@
       "scoreDisplay": "63.3%",
       "scoreValue": 63.3,
       "sourceUrl": "https://arxiv.org/html/2602.02276v1",
-      "notesShort": "Self-reported in technical paper; GUI-only actions without external tools on OSWorld-Verified."
+      "notesShort": "Self-reported in technical paper; GUI-only actions without external tools on OSWorld-Verified.",
+      "reportedAt": "2026-01-27"
     },
     {
       "rank": 9,
@@ -85,7 +89,8 @@
       "scoreDisplay": "62.3%",
       "scoreValue": 62.3,
       "sourceUrl": "https://docs.z.ai/guides/vlm/glm-5v-turbo",
-      "notesShort": "Self-reported VLM result; reported on docs.z.ai."
+      "notesShort": "Self-reported VLM result; reported on docs.z.ai.",
+      "reportedAt": "2026-04-01"
     },
     {
       "rank": 10,
@@ -94,7 +99,8 @@
       "scoreDisplay": "61.4%",
       "scoreValue": 61.4,
       "sourceUrl": "https://www.anthropic.com/news/claude-sonnet-4-5",
-      "notesShort": "OSWorld-Verified, official framework, 100 max steps, 4-run avg; reported on anthropic.com."
+      "notesShort": "OSWorld-Verified, official framework, 100 max steps, 4-run avg; reported on anthropic.com.",
+      "reportedAt": "2025-09-29"
     },
     {
       "rank": 11,
@@ -103,7 +109,8 @@
       "scoreDisplay": "53.6%",
       "scoreValue": 53.6,
       "sourceUrl": "https://www.uipath.com/newsroom/uipath-screenagent-osworld-benchmark-top-ranking",
-      "notesShort": "OSWorld-Verified independently verified result; enterprise automation scaffold on Claude Opus 4.5."
+      "notesShort": "OSWorld-Verified independently verified result; enterprise automation scaffold on Claude Opus 4.5.",
+      "reportedAt": "2026-01-14"
     },
     {
       "rank": 12,
@@ -112,7 +119,8 @@
       "scoreDisplay": "50.7%",
       "scoreValue": 50.7,
       "sourceUrl": "https://www.anthropic.com/news/claude-haiku-4-5",
-      "notesShort": "Self-reported result; reported on anthropic.com."
+      "notesShort": "Self-reported result; reported on anthropic.com.",
+      "reportedAt": "2025-10-15"
     },
     {
       "rank": 13,
@@ -121,7 +129,8 @@
       "scoreDisplay": "34.5%",
       "scoreValue": 34.5,
       "sourceUrl": "https://simular.ai",
-      "notesShort": "Open-source modular agent; evaluated on 50-step OSWorld tasks."
+      "notesShort": "Open-source modular agent; evaluated on 50-step OSWorld tasks.",
+      "reportedAt": "2025-03-12"
     },
     {
       "rank": 14,
@@ -130,7 +139,8 @@
       "scoreDisplay": "32.6%",
       "scoreValue": 32.6,
       "sourceUrl": "https://openai.com/index/computer-using-agent/",
-      "notesShort": "Self-reported on 50-step OSWorld tasks at Operator launch."
+      "notesShort": "Self-reported on 50-step OSWorld tasks at Operator launch.",
+      "reportedAt": "2025-01-23"
     },
     {
       "rank": 15,
@@ -139,7 +149,8 @@
       "scoreDisplay": "8.8%",
       "scoreValue": 8.8,
       "sourceUrl": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct",
-      "notesShort": "Self-reported result; reported on huggingface.co."
+      "notesShort": "Self-reported result; reported on huggingface.co.",
+      "reportedAt": "2025-01-26"
     },
     {
       "rank": 16,
@@ -148,7 +159,8 @@
       "scoreDisplay": "5.9%",
       "scoreValue": 5.9,
       "sourceUrl": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct",
-      "notesShort": "Self-reported result; reported on huggingface.co."
+      "notesShort": "Self-reported result; reported on huggingface.co.",
+      "reportedAt": "2025-03-24"
     }
   ]
 }

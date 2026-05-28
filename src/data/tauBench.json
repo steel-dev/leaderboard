@@ -8,7 +8,7 @@
       "scoreValue": 88.2,
       "sourceUrl": "https://arxiv.org/abs/2602.10604",
       "notesShort": "Direct technical report; Step-3.5 architecture optimized for high-consistency tool use.",
-      "isNew": true
+      "reportedAt": "2026-01-29"
     },
     {
       "rank": 2,
@@ -18,7 +18,7 @@
       "scoreValue": 87.4,
       "sourceUrl": "https://docs.z.ai/guides/llm/glm-4.7",
       "notesShort": "Official Z.ai Developer docs; Introduces enhanced agentic policy compliance for enterprise retail/airline workflows.",
-      "isNew": true
+      "reportedAt": "2025-12-22"
     },
     {
       "rank": 3,
@@ -28,7 +28,7 @@
       "scoreValue": 80.3,
       "sourceUrl": "https://arxiv.org/abs/2601.02780",
       "notesShort": "Technical Report; MoE model with 309B total/15B active params and hybrid attention for long-horizon agent tasks.",
-      "isNew": true
+      "reportedAt": "2026-01-06"
     },
     {
       "rank": 4,
@@ -38,7 +38,7 @@
       "scoreValue": 79.5,
       "sourceUrl": "https://inference-docs.cerebras.ai/resources/glm-47-migration",
       "notesShort": "Verified via Cerebras & Z.ai; SOTA performance for a lightweight flash-tier model in tool-use consistency.",
-      "isNew": true
+      "reportedAt": "2025-12-22"
     },
     {
       "rank": 5,
@@ -48,6 +48,7 @@
       "scoreValue": 77.2,
       "sourceUrl": "https://github.com/MiniMax-AI/MiniMax-M2",
       "notesShort": "Official repository; M2 specifically models 'thinking' content to handle complex multi-turn toolchains.",
+      "reportedAt": "2025-10-27",
       "isNew": false
     },
     {
@@ -57,7 +58,8 @@
       "scoreDisplay": "70.2%",
       "scoreValue": 70.2,
       "sourceUrl": "https://taubench.com",
-      "notesShort": "Sierra Research Evaluation; Measured using the 'High' user simulator and GPT-5.2 judge protocol."
+      "notesShort": "Sierra Research Evaluation; Measured using the 'High' user simulator and GPT-5.2 judge protocol.",
+      "reportedAt": "2025-11-24"
     },
     {
       "rank": 7,
@@ -67,6 +69,7 @@
       "scoreValue": 69.9,
       "sourceUrl": "https://taubench.com",
       "notesShort": "Sierra Research Evaluation; Results based on the standardized Sierra simulation harness.",
+      "reportedAt": "2025-12-11",
       "isNew": false
     },
     {
@@ -77,6 +80,7 @@
       "scoreValue": 68.4,
       "sourceUrl": "https://qwen.ai/blog?id=qwen3.5",
       "notesShort": "Official Qwen Blog; Native multimodal agent capabilities with sparse MoE architecture (17B active params).",
+      "reportedAt": "2026-02-16",
       "isNew": false
     },
     {
@@ -87,6 +91,7 @@
       "scoreValue": 67.8,
       "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3_pro_model_evaluation.pdf",
       "notesShort": "DeepMind Technical Report; Evaluation includes performance across retail, airline, and telecom domains.",
+      "reportedAt": "2025-12-17",
       "isNew": false
     },
     {
@@ -97,6 +102,7 @@
       "scoreValue": 65.8,
       "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3_pro_model_evaluation.pdf",
       "notesShort": "DeepMind Technical Report; Frontier reasoning performance for enterprise customer service simulations.",
+      "reportedAt": "2025-11-18",
       "isNew": false
     },
     {
@@ -106,7 +112,8 @@
       "scoreDisplay": "63.2%",
       "scoreValue": 63.2,
       "sourceUrl": "https://taubench.com/",
-      "notesShort": "\u03c4-bench overall pass^1 (gpt-5.2 user sim, reasoning enabled); reported on taubench.com."
+      "notesShort": "τ-bench overall pass^1 (gpt-5.2 user sim, reasoning enabled); reported on taubench.com.",
+      "reportedAt": "2026-02-11"
     },
     {
       "rank": 12,
@@ -115,7 +122,8 @@
       "scoreDisplay": "62.9%",
       "scoreValue": 62.9,
       "sourceUrl": "https://taubench.com/",
-      "notesShort": "\u03c4-bench overall pass^1 (gpt-5.2 user sim, reasoning enabled); reported on taubench.com."
+      "notesShort": "τ-bench overall pass^1 (gpt-5.2 user sim, reasoning enabled); reported on taubench.com.",
+      "reportedAt": "2025-09-29"
     }
   ]
 }

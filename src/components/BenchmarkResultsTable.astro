@@ -10,150 +10,195 @@ interface Props {
 }
 
 const { rows, scope, heading = "Leaderboard", slug = "" } = Astro.props;
+
+const collapseLimit = 12;
+const shouldCollapse = rows.length > collapseLimit;
+const hiddenCount = rows.length - collapseLimit;
+
+function repoLabel(repoUrl: string): string {
+  if (repoUrl.includes("github.com")) return "GitHub repository";
+  if (repoUrl.includes("huggingface.co")) return "Hugging Face repository";
+  return "Repository";
+}
+
+function formatReportedDate(reportedAt?: string): string {
+  if (!reportedAt) return "—";
+
+  const dateInput = /^\d{4}-\d{2}$/.test(reportedAt) ? `${reportedAt}-01` : reportedAt;
+  const date = new Date(`${dateInput}T00:00:00Z`);
+  if (Number.isNaN(date.getTime())) return reportedAt;
+
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
 ---
 
-<section class="table-shell w-full">
-  <div class="lb-module-head flex items-center justify-between gap-3 px-4 py-3">
-    <h2 class="m-0 text-sm font-semibold text-[var(--color-text-strong)]">{heading}</h2>
-    <span class="badge">{benchmarkScopeLabels[scope]} scope</span>
+<section class:list={["table-shell w-full", shouldCollapse && "is-collapsed"]}>
+  <div class="lb-module-head flex items-center gap-3 px-3 py-2">
+    <h2 class="m-0 text-sm font-normal uppercase tracking-[-0.02em] text-[var(--color-accent)]">
+      {heading || "Leaderboard"}
+    </h2>
+    <div class="lb-head-lines" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <span class="hidden text-xs font-bold uppercase text-[var(--color-accent)] sm:inline"
+      >{benchmarkScopeLabels[scope]} scope</span
+    >
   </div>
-  <div class="overflow-x-auto">
-    <table class="min-w-[980px] w-full border-collapse text-sm">
-      <thead class="lb-header text-left text-xs uppercase tracking-[0.04em] text-[var(--color-text-muted)]">
+  <div class="overflow-x-auto p-4 md:p-6">
+    <table class="w-full min-w-[640px] border-collapse text-xs">
+      <thead
+        class="lb-header text-left text-[0.6875rem] uppercase tracking-[0.025em] text-[var(--color-text-dim)]"
+      >
         <tr>
-          <th class="px-3 py-2 font-semibold">Rank</th>
           <th class="px-3 py-2 font-semibold">System / Submission</th>
-          <th class="px-3 py-2 font-semibold">Score</th>
+          <th class="px-3 py-2 font-semibold">
+            <span class="inline-flex items-center gap-1.5">
+              Score
+              <span class="score-triangle" aria-hidden="true"></span>
+            </span>
+          </th>
           <th class="px-3 py-2 font-semibold">Organization</th>
-          <th class="px-3 py-2 font-semibold">Notes</th>
+          <th class="px-3 py-2 font-semibold">Reported</th>
           <th class="px-3 py-2 font-semibold">Source</th>
-          <th class="px-3 py-2 font-semibold text-center">Share</th>
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => {
-          const badgeUrl = `https://leaderboard.steel.dev/og/${slug}/${row.rank}.png`;
-          const leaderboardUrl = `https://leaderboard.steel.dev/leaderboards/${slug}/`;
-          const tweetText = encodeURIComponent(`${row.systemName} by ${row.organization} ranks #${row.rank} on the ${heading} — ${leaderboardUrl}`);
-          return (
-          <tr class="lb-row group align-middle">
-            <td class="px-3 py-3 font-semibold">{row.rank}</td>
-            <td class="px-3 py-3 text-[var(--color-text-strong)]">
-              <div class="flex flex-wrap items-center gap-2">
-                <span>{row.systemName}</span>
-                {row.isNew && <span class="badge badge-accent">New</span>}
-              </div>
-            </td>
-            <td class="px-3 py-3 font-semibold">{row.scoreDisplay}</td>
-            <td class="px-3 py-3">{row.organization}</td>
-            <td class="px-3 py-3 muted">{row.notesShort}</td>
-            <td class="px-3 py-3">
-              <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer nofollow">
-                Source
-              </a>
-            </td>
-            <td class="px-3 py-3 align-middle">
-            {slug && (
-              <div class="share-dropdown relative inline-block">
-                <button class="share-trigger muted cursor-pointer select-none text-xs whitespace-nowrap hover:text-[var(--color-text-strong)] transition-colors">
-                  Share ▾
-                </button>
-                <div class="share-menu absolute right-0 z-10 mt-1 hidden flex-col border border-[var(--color-border)] bg-[var(--color-bg)] text-xs shadow-lg">
-                  <button
-                    class="copy-badge-btn w-full px-4 py-2 text-left whitespace-nowrap hover:bg-[var(--color-surface)] transition-colors"
-                    data-url={badgeUrl}>
-                    Copy badge link
-                  </button>
-                  
-                  <a href={`https://X.com/intent/tweet?text=${tweetText}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="block px-4 py-2 whitespace-nowrap hover:bg-[var(--color-surface)] transition-colors no-underline">
-                    Share on X
+        {
+          rows.map((row) => {
+            return (
+              <tr class="lb-row group align-middle">
+                <td class="px-3 py-3 text-[var(--color-text-strong)]">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="system-name">{row.systemName}</span>
+                    {row.isNew && <span class="badge badge-accent">New</span>}
+                    {row.repoUrl && (
+                      <a
+                        href={row.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        class="repo-source-link"
+                        aria-label={`${row.systemName} ${repoLabel(row.repoUrl)}`}
+                        title={repoLabel(row.repoUrl)}
+                      >
+                        {row.repoUrl.includes("huggingface.co") ? (
+                          <img
+                            src="/hf-logo.png"
+                            alt=""
+                            width="16"
+                            height="16"
+                            aria-hidden="true"
+                            class="h-4 w-4 object-contain"
+                          />
+                        ) : row.repoUrl.includes("github.com") ? (
+                          <img
+                            src="/github-logo.svg"
+                            alt=""
+                            width="13"
+                            height="13"
+                            aria-hidden="true"
+                            class="h-[13px] w-[13px] object-contain"
+                          />
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M15 3h6v6" />
+                            <path d="M10 14 21 3" />
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          </svg>
+                        )}
+                      </a>
+                    )}
+                    {row.notesShort && (
+                      <span class="note-tooltip relative inline-flex">
+                        <button
+                          type="button"
+                          class="note-trigger"
+                          aria-label={`Note for ${row.systemName}`}
+                          aria-describedby={`note-${slug}-${row.rank}`}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4" />
+                            <path d="M12 8h.01" />
+                          </svg>
+                        </button>
+                        <span id={`note-${slug}-${row.rank}`} role="tooltip" class="note-bubble">
+                          {row.notesShort}
+                        </span>
+                      </span>
+                    )}
+                  </div>
+                </td>
+                <td class="px-3 py-3 font-semibold text-[var(--color-accent)]">
+                  {row.scoreDisplay}
+                </td>
+                <td class="px-3 py-3 text-[var(--color-text-dim)]">{row.organization}</td>
+                <td class="px-3 py-3 whitespace-nowrap muted">
+                  {row.reportedAt ? (
+                    <time datetime={row.reportedAt}>{formatReportedDate(row.reportedAt)}</time>
+                  ) : (
+                    "—"
+                  )}
+                </td>
+                <td class="px-3 py-3">
+                  <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer nofollow">
+                    Source
                   </a>
-                  
-                   <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(leaderboardUrl)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="block px-4 py-2 whitespace-nowrap hover:bg-[var(--color-surface)] transition-colors no-underline">
-                    Share on LinkedIn
-                  </a>
-                </div>
-              </div>
-            )}
-          </td>
-          </tr>
-        )})}
+                </td>
+              </tr>
+            );
+          })
+        }
       </tbody>
     </table>
   </div>
+  {
+    shouldCollapse && (
+      <button type="button" class="lb-expand-btn" aria-expanded="false">
+        <span class="lb-expand-label-collapsed">Expand to see {hiddenCount} more</span>
+        <span class="lb-expand-label-expanded">Show less</span>
+        <span class="score-triangle lb-expand-triangle" aria-hidden="true" />
+      </button>
+    )
+  }
 </section>
-<div class="flex justify-end mb-2">
-  <button class="copy-md-btn badge cursor-pointer select-none" data-rows={JSON.stringify(rows)} data-heading={heading}>
-    Copy as markdown
-  </button>
-</div>
 
 <script>
-  document.querySelectorAll<HTMLButtonElement>(".copy-md-btn").forEach((btn) => {
+  document.querySelectorAll<HTMLButtonElement>(".lb-expand-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const rows = JSON.parse(btn.dataset.rows ?? "[]") as {
-        rank: number;
-        systemName: string;
-        organization: string;
-        scoreDisplay: string;
-        notesShort: string;
-        sourceUrl: string;
-      }[];
-      const heading = btn.dataset.heading ?? "Leaderboard";
-
-      const header = `| Rank | System | Organization | Score | Notes |`;
-      const divider = `| --- | --- | --- | --- | --- |`;
-      const rowLines = rows.map(
-        (r) =>
-          `| #${r.rank} | [${r.systemName}](${r.sourceUrl}) | ${r.organization} | ${r.scoreDisplay} | ${r.notesShort} |`
-      );
-
-      const md = [`## ${heading}`, ``, header, divider, ...rowLines].join("\n");
-
-      navigator.clipboard.writeText(md).then(() => {
-        const original = btn.textContent;
-        btn.textContent = "copied!";
-        setTimeout(() => (btn.textContent = original), 1800);
-      });
-    });
-  });
-
-  document.querySelectorAll<HTMLElement>(".share-dropdown").forEach((dropdown) => {
-    const trigger = dropdown.querySelector<HTMLButtonElement>(".share-trigger");
-    const menu = dropdown.querySelector<HTMLElement>(".share-menu");
-    if (!trigger || !menu) return;
-
-    trigger.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isHidden = menu.classList.contains("hidden");
-      document.querySelectorAll<HTMLElement>(".share-menu").forEach((m) => m.classList.add("hidden"));
-      if (isHidden) menu.classList.remove("hidden");
-    });
-  });
-
-  document.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
-    if (!target.closest(".share-dropdown")) {
-      document.querySelectorAll<HTMLElement>(".share-menu").forEach((m) => m.classList.add("hidden"));
-    }
-  });
-
-  document.addEventListener("click", (e) => {
-    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(".copy-badge-btn");
-    if (!btn || !btn.dataset.url) return;
-    e.stopPropagation();
-    navigator.clipboard.writeText(btn.dataset.url).then(() => {
-      const orig = btn.textContent;
-      btn.textContent = "Copied!";
-      setTimeout(() => {
-        btn.textContent = orig;
-      }, 1800);
+      const shell = btn.closest<HTMLElement>(".table-shell");
+      if (!shell) return;
+      shell.classList.toggle("is-collapsed");
+      btn.setAttribute("aria-expanded", String(!shell.classList.contains("is-collapsed")));
     });
   });
 </script>

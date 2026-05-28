@@ -54,10 +54,22 @@
           "format": "uri",
           "description": "Citation URL: paper, blog post, or official leaderboard entry."
         },
+        "repoUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Optional open-source/open-weight repository URL for the system or model, separate from the score citation."
+        },
         "notesShort": {
           "type": "string",
           "minLength": 1,
           "description": "One-sentence note summarizing the submission, methodology, or context."
+        },
+        "reportedAt": {
+          "oneOf": [
+            { "type": "string", "format": "date" },
+            { "type": "string", "pattern": "^\\d{4}-\\d{2}$" }
+          ],
+          "description": "Optional ISO date or YYYY-MM month when this result was reported by the source."
         },
         "isNew": {
           "type": "boolean",
