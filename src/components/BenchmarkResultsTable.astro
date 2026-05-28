@@ -151,9 +151,14 @@ function formatReportedDate(reportedAt?: string): string {
                             <path d="M12 8h.01" />
                           </svg>
                         </button>
-                        <span id={`note-${slug}-${row.rank}`} role="tooltip" class="note-bubble">
+                        <div
+                          id={`note-${slug}-${row.rank}`}
+                          role="tooltip"
+                          popover="manual"
+                          class="note-bubble"
+                        >
                           {row.notesShort}
-                        </span>
+                        </div>
                       </span>
                     )}
                   </div>
@@ -200,5 +205,81 @@ function formatReportedDate(reportedAt?: string): string {
       shell.classList.toggle("is-collapsed");
       btn.setAttribute("aria-expanded", String(!shell.classList.contains("is-collapsed")));
     });
+  });
+
+  document.querySelectorAll<HTMLButtonElement>(".note-trigger").forEach((trigger) => {
+    const id = trigger.getAttribute("aria-describedby");
+    if (!id) return;
+    const bubble = document.getElementById(id) as HTMLElement | null;
+    if (!bubble || typeof bubble.showPopover !== "function") return;
+
+    const MARGIN = 8;
+    const HIDE_DELAY_MS = 120;
+    let hideTimer: number | undefined;
+    let isOpen = false;
+
+    const position = (): void => {
+      const triggerRect = trigger.getBoundingClientRect();
+      const bubbleRect = bubble.getBoundingClientRect();
+      const viewportW = document.documentElement.clientWidth;
+      const viewportH = document.documentElement.clientHeight;
+
+      let top = triggerRect.top - bubbleRect.height - MARGIN;
+      let left = triggerRect.left + triggerRect.width / 2 - bubbleRect.width / 2;
+
+      if (top < MARGIN) top = triggerRect.bottom + MARGIN;
+      if (left < MARGIN) left = MARGIN;
+      if (left + bubbleRect.width > viewportW - MARGIN) {
+        left = viewportW - bubbleRect.width - MARGIN;
+      }
+      if (top + bubbleRect.height > viewportH - MARGIN) {
+        top = Math.max(MARGIN, viewportH - bubbleRect.height - MARGIN);
+      }
+
+      bubble.style.top = `${top}px`;
+      bubble.style.left = `${left}px`;
+    };
+
+    const onScrollOrResize = (): void => position();
+
+    const open = (): void => {
+      if (hideTimer !== undefined) {
+        window.clearTimeout(hideTimer);
+        hideTimer = undefined;
+      }
+      if (isOpen) return;
+      isOpen = true;
+      bubble.showPopover();
+      position();
+      window.addEventListener("scroll", onScrollOrResize, true);
+      window.addEventListener("resize", onScrollOrResize);
+    };
+
+    const close = (): void => {
+      if (!isOpen) return;
+      isOpen = false;
+      bubble.hidePopover();
+      window.removeEventListener("scroll", onScrollOrResize, true);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+
+    const scheduleClose = (): void => {
+      if (hideTimer !== undefined) window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(close, HIDE_DELAY_MS);
+    };
+
+    const cancelClose = (): void => {
+      if (hideTimer !== undefined) {
+        window.clearTimeout(hideTimer);
+        hideTimer = undefined;
+      }
+    };
+
+    trigger.addEventListener("mouseenter", open);
+    trigger.addEventListener("mouseleave", scheduleClose);
+    trigger.addEventListener("focus", open);
+    trigger.addEventListener("blur", close);
+    bubble.addEventListener("mouseenter", cancelClose);
+    bubble.addEventListener("mouseleave", scheduleClose);
   });
 </script>
