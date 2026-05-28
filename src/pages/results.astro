@@ -228,37 +228,41 @@ const faqSchema = JSON.stringify({
       </p>
     </header>
 
-    <aside class="comparability-notice mt-6" role="note" aria-labelledby="comparability-heading">
-      <div class="comparability-icon" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-          <path d="M12 9v4" />
-          <path d="M12 17h.01" />
-        </svg>
-      </div>
-      <div class="comparability-body">
-        <p id="comparability-heading" class="comparability-heading">
+    <details class="comparability-notice mt-6">
+      <summary class="comparability-summary">
+        <span class="comparability-icon" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+            <path d="M12 9v4" />
+            <path d="M12 17h.01" />
+          </svg>
+        </span>
+        <span class="comparability-heading">
           Scores on this page are <em>not</em> directly comparable across benchmarks.
-        </p>
-        <p class="comparability-text">
-          This index puts every result in one place for browsing — it does not normalize methodology.
-          Each benchmark uses its own task set, evaluator, scoring metric, and scope (model vs. agent).
-          A 90% on one benchmark does not mean the same thing as a 90% on another. Compare scores
-          <em>within</em> a single benchmark using the filters below, and read each benchmark's
-          methodology notes on its dedicated page before drawing conclusions.
-        </p>
-      </div>
-    </aside>
+        </span>
+        <span class="comparability-toggle muted shrink-0" aria-hidden="true">
+          <span class="inline details-closed">+</span>
+          <span class="hidden details-open">−</span>
+        </span>
+      </summary>
+      <p class="comparability-text">
+        This index puts every result in one place for browsing — it does not normalize methodology.
+        Each benchmark uses its own task set, evaluator, scoring metric, and scope (model vs. agent).
+        A 90% on one benchmark does not mean the same thing as a 90% on another. Compare scores
+        <em>within</em> a single benchmark using the filters below, and read each benchmark's
+        methodology notes on its dedicated page before drawing conclusions.
+      </p>
+    </details>
 
     <section class="mt-8 scroll-mt-8" id="filters" aria-label="Filter results">
       <div class="filter-block">
@@ -445,13 +449,22 @@ const faqSchema = JSON.stringify({
   }
 
   .comparability-notice {
-    display: flex;
-    gap: 0.875rem;
-    align-items: flex-start;
     padding: 1rem 1.125rem;
     border: 1px solid color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
     border-radius: 3px;
     background: color-mix(in srgb, var(--color-accent) 7%, var(--color-bg));
+  }
+
+  .comparability-summary {
+    display: flex;
+    gap: 0.875rem;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .comparability-summary::-webkit-details-marker {
+    display: none;
   }
 
   .comparability-icon {
@@ -464,13 +477,9 @@ const faqSchema = JSON.stringify({
     color: var(--color-accent);
   }
 
-  .comparability-body {
+  .comparability-heading {
     flex: 1;
     min-width: 0;
-  }
-
-  .comparability-heading {
-    margin: 0;
     font-family: var(--font-mono);
     font-size: 0.875rem;
     font-weight: 600;
@@ -478,8 +487,23 @@ const faqSchema = JSON.stringify({
     color: var(--color-text-strong);
   }
 
+  .comparability-toggle {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .comparability-notice[open] .details-closed {
+    display: none;
+  }
+
+  .comparability-notice[open] .details-open {
+    display: inline;
+  }
+
   .comparability-text {
-    margin: 0.375rem 0 0;
+    margin: 0.625rem 0 0;
+    padding-left: calc(1.5rem + 0.875rem);
     font-size: 0.8125rem;
     line-height: 1.35rem;
     color: var(--color-text);
