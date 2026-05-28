@@ -183,6 +183,26 @@ function writeSummary(reports: DiscoveryReport[]): void {
   fs.writeFileSync(path.join(OUT_DIR, "SUMMARY.md"), lines.join("\n") + "\n");
 }
 
+function writeConsolidated(reports: DiscoveryReport[]): void {
+  // Single-file input for the Claude filter pass: drop already-tracked candidates here
+  // to keep token cost down. Claude still receives benchmark context and existing top systems.
+  const filtered = reports.map((r) => ({
+    slug: r.slug,
+    benchmarkName: r.benchmarkName,
+    sinceIso: r.sinceIso,
+    existingTopSystems: r.existingTopSystems,
+    candidates: r.candidates.filter((c) => !c.alreadyTracked),
+  }));
+  fs.writeFileSync(
+    path.join(OUT_DIR, "run.json"),
+    JSON.stringify(
+      { queriedAt: new Date().toISOString(), benchmarks: filtered },
+      null,
+      2
+    )
+  );
+}
+
 async function main(): Promise<void> {
   const { slugs, sinceDays } = parseArgs();
   const since = new Date(Date.now() - sinceDays * 86_400_000).toISOString();
@@ -203,6 +223,7 @@ async function main(): Promise<void> {
     }
   }
   writeSummary(reports);
+  writeConsolidated(reports);
   console.log(`\nWrote ${reports.length} report(s) to ${OUT_DIR}/`);
 }
 

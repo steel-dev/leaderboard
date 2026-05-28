@@ -12,6 +12,10 @@ Use `npm install` to set up dependencies. Key scripts:
 - `npm run lint`: run ESLint across the repo.
 - `npm run lint:fix`: apply autofixes where possible.
 - `npm run update-readme`: rebuild the README leaderboard table from `src/lib/leaderboard.ts`.
+- `npm run discover`: query arxiv for recent benchmark papers and write candidates to `.discovery/run.json` (gitignored). Used by the `benchmark-discovery` skill in `.claude/skills/`.
+
+## Maintainer skills
+The `.claude/skills/benchmark-discovery/` skill drives the discovery flow. Invoke it from a Claude Code session to do a sweep, classify candidates (proposed / variant / methodology), and optionally append the result to the rolling `discovery`-labeled issue. The skill never writes to `src/data/` — maintainers verify candidates manually before merging.
 
 ## Coding Style & Naming Conventions
 Follow the existing Prettier config: 2-space indentation, semicolons, double quotes, `printWidth: 100`, and trailing commas where valid in ES5. ESLint enforces no unused variables and disallows `any` in TypeScript. Keep Astro components and layouts in `PascalCase` (for example, `LeaderboardTable.astro`), use `camelCase` for exported helpers, and keep slug-like files and folders in `kebab-case` (for example, `docs/research/webvoyager/`).
