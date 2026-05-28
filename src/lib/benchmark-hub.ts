@@ -65,6 +65,9 @@ export interface BenchmarkPageMeta {
   description: string;
   seoTitle?: string;
   seoDescription?: string;
+  seoName?: string;
+  categoryLabel?: string;
+  seoHook?: string;
   category: BenchmarkCategory;
   scope: BenchmarkScope;
   about: string[];
@@ -122,6 +125,40 @@ export const benchmarkScopeLabels: Record<BenchmarkScope, string> = {
   agent: "Agent",
   mixed: "Mixed",
 };
+
+const SHORT_MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+export function formatLastUpdated(iso: string): string {
+  const [year, month, day] = iso.split("-").map(Number);
+  if (!year || !month || !day) return iso;
+  return `${SHORT_MONTHS[month - 1]} ${day}, ${year}`;
+}
+
+export function renderBenchmarkTitle(meta: BenchmarkPageMeta): string {
+  const year = new Date().getFullYear();
+  const seoName = meta.seoName ?? meta.name;
+  const category = meta.categoryLabel ?? "Agent";
+  return `${seoName} Leaderboard ${year}: Latest ${category} Scores | Steel.dev`;
+}
+
+export function renderBenchmarkDescription(meta: BenchmarkPageMeta): string {
+  const seoName = meta.seoName ?? meta.name;
+  const hook = (meta.seoHook ?? meta.description).replace(/\.+\s*$/, "");
+  return `Compare ${seoName} leaderboard scores — ${hook}. Sourced results, updated ${formatLastUpdated(meta.lastUpdated)}.`;
+}
 
 export const benchmarkPages: BenchmarkPageData[] = [
   {
@@ -200,9 +237,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       name: "BrowseComp",
       description:
         "BrowseComp leaderboard for agentic web research systems solving OpenAI's hard-to-find short-answer browsing benchmark, with sourced scores and setup notes.",
-      seoTitle: "BrowseComp Leaderboard: Agentic Web Research Benchmark Results | Steel.dev",
-      seoDescription:
-        "Track BrowseComp leaderboard results for OpenAI's agentic web research benchmark, with sourced scores, browsing setup notes, methodology, and example tasks.",
+      categoryLabel: "Web Research Agent",
+      seoHook: "agentic web-research systems on OpenAI's hard-to-find questions",
       category: "research_search",
       scope: "mixed",
       about: [
@@ -261,9 +297,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       name: "WebArena",
       description:
         "WebArena leaderboard for autonomous browser agents evaluated on reproducible, self-hosted web tasks across shopping, forum, GitLab, CMS, map, and wiki environments.",
-      seoTitle: "WebArena Leaderboard: AI Browser Agent Benchmark Results | Steel.dev",
-      seoDescription:
-        "Compare WebArena benchmark results for AI browser agents on reproducible web tasks, with sourced scores, methodology notes, and related benchmark links.",
+      categoryLabel: "Browser Agent",
+      seoHook: "autonomous browser agents on 812 reproducible, self-hosted web tasks",
       category: "browser_agents",
       scope: "agent",
       about: [
@@ -323,9 +358,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       name: "SWE-bench Verified",
       description:
         "SWE-bench Verified leaderboard for coding agents resolving 500 human-filtered real GitHub issues with Docker-based test execution.",
-      seoTitle: "SWE-bench Verified Leaderboard: Coding Agent Benchmark Results | Steel.dev",
-      seoDescription:
-        "Compare SWE-bench Verified leaderboard results for coding agents resolving real GitHub issues, with sourced scores, setup notes, and methodology caveats.",
+      categoryLabel: "Coding Agent",
+      seoHook: "autonomous coding agents on 500 human-filtered real GitHub issues",
       category: "coding",
       scope: "model",
       about: [
@@ -385,9 +419,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       name: "OSWorld",
       description:
         "OSWorld leaderboard for multimodal computer-use agents completing 369 real desktop tasks with execution-based verification.",
-      seoTitle: "OSWorld Leaderboard: Computer Use Agent Benchmark Results | Steel.dev",
-      seoDescription:
-        "Compare OSWorld leaderboard results for computer-use agents on desktop automation tasks, with sourced scores, verification notes, and example tasks.",
+      categoryLabel: "Computer Use Agent",
+      seoHook: "multimodal computer-use agents on 369 execution-verified desktop tasks",
       category: "computer_use",
       scope: "agent",
       about: [
@@ -443,9 +476,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       name: "GAIA",
       description:
         "GAIA leaderboard for general AI assistants answering 466 real-world questions with reasoning, web browsing, tools, and exact final answers.",
-      seoTitle: "GAIA Leaderboard: General AI Assistant Benchmark Results | Steel.dev",
-      seoDescription:
-        "Compare GAIA benchmark leaderboard results for general AI assistants using reasoning, tools, browsing, and exact-answer evaluation.",
+      categoryLabel: "AI Assistant",
+      seoHook: "general AI assistants on 466 reasoning, browsing, and tool-use questions",
       category: "model_eval",
       scope: "agent",
       about: [
@@ -504,9 +536,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       name: "ClawBench",
       description:
         "ClawBench leaderboard for browser agents completing 153 everyday state-changing tasks on 144 live production websites.",
-      seoTitle: "ClawBench Leaderboard: Browser Agent Task Benchmark Results | Steel.dev",
-      seoDescription:
-        "Compare ClawBench leaderboard results for browser agents on live state-changing web tasks, with sourced scores, methodology notes, and task examples.",
+      categoryLabel: "Browser Agent",
+      seoHook: "browser agents on 153 live state-changing tasks across 144 websites",
       category: "browser_agents",
       scope: "agent",
       about: [
@@ -562,9 +593,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       name: "Online-Mind2Web",
       description:
         "Online-Mind2Web leaderboard for live web agents on 300 realistic tasks across 136 websites, including human and WebJudge evaluation notes.",
-      seoTitle: "Online-Mind2Web Leaderboard: Live Web Agent Benchmark Results | Steel.dev",
-      seoDescription:
-        "Compare Online-Mind2Web leaderboard results for live web agents, including sourced scores, human and WebJudge notes, and example tasks.",
+      categoryLabel: "Live Web Agent",
+      seoHook: "live web agents on 300 realistic tasks across 136 websites",
       category: "browser_agents",
       scope: "agent",
       about: [
@@ -621,10 +651,10 @@ export const benchmarkPages: BenchmarkPageData[] = [
       slug: "tau-bench",
       name: "τ-bench",
       description:
-        "τ-bench leaderboard for conversational tool-use agents in airline and retail domains, emphasizing policy adherence and pass^k reliability.",
-      seoTitle: "τ-bench Leaderboard: Tool Use Agent Benchmark Results | Steel.dev",
-      seoDescription:
-        "Compare τ-bench leaderboard results for conversational tool-use agents, with sourced scores, pass^k reliability notes, and methodology caveats.",
+        "τ-bench leaderboard for conversational AI agents collaborating with users across complex enterprise domains, emphasizing policy adherence and pass^k reliability.",
+      seoName: "tau-bench",
+      categoryLabel: "Tool Use Agent",
+      seoHook: "AI agents collaborating with users across enterprise tool-use scenarios",
       category: "model_eval",
       scope: "model",
       about: [
@@ -684,9 +714,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       name: "AgentBench",
       description:
         "AgentBench leaderboard for LLM agents across 8 interactive environments, with a focus on function-calling and tool-use results.",
-      seoTitle: "AgentBench Leaderboard: LLM Agent Benchmark Results | Steel.dev",
-      seoDescription:
-        "Compare AgentBench leaderboard results for LLM agents across interactive environments, with sourced function-calling and tool-use scores.",
+      categoryLabel: "LLM Agent",
+      seoHook: "LLM agents across 8 interactive environments with function-calling scores",
       category: "model_eval",
       scope: "model",
       about: [

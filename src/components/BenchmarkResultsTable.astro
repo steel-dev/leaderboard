@@ -83,7 +83,7 @@ function formatReportedDate(reportedAt?: string): string {
                       <a
                         href={row.repoUrl}
                         target="_blank"
-                        rel="noopener noreferrer nofollow"
+                        rel="noopener"
                         class="repo-source-link"
                         aria-label={`${row.systemName} ${repoLabel(row.repoUrl)}`}
                         title={repoLabel(row.repoUrl)}
@@ -175,7 +175,7 @@ function formatReportedDate(reportedAt?: string): string {
                   )}
                 </td>
                 <td class="px-3 py-3">
-                  <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer nofollow">
+                  <a href={row.sourceUrl} target="_blank" rel="noopener">
                     Source
                   </a>
                 </td>
