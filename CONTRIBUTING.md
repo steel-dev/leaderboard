@@ -18,8 +18,9 @@ Use this section when you already know what kind of change you are making.
 3. Make sure `sourceUrl` directly supports the score.
 4. Write `notesShort` with the setup and caveat that matter most.
 5. Re-rank the file using competition ranking.
-6. Run `npm run update-readme`.
-7. Run `npm run lint` and `npm run build`.
+6. Bump `lastUpdated` on the benchmark's `benchmarkPages` entry in `src/lib/benchmark-hub.ts`.
+7. Run `npm run update-readme`.
+8. Run `npm run lint` and `npm run build`.
 
 ### Add a new leaderboard page
 
@@ -27,7 +28,7 @@ Use this section when you already know what kind of change you are making.
 2. Add `src/data/<benchmarkKey>.json`.
 3. Export it from `src/data/index.ts`.
 4. Add the key to `BenchmarkMap` and `benchmarkMap` in `src/lib/benchmark-hub.ts`.
-5. Add a `benchmarkPages` entry in `src/lib/benchmark-hub.ts`.
+5. Add a `benchmarkPages` entry in `src/lib/benchmark-hub.ts`, including `lastUpdated`.
 6. Add 3 exact public task examples with citations.
 7. Add related benchmarks and canonical links.
 8. Run `npm run update-readme`.
@@ -386,6 +387,7 @@ For submissions:
 - [ ] Ties and ranks are correct.
 - [ ] `reportedAt` reflects the source publication date.
 - [ ] `repoUrl` is present only when useful.
+- [ ] The benchmark's `lastUpdated` was bumped in `src/lib/benchmark-hub.ts`.
 - [ ] `npm run update-readme` was run when data changed.
 - [ ] `npm run lint` was run.
 - [ ] `npm run build` was run.
@@ -398,6 +400,7 @@ For new leaderboards:
 - [ ] The page has 3 exact public task examples with citations.
 - [ ] About, methodology, important notes, links, and related benchmarks are complete.
 - [ ] The page makes scope clear: `agent`, `model`, or `mixed`.
+- [ ] `lastUpdated` is set on the new `benchmarkPages` entry.
 - [ ] The README was regenerated.
 - [ ] `npm run lint` was run.
 - [ ] `npm run build` was run.

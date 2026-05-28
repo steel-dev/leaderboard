@@ -422,13 +422,11 @@ details[open] > .lb-row {
 }
 
 .note-bubble {
-  position: absolute;
-  bottom: calc(100% + 0.5rem);
-  left: 50%;
-  z-index: 20;
-  display: none;
-  width: min(18rem, 80vw);
-  transform: translateX(-50%);
+  inset: auto;
+  margin: 0;
+  width: min(18rem, calc(100vw - 1rem));
+  max-width: none;
+  height: auto;
   border: 1px solid var(--color-border);
   border-radius: 0.375rem;
   background: var(--color-surface);
@@ -438,11 +436,7 @@ details[open] > .lb-row {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   line-height: 1.35;
-}
-
-.note-tooltip:hover .note-bubble,
-.note-tooltip:focus-within .note-bubble {
-  display: block;
+  overflow: visible;
 }
 
 .copy-md-control {
