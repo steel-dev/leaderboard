@@ -879,3 +879,82 @@ export const homeFaqs: BenchmarkFaqItem[] = [
     a: "Open a pull request on <a href='https://github.com/steel-dev/leaderboard' target='_blank' rel='noopener noreferrer'>GitHub</a> with your entry. You need a publicly verifiable benchmark score, a link to the source (paper or blog post), and a homepage or GitHub repo for your agent.",
   },
 ];
+
+export interface RenderBenchmarkMarkdownOptions {
+  headingLevel?: 1 | 2;
+  includeCanonicalUrl?: boolean;
+}
+
+export function renderBenchmarkMarkdown(
+  page: BenchmarkPageData,
+  options: RenderBenchmarkMarkdownOptions = {}
+): string {
+  const headingLevel = options.headingLevel ?? 1;
+  const includeCanonicalUrl = options.includeCanonicalUrl ?? headingLevel === 1;
+  const hashes = "#".repeat(headingLevel);
+  const canonicalUrl = `https://leaderboard.steel.dev/leaderboards/${page.meta.slug}/`;
+  const lines: string[] = [];
+
+  lines.push(`${hashes} ${page.meta.name}`);
+  lines.push("");
+  lines.push(page.meta.description);
+  lines.push("");
+
+  if (includeCanonicalUrl) {
+    lines.push(`Canonical URL: ${canonicalUrl}`);
+  }
+  lines.push(`Category: ${benchmarkCategoryLabels[page.meta.category]}`);
+  lines.push(`Scope: ${page.meta.scope}`);
+  lines.push(`Last updated: ${page.meta.lastUpdated}`);
+  lines.push("");
+
+  lines.push("About:");
+  page.meta.about.forEach((paragraph) => {
+    lines.push(`- ${paragraph}`);
+  });
+  lines.push("");
+
+  lines.push("Methodology:");
+  page.meta.methodology.forEach((item) => {
+    lines.push(`- ${item}`);
+  });
+  lines.push("");
+
+  lines.push("Example evaluation tasks:");
+  page.meta.taskExamples.forEach((item) => {
+    lines.push(`- "${item.quote}" (citation: ${item.sourceLabel}, ${item.sourceUrl})`);
+  });
+
+  if (page.meta.importantNotes.length > 0) {
+    lines.push("");
+    lines.push("Interpretation notes:");
+    page.meta.importantNotes.forEach((note) => {
+      lines.push(`- ${note}`);
+    });
+  }
+  lines.push("");
+
+  lines.push("Canonical links:");
+  page.meta.links.forEach((link) => {
+    lines.push(`- ${link.label}: ${link.url}`);
+  });
+  lines.push("");
+
+  lines.push("| Rank | System | Score | Organization | Notes | Source | Repo |");
+  lines.push("|------|--------|-------|--------------|-------|--------|------|");
+  page.results.forEach((row) => {
+    lines.push(
+      `| ${row.rank} | ${row.systemName} | ${row.scoreDisplay} | ${row.organization} | ${row.notesShort} | ${row.sourceUrl} | ${row.repoUrl ?? "—"} |`
+    );
+  });
+  lines.push("");
+
+  const faqItems = generateBenchmarkFaq(page.meta, buildBenchmarkFaqFacts(page));
+  lines.push("FAQ:");
+  faqItems.forEach((item) => {
+    lines.push(`- Q: ${item.q}`);
+    lines.push(`  A: ${item.a}`);
+  });
+
+  return lines.join("\n");
+}

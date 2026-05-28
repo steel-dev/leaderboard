@@ -9,6 +9,7 @@ interface Props {
   description?: string;
   structuredData?: string | string[] | null;
   ogImage?: string;
+  markdownUrl?: string;
 }
 
 const {
@@ -16,8 +17,12 @@ const {
   description = "Compare and evaluate AI agents on Steel.dev's leaderboard",
   structuredData = null,
   ogImage = "/og/home.png",
+  markdownUrl,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, "https://leaderboard.steel.dev");
+const markdownURL = markdownUrl
+  ? new URL(markdownUrl, "https://leaderboard.steel.dev")
+  : null;
 const structuredDataItems = Array.isArray(structuredData)
   ? structuredData.filter(Boolean)
   : structuredData
@@ -45,6 +50,9 @@ gtag("config", "G-88TGJXEHJ6");
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    {markdownURL && (
+      <link rel="alternate" type="text/markdown" href={markdownURL} />
+    )}
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content={title} />
