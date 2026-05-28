@@ -31,6 +31,57 @@
     { "source": "/registry/benchmarks/agentbench", "destination": "/leaderboards/agentbench/", "permanent": true },
     { "source": "/registry/benchmarks/agentbench/:path*", "destination": "/leaderboards/agentbench/", "permanent": true },
 
+    { "source": "/registry/benchmarks/aider-benchmark", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/aider-benchmark/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/browsergym", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/browsergym/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/gpqa-diamond", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/gpqa-diamond/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/toolbench", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/toolbench/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/terminal-bench-2-0", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/terminal-bench-2-0/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/webshop", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/webshop/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/livebench", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/livebench/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/sotopia", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/sotopia/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/mcp-atlas", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/mcp-atlas/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/assistantbench", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/assistantbench/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/gorilla-apibench", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/gorilla-apibench/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/scicode", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/scicode/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/macosworld", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/macosworld/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/intercode", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/intercode/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/benchmarks/webbench", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/webbench/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/web-navigation", "destination": "/results", "permanent": true },
+    { "source": "/registry/web-navigation/:path*", "destination": "/results", "permanent": true },
+
+    { "source": "/registry/general-reasoning", "destination": "/results", "permanent": true },
+    { "source": "/registry/general-reasoning/:path*", "destination": "/results", "permanent": true },
+
     { "source": "/registry", "destination": "/", "permanent": true },
     { "source": "/registry/:path*", "destination": "/", "permanent": true }
   ]
