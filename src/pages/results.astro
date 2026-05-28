@@ -1,9 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import FaqList from "../components/FaqList.astro";
 import {
   benchmarkCategoryLabels,
   getAllBenchmarkPages,
   type BenchmarkCategory,
+  type BenchmarkFaqItem,
 } from "../lib/benchmark-hub";
 
 const pages = getAllBenchmarkPages();
@@ -23,6 +25,13 @@ interface FlatEntry {
   repoUrl?: string;
   notesShort: string;
   reportedAt?: string;
+  reportedSortKey: string;
+}
+
+function reportedSortKey(reportedAt?: string): string {
+  if (!reportedAt) return "";
+  if (/^\d{4}-\d{2}$/.test(reportedAt)) return `${reportedAt}-01`;
+  return reportedAt;
 }
 
 const entries: FlatEntry[] = pages.flatMap((page) =>
@@ -41,11 +50,13 @@ const entries: FlatEntry[] = pages.flatMap((page) =>
     repoUrl: row.repoUrl,
     notesShort: row.notesShort,
     reportedAt: row.reportedAt,
+    reportedSortKey: reportedSortKey(row.reportedAt),
   }))
 );
 
 entries.sort((a, b) => {
-  if (a.benchmark !== b.benchmark) return a.benchmark.localeCompare(b.benchmark);
+  const dateCmp = b.reportedSortKey.localeCompare(a.reportedSortKey);
+  if (dateCmp !== 0) return dateCmp;
   return a.rank - b.rank;
 });
 
@@ -151,18 +162,57 @@ const breadcrumbSchema = JSON.stringify({
     },
   ],
 });
+
+const resultsFaqs: BenchmarkFaqItem[] = [
+  {
+    q: "Are scores on this page comparable across benchmarks?",
+    a: "No. Each benchmark uses its own task set, evaluator, scoring metric, and scope (model vs. agent). A 90% on one benchmark and a 90% on another do not measure the same thing. Compare scores within a single benchmark, and read methodology notes on the individual <a href='/'>benchmark pages</a> before drawing conclusions.",
+  },
+  {
+    q: "Why is the default order by reported date rather than score?",
+    a: "Scores across different benchmarks aren't on the same scale, so a global score sort would be misleading. Sorting by reported date surfaces the freshest results first. When you filter to a single benchmark the order switches to within-benchmark rank, which is the meaningful comparison.",
+  },
+  {
+    q: "Are these scores independently verified?",
+    a: "Not always. Some rows are independently benchmarked and some are self-reported by the agent or model team. Every row links to its source (paper, model card, repository, or launch post). Use those links and any per-row notes to assess evidence level before drawing strong conclusions.",
+  },
+  {
+    q: "How is this index sourced and updated?",
+    a: "Rows are taken from public papers, model cards, repositories, and launch posts. New results appear as they are published — typically weekly. If you spot a missing agent or a stale score, open a pull request or issue on <a href='https://github.com/steel-dev/leaderboard' target='_blank' rel='noopener noreferrer'>GitHub</a>.",
+  },
+  {
+    q: "How do I add my agent or model to this list?",
+    a: "Open a pull request on <a href='https://github.com/steel-dev/leaderboard' target='_blank' rel='noopener noreferrer'>GitHub</a>. You need a publicly verifiable benchmark score, a link to the source (paper, post, or repo), and a homepage or repository for your agent.",
+  },
+  {
+    q: "Who maintains this leaderboard?",
+    a: "<a href='https://steel.dev?utm_source=leaderboard&utm_medium=website&utm_content=results-faq' target='_blank' rel='noopener noreferrer'>Steel</a> maintains it as an open reference for the browser-agent ecosystem. Steel is browser infrastructure for AI agents — cloud browser sessions with anti-bot handling, proxy rotation, and session replay. Contributions and corrections are welcome on <a href='https://github.com/steel-dev/leaderboard' target='_blank' rel='noopener noreferrer'>GitHub</a>.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: resultsFaqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a.replace(/<[^>]+>/g, ""),
+    },
+  })),
+});
 ---
 
 <Layout
   title={pageTitle}
   description={pageDescription}
-  structuredData={[datasetSchema, itemListSchema, breadcrumbSchema]}
+  structuredData={[datasetSchema, itemListSchema, breadcrumbSchema, faqSchema]}
 >
   <article class="results-shell mx-auto w-full py-8">
     <header class="results-hero">
-      <p class="results-eyebrow muted">Steel.dev<span class="text-(--color-accent)">®</span></p>
       <h1
-        class="m-0 mt-2 text-[2rem] font-medium leading-9 tracking-[-0.045em] text-(--color-text-strong)"
+        class="m-0 text-[2rem] font-medium leading-9 tracking-[-0.045em] text-(--color-text-strong)"
       >
         AI Agent Benchmark Results — All Leaderboards
       </h1>
@@ -177,6 +227,38 @@ const breadcrumbSchema = JSON.stringify({
         individual <a href="/">benchmark hub</a> page for any benchmark below.
       </p>
     </header>
+
+    <aside class="comparability-notice mt-6" role="note" aria-labelledby="comparability-heading">
+      <div class="comparability-icon" aria-hidden="true">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+          <path d="M12 9v4" />
+          <path d="M12 17h.01" />
+        </svg>
+      </div>
+      <div class="comparability-body">
+        <p id="comparability-heading" class="comparability-heading">
+          Scores on this page are <em>not</em> directly comparable across benchmarks.
+        </p>
+        <p class="comparability-text">
+          This index puts every result in one place for browsing — it does not normalize methodology.
+          Each benchmark uses its own task set, evaluator, scoring metric, and scope (model vs. agent).
+          A 90% on one benchmark does not mean the same thing as a 90% on another. Compare scores
+          <em>within</em> a single benchmark using the filters below, and read each benchmark's
+          methodology notes on its dedicated page before drawing conclusions.
+        </p>
+      </div>
+    </aside>
 
     <section class="mt-8 scroll-mt-8" id="filters" aria-label="Filter results">
       <div class="filter-block">
@@ -256,13 +338,19 @@ const breadcrumbSchema = JSON.stringify({
     </section>
 
     <section class="table-shell mt-4 w-full" id="results-table">
-      <div class="lb-module-head flex items-center gap-3 px-3 py-2">
+      <div class="lb-module-head flex flex-wrap items-center gap-3 px-3 py-2">
         <h2 class="m-0 text-sm font-normal uppercase tracking-[-0.02em] text-(--color-accent)">
           Results
         </h2>
         <div class="lb-head-lines" aria-hidden="true">
           <span></span><span></span><span></span><span></span><span></span>
         </div>
+        <span
+          class="results-sort-hint text-[0.6875rem] uppercase tracking-[0.04em] text-(--color-text-dim)"
+          data-sort-hint
+        >
+          Sorted by reported date
+        </span>
       </div>
 
       <div class="overflow-x-auto p-4 md:p-6">
@@ -287,6 +375,8 @@ const breadcrumbSchema = JSON.stringify({
                   class="lb-row align-middle"
                   data-category={row.category}
                   data-benchmark={row.benchmarkSlug}
+                  data-rank={row.rank}
+                  data-reported={row.reportedSortKey}
                   data-search={`${row.systemName} ${row.organization} ${row.benchmark}`.toLowerCase()}
                 >
                   <td class="px-3 py-3 whitespace-nowrap">
@@ -338,6 +428,10 @@ const breadcrumbSchema = JSON.stringify({
         interpretation notes.
       </p>
     </section>
+
+    <section id="faq" class="mt-10 scroll-mt-8">
+      <FaqList items={resultsFaqs} />
+    </section>
   </article>
 </Layout>
 
@@ -350,10 +444,57 @@ const breadcrumbSchema = JSON.stringify({
     max-width: 50rem;
   }
 
-  .results-eyebrow {
+  .comparability-notice {
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+    padding: 1rem 1.125rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+    border-left-width: 3px;
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--color-accent) 7%, var(--color-bg));
+  }
+
+  .comparability-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-accent);
+  }
+
+  .comparability-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .comparability-heading {
+    margin: 0;
     font-family: var(--font-mono);
     font-size: 0.875rem;
-    margin: 0;
+    font-weight: 600;
+    line-height: 1.35rem;
+    color: var(--color-text-strong);
+  }
+
+  .comparability-text {
+    margin: 0.375rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.35rem;
+    color: var(--color-text);
+  }
+
+  .comparability-text em,
+  .comparability-heading em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+
+  .results-sort-hint {
+    margin-left: auto;
+    font-family: var(--font-mono);
   }
 
   .filter-block {
@@ -492,9 +633,11 @@ const breadcrumbSchema = JSON.stringify({
 <script>
   const table = document.getElementById("results-table");
   if (table) {
+    const tbody = table.querySelector<HTMLTableSectionElement>("tbody");
     const rows = Array.from(table.querySelectorAll<HTMLTableRowElement>("tbody tr"));
     const countEl = document.querySelector<HTMLElement>("[data-results-count]");
     const emptyEl = document.querySelector<HTMLElement>("[data-empty-state]");
+    const sortHintEl = document.querySelector<HTMLElement>("[data-sort-hint]");
     const searchEl = document.querySelector<HTMLInputElement>("#results-search");
     const benchmarkChips = Array.from(
       document.querySelectorAll<HTMLButtonElement>('[data-filter="benchmark"]')
@@ -505,6 +648,29 @@ const breadcrumbSchema = JSON.stringify({
       benchmark: "all",
       query: "",
     };
+
+    function compareByDateThenRank(a: HTMLTableRowElement, b: HTMLTableRowElement): number {
+      const dateCmp = (b.dataset.reported ?? "").localeCompare(a.dataset.reported ?? "");
+      if (dateCmp !== 0) return dateCmp;
+      return Number(a.dataset.rank ?? 0) - Number(b.dataset.rank ?? 0);
+    }
+
+    function compareByRank(a: HTMLTableRowElement, b: HTMLTableRowElement): number {
+      return Number(a.dataset.rank ?? 0) - Number(b.dataset.rank ?? 0);
+    }
+
+    function reorder(): void {
+      if (!tbody) return;
+      const cmp = state.benchmark === "all" ? compareByDateThenRank : compareByRank;
+      const sorted = rows.slice().sort(cmp);
+      for (const row of sorted) {
+        tbody.appendChild(row);
+      }
+      if (sortHintEl) {
+        sortHintEl.textContent =
+          state.benchmark === "all" ? "Sorted by reported date" : "Sorted by rank";
+      }
+    }
 
     function apply(): void {
       const q = state.query;
@@ -553,6 +719,7 @@ const breadcrumbSchema = JSON.stringify({
       chip.addEventListener("click", () => {
         const filter = chip.dataset.filter as "category" | "benchmark";
         const value = chip.dataset.value ?? "all";
+        const previousBenchmark = state.benchmark;
         state[filter] = value;
         const peers = document.querySelectorAll<HTMLButtonElement>(
           `[data-filter="${filter}"]`
@@ -564,6 +731,15 @@ const breadcrumbSchema = JSON.stringify({
         }
         if (filter === "category") syncBenchmarkChips();
         apply();
+        if (filter === "benchmark" && state.benchmark !== previousBenchmark) {
+          reorder();
+        } else if (
+          filter === "category" &&
+          state.benchmark === "all" &&
+          previousBenchmark !== "all"
+        ) {
+          reorder();
+        }
       });
     }
 
