@@ -9,6 +9,8 @@ import {
   generateBenchmarkFaq,
   getAllBenchmarkPages,
   getBenchmarkPage,
+  renderBenchmarkDescription,
+  renderBenchmarkTitle,
 } from "../../lib/benchmark-hub";
 
 export function getStaticPaths() {
@@ -26,8 +28,8 @@ if (!page) {
 
 const faqItems = generateBenchmarkFaq(page.meta, buildBenchmarkFaqFacts(page));
 const pageUrl = `https://leaderboard.steel.dev/leaderboards/${page.meta.slug}/`;
-const pageTitle = page.meta.seoTitle ?? `${page.meta.name} Leaderboard | Steel.dev`;
-const pageDescription = page.meta.seoDescription ?? page.meta.description;
+const pageTitle = page.meta.seoTitle ?? renderBenchmarkTitle(page.meta);
+const pageDescription = page.meta.seoDescription ?? renderBenchmarkDescription(page.meta);
 
 const faqSchema = JSON.stringify({
   "@context": "https://schema.org",
@@ -165,7 +167,7 @@ const breadcrumbSchema = JSON.stringify({
             page.meta.taskExamples.map((item) => (
               <li class="text-sm leading-6 muted">
                 <span class="text-[var(--color-text-strong)]">&quot;{item.quote}&quot;</span>{" "}
-                <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer nofollow">
+                <a href={item.sourceUrl} target="_blank" rel="noopener">
                   Citation: {item.sourceLabel}
                 </a>
               </li>
@@ -191,7 +193,7 @@ const breadcrumbSchema = JSON.stringify({
           {
             page.meta.links.map((link) => (
               <li class="text-sm">
-                <a href={link.url} target="_blank" rel="noopener noreferrer nofollow">
+                <a href={link.url} target="_blank" rel="noopener">
                   {link.label}
                 </a>
               </li>
