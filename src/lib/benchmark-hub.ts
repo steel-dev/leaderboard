@@ -1,5 +1,6 @@
 import {
   agentBench,
+  aiderPolyglot,
   browsecomp,
   clawbench,
   gaia,
@@ -13,6 +14,7 @@ import {
 
 type BenchmarkMap = {
   agentBench: Record<string, BenchmarkResultRow[]>;
+  aiderPolyglot: Record<string, BenchmarkResultRow[]>;
   browsecomp: Record<string, BenchmarkResultRow[]>;
   clawbench: Record<string, BenchmarkResultRow[]>;
   gaia: Record<string, BenchmarkResultRow[]>;
@@ -26,6 +28,7 @@ type BenchmarkMap = {
 
 const benchmarkMap: BenchmarkMap = {
   agentBench,
+  aiderPolyglot,
   browsecomp,
   clawbench,
   gaia,
@@ -412,6 +415,79 @@ export const benchmarkPages: BenchmarkPageData[] = [
       lastUpdated: "2026-05-28",
     },
     results: benchmarkResults("sweBenchVerified") ?? [],
+  },
+  {
+    meta: {
+      slug: "aider",
+      name: "Aider",
+      seoName: "Aider",
+      seoTitle: "Aider Leaderboard 2026: LLM Coding Benchmark Scores | Steel.dev",
+      seoDescription:
+        "Compare the Aider LLM leaderboard and Aider benchmark scores: top models on the 225-task Aider Polyglot coding benchmark, with sourced results, pass rates, and methodology.",
+      description:
+        "Aider leaderboard ranking LLMs on the Aider Polyglot benchmark: 225 of the hardest Exercism exercises across C++, Go, Java, JavaScript, Python, and Rust, scored inside Aider's real edit loop.",
+      categoryLabel: "Coding LLM",
+      seoHook: "LLMs editing real code across six languages on 225 of Exercism's hardest exercises",
+      category: "coding",
+      scope: "model",
+      about: [
+        "Aider Polyglot is the coding benchmark behind the Aider pair-programming tool. It tests an LLM on 225 of Exercism's hardest exercises (the ones few models could solve on the earlier single-language benchmark) across C++, Go, Java, JavaScript, Python, and Rust.",
+        "Unlike isolated code-generation tests, Polyglot scores the model inside Aider's real edit loop: the model must emit changes in a structured edit format (diff, diff-fenced, whole, or architect) and gets a second attempt with the failing unit-test output if the first attempt fails.",
+        "Because it measures instruction-following and reliable file editing rather than raw synthesis, the leaderboard is a strong practical signal for choosing a model for an autonomous or pair-programming coding assistant, and it reports cost per run alongside accuracy.",
+      ],
+      methodology: [
+        "Primary metric is percent correct (pass_rate_2): the share of the 225 exercises where all hidden unit tests pass after the model's second attempt.",
+        "A secondary metric, percent using correct edit format, reports how often the model emitted edits Aider could apply without retry; low edit-format compliance drags down effective accuracy.",
+        "Each model runs with Aider's standard prompting and a per-model edit format; some rows fix a thinking-token budget or reasoning effort, which the leaderboard records in the model label.",
+        "Architect-mode rows pair a planner model with a separate editor model, so they are system results rather than single-model numbers; read the model label before comparing.",
+      ],
+      taskExamples: [
+        {
+          quote:
+            "To try and encourage more sales of different books from a popular 5 book series, a bookshop has decided to offer discounts on multiple book purchases.",
+          sourceLabel: "Aider polyglot benchmark, book-store exercise",
+          sourceUrl:
+            "https://github.com/Aider-AI/polyglot-benchmark/blob/main/python/exercises/practice/book-store/.docs/instructions.md",
+        },
+        {
+          quote:
+            "Given students' names along with the grade that they are in, create a roster for the school.",
+          sourceLabel: "Aider polyglot benchmark, grade-school exercise",
+          sourceUrl:
+            "https://github.com/Aider-AI/polyglot-benchmark/blob/main/python/exercises/practice/grade-school/.docs/instructions.md",
+        },
+        {
+          quote: "Pick the best hand(s) from a list of poker hands.",
+          sourceLabel: "Aider polyglot benchmark, poker exercise",
+          sourceUrl:
+            "https://github.com/Aider-AI/polyglot-benchmark/blob/main/python/exercises/practice/poker/.docs/instructions.md",
+        },
+      ],
+      importantNotes: [
+        "Numbers are the official Aider polyglot leaderboard; frontier models released after Aider's last run may be missing until it re-runs them.",
+        "Aider also has an older single-language code-editing leaderboard; this page tracks only the modern Polyglot benchmark, so do not mix scores from the two.",
+        "Architect-mode and planner+editor rows are system results, not single-model numbers; rows with a thinking-token or reasoning-effort label are configuration-specific.",
+      ],
+      links: [
+        { label: "Aider polyglot leaderboard", url: "https://aider.chat/docs/leaderboards/" },
+        {
+          label: "Polyglot benchmark announcement & methodology",
+          url: "https://aider.chat/2024/12/21/polyglot.html",
+        },
+        {
+          label: "Polyglot exercises repository",
+          url: "https://github.com/Aider-AI/polyglot-benchmark",
+        },
+        { label: "Aider repository", url: "https://github.com/Aider-AI/aider" },
+        {
+          label: "Leaderboard data file (YAML)",
+          url: "https://github.com/Aider-AI/aider/blob/main/aider/website/_data/polyglot_leaderboard.yml",
+        },
+      ],
+      relatedBenchmarks: ["swe-bench-verified", "tau-bench", "agentbench"],
+      lastUpdated: "2026-06-08",
+    },
+    results: benchmarkResults("aiderPolyglot") ?? [],
   },
   {
     meta: {

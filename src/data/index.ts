@@ -1,4 +1,5 @@
 export { default as agentBench } from "./agentBench.json" with { type: "json" };
+export { default as aiderPolyglot } from "./aiderPolyglot.json" with { type: "json" };
 export { default as browsecomp } from "./browsecomp.json" with { type: "json" };
 export { default as clawbench } from "./clawbench.json" with { type: "json" };
 export { default as gaia } from "./gaia.json" with { type: "json" };
