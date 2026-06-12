@@ -84,8 +84,8 @@ Coding · Model scope · 15 entries tracked
 
 | Rank | System                                   | Organization | Score                                          |
 | ---: | ---------------------------------------- | ------------ | ---------------------------------------------- |
-|    1 | gpt-5 (high) **(new)**                   | OpenAI       | [88.0%](https://aider.chat/docs/leaderboards/) |
-|    2 | gpt-5 (medium) **(new)**                 | OpenAI       | [86.7%](https://aider.chat/docs/leaderboards/) |
+|    1 | gpt-5 (high)                             | OpenAI       | [88.0%](https://aider.chat/docs/leaderboards/) |
+|    2 | gpt-5 (medium)                           | OpenAI       | [86.7%](https://aider.chat/docs/leaderboards/) |
 |    3 | o3-pro (high)                            | OpenAI       | [84.9%](https://aider.chat/docs/leaderboards/) |
 |    4 | gemini-2.5-pro-preview-06-05 (32k think) | Google       | [83.1%](https://aider.chat/docs/leaderboards/) |
 |    5 | o3 (high)                                | OpenAI       | [81.3%](https://aider.chat/docs/leaderboards/) |

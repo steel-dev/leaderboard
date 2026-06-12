@@ -421,7 +421,6 @@ export const benchmarkPages: BenchmarkPageData[] = [
       slug: "aider",
       name: "Aider",
       seoName: "Aider",
-      seoTitle: "Aider Leaderboard 2026: LLM Coding Benchmark Scores | Steel.dev",
       seoDescription:
         "Compare the Aider LLM leaderboard and Aider benchmark scores: top models on the 225-task Aider Polyglot coding benchmark, with sourced results, pass rates, and methodology.",
       description:

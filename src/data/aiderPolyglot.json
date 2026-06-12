@@ -8,8 +8,7 @@
       "scoreValue": 88,
       "sourceUrl": "https://aider.chat/docs/leaderboards/",
       "notesShort": "Official Aider polyglot leaderboard; diff edit format, 91.6% well-formed edits, ~$29.08 per run.",
-      "reportedAt": "2025-08-23",
-      "isNew": true
+      "reportedAt": "2025-08-23"
     },
     {
       "rank": 2,
@@ -19,8 +18,7 @@
       "scoreValue": 86.7,
       "sourceUrl": "https://aider.chat/docs/leaderboards/",
       "notesShort": "Official Aider polyglot leaderboard; diff edit format, 88.4% well-formed edits, ~$17.69 per run.",
-      "reportedAt": "2025-08-25",
-      "isNew": true
+      "reportedAt": "2025-08-25"
     },
     {
       "rank": 3,
@@ -60,8 +58,7 @@
       "scoreValue": 81.3,
       "sourceUrl": "https://aider.chat/docs/leaderboards/",
       "notesShort": "Official Aider polyglot leaderboard; diff edit format, 86.7% well-formed edits, ~$10.37 per run.",
-      "reportedAt": "2025-08-25",
-      "isNew": true
+      "reportedAt": "2025-08-25"
     },
     {
       "rank": 7,
@@ -122,8 +119,7 @@
       "sourceUrl": "https://aider.chat/docs/leaderboards/",
       "notesShort": "Official Aider polyglot leaderboard; open-weight model, diff edit format, 97.3% well-formed edits, ~$1.30 per run.",
       "repoUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp",
-      "reportedAt": "2025-10-03",
-      "isNew": true
+      "reportedAt": "2025-10-03"
     },
     {
       "rank": 13,
