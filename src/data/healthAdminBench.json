@@ -1,0 +1,125 @@
+{
+  "healthAdminBench": [
+    {
+      "rank": 1,
+      "systemName": "Claude Mythos 5 (browser-use)",
+      "organization": "Anthropic",
+      "scoreDisplay": "51.9%",
+      "scoreValue": 51.9,
+      "sourceUrl": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "notesShort": "Anthropic-run internal port with a browser-use scaffold, per-portal skill files, and a single trial; Anthropic flags it as not directly comparable to the published leaderboard.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 1,
+      "systemName": "Claude Opus 4.8 (browser-use)",
+      "organization": "Anthropic",
+      "scoreDisplay": "51.9%",
+      "scoreValue": 51.9,
+      "sourceUrl": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "notesShort": "Same Anthropic internal-port setup as the Mythos 5 row, and also the grader model for the run's LLM-judged subtasks; ties its successor at 51.9%.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 3,
+      "systemName": "Claude Mythos Preview (browser-use)",
+      "organization": "Anthropic",
+      "scoreDisplay": "47.4%",
+      "scoreValue": 47.4,
+      "sourceUrl": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "notesShort": "Anthropic internal-port run with browser-use scaffold and per-portal skill files, single trial; not directly comparable to the paper harness rows.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 4,
+      "systemName": "Claude Sonnet 4.6 (browser-use)",
+      "organization": "Anthropic",
+      "scoreDisplay": "45.2%",
+      "scoreValue": 45.2,
+      "sourceUrl": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "notesShort": "Anthropic internal-port run with browser-use scaffold and per-portal skill files, single trial; not directly comparable to the paper harness rows.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 5,
+      "systemName": "Claude Opus 4.6 CUA",
+      "organization": "Anthropic",
+      "scoreDisplay": "36.3%",
+      "scoreValue": 36.3,
+      "sourceUrl": "https://arxiv.org/abs/2604.09937",
+      "notesShort": "Native Anthropic computer-use system; best paper result under the headline screenshot-only, task-description-plus-portal-guidance configuration.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    },
+    {
+      "rank": 6,
+      "systemName": "GPT-5.4 CUA",
+      "organization": "OpenAI",
+      "scoreDisplay": "26.7%",
+      "scoreValue": 26.7,
+      "sourceUrl": "https://arxiv.org/abs/2604.09937",
+      "notesShort": "Native OpenAI computer-use loop; highest subtask success in the paper but weaker end-to-end completion than Claude Opus 4.6 CUA.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    },
+    {
+      "rank": 7,
+      "systemName": "Kimi K2.5",
+      "organization": "Moonshot AI",
+      "scoreDisplay": "15.6%",
+      "scoreValue": 15.6,
+      "sourceUrl": "https://arxiv.org/abs/2604.09937",
+      "notesShort": "Paper's standardized harness with screenshot-only observations and portal guidance prompting; strongest harness-based model.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    },
+    {
+      "rank": 8,
+      "systemName": "Claude Opus 4.6",
+      "organization": "Anthropic",
+      "scoreDisplay": "14.8%",
+      "scoreValue": 14.8,
+      "sourceUrl": "https://arxiv.org/abs/2604.09937",
+      "notesShort": "Standardized harness, screenshot-only; the paper notes it reaches 51.9% under accessibility-tree observations, showing how much observation mode matters.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    },
+    {
+      "rank": 9,
+      "systemName": "Qwen 3.5",
+      "organization": "Alibaba",
+      "scoreDisplay": "13.3%",
+      "scoreValue": 13.3,
+      "sourceUrl": "https://arxiv.org/abs/2604.09937",
+      "notesShort": "Paper's standardized harness with screenshot-only observations and portal guidance prompting.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    },
+    {
+      "rank": 10,
+      "systemName": "Gemini 3.1 Pro",
+      "organization": "Google",
+      "scoreDisplay": "11.9%",
+      "scoreValue": 11.9,
+      "sourceUrl": "https://arxiv.org/abs/2604.09937",
+      "notesShort": "Paper's standardized harness with screenshot-only observations and portal guidance prompting.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    },
+    {
+      "rank": 11,
+      "systemName": "GPT-5.4",
+      "organization": "OpenAI",
+      "scoreDisplay": "5.9%",
+      "scoreValue": 5.9,
+      "sourceUrl": "https://arxiv.org/abs/2604.09937",
+      "notesShort": "Standardized harness, screenshot-only; far below its native CUA result, underlining the impact of system-level orchestration.",
+      "reportedAt": "2026-04",
+      "isNew": true
+    }
+  ]
+}

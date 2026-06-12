@@ -3,6 +3,7 @@ export { default as aiderPolyglot } from "./aiderPolyglot.json" with { type: "js
 export { default as browsecomp } from "./browsecomp.json" with { type: "json" };
 export { default as clawbench } from "./clawbench.json" with { type: "json" };
 export { default as gaia } from "./gaia.json" with { type: "json" };
+export { default as healthAdminBench } from "./healthAdminBench.json" with { type: "json" };
 export { default as mind2web } from "./mind2web.json" with { type: "json" };
 export { default as osworld } from "./osworld.json" with { type: "json" };
 export { default as sweBenchVerified } from "./sweBenchVerified.json" with { type: "json" };
