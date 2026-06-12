@@ -2,6 +2,39 @@
   "osworld": [
     {
       "rank": 1,
+      "systemName": "Claude Mythos Preview",
+      "organization": "Anthropic",
+      "scoreDisplay": "85.4%",
+      "scoreValue": 85.4,
+      "sourceUrl": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+      "notesShort": "OSWorld-Verified pass@1 (361 tasks, 100 max steps, auto-thinking at max effort, 5-run avg) on Anthropic's revised harness; supersedes the earlier 79.6% Glasswing report. Self-reported in the Claude 5 system card.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 2,
+      "systemName": "Claude Mythos 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "85.0%",
+      "scoreValue": 85.0,
+      "sourceUrl": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+      "notesShort": "OSWorld-Verified pass@1 (361 tasks, 100 max steps, auto-thinking at max effort, 5-run avg) on Anthropic's revised harness. Self-reported in the Claude 5 system card.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 2,
+      "systemName": "Claude Fable 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "85.0%",
+      "scoreValue": 85.0,
+      "sourceUrl": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+      "notesShort": "Generally available sibling of Mythos 5; OSWorld-Verified pass@1 (361 tasks, 100 max steps, auto-thinking at max effort, 5-run avg). Self-reported in the Claude 5 system card.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 4,
       "systemName": "Claude Opus 4.8",
       "organization": "Anthropic",
       "scoreDisplay": "83.4%",
@@ -12,18 +45,7 @@
       "isNew": true
     },
     {
-      "rank": 2,
-      "systemName": "Mythos Preview",
-      "organization": "Anthropic",
-      "scoreDisplay": "79.6%",
-      "scoreValue": 79.6,
-      "sourceUrl": "https://www.anthropic.com/glasswing",
-      "notesShort": "Reported on Anthropic's Glasswing page.",
-      "reportedAt": "2026-04-07",
-      "isNew": true
-    },
-    {
-      "rank": 3,
+      "rank": 5,
       "systemName": "OSAgent",
       "organization": "TheAGI Company",
       "scoreDisplay": "76.26%",
@@ -33,7 +55,7 @@
       "reportedAt": "2025-10-23"
     },
     {
-      "rank": 4,
+      "rank": 6,
       "systemName": "GPT-5.4",
       "organization": "OpenAI",
       "scoreDisplay": "75.0%",
@@ -44,7 +66,7 @@
       "isNew": true
     },
     {
-      "rank": 5,
+      "rank": 7,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "72.7%",
@@ -54,7 +76,7 @@
       "reportedAt": "2026-02-05"
     },
     {
-      "rank": 6,
+      "rank": 8,
       "systemName": "Claude Sonnet 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "72.5%",
@@ -64,7 +86,7 @@
       "reportedAt": "2026-02-17"
     },
     {
-      "rank": 7,
+      "rank": 9,
       "systemName": "Qwen3 VL 235B",
       "organization": "Alibaba",
       "scoreDisplay": "66.7%",
@@ -74,7 +96,7 @@
       "reportedAt": "2025-09-23"
     },
     {
-      "rank": 8,
+      "rank": 10,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "66.3%",
@@ -84,7 +106,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 9,
+      "rank": 11,
       "systemName": "Kimi K2.5",
       "organization": "Moonshot AI",
       "scoreDisplay": "63.3%",
@@ -94,7 +116,7 @@
       "reportedAt": "2026-01-27"
     },
     {
-      "rank": 10,
+      "rank": 12,
       "systemName": "GLM-5V-Turbo",
       "organization": "Zhipu AI",
       "scoreDisplay": "62.3%",
@@ -104,7 +126,7 @@
       "reportedAt": "2026-04-01"
     },
     {
-      "rank": 11,
+      "rank": 13,
       "systemName": "Claude Sonnet 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "61.4%",
@@ -114,7 +136,7 @@
       "reportedAt": "2025-09-29"
     },
     {
-      "rank": 12,
+      "rank": 14,
       "systemName": "UiPath Screen Agent",
       "organization": "UiPath",
       "scoreDisplay": "53.6%",
@@ -124,7 +146,7 @@
       "reportedAt": "2026-01-14"
     },
     {
-      "rank": 13,
+      "rank": 15,
       "systemName": "Claude Haiku 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "50.7%",
@@ -134,7 +156,7 @@
       "reportedAt": "2025-10-15"
     },
     {
-      "rank": 14,
+      "rank": 16,
       "systemName": "Agent S2 + Claude 3.7",
       "organization": "Simular AI",
       "scoreDisplay": "34.5%",
@@ -144,7 +166,7 @@
       "reportedAt": "2025-03-12"
     },
     {
-      "rank": 15,
+      "rank": 17,
       "systemName": "OpenAI Operator (CUA)",
       "organization": "OpenAI",
       "scoreDisplay": "32.6%",
@@ -154,7 +176,7 @@
       "reportedAt": "2025-01-23"
     },
     {
-      "rank": 16,
+      "rank": 18,
       "systemName": "Qwen2.5 VL 72B Instruct",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "8.8%",
@@ -164,7 +186,7 @@
       "reportedAt": "2025-01-26"
     },
     {
-      "rank": 17,
+      "rank": 19,
       "systemName": "Qwen2.5 VL 32B Instruct",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "5.9%",
