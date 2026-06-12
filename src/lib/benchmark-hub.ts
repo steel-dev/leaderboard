@@ -4,6 +4,7 @@ import {
   browsecomp,
   clawbench,
   gaia,
+  healthAdminBench,
   mind2web,
   osworld,
   sweBenchVerified,
@@ -18,6 +19,7 @@ type BenchmarkMap = {
   browsecomp: Record<string, BenchmarkResultRow[]>;
   clawbench: Record<string, BenchmarkResultRow[]>;
   gaia: Record<string, BenchmarkResultRow[]>;
+  healthAdminBench: Record<string, BenchmarkResultRow[]>;
   mind2web: Record<string, BenchmarkResultRow[]>;
   osworld: Record<string, BenchmarkResultRow[]>;
   sweBenchVerified: Record<string, BenchmarkResultRow[]>;
@@ -32,6 +34,7 @@ const benchmarkMap: BenchmarkMap = {
   browsecomp,
   clawbench,
   gaia,
+  healthAdminBench,
   mind2web,
   osworld,
   sweBenchVerified,
@@ -661,6 +664,76 @@ export const benchmarkPages: BenchmarkPageData[] = [
       lastUpdated: "2026-04-16",
     },
     results: benchmarkResults("clawbench") ?? [],
+  },
+  {
+    meta: {
+      slug: "healthadminbench",
+      name: "HealthAdminBench",
+      description:
+        "HealthAdminBench leaderboard for computer-use agents completing 135 healthcare administration tasks — prior authorization, denials and appeals, and DME orders — across four simulated GUI portals.",
+      categoryLabel: "Healthcare Admin Agent",
+      seoHook:
+        "computer-use agents on 135 healthcare administration tasks across four simulated portals",
+      category: "browser_agents",
+      scope: "agent",
+      about: [
+        "HealthAdminBench evaluates computer-use agents on healthcare revenue-cycle work: 135 expert-designed tasks covering prior authorization, appeals and denials management, and durable medical equipment (DME) order processing, executed in four simulated GUI environments (an EHR, two payer portals, and a fax system). It was built by Stanford's Shah Lab with Stanford Healthcare and Kinetic Systems.",
+        "Each task decomposes into fine-grained verifiable subtasks — 1,698 evaluation points in total — scored by deterministic portal-state checks plus LLM-judged rubric items for free-text documentation and clinical reasoning. Full-task success requires passing every subtask, making it a strict end-to-end reliability measure.",
+        "The benchmark's headline finding is the gap between subtask and full-task performance: agents routinely complete 70–95% of subtasks while finishing far fewer whole workflows, which mirrors the reliability bar real back-office automation has to clear.",
+      ],
+      methodology: [
+        "Headline metric is full-task success rate (pass@1 over 135 tasks): a task counts only if all of its subtasks pass. Subtask success rate is reported alongside it and is much higher for every agent.",
+        "The paper's default configuration is screenshot-only observations with task-description-plus-portal-guidance prompting; configuration moves scores dramatically (Claude Opus 4.6 jumps from 14.8% to 51.9% with accessibility-tree observations, and task-specific prompts push harness agents above 90%).",
+        "Rows mix two harness families: the paper's standardized harness, native computer-use systems (Anthropic and OpenAI CUA loops), and Anthropic's internal browser-use port from its system card; compare within a family before comparing across.",
+        "Anthropic's system card rows used an internal port of the benchmark with a browser-use agent, adaptive thinking, a 500k-token per-task budget, per-portal skill files, and a single trial per model, with Claude Opus 4.8 grading the LLM-judged subtasks; Anthropic states these results are not directly comparable to the published leaderboard.",
+      ],
+      taskExamples: [
+        {
+          quote:
+            "Open referral REF-2025-002 for Smith, Emily (67F with Santa Clara Family Health Plan - Medicare Advantage). Determine whether the payer requires prior authorization for this eye follow-up visit. Document your determination, then clear the referral from the worklist.",
+          sourceLabel: "HealthAdminBench task explorer",
+          sourceUrl:
+            "https://som-shahlab.github.io/health-admin-bench-website/data/master_json.json",
+        },
+        {
+          quote:
+            "Open denial DEN-001 for Martinez, Carlos. Review all available information about this denial and determine the appropriate triage disposition. Document your reasoning in a triage note.",
+          sourceLabel: "HealthAdminBench task explorer",
+          sourceUrl:
+            "https://som-shahlab.github.io/health-admin-bench-website/data/master_json.json",
+        },
+        {
+          quote:
+            "Download all 3 required documents, fax to DME supplier, and document in the Notes tab.",
+          sourceLabel: "HealthAdminBench task explorer",
+          sourceUrl:
+            "https://som-shahlab.github.io/health-admin-bench-website/data/master_json.json",
+        },
+      ],
+      importantNotes: [
+        "New benchmark with no independent submissions yet: current rows are the paper authors' baselines plus Anthropic's self-reported system card run.",
+        "Anthropic system card rows come from an internal port with a browser-use scaffold, per-portal skill files, and a single trial, and were self-graded by Claude Opus 4.8; Anthropic itself flags them as not directly comparable to the published leaderboard.",
+        "Setup differences (observation mode, prompting, orchestration) move scores more than model choice does on this page, so read the Notes column before treating rank gaps as capability gaps.",
+      ],
+      links: [
+        { label: "HealthAdminBench paper", url: "https://arxiv.org/abs/2604.09937" },
+        {
+          label: "Project site and leaderboard",
+          url: "https://som-shahlab.github.io/health-admin-bench-website/",
+        },
+        {
+          label: "HealthAdminBench repository",
+          url: "https://github.com/som-shahlab/health-admin-bench",
+        },
+        {
+          label: "Claude Fable 5 & Mythos 5 system card",
+          url: "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+        },
+      ],
+      relatedBenchmarks: ["webarena", "osworld", "clawbench"],
+      lastUpdated: "2026-06-12",
+    },
+    results: benchmarkResults("healthAdminBench") ?? [],
   },
   {
     meta: {
