@@ -1,0 +1,155 @@
+{
+  "aiderPolyglot": [
+    {
+      "rank": 1,
+      "systemName": "gpt-5 (high)",
+      "organization": "OpenAI",
+      "scoreDisplay": "88.0%",
+      "scoreValue": 88,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 91.6% well-formed edits, ~$29.08 per run.",
+      "reportedAt": "2025-08-23"
+    },
+    {
+      "rank": 2,
+      "systemName": "gpt-5 (medium)",
+      "organization": "OpenAI",
+      "scoreDisplay": "86.7%",
+      "scoreValue": 86.7,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 88.4% well-formed edits, ~$17.69 per run.",
+      "reportedAt": "2025-08-25"
+    },
+    {
+      "rank": 3,
+      "systemName": "o3-pro (high)",
+      "organization": "OpenAI",
+      "scoreDisplay": "84.9%",
+      "scoreValue": 84.9,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 97.8% well-formed edits, ~$146.32 per run.",
+      "reportedAt": "2025-06-28"
+    },
+    {
+      "rank": 4,
+      "systemName": "gemini-2.5-pro-preview-06-05 (32k think)",
+      "organization": "Google",
+      "scoreDisplay": "83.1%",
+      "scoreValue": 83.1,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff-fenced edit format, 99.6% well-formed edits, ~$49.88 per run.",
+      "reportedAt": "2025-06-06"
+    },
+    {
+      "rank": 5,
+      "systemName": "o3 (high)",
+      "organization": "OpenAI",
+      "scoreDisplay": "81.3%",
+      "scoreValue": 81.3,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 94.7% well-formed edits, ~$21.23 per run.",
+      "reportedAt": "2025-06-25"
+    },
+    {
+      "rank": 5,
+      "systemName": "gpt-5 (low)",
+      "organization": "OpenAI",
+      "scoreDisplay": "81.3%",
+      "scoreValue": 81.3,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 86.7% well-formed edits, ~$10.37 per run.",
+      "reportedAt": "2025-08-25"
+    },
+    {
+      "rank": 7,
+      "systemName": "grok-4 (high)",
+      "organization": "xAI",
+      "scoreDisplay": "79.6%",
+      "scoreValue": 79.6,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 97.3% well-formed edits, ~$59.62 per run.",
+      "reportedAt": "2025-07-11"
+    },
+    {
+      "rank": 8,
+      "systemName": "gemini-2.5-pro-preview-06-05 (default think)",
+      "organization": "Google",
+      "scoreDisplay": "79.1%",
+      "scoreValue": 79.1,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff-fenced edit format, 100% well-formed edits, ~$45.60 per run.",
+      "reportedAt": "2025-06-06"
+    },
+    {
+      "rank": 9,
+      "systemName": "o3 (high) + gpt-4.1",
+      "organization": "OpenAI",
+      "scoreDisplay": "78.2%",
+      "scoreValue": 78.2,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; architect mode (planner + editor), 100% well-formed edits, ~$17.55 per run.",
+      "reportedAt": "2025-06-27"
+    },
+    {
+      "rank": 10,
+      "systemName": "Gemini 2.5 Pro Preview 05-06",
+      "organization": "Google",
+      "scoreDisplay": "76.9%",
+      "scoreValue": 76.9,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff-fenced edit format, 97.3% well-formed edits, ~$37.41 per run.",
+      "reportedAt": "2025-05-07"
+    },
+    {
+      "rank": 10,
+      "systemName": "o3",
+      "organization": "OpenAI",
+      "scoreDisplay": "76.9%",
+      "scoreValue": 76.9,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 93.8% well-formed edits, ~$13.75 per run.",
+      "reportedAt": "2025-06-25"
+    },
+    {
+      "rank": 12,
+      "systemName": "DeepSeek-V3.2-Exp (Reasoner)",
+      "organization": "DeepSeek",
+      "scoreDisplay": "74.2%",
+      "scoreValue": 74.2,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; open-weight model, diff edit format, 97.3% well-formed edits, ~$1.30 per run.",
+      "repoUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp",
+      "reportedAt": "2025-10-03"
+    },
+    {
+      "rank": 13,
+      "systemName": "Gemini 2.5 Pro Preview 03-25",
+      "organization": "Google",
+      "scoreDisplay": "72.9%",
+      "scoreValue": 72.9,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff-fenced edit format, 92.4% well-formed edits.",
+      "reportedAt": "2025-04-12"
+    },
+    {
+      "rank": 14,
+      "systemName": "o4-mini (high)",
+      "organization": "OpenAI",
+      "scoreDisplay": "72.0%",
+      "scoreValue": 72,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 90.7% well-formed edits, ~$19.64 per run.",
+      "reportedAt": "2025-04-16"
+    },
+    {
+      "rank": 14,
+      "systemName": "claude-opus-4-20250514 (32k thinking)",
+      "organization": "Anthropic",
+      "scoreDisplay": "72.0%",
+      "scoreValue": 72,
+      "sourceUrl": "https://aider.chat/docs/leaderboards/",
+      "notesShort": "Official Aider polyglot leaderboard; diff edit format, 97.3% well-formed edits, ~$65.75 per run.",
+      "reportedAt": "2025-05-25"
+    }
+  ]
+}
