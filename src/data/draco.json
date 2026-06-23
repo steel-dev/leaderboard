@@ -1,0 +1,137 @@
+{
+  "draco": [
+    {
+      "rank": 1,
+      "systemName": "Claude Mythos 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "86.4%",
+      "scoreValue": 86.4,
+      "sourceUrl": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "notesShort": "Opus 4.6 judge; Anthropic self-eval at max adaptive-thinking effort, ~1M-token budget, no compaction, 5 grading runs. Top tracked result.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 2,
+      "systemName": "Claude Mythos Preview",
+      "organization": "Anthropic",
+      "scoreDisplay": "83.6%",
+      "scoreValue": 83.6,
+      "sourceUrl": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "notesShort": "Opus 4.6 judge; Anthropic self-eval at max adaptive-thinking effort, same protocol as the Mythos 5 row.",
+      "reportedAt": "2026-06"
+    },
+    {
+      "rank": 3,
+      "systemName": "Claude Opus 4.8",
+      "organization": "Anthropic",
+      "scoreDisplay": "80.4%",
+      "scoreValue": 80.4,
+      "sourceUrl": "https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf",
+      "notesShort": "Opus 4.6 judge; Anthropic self-eval at max effort with a 1M-token budget and compaction at 200k, 5 grading runs. The Mythos-5 card reports 80.6% without compaction.",
+      "reportedAt": "2026-06"
+    },
+    {
+      "rank": 4,
+      "systemName": "Claude Opus 4.7",
+      "organization": "Anthropic",
+      "scoreDisplay": "77.7%",
+      "scoreValue": 77.7,
+      "sourceUrl": "https://www-cdn.anthropic.com/037f06850df7fbe871e206dad004c3db5fd50340/Claude%20Opus%204.7%20System%20Card.pdf",
+      "notesShort": "Opus 4.6 judge; Anthropic self-eval at max effort with compaction at 200k, 5 grading runs. A strict improvement over Opus 4.6 on DRACO.",
+      "reportedAt": "2026-04-16"
+    },
+    {
+      "rank": 5,
+      "systemName": "MiniMax M3",
+      "organization": "MiniMax",
+      "scoreDisplay": "73.23%",
+      "scoreValue": 73.23,
+      "sourceUrl": "https://www.minimax.io/blog/minimax-m3",
+      "notesShort": "Opus 4.6 judge; MiniMax self-eval via its internal Deep Research harness (MiniMax Code), score averaged across questions.",
+      "reportedAt": "2026-05-31",
+      "isNew": true
+    },
+    {
+      "rank": 6,
+      "systemName": "Perplexity Deep Research (Opus 4.6)",
+      "organization": "Perplexity",
+      "scoreDisplay": "70.5%",
+      "scoreValue": 70.5,
+      "sourceUrl": "https://arxiv.org/abs/2602.11685",
+      "notesShort": "Gemini-3-Pro judge (paper). Deep-research agent; Perplexity's own result on the benchmark it authored, top of the paper's table.",
+      "reportedAt": "2026-02-12"
+    },
+    {
+      "rank": 7,
+      "systemName": "Perplexity Deep Research (Opus 4.5)",
+      "organization": "Perplexity",
+      "scoreDisplay": "67.2%",
+      "scoreValue": 67.2,
+      "sourceUrl": "https://arxiv.org/abs/2602.11685",
+      "notesShort": "Gemini-3-Pro judge (paper). Older base-model variant of Perplexity Deep Research.",
+      "reportedAt": "2026-02-12"
+    },
+    {
+      "rank": 8,
+      "systemName": "Claude Fable 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "65.3%",
+      "scoreValue": 65.3,
+      "sourceUrl": "https://openrouter.ai/blog/announcements/fusion-beats-frontier/",
+      "notesShort": "OpenRouter eval, Gemini 3.1 Pro Preview judge (a third, stricter scale, not comparable to the Opus 4.6 or Gemini-3-Pro rows); top solo model in OpenRouter's panel, on 93/100 tasks (7 blocked by Fable 5 content filters).",
+      "reportedAt": "2026-06-12",
+      "isNew": true
+    },
+    {
+      "rank": 9,
+      "systemName": "Claude Opus 4.6",
+      "organization": "Anthropic",
+      "scoreDisplay": "59.8%",
+      "scoreValue": 59.8,
+      "sourceUrl": "https://arxiv.org/abs/2602.11685",
+      "notesShort": "Gemini-3-Pro judge (paper). Standard model + web search + code execution, not a deep-research agent; the same model that is the judge for the rows above.",
+      "reportedAt": "2026-02-12"
+    },
+    {
+      "rank": 10,
+      "systemName": "Gemini Deep Research",
+      "organization": "Google",
+      "scoreDisplay": "59.0%",
+      "scoreValue": 59.0,
+      "sourceUrl": "https://arxiv.org/abs/2602.11685",
+      "notesShort": "Gemini-3-Pro judge (paper). Google's deep-research agent.",
+      "reportedAt": "2026-02-12"
+    },
+    {
+      "rank": 11,
+      "systemName": "OpenAI Deep Research (o3)",
+      "organization": "OpenAI",
+      "scoreDisplay": "52.1%",
+      "scoreValue": 52.1,
+      "sourceUrl": "https://arxiv.org/abs/2602.11685",
+      "notesShort": "Gemini-3-Pro judge (paper). OpenAI's o3 deep-research agent.",
+      "reportedAt": "2026-02-12"
+    },
+    {
+      "rank": 12,
+      "systemName": "Claude Opus 4.5",
+      "organization": "Anthropic",
+      "scoreDisplay": "46.7%",
+      "scoreValue": 46.7,
+      "sourceUrl": "https://arxiv.org/abs/2602.11685",
+      "notesShort": "Gemini-3-Pro judge (paper). Standard model + web search + code execution, not a deep-research agent.",
+      "reportedAt": "2026-02-12"
+    },
+    {
+      "rank": 13,
+      "systemName": "OpenAI Deep Research (o4-mini)",
+      "organization": "OpenAI",
+      "scoreDisplay": "41.9%",
+      "scoreValue": 41.9,
+      "sourceUrl": "https://arxiv.org/abs/2602.11685",
+      "notesShort": "Gemini-3-Pro judge (paper). OpenAI's most token-efficient deep-research agent.",
+      "reportedAt": "2026-02-12"
+    }
+  ]
+}

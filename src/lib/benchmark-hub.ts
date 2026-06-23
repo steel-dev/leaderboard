@@ -3,6 +3,7 @@ import {
   aiderPolyglot,
   browsecomp,
   clawbench,
+  draco,
   gaia,
   healthAdminBench,
   mind2web,
@@ -18,6 +19,7 @@ type BenchmarkMap = {
   aiderPolyglot: Record<string, BenchmarkResultRow[]>;
   browsecomp: Record<string, BenchmarkResultRow[]>;
   clawbench: Record<string, BenchmarkResultRow[]>;
+  draco: Record<string, BenchmarkResultRow[]>;
   gaia: Record<string, BenchmarkResultRow[]>;
   healthAdminBench: Record<string, BenchmarkResultRow[]>;
   mind2web: Record<string, BenchmarkResultRow[]>;
@@ -33,6 +35,7 @@ const benchmarkMap: BenchmarkMap = {
   aiderPolyglot,
   browsecomp,
   clawbench,
+  draco,
   gaia,
   healthAdminBench,
   mind2web,
@@ -292,10 +295,89 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
         { label: "simple-evals repository", url: "https://github.com/openai/simple-evals" },
       ],
-      relatedBenchmarks: ["gaia", "webvoyager", "online-mind2web"],
+      relatedBenchmarks: ["draco", "gaia", "webvoyager", "online-mind2web"],
       lastUpdated: "2026-05-28",
     },
     results: benchmarkResults("browsecomp") ?? [],
+  },
+  {
+    meta: {
+      slug: "draco",
+      name: "DRACO",
+      description:
+        "DRACO leaderboard for deep research systems on Perplexity's benchmark: 100 expert-graded research tasks across 10 domains, with sourced scores and notes on the grading judge.",
+      categoryLabel: "Deep Research Agent",
+      seoHook:
+        "deep research systems on 100 production-sourced, expert-graded research report tasks",
+      category: "research_search",
+      scope: "mixed",
+      about: [
+        "DRACO (Deep Research Accuracy, Completeness, and Objectivity) is Perplexity's benchmark for deep research systems: 100 open-ended tasks across 10 domains, sourced from real Perplexity Deep Research traffic and graded against expert rubrics on accuracy, completeness, presentation, and citation.",
+        "Unlike short-answer benchmarks such as BrowseComp, DRACO grades full research reports, so it rewards synthesis, citation quality, and presentation, not just finding the answer. It is the closest public measure of how well a system writes a real research report.",
+        "Read each row as a whole system: the agent or harness, the base model, and the grading judge all shape the number. Here the judge matters most, so the methodology is part of the ranking, not a footnote.",
+      ],
+      methodology: [
+        "The headline metric is the normalized score (0–100%): each rubric criterion gets a binary MET/UNMET verdict from an LLM judge, aggregated by weight into a per-task score and averaged across 100 tasks. An unweighted pass rate is a secondary metric.",
+        "The judge is the dominant variable. The paper used Gemini-3-Pro (now unavailable); Anthropic finds that swapping judges shifts absolute scores 10–25 points while preserving order. Three judges appear here: Claude Opus 4.6 (Anthropic, MiniMax), Gemini 3.1 Pro Preview (OpenRouter's Fable 5 row), and Gemini-3-Pro (the paper). Compare only within the same judge.",
+        "Rows are vendor self-evaluations under a shared judge. Anthropic grades its own models at max effort with a ~1M-token budget, compaction, and five grading runs of the final report; MiniMax grades M3 through its internal harness. Treat each as self-reported.",
+        "Each judge is a separate ladder, so don't compare rank gaps across them. The same model shows it: Opus 4.8 scores 80.4% under Anthropic's Opus 4.6 judge and 58.8% under OpenRouter's Gemini 3.1 Pro Preview judge.",
+      ],
+      taskExamples: [
+        {
+          quote:
+            'In 2008, Longwood Gardens opened "Nature\'s Castles: The Treehouse Reimagined" featuring three treehouse structures. Can you find the name of the architectural firm or designer who created these treehouses, and locate a contemporaneous source (2008 or earlier) that describes the design concept and construction process?',
+          sourceLabel: "DRACO paper, augmented task example",
+          sourceUrl: "https://arxiv.org/abs/2602.11685",
+        },
+        {
+          quote:
+            "Define an independent director under the NASDAQ listing standards. List the eligibility criteria (who qualifies) and disqualification criteria (who cannot serve). Which types of companies are required to have independent directors on their board?",
+          sourceLabel: "DRACO paper, augmented task example",
+          sourceUrl: "https://arxiv.org/abs/2602.11685",
+        },
+        {
+          quote:
+            "Document the global expansion and local resistance to industrial agriculture mega-farms, comparing case studies from Ukraine's massive grain operations, Brazilian cerrado soy plantations, Saudi Arabia's desert farming investments in Arizona and California, and Chinese pork production facilities.",
+          sourceLabel: "DRACO paper, augmented task example",
+          sourceUrl: "https://arxiv.org/abs/2602.11685",
+        },
+      ],
+      importantNotes: [
+        "Three judges, one table. Rows are graded by Claude Opus 4.6 (Anthropic, MiniMax), Gemini 3.1 Pro Preview (OpenRouter), or Gemini-3-Pro (the paper). Judge methodology varies, and judge choice shifts absolute scores 10–25 points, so read each row's note before comparing.",
+        "Vendor self-reported under a common judge. The top rows are Anthropic models graded by an Anthropic judge, and DRACO was authored by Perplexity, so each regime favors its originator. Expect levels to move as more evaluators adopt the Opus 4.6 judge.",
+        "Mixed scope: rows mix full deep-research agents (Perplexity, MiniMax) with standard models plus tools (Claude Opus 4.6 and 4.5 in the paper). Compare within a setup class before reading a rank gap as capability.",
+      ],
+      links: [
+        { label: "DRACO paper", url: "https://arxiv.org/abs/2602.11685" },
+        {
+          label: "DRACO dataset (Hugging Face)",
+          url: "https://hf.co/datasets/perplexity-ai/draco",
+        },
+        {
+          label: "Perplexity DRACO research article",
+          url: "https://research.perplexity.ai/articles/evaluating-deep-research-performance-in-the-wild-with-the-draco-benchmark",
+        },
+        {
+          label: "Claude Opus 4.8 System Card (DRACO section)",
+          url: "https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf",
+        },
+        {
+          label: "Claude Opus 4.7 System Card (DRACO section)",
+          url: "https://www-cdn.anthropic.com/037f06850df7fbe871e206dad004c3db5fd50340/Claude%20Opus%204.7%20System%20Card.pdf",
+        },
+        {
+          label: "MiniMax M3 launch post",
+          url: "https://www.minimax.io/blog/minimax-m3",
+        },
+        {
+          label: "OpenRouter Fusion DRACO evaluation",
+          url: "https://openrouter.ai/blog/announcements/fusion-beats-frontier/",
+        },
+      ],
+      relatedBenchmarks: ["browsecomp", "gaia", "online-mind2web"],
+      lastUpdated: "2026-06-23",
+    },
+    results: benchmarkResults("draco") ?? [],
   },
   {
     meta: {
@@ -603,7 +685,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
           url: "https://huggingface.co/spaces/gaia-benchmark/leaderboard",
         },
       ],
-      relatedBenchmarks: ["browsecomp", "agentbench", "tau-bench"],
+      relatedBenchmarks: ["browsecomp", "draco", "agentbench", "tau-bench"],
       lastUpdated: "2026-04-16",
     },
     results: benchmarkResults("gaia") ?? [],
