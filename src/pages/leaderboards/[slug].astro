@@ -140,15 +140,15 @@ const breadcrumbSchema = JSON.stringify({
         <h2 class="m-0 text-xl font-medium tracking-[-0.03em] text-[var(--color-text-strong)]">
           About this benchmark
         </h2>
-        <div class="mt-4 space-y-4">
-          {page.meta.about.map((paragraph) => <p class="m-0">{paragraph}</p>)}
+        <div class="mt-4">
+          {page.meta.about.map((paragraph) => <p class="mb-4 last:mb-0">{paragraph}</p>)}
         </div>
 
         {
           page.meta.importantNotes.length > 0 && (
             <div class="dashed-frame mt-5 p-4">
               {page.meta.importantNotes.map((note) => (
-                <p class="m-0 text-sm muted">{note}</p>
+                <p class="mb-3 text-sm muted last:mb-0">{note}</p>
               ))}
             </div>
           )
