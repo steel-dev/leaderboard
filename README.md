@@ -32,7 +32,7 @@ Browser agents · Agent scope · 19 entries tracked
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 83 entries tracked
+Research/search · Mixed scope · 90 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -42,7 +42,7 @@ Research/search · Mixed scope · 83 entries tracked
 | 4 | Claude Mythos 5 **(new)** | Anthropic | [88.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
 | 5 | Claude Mythos Preview | Anthropic | [86.9%](https://www.anthropic.com/glasswing) |
 
-[See all 83 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 90 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
 ---
 
