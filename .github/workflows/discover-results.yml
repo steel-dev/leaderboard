@@ -1,0 +1,545 @@
+name: Discovery Sweep
+
+# Biweekly hybrid discovery for the Steel leaderboard — Propose-Dispose architecture:
+#
+#   arxiv-baseline   FREE deterministic `pnpm run discover` -> .discovery/run.json
+#   discover         Atlas deep-research (z.ai/glm-5.2, Exa + Steel fetch) -> atlas-candidates.json,
+#                    then a DEDUCTIVE judge pass (Vercel AI SDK generateObject, NO tools) ->
+#                    .discovery/proposals/<dataKey>-<week>.json (one declarative proposal per board).
+#   apply            DETERMINISTIC `discover-apply --write`: hard-gate each add (schema.json, finite
+#                    score, dedup, freshness), soft SSRF-guarded evidence re-fetch, STABLY re-rank,
+#                    write src/data + README, run update-readme/lint/build, and open ONE PR per
+#                    leaderboard with per-row reasoning for every add AND dismissal. Auto-merge is OFF.
+#   notify           Post PR links (or "no fresh results") to the rolling issue; failure alerts.
+#
+# CAPABILITY SPLIT BY CONSTRUCTION. The LLM stages (research, judge) run with NO write token and have
+# ZERO tools (generateObject returns an object; there is no Bash/Write/git surface). Only `apply`
+# (deterministic TypeScript we author, no LLM) holds contents:write + pull-requests:write, and it
+# opens a PR that a human must merge. The judge LLM never touched git/gh.
+#
+# Triggered ONLY by workflow_dispatch / workflow_call. The Monday cron lives in
+# discovery-scheduler.yml, which dispatches this workflow via `gh workflow run`. on:schedule is kept
+# out of this file deliberately. No pull_request_target trigger anywhere.
+
+on:
+  workflow_dispatch:
+    inputs:
+      since_days:
+        description: "Lookback window in days for the arxiv sweep + Atlas research (biweekly cadence; 21 covers the worst-case 21-day ISO-week-boundary gap)."
+        required: false
+        default: "21"
+        type: string
+      slug:
+        description: "Comma-separated benchmark slugs (default: all tracked benchmarks)."
+        required: false
+        default: ""
+        type: string
+      effort:
+        description: "Atlas effort: fast | balanced | deep | max (~$0.50 / $2.50 / $10 / $40 per benchmark)."
+        required: false
+        default: "fast"
+        type: string
+      model:
+        description: "Model id for the Atlas research + deductive judge passes (z.ai endpoint)."
+        required: false
+        default: "glm-5.2"
+        type: string
+  workflow_call:
+    inputs:
+      since_days: { required: false, type: string, default: "21" }
+      slug: { required: false, type: string, default: "" }
+      effort: { required: false, type: string, default: "fast" }
+      model: { required: false, type: string, default: "glm-5.2" }
+
+# One sweep at a time; a manual dispatch queues behind (does not kill) an in-flight run.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+# Default for every job: read the repo, post to issues. The `apply` job widens this to write +
+# pull-requests:write (it is the only job that ever commits or opens a PR). The LLM jobs stay read-only.
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 1 — Deterministic arxiv baseline. Free, no LLM. Seeds Atlas with existing
+  # top systems + arxiv candidate leads per benchmark.
+  # ─────────────────────────────────────────────────────────────────────────────
+  arxiv-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run deterministic arxiv discovery
+        env:
+          SINCE_DAYS: ${{ inputs.since_days || '21' }}
+          SLUG: ${{ inputs.slug || '' }}
+        run: |
+          ARGS=(--since-days "$SINCE_DAYS")
+          [ -n "$SLUG" ] && ARGS+=(--slug "$SLUG")
+          pnpm run discover -- "${ARGS[@]}"
+          echo "::notice::arxiv sweep wrote .discovery/run.json"
+
+      - name: Upload discovery artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-run
+          path: .discovery/
+          if-no-files-found: warn
+          retention-days: 14
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 2 — Atlas deep research + deductive judgment. Both route to z.ai/glm-5.2.
+  # READ-ONLY job: no write token. The LLM never touches git/gh/src.
+  # ─────────────────────────────────────────────────────────────────────────────
+  discover:
+    needs: arxiv-baseline
+    runs-on: ubuntu-latest
+    # Atlas `fast` caps at ~10 min/benchmark; 13 benchmarks + the judge pass (13 fast generateObject
+    # calls) + install. 150 min gives ~2x margin over a typical fast run. A pathological all-slow week
+    # may cancel here — surfaced by notify-on-!=success, and the if:always artifact upload still
+    # captures the incrementally-written atlas-trace.jsonl / atlas-report.md.
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download arxiv baseline
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-run
+          path: .discovery/
+
+      - name: ISO-week idempotency key
+        id: window
+        run: |
+          printf 'date=%s\n' "$(date -u +%F)" >> "$GITHUB_OUTPUT"
+          printf 'week=%s\n' "$(date -u +%G-W%V)" >> "$GITHUB_OUTPUT"
+
+      - name: Fail fast on missing keys
+        env:
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          ZAI_API_ENDPOINT: ${{ secrets.ZAI_API_ENDPOINT }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+        run: |
+          # resolveDiscoveryModel uses ZAI_API_KEY + ZAI_API_ENDPOINT when present (the funded route),
+          # else falls back to ANTHROPIC_API_KEY. Either is acceptable; Exa always powers Atlas search.
+          miss=0
+          zai=0; [ -n "$ZAI_API_KEY" ] && [ -n "$ZAI_API_ENDPOINT" ] && zai=1
+          anth=0; [ -n "$ANTHROPIC_API_KEY" ] && anth=1
+          if [ "$zai" != "1" ] && [ "$anth" != "1" ]; then
+            echo "::error::Need ZAI_API_KEY + ZAI_API_ENDPOINT (preferred) or ANTHROPIC_API_KEY."
+            miss=1
+          fi
+          [ -n "$EXA_API_KEY" ] || { echo "::error::secrets.EXA_API_KEY is empty (Exa powers Atlas search)."; miss=1; }
+          [ "$miss" = "1" ] && exit 1
+
+      # ── Atlas deep research. Env-injected keys only; never passed into the prompt/URLs. ──
+      - name: Atlas deep research
+        env:
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          ZAI_API_ENDPOINT: ${{ secrets.ZAI_API_ENDPOINT }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          STEEL_API_KEY: ${{ secrets.STEEL_API_KEY }}
+          SINCE_DAYS: ${{ inputs.since_days || '21' }}
+          SLUG: ${{ inputs.slug || '' }}
+          EFFORT: ${{ inputs.effort || 'fast' }}
+          MODEL: ${{ inputs.model || 'glm-5.2' }}
+          DISCOVERY_SWEEP_WEEK: ${{ steps.window.outputs.week }}
+        run: |
+          ARGS=(--since-days "$SINCE_DAYS" --effort "$EFFORT" --model "$MODEL")
+          [ -n "$SLUG" ] && ARGS+=(--slug "$SLUG")
+          pnpm run discover:research -- "${ARGS[@]}"
+
+      # ── Deductive judgment pass. generateObject, NO tools, NO network beyond the model call. ──
+      # Reads atlas-candidates.json + the FULL current leaderboard rows + CONTRIBUTING evidence
+      # ladder, and emits one declarative proposal per benchmark to .discovery/proposals/.
+      - name: Deductive judgment pass
+        env:
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          ZAI_API_ENDPOINT: ${{ secrets.ZAI_API_ENDPOINT }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODEL: ${{ inputs.model || 'glm-5.2' }}
+          SLUG: ${{ inputs.slug || '' }}
+        run: |
+          ARGS=(--model "$MODEL")
+          [ -n "$SLUG" ] && ARGS+=(--slug "$SLUG")
+          pnpm run discover:judge -- "${ARGS[@]}"
+
+      - name: Ensure proposals exist
+        run: |
+          if ! ls .discovery/proposals/*.json >/dev/null 2>&1; then
+            echo "::error::No proposals produced (research or judge may have failed/no-op'd). Inspect atlas-candidates.json / atlas-errors.json in the run artifacts."
+            exit 1
+          fi
+          echo "::notice::$(ls .discovery/proposals/*.json | wc -l) proposal(s) written."
+
+      - name: Upload discovery artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-proposals
+          path: .discovery/
+          if-no-files-found: warn
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 2.5 — Final REVIEW pass (claude-code-action). A TOOL-BEARING Claude agent re-verifies
+  # verbatim attribution, reconciles self-report into notesShort, and confirms backfill genuineness,
+  # writing annotated proposals to .discovery/reviewed/ (the original adds/dismissals stay intact).
+  #
+  # The cardinal rule holds TWO independent ways here, so it does NOT depend on trusting the action's
+  # internals: (1) this job's GITHUB_TOKEN has contents:read ONLY — it physically CANNOT push, commit,
+  # or open a PR even if claude-code-action's branch machinery tried; only `apply` holds write perms.
+  # (2) .github/discovery-review-settings.json denies git/gh and every env-reading command (printenv,
+  # env, cat, /proc, *TOKEN*/*ANTHROPIC*/*ZAI*), denies Write/Edit of src/data + .github + src/lib +
+  # src/scripts + package.json + CLAUDE.md, and allows fetch ONLY through the SSRF-guarded
+  # discover-verify helper (curl/wget denied -> no unguarded hop). The API key flows env->provider
+  # transport only; the agent never receives it in its prompt.
+  #
+  # ⚠️ NOT YET SMOKE-TESTED IN CI. claude-code-action's workflow_dispatch trigger detection and its
+  # headless permission-enforcement for unlisted Bash commands are only verifiable in GH CI. Verified-
+  # safe failure modes: if the pass no-ops (trigger not detected) or is skipped (no ANTHROPIC_API_KEY),
+  # `apply` falls back to the raw judge proposals via loadProposals — the sweep still runs. Greenlight
+  # a branch-based workflow_dispatch to confirm before trusting the Monday cron.
+  # ─────────────────────────────────────────────────────────────────────────────
+  review:
+    needs: discover
+    runs-on: ubuntu-latest
+    # contents:read ONLY. This is the load-bearing control: the token cannot push/commit/open a PR no
+    # matter what the action does. (issues:write intentionally omitted — the agent posts nothing.)
+    permissions:
+      contents: read
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download judge proposals
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-proposals
+          path: .discovery/
+
+      - name: Install poppler-utils (pdftotext for PDF evidence verification)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Build verify helper (dist/scripts/discover-verify.js)
+        run: pnpm exec tsc -p tsconfig.script.json
+
+      - name: Ensure reviewed dir exists (artifact must always upload)
+        run: mkdir -p .discovery/reviewed
+
+      # Soft-skip when the repo only has the z.ai route configured (no real Anthropic key). The job
+      # SUCCEEDS with empty reviewed/ -> apply falls back to raw judge proposals. A real claude-code-action
+      # FAILURE (not a skip) blocks apply, surfacing loudly via the notify alert.
+      - name: Need ANTHROPIC_API_KEY for the Claude review pass?
+        id: keycheck
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::warning::secrets.ANTHROPIC_API_KEY is empty — skipping the Claude review pass; apply will use raw judge proposals."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Single source of truth: the detailed prompt lives in .github/discovery-review-prompt.md and is
+      # inlined here via a heredoc step output (no Read-permission dependency on the agent's side).
+      - name: Read review prompt
+        id: rp
+        if: steps.keycheck.outputs.skip != 'true'
+        run: |
+          {
+            echo 'text<<REVIEW_PROMPT_EOF'
+            cat .github/discovery-review-prompt.md
+            echo 'REVIEW_PROMPT_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: claude-code final review pass
+        if: steps.keycheck.outputs.skip != 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          settings: .github/discovery-review-settings.json
+          prompt: ${{ steps.rp.outputs.text }}
+          # claude-sonnet-4-6: capable final-pass judgment at a reasonable weekly cost (13 boards).
+          claude_args: "--model claude-sonnet-4-6"
+          # show_full_output stays false (default) — never dump tool results (which may contain fetched
+          # source text) to the PUBLIC Actions log.
+
+      - name: Sanity-check reviewed output
+        if: always()
+        run: |
+          n=$(ls .discovery/reviewed/*.json 2>/dev/null | wc -l | tr -d ' ')
+          echo "::notice::Review pass wrote ${n} reviewed proposal(s)."
+          [ "$n" -gt 0 ] || echo "::warning::No reviewed proposals — apply will fall back to raw judge proposals."
+
+      - name: Upload reviewed proposals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-reviewed
+          path: .discovery/reviewed/
+          if-no-files-found: warn
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 3 — Deterministic APPLY. The ONLY job with write + pull-requests:write.
+  # No LLM here: validate -> stable re-rank -> write src/data + README -> build ->
+  # branch + one PR per leaderboard. Auto-merge OFF; a human merges.
+  # ─────────────────────────────────────────────────────────────────────────────
+  apply:
+    needs: [discover, review]
+    runs-on: ubuntu-latest
+    # Widened surface ONLY here. No other job can commit or open a PR.
+    permissions:
+      contents: write
+      pull-requests: write
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download research + proposals
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-proposals
+          path: .discovery/
+
+      - name: Download reviewed proposals
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-reviewed
+          path: .discovery/reviewed/
+        # If the review job soft-skipped (no ANTHROPIC_API_KEY), this artifact may be empty/absent —
+        # apply then falls back to the raw judge proposals via loadProposals. Never fatal.
+        continue-on-error: true
+
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: ISO-week key (for --week filtering / branch idempotency)
+        id: window
+        run: |
+          printf 'week=%s\n' "$(date -u +%G-W%V)" >> "$GITHUB_OUTPUT"
+
+      # Pre-push gate: defense-in-depth. Secrets are already isolated by env scoping (the review job
+      # only ever had ANTHROPIC_API_KEY, in provider transport; apply's text is deterministic). This
+      # catches the case where an LLM echoed a secret into its .discovery/ output. Secret VALUES are
+      # written to a patterns file and matched with grep -F (fixed strings), so they never appear in
+      # argv / `ps`. Abort before ANY src/data write or PR if a value is found.
+      - name: Redaction scan — no secret values in LLM output
+        env:
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          STEEL_API_KEY: ${{ secrets.STEEL_API_KEY }}
+          BOT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          # Build patterns from secret VALUES plus their base64 — an agent that exfiltrated a key may
+          # encode it. Fixed-string grep reads from the file, so values never appear in argv / `ps`.
+          : > /tmp/secret-patterns.txt
+          for val in "$ZAI_API_KEY" "$ANTHROPIC_API_KEY" "$EXA_API_KEY" "$STEEL_API_KEY" "$BOT_TOKEN"; do
+            [ -z "$val" ] && continue
+            printf '%s\n' "$val" >> /tmp/secret-patterns.txt
+            printf '%s' "$val" | base64 | tr -d '\n' >> /tmp/secret-patterns.txt
+            printf '\n' >> /tmp/secret-patterns.txt
+          done
+          # [ -s ] guard: GNU grep with a 0-byte pattern file matches EVERY line (false positive). If
+          # no secrets are configured there is nothing to leak -> clean pass.
+          if [ -s /tmp/secret-patterns.txt ]; then
+            leaks=$(grep -rIF -f /tmp/secret-patterns.txt .discovery/ 2>/dev/null | wc -l | tr -d ' ')
+            if [ "$leaks" -gt 0 ]; then
+              echo "::error::Secret value (or its base64) found in .discovery/ LLM output — ABORTING before any src/data write or PR."
+              rm -f /tmp/secret-patterns.txt
+              exit 1
+            fi
+          fi
+          rm -f /tmp/secret-patterns.txt
+          echo "::notice::Redaction scan clean — no secret values (or base64) in .discovery/."
+
+      - name: Install poppler-utils (pdftotext for PDF evidence verification)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Apply proposals (--write opens PRs)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WEEK: ${{ steps.window.outputs.week }}
+          SLUG: ${{ inputs.slug || '' }}
+        run: |
+          ARGS=(--write --week "$WEEK")
+          [ -n "$SLUG" ] && ARGS+=(--slug "$SLUG")
+          pnpm run discover:apply -- "${ARGS[@]}"
+
+      - name: Upload apply artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-apply
+          path: .discovery/apply/
+          if-no-files-found: warn
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 4 — Notify. Failure/cancellation -> alert issue. Success -> rolling-issue
+  # digest (PR links, or "no fresh results"). Detects a silent gate/build failure
+  # (survivors>0 but no PR opened) and escalates it to an alert.
+  # ─────────────────────────────────────────────────────────────────────────────
+  notify:
+    needs: [arxiv-baseline, discover, review, apply]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download apply artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-apply
+          path: .discovery/apply/
+        continue-on-error: true
+
+      - name: Report failure
+        if: ${{ needs.arxiv-baseline.result != 'success' || needs.discover.result != 'success' || needs.review.result != 'success' || needs.apply.result != 'success' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          # Alert issues use a SEPARATE label (discovery-alert) from the rolling tracker (discovery) so
+          # the tracker's find-or-create never resolves to an alert and swallows next week's comment.
+          gh label create discovery-alert --description "Discovery sweep/scheduler failure alerts" --color F6B73C 2>/dev/null || true
+          gh issue create \
+            --title "Discovery sweep FAILED — $(date -u +%F)" \
+            --label discovery-alert \
+            --body "The discovery workflow did not complete cleanly. Investigate: ${RUN_URL}
+
+          Job results: arxiv-baseline=${{ needs.arxiv-baseline.result }} discover=${{ needs.discover.result }} review=${{ needs.review.result }} apply=${{ needs.apply.result }}.
+
+          Common causes: empty/expired ZAI_API_KEY/ZAI_API_ENDPOINT or EXA_API_KEY, Exa outage, an Atlas error (see atlas-errors.json in run artifacts), a claude-code-action failure in the review step (ANTHROPIC_API_KEY empty/expired, or a workflow_dispatch trigger issue — see ⚠️ note in the review job), a schema/build failure in the apply step (see the apply job log), or a missing GITHUB_TOKEN.
+
+          _Note: public-repo scheduled workflows auto-disable after 60 idle days — keep the repo active._" \
+            || true
+
+      - name: Post success digest
+        if: ${{ needs.arxiv-baseline.result == 'success' && needs.discover.result == 'success' && needs.review.result == 'success' && needs.apply.result == 'success' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SERVER: ${{ github.server_url }}
+        run: |
+          WEEK=$(date -u +%G-W%V)
+          MARKER="<!-- discovery-idempotency: $WEEK -->"
+          MANIFEST=$(ls .discovery/apply/manifest-*.json 2>/dev/null | head -1)
+
+          if [ -z "$MANIFEST" ]; then
+            BODY="## Discovery sweep — $WEEK
+
+          Completed cleanly but no apply manifest was found (apply may have had no proposals). See the run for details."
+          else
+            OPENED=$(jq -r '[.proposals[] | select(.prOpened==true)] | length' "$MANIFEST")
+            SURVIVORS=$(jq -r '[.proposals[] | .survivors] | add // 0' "$MANIFEST")
+            # Silent-failure guard: candidates survived the judge but NO PR opened -> a gate/build
+            # problem swallowed them. Escalate to an alert instead of a misleading "quiet week".
+            if [ "$SURVIVORS" -gt 0 ] && [ "$OPENED" = "0" ]; then
+              gh label create discovery-alert --description "Discovery sweep/scheduler failure alerts" --color F6B73C 2>/dev/null || true
+              gh issue create \
+                --title "Discovery apply opened NO PRs despite survivors — $WEEK" \
+                --label discovery-alert \
+                --body "Week $WEEK: ${SURVIVORS} add(s) survived judgment but apply opened 0 PRs — likely a schema/build/write-surface failure in the apply step. Inspect the apply job log and the discovery-apply artifact (proposals + manifest): ${SERVER}/${REPO}/actions/runs/${{ github.run_id }}" \
+                || true
+              exit 0
+            fi
+
+            if [ "$OPENED" = "0" ]; then
+              BODY="## Discovery sweep — $WEEK
+
+          No fresh results survived the gates this sweep (quiet run). No PRs opened. Dismissals/rejections are recorded in the discovery-apply artifact."
+            else
+              LIST=$(jq -r '.proposals[] | select(.prOpened==true) | "- \`\(.slug)\` — \(.survivors) add(s) (week \(.week))"' "$MANIFEST")
+              BODY="## Discovery sweep — $WEEK
+
+          Opened ${OPENED} discovery PR(s) for review — **auto-merge is OFF**, a human merges each:
+          ${LIST}
+
+          Review queue: ${SERVER}/${REPO}/pulls?q=is%3Apr+head%3Adiscovery%2F"
+            fi
+          fi
+
+          # Rolling tracker (label: discovery). Idempotent against double-fire via the week marker.
+          gh label create discovery --description "Rolling tracker for benchmark candidate sweeps" --color C2E0C6 2>/dev/null || true
+          ISSUE=$(gh issue list --label discovery --state open --json number --jq '.[0].number // empty')
+          if [ -z "$ISSUE" ]; then
+            ISSUE=$(gh issue create \
+              --title "Benchmark discovery — rolling sweep" \
+              --label discovery \
+              --body "Rolling tracker for biweekly discovery sweeps. Each run opens one PR per leaderboard with full per-row reasoning; maintainers review and merge. The bot never merges.${MARKER}" \
+              --json number --jq '.number')
+          fi
+          if gh issue view "$ISSUE" --json comments --jq '.comments[].body' | grep -qF "$MARKER"; then
+            echo "This week's digest is already posted (marker found); skipping."
+            exit 0
+          fi
+          # Append the week marker for idempotency detection, then post the digest.
+          printf '%s\n\n%s\n' "$BODY" "$MARKER" | gh issue comment "$ISSUE" --body-file -

@@ -1,6 +1,6 @@
 ---
 name: benchmark-discovery
-description: Surface new benchmark result candidates for the Steel leaderboard at /Users/nikola/dev/steel/leaderboard by running the arxiv discovery pipeline, filtering out off-topic and unscorable papers (e.g. ESA Gaia space-telescope hits vs the GAIA agent benchmark), and producing a standardised review-ready markdown summary with sections for proposed additions, variant candidates, and methodology notes — optionally posted to the rolling discovery issue on GitHub. Use this skill whenever the user mentions "discovery", "discovery sweep", "check arxiv", "survey new benchmark results", "find new leaderboard candidates", "what's new on the leaderboards", "any new agents on BrowseComp/GAIA/SWE-bench/WebVoyager", "see what's been published this week", "anyone reporting new scores", or any variation that involves scanning recent papers for fresh agent or model scores to potentially add to the leaderboard. Always trigger this skill before running an ad-hoc arxiv search by hand — the skill already knows the project's schema, dedupe rules, known false-positive patterns, the standardised comment format that the rolling discovery issue expects, and which evidence is too thin to surface to a maintainer.
+description: Surface new benchmark result candidates for the Steel leaderboard repo by running the arxiv discovery pipeline, filtering out off-topic and unscorable papers (e.g. ESA Gaia space-telescope hits vs the GAIA agent benchmark), and producing a standardised review-ready markdown summary with sections for proposed additions, variant candidates, and methodology notes — optionally posted to the rolling discovery issue on GitHub. Use this skill whenever the user mentions "discovery", "discovery sweep", "check arxiv", "survey new benchmark results", "find new leaderboard candidates", "what's new on the leaderboards", "any new agents on BrowseComp/GAIA/SWE-bench/WebVoyager", "see what's been published this week", "anyone reporting new scores", or any variation that involves scanning recent papers for fresh agent or model scores to potentially add to the leaderboard. Always trigger this skill before running an ad-hoc arxiv search by hand — the skill already knows the project's schema, dedupe rules, known false-positive patterns, the standardised comment format that the rolling discovery issue expects, and which evidence is too thin to surface to a maintainer.
 ---
 
 # Benchmark discovery for the Steel leaderboard
@@ -9,7 +9,28 @@ Surface candidate benchmark results for maintainer review. The skill drives the 
 
 This skill never modifies leaderboard data on its own. The output is review material; merging is always a human step. The discovery issue exists so candidates accumulate in one inbox rather than getting lost across notebooks and tabs.
 
-## Process
+## Automated weekly sweep (Atlas research → deductive judge → deterministic PR)
+
+A scheduled GitHub Actions pipeline runs this discovery loop weekly so a maintainer doesn't have to. It is **Propose-Dispose**: the LLM stages only *propose* — they have no tools and never touch git — and a *deterministic* apply step validates, re-ranks, and opens the PR a human merges. The workflows live in `.github/workflows/`:
+
+- **`discovery-scheduler.yml`** — cron (Mondays ~07:27 UTC) that dispatches the sweep via `gh workflow run` with `since_days=9` (weekly + 2-day margin). Kill-switch: set repo variable `ENABLE_DISCOVERY=false` to pause without editing YAML.
+- **`discover-results.yml`** — the sweep itself, four jobs:
+  1. `arxiv-baseline` — free, deterministic `pnpm run discover` → `.discovery/run.json` (§1 below).
+  2. `discover` — **read-only**. `pnpm run discover:research` (the **Atlas** driver at `src/scripts/discover-research.ts`: Exa search + Steel browser fetch, z.ai `glm-5.2`) produces cited, structured candidates in **`.discovery/atlas-candidates.json`** (plus `atlas-report.md`, `atlas-trace.jsonl`, `atlas-errors.json`). Then `pnpm run discover:judge` — a **deductive `generateObject` pass** at `src/scripts/discover-judge.ts`, with **no tools and no fetches** — reads the candidates + the FULL current leaderboard rows + `CONTRIBUTING.md` and emits one declarative **proposal** per benchmark to `.discovery/proposals/<dataKey>-<week>.json` (adds + dismissals, each with a reason and a category).
+  3. `apply` — the ONLY job with `contents:write` + `pull-requests:write`. `pnpm run discover:apply --write` (deterministic TypeScript at `src/scripts/discover-apply.ts`, **no LLM**) hard-gates each add (`src/data/schema.json`, finite score, dedup, freshness), does a soft SSRF-guarded evidence re-fetch, **stably re-ranks** (existing rows keep their order; new rows slot in by score), writes `src/data/<dataKey>.json` + `README.md`, runs `update-readme`/`lint`/`build`, and opens **one PR per leaderboard** with per-row reasoning for every add AND dismissal.
+  4. `notify` — on success posts PR links (or "no fresh results") to the rolling issue; on any failure — including a *silent* gate/build failure where survivors were proposed but no PR opened — it opens a **`discovery-alert`** issue. The alert label is deliberately separate from the rolling tracker's **`discovery`** label so the tracker's find-or-create never misroutes a comment into an alert.
+
+**Cardinal rule — a human always merges `src/data`.** The discovery LLMs (research, judge) never touch git/gh: they emit a declarative proposal and have **zero tools** (`generateObject` returns an object — there is no Bash/Write/git surface to escape). The deterministic `apply` step owns all git/`gh`: it validates, re-ranks, and opens a PR. **Auto-merge is OFF and the token has no merge permission**, so merging is always a human click. `apply` also edits only `src/data/<dataKey>.json` + `README.md` (it asserts `git diff --name-only` equals exactly those two); `lastUpdated` in `src/lib/benchmark-hub.ts` stays **human-owned** (the PR checklist reminds).
+
+**Secrets** (env→provider headers only; never into a prompt/arg/proposal/PR-body/URL): `ZAI_API_KEY` + `ZAI_API_ENDPOINT` (the funded Anthropic-compatible endpoint for `glm-5.2`), `EXA_API_KEY` (Atlas search), `STEEL_API_KEY` (optional, JS-rendered pages), `GITHUB_TOKEN` (apply push/PR). `ANTHROPIC_API_KEY` is an accepted fallback when ZAI is unset. `.env` and `.discovery/` stay gitignored.
+
+**SSRF.** The research fetch uses Atlas's built-in `safety:{allowPrivateNetworks:false}` (blocks 0/10/127/100.64/169.254/172.16/192.168 + a DNS check). The `apply` step re-fetches each candidate's `sourceUrl` *independently* to confirm the score, so `src/lib/ssrf-guard.ts` enforces the same host/IP rules itself: http(s)-only, `dns.lookup` per hop, redirect-safe, metadata-IP block.
+
+**A quiet week is valid.** If nothing survives the gates, `apply` opens zero PRs and `notify` posts "no fresh results" — that is success, not failure.
+
+## Process (manual, interactive arxiv sweep)
+
+> This section is the **manual** path: an ad-hoc arxiv-only sweep you run by hand and render as a review comment. The **automated** weekly path (research → judge → PR) above is fully scripted and does not use these steps — it is described in its own section. The four-way taxonomy and evidence rules below still apply if you ever judge candidates by hand.
 
 ### 1. Run the discovery script
 

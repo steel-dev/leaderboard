@@ -1,0 +1,95 @@
+name: Discovery Scheduler
+
+# Tiny cron trigger for discover-results.yml. WHY a separate scheduler workflow:
+# discover-results.yml listens ONLY on workflow_dispatch/workflow_call, so the heavy LLM sweep
+# is never triggered by incidental repo events and the ISO-week idempotency + kill-switch live in
+# one place. This scheduler owns the cron and dispatches THAT workflow via `gh workflow run` —
+# workflow_dispatch is the documented exception that DOES create a downstream run even when invoked
+# with the repository GITHUB_TOKEN.
+#
+# DEACTIVATED. The trigger job runs ONLY when the repo variable ENABLE_DISCOVERY=true (default:
+# unset/off — survives a merge, so the sweep never auto-runs until explicitly re-enabled). To resume
+# the 14-day cadence later: set ENABLE_DISCOVERY=true. The cron also self-skips on odd ISO weeks
+# (biweekly guard), so an ENABLED scheduler dispatches roughly every 14 days.
+#
+# NOTE: on public repositories, scheduled workflows auto-disable after 60 idle days.
+
+on:
+  schedule:
+    # Mondays ~07:27 UTC (off-minute to avoid the fleet-wide :00/:30 pile-up). Fires weekly, but the
+    # biweekly guard below dispatches only on even ISO weeks (~every 14 days) once ENABLE_DISCOVERY=true.
+    - cron: "27 7 * * 1"
+  workflow_dispatch:
+    inputs:
+      since_days:
+        description: "Forwarded to discover-results.yml (default 21: covers the worst-case 21-day ISO-week-boundary dispatch gap)."
+        required: false
+        default: "21"
+        type: string
+
+permissions:
+  actions: write # dispatch discover-results.yml via `gh workflow run`
+  contents: read
+  issues: write # alert on dispatch failure
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  trigger:
+    # DEACTIVATED by default. Flip to 'true' (repo variable ENABLE_DISCOVERY) to resume. Combined with
+    # the biweekly guard below, an enabled scheduler dispatches every ~14 days (even ISO weeks).
+    if: vars.ENABLE_DISCOVERY == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Biweekly cadence guard (14-day)
+        id: cadence
+        run: |
+          # GitHub Actions cron can't express "every 14 days", so fire weekly but dispatch only on
+          # even ISO weeks -> true biweekly. Caveat: an ISO year that contains a week 53 (most years)
+          # ends on odd W53 and the next opens on odd W01, so BOTH are skipped -> one ~21-day gap per
+          # year around the boundary. since_days (default 21) is sized to cover exactly that worst
+          # case; the nominal even->even cadence is 14 days with a 7-day lookback-overlap cushion.
+          WEEK=$(date -u +%V)
+          if [ $((10#$WEEK % 2)) -ne 0 ]; then
+            echo "::notice::Biweekly cadence: ISO week ${WEEK} is odd — skipping dispatch this Monday."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Dispatch discovery sweep
+        if: steps.cadence.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SINCE_DAYS: ${{ inputs.since_days || '21' }}
+        run: |
+          echo "Dispatching discover-results.yml (lookback ${SINCE_DAYS} days)…"
+          gh workflow run discover-results.yml -f since_days="${SINCE_DAYS}"
+          # gh exits non-zero if the workflow file is missing on the default branch or
+          # discover-results.yml lacks on:workflow_dispatch — failing here surfaces it.
+          echo "::notice::discover-results.yml dispatched."
+
+  # Catches the case the discover-results notify job cannot: the dispatch itself failing.
+  notify:
+    needs: trigger
+    # 'cancelled' (e.g. the 5-min gh dispatch timeout) must also alert — == 'failure' would miss it.
+    if: always() && needs.trigger.result != 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Report scheduler failure
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          # Alert issues use a SEPARATE label (discovery-alert) from the rolling tracker (discovery).
+          gh label create discovery-alert --description "Discovery sweep/scheduler failure alerts" --color F6B73C 2>/dev/null || true
+          gh issue create \
+            --title "Discovery SCHEDULER failed — $(date -u +%F)" \
+            --label discovery-alert \
+            --body "The discovery scheduler could not dispatch discover-results.yml. Investigate: ${RUN_URL}
+
+          Likely causes: discover-results.yml not on the default branch, ENABLE_DISCOVERY mis-set, or an expired/missing GITHUB_TOKEN. If this is a public repo, note that scheduled workflows auto-disable after 60 idle days — re-enable the schedule in Actions → workflows." \
+            || true
