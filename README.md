@@ -64,7 +64,7 @@ Research/search · Mixed scope · 13 entries tracked
 
 ### [WebArena](https://leaderboard.steel.dev/leaderboards/webarena)
 
-Browser agents · Agent scope · 49 entries tracked
+Browser agents · Agent scope · 50 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -74,7 +74,7 @@ Browser agents · Agent scope · 49 entries tracked
 | 4 | Claude Code + GBOX MCP | GBOX AI | [68.0%](https://github.com/babelcloud/webarena/blob/main/gbox/report.md) |
 | 5 | DeepSky Agent | DeepSky | [66.9%](https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ) |
 
-[See all 49 entries →](https://leaderboard.steel.dev/leaderboards/webarena)
+[See all 50 entries →](https://leaderboard.steel.dev/leaderboards/webarena)
 
 ---
 
@@ -176,7 +176,7 @@ Browser agents · Agent scope · 11 entries tracked
 
 ### [Online-Mind2Web](https://leaderboard.steel.dev/leaderboards/online-mind2web)
 
-Browser agents · Agent scope · 22 entries tracked
+Browser agents · Agent scope · 23 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -186,7 +186,7 @@ Browser agents · Agent scope · 22 entries tracked
 | 4 | TinyFish | TinyFish AI | [90.0%](https://www.tinyfish.ai/blog/mind2web) |
 | 5 | UI-TARS-2 | ByteDance / VLM-Research | [88.2%](https://arxiv.org/abs/2509.02544) |
 
-[See all 22 entries →](https://leaderboard.steel.dev/leaderboards/online-mind2web)
+[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/online-mind2web)
 
 ---
 

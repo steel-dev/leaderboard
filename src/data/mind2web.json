@@ -164,6 +164,18 @@
     },
     {
       "rank": 17,
+      "systemName": "WebChallenger (GLM-4-32B)",
+      "organization": "Independent Research",
+      "scoreDisplay": "51.0%",
+      "scoreValue": 51.0,
+      "sourceUrl": "https://arxiv.org/abs/2606.10423",
+      "repoUrl": "https://github.com/jayoohwang1/webchallenger",
+      "notesShort": "Human-evaluation score reported in WebChallenger paper; system-level orchestration of GLM-4-32B with Qwen-2.5-VL-7B.",
+      "reportedAt": "2026-06-09",
+      "isNew": true
+    },
+    {
+      "rank": 18,
       "systemName": "ACT-1-20250703",
       "organization": "Enhans",
       "scoreDisplay": "45.7%",
@@ -173,7 +185,7 @@
       "reportedAt": "2025-07-03"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "SeeAct (gpt-4o)",
       "organization": "OSU NLP",
       "scoreDisplay": "30.7%",
@@ -183,7 +195,7 @@
       "reportedAt": "2024-01-16"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "Browser Use (gpt-4o)",
       "organization": "Browser Use",
       "scoreDisplay": "30.0%",
@@ -193,7 +205,7 @@
       "reportedAt": "2024-11-06"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "HAL Leaderboard baseline (best open)",
       "organization": "Princeton / OSU",
       "scoreDisplay": "~30%",
@@ -203,7 +215,7 @@
       "reportedAt": "2025-04"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "systemName": "Claude Computer Use 3.5",
       "organization": "Anthropic",
       "scoreDisplay": "29.0%",
@@ -213,7 +225,7 @@
       "reportedAt": "2024-10-22"
     },
     {
-      "rank": 22,
+      "rank": 23,
       "systemName": "Agent-E (gpt-4o)",
       "organization": "Emergence AI",
       "scoreDisplay": "28.0%",
