@@ -16,18 +16,18 @@
       "systemName": "Claude Mythos 5",
       "organization": "Anthropic",
       "scoreDisplay": "85.0%",
-      "scoreValue": 85.0,
+      "scoreValue": 85,
       "sourceUrl": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
       "notesShort": "OSWorld-Verified pass@1 (361 tasks, 100 max steps, auto-thinking at max effort, 5-run avg) on Anthropic's revised harness. Self-reported in the Claude 5 system card.",
       "reportedAt": "2026-06",
       "isNew": true
     },
     {
-      "rank": 2,
+      "rank": 3,
       "systemName": "Claude Fable 5",
       "organization": "Anthropic",
       "scoreDisplay": "85.0%",
-      "scoreValue": 85.0,
+      "scoreValue": 85,
       "sourceUrl": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
       "notesShort": "Generally available sibling of Mythos 5; OSWorld-Verified pass@1 (361 tasks, 100 max steps, auto-thinking at max effort, 5-run avg). Self-reported in the Claude 5 system card.",
       "reportedAt": "2026-06",
@@ -46,6 +46,26 @@
     },
     {
       "rank": 5,
+      "systemName": "Claude Sonnet 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "81.2%",
+      "scoreValue": 81.2,
+      "sourceUrl": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf",
+      "notesShort": "OSWorld-Verified pass@1 (361 tasks, 100 max steps) on Anthropic's revised harness. Self-reported in the Claude Sonnet 5 system card.",
+      "reportedAt": "2026-06-30"
+    },
+    {
+      "rank": 6,
+      "systemName": "Claude Sonnet 4.6",
+      "organization": "Anthropic",
+      "scoreDisplay": "78.5%",
+      "scoreValue": 78.5,
+      "sourceUrl": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf",
+      "notesShort": "OSWorld-Verified pass@1 (361 tasks, 100 max steps) on Anthropic's revised harness. Self-reported in the Claude Sonnet 5 system card.",
+      "reportedAt": "2026-06-30"
+    },
+    {
+      "rank": 7,
       "systemName": "OSAgent",
       "organization": "TheAGI Company",
       "scoreDisplay": "76.26%",
@@ -55,7 +75,7 @@
       "reportedAt": "2025-10-23"
     },
     {
-      "rank": 6,
+      "rank": 8,
       "systemName": "GPT-5.4",
       "organization": "OpenAI",
       "scoreDisplay": "75.0%",
@@ -66,7 +86,7 @@
       "isNew": true
     },
     {
-      "rank": 7,
+      "rank": 9,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "72.7%",
@@ -76,17 +96,7 @@
       "reportedAt": "2026-02-05"
     },
     {
-      "rank": 8,
-      "systemName": "Claude Sonnet 4.6",
-      "organization": "Anthropic",
-      "scoreDisplay": "72.5%",
-      "scoreValue": 72.5,
-      "sourceUrl": "https://www.anthropic.com/news/claude-sonnet-4-6",
-      "notesShort": "Independently assessed; within 0.2 points of Opus 4.6 at significantly lower cost.",
-      "reportedAt": "2026-02-17"
-    },
-    {
-      "rank": 9,
+      "rank": 10,
       "systemName": "Qwen3 VL 235B",
       "organization": "Alibaba",
       "scoreDisplay": "66.7%",
@@ -96,7 +106,7 @@
       "reportedAt": "2025-09-23"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "66.3%",
@@ -106,7 +116,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "systemName": "Kimi K2.5",
       "organization": "Moonshot AI",
       "scoreDisplay": "63.3%",
@@ -116,7 +126,7 @@
       "reportedAt": "2026-01-27"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "systemName": "GLM-5V-Turbo",
       "organization": "Zhipu AI",
       "scoreDisplay": "62.3%",
@@ -126,7 +136,7 @@
       "reportedAt": "2026-04-01"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Claude Sonnet 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "61.4%",
@@ -136,7 +146,7 @@
       "reportedAt": "2025-09-29"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "UiPath Screen Agent",
       "organization": "UiPath",
       "scoreDisplay": "53.6%",
@@ -146,7 +156,7 @@
       "reportedAt": "2026-01-14"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "Claude Haiku 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "50.7%",
@@ -156,7 +166,7 @@
       "reportedAt": "2025-10-15"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "Agent S2 + Claude 3.7",
       "organization": "Simular AI",
       "scoreDisplay": "34.5%",
@@ -166,7 +176,7 @@
       "reportedAt": "2025-03-12"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "systemName": "OpenAI Operator (CUA)",
       "organization": "OpenAI",
       "scoreDisplay": "32.6%",
@@ -176,7 +186,7 @@
       "reportedAt": "2025-01-23"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "Qwen2.5 VL 72B Instruct",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "8.8%",
@@ -186,7 +196,7 @@
       "reportedAt": "2025-01-26"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "Qwen2.5 VL 32B Instruct",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "5.9%",

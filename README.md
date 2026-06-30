@@ -32,7 +32,7 @@ Browser agents · Agent scope · 19 entries tracked
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 90 entries tracked
+Research/search · Mixed scope · 93 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -42,7 +42,7 @@ Research/search · Mixed scope · 90 entries tracked
 | 4 | Claude Mythos 5 **(new)** | Anthropic | [88.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
 | 5 | Claude Mythos Preview | Anthropic | [86.9%](https://www.anthropic.com/glasswing) |
 
-[See all 90 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 93 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
 ---
 
@@ -112,17 +112,17 @@ Coding · Model scope · 15 entries tracked
 
 ### [OSWorld](https://leaderboard.steel.dev/leaderboards/osworld)
 
-Computer use · Agent scope · 19 entries tracked
+Computer use · Agent scope · 20 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
 | 1 | Claude Mythos Preview **(new)** | Anthropic | [85.4%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
 | 2 | Claude Mythos 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
-| 2 | Claude Fable 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 3 | Claude Fable 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
 | 4 | Claude Opus 4.8 **(new)** | Anthropic | [83.4%](https://www.anthropic.com/news/claude-opus-4-8) |
-| 5 | OSAgent | TheAGI Company | [76.26%](https://www.theagi.company/blog/osworld) |
+| 5 | Claude Sonnet 5 | Anthropic | [81.2%](https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf) |
 
-[See all 19 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
+[See all 20 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
 
 ---
 
