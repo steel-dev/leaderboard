@@ -120,7 +120,7 @@ Computer use · Agent scope · 20 entries tracked
 | 2 | Claude Mythos 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
 | 3 | Claude Fable 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
 | 4 | Claude Opus 4.8 **(new)** | Anthropic | [83.4%](https://www.anthropic.com/news/claude-opus-4-8) |
-| 5 | Claude Sonnet 5 | Anthropic | [81.2%](https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf) |
+| 5 | Claude Sonnet 5 **(new)** | Anthropic | [81.2%](https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf) |
 
 [See all 20 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
 
