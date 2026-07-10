@@ -126,6 +126,22 @@ Computer use · Agent scope · 20 entries tracked
 
 ---
 
+### [OSWorld 2.0](https://leaderboard.steel.dev/leaderboards/osworld-2)
+
+Computer use · Agent scope · 10 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | Claude Opus 4.8 (batched tools) **(new)** | Anthropic | [20.6%](https://osworld-v2.xlang.ai/) |
+| 2 | Claude Opus 4.8 **(new)** | Anthropic | [18.52%](https://osworld-v2.xlang.ai/) |
+| 3 | Claude Opus 4.7 (batched tools) **(new)** | Anthropic | [18.2%](https://osworld-v2.xlang.ai/) |
+| 4 | Claude Opus 4.7 **(new)** | Anthropic | [13.9%](https://osworld-v2.xlang.ai/) |
+| 5 | GPT-5.5 **(new)** | OpenAI | [13.0%](https://osworld-v2.xlang.ai/) |
+
+[See all 10 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
+
+---
+
 ### [GAIA](https://leaderboard.steel.dev/leaderboards/gaia)
 
 Model evals / reasoning · Agent scope · 21 entries tracked

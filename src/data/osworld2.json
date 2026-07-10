@@ -1,0 +1,114 @@
+{
+  "osworld2": [
+    {
+      "rank": 1,
+      "systemName": "Claude Opus 4.8 (batched tools)",
+      "organization": "Anthropic",
+      "scoreDisplay": "20.6%",
+      "scoreValue": 20.6,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run on the official OSWorld 2.0 harness (108 long-horizon tasks); max thinking with batched tool calls, 500-step budget. 54.8% partial score. Best tracked binary completion.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 2,
+      "systemName": "Claude Opus 4.8",
+      "organization": "Anthropic",
+      "scoreDisplay": "18.52%",
+      "scoreValue": 18.52,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; max thinking, standard tool calls, 500-step budget. 49.3% partial score. Batched tool calls lift the same model to 20.6% (see row above).",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 3,
+      "systemName": "Claude Opus 4.7 (batched tools)",
+      "organization": "Anthropic",
+      "scoreDisplay": "18.2%",
+      "scoreValue": 18.2,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; max thinking with batched tool calls, 500-step budget. 48.9% partial score.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 4,
+      "systemName": "Claude Opus 4.7",
+      "organization": "Anthropic",
+      "scoreDisplay": "13.9%",
+      "scoreValue": 13.9,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; max thinking, standard tool calls, 500-step budget (~$3,870 per run). 49.1% partial score.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 5,
+      "systemName": "GPT-5.5",
+      "organization": "OpenAI",
+      "scoreDisplay": "13.0%",
+      "scoreValue": 13.0,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; xhigh reasoning with batched tool calls, 500-step budget (~$2,750 per run). Plateaus at 13.0% across 150/300/500 steps; 49.5% partial score.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 6,
+      "systemName": "Claude Sonnet 4.6 (medium thinking)",
+      "organization": "Anthropic",
+      "scoreDisplay": "9.3%",
+      "scoreValue": 9.3,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; medium thinking, standard tool calls, 500-step budget (~$1,550 per run). 33.9% partial score.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 7,
+      "systemName": "Claude Sonnet 4.6 (max thinking)",
+      "organization": "Anthropic",
+      "scoreDisplay": "8.3%",
+      "scoreValue": 8.3,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; max thinking, standard tool calls, 500-step budget (~$2,410 per run). Lower binary score than medium but higher partial (41.5%).",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 8,
+      "systemName": "MiniMax M3",
+      "organization": "MiniMax",
+      "scoreDisplay": "4.6%",
+      "scoreValue": 4.6,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; reasoning enabled, standard tool calls, 500-step budget (~$259 per run). 22.3% partial score.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 8,
+      "systemName": "Kimi 2.6",
+      "organization": "Moonshot AI",
+      "scoreDisplay": "4.6%",
+      "scoreValue": 4.6,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; reasoning enabled, standard tool calls, 500-step budget (~$708 per run). 22.1% partial score.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 10,
+      "systemName": "Qwen 3.7-Plus",
+      "organization": "Alibaba",
+      "scoreDisplay": "2.8%",
+      "scoreValue": 2.8,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; thinking mode, standard tool calls, 500-step budget (~$412 per run). 21.5% partial score.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    }
+  ]
+}
