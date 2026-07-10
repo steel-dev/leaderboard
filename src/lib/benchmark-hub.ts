@@ -8,6 +8,7 @@ import {
   healthAdminBench,
   mind2web,
   osworld,
+  osworld2,
   sweBenchVerified,
   tauBench,
   webarena,
@@ -24,6 +25,7 @@ type BenchmarkMap = {
   healthAdminBench: Record<string, BenchmarkResultRow[]>;
   mind2web: Record<string, BenchmarkResultRow[]>;
   osworld: Record<string, BenchmarkResultRow[]>;
+  osworld2: Record<string, BenchmarkResultRow[]>;
   sweBenchVerified: Record<string, BenchmarkResultRow[]>;
   tauBench: Record<string, BenchmarkResultRow[]>;
   webarena: Record<string, BenchmarkResultRow[]>;
@@ -40,6 +42,7 @@ const benchmarkMap: BenchmarkMap = {
   healthAdminBench,
   mind2web,
   osworld,
+  osworld2,
   sweBenchVerified,
   tauBench,
   webarena,
@@ -625,10 +628,70 @@ export const benchmarkPages: BenchmarkPageData[] = [
         { label: "OSWorld repository", url: "https://github.com/xlang-ai/OSWorld" },
         { label: "OSWorld-Verified announcement", url: "https://xlang.ai/blog/osworld-verified" },
       ],
-      relatedBenchmarks: ["webarena", "webvoyager", "online-mind2web"],
+      relatedBenchmarks: ["osworld-2", "webarena", "webvoyager", "online-mind2web"],
       lastUpdated: "2026-05-28",
     },
     results: benchmarkResults("osworld") ?? [],
+  },
+  {
+    meta: {
+      slug: "osworld-2",
+      name: "OSWorld 2.0",
+      description:
+        "OSWorld 2.0 leaderboard for computer-use agents on 108 long-horizon real-world desktop workflows that take human users a median of about 1.6 hours.",
+      categoryLabel: "Computer Use Agent",
+      seoHook: "computer-use agents on 108 long-horizon workflows averaging ~318 tool calls",
+      category: "computer_use",
+      scope: "agent",
+      about: [
+        "OSWorld 2.0 evaluates computer-use agents on 108 long-horizon, end-to-end desktop workflows spanning everyday and professional tasks across self-hosted websites, office suites, files, and multi-application pipelines.",
+        "It is far harder than OSWorld 1.0: tasks take human users a median of about 1.6 hours, require an average of roughly 318 tool calls (vs about 30 in OSWorld 1.0), and 69.6% run longer than an hour, stressing cross-source reasoning, implicit-state inference, streaming interaction, and visual-spatial precision.",
+        "Scores here are not comparable to the OSWorld (1.0/Verified) leaderboard: the task set, step budgets, and metrics all differ, so use this page only for within-benchmark ranking.",
+      ],
+      methodology: [
+        "Tasks run in real VM desktop environments with execution-based validators that check final state against many fine-grained checkpoints (averaging 27.25 per task).",
+        "OSWorld 2.0 scores two ways: binary completion (all checkpoints passed) and a partial score (fraction of checkpoints reached). We rank on the partial score — it differentiates systems far better than the low binary rates and matches how the GPT-5.6 result is reported — with each row's binary completion noted. Tracked scores use the default 500-step budget.",
+        "Most rows are author-run by the benchmark team on the official OSWorld 2.0 harness; the GPT-5.6 Sol row is OpenAI self-reported at launch. Reasoning effort, tool-call mode, and step budget are reported per row and materially affect scores.",
+        "We track public results with source URLs and note that no independent third-party reproduction exists yet.",
+      ],
+      taskExamples: [
+        {
+          quote: "Please help me submit a reimbursement claim in the ExpenseFlow system.",
+          sourceLabel: "OSWorld 2.0 paper (Task 008)",
+          sourceUrl: "https://arxiv.org/abs/2606.29537",
+        },
+        {
+          quote: "Help me fill out this DS-2019 application for my J-1 student visa.",
+          sourceLabel: "OSWorld 2.0 paper",
+          sourceUrl: "https://arxiv.org/abs/2606.29537",
+        },
+        {
+          quote:
+            "Go to the TravelHub booking page for Le Meurice and select the Deluxe Suite, stopping before the user enters personal information.",
+          sourceLabel: "OSWorld 2.0 paper (Task 052)",
+          sourceUrl: "https://arxiv.org/abs/2606.29537",
+        },
+      ],
+      importantNotes: [
+        "Rows are self-reported (benchmark team or OpenAI); independent third-party results are not yet available, and GPT-5.6 Sol's binary completion is unpublished.",
+        "Binary completion is deliberately low (best about 20.6%, Claude Opus 4.8); we rank on partial score instead, so a row's partial score is not comparable to OSWorld 1.0/Verified pass rates.",
+      ],
+      links: [
+        { label: "OSWorld 2.0 project", url: "https://osworld-v2.xlang.ai/" },
+        { label: "OSWorld 2.0 paper", url: "https://arxiv.org/abs/2606.29537" },
+        {
+          label: "OSWorld 2.0 repository",
+          url: "https://github.com/xlang-ai/OSWorld-V2",
+        },
+        {
+          label: "OSWorld 2.0 dataset",
+          url: "https://huggingface.co/datasets/xlangai/osworld_v2_tasks",
+        },
+      ],
+      relatedBenchmarks: ["osworld", "webarena"],
+      lastUpdated: "2026-07-10",
+    },
+    results: benchmarkResults("osworld2") ?? [],
   },
   {
     meta: {

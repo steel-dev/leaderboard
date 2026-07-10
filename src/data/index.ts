@@ -7,6 +7,7 @@ export { default as gaia } from "./gaia.json" with { type: "json" };
 export { default as healthAdminBench } from "./healthAdminBench.json" with { type: "json" };
 export { default as mind2web } from "./mind2web.json" with { type: "json" };
 export { default as osworld } from "./osworld.json" with { type: "json" };
+export { default as osworld2 } from "./osworld2.json" with { type: "json" };
 export { default as sweBenchVerified } from "./sweBenchVerified.json" with { type: "json" };
 export { default as tauBench } from "./tauBench.json" with { type: "json" };
 export { default as webarena } from "./webarena.json" with { type: "json" };
