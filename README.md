@@ -128,17 +128,17 @@ Computer use · Agent scope · 20 entries tracked
 
 ### [OSWorld 2.0](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
-Computer use · Agent scope · 10 entries tracked
+Computer use · Agent scope · 11 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Claude Opus 4.8 (batched tools) **(new)** | Anthropic | [20.6%](https://osworld-v2.xlang.ai/) |
-| 2 | Claude Opus 4.8 **(new)** | Anthropic | [18.52%](https://osworld-v2.xlang.ai/) |
-| 3 | Claude Opus 4.7 (batched tools) **(new)** | Anthropic | [18.2%](https://osworld-v2.xlang.ai/) |
-| 4 | Claude Opus 4.7 **(new)** | Anthropic | [13.9%](https://osworld-v2.xlang.ai/) |
-| 5 | GPT-5.5 **(new)** | OpenAI | [13.0%](https://osworld-v2.xlang.ai/) |
+| 1 | GPT-5.6 Sol **(new)** | OpenAI | [62.6%](https://openai.com/index/gpt-5-6/) |
+| 2 | Claude Opus 4.8 (batched tools) **(new)** | Anthropic | [54.8%](https://osworld-v2.xlang.ai/) |
+| 3 | GPT-5.5 (batched tools) **(new)** | OpenAI | [49.5%](https://osworld-v2.xlang.ai/) |
+| 4 | Claude Opus 4.8 **(new)** | Anthropic | [49.33%](https://osworld-v2.xlang.ai/) |
+| 5 | Claude Opus 4.7 **(new)** | Anthropic | [49.1%](https://osworld-v2.xlang.ai/) |
 
-[See all 10 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
+[See all 11 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
 ---
 

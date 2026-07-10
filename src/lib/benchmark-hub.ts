@@ -650,8 +650,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       ],
       methodology: [
         "Tasks run in real VM desktop environments with execution-based validators that check final state against many fine-grained checkpoints (averaging 27.25 per task).",
-        "The primary metric is binary task completion (all checkpoints passed) at a step budget; a secondary partial score credits checkpoints reached. Tracked scores use the default 500-step budget.",
-        "All current rows are author-run by the benchmark team on the official OSWorld 2.0 harness; reasoning effort, tool-call mode, and step budget are reported per row and materially affect scores.",
+        "OSWorld 2.0 scores two ways: binary completion (all checkpoints passed) and a partial score (fraction of checkpoints reached). We rank on the partial score — it differentiates systems far better than the low binary rates and matches how the GPT-5.6 result is reported — with each row's binary completion noted. Tracked scores use the default 500-step budget.",
+        "Most rows are author-run by the benchmark team on the official OSWorld 2.0 harness; the GPT-5.6 Sol row is OpenAI self-reported at launch. Reasoning effort, tool-call mode, and step budget are reported per row and materially affect scores.",
         "We track public results with source URLs and note that no independent third-party reproduction exists yet.",
       ],
       taskExamples: [
@@ -673,8 +673,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       importantNotes: [
-        "Every row is author-run by the OSWorld 2.0 team; independent third-party results are not yet available.",
-        "Scores are deliberately low (best binary completion is about 20.6%) and are not comparable to OSWorld 1.0/Verified numbers.",
+        "Rows are self-reported (benchmark team or OpenAI); independent third-party results are not yet available, and GPT-5.6 Sol's binary completion is unpublished.",
+        "Binary completion is deliberately low (best about 20.6%, Claude Opus 4.8); we rank on partial score instead, so a row's partial score is not comparable to OSWorld 1.0/Verified pass rates.",
       ],
       links: [
         { label: "OSWorld 2.0 project", url: "https://osworld-v2.xlang.ai/" },
