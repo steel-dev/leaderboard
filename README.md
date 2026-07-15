@@ -32,17 +32,17 @@ Browser agents · Agent scope · 19 entries tracked
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 93 entries tracked
+Research/search · Mixed scope · 97 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | GPT-5.5 Pro | OpenAI | [90.1%](https://openai.com/index/introducing-gpt-5-5/) |
-| 2 | GPT-5.4 Pro | OpenAI | [89.3%](https://openai.com/index/introducing-gpt-5-5/) |
-| 3 | MiroThinker-H1 | MiroMind | [88.2%](https://www.prnewswire.com/news-releases/miromind-team-unveils-mirothinker-1-7--mirothinker-h1-a-new-era-of-verification-centric-heavy-duty-research-agents-302714500.html) |
-| 4 | Claude Mythos 5 **(new)** | Anthropic | [88.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
-| 5 | Claude Mythos Preview | Anthropic | [86.9%](https://www.anthropic.com/glasswing) |
+| 1 | GPT-5.6 Sol Ultra **(new)** | OpenAI | [92.2%](https://openai.com/index/gpt-5-6/) |
+| 2 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
+| 3 | GPT-5.5 Pro | OpenAI | [90.1%](https://openai.com/index/introducing-gpt-5-5/) |
+| 4 | GPT-5.4 Pro | OpenAI | [89.3%](https://openai.com/index/introducing-gpt-5-5/) |
+| 5 | MiroThinker-H1 | MiroMind | [88.2%](https://www.prnewswire.com/news-releases/miromind-team-unveils-mirothinker-1-7--mirothinker-h1-a-new-era-of-verification-centric-heavy-duty-research-agents-302714500.html) |
 
-[See all 93 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 97 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
 ---
 
@@ -80,7 +80,7 @@ Browser agents · Agent scope · 50 entries tracked
 
 ### [SWE-bench Verified](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
 
-Coding · Model scope · 18 entries tracked
+Coding · Model scope · 23 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -90,7 +90,7 @@ Coding · Model scope · 18 entries tracked
 | 4 | Claude Opus 4.8 **(new)** | Anthropic | [88.6%](https://www.anthropic.com/news/claude-opus-4-8) |
 | 5 | Claude Opus 4.7 | Anthropic | [87.6%](https://www.anthropic.com/news/claude-opus-4-7) |
 
-[See all 18 entries →](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
+[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
 
 ---
 
