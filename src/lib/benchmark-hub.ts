@@ -856,7 +856,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       importantNotes: [
-        "New benchmark with no independent submissions yet: current rows are the paper authors' baselines plus Anthropic's self-reported system card run.",
+        "No independent third-party evaluations yet: rows are the paper authors' baselines, Anthropic's self-reported system-card runs, and Omni Health's self-run vendor submission, so read each row as its operator's own report.",
+        "The top row (Omni Agent Hub, 67.4%) is a vendor self-run: a production browser agent operated and graded by Omni Health on its own harness with its own LLM judge, single attempt; Omni states it is not directly comparable to the paper-harness or system-card rows, and it corroborates the run via the benchmark authors' server-side portal logs rather than an external audit.",
         "Anthropic system card rows come from an internal port with a browser-use scaffold, per-portal skill files, and a single trial, and were self-graded by Claude Opus 4.8; Anthropic itself flags them as not directly comparable to the published leaderboard.",
         "Setup differences (observation mode, prompting, orchestration) move scores more than model choice does on this page, so read the Notes column before treating rank gaps as capability gaps.",
       ],
@@ -876,7 +877,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       relatedBenchmarks: ["webarena", "osworld", "clawbench"],
-      lastUpdated: "2026-06-12",
+      lastUpdated: "2026-07-17",
     },
     results: benchmarkResults("healthAdminBench") ?? [],
   },
