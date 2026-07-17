@@ -32,17 +32,17 @@ Browser agents · Agent scope · 19 entries tracked
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 97 entries tracked
+Research/search · Mixed scope · 98 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
 | 1 | GPT-5.6 Sol Ultra **(new)** | OpenAI | [92.2%](https://openai.com/index/gpt-5-6/) |
-| 2 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
-| 3 | GPT-5.5 Pro | OpenAI | [90.1%](https://openai.com/index/introducing-gpt-5-5/) |
-| 4 | GPT-5.4 Pro | OpenAI | [89.3%](https://openai.com/index/introducing-gpt-5-5/) |
-| 5 | MiroThinker-H1 | MiroMind | [88.2%](https://www.prnewswire.com/news-releases/miromind-team-unveils-mirothinker-1-7--mirothinker-h1-a-new-era-of-verification-centric-heavy-duty-research-agents-302714500.html) |
+| 2 | Kimi K3 **(new)** | Moonshot AI | [91.2%](https://www.kimi.com/blog/kimi-k3) |
+| 3 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
+| 4 | GPT-5.5 Pro | OpenAI | [90.1%](https://openai.com/index/introducing-gpt-5-5/) |
+| 5 | GPT-5.4 Pro | OpenAI | [89.3%](https://openai.com/index/introducing-gpt-5-5/) |
 
-[See all 97 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 98 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
 ---
 
