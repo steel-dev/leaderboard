@@ -16,17 +16,17 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
-Browser agents · Agent scope · 19 entries tracked
+Browser agents · Agent scope · 20 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
 | 1 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
-| 2 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
-| 3 | Magnitude | Magnitude | [93.9%](https://magnitude.run/webvoyager) |
-| 4 | Surfer-H + Holo1 | H Company | [92.2%](https://arxiv.org/pdf/2506.02865) |
-| 5 | Browserable | Browserable | [90.4%](https://www.browserable.ai/blog/web-voyager-benchmark) |
+| 2 | Mira Browser Use **(new)** | Mira Browser Use | [97.29%](https://github.com/limen325/mira_browser_use/blob/main/README.md) |
+| 3 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
+| 4 | Magnitude | Magnitude | [93.9%](https://magnitude.run/webvoyager) |
+| 5 | Surfer-H + Holo1 | H Company | [92.2%](https://arxiv.org/pdf/2506.02865) |
 
-[See all 19 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
+[See all 20 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 ---
 

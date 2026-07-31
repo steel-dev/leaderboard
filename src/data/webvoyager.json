@@ -14,6 +14,18 @@
     },
     {
       "rank": 2,
+      "systemName": "Mira Browser Use",
+      "organization": "Mira Browser Use",
+      "scoreDisplay": "97.29%",
+      "scoreValue": 97.29,
+      "sourceUrl": "https://github.com/limen325/mira_browser_use/blob/main/README.md",
+      "repoUrl": "https://github.com/limen325/mira_browser_use",
+      "notesShort": "End-to-end agentic AI framework for web task automation.",
+      "reportedAt": "2026-07",
+      "isNew": true
+    },
+    {
+      "rank": 3,
       "systemName": "Surfer 2",
       "organization": "H Company",
       "scoreDisplay": "97.1%",
@@ -23,7 +35,7 @@
       "reportedAt": "2025-10"
     },
     {
-      "rank": 3,
+      "rank": 4,
       "systemName": "Magnitude",
       "organization": "Magnitude",
       "scoreDisplay": "93.9%",
@@ -34,7 +46,7 @@
       "reportedAt": "2025-07"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "systemName": "Surfer-H + Holo1",
       "organization": "H Company",
       "scoreDisplay": "92.2%",
@@ -45,7 +57,7 @@
       "reportedAt": "2025-06"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "systemName": "Browserable",
       "organization": "Browserable",
       "scoreDisplay": "90.4%",
@@ -56,7 +68,7 @@
       "reportedAt": "2025-04"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "Browser Use",
       "organization": "Browser Use",
       "scoreDisplay": "89.1%",
@@ -67,7 +79,7 @@
       "reportedAt": "2024-12"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "GLM-5V-Turbo",
       "organization": "Z.ai",
       "scoreDisplay": "88.5%",
@@ -78,7 +90,7 @@
       "isNew": true
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "Agent Kura",
       "organization": "Kura",
       "scoreDisplay": "87.0%",
@@ -88,7 +100,7 @@
       "reportedAt": "2024-11"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "Operator",
       "organization": "OpenAI",
       "scoreDisplay": "87%",
@@ -98,7 +110,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "Notte",
       "organization": "Notte",
       "scoreDisplay": "86.2%",
@@ -109,7 +121,7 @@
       "reportedAt": "2025-04"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "systemName": "Skyvern 2.0",
       "organization": "Skyvern",
       "scoreDisplay": "85.85%",
@@ -120,7 +132,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "systemName": "Project Mariner",
       "organization": "Google",
       "scoreDisplay": "83.5%",
@@ -130,7 +142,7 @@
       "reportedAt": "2024-12"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Agent-E",
       "organization": "Emergence AI",
       "scoreDisplay": "73.2%",
@@ -141,7 +153,7 @@
       "reportedAt": "2024-07"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "WebSight",
       "organization": "Academic Research",
       "scoreDisplay": "68%",
@@ -151,7 +163,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "Runner H 0.1",
       "organization": "H Company",
       "scoreDisplay": "67%",
@@ -161,7 +173,7 @@
       "reportedAt": "2025-03"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "WebVoyager",
       "organization": "Academic Research",
       "scoreDisplay": "59.1%",
@@ -172,7 +184,7 @@
       "reportedAt": "2024-01"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "systemName": "Anthropic Computer Use 3.5",
       "organization": "Anthropic",
       "scoreDisplay": "56.0%",
@@ -182,7 +194,7 @@
       "reportedAt": "2024-11"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "WILBUR",
       "organization": "Bardeen / UC Berkeley",
       "scoreDisplay": "53%",
@@ -192,7 +204,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "GPT-4 (All Tools)",
       "organization": "OpenAI",
       "scoreDisplay": "30.8%",
