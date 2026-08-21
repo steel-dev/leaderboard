@@ -2,7 +2,29 @@
   "sweBenchVerified": [
     {
       "rank": 1,
-      "systemName": "Claude Mythos",
+      "systemName": "Claude Mythos 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "95.5%",
+      "scoreValue": 95.5,
+      "sourceUrl": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+      "notesShort": "Averaged over 5 trials in standard configuration (adaptive thinking at max effort, thinking blocks included in sampling). Self-reported in the Claude 5 system card.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 2,
+      "systemName": "Claude Fable 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "95.0%",
+      "scoreValue": 95.0,
+      "sourceUrl": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+      "notesShort": "Generally available sibling of Mythos 5; averaged over 5 trials in standard configuration. Self-reported in the Claude 5 system card.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 3,
+      "systemName": "Claude Mythos Preview",
       "organization": "Anthropic",
       "scoreDisplay": "93.9%",
       "scoreValue": 93.9,
@@ -11,7 +33,7 @@
       "reportedAt": "2026-04-09"
     },
     {
-      "rank": 2,
+      "rank": 4,
       "systemName": "Claude Opus 4.8",
       "organization": "Anthropic",
       "scoreDisplay": "88.6%",
@@ -22,7 +44,7 @@
       "isNew": true
     },
     {
-      "rank": 3,
+      "rank": 5,
       "systemName": "Claude Opus 4.7",
       "organization": "Anthropic",
       "scoreDisplay": "87.6%",
@@ -32,7 +54,18 @@
       "reportedAt": "2026-04-16"
     },
     {
-      "rank": 4,
+      "rank": 6,
+      "systemName": "GPT-5.6 Sol",
+      "organization": "OpenAI",
+      "scoreDisplay": "82.2%",
+      "scoreValue": 82.2,
+      "sourceUrl": "https://thinkingmachines.ai/news/introducing-inkling",
+      "notesShort": "max/xhigh reasoning; third-party measurement reported by Thinking Machines in the Inkling announcement.",
+      "reportedAt": "2026-07",
+      "isNew": true
+    },
+    {
+      "rank": 7,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "80.9%",
@@ -42,7 +75,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 5,
+      "rank": 8,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "80.8%",
@@ -52,7 +85,7 @@
       "reportedAt": "2026-02-05"
     },
     {
-      "rank": 6,
+      "rank": 9,
       "systemName": "DeepSeek-V4-Pro-Max",
       "organization": "DeepSeek",
       "scoreDisplay": "80.6%",
@@ -63,7 +96,7 @@
       "isNew": true
     },
     {
-      "rank": 6,
+      "rank": 9,
       "systemName": "Gemini 3.1 Pro",
       "organization": "Google DeepMind",
       "scoreDisplay": "80.6%",
@@ -73,7 +106,7 @@
       "reportedAt": "2026-02-19"
     },
     {
-      "rank": 8,
+      "rank": 11,
       "systemName": "Kimi K2.6",
       "organization": "Moonshot AI",
       "scoreDisplay": "80.2%",
@@ -84,7 +117,7 @@
       "isNew": true
     },
     {
-      "rank": 8,
+      "rank": 11,
       "systemName": "MiniMax M2.5",
       "organization": "MiniMax",
       "scoreDisplay": "80.2%",
@@ -94,7 +127,7 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 10,
+      "rank": 13,
       "systemName": "GPT-5.2",
       "organization": "OpenAI",
       "scoreDisplay": "80.0%",
@@ -104,7 +137,18 @@
       "reportedAt": "2025-12-11"
     },
     {
-      "rank": 11,
+      "rank": 13,
+      "systemName": "GLM-5.2",
+      "organization": "Zhipu AI",
+      "scoreDisplay": "80.0%",
+      "scoreValue": 80,
+      "sourceUrl": "https://thinkingmachines.ai/news/introducing-inkling",
+      "notesShort": "Open-weights model; third-party measurement reported by Thinking Machines in the Inkling announcement.",
+      "reportedAt": "2026-07",
+      "isNew": true
+    },
+    {
+      "rank": 15,
       "systemName": "Claude Sonnet 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "79.6%",
@@ -114,7 +158,7 @@
       "reportedAt": "2026-02-17"
     },
     {
-      "rank": 12,
+      "rank": 16,
       "systemName": "DeepSeek-V4-Flash-Max",
       "organization": "DeepSeek",
       "scoreDisplay": "79.0%",
@@ -124,7 +168,7 @@
       "reportedAt": "2026-04-24"
     },
     {
-      "rank": 13,
+      "rank": 17,
       "systemName": "Qwen3.6 Plus",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "78.8%",
@@ -134,7 +178,7 @@
       "reportedAt": "2026-04-02"
     },
     {
-      "rank": 14,
+      "rank": 18,
       "systemName": "Gemini 3 Flash",
       "organization": "Google DeepMind",
       "scoreDisplay": "78.0%",
@@ -144,7 +188,7 @@
       "reportedAt": "2025-12-17"
     },
     {
-      "rank": 14,
+      "rank": 18,
       "systemName": "MiMo-V2-Pro",
       "organization": "Xiaomi",
       "scoreDisplay": "78.0%",
@@ -154,7 +198,7 @@
       "reportedAt": "2026-03-18"
     },
     {
-      "rank": 16,
+      "rank": 20,
       "systemName": "GLM-5",
       "organization": "Zhipu AI",
       "scoreDisplay": "77.8%",
@@ -162,6 +206,39 @@
       "sourceUrl": "https://docs.z.ai/guides/llm/glm-5",
       "notesShort": "SWE-bench Verified resolve rate; reported on docs.z.ai.",
       "reportedAt": "2026-02-11"
+    },
+    {
+      "rank": 21,
+      "systemName": "Inkling",
+      "organization": "Thinking Machines",
+      "scoreDisplay": "77.6%",
+      "scoreValue": 77.6,
+      "sourceUrl": "https://thinkingmachines.ai/news/introducing-inkling",
+      "notesShort": "Open-weights model at effort=0.99; self-reported by Thinking Machines in the Inkling announcement.",
+      "reportedAt": "2026-07",
+      "isNew": true
+    },
+    {
+      "rank": 22,
+      "systemName": "Kimi K2.5",
+      "organization": "Moonshot AI",
+      "scoreDisplay": "76.8%",
+      "scoreValue": 76.8,
+      "sourceUrl": "https://thinkingmachines.ai/news/introducing-inkling",
+      "notesShort": "Open-weights model; third-party measurement reported by Thinking Machines in the Inkling announcement.",
+      "reportedAt": "2026-07",
+      "isNew": true
+    },
+    {
+      "rank": 23,
+      "systemName": "Nemotron 3 Ultra",
+      "organization": "NVIDIA",
+      "scoreDisplay": "70.7%",
+      "scoreValue": 70.7,
+      "sourceUrl": "https://thinkingmachines.ai/news/introducing-inkling",
+      "notesShort": "Open-weights model; third-party measurement reported by Thinking Machines in the Inkling announcement.",
+      "reportedAt": "2026-07",
+      "isNew": true
     }
   ]
 }

@@ -4,6 +4,8 @@ import BenchmarkResultsTable from "../../components/BenchmarkResultsTable.astro"
 import CopyMarkdownButton from "../../components/CopyMarkdownButton.astro";
 import FaqList from "../../components/FaqList.astro";
 import TocObserver from "../../components/TocObserver.astro";
+import AtlasCallout from "../../components/AtlasCallout.astro";
+import { getAtlasNote } from "../../lib/atlas";
 import {
   buildBenchmarkFaqFacts,
   generateBenchmarkFaq,
@@ -27,6 +29,7 @@ if (!page) {
 }
 
 const faqItems = generateBenchmarkFaq(page.meta, buildBenchmarkFaqFacts(page));
+const atlasNote = getAtlasNote(page.meta.slug);
 const pageUrl = `https://leaderboard.steel.dev/leaderboards/${page.meta.slug}/`;
 const pageTitle = page.meta.seoTitle ?? renderBenchmarkTitle(page.meta);
 const pageDescription = page.meta.seoDescription ?? renderBenchmarkDescription(page.meta);
@@ -136,19 +139,21 @@ const breadcrumbSchema = JSON.stringify({
         />
       </section>
 
+      {atlasNote && <AtlasCallout note={atlasNote} class="mt-6" />}
+
       <section id="about" class="mt-6 scroll-mt-8 text-sm leading-6 muted">
         <h2 class="m-0 text-xl font-medium tracking-[-0.03em] text-[var(--color-text-strong)]">
           About this benchmark
         </h2>
-        <div class="mt-4 space-y-4">
-          {page.meta.about.map((paragraph) => <p class="m-0">{paragraph}</p>)}
+        <div class="mt-4">
+          {page.meta.about.map((paragraph) => <p class="mb-4 last:mb-0">{paragraph}</p>)}
         </div>
 
         {
           page.meta.importantNotes.length > 0 && (
             <div class="dashed-frame mt-5 p-4">
               {page.meta.importantNotes.map((note) => (
-                <p class="m-0 text-sm muted">{note}</p>
+                <p class="mb-3 text-sm muted last:mb-0">{note}</p>
               ))}
             </div>
           )

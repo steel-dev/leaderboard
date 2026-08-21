@@ -8,7 +8,7 @@
       "scoreValue": 99.19,
       "sourceUrl": "https://github.com/omxyz/webvoyager",
       "repoUrl": "https://github.com/keon/browser-control",
-      "notesShort": "Shell-native CDP harness driving Fable 5; 610/615 tasks, GPT-5.5 Alumnium-vanilla judge. Self-reported.",
+      "notesShort": "Shell-native CDP harness driving Fable 5; 610/615 after four documented current-impossible exclusions; GPT-5.5 Alumnium-vanilla judge. Self-reported.",
       "reportedAt": "2026-06",
       "isNew": true
     },
@@ -64,7 +64,7 @@
       "scoreValue": 90.41,
       "sourceUrl": "https://github.com/omxyz/webvoyager",
       "repoUrl": "https://github.com/keon/browser-control",
-      "notesShort": "Shell-native CDP harness driving Claude Opus 4.8; 556/615 tasks, GPT-5.5 Alumnium-vanilla judge. Self-reported.",
+      "notesShort": "Shell-native CDP harness driving Claude Opus 4.8; 556/615 on a model-specific layer with 47 prompt edits; GPT-5.5 Alumnium-vanilla judge. Self-reported.",
       "reportedAt": "2026-06",
       "isNew": true
     },

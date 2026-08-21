@@ -3,10 +3,12 @@ import {
   aiderPolyglot,
   browsecomp,
   clawbench,
+  draco,
   gaia,
   healthAdminBench,
   mind2web,
   osworld,
+  osworld2,
   sweBenchVerified,
   tauBench,
   webarena,
@@ -18,10 +20,12 @@ type BenchmarkMap = {
   aiderPolyglot: Record<string, BenchmarkResultRow[]>;
   browsecomp: Record<string, BenchmarkResultRow[]>;
   clawbench: Record<string, BenchmarkResultRow[]>;
+  draco: Record<string, BenchmarkResultRow[]>;
   gaia: Record<string, BenchmarkResultRow[]>;
   healthAdminBench: Record<string, BenchmarkResultRow[]>;
   mind2web: Record<string, BenchmarkResultRow[]>;
   osworld: Record<string, BenchmarkResultRow[]>;
+  osworld2: Record<string, BenchmarkResultRow[]>;
   sweBenchVerified: Record<string, BenchmarkResultRow[]>;
   tauBench: Record<string, BenchmarkResultRow[]>;
   webarena: Record<string, BenchmarkResultRow[]>;
@@ -33,10 +37,12 @@ const benchmarkMap: BenchmarkMap = {
   aiderPolyglot,
   browsecomp,
   clawbench,
+  draco,
   gaia,
   healthAdminBench,
   mind2web,
   osworld,
+  osworld2,
   sweBenchVerified,
   tauBench,
   webarena,
@@ -292,10 +298,89 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
         { label: "simple-evals repository", url: "https://github.com/openai/simple-evals" },
       ],
-      relatedBenchmarks: ["gaia", "webvoyager", "online-mind2web"],
+      relatedBenchmarks: ["draco", "gaia", "webvoyager", "online-mind2web"],
       lastUpdated: "2026-05-28",
     },
     results: benchmarkResults("browsecomp") ?? [],
+  },
+  {
+    meta: {
+      slug: "draco",
+      name: "DRACO",
+      description:
+        "DRACO leaderboard for deep research systems on Perplexity's benchmark: 100 expert-graded research tasks across 10 domains, with sourced scores and notes on the grading judge.",
+      categoryLabel: "Deep Research Agent",
+      seoHook:
+        "deep research systems on 100 production-sourced, expert-graded research report tasks",
+      category: "research_search",
+      scope: "mixed",
+      about: [
+        "DRACO (Deep Research Accuracy, Completeness, and Objectivity) is Perplexity's benchmark for deep research systems: 100 open-ended tasks across 10 domains, sourced from real Perplexity Deep Research traffic and graded against expert rubrics on accuracy, completeness, presentation, and citation.",
+        "Unlike short-answer benchmarks such as BrowseComp, DRACO grades full research reports, so it rewards synthesis, citation quality, and presentation, not just finding the answer. It is the closest public measure of how well a system writes a real research report.",
+        "Read each row as a whole system: the agent or harness, the base model, and the grading judge all shape the number. Here the judge matters most, so the methodology is part of the ranking, not a footnote.",
+      ],
+      methodology: [
+        "The headline metric is the normalized score (0–100%): each rubric criterion gets a binary MET/UNMET verdict from an LLM judge, aggregated by weight into a per-task score and averaged across 100 tasks. An unweighted pass rate is a secondary metric.",
+        "The judge is the dominant variable. The paper used Gemini-3-Pro (now unavailable); Anthropic finds that swapping judges shifts absolute scores 10–25 points while preserving order. Three judges appear here: Claude Opus 4.6 (Anthropic, MiniMax), Gemini 3.1 Pro Preview (OpenRouter's Fable 5 row), and Gemini-3-Pro (the paper). Compare only within the same judge.",
+        "Rows are vendor self-evaluations under a shared judge. Anthropic grades its own models at max effort with a ~1M-token budget, compaction, and five grading runs of the final report; MiniMax grades M3 through its internal harness. Treat each as self-reported.",
+        "Each judge is a separate ladder, so don't compare rank gaps across them. The same model shows it: Opus 4.8 scores 80.4% under Anthropic's Opus 4.6 judge and 58.8% under OpenRouter's Gemini 3.1 Pro Preview judge.",
+      ],
+      taskExamples: [
+        {
+          quote:
+            'In 2008, Longwood Gardens opened "Nature\'s Castles: The Treehouse Reimagined" featuring three treehouse structures. Can you find the name of the architectural firm or designer who created these treehouses, and locate a contemporaneous source (2008 or earlier) that describes the design concept and construction process?',
+          sourceLabel: "DRACO paper, augmented task example",
+          sourceUrl: "https://arxiv.org/abs/2602.11685",
+        },
+        {
+          quote:
+            "Define an independent director under the NASDAQ listing standards. List the eligibility criteria (who qualifies) and disqualification criteria (who cannot serve). Which types of companies are required to have independent directors on their board?",
+          sourceLabel: "DRACO paper, augmented task example",
+          sourceUrl: "https://arxiv.org/abs/2602.11685",
+        },
+        {
+          quote:
+            "Document the global expansion and local resistance to industrial agriculture mega-farms, comparing case studies from Ukraine's massive grain operations, Brazilian cerrado soy plantations, Saudi Arabia's desert farming investments in Arizona and California, and Chinese pork production facilities.",
+          sourceLabel: "DRACO paper, augmented task example",
+          sourceUrl: "https://arxiv.org/abs/2602.11685",
+        },
+      ],
+      importantNotes: [
+        "Three judges, one table. Rows are graded by Claude Opus 4.6 (Anthropic, MiniMax), Gemini 3.1 Pro Preview (OpenRouter), or Gemini-3-Pro (the paper). Judge methodology varies, and judge choice shifts absolute scores 10–25 points, so read each row's note before comparing.",
+        "Vendor self-reported under a common judge. The top rows are Anthropic models graded by an Anthropic judge, and DRACO was authored by Perplexity, so each regime favors its originator. Expect levels to move as more evaluators adopt the Opus 4.6 judge.",
+        "Mixed scope: rows mix full deep-research agents (Perplexity, MiniMax) with standard models plus tools (Claude Opus 4.6 and 4.5 in the paper). Compare within a setup class before reading a rank gap as capability.",
+      ],
+      links: [
+        { label: "DRACO paper", url: "https://arxiv.org/abs/2602.11685" },
+        {
+          label: "DRACO dataset (Hugging Face)",
+          url: "https://hf.co/datasets/perplexity-ai/draco",
+        },
+        {
+          label: "Perplexity DRACO research article",
+          url: "https://research.perplexity.ai/articles/evaluating-deep-research-performance-in-the-wild-with-the-draco-benchmark",
+        },
+        {
+          label: "Claude Opus 4.8 System Card (DRACO section)",
+          url: "https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf",
+        },
+        {
+          label: "Claude Opus 4.7 System Card (DRACO section)",
+          url: "https://www-cdn.anthropic.com/037f06850df7fbe871e206dad004c3db5fd50340/Claude%20Opus%204.7%20System%20Card.pdf",
+        },
+        {
+          label: "MiniMax M3 launch post",
+          url: "https://www.minimax.io/blog/minimax-m3",
+        },
+        {
+          label: "OpenRouter Fusion DRACO evaluation",
+          url: "https://openrouter.ai/blog/announcements/fusion-beats-frontier/",
+        },
+      ],
+      relatedBenchmarks: ["browsecomp", "gaia", "online-mind2web"],
+      lastUpdated: "2026-06-23",
+    },
+    results: benchmarkResults("draco") ?? [],
   },
   {
     meta: {
@@ -354,7 +439,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       relatedBenchmarks: ["webvoyager", "online-mind2web", "osworld"],
-      lastUpdated: "2026-05-27",
+      lastUpdated: "2026-06-29",
     },
     results: benchmarkResults("webarena") ?? [],
   },
@@ -543,10 +628,70 @@ export const benchmarkPages: BenchmarkPageData[] = [
         { label: "OSWorld repository", url: "https://github.com/xlang-ai/OSWorld" },
         { label: "OSWorld-Verified announcement", url: "https://xlang.ai/blog/osworld-verified" },
       ],
-      relatedBenchmarks: ["webarena", "webvoyager", "online-mind2web"],
+      relatedBenchmarks: ["osworld-2", "webarena", "webvoyager", "online-mind2web"],
       lastUpdated: "2026-05-28",
     },
     results: benchmarkResults("osworld") ?? [],
+  },
+  {
+    meta: {
+      slug: "osworld-2",
+      name: "OSWorld 2.0",
+      description:
+        "OSWorld 2.0 leaderboard for computer-use agents on 108 long-horizon real-world desktop workflows that take human users a median of about 1.6 hours.",
+      categoryLabel: "Computer Use Agent",
+      seoHook: "computer-use agents on 108 long-horizon workflows averaging ~318 tool calls",
+      category: "computer_use",
+      scope: "agent",
+      about: [
+        "OSWorld 2.0 evaluates computer-use agents on 108 long-horizon, end-to-end desktop workflows spanning everyday and professional tasks across self-hosted websites, office suites, files, and multi-application pipelines.",
+        "It is far harder than OSWorld 1.0: tasks take human users a median of about 1.6 hours, require an average of roughly 318 tool calls (vs about 30 in OSWorld 1.0), and 69.6% run longer than an hour, stressing cross-source reasoning, implicit-state inference, streaming interaction, and visual-spatial precision.",
+        "Scores here are not comparable to the OSWorld (1.0/Verified) leaderboard: the task set, step budgets, and metrics all differ, so use this page only for within-benchmark ranking.",
+      ],
+      methodology: [
+        "Tasks run in real VM desktop environments with execution-based validators that check final state against many fine-grained checkpoints (averaging 27.25 per task).",
+        "OSWorld 2.0 scores two ways: binary completion (all checkpoints passed) and a partial score (fraction of checkpoints reached). We rank on the partial score — it differentiates systems far better than the low binary rates and matches how the GPT-5.6 result is reported — with each row's binary completion noted. Tracked scores use the default 500-step budget.",
+        "Most rows are author-run by the benchmark team on the official OSWorld 2.0 harness; the GPT-5.6 Sol row is OpenAI self-reported at launch. Reasoning effort, tool-call mode, and step budget are reported per row and materially affect scores.",
+        "We track public results with source URLs and note that no independent third-party reproduction exists yet.",
+      ],
+      taskExamples: [
+        {
+          quote: "Please help me submit a reimbursement claim in the ExpenseFlow system.",
+          sourceLabel: "OSWorld 2.0 paper (Task 008)",
+          sourceUrl: "https://arxiv.org/abs/2606.29537",
+        },
+        {
+          quote: "Help me fill out this DS-2019 application for my J-1 student visa.",
+          sourceLabel: "OSWorld 2.0 paper",
+          sourceUrl: "https://arxiv.org/abs/2606.29537",
+        },
+        {
+          quote:
+            "Go to the TravelHub booking page for Le Meurice and select the Deluxe Suite, stopping before the user enters personal information.",
+          sourceLabel: "OSWorld 2.0 paper (Task 052)",
+          sourceUrl: "https://arxiv.org/abs/2606.29537",
+        },
+      ],
+      importantNotes: [
+        "Rows are self-reported (benchmark team or OpenAI); independent third-party results are not yet available, and GPT-5.6 Sol's binary completion is unpublished.",
+        "Binary completion is deliberately low (best about 20.6%, Claude Opus 4.8); we rank on partial score instead, so a row's partial score is not comparable to OSWorld 1.0/Verified pass rates.",
+      ],
+      links: [
+        { label: "OSWorld 2.0 project", url: "https://osworld-v2.xlang.ai/" },
+        { label: "OSWorld 2.0 paper", url: "https://arxiv.org/abs/2606.29537" },
+        {
+          label: "OSWorld 2.0 repository",
+          url: "https://github.com/xlang-ai/OSWorld-V2",
+        },
+        {
+          label: "OSWorld 2.0 dataset",
+          url: "https://huggingface.co/datasets/xlangai/osworld_v2_tasks",
+        },
+      ],
+      relatedBenchmarks: ["osworld", "webarena"],
+      lastUpdated: "2026-07-10",
+    },
+    results: benchmarkResults("osworld2") ?? [],
   },
   {
     meta: {
@@ -603,7 +748,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
           url: "https://huggingface.co/spaces/gaia-benchmark/leaderboard",
         },
       ],
-      relatedBenchmarks: ["browsecomp", "agentbench", "tau-bench"],
+      relatedBenchmarks: ["browsecomp", "draco", "agentbench", "tau-bench"],
       lastUpdated: "2026-04-16",
     },
     results: benchmarkResults("gaia") ?? [],
@@ -790,7 +935,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         { label: "Original Mind2Web project", url: "https://osu-nlp-group.github.io/Mind2Web/" },
       ],
       relatedBenchmarks: ["webvoyager", "webarena", "clawbench"],
-      lastUpdated: "2026-04-16",
+      lastUpdated: "2026-06-29",
     },
     results: benchmarkResults("mind2web") ?? [],
   },

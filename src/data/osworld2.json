@@ -1,0 +1,125 @@
+{
+  "osworld2": [
+    {
+      "rank": 1,
+      "systemName": "GPT-5.6 Sol",
+      "organization": "OpenAI",
+      "scoreDisplay": "62.6%",
+      "scoreValue": 62.6,
+      "sourceUrl": "https://openai.com/index/gpt-5-6/",
+      "notesShort": "OpenAI self-reported at the GPT-5.6 launch; single-agent Sol (ultra multi-agent not reported on OSWorld 2.0). Partial score; binary completion not published. New state of the art.",
+      "reportedAt": "2026-07-09",
+      "isNew": true
+    },
+    {
+      "rank": 2,
+      "systemName": "Claude Opus 4.8 (batched tools)",
+      "organization": "Anthropic",
+      "scoreDisplay": "54.8%",
+      "scoreValue": 54.8,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run on the official OSWorld 2.0 harness (108 long-horizon tasks); max thinking with batched tool calls, 500-step budget. 20.6% binary completion.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 3,
+      "systemName": "GPT-5.5 (batched tools)",
+      "organization": "OpenAI",
+      "scoreDisplay": "49.5%",
+      "scoreValue": 49.5,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; xhigh reasoning with batched tool calls, 500-step budget (~$2,750 per run). 13.0% binary completion, flat across 150/300/500 steps.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 4,
+      "systemName": "Claude Opus 4.8",
+      "organization": "Anthropic",
+      "scoreDisplay": "49.33%",
+      "scoreValue": 49.33,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; max thinking, standard tool calls, 500-step budget. 18.52% binary completion. Batched tool calls lift the same model to 54.8% partial (rank 2).",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 5,
+      "systemName": "Claude Opus 4.7",
+      "organization": "Anthropic",
+      "scoreDisplay": "49.1%",
+      "scoreValue": 49.1,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; max thinking, standard tool calls, 500-step budget (~$3,870 per run). 13.9% binary completion.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 6,
+      "systemName": "Claude Opus 4.7 (batched tools)",
+      "organization": "Anthropic",
+      "scoreDisplay": "48.91%",
+      "scoreValue": 48.91,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; max thinking with batched tool calls, 500-step budget. 18.2% binary completion.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 7,
+      "systemName": "Claude Sonnet 4.6 (max thinking)",
+      "organization": "Anthropic",
+      "scoreDisplay": "41.5%",
+      "scoreValue": 41.5,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; max thinking, standard tool calls, 500-step budget (~$2,410 per run). 8.3% binary completion.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 8,
+      "systemName": "Claude Sonnet 4.6 (medium thinking)",
+      "organization": "Anthropic",
+      "scoreDisplay": "33.9%",
+      "scoreValue": 33.9,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; medium thinking, standard tool calls, 500-step budget (~$1,550 per run). 9.3% binary completion (higher binary than max thinking).",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 9,
+      "systemName": "MiniMax M3",
+      "organization": "MiniMax",
+      "scoreDisplay": "22.3%",
+      "scoreValue": 22.3,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; reasoning enabled, standard tool calls, 500-step budget (~$259 per run). 4.6% binary completion.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 10,
+      "systemName": "Kimi 2.6",
+      "organization": "Moonshot AI",
+      "scoreDisplay": "22.1%",
+      "scoreValue": 22.1,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; reasoning enabled, standard tool calls, 500-step budget (~$708 per run). 4.6% binary completion.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    },
+    {
+      "rank": 11,
+      "systemName": "Qwen 3.7-Plus",
+      "organization": "Alibaba",
+      "scoreDisplay": "21.5%",
+      "scoreValue": 21.5,
+      "sourceUrl": "https://osworld-v2.xlang.ai/",
+      "notesShort": "Author-run; thinking mode, standard tool calls, 500-step budget (~$412 per run). 2.8% binary completion.",
+      "reportedAt": "2026-06",
+      "isNew": true
+    }
+  ]
+}

@@ -32,23 +32,39 @@ Browser agents · Agent scope · 21 entries tracked
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 82 entries tracked
+Research/search · Mixed scope · 98 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | GPT-5.5 Pro | OpenAI | [90.1%](https://openai.com/index/introducing-gpt-5-5/) |
-| 2 | GPT-5.4 Pro | OpenAI | [89.3%](https://openai.com/index/introducing-gpt-5-5/) |
-| 3 | MiroThinker-H1 | MiroMind | [88.2%](https://www.prnewswire.com/news-releases/miromind-team-unveils-mirothinker-1-7--mirothinker-h1-a-new-era-of-verification-centric-heavy-duty-research-agents-302714500.html) |
-| 4 | Claude Mythos Preview | Anthropic | [86.9%](https://www.anthropic.com/glasswing) |
-| 5 | Kimi K2.6 | Moonshot AI | [86.3%](https://www.kimi.com/blog/kimi-k2-6) |
+| 1 | GPT-5.6 Sol Ultra **(new)** | OpenAI | [92.2%](https://openai.com/index/gpt-5-6/) |
+| 2 | Kimi K3 **(new)** | Moonshot AI | [91.2%](https://www.kimi.com/blog/kimi-k3) |
+| 3 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
+| 4 | GPT-5.5 Pro | OpenAI | [90.1%](https://openai.com/index/introducing-gpt-5-5/) |
+| 5 | GPT-5.4 Pro | OpenAI | [89.3%](https://openai.com/index/introducing-gpt-5-5/) |
 
-[See all 82 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 98 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+
+---
+
+### [DRACO](https://leaderboard.steel.dev/leaderboards/draco)
+
+Research/search · Mixed scope · 13 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | Claude Mythos 5 **(new)** | Anthropic | [86.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 2 | Claude Mythos Preview | Anthropic | [83.6%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 3 | Claude Opus 4.8 | Anthropic | [80.4%](https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf) |
+| 4 | Claude Opus 4.7 | Anthropic | [77.7%](https://www-cdn.anthropic.com/037f06850df7fbe871e206dad004c3db5fd50340/Claude%20Opus%204.7%20System%20Card.pdf) |
+| 5 | MiniMax M3 **(new)** | MiniMax | [73.23%](https://www.minimax.io/blog/minimax-m3) |
+
+[See all 13 entries →](https://leaderboard.steel.dev/leaderboards/draco)
 
 ---
 
 ### [WebArena](https://leaderboard.steel.dev/leaderboards/webarena)
 
-Browser agents · Agent scope · 49 entries tracked
+Browser agents · Agent scope · 50 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -58,23 +74,23 @@ Browser agents · Agent scope · 49 entries tracked
 | 4 | Claude Code + GBOX MCP | GBOX AI | [68.0%](https://github.com/babelcloud/webarena/blob/main/gbox/report.md) |
 | 5 | DeepSky Agent | DeepSky | [66.9%](https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ) |
 
-[See all 49 entries →](https://leaderboard.steel.dev/leaderboards/webarena)
+[See all 50 entries →](https://leaderboard.steel.dev/leaderboards/webarena)
 
 ---
 
 ### [SWE-bench Verified](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
 
-Coding · Model scope · 16 entries tracked
+Coding · Model scope · 23 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Claude Mythos | Anthropic | [93.9%](https://www.mindstudio.ai/blog/claude-mythos-benchmark-results-swe-bench-agentic-coding) |
-| 2 | Claude Opus 4.8 **(new)** | Anthropic | [88.6%](https://www.anthropic.com/news/claude-opus-4-8) |
-| 3 | Claude Opus 4.7 | Anthropic | [87.6%](https://www.anthropic.com/news/claude-opus-4-7) |
-| 4 | Claude Opus 4.5 | Anthropic | [80.9%](https://www.anthropic.com/news/claude-opus-4-5) |
-| 5 | Claude Opus 4.6 | Anthropic | [80.8%](https://www.anthropic.com/news/claude-opus-4-6) |
+| 1 | Claude Mythos 5 **(new)** | Anthropic | [95.5%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 2 | Claude Fable 5 **(new)** | Anthropic | [95.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 3 | Claude Mythos Preview | Anthropic | [93.9%](https://www.mindstudio.ai/blog/claude-mythos-benchmark-results-swe-bench-agentic-coding) |
+| 4 | Claude Opus 4.8 **(new)** | Anthropic | [88.6%](https://www.anthropic.com/news/claude-opus-4-8) |
+| 5 | Claude Opus 4.7 | Anthropic | [87.6%](https://www.anthropic.com/news/claude-opus-4-7) |
 
-[See all 16 entries →](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
+[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
 
 ---
 
@@ -96,17 +112,33 @@ Coding · Model scope · 15 entries tracked
 
 ### [OSWorld](https://leaderboard.steel.dev/leaderboards/osworld)
 
-Computer use · Agent scope · 17 entries tracked
+Computer use · Agent scope · 20 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Claude Opus 4.8 **(new)** | Anthropic | [83.4%](https://www.anthropic.com/news/claude-opus-4-8) |
-| 2 | Mythos Preview **(new)** | Anthropic | [79.6%](https://www.anthropic.com/glasswing) |
-| 3 | OSAgent | TheAGI Company | [76.26%](https://www.theagi.company/blog/osworld) |
-| 4 | GPT-5.4 **(new)** | OpenAI | [75.0%](https://openai.com/index/introducing-gpt-5-4/) |
-| 5 | Claude Opus 4.6 | Anthropic | [72.7%](https://www.anthropic.com/glasswing) |
+| 1 | Claude Mythos Preview **(new)** | Anthropic | [85.4%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 2 | Claude Mythos 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 3 | Claude Fable 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 4 | Claude Opus 4.8 **(new)** | Anthropic | [83.4%](https://www.anthropic.com/news/claude-opus-4-8) |
+| 5 | Claude Sonnet 5 **(new)** | Anthropic | [81.2%](https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf) |
 
-[See all 17 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
+[See all 20 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
+
+---
+
+### [OSWorld 2.0](https://leaderboard.steel.dev/leaderboards/osworld-2)
+
+Computer use · Agent scope · 11 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | GPT-5.6 Sol **(new)** | OpenAI | [62.6%](https://openai.com/index/gpt-5-6/) |
+| 2 | Claude Opus 4.8 (batched tools) **(new)** | Anthropic | [54.8%](https://osworld-v2.xlang.ai/) |
+| 3 | GPT-5.5 (batched tools) **(new)** | OpenAI | [49.5%](https://osworld-v2.xlang.ai/) |
+| 4 | Claude Opus 4.8 **(new)** | Anthropic | [49.33%](https://osworld-v2.xlang.ai/) |
+| 5 | Claude Opus 4.7 **(new)** | Anthropic | [49.1%](https://osworld-v2.xlang.ai/) |
+
+[See all 11 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
 ---
 
@@ -160,7 +192,7 @@ Browser agents · Agent scope · 11 entries tracked
 
 ### [Online-Mind2Web](https://leaderboard.steel.dev/leaderboards/online-mind2web)
 
-Browser agents · Agent scope · 22 entries tracked
+Browser agents · Agent scope · 23 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -170,7 +202,7 @@ Browser agents · Agent scope · 22 entries tracked
 | 4 | TinyFish | TinyFish AI | [90.0%](https://www.tinyfish.ai/blog/mind2web) |
 | 5 | UI-TARS-2 | ByteDance / VLM-Research | [88.2%](https://arxiv.org/abs/2509.02544) |
 
-[See all 22 entries →](https://leaderboard.steel.dev/leaderboards/online-mind2web)
+[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/online-mind2web)
 
 ---
 
