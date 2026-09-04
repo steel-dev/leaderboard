@@ -32,33 +32,33 @@ Browser agents · Agent scope · 21 entries tracked
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 98 entries tracked
+Research/search · Mixed scope · 100 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
 | 1 | GPT-5.6 Sol Ultra **(new)** | OpenAI | [92.2%](https://openai.com/index/gpt-5-6/) |
-| 2 | Kimi K3 **(new)** | Moonshot AI | [91.2%](https://www.kimi.com/blog/kimi-k3) |
-| 3 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
-| 4 | GPT-5.5 Pro | OpenAI | [90.1%](https://openai.com/index/introducing-gpt-5-5/) |
-| 5 | GPT-5.4 Pro | OpenAI | [89.3%](https://openai.com/index/introducing-gpt-5-5/) |
+| 2 | GPT-6 Astra **(new)** | OpenAI | [91.5%](https://openai.com/index/gpt-6-astra/) |
+| 3 | Kimi K3 **(new)** | Moonshot AI | [91.2%](https://www.kimi.com/blog/kimi-k3) |
+| 4 | Claude Opus 5 **(new)** | Anthropic | [90.8%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
+| 5 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
 
-[See all 98 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 100 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
 ---
 
 ### [DRACO](https://leaderboard.steel.dev/leaderboards/draco)
 
-Research/search · Mixed scope · 13 entries tracked
+Research/search · Mixed scope · 14 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Claude Mythos 5 **(new)** | Anthropic | [86.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 2 | Claude Mythos Preview | Anthropic | [83.6%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 3 | Claude Opus 4.8 | Anthropic | [80.4%](https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf) |
-| 4 | Claude Opus 4.7 | Anthropic | [77.7%](https://www-cdn.anthropic.com/037f06850df7fbe871e206dad004c3db5fd50340/Claude%20Opus%204.7%20System%20Card.pdf) |
-| 5 | MiniMax M3 **(new)** | MiniMax | [73.23%](https://www.minimax.io/blog/minimax-m3) |
+| 1 | Claude Opus 5 **(new)** | Anthropic | [88.6%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
+| 2 | Claude Mythos 5 **(new)** | Anthropic | [86.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 3 | Claude Mythos Preview | Anthropic | [83.6%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 4 | Claude Opus 4.8 | Anthropic | [80.4%](https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf) |
+| 5 | Claude Opus 4.7 | Anthropic | [77.7%](https://www-cdn.anthropic.com/037f06850df7fbe871e206dad004c3db5fd50340/Claude%20Opus%204.7%20System%20Card.pdf) |
 
-[See all 13 entries →](https://leaderboard.steel.dev/leaderboards/draco)
+[See all 14 entries →](https://leaderboard.steel.dev/leaderboards/draco)
 
 ---
 
@@ -80,17 +80,17 @@ Browser agents · Agent scope · 50 entries tracked
 
 ### [SWE-bench Verified](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
 
-Coding · Model scope · 23 entries tracked
+Coding · Model scope · 25 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Claude Mythos 5 **(new)** | Anthropic | [95.5%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
-| 2 | Claude Fable 5 **(new)** | Anthropic | [95.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
-| 3 | Claude Mythos Preview | Anthropic | [93.9%](https://www.mindstudio.ai/blog/claude-mythos-benchmark-results-swe-bench-agentic-coding) |
-| 4 | Claude Opus 4.8 **(new)** | Anthropic | [88.6%](https://www.anthropic.com/news/claude-opus-4-8) |
-| 5 | Claude Opus 4.7 | Anthropic | [87.6%](https://www.anthropic.com/news/claude-opus-4-7) |
+| 1 | Claude Opus 5 (Vals.ai run) **(new)** | Anthropic | [97.00%](https://vals.ai/benchmarks/swebench) |
+| 2 | Claude Opus 5 **(new)** | Anthropic | [96.0%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
+| 3 | Claude Mythos 5 **(new)** | Anthropic | [95.5%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 4 | Claude Fable 5 **(new)** | Anthropic | [95.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 5 | Claude Mythos Preview | Anthropic | [93.9%](https://www.mindstudio.ai/blog/claude-mythos-benchmark-results-swe-bench-agentic-coding) |
 
-[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
+[See all 25 entries →](https://leaderboard.steel.dev/leaderboards/swe-bench-verified)
 
 ---
 
