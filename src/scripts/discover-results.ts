@@ -62,9 +62,7 @@ function parseAtom(xml: string): ArxivEntry[] {
     const titleMatch = body.match(/<title>([\s\S]*?)<\/title>/);
     const summaryMatch = body.match(/<summary>([\s\S]*?)<\/summary>/);
     const publishedMatch = body.match(/<published>([^<]+)<\/published>/);
-    const authors = Array.from(body.matchAll(/<author>\s*<name>([^<]+)<\/name>/g)).map(
-      (a) => a[1]
-    );
+    const authors = Array.from(body.matchAll(/<author>\s*<name>([^<]+)<\/name>/g)).map((a) => a[1]);
     if (!idMatch || !titleMatch) continue;
     const rawUrl = idMatch[1].trim();
     const arxivId = stripVersion(rawUrl.replace(/^https?:\/\/arxiv\.org\/abs\//, ""));
@@ -97,9 +95,9 @@ function existingArxivIds(page: BenchmarkPageData): Map<string, string> {
 // Per-slug query overrides: benchmark names that are common words need disambiguation.
 // This is the prototype for a future `discoveryQuery` field on BenchmarkPageMeta.
 const QUERY_OVERRIDES: Record<string, string> = {
-  gaia: 'all:%22GAIA+benchmark%22+OR+all:%22GAIA+General+AI+Assistants%22',
-  "swe-bench-verified": 'all:%22SWE-bench+Verified%22',
-  "tau-bench": 'all:%22tau-bench%22+OR+all:%22%CF%84-bench%22',
+  gaia: "all:%22GAIA+benchmark%22+OR+all:%22GAIA+General+AI+Assistants%22",
+  "swe-bench-verified": "all:%22SWE-bench+Verified%22",
+  "tau-bench": "all:%22tau-bench%22+OR+all:%22%CF%84-bench%22",
 };
 
 function buildQuery(slug: string, name: string): string {
@@ -195,11 +193,7 @@ function writeConsolidated(reports: DiscoveryReport[]): void {
   }));
   fs.writeFileSync(
     path.join(OUT_DIR, "run.json"),
-    JSON.stringify(
-      { queriedAt: new Date().toISOString(), benchmarks: filtered },
-      null,
-      2
-    )
+    JSON.stringify({ queriedAt: new Date().toISOString(), benchmarks: filtered }, null, 2)
   );
 }
 
