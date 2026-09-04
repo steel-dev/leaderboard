@@ -998,7 +998,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       relatedBenchmarks: ["swe-bench-verified", "gaia"],
-      lastUpdated: "2026-04-16",
+      lastUpdated: "2026-09-04",
     },
     results: benchmarkResults("tauBench") ?? [],
   },

@@ -42,6 +42,28 @@
     },
     {
       "rank": 5,
+      "systemName": "Claude Fable 5.1 (OpenRouter run)",
+      "organization": "Anthropic",
+      "scoreDisplay": "79.3%",
+      "scoreValue": 79.3,
+      "sourceUrl": "https://openrouter.ai/anthropic/claude-fable-5.1",
+      "notesShort": "OpenRouter provider eval on the airline split (tau_bench_verified_airline, run_count 1, 32-day lookback, AutoExacto mode) for the Anthropic first-party endpoint; the UI label hides the split. Azure scored 74.7 and Google Vertex 76.7 on the same split.",
+      "reportedAt": "2026-09",
+      "isNew": true
+    },
+    {
+      "rank": 6,
+      "systemName": "Claude Opus 5 (OpenRouter run)",
+      "organization": "Anthropic",
+      "scoreDisplay": "78.0%",
+      "scoreValue": 78.0,
+      "sourceUrl": "https://openrouter.ai/anthropic/claude-opus-5",
+      "notesShort": "OpenRouter provider eval on the Anthropic-direct route; provider spread 77.4-80.5 across ten routes (auto-routing 80.5, AWS 79.8, Bedrock 79.2, Azure 79.0). Split and metric not stated on the page.",
+      "reportedAt": "2026-09",
+      "isNew": true
+    },
+    {
+      "rank": 7,
       "systemName": "MiniMax M2",
       "organization": "MiniMax",
       "scoreDisplay": "77.2%",
@@ -52,7 +74,7 @@
       "isNew": false
     },
     {
-      "rank": 6,
+      "rank": 8,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "70.2%",
@@ -62,7 +84,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 7,
+      "rank": 9,
       "systemName": "GPT-5.2",
       "organization": "OpenAI",
       "scoreDisplay": "69.9%",
@@ -73,7 +95,7 @@
       "isNew": false
     },
     {
-      "rank": 8,
+      "rank": 10,
       "systemName": "Qwen3.5-397B-A17B",
       "organization": "Alibaba",
       "scoreDisplay": "68.4%",
@@ -84,7 +106,7 @@
       "isNew": false
     },
     {
-      "rank": 9,
+      "rank": 11,
       "systemName": "Gemini 3 Flash",
       "organization": "Google DeepMind",
       "scoreDisplay": "67.8%",
@@ -95,7 +117,7 @@
       "isNew": false
     },
     {
-      "rank": 10,
+      "rank": 12,
       "systemName": "Gemini 3 Pro",
       "organization": "Google DeepMind",
       "scoreDisplay": "65.8%",
@@ -106,7 +128,7 @@
       "isNew": false
     },
     {
-      "rank": 11,
+      "rank": 13,
       "systemName": "GLM-5",
       "organization": "Zhipu AI",
       "scoreDisplay": "63.2%",
@@ -116,7 +138,7 @@
       "reportedAt": "2026-02-11"
     },
     {
-      "rank": 12,
+      "rank": 14,
       "systemName": "Claude Sonnet 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "62.9%",
