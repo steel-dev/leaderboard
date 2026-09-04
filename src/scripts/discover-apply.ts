@@ -5,7 +5,7 @@
 // ABOUTME: drop — a recurring sweep catches genuine misses from prior weeks), a deterministic
 // ABOUTME: intra-proposal window-contradiction alarm, and a soft SSRF-guarded evidence re-fetch flag,
 // ABOUTME: then STABLY re-ranks (existing rows keep relative order; new rows inserted by score;
-// ABOUTME: competition ranks recomputed), writes src/data + README, runs update-readme/lint/build,
+// ABOUTME: per-board tie convention preserved), writes src/data + README, runs update-readme/lint/build,
 // ABOUTME: and opens one PR per leaderboard with per-row reasoning for every add AND dismissal.
 // ABOUTME: --dry-run (default) never touches src/data — it writes .discovery/apply/* for local
 // ABOUTME: emulation. --write is the CI path. The judge LLM never ran git/gh; this script does.
@@ -169,7 +169,31 @@ function sanitizeEntry(entry: Omit<Entry, "rank">): Omit<Entry, "rank"> {
 }
 
 // ---- stable re-rank: existing rows keep EXACT relative order; new rows inserted by score ----
-function rankInsert(existing: Entry[], adds: Omit<Entry, "rank">[]): Entry[] {
+
+// Tie handling is a PER-FILE convention, not a global constant: sweBenchVerified uses
+// competition ranks (tied scores share a rank, the next rank skips), while browsecomp,
+// osworld, tauBench and most other boards use strictly sequential 1..N. Detect the
+// convention from the board's own history so a pipeline PR never flips it: a tie group
+// sharing one rank proves competition; a tie group split across ranks proves sequential.
+// With no tied scores the convention is unobservable — either choice yields the same
+// numbers for the existing rows — so we default to sequential (the majority convention)
+// and the PR body names the detected convention for the human to confirm.
+type RankConvention = "competition" | "sequential";
+function detectRankConvention(existing: Entry[]): RankConvention {
+  for (let i = 1; i < existing.length; i++) {
+    const a = existing[i - 1];
+    const b = existing[i];
+    if (a.scoreValue == null || b.scoreValue == null || a.scoreValue !== b.scoreValue) continue;
+    return b.rank === a.rank ? "competition" : "sequential";
+  }
+  return "sequential";
+}
+
+function rankInsert(
+  existing: Entry[],
+  adds: Omit<Entry, "rank">[],
+  convention: RankConvention
+): Entry[] {
   const result: Entry[] = existing.map((e) => ({ ...e }));
   for (const add of adds) {
     const sv = add.scoreValue;
@@ -185,17 +209,17 @@ function rankInsert(existing: Entry[], adds: Omit<Entry, "rank">[]): Entry[] {
         break;
       } // first strictly-lower row -> insert here (strict < keeps ties above the new row)
     }
-    // rank is assigned for every row by assignCompetitionRanks immediately below.
+    // rank is assigned for every row by assignRanks immediately below.
     result.splice(idx, 0, { ...add } as Entry);
   }
-  assignCompetitionRanks(result);
+  assignRanks(result, convention);
   return result;
 }
-function assignCompetitionRanks(rows: Entry[]): void {
+function assignRanks(rows: Entry[], convention: RankConvention): void {
   let prev: number | null = null;
   for (let i = 0; i < rows.length; i++) {
     const sv = rows[i].scoreValue;
-    rows[i].rank = i === 0 || sv !== prev ? i + 1 : rows[i - 1].rank;
+    rows[i].rank = convention === "sequential" || i === 0 || sv !== prev ? i + 1 : rows[i - 1].rank;
     prev = sv;
   }
 }
@@ -296,7 +320,13 @@ function renderPrBody(
   overflow: BackfillOverflow[],
   rejected: RejectedAdd[],
   reviewDismissed: { add: ProposalAdd; reason: string }[],
-  meta: { dryRun: boolean; inconsistent: boolean; topThreeRisk: string[]; addSetHash: string }
+  meta: {
+    dryRun: boolean;
+    inconsistent: boolean;
+    topThreeRisk: string[];
+    addSetHash: string;
+    rankConvention: RankConvention;
+  }
 ): string {
   const fresh = survivors.filter((s) => s.tier === "fresh");
   const backfill = survivors.filter((s) => s.tier === "backfill");
@@ -416,7 +446,11 @@ function renderPrBody(
 
   lines.push("#### Reviewer checklist");
   lines.push("- [ ] Each add's `sourceUrl` opens and contains the exact score.");
-  lines.push("- [ ] Ranks are correct (competition ranking; ties share a rank).");
+  lines.push(
+    `- [ ] Ranks are correct (${meta.rankConvention} ranking${
+      meta.rankConvention === "competition" ? "; ties share a rank" : "; strictly 1..N"
+    }) and match the board's pre-PR convention.`
+  );
   lines.push("- [ ] Backfill rows' dates are acceptable (they predate the window by design).");
   lines.push("- [ ] `notesShort` states setup + any self-report / subset caveat.");
   lines.push(
@@ -717,7 +751,8 @@ async function processProposal(
   }
 
   const newEntries = survivors.map((s) => ({ ...s.add.entry, isNew: true }));
-  const ranked = rankInsert(existing, newEntries);
+  const rankConvention = detectRankConvention(existing);
+  const ranked = rankInsert(existing, newEntries, rankConvention);
   const newFileObj = { [dataKey]: ranked };
 
   // A backfill that captured a top-3 rank is exactly the audit's self-reported-top-tie concern: flag it
@@ -756,6 +791,7 @@ async function processProposal(
     inconsistent,
     topThreeRisk,
     addSetHash: addSetHash(p.adds),
+    rankConvention,
   });
   fs.mkdirSync(APPLY_DIR, { recursive: true });
   fs.writeFileSync(
