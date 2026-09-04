@@ -20,7 +20,7 @@ Browser agents · Agent scope · 21 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | browser-control (Fable 5) **(new)** | browser-control | [99.19%](https://github.com/omxyz/webvoyager) |
+| 1 | browser-control (Fable 5) **(new)** | Om Labs | [99.19%](https://github.com/omxyz/webvoyager) |
 | 2 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
 | 3 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
 | 4 | Magnitude | Magnitude | [93.9%](https://magnitude.run/webvoyager) |
@@ -208,7 +208,7 @@ Browser agents · Agent scope · 23 entries tracked
 
 ### [τ-bench](https://leaderboard.steel.dev/leaderboards/tau-bench)
 
-Model evals / reasoning · Model scope · 12 entries tracked
+Model evals / reasoning · Model scope · 14 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -216,9 +216,9 @@ Model evals / reasoning · Model scope · 12 entries tracked
 | 2 | GLM-4.7 | Z.ai | [87.4%](https://docs.z.ai/guides/llm/glm-4.7) |
 | 3 | MiMo-V2-Flash | Xiaomi | [80.3%](https://arxiv.org/abs/2601.02780) |
 | 4 | GLM-4.7-Flash | Z.ai | [79.5%](https://inference-docs.cerebras.ai/resources/glm-47-migration) |
-| 5 | MiniMax M2 | MiniMax | [77.2%](https://github.com/MiniMax-AI/MiniMax-M2) |
+| 5 | Claude Fable 5.1 (OpenRouter run) **(new)** | Anthropic | [79.3%](https://openrouter.ai/anthropic/claude-fable-5.1) |
 
-[See all 12 entries →](https://leaderboard.steel.dev/leaderboards/tau-bench)
+[See all 14 entries →](https://leaderboard.steel.dev/leaderboards/tau-bench)
 
 ---
 

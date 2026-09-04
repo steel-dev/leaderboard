@@ -57,11 +57,7 @@ export function benchmarkResults(slug: BenchmarkSlug): BenchmarkResultRow[] {
 }
 
 export type BenchmarkCategory =
-  | "browser_agents"
-  | "computer_use"
-  | "research_search"
-  | "coding"
-  | "model_eval";
+  "browser_agents" | "computer_use" | "research_search" | "coding" | "model_eval";
 
 export type BenchmarkScope = "agent" | "model" | "mixed";
 
@@ -997,7 +993,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       relatedBenchmarks: ["swe-bench-verified", "gaia"],
-      lastUpdated: "2026-04-16",
+      lastUpdated: "2026-09-04",
     },
     results: benchmarkResults("tauBench") ?? [],
   },
