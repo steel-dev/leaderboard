@@ -2,6 +2,28 @@
   "sweBenchVerified": [
     {
       "rank": 1,
+      "systemName": "Claude Opus 5 (Vals.ai run)",
+      "organization": "Anthropic",
+      "scoreDisplay": "97.00%",
+      "scoreValue": 97.0,
+      "sourceUrl": "https://vals.ai/benchmarks/swebench",
+      "notesShort": "Independently measured by Vals.ai (97.00% +/-0.76) with its mini-swe-agent bash-only harness in isolated Docker containers; archived board, updated 2026-09-01.",
+      "reportedAt": "2026-09-01",
+      "isNew": true
+    },
+    {
+      "rank": 2,
+      "systemName": "Claude Opus 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "96.0%",
+      "scoreValue": 96.0,
+      "sourceUrl": "https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf",
+      "notesShort": "Five-trial average in the card's standard configuration; self-reported in the Opus 5 system card. Vals.ai independently measures 97.00% with a bash-only harness.",
+      "reportedAt": "2026-07-24",
+      "isNew": true
+    },
+    {
+      "rank": 3,
       "systemName": "Claude Mythos 5",
       "organization": "Anthropic",
       "scoreDisplay": "95.5%",
@@ -12,7 +34,7 @@
       "isNew": true
     },
     {
-      "rank": 2,
+      "rank": 4,
       "systemName": "Claude Fable 5",
       "organization": "Anthropic",
       "scoreDisplay": "95.0%",
@@ -23,7 +45,7 @@
       "isNew": true
     },
     {
-      "rank": 3,
+      "rank": 5,
       "systemName": "Claude Mythos Preview",
       "organization": "Anthropic",
       "scoreDisplay": "93.9%",
@@ -33,7 +55,7 @@
       "reportedAt": "2026-04-09"
     },
     {
-      "rank": 4,
+      "rank": 6,
       "systemName": "Claude Opus 4.8",
       "organization": "Anthropic",
       "scoreDisplay": "88.6%",
@@ -44,7 +66,7 @@
       "isNew": true
     },
     {
-      "rank": 5,
+      "rank": 7,
       "systemName": "Claude Opus 4.7",
       "organization": "Anthropic",
       "scoreDisplay": "87.6%",
@@ -54,7 +76,7 @@
       "reportedAt": "2026-04-16"
     },
     {
-      "rank": 6,
+      "rank": 8,
       "systemName": "GPT-5.6 Sol",
       "organization": "OpenAI",
       "scoreDisplay": "82.2%",
@@ -65,7 +87,7 @@
       "isNew": true
     },
     {
-      "rank": 7,
+      "rank": 9,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "80.9%",
@@ -75,7 +97,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 8,
+      "rank": 10,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "80.8%",
@@ -85,7 +107,7 @@
       "reportedAt": "2026-02-05"
     },
     {
-      "rank": 9,
+      "rank": 11,
       "systemName": "DeepSeek-V4-Pro-Max",
       "organization": "DeepSeek",
       "scoreDisplay": "80.6%",
@@ -96,7 +118,7 @@
       "isNew": true
     },
     {
-      "rank": 9,
+      "rank": 11,
       "systemName": "Gemini 3.1 Pro",
       "organization": "Google DeepMind",
       "scoreDisplay": "80.6%",
@@ -106,7 +128,7 @@
       "reportedAt": "2026-02-19"
     },
     {
-      "rank": 11,
+      "rank": 13,
       "systemName": "Kimi K2.6",
       "organization": "Moonshot AI",
       "scoreDisplay": "80.2%",
@@ -117,7 +139,7 @@
       "isNew": true
     },
     {
-      "rank": 11,
+      "rank": 13,
       "systemName": "MiniMax M2.5",
       "organization": "MiniMax",
       "scoreDisplay": "80.2%",
@@ -127,7 +149,7 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 13,
+      "rank": 15,
       "systemName": "GPT-5.2",
       "organization": "OpenAI",
       "scoreDisplay": "80.0%",
@@ -137,7 +159,7 @@
       "reportedAt": "2025-12-11"
     },
     {
-      "rank": 13,
+      "rank": 15,
       "systemName": "GLM-5.2",
       "organization": "Zhipu AI",
       "scoreDisplay": "80.0%",
@@ -148,7 +170,7 @@
       "isNew": true
     },
     {
-      "rank": 15,
+      "rank": 17,
       "systemName": "Claude Sonnet 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "79.6%",
@@ -158,7 +180,7 @@
       "reportedAt": "2026-02-17"
     },
     {
-      "rank": 16,
+      "rank": 18,
       "systemName": "DeepSeek-V4-Flash-Max",
       "organization": "DeepSeek",
       "scoreDisplay": "79.0%",
@@ -168,7 +190,7 @@
       "reportedAt": "2026-04-24"
     },
     {
-      "rank": 17,
+      "rank": 19,
       "systemName": "Qwen3.6 Plus",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "78.8%",
@@ -178,7 +200,7 @@
       "reportedAt": "2026-04-02"
     },
     {
-      "rank": 18,
+      "rank": 20,
       "systemName": "Gemini 3 Flash",
       "organization": "Google DeepMind",
       "scoreDisplay": "78.0%",
@@ -188,7 +210,7 @@
       "reportedAt": "2025-12-17"
     },
     {
-      "rank": 18,
+      "rank": 20,
       "systemName": "MiMo-V2-Pro",
       "organization": "Xiaomi",
       "scoreDisplay": "78.0%",
@@ -198,7 +220,7 @@
       "reportedAt": "2026-03-18"
     },
     {
-      "rank": 20,
+      "rank": 22,
       "systemName": "GLM-5",
       "organization": "Zhipu AI",
       "scoreDisplay": "77.8%",
@@ -208,7 +230,7 @@
       "reportedAt": "2026-02-11"
     },
     {
-      "rank": 21,
+      "rank": 23,
       "systemName": "Inkling",
       "organization": "Thinking Machines",
       "scoreDisplay": "77.6%",
@@ -219,7 +241,7 @@
       "isNew": true
     },
     {
-      "rank": 22,
+      "rank": 24,
       "systemName": "Kimi K2.5",
       "organization": "Moonshot AI",
       "scoreDisplay": "76.8%",
@@ -230,7 +252,7 @@
       "isNew": true
     },
     {
-      "rank": 23,
+      "rank": 25,
       "systemName": "Nemotron 3 Ultra",
       "organization": "NVIDIA",
       "scoreDisplay": "70.7%",

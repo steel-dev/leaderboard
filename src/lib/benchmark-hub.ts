@@ -57,11 +57,7 @@ export function benchmarkResults(slug: BenchmarkSlug): BenchmarkResultRow[] {
 }
 
 export type BenchmarkCategory =
-  | "browser_agents"
-  | "computer_use"
-  | "research_search"
-  | "coding"
-  | "model_eval";
+  "browser_agents" | "computer_use" | "research_search" | "coding" | "model_eval";
 
 export type BenchmarkScope = "agent" | "model" | "mixed";
 
@@ -299,7 +295,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         { label: "simple-evals repository", url: "https://github.com/openai/simple-evals" },
       ],
       relatedBenchmarks: ["draco", "gaia", "webvoyager", "online-mind2web"],
-      lastUpdated: "2026-05-28",
+      lastUpdated: "2026-09-04",
     },
     results: benchmarkResults("browsecomp") ?? [],
   },
@@ -378,7 +374,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       relatedBenchmarks: ["browsecomp", "gaia", "online-mind2web"],
-      lastUpdated: "2026-06-23",
+      lastUpdated: "2026-09-04",
     },
     results: benchmarkResults("draco") ?? [],
   },
@@ -500,7 +496,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       relatedBenchmarks: ["agentbench", "tau-bench", "gaia"],
-      lastUpdated: "2026-05-28",
+      lastUpdated: "2026-09-04",
     },
     results: benchmarkResults("sweBenchVerified") ?? [],
   },
