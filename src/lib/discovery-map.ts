@@ -1,11 +1,12 @@
 // ABOUTME: Single source of truth for discovery slug -> dataKey -> file resolution.
 // ABOUTME: A benchmark's URL slug (meta.slug in benchmark-hub.ts) differs from its dataKey
 // ABOUTME: (the sole top-level key in src/data/<dataKey>.json AND the export name in
-// ABOUTME: src/data/index.ts AND the filename stem) for 4 of the 13 benchmarks:
+// ABOUTME: src/data/index.ts AND the filename stem) for 5 of the 14 benchmarks:
 // ABOUTME:   swe-bench-verified -> sweBenchVerified
 // ABOUTME:   aider             -> aiderPolyglot
 // ABOUTME:   online-mind2web   -> mind2web
 // ABOUTME:   tau-bench         -> tauBench
+// ABOUTME:   osworld-2         -> osworld2
 // ABOUTME: Both discover-judge and discover-apply import this map so the resolution can never
 // ABOUTME: drift between them. validateDiscoveryMap() asserts every page slug is mapped and
 // ABOUTME: each data file's sole top-level key matches the dataKey — run it at the start of
@@ -26,6 +27,7 @@ export const BENCHMARK_SLUG_TO_DATA_KEY: Record<string, string> = {
   "swe-bench-verified": "sweBenchVerified",
   aider: "aiderPolyglot",
   osworld: "osworld",
+  "osworld-2": "osworld2",
   gaia: "gaia",
   clawbench: "clawbench",
   healthadminbench: "healthAdminBench",
