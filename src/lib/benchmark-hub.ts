@@ -57,11 +57,7 @@ export function benchmarkResults(slug: BenchmarkSlug): BenchmarkResultRow[] {
 }
 
 export type BenchmarkCategory =
-  | "browser_agents"
-  | "computer_use"
-  | "research_search"
-  | "coding"
-  | "model_eval";
+  "browser_agents" | "computer_use" | "research_search" | "coding" | "model_eval";
 
 export type BenchmarkScope = "agent" | "model" | "mixed";
 
@@ -629,7 +625,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         { label: "OSWorld-Verified announcement", url: "https://xlang.ai/blog/osworld-verified" },
       ],
       relatedBenchmarks: ["osworld-2", "webarena", "webvoyager", "online-mind2web"],
-      lastUpdated: "2026-05-28",
+      lastUpdated: "2026-09-04",
     },
     results: benchmarkResults("osworld") ?? [],
   },
@@ -651,8 +647,8 @@ export const benchmarkPages: BenchmarkPageData[] = [
       methodology: [
         "Tasks run in real VM desktop environments with execution-based validators that check final state against many fine-grained checkpoints (averaging 27.25 per task).",
         "OSWorld 2.0 scores two ways: binary completion (all checkpoints passed) and a partial score (fraction of checkpoints reached). We rank on the partial score — it differentiates systems far better than the low binary rates and matches how the GPT-5.6 result is reported — with each row's binary completion noted. Tracked scores use the default 500-step budget.",
-        "Most rows are author-run by the benchmark team on the official OSWorld 2.0 harness; the GPT-5.6 Sol row is OpenAI self-reported at launch. Reasoning effort, tool-call mode, and step budget are reported per row and materially affect scores.",
-        "We track public results with source URLs and note that no independent third-party reproduction exists yet.",
+        "Rows mix author runs on the official harness, vendor self-reports from system cards and launch posts, and independent runs from Snorkel AI and Simular (both benchmark co-authors). Reasoning effort, tool-call mode, and step budget are reported per row and materially affect scores.",
+        "We track public results with source URLs and record who ran each result; independent reproductions not involving the benchmark authors are still rare.",
       ],
       taskExamples: [
         {
@@ -673,8 +669,9 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       importantNotes: [
-        "Rows are self-reported (benchmark team or OpenAI); independent third-party results are not yet available, and GPT-5.6 Sol's binary completion is unpublished.",
-        "Binary completion is deliberately low (best about 20.6%, Claude Opus 4.8); we rank on partial score instead, so a row's partial score is not comparable to OSWorld 1.0/Verified pass rates.",
+        "Rows mix benchmark-author runs, vendor self-reports, and independent co-author runs (Snorkel AI, Simular); step budgets, releases, and graders differ, so read each row's note before comparing ranks.",
+        "Binary completion stays low (best tracked is 32.0%, Muse Spark 1.3) while partial scores pass 75%, so read both metrics; a partial score is not comparable to OSWorld 1.0/Verified pass rates.",
+        "Release mixing is the main trap: the 06.24 and 08.08 releases change tasks and grading, OpenAI's 08.08 numbers use the offline subset, and Anthropic states its Fable 5.1 run modified tasks and grading.",
       ],
       links: [
         { label: "OSWorld 2.0 project", url: "https://osworld-v2.xlang.ai/" },
@@ -687,9 +684,13 @@ export const benchmarkPages: BenchmarkPageData[] = [
           label: "OSWorld 2.0 dataset",
           url: "https://huggingface.co/datasets/xlangai/osworld_v2_tasks",
         },
+        {
+          label: "Snorkel independent OSWorld 2.0 leaderboard",
+          url: "https://snorkel.ai/leaderboard/os-world-2-0/",
+        },
       ],
       relatedBenchmarks: ["osworld", "webarena"],
-      lastUpdated: "2026-07-10",
+      lastUpdated: "2026-09-04",
     },
     results: benchmarkResults("osworld2") ?? [],
   },
