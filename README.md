@@ -20,7 +20,7 @@ Browser agents · Agent scope · 21 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | browser-control (Fable 5) **(new)** | browser-control | [99.19%](https://github.com/omxyz/webvoyager) |
+| 1 | browser-control (Fable 5) **(new)** | Om Labs | [99.19%](https://github.com/omxyz/webvoyager) |
 | 2 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
 | 3 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
 | 4 | Magnitude | Magnitude | [93.9%](https://magnitude.run/webvoyager) |
@@ -112,33 +112,33 @@ Coding · Model scope · 15 entries tracked
 
 ### [OSWorld](https://leaderboard.steel.dev/leaderboards/osworld)
 
-Computer use · Agent scope · 20 entries tracked
+Computer use · Agent scope · 21 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Claude Mythos Preview **(new)** | Anthropic | [85.4%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
-| 2 | Claude Mythos 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
-| 3 | Claude Fable 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
-| 4 | Claude Opus 4.8 **(new)** | Anthropic | [83.4%](https://www.anthropic.com/news/claude-opus-4-8) |
-| 5 | Claude Sonnet 5 **(new)** | Anthropic | [81.2%](https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf) |
+| 1 | Qwen3.8-Max **(new)** | Alibaba | [86.1%](https://qwen.ai/blog?id=qwen3.8) |
+| 2 | Claude Mythos Preview **(new)** | Anthropic | [85.4%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 3 | Claude Mythos 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 4 | Claude Fable 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
+| 5 | Claude Opus 4.8 **(new)** | Anthropic | [83.4%](https://www.anthropic.com/news/claude-opus-4-8) |
 
-[See all 20 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
+[See all 21 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
 
 ---
 
 ### [OSWorld 2.0](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
-Computer use · Agent scope · 11 entries tracked
+Computer use · Agent scope · 22 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | GPT-5.6 Sol **(new)** | OpenAI | [62.6%](https://openai.com/index/gpt-5-6/) |
-| 2 | Claude Opus 4.8 (batched tools) **(new)** | Anthropic | [54.8%](https://osworld-v2.xlang.ai/) |
-| 3 | GPT-5.5 (batched tools) **(new)** | OpenAI | [49.5%](https://osworld-v2.xlang.ai/) |
-| 4 | Claude Opus 4.8 **(new)** | Anthropic | [49.33%](https://osworld-v2.xlang.ai/) |
-| 5 | Claude Opus 4.7 **(new)** | Anthropic | [49.1%](https://osworld-v2.xlang.ai/) |
+| 1 | Claude Fable 5.1 **(new)** | Anthropic | [77.9%](https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf) |
+| 2 | Simular Sai **(new)** | Simular AI | [73.0%](https://www.simular.ai/articles/sai-tops-osworld-2-0) |
+| 3 | GPT-6 Astra **(new)** | OpenAI | [72.6%](https://openai.com/index/gpt-6-astra/) |
+| 4 | Claude Opus 5 **(new)** | Anthropic | [70.6%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
+| 5 | Claude Opus 5 (Snorkel run) **(new)** | Snorkel AI | [68.31%](https://snorkel.ai/leaderboard/os-world-2-0/) |
 
-[See all 11 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
+[See all 22 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
 ---
 
