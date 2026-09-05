@@ -57,7 +57,11 @@ export function benchmarkResults(slug: BenchmarkSlug): BenchmarkResultRow[] {
 }
 
 export type BenchmarkCategory =
-  "browser_agents" | "computer_use" | "research_search" | "coding" | "model_eval";
+  | "browser_agents"
+  | "computer_use"
+  | "research_search"
+  | "coding"
+  | "model_eval";
 
 export type BenchmarkScope = "agent" | "model" | "mixed";
 
