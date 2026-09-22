@@ -1,0 +1,19 @@
+# Context
+
+## Background
+.discovery/ is gitignored by design (line 31) — it holds pipeline
+scratch output. This one file is the finished judge output from the
+2026-09-21 GPT-6 Astra release review (Propose-Dispose pipeline):
+every dismissal with its rationale (already-present, no-absolute-
+score, and so on) for that announcement.
+
+## Why This Way
+Force-added with `git add -f` so the review evidence is versioned
+and reviewable alongside the branch it informed. A .gitignore
+negation (!.discovery/...) would not work because git does not
+descend into an ignored directory.
+
+## Gotchas
+- Once tracked, gitignore no longer applies: future edits to this
+  file appear as normal modifications.
+- The rest of .discovery/ stays untracked.
