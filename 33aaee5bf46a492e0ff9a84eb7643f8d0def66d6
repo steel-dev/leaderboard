@@ -1,0 +1,28 @@
+# Context
+
+## Background
+The Propose-Dispose pipeline sat unmerged on
+discovery/deact-biweekly-pdf-fix since 2026-06-28, kept off main
+pending a CI smoke test that never happened. The .discovery
+outputs were versioned on main first (4ee4e50), leaving the
+branch as the only holder of the pipeline code.
+
+## Why This Way
+Owner directed a full cleanup on 2026-09-22: merge what is left,
+delete stale branches. The merge is safe while dormant — the
+scheduler's trigger job is gated on repo variable
+ENABLE_DISCOVERY (unset = OFF), so no cron fires until someone
+sets it plus the ZAI/EXA/GITHUB secrets and runs one manual
+workflow_dispatch smoke test.
+
+## Verification
+tsc -p tsconfig.script.json, eslint ., and astro build all exit
+0 on the merge result before pushing.
+
+## Cleanup done same day
+- Deleted (merged): discovery/deact-biweekly-pdf-fix,
+  huss/new-ver, huss/v2 on origin; the four dead-remote feat/*
+  and fix/* branches locally.
+- Kept: origin/feat/results-all-index and
+  origin/seo-templated-meta (unmerged, real work);
+  local pr48 + refs/remotes/pr47 (heads of open PRs #48/#47).
