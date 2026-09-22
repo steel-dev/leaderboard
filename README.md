@@ -176,17 +176,17 @@ Browser agents · Agent scope · 7 entries tracked
 
 ### [HealthAdminBench](https://leaderboard.steel.dev/leaderboards/healthadminbench)
 
-Browser agents · Agent scope · 11 entries tracked
+Browser agents · Agent scope · 12 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Claude Mythos 5 (browser-use) **(new)** | Anthropic | [51.9%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 1 | Claude Opus 4.8 (browser-use) **(new)** | Anthropic | [51.9%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 3 | Claude Mythos Preview (browser-use) **(new)** | Anthropic | [47.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 4 | Claude Sonnet 4.6 (browser-use) **(new)** | Anthropic | [45.2%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 5 | Claude Opus 4.6 CUA **(new)** | Anthropic | [36.3%](https://arxiv.org/abs/2604.09937) |
+| 1 | Omni Agent Hub **(new)** | Omni Health | [67.4%](https://www.omniwell.app/research/healthadminbench-results-july-2026.md) |
+| 2 | Claude Mythos 5 (browser-use) **(new)** | Anthropic | [51.9%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 2 | Claude Opus 4.8 (browser-use) **(new)** | Anthropic | [51.9%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 4 | Claude Mythos Preview (browser-use) **(new)** | Anthropic | [47.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 5 | Claude Sonnet 4.6 (browser-use) **(new)** | Anthropic | [45.2%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
 
-[See all 11 entries →](https://leaderboard.steel.dev/leaderboards/healthadminbench)
+[See all 12 entries →](https://leaderboard.steel.dev/leaderboards/healthadminbench)
 
 ---
 
