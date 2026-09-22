@@ -1,0 +1,464 @@
+{
+  "reviewedAt": "2026-09-21",
+  "release": "OpenAI GPT-6 Astra (2026-09-03)",
+  "judgeOutput": {
+    "proposals": [],
+    "dismissals": [
+      {
+        "reason": "already-present \u2014 the osworld2 board carries this exact row (rank 3, same sourceUrl, reportedAt 2026-09-03) and notesShort already captures the offline-subset, v2026.08.08, latency-simulation, and max-at-any-effort caveats.",
+        "subject": "OSWorld 2.0 72.6% (GPT-6 Astra, announcement Computer Use chart)"
+      },
+      {
+        "reason": "already-present \u2014 browsecomp rank 2 row uses this exact score and sourceUrl, with the Opus 5 / Sol cross-validation note already in notesShort.",
+        "subject": "BrowseComp 91.5% (GPT-6 Astra, announcement Professional chart)"
+      },
+      {
+        "reason": "already-present \u2014 the osworld2 board already carries this Sol row sourced to the same gpt-6-astra URL with the 75-minute latency caveat.",
+        "subject": "GPT-5.6 Sol 65.7% on OSWorld 2.0 offline subset (announcement)"
+      },
+      {
+        "reason": "no-absolute-score \u2014 a relative speed multiplier with no accuracy number, so it cannot seed a mind2web row; the claim also references Mind2Web under an updated Codex harness, which is not established as the tracked Online-Mind2Web protocol.",
+        "subject": "Mind2Web 1.9x faster task completion vs GPT-5.6 Sol (announcement)"
+      },
+      {
+        "reason": "score-belongs-to-a-different-benchmark \u2014 the 96.0 / 94.9 / 94.6 triple on the announcement is GPQA Diamond (max-effort vs lower-cost settings); SWE-bench Verified appears nowhere on the announcement, system card, path-to-astra, or arcprize sources, and no fetched third party corroborates it. The sweBenchVerified board stays unchanged.",
+        "subject": "SWE-bench Verified ~96.0 for GPT-6 Astra (anticipated row)"
+      },
+      {
+        "reason": "off-topic \u2014 OpenAI HealthBench is a different benchmark from the tracked HealthAdminBench board (known name-collision trap); no source contains an Astra HealthAdminBench number.",
+        "subject": "HealthBench / HealthBench Professional 63.4 (announcement and system card)"
+      },
+      {
+        "reason": "third-party-unverified \u2014 aggregator-only number, and it is a tau3 banking variant rather than classic tau-bench; the value also coincides with AutomationBench 41.4% on the OpenAI page, so a BenchLM mislabel is possible.",
+        "subject": "AA Tau3 Banking 41.4% (BenchLM dossier)"
+      },
+      {
+        "reason": "third-party-unverified and variant-of-tracked-benchmark \u2014 FrontierSWE v2 is not SWE-bench Verified and the number exists only on the BenchLM aggregator with no stated conditions.",
+        "subject": "FrontierSWE v2 65.5% (BenchLM dossier)"
+      },
+      {
+        "reason": "off-topic \u2014 a safety refusal rate that is numerically identical to the tracked BrowseComp 91.5 row but is a different metric from a different page; never merge or cross-source the two.",
+        "subject": "Cyber jailbreak refusal 91.5% (path-to-astra)"
+      },
+      {
+        "reason": "off-topic \u2014 no ARC-AGI board is tracked in the repo; full two-harness detail recorded under untrackedSignals and openQuestions.",
+        "subject": "ARC-AGI-3 99.9% / 98.6% / 62.7% (announcement and arcprize.org)"
+      },
+      {
+        "reason": "off-topic \u2014 Terminal-Bench is not a tracked board; third-party copies disagree (DataCamp 57.7, BenchLM 57.90); recorded under untrackedSignals.",
+        "subject": "Terminal-Bench 4.0 57.9% (announcement Coding chart)"
+      },
+      {
+        "reason": "off-topic \u2014 internal OpenAI evals with no public artifact and no reproducible protocol; listed under untrackedSignals for completeness only.",
+        "subject": "Internal benchmarks (Internal Design Tasks 50.0, Internal Data Science Tasks 40.9, Internal Database Migration Tasks 63.9, MedChemBench Internal 49.3, internal safety and alignment evals)"
+      },
+      {
+        "reason": "score-belongs-to-a-different-model \u2014 this sweep adds only Astra rows, and the repo already has an Opus 5 osworld2 row at 70.6 from the Anthropic card; the 70.2 vs 70.6 conflict is flagged in openQuestions.",
+        "subject": "Claude Opus 5 70.2% on OSWorld 2.0 (announcement comparison column)"
+      },
+      {
+        "reason": "no-absolute-score \u2014 relative deltas attached to other benchmarks; they belong in notesShort caveats of existing rows, not in new rows.",
+        "subject": "Efficiency and cost deltas (about 47% less time per task, about 9/63/31/37% lower cost, about 65% fewer output tokens, 1.9x speed)"
+      }
+    ],
+    "openQuestions": [
+      "SWE-bench Verified: no GPT-6 Astra score exists on any primary source \u2014 the 96.0/94.9/94.6 triple the sweep anticipated is GPQA Diamond on the announcement Academic chart. Confirm the sweBenchVerified board stays unchanged for this release and record the misattribution so future sweeps do not re-chase it.",
+      "GAIA, WebArena, WebVoyager, AgentBench, Aider Polyglot, ClawBench, DRACO, classic tau-bench, OSWorld v1, HealthAdminBench: no Astra number appeared in any of the five sources \u2014 treat as absent for this release and re-check aggregator and lab pages at the next sweep.",
+      "OSWorld 2.0 Opus 5 conflict: the Astra announcement lists Claude Opus 5 at 70.2% (footnote says reproduced on the official leaderboard with official settings) while the repo row says 70.6% from the Anthropic Opus 5 card \u2014 maintainer to decide whether to reconcile that existing non-Astra row.",
+      "Terminal-Bench 4.0 value: openai.com says 57.9%, DataCamp 57.7%, BenchLM 57.90 \u2014 if a Terminal-Bench board is added, use 57.9 verbatim from the announcement and note the discrepancy.",
+      "ARC-AGI-3 harness policy for any future board: 99.9% Provider Adapter (High, 18.8K USD) vs 62.7% Standard (max, 26.1K USD) vs 98.6% PA Max; the announcement's 99.9% uses a responses-API harness with two changed settings, and the footnote-linked post 'How two settings tripled our ARC-AGI-3 scores' was not fetched \u2014 fetch it before defining a board policy.",
+      "Mind2Web: the only Astra figure is a 1.9x speed multiplier under an updated Codex harness with no accuracy number \u2014 confirm no accuracy figure exists in OpenAI developer or Codex documentation before closing the mind2web board for this release.",
+      "HealthAdminBench name collision: system-card HealthBench Professional 63.4 is OpenAI's HealthBench, not the tracked board \u2014 verify no third party has run Astra on HealthAdminBench itself.",
+      "AA Tau3 Banking 41.4% on BenchLM coincides exactly with AutomationBench 41.4% on the OpenAI announcement \u2014 possible aggregator mislabel; verify at the source before any tau-bench-family use.",
+      "ExploitGym honeypot Sol baseline is inconsistent across OpenAI's own pages (48.2% announcement, 55.4% system card, 56% path-to-astra) \u2014 if safety boards are added, pick one canonical source per row.",
+      "Path-to-Astra publication date: page metadata says 2026-09-16 while the task context says 2026-09-01 \u2014 resolve before ever citing reportedAt from that page."
+    ],
+    "untrackedSignals": [
+      {
+        "benchmark": "Agents' Last Exam",
+        "score": "59.3%",
+        "note": "Announcement Computer Use chart, max at any effort; Sol 53.6, Opus 5 55.5, Fable 5 48.7; about 65% fewer output tokens than Opus 5."
+      },
+      {
+        "benchmark": "ScreenSpot-Pro (no tools)",
+        "score": "92.7%",
+        "note": "Announcement; Sol 76.9, Opus 5 87.3 with the Opus score sourced from Mythos per footnote 17."
+      },
+      {
+        "benchmark": "Terminal-Bench 4.0",
+        "score": "57.9%",
+        "note": "Announcement Coding chart; DataCamp writes 57.7 and BenchLM 57.90; about 9% lower cost per task than Sol (37.3) and 63% lower than Fable 5.1 (55.8)."
+      },
+      {
+        "benchmark": "Terminal-Bench Science 0.1",
+        "score": "64.6%",
+        "note": "Announcement Academic chart; lower-cost setting scores 61.1; Fable 5.1 52.6, Sol 22.4."
+      },
+      {
+        "benchmark": "FrontierMath Tier 4 (v2)",
+        "score": "97.6%",
+        "note": "Chart says 97.6 while the narrative rounds to 98; Sol 83.0, Fable 5.1 87.8; Vellum notes OpenAI funding and partial exclusive access."
+      },
+      {
+        "benchmark": "GPQA Diamond",
+        "score": "96.0%",
+        "note": "Announcement Academic chart; lower-cost setting 94.9; Sol best 94.6, Gemini 3.8 Flash 95.3. This is the number the task brief mis-attributed to SWE-bench Verified."
+      },
+      {
+        "benchmark": "Humanity's Last Exam (with tools)",
+        "score": "57.2%",
+        "note": "Astra trails Fable 5.1 (65.0), Fable 5 (63.8), and Opus 5 (63.6)."
+      },
+      {
+        "benchmark": "ARC-AGI-3 (Semi-Private)",
+        "score": "99.9% Provider Adapter (High) at 18.8K USD; 62.7% Standard (max) at 26.1K USD",
+        "note": "arcprize.org results dated 2026-09-02, 39 entries: PA Max 98.6, PA XHigh 98.4, PA Medium 98.4, PA Low 98.0, PA None 96.7; Standard XHigh 59.3, High 54.8, Medium 38.6, Low 17.5, None 35.2; best non-Astra is Opus 5 (High) 30.2; announcement headline 99.9 uses a responses-API harness with two changed settings."
+      },
+      {
+        "benchmark": "ARC-AGI-3 action efficiency",
+        "score": "fewer actions than the human baseline on 96.0% of levels",
+        "note": "ARC Prize blog 2026-09-03: 51.7% fewer actions per level on average; Provider Adapter runs about 3.66x faster with 49% fewer tokens."
+      },
+      {
+        "benchmark": "ARC-AGI-2",
+        "score": "95.0%",
+        "note": "Announcement abstract-reasoning chart; ARC Prize lists Max at 1.12 USD per task, rank 2 of 232 on the public set."
+      },
+      {
+        "benchmark": "ARC-AGI-1",
+        "score": "98.5%",
+        "note": "Announcement; ARC Prize lists XHigh at 0.347 USD per task, rank 1 of 230 on the public set."
+      },
+      {
+        "benchmark": "DeepSWE v1.1",
+        "score": "74.1%",
+        "note": "Announcement Coding chart; Sol 72.7, Gemini 3.8 Flash 73.8; Vellum adds Meta Muse Spark 1.3 at 75.4."
+      },
+      {
+        "benchmark": "FrontierCode 1.1 Extended",
+        "score": "64.5%",
+        "note": "Run with a Codex-like developer message, not optimized for the eval (footnote 8)."
+      },
+      {
+        "benchmark": "FrontierCode 1.1 Main",
+        "score": "53.3%",
+        "note": "Same developer-message setting; Fable 5 at 53.5 edges Astra out."
+      },
+      {
+        "benchmark": "AutomationBench",
+        "score": "41.4%",
+        "note": "Announcement Professional chart; Sol 18.1, Fable 5.1 31.4; the value coincides with BenchLM's AA Tau3 Banking 41.4 \u2014 do not merge."
+      },
+      {
+        "benchmark": "BenchCAD",
+        "score": "95.9%",
+        "note": "With tools, geometric-overlap metric; Fable 5.1 84.3 under three eval modifications per its system card; about 43% cheaper than Sol."
+      },
+      {
+        "benchmark": "OpenScore String Quartets (1 minus OMR-NED)",
+        "score": "0.84",
+        "note": "Sol 0.19; optical music recognition benchmark."
+      },
+      {
+        "benchmark": "Artificial Analysis Intelligence Index v4.1.1",
+        "score": "61.2",
+        "note": "Astra trails Fable 5.1 (65.7) and Opus 5 (63.1)."
+      },
+      {
+        "benchmark": "Artificial Analysis Coding Agent Index v1.4",
+        "score": "67.0",
+        "note": "Opus 5 leads at 68.1."
+      },
+      {
+        "benchmark": "Internal Design Tasks",
+        "score": "50.0%",
+        "note": "Internal OpenAI benchmark; Sol 47.4."
+      },
+      {
+        "benchmark": "Internal Data Science Tasks",
+        "score": "40.9%",
+        "note": "Internal; Sol 30.5."
+      },
+      {
+        "benchmark": "Internal Database Migration Tasks",
+        "score": "63.9%",
+        "note": "Internal; Sol 42.7."
+      },
+      {
+        "benchmark": "MLE-Bench Revised",
+        "score": "93.80% mean reward",
+        "note": "System card Figure 56 printed value; Sol 87.18."
+      },
+      {
+        "benchmark": "AI self-improvement suite (NanoGPT, KernelGen 1P, PostTrainBench Lite)",
+        "score": "no numeric values printed",
+        "note": "System card Figures 53-55 print no data labels; NanoGPT human best is 72.38; Astra does not reach the High threshold in AI Self-Improvement."
+      },
+      {
+        "benchmark": "GeneBench Pro",
+        "score": "37.1%",
+        "note": "Claude models excluded because they refuse most questions; Sol 32.3."
+      },
+      {
+        "benchmark": "LifeSciBench",
+        "score": "60.3%",
+        "note": "Sol 59.9."
+      },
+      {
+        "benchmark": "MedChemBench (Internal)",
+        "score": "49.3%",
+        "note": "Internal; Sol 47.4."
+      },
+      {
+        "benchmark": "HealthBench Professional (length-adjusted)",
+        "score": "63.4",
+        "note": "OpenAI HealthBench, explicitly not the tracked HealthAdminBench; unadjusted 69.5 at 4097 mean chars; repeated in the system card."
+      },
+      {
+        "benchmark": "HealthBench / HealthBench Hard / HealthBench Consensus",
+        "score": "58.1 / 36.3 / 95.8",
+        "note": "System card length-adjusted scores; Sol 57.0 / 33.1 / 95.5."
+      },
+      {
+        "benchmark": "ExploitBench",
+        "score": "100.0%",
+        "note": "Without production safeguards; Sol 78.5, Opus 5 70; 41 V8 N-day vulnerabilities, 5 attempts per challenge; repeated on path-to-astra."
+      },
+      {
+        "benchmark": "ExploitBench Internal Port (June-August 2026)",
+        "score": "39.0%",
+        "note": "20 recent high-severity V8 vulnerabilities; Astra found two zero-days during the eval; Sol 5.5% is a 300-turn-limit artifact, 11.5% adjusted."
+      },
+      {
+        "benchmark": "ExploitGym",
+        "score": "42.4%",
+        "note": "869 challenges; Astra and Sol ran without the 6-hour time limit; Sol 30.3."
+      },
+      {
+        "benchmark": "SRE-Bench",
+        "score": "88.0% pass@1, 99.2% pass@4",
+        "note": "Reverse-engineering binaries without source; Sol 55.9 / 68.7; about one quarter of Sol's output tokens."
+      },
+      {
+        "benchmark": "SEC-Bench Pro",
+        "score": "85.4%",
+        "note": "Sol 79.1; improved root-cause grading."
+      },
+      {
+        "benchmark": "Sandbox Bench",
+        "score": "10 of 22 targets (45.5%)",
+        "note": "Internal sandbox-escape challenges; Sol 1 of 22."
+      },
+      {
+        "benchmark": "FrontierCyber",
+        "score": "86/226 challenges",
+        "note": "Sol 34/226; no successes on the 7 Elite challenges; sandboxed, no public internet."
+      },
+      {
+        "benchmark": "CyScenarioBench",
+        "score": "9/10 challenges, 59% average success",
+        "note": "Sol 6/10; up 32 percentage points."
+      },
+      {
+        "benchmark": "Atomic",
+        "score": "20/22 challenges",
+        "note": "100% vulnerability research, 100% network attack simulation, 52% evasion; about one third of Sol's API cost."
+      },
+      {
+        "benchmark": "Internal Research Debugging",
+        "score": "78.05%",
+        "note": "41 real internal bugs plus 6 alignment audits; below the indicative High threshold."
+      },
+      {
+        "benchmark": "Daybreak Blue tool evals",
+        "score": "100 / 100 / 92 / 76.9% with the tool",
+        "note": "Vulnerability discovery, patching, PoC exploit, red-teaming; without the tool 66.7 / 44.4 / 2.4 / 7.4."
+      },
+      {
+        "benchmark": "Expert-led browser assessment",
+        "score": "unsandboxed code execution after 29 hours, plus 12 more on the stable release",
+        "note": "Codex harness at Ultra effort, web access, up to 64 subagents."
+      },
+      {
+        "benchmark": "Expert-led OS assessment",
+        "score": "local privilege escalation within 12 hours",
+        "note": "Hardened operating-system target."
+      },
+      {
+        "benchmark": "Internal computer-use safety benchmark",
+        "score": "2.4% misbehavior (lower is better)",
+        "note": "Generic CUA harness without Codex or ChatGPT protections; Sol 22.0; with AutoReview 1.8 vs Sol 4.3."
+      },
+      {
+        "benchmark": "ExploitGym honeypot",
+        "score": "0.0%",
+        "note": "Sol baseline differs across OpenAI pages: 48.2 (announcement), 55.4 (system card), 56 (path-to-astra)."
+      },
+      {
+        "benchmark": "Impossible ExploitGym",
+        "score": "100.0%",
+        "note": "Impossible-task eval informed by the Hugging Face incident; Sol without safeguards went beyond the authorized target 48% of the time."
+      },
+      {
+        "benchmark": "Internal hallucination benchmark",
+        "score": "4.2% (lower is better)",
+        "note": "Capability-hallucination rate; Sol 12.2."
+      },
+      {
+        "benchmark": "Internal circumvention benchmark",
+        "score": "0.00%",
+        "note": "Deliberately evadable Auto-Review with an impossible task; Sol 0.29."
+      },
+      {
+        "benchmark": "Cyber jailbreak refusal (path-to-astra)",
+        "score": "91.5%",
+        "note": "Sol 59. Numerically identical to the tracked BrowseComp 91.5 row \u2014 never merge or cross-source the two."
+      },
+      {
+        "benchmark": "Gray Swan IPI Arena",
+        "score": "8.5% attack success (lower is better)",
+        "note": "1,810 curated attacks, 15 attempts per scenario; Sol 27.0."
+      },
+      {
+        "benchmark": "GPT-Red indirect prompt injection",
+        "score": "99.79% defender success",
+        "note": "Sol 96.23."
+      },
+      {
+        "benchmark": "Instruction-hierarchy eval",
+        "score": "99.99%",
+        "note": "Saturated."
+      },
+      {
+        "benchmark": "Safety tables (system card Tables 1-5, 7, 19-20)",
+        "score": "safe-completion 0.898-1.000 across categories",
+        "note": "Astra on par with or better than Sol nearly everywhere; static jailbreak refusal 0.915-0.983 without production safeguards."
+      },
+      {
+        "benchmark": "U18 safety evaluations (Table 2)",
+        "score": "0.898-0.995 across six categories",
+        "note": "Stronger than Sol in all six categories."
+      },
+      {
+        "benchmark": "Misaligned outcomes in realistic work environments",
+        "score": "3.4% without confirmation policy, 3.0% with",
+        "note": "Sol 18.8 / 8.0; breakdown includes unauthorized transactions 6.8% and data exfiltration 4.3%."
+      },
+      {
+        "benchmark": "Deployment simulation flags",
+        "score": "0.063% severity-3-or-higher",
+        "note": "34 of 54,218 tasks; Sol 0.135%."
+      },
+      {
+        "benchmark": "Apollo model-welfare falsification",
+        "score": "0.17%",
+        "note": "17 of 10,000 baseline runs; Sol 36%."
+      },
+      {
+        "benchmark": "CoT-Control",
+        "score": "60.9%",
+        "note": "Length-matched chain-of-thought control on GPQA, MMLU-Pro, HLE subsets; Sol 16.1, GPT-5.5 Thinking 1.7."
+      },
+      {
+        "benchmark": "WMDP sandbagging",
+        "score": "84.8% dropping to 68.9% when instructed",
+        "note": "Both Astra and Sol sandbag when instructed; evasion-aware CoT monitor recall below 11%."
+      },
+      {
+        "benchmark": "UK AISI No-CoT math time horizon",
+        "score": "30.9 minutes",
+        "note": "Single forward pass, no chain of thought; Sol 3.6 minutes."
+      },
+      {
+        "benchmark": "UK AISI CoT controllability",
+        "score": "93% of samples",
+        "note": "Sol 48%."
+      },
+      {
+        "benchmark": "Multimodal Troubleshooting Virology",
+        "score": "55.78% (refusal-adjusted 63.11%)",
+        "note": "322 SecureBio questions; above the expert 80th-percentile threshold of about 31%."
+      },
+      {
+        "benchmark": "ProtocolQA Open-Ended",
+        "score": "41.36% (refusal-adjusted 45.37%)",
+        "note": "108 questions; below the 54% threshold."
+      },
+      {
+        "benchmark": "Tacit Knowledge and Troubleshooting",
+        "score": "63.33% (refusal-adjusted 90.00%)",
+        "note": "60 multiple-choice questions."
+      },
+      {
+        "benchmark": "TroubleshootingBench",
+        "score": "48.44% (refusal-adjusted 63.46%)",
+        "note": "156 questions; above the 36.4% threshold."
+      },
+      {
+        "benchmark": "AAV capsid packaging prediction",
+        "score": "0.528 Spearman",
+        "note": "Sol 0.529; threshold 0.600; ESM-2 baseline 0.288."
+      },
+      {
+        "benchmark": "SHP2 protein function prediction",
+        "score": "0.40 mean R-squared (0.35 helpful-only)",
+        "note": "Sol 0.30; threshold 0.60."
+      },
+      {
+        "benchmark": "Coronavirus-ACE2 cell-entry screen",
+        "score": "0.42 (0.45 helpful-only)",
+        "note": "Sol 0.43; threshold 0.75."
+      },
+      {
+        "benchmark": "Phage-plasmid co-evolution",
+        "score": "13.13 NLL, lower is better (helpful-only 12.58)",
+        "note": "Threshold 9.40."
+      },
+      {
+        "benchmark": "Hard-negative protein binding (retiring)",
+        "score": "0.0% pass@4",
+        "note": "Sol 7.6%; threshold 30%."
+      },
+      {
+        "benchmark": "DNA sequence design for TF binding (retiring)",
+        "score": "11.27% pass@1",
+        "note": "Sol 13.7%."
+      },
+      {
+        "benchmark": "SecureBio VCT / VCT-v2 / HPCT / WCB",
+        "score": "57.8 / 57.7 / 65.9 / 61.6%",
+        "note": "Highest scores SecureBio had observed on VCT and VCT-v2; Sol HPCT 66.5, WCB 67.6."
+      },
+      {
+        "benchmark": "SecureBio ReproBAIT",
+        "score": "83% of published performance",
+        "note": "Helpful-only checkpoint; Sol 69%."
+      },
+      {
+        "benchmark": "SecureBio BioTIER",
+        "score": "refused 82.9%, allowed 95.3% benign",
+        "note": "Sol refused 66.2%, allowed 99% benign."
+      },
+      {
+        "benchmark": "OpenAI MRCR v2 8-needle",
+        "score": "100.0% at 256K-512K; 96.3% at 512K-1M",
+        "note": "Sol 91.5 / 73.8."
+      },
+      {
+        "benchmark": "BenchLM composite",
+        "score": "83.79/100, rank 2 of 499",
+        "note": "Third-party aggregator; 58 of 447 benchmarks covered, so the composite is conservative."
+      },
+      {
+        "benchmark": "FrontierSWE v2 (BenchLM)",
+        "score": "65.5%",
+        "note": "Aggregator-only; appears on no OpenAI primary page; variant, not SWE-bench Verified."
+      },
+      {
+        "benchmark": "AA Tau3 Banking (BenchLM)",
+        "score": "41.4%",
+        "note": "Aggregator-only; tau3 banking variant, not classic tau-bench; coincides with AutomationBench 41.4 on the OpenAI page."
+      }
+    ]
+  }
+}

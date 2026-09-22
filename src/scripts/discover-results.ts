@@ -7,7 +7,9 @@ import { getAllBenchmarkPages, type BenchmarkPageData } from "../lib/benchmark-h
 
 const ARXIV_API = "http://export.arxiv.org/api/query";
 const MAX_RESULTS = 20;
-const DEFAULT_SINCE_DAYS = 90;
+// Lookback in days for the arxiv baseline. CI (discover-results.yml) overrides this via --since-days;
+// 21 matches the biweekly sweep and covers the worst-case 21-day ISO-week-boundary dispatch gap.
+const DEFAULT_SINCE_DAYS = 21;
 const ARXIV_RATE_LIMIT_MS = 3100; // arxiv ToS suggests <= 1 req per 3 sec
 const OUT_DIR = path.join(process.cwd(), ".discovery");
 

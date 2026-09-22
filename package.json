@@ -10,7 +10,11 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "update-readme": "tsc -p tsconfig.script.json && node dist/scripts/update-readme.js",
-    "discover": "tsc -p tsconfig.script.json && node dist/scripts/discover-results.js"
+    "discover": "tsc -p tsconfig.script.json && node dist/scripts/discover-results.js",
+    "discover:research": "tsc -p tsconfig.script.json && node dist/scripts/discover-research.js",
+    "discover:judge": "tsc -p tsconfig.script.json && node dist/scripts/discover-judge.js",
+    "discover:apply": "tsc -p tsconfig.script.json && node dist/scripts/discover-apply.js",
+    "discover:verify": "tsc -p tsconfig.script.json && node dist/scripts/discover-verify.js"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
@@ -22,10 +26,15 @@
     "tailwindcss": "^4.0.9"
   },
   "devDependencies": {
+    "@ai-sdk/anthropic": "^3.0.0",
     "@eslint/js": "^9.21.0",
+    "@steel-dev/atlas": "^0.1.2",
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.26.0",
+    "ai": "^6.0.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "astro-eslint-parser": "^1.2.1",
     "eslint": "^9.21.0",
     "eslint-plugin-astro": "^1.3.1",
@@ -35,7 +44,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.25.0"
+    "typescript-eslint": "^8.25.0",
+    "zod": "^4.1.0"
   },
   "packageManager": "pnpm@10.33.0"
 }
