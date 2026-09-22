@@ -1,0 +1,78 @@
+{
+  "slug": "osworld",
+  "benchmarkName": "OSWorld",
+  "queriedAt": "2026-06-28T09:54:43.478Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"OSWorld\"",
+  "existingTopSystems": [
+    "Claude Mythos Preview (85.4%)",
+    "Claude Mythos 5 (85.0%)",
+    "Claude Fable 5 (85.0%)",
+    "Claude Opus 4.8 (83.4%)",
+    "OSAgent (76.26%)",
+    "GPT-5.4 (75.0%)",
+    "Claude Opus 4.6 (72.7%)",
+    "Claude Sonnet 4.6 (72.5%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 4,
+  "candidates": [
+    {
+      "arxivId": "2606.25964",
+      "url": "https://arxiv.org/abs/2606.25964",
+      "title": "WinDOM: Self-Family Distillation for Small-Model GUI Grounding",
+      "authors": [
+        "Chengheng Li-Chen",
+        "Zhiqian Zhou",
+        "Hao Chen",
+        "Nicolas Chauvin"
+      ],
+      "publishedAt": "2026-06-24T15:35:29Z",
+      "summary": "Small ($\\sim$2B) GUI-grounding agents are attractive for on-device deployment, accessibility tooling, and low-cost iteration, but at this scale they face two open recipe questions: how to obtain bounding-box training data without expensive human annotation, and how to combine supervised fine-tuning with reinforcement learning. We address both, with the explicit goal of pushing small-model performance rather than scaling up. WinDOM is a $54{,}425$-record grounding corpus harvested by driving an open-source Windows 11 web reimplementation under headless Playwright, with bounding boxes read directly off the DOM and no OCR or human annotation. Self-Family Distillation (SFD) is a single rejection-sampling cold-start parameterised only by the teacher choice: either an EMA of the student (no external model) or a frozen larger same-family teacher. We then treat the saturation depth of the SFD cold-start as an explicit GRPO hyperparameter. On a Qwen3.5-2B student, the under-saturated cold-start is a better GRPO initialiser than the converged one: SFD-4B with Early-init RL gains $+5.4$ OOD-mean ($+3.5$ ScreenSpot-Pro, $+7.0$ OSWorld-G, $+5.8$ ScreenSpot-V2) over the base. The same-size EMA mode lands within roughly one OOD-mean point of the cross-size $4$B variant ($65.2$ vs $66.3$) without an external teacher.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.24515",
+      "url": "https://arxiv.org/abs/2606.24515",
+      "title": "Reinforcement Learning for Computer-Use Agents with Autonomous Evaluation",
+      "authors": [
+        "Marta Sumyk",
+        "Oleksandr Kosovan"
+      ],
+      "publishedAt": "2026-06-23T12:46:29Z",
+      "summary": "Computer-Use Agents (CUAs) execute high-level user goals by perceiving and acting directly within graphical user interfaces. However, reinforcement learning for CUAs remains difficult because open-ended desktop environments rarely provide scalable, machine-readable reward signals: task success is often visually grounded and hard to specify with handcrafted reward functions or dense manual labels. We propose an RL fine-tuning framework that uses autonomous vision-language evaluation as a scalable supervision signal for GUI agents. Given a final screenshot and the original instruction, a Vision-Language Model judges task completion and provides terminal feedback without task-specific heuristics or manual labels during policy optimization. Because autonomous evaluators are imperfect, we model their feedback as a noisy binary reward channel and derive a noise-corrected reward estimator for Proximal Policy Optimization. Experiments across macOSWorld, Windows Agent Arena, and OSWorld show that corrected evaluator rewards outperform both zero-shot baselines and raw evaluator rewards, improving success rates by an average of 12.6 percentage points over zero-shot performance and 5.1 points over raw evaluator fine-tuning. These results suggest that autonomous evaluation can serve as a practical reward signal for RL in GUI environments when evaluator noise is explicitly modeled and corrected.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.22948",
+      "url": "https://arxiv.org/abs/2606.22948",
+      "title": "ENVS: Environment-Native Verified Search for Long-Horizon GUI Agents",
+      "authors": [
+        "Yincheng Zhou",
+        "Athena Zhuoming Zhong",
+        "Shijie Zhang",
+        "Kevin Zhang",
+        "Teresa Xiaotao Shang",
+        "Shanghang Zhang"
+      ],
+      "publishedAt": "2026-06-22T07:28:55Z",
+      "summary": "As multimodal agents move from interface understanding to real software control, successful trajectory discovery in live desktop environments becomes a key challenge. GUI tasks require long-horizon sequences of precise mouse and keyboard actions, while feedback is sparse, delayed, and costly to obtain through VM rollouts. We propose Environment-Native Verified Search (ENVS), a training-time search-and-filter pipeline that uses the environment to construct verified supervision before policy optimization: it branches over behaviorally distinct GUI actions in live OSWorld VMs, verifies successful leaves, and trains from globally balanced step-level supervision. To evaluate robustness under realistic desktop interruptions, we also introduce OSWorld-Noisy, a dynamic benchmark for recoverable desktop interruptions that preserves the original tasks while testing whether agents can refocus, dismiss, wait, or recover under live perturbations. On the 300-task OSWorld pool, ENVS reaches 30.3 pass@8 on original evaluations and 29.0 on OSWorld-Noisy, outperforming matched ARPO-style online RL while reducing compute from 184-192 to 138-153 GPU-hours; even with only 30% of its search data, ENVS reaches 27.0 pass@8, exceeding ARPO from the base model. Training from noisy environments also better preserves visual-reasoning abilities on auxiliary benchmarks, including OSWorld-G Refusal (16.7 vs. 1.9) and BLINK Functional Correspondence (26.2 vs. 23.1).",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.21654",
+      "url": "https://arxiv.org/abs/2606.21654",
+      "title": "ChainWorld: Composing Long-Horizon Desktop Workloads from Atomic OSWorld Tasks",
+      "authors": [
+        "Vincent Siu",
+        "Manasi Sharma",
+        "Dawn Song",
+        "Daniel Yue Zhang",
+        "Chenguang Wang"
+      ],
+      "publishedAt": "2026-06-19T18:00:14Z",
+      "summary": "Computer use agents are evaluated almost exclusively on atomic desktop tasks, but realistic desktop work requires sustaining state across multiple objectives. We study this gap with ChainWorld, which composes atomic OSWorld tasks into long horizon desktop workloads through directional compatibility search while preserving the source evaluators. The resulting workload contains 347 chains of length two to four and compares two renderings of the same task sequence. In single turn evaluation, all tasks are presented together in one prompt. In multi turn evaluation, tasks are revealed one at a time. Across four current computer use agents, maximum chain completion is 31%. Multi turn evaluation improves completion for three models, but both protocols remain challenging. The two protocols also expose different failure profiles. Single turn failures concentrate on artifact precision, while multi turn failures more often reflect session management problems such as fragmented progress and later turn disengagement.",
+      "alreadyTracked": false
+    }
+  ]
+}

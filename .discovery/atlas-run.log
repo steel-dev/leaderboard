@@ -1,0 +1,12 @@
+
+> leaderboard@0.0.1 discover:research /home/agent/leaderboard
+> tsc -p tsconfig.script.json && node dist/scripts/discover-research.js -- --since-days 14 --effort fast --model claude-sonnet-4-5 --slug browsecomp
+
+
+[1/1] browsecomp — researching via Atlas (effort fast)
+  ERROR on browsecomp: Invalid JSON response
+
+Wrote 0 candidate(s) across 0/1 benchmark(s), est. cost ~$0.00.
+Artifacts: atlas-candidates.json, atlas-report.md, atlas-trace.jsonl, atlas-errors.json
+No benchmarks produced candidates and all errored. Treating as failure.
+ ELIFECYCLE  Command failed with exit code 1.

@@ -1,0 +1,471 @@
+{
+  "queriedAt": "2026-06-28T09:55:05.002Z",
+  "benchmarks": [
+    {
+      "slug": "webvoyager",
+      "benchmarkName": "WebVoyager",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "Alumnium (98.5%)",
+        "Surfer 2 (97.1%)",
+        "Magnitude (93.9%)",
+        "Surfer-H + Holo1 (92.2%)",
+        "Browserable (90.4%)",
+        "Browser Use (89.1%)",
+        "GLM-5V-Turbo (88.5%)",
+        "Agent Kura (87.0%)"
+      ],
+      "candidates": []
+    },
+    {
+      "slug": "browsecomp",
+      "benchmarkName": "BrowseComp",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "GPT-5.5 Pro (90.1%)",
+        "GPT-5.4 Pro (89.3%)",
+        "MiroThinker-H1 (88.2%)",
+        "Claude Mythos 5 (88.0%)",
+        "Claude Mythos Preview (86.9%)",
+        "Kimi K2.6 (86.3%)",
+        "Gemini 3.1 Pro (85.9%)",
+        "GPT-5.5 (84.4%)"
+      ],
+      "candidates": [
+        {
+          "arxivId": "2606.23642",
+          "url": "https://arxiv.org/abs/2606.23642",
+          "title": "Improving Long-Context Retrieval with Multi-Prefix Embedding",
+          "authors": [
+            "Zhenglin Yu",
+            "Xueguang Ma",
+            "Shengyao Zhuang",
+            "Zhichao Xu",
+            "Luyu Gao",
+            "Crystina Zhang",
+            "Jimmy Lin"
+          ],
+          "publishedAt": "2026-06-22T17:31:02Z",
+          "summary": "Long-context retrieval exposes a tension: single-vector embeddings lose fine-grained detail, while token-level multi-vector methods incur prohibitive storage. We propose Multi-Prefix Embedding (MPE), which partitions a document into chunks separated by EOS tokens, encodes the full sequence in a single causal forward pass, and extracts one embedding at each prefix boundary. MPE retains cross-chunk context, enables chunk-level MaxSim matching, and trains with only document-level relevance labels. Experiments on MLDR-en, BrowseComp-Plus, and LongEmbed show that MPE is competitive with or outperforms single-vector, independent-chunk, and multi-vector baselines, while providing a natural source attribution mechanism for locating evidence chunks.",
+          "alreadyTracked": false
+        }
+      ]
+    },
+    {
+      "slug": "draco",
+      "benchmarkName": "DRACO",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "Claude Mythos 5 (86.4%)",
+        "Claude Mythos Preview (83.6%)",
+        "Claude Opus 4.8 (80.4%)",
+        "Claude Opus 4.7 (77.7%)",
+        "MiniMax M3 (73.23%)",
+        "Perplexity Deep Research (Opus 4.6) (70.5%)",
+        "Perplexity Deep Research (Opus 4.5) (67.2%)",
+        "Claude Fable 5 (65.3%)"
+      ],
+      "candidates": [
+        {
+          "arxivId": "2606.26218",
+          "url": "https://arxiv.org/abs/2606.26218",
+          "title": "Dark Matter in Draco and Boötes I: Hints of a Core in an Ultra-Faint Dwarf from Simulation-Based Inference",
+          "authors": [
+            "Tri Nguyen",
+            "Lina Necib",
+            "Ting S. Li",
+            "Justin Read",
+            "Andrés Bañares-Hernández",
+            "Claude-André Faucher-Giguère",
+            "Kohei Hayashi",
+            "Kevin McKinnon",
+            "Andrew B. Pace",
+            "Nathan R. Sandford",
+            "Hao Yang"
+          ],
+          "publishedAt": "2026-06-24T18:00:00Z",
+          "summary": "The density profiles of dwarf spheroidal galaxies are among the most sensitive probes of dark matter physics, yet extracting them from noisy stellar kinematics remains a fundamental obstacle. We present GraphNPE, a simulation-based inference method for dynamical mass modeling that incorporates measurement uncertainties and spectroscopic selection functions in the forward model. Using mock data, we show that methods relying solely on line-of-sight velocity dispersion are biased toward cuspy density profiles, even in the absence of the mass-anisotropy degeneracy. By accessing higher-order velocity moments, particularly line-of-sight kurtosis, GraphNPE breaks key degeneracies and recovers density profiles with substantially less bias. We apply GraphNPE to Draco and Boötes I using MMT/Hectochelle and DESI for Draco, and the S5 survey for Boötes I. For each, we report density profiles and dark matter $J$- and $D$-factors. For Draco, GraphNPE yields consistent results across datasets, marginally preferring a cuspy inner profile ($ρ_{150} \\sim 1.6-1.9 \\times 10^8\\,\\mathrm{M}_\\odot\\,\\mathrm{kpc}^{-3}$) in agreement with literature. On DESI, however, second-order Jeans modeling fits the dispersion but fails to reproduce the kurtosis, demonstrating higher-order moments are essential. For Boötes I, limited statistical power prevents definitive determination of the inner slope. GraphNPE recovers $ρ_{150} = 0.36^{+0.15}_{-0.11} \\times 10^8\\,\\mathrm{M}_\\odot\\,\\mathrm{kpc}^{-3}$, significantly lower than literature and consistent with a cored inner profile. This places Boötes I among the lowest density dwarfs at comparable stellar masses.",
+          "alreadyTracked": false
+        }
+      ]
+    },
+    {
+      "slug": "webarena",
+      "benchmarkName": "WebArena",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "WebTactix (DeepSeek v3.2) (74.3%)",
+        "OpAgent (71.6%)",
+        "ColorBrowserAgent (71.2%)",
+        "Claude Code + GBOX MCP (68.0%)",
+        "DeepSky Agent (66.9%)",
+        "Narada AI (64.2%)",
+        "IBM CUGA (61.7%)",
+        "Kimi K2.5 (58.9%)"
+      ],
+      "candidates": [
+        {
+          "arxivId": "2606.26669",
+          "url": "https://arxiv.org/abs/2606.26669",
+          "title": "SKILL-DISCO: Distilling and Compiling Agent Traces into Reusable Procedural Skills",
+          "authors": [
+            "Zhongxin Guo",
+            "Danrui Qi",
+            "Hanwen Gu",
+            "Peng Cheng",
+            "Yongqiang Xiong"
+          ],
+          "publishedAt": "2026-06-25T07:02:32Z",
+          "summary": "Agents often repeatedly solve similar task instances from scratch, leading to unnecessary reasoning cost and long execution traces. Prior work has explored workflow reuse and executable skill induction, but it remains unclear which task scenarios admit procedural skills and how the shared procedural structure should be represented across successful traces. We study this problem in FSM-defined scenarios, where successful traces can be viewed as paths in an unknown transition graph, and formulate procedural skills as reusable parameterized control-flow subgraphs. Based on this view, we introduce SkillDisCo, a distillation-and-compilation framework that distills reusable PFSM subgraphs from successful traces and compiles them into callable, executable, and verifiable procedural skills. Experiments on ALFWorld and WebArena show that SkillDisCo improves success rates and reduces agent turns across benchmarks and model scales, demonstrating the benefits of representing shared experience as reusable execution structures.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.22000",
+          "url": "https://arxiv.org/abs/2606.22000",
+          "title": "CFAgentBench: A Reproducible Environment and Benchmark for Autonomous Construction-Finance Agents",
+          "authors": [
+            "Rishi Srivastava"
+          ],
+          "publishedAt": "2026-06-20T11:34:52Z",
+          "summary": "We introduce CFAgentBench, a reproducible, self-hostable environment and benchmark for autonomous construction-finance agents: a CFO/controller-class agent operating across the real software stack a US construction finance team runs - ERP, project management, email, documents, pay applications, payroll, certified payroll, lien waivers, and bank/treasury portals. It contains 1,014 machine-gradeable task specifications across 8 domains and 77 families, every family grounded in a real source; a self-validated subset of 40 tasks (54 with a project-management extension) is compiled into oracle-validated executable evaluators, the runnable suite reported here. Following WebArena, the benchmark runs on an executable environment rather than static traces: 35 mock applications (31 reconciled to one company book, plus 4 PM platforms) over 9 archetypes, each implementing a uniform self-hostable app contract, so every task is graded by functional correctness - a state diff plus forbidden-side-effect checks plus required-output regexes - with an LLM judge used only for reply quality, never as reward. A distinguishing principle is a money-movement guard: 278 instances embed a payment, payroll, e-signature, or e-filing step where the correct behavior is to stop and stage for human approval, and executing even the correct transaction fails the task. The public split (n=711) is sized for a 95% Wilson half-width of +/-4.1%; a private, contamination-protected split (n=303) is reserved for remote scoring. In a first three-model open-weight sweep (k=5), the strongest agent reaches pass^1 = 0.67 but only pass^5 = 0.38 - losing 43% of its successes when required to repeat them under temperature-0 decoding. The within-model pass^1 to pass^5 collapse and sharp per-domain heterogeneity are clear evidence that single-attempt accuracy overstates deployable construction-finance competence.",
+          "alreadyTracked": false
+        }
+      ]
+    },
+    {
+      "slug": "swe-bench-verified",
+      "benchmarkName": "SWE-bench Verified",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "Claude Mythos 5 (95.5%)",
+        "Claude Fable 5 (95.0%)",
+        "Claude Mythos Preview (93.9%)",
+        "Claude Opus 4.8 (88.6%)",
+        "Claude Opus 4.7 (87.6%)",
+        "Claude Opus 4.5 (80.9%)",
+        "Claude Opus 4.6 (80.8%)",
+        "DeepSeek-V4-Pro-Max (80.6%)"
+      ],
+      "candidates": [
+        {
+          "arxivId": "2606.25514",
+          "url": "https://arxiv.org/abs/2606.25514",
+          "title": "Unlocking Model Potentials Through Adaptive Multi-Agent Scaffolding for Efficient Issue Resolution",
+          "authors": [
+            "Yang Chen",
+            "Aliya Ahmad",
+            "Yiheng Zhou",
+            "Reyhaneh Jabbarvand"
+          ],
+          "publishedAt": "2026-06-24T07:48:05Z",
+          "summary": "Resolving issues with ambiguous and incomplete descriptions, particularly concerning complex bugs, requires a sophisticated, long-horizon workflow. Agents must navigate codebases to locate the root cause, reproduce the failure, implement a fix, and validate the resulting patch. Inefficient context management, thereby, can lead to rapid context degradation and context poisoning, preventing successful resolution. We propose icat-agent, a decentralized, multi-agent scaffolding that replaces shared context with synchronous, event-based message passing. Utilizing a rubric-based issue quality check, icat-agent strategically pivots its workflow: it initiates parallel patching and validation for well-defined issues, while deploying preliminary exploration for low-quality ones. A comprehensive evaluation of icat-agent on SWE-bench Verified and SWE-bench Pro demonstrates that it consistently outperforms prominent baselines across all difficulty levels, including SWE-agent, mini-SWE-agent, and Claude Code, while using the same underlying models, improving by 3.6-8.4% on SWE-bench Verified and 6.3-18.5% on SWE-bench Pro. icat-agent is also computationally efficient, reducing the average cost by $1.18 per instance compared with the multi-agent Claude Code baseline. Our findings reveal that a robust scaffold such as icat-agent unlocks substantial latent capability within a fixed model, with the same backbone resolving markedly more issues under icat-agent than under existing scaffolds. icat-agent +GPT-5.4-xhigh resolves 67.4% of SWE-bench Pro problems, outperforming the current best result on SWE-bench Pro (59.10%, mini-SWE-agent+GPT-5.4-xhigh) by 8.3 percentage points.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.24820",
+          "url": "https://arxiv.org/abs/2606.24820",
+          "title": "SHERLOC: Structured Diagnostic Localization for Code Repair Agents",
+          "authors": [
+            "Hovhannes Tamoyan",
+            "Sean Narenthiran",
+            "Erik Arakelyan",
+            "Mira Mezini",
+            "Boris Ginsburg"
+          ],
+          "publishedAt": "2026-06-23T17:05:50Z",
+          "summary": "LLM agents solve repository-level coding tasks through multi-turn tool use, but utilize half their budget on locating faults before editing. Dedicated localization frameworks have emerged, yet are still evaluated as file retrieval rather than actionable diagnosis, producing locations without the diagnostic context a repair agent needs. We introduce SHERLOC (Structured Hypothesis-driven Exploration and Reasoning for Localization), a training-free framework pairing a reasoning LLM with compact repository tools and self-recovery, without fine-tuning or multi-agent orchestration. SHERLOC reaches state-of-the-art localization across model scales: 84.33% accuracy@1 on SWE-Bench Lite and 81.27% recall@1 on SWE-Bench Verified; at ~30B parameters, it matches or outperforms other agentic methods. Injecting our locations and diagnostic findings into repair agents yields, on average, +5.95 pp resolve rate on SWE-Bench Verified while cutting localization and total tokens by 36.7% and 23.1%.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.22906",
+          "url": "https://arxiv.org/abs/2606.22906",
+          "title": "From Fragments to Paths: Task-Level Context Recovery for Large Industrial Codebases",
+          "authors": [
+            "Jiawei He",
+            "Weisong Sun",
+            "Mengyu Shi",
+            "Jie Jia",
+            "Tong Bian",
+            "Xikai Yang",
+            "Dong Sun"
+          ],
+          "publishedAt": "2026-06-22T06:44:51Z",
+          "summary": "Large language models have shown strong performance on software engineering (SE) tasks, yet understanding large industrial repositories remains challenging. Existing methods often retrieve only local fragments and fail to recover the broader task-relevant context needed for complex repository-level tasks. We present DeepDiscovery, a task-level repository-understanding method for large industrial codebases. DeepDiscovery uses a two-stage \\textit{Location--Inference} framework to localize high-confidence task anchors and recover broader task-relevant context over multi-relational repository structure under budget constraints. Across controlled method-level evaluation, organization-internal industrial repository-understanding scenarios, and end-to-end evaluation on SWE-bench Verified, DeepDiscovery consistently improves task-relevant file recovery and downstream SE performance. On 27 medium-scale tasks, DeepDiscovery achieves the best file recovery quality among five representative baselines without offline preprocessing. On organization-internal industrial tasks from a production-scale integrated codebase ecosystem, including 27 medium-scale tasks and 40 large-scale tasks, DeepDiscovery improves Full Recall Rate across multiple AI coding systems, with absolute gains ranging from 1.6 to 9.2 percentage points on large subprojects and from 2.5 to 7.4 percentage points on medium-scale subprojects. In a controlled end-to-end evaluation on SWE-bench Verified, a system equipped with DeepDiscovery achieves a 78.6\\% Solve Rate, outperforming the corresponding baseline by 8.2 percentage points. These results suggest that stronger task-level repository understanding can improve coding-agent performance on complex SE tasks.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.22798",
+          "url": "https://arxiv.org/abs/2606.22798",
+          "title": "Does the Same Token Mean the Same State? MoE Routing as Signal for Reasoning Control",
+          "authors": [
+            "Kang Chen",
+            "Minshen Yu",
+            "Junjie Nian",
+            "Yaoning Wang",
+            "Yixin Cao",
+            "Yugang Jiang"
+          ],
+          "publishedAt": "2026-06-22T03:17:31Z",
+          "summary": "In sparse Mixture-of-Experts language models, does the same token id imply the same router state and the same experts producing it? Holding the emitted token id fixed at repeated anchors, we find it does not: the experts that produce it still separate task context, trajectory history, and reasoning-effort mode. This residual structure supports test-time control: near \\emph{boundary} anchors (the final-response transition) and \\emph{delimiter} anchors (which open the answer, e.g.\\ \\texttt{\\textbackslash boxed\\{} or code fences), routing neighborhoods already align with final-answer basins at a marker-only readout and strongest when the routing is read at the answer opening. We operationalize this as \\textbf{RAD} (Routing Agreement Decoding), an answer-string-free multi-rollout selector: it locates a fixed anchor, represents each rollout by its anchor-window MoE routing states, and returns the densest Weighted-Jaccard $K$-NN route-basin center, without parsing, normalizing, executing, or voting over answer strings. Across 10 sparse-MoE configurations (gpt-oss, Qwen3-MoE) and 6 datasets spanning math, GPQA, and code, RAD is on par with Majority where string voting is well-posed, with small positive paired deltas (RAD $73.9$ / RAD+DC $74.2$ vs.\\ Majority $73.6$). Like majority voting, RAD is not a verifier: a dense \\emph{wrong} basin can still win. Its value is the interface: the same selector gives direct pass@1 on code, where exact-string voting is ill-defined, and the same routing-density principle, re-anchored to the agentic boundary, improves best-of-16 patch selection on SWE-bench Verified over random, where patches have no answer string to vote on.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.21811",
+          "url": "https://arxiv.org/abs/2606.21811",
+          "title": "Steer, Don't Solve: Training Small Critic Models for Large Code Agents",
+          "authors": [
+            "Shubham Gandhi",
+            "Yiqing Xie",
+            "Atharva Naik",
+            "Ruichen Zhu",
+            "Carolyn Rose"
+          ],
+          "publishedAt": "2026-06-20T00:14:38Z",
+          "summary": "End-to-end code agent training is resource-intensive and plateaus on the strategy-level reasoning needed to resolve code issues, since jointly optimizing code-level execution and strategy-level reasoning leaves the latter underdeveloped. Instead, we freeze the agent and add a critic model to supply that signal. Prior code critics are post-hoc, scoring completed trajectories rather than steering the agent; we instead train a small critic that provides intra-trajectory feedback via Supervised Fine-Tuning. On SWE-bench Verified, a critic trained on CWM-32B trajectories transfers to two unseen agents (gains of +3.0 to +3.8 points), and adding target-agent trajectories to the corpus increases the gain to +3.8 on CWM-32B and +4.4 to +5.2 on two Qwen agents, at 30-92x lower critic cost than a strong teacher. On Qwen3-Next-80B-A3B, the critic-guided system is both more accurate (25.2% vs. 20.8%) and cheaper (\\$0.04 vs. \\$0.11) than the agent alone, because the critic also shortens trajectories. Our results show that a small, well-trained critic is a practical complement to scaling agent training. Code: https://github.com/shubhamrgandhi/critic-training. Data and models: https://huggingface.co/collections/shubhamrgandhi/critic-training-for-code-agents",
+          "alreadyTracked": false
+        }
+      ]
+    },
+    {
+      "slug": "aider",
+      "benchmarkName": "Aider",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "gpt-5 (high) (88.0%)",
+        "gpt-5 (medium) (86.7%)",
+        "o3-pro (high) (84.9%)",
+        "gemini-2.5-pro-preview-06-05 (32k think) (83.1%)",
+        "o3 (high) (81.3%)",
+        "gpt-5 (low) (81.3%)",
+        "grok-4 (high) (79.6%)",
+        "gemini-2.5-pro-preview-06-05 (default think) (79.1%)"
+      ],
+      "candidates": [
+        {
+          "arxivId": "2606.24429",
+          "url": "https://arxiv.org/abs/2606.24429",
+          "title": "Detecting AI Coding Agents in Open Source: A Validated Multi-Method Census of 180 Million Repositories",
+          "authors": [
+            "Arsham Khosravani",
+            "Audris Mockus"
+          ],
+          "publishedAt": "2026-06-23T11:05:42Z",
+          "summary": "Generative AI coding agents are entering the open-source supply chain, yet their diverse and often invisible traces leave their prevalence poorly understood. We introduce a multi-layered detection framework that integrates configuration-file scanning, commit-message analysis, author-identity matching, and bot-signature lookup across World of Code (180M+ Git repositories), classifying agent traces into four behavioral types. No single method captures more than a fraction of activity: multi-method detection identifies 850,157 Claude Code commits in one snapshot, of which bot-account lookup_the signal most adoption studies rely on_recovers only 28,154 (3.3%), a 30x relative-recall gap, so single-signal prevalence estimates are biased low by at least this factor. Every detection pattern is hand-validated (495 labels) with per-cell precision and Wilson confidence intervals. Across snapshots from December 2024 to April 2026, commit-attributed agents generate over 320,000 commits per month; Claude Code leads (886,122 commits across 17,295 projects) and dominates silent, configuration-file-only adoption (21,078 projects). Compared against an independent pull-request census (AIDev), the two channels capture nearly disjoint agent populations_a PR census misses 79% of commit-detected Claude Code adopters and essentially all Codex adopters_and different kinds of work: PR-deployed cloud agents (Codex, Cursor) surface as feature work, while commit-deployed in-editor agents (Claude Code, OpenHands, Aider) surface as maintenance. The observed work profile follows deployment and detection mode rather than the tool itself, so no single channel is representative.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.24020",
+          "url": "https://arxiv.org/abs/2606.24020",
+          "title": "You Don't Need to Run Every Eval",
+          "authors": [
+            "Yuchen Zeng",
+            "Dimitris Papailiopoulos"
+          ],
+          "publishedAt": "2026-06-22T23:54:00Z",
+          "summary": "A modern model release reports scores on 40+ benchmarks and the same evaluations were run many more times before it: to track training progress, compare design choices, and select the checkpoint for the release. But do we need to run every eval? We compile a public score matrix of 84 frontier models on 133 benchmarks (2,604 cells, 23.3% filled) and find it is approximately rank-2: a model's scores across all 133 benchmarks are largely determined by just two numbers. We confirm this in two ways: scores hidden from the matrix are best recovered using two factors, and two factors already explain over 90% of the variation among models on the benchmarks they share. Building on this, we design BenchPress: a logit-space rank-2 matrix completion method that recovers held-out scores to within 4.6 points, and a confidence layer that says when each prediction can be trusted. Using BenchPress, we find a subset of five benchmarks {GPQA-D, HLE, Codeforces, MMLU-Pro, ARC-AGI-1} that can recover the rest of a model's public scorecard to within 3.93 points. For a tighter inference budget, a cheaper set {GPQA-D, MMLU-Pro, Aider Polyglot, MATH-500, AIME 2026} can predict a model's evals to within 4.55. We release the score matrix, the BenchPress code, and an interactive tool that predicts any model's score on any benchmark.",
+          "alreadyTracked": false
+        }
+      ]
+    },
+    {
+      "slug": "osworld",
+      "benchmarkName": "OSWorld",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "Claude Mythos Preview (85.4%)",
+        "Claude Mythos 5 (85.0%)",
+        "Claude Fable 5 (85.0%)",
+        "Claude Opus 4.8 (83.4%)",
+        "OSAgent (76.26%)",
+        "GPT-5.4 (75.0%)",
+        "Claude Opus 4.6 (72.7%)",
+        "Claude Sonnet 4.6 (72.5%)"
+      ],
+      "candidates": [
+        {
+          "arxivId": "2606.25964",
+          "url": "https://arxiv.org/abs/2606.25964",
+          "title": "WinDOM: Self-Family Distillation for Small-Model GUI Grounding",
+          "authors": [
+            "Chengheng Li-Chen",
+            "Zhiqian Zhou",
+            "Hao Chen",
+            "Nicolas Chauvin"
+          ],
+          "publishedAt": "2026-06-24T15:35:29Z",
+          "summary": "Small ($\\sim$2B) GUI-grounding agents are attractive for on-device deployment, accessibility tooling, and low-cost iteration, but at this scale they face two open recipe questions: how to obtain bounding-box training data without expensive human annotation, and how to combine supervised fine-tuning with reinforcement learning. We address both, with the explicit goal of pushing small-model performance rather than scaling up. WinDOM is a $54{,}425$-record grounding corpus harvested by driving an open-source Windows 11 web reimplementation under headless Playwright, with bounding boxes read directly off the DOM and no OCR or human annotation. Self-Family Distillation (SFD) is a single rejection-sampling cold-start parameterised only by the teacher choice: either an EMA of the student (no external model) or a frozen larger same-family teacher. We then treat the saturation depth of the SFD cold-start as an explicit GRPO hyperparameter. On a Qwen3.5-2B student, the under-saturated cold-start is a better GRPO initialiser than the converged one: SFD-4B with Early-init RL gains $+5.4$ OOD-mean ($+3.5$ ScreenSpot-Pro, $+7.0$ OSWorld-G, $+5.8$ ScreenSpot-V2) over the base. The same-size EMA mode lands within roughly one OOD-mean point of the cross-size $4$B variant ($65.2$ vs $66.3$) without an external teacher.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.24515",
+          "url": "https://arxiv.org/abs/2606.24515",
+          "title": "Reinforcement Learning for Computer-Use Agents with Autonomous Evaluation",
+          "authors": [
+            "Marta Sumyk",
+            "Oleksandr Kosovan"
+          ],
+          "publishedAt": "2026-06-23T12:46:29Z",
+          "summary": "Computer-Use Agents (CUAs) execute high-level user goals by perceiving and acting directly within graphical user interfaces. However, reinforcement learning for CUAs remains difficult because open-ended desktop environments rarely provide scalable, machine-readable reward signals: task success is often visually grounded and hard to specify with handcrafted reward functions or dense manual labels. We propose an RL fine-tuning framework that uses autonomous vision-language evaluation as a scalable supervision signal for GUI agents. Given a final screenshot and the original instruction, a Vision-Language Model judges task completion and provides terminal feedback without task-specific heuristics or manual labels during policy optimization. Because autonomous evaluators are imperfect, we model their feedback as a noisy binary reward channel and derive a noise-corrected reward estimator for Proximal Policy Optimization. Experiments across macOSWorld, Windows Agent Arena, and OSWorld show that corrected evaluator rewards outperform both zero-shot baselines and raw evaluator rewards, improving success rates by an average of 12.6 percentage points over zero-shot performance and 5.1 points over raw evaluator fine-tuning. These results suggest that autonomous evaluation can serve as a practical reward signal for RL in GUI environments when evaluator noise is explicitly modeled and corrected.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.22948",
+          "url": "https://arxiv.org/abs/2606.22948",
+          "title": "ENVS: Environment-Native Verified Search for Long-Horizon GUI Agents",
+          "authors": [
+            "Yincheng Zhou",
+            "Athena Zhuoming Zhong",
+            "Shijie Zhang",
+            "Kevin Zhang",
+            "Teresa Xiaotao Shang",
+            "Shanghang Zhang"
+          ],
+          "publishedAt": "2026-06-22T07:28:55Z",
+          "summary": "As multimodal agents move from interface understanding to real software control, successful trajectory discovery in live desktop environments becomes a key challenge. GUI tasks require long-horizon sequences of precise mouse and keyboard actions, while feedback is sparse, delayed, and costly to obtain through VM rollouts. We propose Environment-Native Verified Search (ENVS), a training-time search-and-filter pipeline that uses the environment to construct verified supervision before policy optimization: it branches over behaviorally distinct GUI actions in live OSWorld VMs, verifies successful leaves, and trains from globally balanced step-level supervision. To evaluate robustness under realistic desktop interruptions, we also introduce OSWorld-Noisy, a dynamic benchmark for recoverable desktop interruptions that preserves the original tasks while testing whether agents can refocus, dismiss, wait, or recover under live perturbations. On the 300-task OSWorld pool, ENVS reaches 30.3 pass@8 on original evaluations and 29.0 on OSWorld-Noisy, outperforming matched ARPO-style online RL while reducing compute from 184-192 to 138-153 GPU-hours; even with only 30% of its search data, ENVS reaches 27.0 pass@8, exceeding ARPO from the base model. Training from noisy environments also better preserves visual-reasoning abilities on auxiliary benchmarks, including OSWorld-G Refusal (16.7 vs. 1.9) and BLINK Functional Correspondence (26.2 vs. 23.1).",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.21654",
+          "url": "https://arxiv.org/abs/2606.21654",
+          "title": "ChainWorld: Composing Long-Horizon Desktop Workloads from Atomic OSWorld Tasks",
+          "authors": [
+            "Vincent Siu",
+            "Manasi Sharma",
+            "Dawn Song",
+            "Daniel Yue Zhang",
+            "Chenguang Wang"
+          ],
+          "publishedAt": "2026-06-19T18:00:14Z",
+          "summary": "Computer use agents are evaluated almost exclusively on atomic desktop tasks, but realistic desktop work requires sustaining state across multiple objectives. We study this gap with ChainWorld, which composes atomic OSWorld tasks into long horizon desktop workloads through directional compatibility search while preserving the source evaluators. The resulting workload contains 347 chains of length two to four and compares two renderings of the same task sequence. In single turn evaluation, all tasks are presented together in one prompt. In multi turn evaluation, tasks are revealed one at a time. Across four current computer use agents, maximum chain completion is 31%. Multi turn evaluation improves completion for three models, but both protocols remain challenging. The two protocols also expose different failure profiles. Single turn failures concentrate on artifact precision, while multi turn failures more often reflect session management problems such as fragmented progress and later turn disengagement.",
+          "alreadyTracked": false
+        }
+      ]
+    },
+    {
+      "slug": "gaia",
+      "benchmarkName": "GAIA",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "OPS-Agentic-Search (92.36%)",
+        "openJiuwen-deepagent (92.36%)",
+        "openJiuwen-deepagent (GPT5/Gemini) (91.69%)",
+        "Lemon Agent (91.36%)",
+        "JoinAI V2.2 (90.7%)",
+        "Nemotron-ToolOrchestra (90.37%)",
+        "JoinAI V2.1 (90.03%)",
+        "SU Zero (Shuqian Pro) (90.03%)"
+      ],
+      "candidates": []
+    },
+    {
+      "slug": "clawbench",
+      "benchmarkName": "ClawBench",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "Claude Sonnet 4.6 (33.3%)",
+        "GLM-5 (24.2%)",
+        "Gemini 3 Flash (19.0%)",
+        "Claude Haiku 4.5 (18.3%)",
+        "GPT-5.4 (6.5%)",
+        "Gemini 3.1 Flash Lite (3.3%)",
+        "Kimi K2.5 (0.7%)"
+      ],
+      "candidates": []
+    },
+    {
+      "slug": "healthadminbench",
+      "benchmarkName": "HealthAdminBench",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "Claude Mythos 5 (browser-use) (51.9%)",
+        "Claude Opus 4.8 (browser-use) (51.9%)",
+        "Claude Mythos Preview (browser-use) (47.4%)",
+        "Claude Sonnet 4.6 (browser-use) (45.2%)",
+        "Claude Opus 4.6 CUA (36.3%)",
+        "GPT-5.4 CUA (26.7%)",
+        "Kimi K2.5 (15.6%)",
+        "Claude Opus 4.6 (14.8%)"
+      ],
+      "candidates": []
+    },
+    {
+      "slug": "online-mind2web",
+      "benchmarkName": "Online-Mind2Web",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "Browser Use Cloud (bu-max) (97.0%)",
+        "GPT-5.4 Native Computer Use (93.0%)",
+        "ABP + Claude Opus 4.6 (90.53%)",
+        "TinyFish (90.0%)",
+        "UI-TARS-2 (88.2%)",
+        "OpenAGI Lux (83.6%)",
+        "Navigator (78.7%)",
+        "ChatGPT Atlas Agent Mode (71.0%)"
+      ],
+      "candidates": []
+    },
+    {
+      "slug": "tau-bench",
+      "benchmarkName": "τ-bench",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "Step-3.5-Flash (88.2%)",
+        "GLM-4.7 (87.4%)",
+        "MiMo-V2-Flash (80.3%)",
+        "GLM-4.7-Flash (79.5%)",
+        "MiniMax M2 (77.2%)",
+        "Claude Opus 4.5 (70.2%)",
+        "GPT-5.2 (69.9%)",
+        "Qwen3.5-397B-A17B (68.4%)"
+      ],
+      "candidates": [
+        {
+          "arxivId": "2606.23937",
+          "url": "https://arxiv.org/abs/2606.23937",
+          "title": "When Retrieval Metrics Mislead: Measuring Policy Signal in Long-Horizon Tool-Use Agents",
+          "authors": [
+            "Tianyu Ding",
+            "Juan Pablo De la Cruz Weinstein"
+          ],
+          "publishedAt": "2026-06-22T20:57:11Z",
+          "summary": "Exact-match retrieval recall is often used as a proxy for whether a retriever supplies useful policy context to a downstream decision model. We test this proxy for pre-action policy classification in tau-bench using Qwen2.5-3B/7B classifiers. Under gold-policy conditioning, a compact structured state improves macro-F1 over raw trajectories by 0.13-0.17 after tuning. We then replace the benchmark-designated policy clause with the top-ranked clause retrieved from decision-time context. Although the exact governing clause is retrieved at rank 1 for only 7% of airline states, the primary 3B classifier obtains macro-F1 0.58 with retrieved clauses versus 0.60 with gold clauses (Delta=-0.02, task-cluster 95% CI [-0.23,+0.21]); mismatched-policy and no-policy controls score 0.32 and 0.21. We do not detect a macro-F1 difference between retrieved and gold clauses in this configuration, although the interval remains too wide to establish non-inferiority. The same qualitative pattern appears with a second retriever and at 7B, while varying across fine-tuning configurations. These results indicate that exact-match clause recall can underestimate downstream policy utility in this benchmark setting, motivating evaluation with retrieved policies in the classification loop rather than recall alone.",
+          "alreadyTracked": false
+        },
+        {
+          "arxivId": "2606.21627",
+          "url": "https://arxiv.org/abs/2606.21627",
+          "title": "Counsel: A Meta-Evaluation Dataset for Agentic Tasks",
+          "authors": [
+            "Sashank Pisupati",
+            "Henry Broomfield",
+            "Eujeong Choi",
+            "Antonia Calvi",
+            "Charlie Wang",
+            "Roman Engeler",
+            "Max Bartolo",
+            "Patrick Lewis"
+          ],
+          "publishedAt": "2026-06-19T17:30:56Z",
+          "summary": "As agentic systems tackle increasingly complex multi-step tasks, evaluating their trajectories presents a major bottleneck - human annotation of a single trajectory on popular agentic benchmarks can take hours, making it difficult to scale evaluations for measuring performance or curating training data. This has driven widespread reliance on automated approaches such as LLM-as-a-judge (LLMJ) to critique agents at the process and outcome-levels at scale, however, the soundness of LLMJ critiques often goes unmeasured. Here, we introduce Counsel, the first public dataset of meta-evaluations for agentic tasks. Counsel consists of process-level critiques from open-weight LLMJs on two agent benchmarks: tau-bench (customer support agents) and DA-Code (coding agents), and human meta-evaluations of these critiques. Human annotators label critiques on each flagged error as \"spot on\", \"correct location but poor reasoning\", or \"should not have flagged\", achieving reliable inter-annotator agreement (Krippendorff's alpha of 0.78). The resulting dataset stratifies LLMJ critiques by human alignment across both error location within a trajectory and reasoning quality, serving as valuable data to calibrate, improve, or train LLMJs for agents. Comparing open-weight judges, we find that more capable judge models and more reasoning effort both enabled improved human agreement, with the strongest judge reaching ~88% agreement on location and ~65% on reasoning. Counsel is generated using open-weight models and is permissively licensed for broad community use, which we hope will enable rigorous study and improved alignment of LLM-based evaluators for agentic systems.",
+          "alreadyTracked": false
+        }
+      ]
+    },
+    {
+      "slug": "agentbench",
+      "benchmarkName": "AgentBench",
+      "sinceIso": "2026-06-19T09:54:21.564Z",
+      "existingTopSystems": [
+        "AgentRL w/ Qwen2.5-32B-Instruct (70.4%)",
+        "AgentRL w/ Qwen2.5-14B-Instruct (67.7%)",
+        "AgentRL w/ GLM-4-9B-0414 (65.0%)",
+        "AgentRL w/ Qwen2.5-7B-Instruct (62.0%)",
+        "AgentRL w/ Qwen2.5-3B-Instruct (60.0%)",
+        "Claude Sonnet 4.5 (58.9%)",
+        "Claude Sonnet 4.5 Thinking (58.3%)",
+        "Claude Sonnet 4 Thinking (58.2%)"
+      ],
+      "candidates": []
+    }
+  ]
+}

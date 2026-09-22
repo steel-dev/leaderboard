@@ -1,0 +1,20 @@
+{
+  "slug": "gaia",
+  "benchmarkName": "GAIA",
+  "queriedAt": "2026-06-28T09:54:47.053Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"GAIA+benchmark\"+OR+all:\"GAIA+General+AI+Assistants\"",
+  "existingTopSystems": [
+    "OPS-Agentic-Search (92.36%)",
+    "openJiuwen-deepagent (92.36%)",
+    "openJiuwen-deepagent (GPT5/Gemini) (91.69%)",
+    "Lemon Agent (91.36%)",
+    "JoinAI V2.2 (90.7%)",
+    "Nemotron-ToolOrchestra (90.37%)",
+    "JoinAI V2.1 (90.03%)",
+    "SU Zero (Shuqian Pro) (90.03%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 0,
+  "candidates": []
+}

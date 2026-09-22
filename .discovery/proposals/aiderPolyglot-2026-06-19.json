@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "aider",
+  "dataKey": "aiderPolyglot",
+  "summary": "0 adds; 1 dismissed (weak-source: unmerged third-party PR with non-standard edit format, not an official leaderboard result)",
+  "adds": [],
+  "dismissals": [
+    {
+      "candidateSystemName": "DeepSeek V4 Pro",
+      "scoreDisplay": "94.2%",
+      "sourceUrl": "https://github.com/Aider-AI/aider/pull/5282",
+      "reasoning": "This score comes from an open/unmerged PR by an independent third party using a non-standard 'atomic' edit format, which is not Aider's official per-model edit format; the result has not been validated or accepted onto the official Aider polyglot leaderboard, making it a weak, non-comparable source rather than an authoritative benchmark entry.",
+      "category": "weak-source"
+    }
+  ],
+  "coverageNote": "The sole candidate (DeepSeek V4 Pro at 94.2%) was dismissed because it originates from an unmerged GitHub PR by an independent contributor using a non-standard 'atomic' edit format — it is not an official Aider leaderboard result, the edit format differs from Aider's standard per-model formats, and the PR has not been reviewed or merged. The quoted evidence itself is merely a restatement of the claim ('212/225 passing on try 2, 94.2%') rather than independently verifiable output from an official run. No candidates were added; all existing rows remain unchanged.\""
+}

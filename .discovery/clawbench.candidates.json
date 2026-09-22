@@ -1,0 +1,19 @@
+{
+  "slug": "clawbench",
+  "benchmarkName": "ClawBench",
+  "queriedAt": "2026-06-28T09:54:50.484Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"ClawBench\"",
+  "existingTopSystems": [
+    "Claude Sonnet 4.6 (33.3%)",
+    "GLM-5 (24.2%)",
+    "Gemini 3 Flash (19.0%)",
+    "Claude Haiku 4.5 (18.3%)",
+    "GPT-5.4 (6.5%)",
+    "Gemini 3.1 Flash Lite (3.3%)",
+    "Kimi K2.5 (0.7%)"
+  ],
+  "totalFound": 2,
+  "newCandidates": 0,
+  "candidates": []
+}

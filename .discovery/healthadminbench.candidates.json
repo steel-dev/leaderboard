@@ -1,0 +1,20 @@
+{
+  "slug": "healthadminbench",
+  "benchmarkName": "HealthAdminBench",
+  "queriedAt": "2026-06-28T09:54:53.952Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"HealthAdminBench\"",
+  "existingTopSystems": [
+    "Claude Mythos 5 (browser-use) (51.9%)",
+    "Claude Opus 4.8 (browser-use) (51.9%)",
+    "Claude Mythos Preview (browser-use) (47.4%)",
+    "Claude Sonnet 4.6 (browser-use) (45.2%)",
+    "Claude Opus 4.6 CUA (36.3%)",
+    "GPT-5.4 CUA (26.7%)",
+    "Kimi K2.5 (15.6%)",
+    "Claude Opus 4.6 (14.8%)"
+  ],
+  "totalFound": 1,
+  "newCandidates": 0,
+  "candidates": []
+}

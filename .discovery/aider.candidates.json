@@ -1,0 +1,45 @@
+{
+  "slug": "aider",
+  "benchmarkName": "Aider",
+  "queriedAt": "2026-06-28T09:54:39.998Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"Aider\"",
+  "existingTopSystems": [
+    "gpt-5 (high) (88.0%)",
+    "gpt-5 (medium) (86.7%)",
+    "o3-pro (high) (84.9%)",
+    "gemini-2.5-pro-preview-06-05 (32k think) (83.1%)",
+    "o3 (high) (81.3%)",
+    "gpt-5 (low) (81.3%)",
+    "grok-4 (high) (79.6%)",
+    "gemini-2.5-pro-preview-06-05 (default think) (79.1%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 2,
+  "candidates": [
+    {
+      "arxivId": "2606.24429",
+      "url": "https://arxiv.org/abs/2606.24429",
+      "title": "Detecting AI Coding Agents in Open Source: A Validated Multi-Method Census of 180 Million Repositories",
+      "authors": [
+        "Arsham Khosravani",
+        "Audris Mockus"
+      ],
+      "publishedAt": "2026-06-23T11:05:42Z",
+      "summary": "Generative AI coding agents are entering the open-source supply chain, yet their diverse and often invisible traces leave their prevalence poorly understood. We introduce a multi-layered detection framework that integrates configuration-file scanning, commit-message analysis, author-identity matching, and bot-signature lookup across World of Code (180M+ Git repositories), classifying agent traces into four behavioral types. No single method captures more than a fraction of activity: multi-method detection identifies 850,157 Claude Code commits in one snapshot, of which bot-account lookup_the signal most adoption studies rely on_recovers only 28,154 (3.3%), a 30x relative-recall gap, so single-signal prevalence estimates are biased low by at least this factor. Every detection pattern is hand-validated (495 labels) with per-cell precision and Wilson confidence intervals. Across snapshots from December 2024 to April 2026, commit-attributed agents generate over 320,000 commits per month; Claude Code leads (886,122 commits across 17,295 projects) and dominates silent, configuration-file-only adoption (21,078 projects). Compared against an independent pull-request census (AIDev), the two channels capture nearly disjoint agent populations_a PR census misses 79% of commit-detected Claude Code adopters and essentially all Codex adopters_and different kinds of work: PR-deployed cloud agents (Codex, Cursor) surface as feature work, while commit-deployed in-editor agents (Claude Code, OpenHands, Aider) surface as maintenance. The observed work profile follows deployment and detection mode rather than the tool itself, so no single channel is representative.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.24020",
+      "url": "https://arxiv.org/abs/2606.24020",
+      "title": "You Don't Need to Run Every Eval",
+      "authors": [
+        "Yuchen Zeng",
+        "Dimitris Papailiopoulos"
+      ],
+      "publishedAt": "2026-06-22T23:54:00Z",
+      "summary": "A modern model release reports scores on 40+ benchmarks and the same evaluations were run many more times before it: to track training progress, compare design choices, and select the checkpoint for the release. But do we need to run every eval? We compile a public score matrix of 84 frontier models on 133 benchmarks (2,604 cells, 23.3% filled) and find it is approximately rank-2: a model's scores across all 133 benchmarks are largely determined by just two numbers. We confirm this in two ways: scores hidden from the matrix are best recovered using two factors, and two factors already explain over 90% of the variation among models on the benchmarks they share. Building on this, we design BenchPress: a logit-space rank-2 matrix completion method that recovers held-out scores to within 4.6 points, and a confidence layer that says when each prediction can be trusted. Using BenchPress, we find a subset of five benchmarks {GPQA-D, HLE, Codeforces, MMLU-Pro, ARC-AGI-1} that can recover the rest of a model's public scorecard to within 3.93 points. For a tighter inference budget, a cheaper set {GPQA-D, MMLU-Pro, Aider Polyglot, MATH-500, AIME 2026} can predict a model's evals to within 4.55. We release the score matrix, the BenchPress code, and an interactive tool that predicts any model's score on any benchmark.",
+      "alreadyTracked": false
+    }
+  ]
+}

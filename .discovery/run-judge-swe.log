@@ -1,0 +1,11 @@
+
+> leaderboard@0.0.1 discover:judge /home/agent/leaderboard
+> tsc -p tsconfig.script.json && node dist/scripts/discover-judge.js -- --model glm-5.2 --slug swe-bench-verified
+
+Judge model: glm-5.2 via z.ai (https://api.z.ai/api/anthropic)
+
+[swe-bench-verified] 0 candidate(s) — judging...
+  -> 0 add(s), 0 dismissal(s) -> .discovery/proposals/sweBenchVerified-2026-06-19.json
+
+Done. Proposals in .discovery/proposals/. Judge tokens: 2398 in / 225 out across 1 benchmark(s).
+SWE_RETRY_EXIT=0

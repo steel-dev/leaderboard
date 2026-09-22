@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "webvoyager",
+  "dataKey": "webvoyager",
+  "summary": "0 adds; 0 dismissed (no candidates submitted).",
+  "adds": [],
+  "dismissals": [],
+  "coverageNote": "No candidates were submitted for this run. The existing WebVoyager leaderboard (19 rows, rank 1 Alumnium 98.5% through rank 19 GPT-4 All Tools 30.8%) remains unchanged."
+}

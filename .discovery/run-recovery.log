@@ -1,0 +1,55 @@
+2026-06-28T12:13:48+00:00 cooldown 300s before healthadminbench (critical GPT-5.6 test)...
+2026-06-28T12:18:48+00:00 STAGE1 healthadminbench (isolated, cooled endpoint)
+
+> leaderboard@0.0.1 discover:research /home/agent/leaderboard
+> tsc -p tsconfig.script.json && node dist/scripts/discover-research.js -- --slug healthadminbench --since-days 9 --effort fast --model glm-5.2
+
+Model: glm-5.2 via z.ai (https://api.z.ai/api/anthropic)
+
+[1/1] healthadminbench — researching via Atlas (effort fast)
+  -> 0 candidate(s), ~$0.69, stop=tokens
+
+Wrote 0 candidate(s) across 1/1 benchmark(s), est. cost ~$0.69.
+Artifacts: atlas-candidates.json, atlas-report.md, atlas-trace.jsonl
+2026-06-28T12:26:48+00:00 STAGE1 snapshot saved -> atlas-candidates.recovery-hab.json
+2026-06-28T12:26:48+00:00 cooldown 120s before rest...
+2026-06-28T12:28:48+00:00 STAGE2 rest-7 (aider,osworld,gaia,clawbench,online-mind2web,tau-bench,agentbench)
+
+> leaderboard@0.0.1 discover:research /home/agent/leaderboard
+> tsc -p tsconfig.script.json && node dist/scripts/discover-research.js -- --slug aider,osworld,gaia,clawbench,online-mind2web,tau-bench,agentbench --since-days 9 --effort fast --model glm-5.2
+
+Model: glm-5.2 via z.ai (https://api.z.ai/api/anthropic)
+
+[1/7] aider — researching via Atlas (effort fast)
+  attempt 1/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  attempt 2/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  -> 1 candidate(s), ~$0.90, stop=tokens
+
+[2/7] osworld — researching via Atlas (effort fast)
+  attempt 1/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  attempt 2/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  ERROR on osworld: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError
+
+[3/7] gaia — researching via Atlas (effort fast)
+  attempt 1/3 failed: run exceeded maxDurationMs | name=AtlasError — retrying…
+  attempt 2/3 failed: run exceeded maxDurationMs | name=AtlasError — retrying…
+  ERROR on gaia: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError
+
+[4/7] clawbench — researching via Atlas (effort fast)
+  -> 2 candidate(s), ~$0.86, stop=tokens
+
+[5/7] online-mind2web — researching via Atlas (effort fast)
+  attempt 1/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  attempt 2/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  -> 0 candidate(s), ~$0.89, stop=tokens
+
+[6/7] tau-bench — researching via Atlas (effort fast)
+  -> 0 candidate(s), ~$0.70, stop=tokens
+
+[7/7] agentbench — researching via Atlas (effort fast)
+  -> 0 candidate(s), ~$0.75, stop=tokens
+
+Wrote 3 candidate(s) across 5/7 benchmark(s), est. cost ~$4.10.
+Artifacts: atlas-candidates.json, atlas-report.md, atlas-trace.jsonl, atlas-errors.json
+2026-06-28T14:37:50+00:00 STAGE2 snapshot saved -> atlas-candidates.recovery-rest.json
+2026-06-28T14:37:50+00:00 RECOVERY_DONE

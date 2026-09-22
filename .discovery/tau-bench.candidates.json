@@ -1,0 +1,51 @@
+{
+  "slug": "tau-bench",
+  "benchmarkName": "τ-bench",
+  "queriedAt": "2026-06-28T09:55:01.094Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"tau-bench\"+OR+all:\"τ-bench\"",
+  "existingTopSystems": [
+    "Step-3.5-Flash (88.2%)",
+    "GLM-4.7 (87.4%)",
+    "MiMo-V2-Flash (80.3%)",
+    "GLM-4.7-Flash (79.5%)",
+    "MiniMax M2 (77.2%)",
+    "Claude Opus 4.5 (70.2%)",
+    "GPT-5.2 (69.9%)",
+    "Qwen3.5-397B-A17B (68.4%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 2,
+  "candidates": [
+    {
+      "arxivId": "2606.23937",
+      "url": "https://arxiv.org/abs/2606.23937",
+      "title": "When Retrieval Metrics Mislead: Measuring Policy Signal in Long-Horizon Tool-Use Agents",
+      "authors": [
+        "Tianyu Ding",
+        "Juan Pablo De la Cruz Weinstein"
+      ],
+      "publishedAt": "2026-06-22T20:57:11Z",
+      "summary": "Exact-match retrieval recall is often used as a proxy for whether a retriever supplies useful policy context to a downstream decision model. We test this proxy for pre-action policy classification in tau-bench using Qwen2.5-3B/7B classifiers. Under gold-policy conditioning, a compact structured state improves macro-F1 over raw trajectories by 0.13-0.17 after tuning. We then replace the benchmark-designated policy clause with the top-ranked clause retrieved from decision-time context. Although the exact governing clause is retrieved at rank 1 for only 7% of airline states, the primary 3B classifier obtains macro-F1 0.58 with retrieved clauses versus 0.60 with gold clauses (Delta=-0.02, task-cluster 95% CI [-0.23,+0.21]); mismatched-policy and no-policy controls score 0.32 and 0.21. We do not detect a macro-F1 difference between retrieved and gold clauses in this configuration, although the interval remains too wide to establish non-inferiority. The same qualitative pattern appears with a second retriever and at 7B, while varying across fine-tuning configurations. These results indicate that exact-match clause recall can underestimate downstream policy utility in this benchmark setting, motivating evaluation with retrieved policies in the classification loop rather than recall alone.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.21627",
+      "url": "https://arxiv.org/abs/2606.21627",
+      "title": "Counsel: A Meta-Evaluation Dataset for Agentic Tasks",
+      "authors": [
+        "Sashank Pisupati",
+        "Henry Broomfield",
+        "Eujeong Choi",
+        "Antonia Calvi",
+        "Charlie Wang",
+        "Roman Engeler",
+        "Max Bartolo",
+        "Patrick Lewis"
+      ],
+      "publishedAt": "2026-06-19T17:30:56Z",
+      "summary": "As agentic systems tackle increasingly complex multi-step tasks, evaluating their trajectories presents a major bottleneck - human annotation of a single trajectory on popular agentic benchmarks can take hours, making it difficult to scale evaluations for measuring performance or curating training data. This has driven widespread reliance on automated approaches such as LLM-as-a-judge (LLMJ) to critique agents at the process and outcome-levels at scale, however, the soundness of LLMJ critiques often goes unmeasured. Here, we introduce Counsel, the first public dataset of meta-evaluations for agentic tasks. Counsel consists of process-level critiques from open-weight LLMJs on two agent benchmarks: tau-bench (customer support agents) and DA-Code (coding agents), and human meta-evaluations of these critiques. Human annotators label critiques on each flagged error as \"spot on\", \"correct location but poor reasoning\", or \"should not have flagged\", achieving reliable inter-annotator agreement (Krippendorff's alpha of 0.78). The resulting dataset stratifies LLMJ critiques by human alignment across both error location within a trajectory and reasoning quality, serving as valuable data to calibrate, improve, or train LLMJs for agents. Comparing open-weight judges, we find that more capable judge models and more reasoning effort both enabled improved human agreement, with the strongest judge reaching ~88% agreement on location and ~65% on reasoning. Counsel is generated using open-weight models and is permissively licensed for broad community use, which we hope will enable rigorous study and improved alignment of LLM-based evaluators for agentic systems.",
+      "alreadyTracked": false
+    }
+  ]
+}

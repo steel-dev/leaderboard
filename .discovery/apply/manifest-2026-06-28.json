@@ -1,0 +1,149 @@
+{
+  "runDate": "2026-06-28",
+  "mode": "dry-run",
+  "proposals": [
+    {
+      "slug": "aider",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 1,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "clawbench",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 2,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "webarena",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 2,
+      "backfill": 2,
+      "overflow": 0,
+      "dismissals": 5,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "agentbench",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "browsecomp",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "draco",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "gaia",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "healthadminbench",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "online-mind2web",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "osworld",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "swe-bench-verified",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "tau-bench",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "webvoyager",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    }
+  ]
+}

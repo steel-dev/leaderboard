@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "clawbench",
+  "dataKey": "clawbench",
+  "summary": "0 adds; 2 dismissed (both variant — non-standard Hermes harness with LLM judge instead of paper's Agentic Evaluator SR)",
+  "adds": [],
+  "dismissals": [
+    {
+      "candidateSystemName": "claude-opus-4-6",
+      "scoreDisplay": "61.4%",
+      "sourceUrl": "https://claw-bench.com/leaderboard",
+      "reasoning": "This score uses the Hermes harness with a two-stage HTTP interception + deepseek-v4-pro LLM judge, which is a non-standard evaluation setup distinct from ClawBench's original Agentic Evaluator SR methodology used by all existing leaderboard rows; it is therefore not comparable.",
+      "category": "variant"
+    },
+    {
+      "candidateSystemName": "gpt-5.4-mini",
+      "scoreDisplay": "24.8%",
+      "sourceUrl": "https://claw-bench.com/leaderboard",
+      "reasoning": "This score uses the Hermes harness with a two-stage HTTP interception + deepseek-v4-pro LLM judge, which is a non-standard evaluation setup distinct from ClawBench's original Agentic Evaluator SR methodology used by all existing leaderboard rows; it is therefore not comparable.",
+      "category": "variant"
+    }
+  ],
+  "coverageNote": "Both candidates come from the official ClawBench leaderboard but use a variant evaluation setup (Hermes harness with a lenient LLM judge) rather than the paper's original Agentic Evaluator SR over session replay, screenshots, HTTP traffic, reasoning traces, and browser actions. All seven existing rows use the original methodology, so these scores are not comparable and were dismissed as variants. No candidates using the original benchmark methodology were found in this batch."
+}

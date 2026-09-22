@@ -1,0 +1,818 @@
+{
+  "queriedAt": "2026-06-28T14:42:17.007Z",
+  "sweepWeek": "2026-06-19",
+  "model": "glm-5.2",
+  "effort": "fast",
+  "sinceDate": "2026-06-19",
+  "totalCandidates": 11,
+  "estimatedCostUSD": 4.7904,
+  "benchmarks": {
+    "webvoyager": {
+      "coverageNote": "run1 clean completion: 0 in-window candidates (stop=tokens).",
+      "candidates": [],
+      "sources": [],
+      "stats": {},
+      "name": "WebVoyager",
+      "dataKey": "webvoyager"
+    },
+    "browsecomp": {
+      "coverageNote": "run1 clean completion: 0 in-window candidates (stop=tokens).",
+      "candidates": [],
+      "sources": [],
+      "stats": {},
+      "name": "BrowseComp",
+      "dataKey": "browsecomp"
+    },
+    "draco": {
+      "coverageNote": "run1 clean completion: 0 in-window candidates (stop=tokens).",
+      "candidates": [],
+      "sources": [],
+      "stats": {},
+      "name": "DRACO",
+      "dataKey": "draco"
+    },
+    "webarena": {
+      "coverageNote": "Reconstructed from run1 trace (webarena); coverageNote/sources not preserved on kill. 8 candidates.",
+      "candidates": [
+        {
+          "systemName": "WebChallenger",
+          "organization": "Academic Research",
+          "scoreDisplay": "56.3%",
+          "scoreValue": 56.3,
+          "sourceUrl": "https://arxiv.org/html/2606.10423v1",
+          "reportedAt": "2026-06-09",
+          "setup": "GLM-4-32B (LLM) + Qwen2.5-VL-7B (VLM); no fine-tuning; full 812-task WebArena; accessibility-snapshot + numbered-list action format; PageMem observation pipeline",
+          "isSelfReported": false,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "our system achieves 56.3% on WebArena (Zhou et al., 2024), 48.7% on VisualWebArena (Koh et al., 2024), 51.0% on Online-Mind2Web (Xue et al., 2025), and 70.9% on WorkArena",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "SkillMigrator",
+          "organization": "Academic Research",
+          "scoreDisplay": "45.7%",
+          "scoreValue": 45.7,
+          "sourceUrl": "https://arxiv.org/html/2606.17645v1",
+          "reportedAt": "2026-06",
+          "setup": "GPT-4.1 backbone; Transferable Interaction Patterns (TIPs) library; accessibility-snapshot observations; full 5-domain WebArena (Shop/Admin/Reddit/GitLab/Map)",
+          "isSelfReported": false,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "SkillMigrator 45.5 4.8 52.7 5.6 72.6 4.5 46.7 6.7 19.3 3.0 16.7 9.4 45.7 5.4",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "Skill-DisCo + ReAct",
+          "organization": "Microsoft Research / Beijing Foreign Studies University",
+          "scoreDisplay": "29.1%",
+          "scoreValue": 29.1,
+          "sourceUrl": "https://arxiv.org/html/2606.26669v1",
+          "reportedAt": "2026-06-25",
+          "setup": "GPT-4o backbone for skill induction and execution; non-standard 406/406 task split of original 812 tasks; SR computed on 406 held-out evaluation tasks",
+          "isSelfReported": false,
+          "isVariant": true,
+          "variantName": "WebArena 406-task split",
+          "quotedEvidence": "On WebArena, Skill-DisCo ++ ReAct improves ReAct from 23.9% to 29.1%, outperforming ASIoffline by 4.5 absolute points.",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "GPT-5-chat + Skill-DisCo",
+          "organization": "Microsoft Research / Beijing Foreign Studies University",
+          "scoreDisplay": "37.0%",
+          "scoreValue": 37,
+          "sourceUrl": "https://arxiv.org/html/2606.26669v1",
+          "reportedAt": "2026-06-25",
+          "setup": "GPT-5-chat backbone with Skill-DisCo skills; non-standard 406/406 task split; cross-model transfer evaluation on 406 held-out tasks",
+          "isSelfReported": false,
+          "isVariant": true,
+          "variantName": "WebArena 406-task split",
+          "quotedEvidence": "On WebArena, Skill-DisCo ++ ReAct improves ReAct from 23.9% to 29.1%, outperforming ASIoffline by 4.5 absolute points.",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "Vanilla-IB (Gemini 3 Flash)",
+          "organization": "Academic Research",
+          "scoreDisplay": "50.74%",
+          "scoreValue": 50.74,
+          "sourceUrl": "https://arxiv.org/html/2606.15017",
+          "reportedAt": "2026-06",
+          "setup": "Gemini 3 Flash backbone; uses only 3 of 5 WebArena domains (Shopping 187 + Reddit 106 + Admin 182 = 475 tasks, not 812); 3 independent runs per config; actor horizon 15 steps",
+          "isSelfReported": false,
+          "isVariant": true,
+          "variantName": "WebArena 3-domain subset (Shopping/Reddit/Admin)",
+          "quotedEvidence": "Vanilla-IB 47.77±1.9 45.7±0.8 47.48±0.5 71.7±2.2 55.68±1.6 99.0±4.0 50.74 71.9",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "MATM (single-stage retrieval)",
+          "organization": "Academic Research",
+          "scoreDisplay": "20.45%",
+          "scoreValue": 20.45,
+          "sourceUrl": "https://arxiv.org/html/2606.19911",
+          "reportedAt": "2026-06",
+          "setup": "Non-standard multi-agent population setup with randomized task-model allocation across heterogeneous models; averaged over 5 runs; single-stage retrieval variant",
+          "isSelfReported": false,
+          "isVariant": true,
+          "variantName": "WebArena multi-agent population evaluation",
+          "quotedEvidence": "On WebArena, success rate improves from 18% to 20% (+2%p)",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "OpenAI Operator (WebArena-Verified paper eval)",
+          "organization": "ServiceNow Research / Mila / Polytechnique Montréal",
+          "scoreDisplay": "41.0%",
+          "scoreValue": 41,
+          "sourceUrl": "https://openreview.net/pdf?id=94tlGxmqkN",
+          "reportedAt": "2026-06",
+          "setup": "Independent re-evaluation by paper authors on original WebArena Full task set; distinct from the vendor-reported 58.1% tracked elsewhere",
+          "isSelfReported": false,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "Table 4 reports on WebArena (Original) Full: OpenAI Operator 41.0%, Naive Baseline Ensemble 13.8%",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "Naive Baseline Ensemble",
+          "organization": "ServiceNow Research / Mila / Polytechnique Montréal",
+          "scoreDisplay": "13.8%",
+          "scoreValue": 13.8,
+          "sourceUrl": "https://openreview.net/pdf?id=94tlGxmqkN",
+          "reportedAt": "2026-06",
+          "setup": "Independent re-evaluation by paper authors on original WebArena Full task set",
+          "isSelfReported": false,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "Table 4 reports on WebArena (Original) Full: OpenAI Operator 41.0%, Naive Baseline Ensemble 13.8%",
+          "sourceTier": "paper"
+        }
+      ],
+      "sources": [],
+      "stats": {},
+      "name": "WebArena",
+      "dataKey": "webarena"
+    },
+    "swe-bench-verified": {
+      "coverageNote": "run1 clean completion: 0 in-window candidates (stop=tokens).",
+      "candidates": [],
+      "sources": [],
+      "stats": {},
+      "name": "SWE-bench Verified",
+      "dataKey": "sweBenchVerified"
+    },
+    "aider": {
+      "name": "Aider",
+      "dataKey": "aiderPolyglot",
+      "coverageNote": "Searched the official Aider leaderboard (aider.chat/docs/leaderboards/), the main-branch polyglot_leaderboard.yml, HuggingFace model cards (including DeepSeek-V4-Pro), vendor/research blogs (OpenAI, Google DeepMind, Anthropic, xAI, DeepSeek, Alibaba/Qwen, Moonshot/Kimi, MiniMax, z.ai, Mistral, Cohere, Meta), both arXiv papers from the deterministic sweep (2606.24429 and 2606.24020), and system-card PDFs. No new absolute Aider original-benchmark scores were found beyond the single low-confidence candidate below. The official leaderboard was last updated 2025-11-20 and contains exactly the 15 pre-tracked entries with no additions. The DeepSeek V4 Pro HuggingFace model card reports no Aider score. arXiv:2606.24429 mentions Aider only as a detected agent (no scores). arXiv:2606.24020 uses Aider Polyglot as a predictor input but discloses no individual model scores. The one candidate (DeepSeek V4 Pro at 94.2%) comes from an OPEN/unmerged GitHub PR by a third-party contributor using a non-standard 'atomic' edit format; it is not on the official leaderboard and has not been accepted. All caveats are described in the candidate's setup field.\"",
+      "candidates": [
+        {
+          "systemName": "DeepSeek V4 Pro",
+          "organization": "danielgonzagat (independent contributor)",
+          "scoreDisplay": "94.2%",
+          "scoreValue": 94.2,
+          "sourceUrl": "https://github.com/Aider-AI/aider/pull/5282",
+          "reportedAt": "2026-06-19",
+          "setup": "Non-standard 'atomic' edit format; original 225-exercise polyglot benchmark, pass_rate_2, two attempts; open/unmerged PR by third party (not DeepSeek)",
+          "isSelfReported": false,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "The submitted leaderboard row reports: 212/225 passing on try 2, 94.2%",
+          "sourceTier": "third-party-eval"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://aider.chat/docs/leaderboards/",
+          "title": "Aider LLM Leaderboards",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/Aider-AI/aider/pull/5282",
+          "title": "[codex] Add atomic edit format and DeepSeek V4 Pro polyglot result by danielgonzagat · Pull Request #5282 · Aider-AI/aider",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.24429",
+          "title": "Detecting AI Coding Agents in Open Source: A Validated Multi-Method Census of 180 Million Repositories",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.24020",
+          "title": "You Don't Need to Run Every Eval",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+          "title": "deepseek-ai/DeepSeek-V4-Pro · Hugging Face",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Aider-AI/aider/main/aider/website/_data/polyglot_leaderboard.yml",
+          "title": "polyglot_leaderboard.yml",
+          "via": "text_direct"
+        },
+        {
+          "url": "https://epoch.ai/benchmarks/aider-polyglot",
+          "title": "Aider Polyglot",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://sophon.at/evals/aider-polyglot",
+          "title": "Aider Polyglot Benchmark",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://www.lukta.ai/benchmarks/aider-polyglot-coding-benchmark",
+          "title": "Aider Polyglot Coding Benchmark — AI Agent Benchmark | Lukta.ai",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2",
+          "title": "MiniMaxAI/MiniMax-M2 · Hugging Face",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://huggingface.co/moonshotai/Kimi-K2-Base",
+          "title": "moonshotai/Kimi-K2-Base · Hugging Face",
+          "via": "html_direct"
+        }
+      ],
+      "stats": {
+        "effort": "fast",
+        "searches": 24,
+        "searchCacheHits": 1,
+        "modelCacheHits": 0,
+        "modelGatePeakWidth": 12,
+        "sourcesFetched": 11,
+        "sourcesFailed": 0,
+        "citationsBound": 6,
+        "citationsUnsupported": 0,
+        "tokens": {
+          "lead": {
+            "input": 12761,
+            "output": 2540
+          },
+          "research": {
+            "input": 221001,
+            "output": 3922
+          },
+          "write": {
+            "input": 788159,
+            "output": 7653
+          }
+        },
+        "costUSD": 0.8981,
+        "durationMs": 449592,
+        "budgetExhausted": false,
+        "tokensExhausted": true,
+        "stopReason": "tokens"
+      }
+    },
+    "osworld": {
+      "coverageNote": "RESEARCH FAILED: glm-5.2@fast returned empty-response / maxDuration across BOTH run1 and recovery (isolated+cooled). NOT researched this sweep — distinct from a clean 0-candidate result. Needs medium effort or prompt trimming.",
+      "candidates": [],
+      "sources": [],
+      "stats": {},
+      "name": "OSWorld",
+      "dataKey": "osworld"
+    },
+    "gaia": {
+      "coverageNote": "RESEARCH FAILED: glm-5.2@fast returned empty-response / maxDuration across BOTH run1 and recovery (isolated+cooled). NOT researched this sweep — distinct from a clean 0-candidate result. Needs medium effort or prompt trimming.",
+      "candidates": [],
+      "sources": [],
+      "stats": {},
+      "name": "GAIA",
+      "dataKey": "gaia"
+    },
+    "clawbench": {
+      "name": "ClawBench",
+      "dataKey": "clawbench",
+      "coverageNote": "Searched official ClawBench leaderboard (claw-bench.com), HuggingFace dataset pages (NAIL-Group/ClawBench, TIGER-Lab/ClawBench), GitHub repo (TIGER-AI-Lab/ClawBench), PyPI, vendor blogs (Anthropic, Z.AI, OpenAI), recent arXiv preprints, and name-collision sites. No new absolute scores on the original ClawBench V1 benchmark (153 tasks, Agentic Evaluator SR metric) were published within the 2026-06-19 to 2026-06-28 lookback window. All leaderboard snapshots, dataset changelogs, and vendor blogs remain dated 2026-05-12 or 2026-05-20 — before the window opens. Two candidates surfaced from the V1 (Hermes) leaderboard section (claude-opus-4-6 at 61.4% and gpt-5.4-mini at 24.8%) are models absent from the existing 7 tracked rows, BUT: (1) their snapshot date is 2026-05-20, predating the lookback window; (2) they use a substantially different judge methodology (two-stage HTTP interception + deepseek-v4-pro LLM judge) vs the paper's 5-layer Agentic Evaluator SR, so isVariant=true. Multiple June 2026 arXiv papers (EnterpriseClawBench, RealClawBench, Claw-SWE-Bench, SafeClawBench, WildClawBench, ClawsBench) are separate benchmarks or name collisions — none report new original V1 scores. GitHub Issue #129 plans a 48-cell eval sweep but all checkboxes remain unchecked as of 2026-06-28. Name-collision sites (clawbench.net, clawbenchlabs.com, openclaw/clawbench) excluded as different products. Coverage gap: dynamic HF Spaces leaderboards could not be fetched (Gradio apps), but they pull from the same results.csv and changelog that show no June updates.",
+      "candidates": [
+        {
+          "systemName": "claude-opus-4-6",
+          "organization": "Anthropic",
+          "scoreDisplay": "61.4%",
+          "scoreValue": 61.4,
+          "sourceUrl": "https://claw-bench.com/leaderboard",
+          "reportedAt": "2026-05-20",
+          "setup": "V1 corpus (153 tasks); two-stage HTTP interception + deepseek-v4-pro LLM judge (lenient), not the paper's Agentic Evaluator SR; Hermes harness",
+          "isSelfReported": false,
+          "isVariant": true,
+          "variantName": "V1 (Hermes) — two-stage HTTP interception + LLM judge",
+          "quotedEvidence": "claude-opus-4-6 | hermes | 61.4% | 61.4% | — | — | 94 / 153",
+          "sourceTier": "official-leaderboard"
+        },
+        {
+          "systemName": "gpt-5.4-mini",
+          "organization": "OpenAI",
+          "scoreDisplay": "24.8%",
+          "scoreValue": 24.8,
+          "sourceUrl": "https://claw-bench.com/leaderboard",
+          "reportedAt": "2026-05-20",
+          "setup": "V1 corpus (153 tasks); two-stage HTTP interception + deepseek-v4-pro LLM judge (lenient), not the paper's Agentic Evaluator SR; Hermes harness",
+          "isSelfReported": false,
+          "isVariant": true,
+          "variantName": "V1 (Hermes) — two-stage HTTP interception + LLM judge",
+          "quotedEvidence": "gpt-5.4-mini-2026-03-17 | hermes | 24.8% | 24.8% | — | — | 38 / 153",
+          "sourceTier": "official-leaderboard"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2604.08523v1",
+          "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://huggingface.co/datasets/TIGER-Lab/ClawBench",
+          "title": "TIGER-Lab/ClawBench · Datasets at Hugging Face",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/TIGER-AI-Lab/ClawBench",
+          "title": "GitHub - TIGER-AI-Lab/ClawBench: Open-source benchmark for browser AI agents on daily tasks.",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://huggingface.co/datasets/NAIL-Group/ClawBench",
+          "title": "NAIL-Group/ClawBench · Datasets at Hugging Face",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://claw-bench.com/leaderboard",
+          "title": "ClawBench Leaderboard — Browser Agents on Real Websites",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.23654v1",
+          "title": "EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://www.anthropic.com/research/claude-opus-4-8",
+          "title": "Introducing Claude Opus 4.8",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://benchmarklist.com/benchmarks/clawbench/",
+          "title": "Claw Bench Benchmark Scores & AI Model Leaderboard | BenchmarkList",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://claw-bench.com",
+          "title": "ClawBench Leaderboard — Browser Agents on Real Websites",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/TIGER-AI-Lab/ClawBench/issues/129",
+          "title": "EVAL: 3 harnesses × 2 corpora × 8 models — due 2026-05-16 · Issue #129 · TIGER-AI-Lab/ClawBench",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/claw-eval/claw-eval",
+          "title": "GitHub - claw-eval/claw-eval: Claw-Eval is an evaluation harness for evaluating LLM as agents. All tasks verified by humans.",
+          "via": "html_direct"
+        }
+      ],
+      "stats": {
+        "effort": "fast",
+        "searches": 24,
+        "searchCacheHits": 0,
+        "modelCacheHits": 0,
+        "modelGatePeakWidth": 11,
+        "sourcesFetched": 11,
+        "sourcesFailed": 2,
+        "citationsBound": 6,
+        "citationsUnsupported": 0,
+        "tokens": {
+          "lead": {
+            "input": 11835,
+            "output": 3952
+          },
+          "research": {
+            "input": 187890,
+            "output": 2789
+          },
+          "write": {
+            "input": 556343,
+            "output": 9138
+          }
+        },
+        "costUSD": 0.8624,
+        "durationMs": 529723,
+        "budgetExhausted": false,
+        "tokensExhausted": true,
+        "stopReason": "tokens"
+      }
+    },
+    "healthadminbench": {
+      "name": "HealthAdminBench",
+      "dataKey": "healthAdminBench",
+      "coverageNote": "No new HealthAdminBench scores were published in the June 19–28, 2026 lookback window. All 11 existing tracked entries are unchanged. Sources checked and fetched: (1) Official Stanford leaderboard (som-shahlab.github.io/health-admin-bench-website/) — JS-rendered, could not verify current state from static HTML. (2) Steel.dev HealthAdminBench hub — last updated 2026-06-12, before the window; confirms the same 11 entries. (3) Steel.dev all-benchmarks index — same 11 entries. (4) BenchmarkList.com — data sampled 2026-05-27 / 2026-06-09, no new entries. (5) arXiv original paper (2604.09937) — source of original 7-agent scores, no update. (6) MedCUA-Bench (2606.03203) — cites HealthAdminBench in feature matrix only, reports no scores. (7) χ-Bench (2605.16679) — cites as related work, no scores. (8) Anthropic Fable 5/Mythos 5 system card PDF (27 MB) — too large to fetch; scores already tracked, published June 9 (pre-window). (9) Anthropic platform docs — JS-rendered, no content extractable. (10) Z.AI GLM-5.2 docs — no mention. (11) OpenReview forum — last modified April 2026. (12) Kinetic Systems blog — dated April 14, 2026; reports only deltas and original paper scores. No HuggingFace model cards, vendor blogs, or arXiv papers surfaced new absolute HealthAdminBench full-task pass@1 scores during the window. Gaps: official leaderboard JSON and Anthropic system card PDF were too large to fetch directly; coverage relies on aggregators (Steel.dev, BenchmarkList.com) that pull from the same underlying data.",
+      "candidates": [],
+      "sources": [
+        {
+          "url": "https://som-shahlab.github.io/health-admin-bench-website/",
+          "title": "HealthAdminBench — AI Agent Benchmark for Healthcare Administration",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2604.09937v1",
+          "title": "HealthAdminBench: Evaluating Computer-Use Agents on Healthcare Administration Tasks",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://healthadminbench.stanford.edu/",
+          "title": "HealthAdminBench — AI Agent Benchmark for Healthcare Administration",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/som-shahlab/health-admin-bench",
+          "title": "GitHub - som-shahlab/health-admin-bench",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://benchmarklist.com/benchmarks/healthadminbench/",
+          "title": "HealthAdminBench Benchmark Scores & AI Model Leaderboard | BenchmarkList",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://docs.z.ai/guides/llm/glm-5.2",
+          "title": "GLM-5.2 - Overview - Z.AI DEVELOPER DOCUMENT",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://leaderboard.steel.dev/results/",
+          "title": "AI Agent Benchmark Results: All 13 Leaderboards in One Index | Steel.dev",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://leaderboard.steel.dev/leaderboards/healthadminbench/",
+          "title": "HealthAdminBench Leaderboard 2026: Latest Healthcare Admin Agent Scores | Steel.dev",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.03203v1",
+          "title": "MedCUA-Bench: A Screenshot-Only Benchmark for Clinical Computer-Use Agents",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",
+          "title": "Introducing Claude Fable 5 and Claude Mythos 5",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://openreview.net/forum?id=NNLD7776OF",
+          "title": "HealthAdminBench: Evaluating Computer-Use Agents on Healthcare...",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://kineticsystems.ai/blog/healthadminbench-automating-healthcare-administration-with-computer-use-agents",
+          "title": "Introducing HealthAdminBench: AI Agents Can Diagnose Rare Diseases, But Can They Handle Your Insurance? | Kinetic Systems",
+          "via": "html_direct"
+        }
+      ],
+      "stats": {
+        "effort": "fast",
+        "searches": 38,
+        "searchCacheHits": 2,
+        "modelCacheHits": 0,
+        "modelGatePeakWidth": 12,
+        "sourcesFetched": 12,
+        "sourcesFailed": 3,
+        "citationsBound": 8,
+        "citationsUnsupported": 1,
+        "tokens": {
+          "lead": {
+            "input": 11704,
+            "output": 2884
+          },
+          "research": {
+            "input": 239862,
+            "output": 4250
+          },
+          "write": {
+            "input": 476871,
+            "output": 5568
+          }
+        },
+        "costUSD": 0.6923,
+        "durationMs": 478983,
+        "budgetExhausted": false,
+        "tokensExhausted": true,
+        "stopReason": "tokens"
+      }
+    },
+    "online-mind2web": {
+      "name": "Online-Mind2Web",
+      "dataKey": "mind2web",
+      "coverageNote": "No new absolute Online-Mind2Web scores were found published within the strict lookback window (≥ 2026-06-19). Sources checked: steel.dev leaderboard (last updated 2026-04-16, all entries already tracked), HAL Princeton leaderboard (explicitly paused), osunlp HF leaderboard (no new submissions), arXiv full-text fetches for OpenThoughts-Agent v2 (2606.24855, Jun 25 — no OM2W eval), HANSEL (2606.18671, Jun 17 — no absolute OM2W score), and several others outside the window. Three borderline candidates were identified but fall OUTSIDE the window: Fara1.5-9B (63.4%, arXiv:2606.20785, Jun 18 — 1 day early), Fara1.5-27B (72.3%, same paper, Jun 18 — 1 day early), Claude Opus 4.8 (84%, anthropic.com, May 28 — well before window). WebChallenger (51.0%, Jun 9), OpenWebRL (67.0%, Jun 1), and MolmoWeb (35.3% pass@1 / 60.5% pass@4, Apr 9) are all well outside the window. SuperBrowser (89.47%) was dropped as Mind2Web Hard, not Online-Mind2Web. Mind2Web 2 (osu-nlp-group) is a separate benchmark, omitted as name collision. No candidates returned.",
+      "candidates": [],
+      "sources": [
+        {
+          "url": "https://leaderboard.steel.dev/leaderboards/online-mind2web/",
+          "title": "Online-Mind2Web Leaderboard 2026: Latest Live Web Agent Scores | Steel.dev",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://huggingface.co/spaces/osunlp/Online_Mind2Web_Leaderboard/raw/main/human_Mind2Web-Online%20-%20Leaderboard_data.csv",
+          "title": "human_Mind2Web-Online - Leaderboard_data.csv",
+          "via": "text_direct"
+        },
+        {
+          "url": "https://hal.cs.princeton.edu/online_mind2web",
+          "title": "HAL: Online Mind2Web Leaderboard",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.10423v1",
+          "title": "WebChallenger: A Reliable and Efficient Generalist Web Agent",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://www.anthropic.com/news/claude-opus-4-8",
+          "title": "Introducing Claude Opus 4.8",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.10423",
+          "title": "WebChallenger: A Reliable and Efficient Generalist Web Agent",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.24855v1",
+          "title": "Data Recipes for Agentic Models",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.20785",
+          "title": "Fara-1.5: Scalable Learning Environments for Computer Use Agents",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.18671",
+          "title": "HANSEL: Extracting Breadcrumbs from Web Agent Trajectories for Interactive Verification",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.09399",
+          "title": "RunAgent SuperBrowser: A Theory of Autonomous Web Navigation Grounded in Human Browsing Behaviour",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.15673",
+          "title": "Where Did It Go Wrong? Process-Level Evaluation of Web Agents with Semantic State Tracking",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.09399v1",
+          "title": "RunAgent SuperBrowser: A Theory of Autonomous Web Navigation Grounded in Human Browsing Behaviour",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.02031",
+          "title": "OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2604.08516v1",
+          "title": "MolmoWeb: Open Visual Web Agent and Open Data for the Open Web",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://www.emergentmind.com/topics/online-mind2web",
+          "title": "Online-Mind2Web Benchmark",
+          "via": "html_direct"
+        }
+      ],
+      "stats": {
+        "effort": "fast",
+        "searches": 30,
+        "searchCacheHits": 0,
+        "modelCacheHits": 0,
+        "modelGatePeakWidth": 11,
+        "sourcesFetched": 15,
+        "sourcesFailed": 1,
+        "citationsBound": 11,
+        "citationsUnsupported": 0,
+        "tokens": {
+          "lead": {
+            "input": 12358,
+            "output": 3209
+          },
+          "research": {
+            "input": 217170,
+            "output": 3415
+          },
+          "write": {
+            "input": 603058,
+            "output": 6720
+          }
+        },
+        "costUSD": 0.8943,
+        "durationMs": 522688,
+        "budgetExhausted": false,
+        "tokensExhausted": true,
+        "stopReason": "tokens"
+      }
+    },
+    "tau-bench": {
+      "name": "τ-bench",
+      "dataKey": "tauBench",
+      "coverageNote": "No qualifying new absolute scores on the original τ-bench benchmark were found in the 2026-06-19 onward lookback window. Sources fetched and searched exhaustively: (1) Official sierra-research/tau-bench GitHub repo — deprecated, no leaderboard data; taubench.com — JS-rendered shell, no scores in static HTML; leaderboard.steel.dev mirror — last updated April 16, 2026 (before window); (2) llm-stats.com τ-bench page — updated June 28, 2026 but all 6 models listed are already-tracked systems with 0 verified rows; (3) arXiv 2606.23937 (full text) — uses original τ-bench data but reports retrieval/classification metrics, not agent pass@1 rates; (4) arXiv 2606.21627 (full text) — uses τ-bench retail subset but reports LLM-judge quality metrics, not agent task-completion scores; (5) HuggingFace search — no model cards with original τ-bench scores in window; (6) Vendor blogs (anthropic.com, openai.com, deepmind.google, deepseek.com, qwenlm.github.io, kimi.com/blog, minimax.io, z.ai/blog) — no new original τ-bench scores; (7) Claude Sonnet 4.6 system card — only reports τ²-bench (variant) scores; OpenAI gpt-oss model card — dated August 2025, predates window; (8) BenchLM aggregator — snapshot dated June 18, 2026 (one day before window), scores unverified with no primary-source backing; (9) LLMDB aggregator — all listed release dates predate June 19, 2026. Gap: if taubench.com's JS-rendered leaderboard has been updated server-side with new entries since June 19, those would not be captured in this static-HTML fetch.",
+      "candidates": [],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2606.23937",
+          "title": "When Retrieval Metrics Mislead: Measuring Policy Signal in Long-Horizon Tool-Use Agents",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://leaderboard.steel.dev/leaderboards/tau-bench/",
+          "title": "tau-bench Leaderboard 2026: Latest Tool Use Agent Scores | Steel.dev",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://benchlm.ai/benchmarks/tauBench",
+          "title": "TAU-bench Benchmark 2026: 38 tracked score rows",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.21627",
+          "title": "Counsel: A Meta-Evaluation Dataset for Agentic Tasks",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://llm-stats.com/benchmarks/tau-bench",
+          "title": "Tau-bench Leaderboard",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/sierra-research/tau-bench",
+          "title": "GitHub - sierra-research/tau-bench: Code and Data for Tau-Bench",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/pdf/2606.23937",
+          "title": "2606.23937",
+          "via": "pdf_direct"
+        },
+        {
+          "url": "https://www-cdn.anthropic.com/bbd8ef16d70b7a1665f14f306ee88b53f686aa75.pdf",
+          "title": "bbd8ef16d70b7a1665f14f306ee88b53f686aa75.pdf",
+          "via": "pdf_direct"
+        },
+        {
+          "url": "https://arxiv.org/pdf/2606.21627",
+          "title": "2606.21627",
+          "via": "pdf_direct"
+        },
+        {
+          "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+          "title": "Introducing Sonnet 4.6",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "title": "Claude Fable 5 and Claude Mythos 5",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://www.anthropic.com/research/claude-opus-4-6",
+          "title": "Claude Opus 4.6",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf",
+          "title": "oai_gpt-oss_model_card.pdf",
+          "via": "pdf_direct"
+        },
+        {
+          "url": "https://llmdb.com/benchmarks/tau-bench",
+          "title": "TAU-bench - LLM Benchmark",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://taubench.com",
+          "title": "τ-bench",
+          "via": "scrape_proxy"
+        }
+      ],
+      "stats": {
+        "effort": "fast",
+        "searches": 33,
+        "searchCacheHits": 0,
+        "modelCacheHits": 0,
+        "modelGatePeakWidth": 11,
+        "sourcesFetched": 15,
+        "sourcesFailed": 1,
+        "citationsBound": 13,
+        "citationsUnsupported": 0,
+        "tokens": {
+          "lead": {
+            "input": 11255,
+            "output": 3488
+          },
+          "research": {
+            "input": 197157,
+            "output": 4230
+          },
+          "write": {
+            "input": 458312,
+            "output": 6093
+          }
+        },
+        "costUSD": 0.6966,
+        "durationMs": 517463,
+        "budgetExhausted": false,
+        "tokensExhausted": true,
+        "stopReason": "tokens"
+      }
+    },
+    "agentbench": {
+      "name": "AgentBench",
+      "dataKey": "agentBench",
+      "coverageNote": "No new absolute scores on the ORIGINAL AgentBench benchmark were published in the 2026-06-19 to 2026-06-28 window. Sources checked: (1) Official THUDM/AgentBench GitHub repo and its linked Google Sheet leaderboard — the current official leaderboard is for AgentBench FC (Function Calling), a VARIANT introduced 2025-10-10, not the original 8-environment free-form-action benchmark. GitHub last pushed 2026-02-08. (2) Third-party aggregators importing from the official sheet: BenchmarkList (sampled 2026-05-06) and Steel.dev (updated 2026-04-16) — both predate the window and show the same scores already tracked. (3) Presenc AI agentic leaderboard (June 2026) lists ~10 models with tilde-approximate AgentBench scores (e.g., ~80%, ~78%, ~76%) but explicitly disclaims precision ('numbers should be treated as directional'), uses no primary source, and does not specify benchmark edition — fails the absolute-score standard. (4) RapidClaw blog (2026-05-06) reports approximate (~) values — predates window and fails absolute standard. (5) AgentWiki lists scores without edition attribution or per-score dates. (6) GPT-5.6 Sol announcement (openai.com, ~2026-06-26) contains zero AgentBench mentions. (7) HuggingFace model cards only show individual-environment LoRA adapters, not overall scores. (8) arXiv: no papers in window report original AgentBench scores. Critical structural finding: all scores currently on the official leaderboard are AgentBench FC (variant) scores; no original-benchmark leaderboard is currently maintained. Coverage gaps: the Google Sheet could not be directly rendered (dynamic content); Presenc AI and AgentWiki values are approximate/undated and cannot serve as citable absolute numbers.",
+      "candidates": [],
+      "sources": [
+        {
+          "url": "https://benchmarklist.com/benchmarks/agentbench_fc/",
+          "title": "AgentBench FC Benchmark Scores & AI Model Leaderboard | BenchmarkList",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://leaderboard.steel.dev/leaderboards/agentbench/",
+          "title": "AgentBench Leaderboard 2026: Latest LLM Agent Scores | Steel.dev",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/THUDM/AgentBench/blob/main/README.md",
+          "title": "AgentBench/README.md at main · THUDM/AgentBench",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fpLBLYrgHIJbHiSGiEJAYaHddR4RG-f7QKWlTq4Jy2AKM2fUI/pubhtml",
+          "title": "Page Not Found",
+          "via": "scrape_proxy"
+        },
+        {
+          "url": "https://presenc.ai/research/agentic-benchmark-leaderboard-june-2026",
+          "title": "Agentic Benchmark Leaderboard June 2026 | Presenc AI",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://rapidclaw.dev/blog/agentbench-leaderboard-2026",
+          "title": "AgentBench Leaderboard [2026 Methodology]",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/THUDM/AgentBench",
+          "title": "GitHub - THUDM/AgentBench: A Comprehensive Benchmark to Evaluate LLMs as Agents (ICLR'24)",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
+          "title": "Previewing GPT-5.6 Sol: a next-generation model",
+          "via": "scrape_proxy"
+        }
+      ],
+      "stats": {
+        "effort": "fast",
+        "searches": 30,
+        "searchCacheHits": 0,
+        "modelCacheHits": 0,
+        "modelGatePeakWidth": 11,
+        "sourcesFetched": 8,
+        "sourcesFailed": 2,
+        "citationsBound": 5,
+        "citationsUnsupported": 0,
+        "tokens": {
+          "lead": {
+            "input": 11107,
+            "output": 2278
+          },
+          "research": {
+            "input": 228025,
+            "output": 4399
+          },
+          "write": {
+            "input": 501332,
+            "output": 15258
+          }
+        },
+        "costUSD": 0.7467,
+        "durationMs": 588056,
+        "budgetExhausted": false,
+        "tokensExhausted": true,
+        "stopReason": "tokens"
+      }
+    }
+  },
+  "mergedFrom": [
+    "run1 (webarena+4 clean via trace/log)",
+    "recovery-hab (healthadminbench)",
+    "recovery-rest (5 slugs)",
+    "osworld/gaia marked research-failed"
+  ]
+}

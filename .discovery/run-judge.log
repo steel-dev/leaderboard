@@ -1,0 +1,59 @@
+
+> leaderboard@0.0.1 discover:judge /home/agent/leaderboard
+> tsc -p tsconfig.script.json && node dist/scripts/discover-judge.js -- --model glm-5.2
+
+Judge model: glm-5.2 via z.ai (https://api.z.ai/api/anthropic)
+
+[webvoyager] 0 candidate(s) — judging...
+  -> 0 add(s), 0 dismissal(s) -> .discovery/proposals/webvoyager-2026-06-19.json
+
+[browsecomp] 0 candidate(s) — judging...
+  attempt 1/3 failed: No object generated: the model did not return a response.
+  -> 0 add(s), 0 dismissal(s) -> .discovery/proposals/browsecomp-2026-06-19.json
+
+[draco] 0 candidate(s) — judging...
+  attempt 1/3 failed: No object generated: the model did not return a response.
+  attempt 2/3 failed: No object generated: the model did not return a response.
+  attempt 3/3 failed: No object generated: the model did not return a response.
+  ERROR judging draco after 3 attempt(s): No object generated: the model did not return a response.
+
+[webarena] 8 candidate(s) — judging...
+  attempt 1/3 failed: No object generated: the model did not return a response.
+  attempt 2/3 failed: No object generated: the model did not return a response.
+  -> 3 add(s), 5 dismissal(s) -> .discovery/proposals/webarena-2026-06-19.json
+
+[swe-bench-verified] 0 candidate(s) — judging...
+  attempt 1/3 failed: No object generated: the model did not return a response.
+  attempt 2/3 failed: No object generated: the model did not return a response.
+  attempt 3/3 failed: No object generated: the model did not return a response.
+  ERROR judging swe-bench-verified after 3 attempt(s): No object generated: the model did not return a response.
+
+[aider] 1 candidate(s) — judging...
+  -> 0 add(s), 1 dismissal(s) -> .discovery/proposals/aiderPolyglot-2026-06-19.json
+
+[osworld] 0 candidate(s) — judging...
+  -> 0 add(s), 0 dismissal(s) -> .discovery/proposals/osworld-2026-06-19.json
+
+[gaia] 0 candidate(s) — judging...
+  -> 0 add(s), 0 dismissal(s) -> .discovery/proposals/gaia-2026-06-19.json
+
+[clawbench] 2 candidate(s) — judging...
+  -> 0 add(s), 2 dismissal(s) -> .discovery/proposals/clawbench-2026-06-19.json
+
+[healthadminbench] 0 candidate(s) — judging...
+  attempt 1/3 failed: No object generated: the model did not return a response.
+  -> 0 add(s), 0 dismissal(s) -> .discovery/proposals/healthAdminBench-2026-06-19.json
+
+[online-mind2web] 0 candidate(s) — judging...
+  -> 0 add(s), 0 dismissal(s) -> .discovery/proposals/mind2web-2026-06-19.json
+
+[tau-bench] 0 candidate(s) — judging...
+  attempt 1/3 failed: No object generated: the model did not return a response.
+  attempt 2/3 failed: No object generated: the model did not return a response.
+  attempt 3/3 failed: No object generated: the model did not return a response.
+  ERROR judging tau-bench after 3 attempt(s): No object generated: the model did not return a response.
+
+[agentbench] 0 candidate(s) — judging...
+  -> 0 add(s), 0 dismissal(s) -> .discovery/proposals/agentBench-2026-06-19.json
+
+Done. Proposals in .discovery/proposals/. Judge tokens: 29459 in / 2660 out across 10 benchmark(s).

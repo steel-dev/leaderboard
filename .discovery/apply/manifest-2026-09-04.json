@@ -1,0 +1,50 @@
+{
+  "runDate": "2026-09-04",
+  "mode": "dry-run",
+  "proposals": [
+    {
+      "slug": "browsecomp",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "browsecomp",
+      "week": "2026-09-04",
+      "prOpened": false,
+      "survivors": 1,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "swe-bench-verified",
+      "week": "2026-06-19",
+      "prOpened": false,
+      "survivors": 0,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    },
+    {
+      "slug": "swe-bench-verified",
+      "week": "2026-09-04",
+      "prOpened": false,
+      "survivors": 1,
+      "backfill": 0,
+      "overflow": 0,
+      "dismissals": 0,
+      "rejected": 0,
+      "windowInconsistent": false
+    }
+  ]
+}

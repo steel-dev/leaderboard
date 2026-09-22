@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "browsecomp",
+  "dataKey": "browsecomp",
+  "summary": "0 adds; 0 dismissed (no candidates provided).",
+  "adds": [],
+  "dismissals": [],
+  "coverageNote": "No candidates were submitted for judgment. The candidate list is empty, so there is nothing to add or dismiss. All 90 existing BrowseComp rows remain unchanged."
+}

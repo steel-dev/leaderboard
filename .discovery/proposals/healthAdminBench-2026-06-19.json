@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "healthadminbench",
+  "dataKey": "healthAdminBench",
+  "summary": "0 adds; 0 dismissed (no candidates provided).",
+  "adds": [],
+  "dismissals": [],
+  "coverageNote": "No candidates were submitted for this run. The HealthAdminBench leaderboard currently has 11 tracked rows (Anthropic system card browser-use entries plus paper-harness baselines from arXiv 2604.09937). No new systems or scores were proposed for judgment."
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "agentbench",
+  "dataKey": "agentBench",
+  "summary": "0 adds; 0 dismissed (no candidates provided).",
+  "adds": [],
+  "dismissals": [],
+  "coverageNote": "No candidates were submitted for this run. The existing 10 rows on the AgentBench leaderboard remain unchanged."
+}

@@ -1,0 +1,109 @@
+{
+  "queriedAt": "2026-06-28T12:26:48.417Z",
+  "sweepWeek": "2026-06-19",
+  "model": "glm-5.2",
+  "effort": "fast",
+  "sinceDate": "2026-06-19",
+  "totalCandidates": 0,
+  "estimatedCostUSD": 0.6923,
+  "benchmarks": {
+    "healthadminbench": {
+      "name": "HealthAdminBench",
+      "dataKey": "healthAdminBench",
+      "coverageNote": "No new HealthAdminBench scores were published in the June 19–28, 2026 lookback window. All 11 existing tracked entries are unchanged. Sources checked and fetched: (1) Official Stanford leaderboard (som-shahlab.github.io/health-admin-bench-website/) — JS-rendered, could not verify current state from static HTML. (2) Steel.dev HealthAdminBench hub — last updated 2026-06-12, before the window; confirms the same 11 entries. (3) Steel.dev all-benchmarks index — same 11 entries. (4) BenchmarkList.com — data sampled 2026-05-27 / 2026-06-09, no new entries. (5) arXiv original paper (2604.09937) — source of original 7-agent scores, no update. (6) MedCUA-Bench (2606.03203) — cites HealthAdminBench in feature matrix only, reports no scores. (7) χ-Bench (2605.16679) — cites as related work, no scores. (8) Anthropic Fable 5/Mythos 5 system card PDF (27 MB) — too large to fetch; scores already tracked, published June 9 (pre-window). (9) Anthropic platform docs — JS-rendered, no content extractable. (10) Z.AI GLM-5.2 docs — no mention. (11) OpenReview forum — last modified April 2026. (12) Kinetic Systems blog — dated April 14, 2026; reports only deltas and original paper scores. No HuggingFace model cards, vendor blogs, or arXiv papers surfaced new absolute HealthAdminBench full-task pass@1 scores during the window. Gaps: official leaderboard JSON and Anthropic system card PDF were too large to fetch directly; coverage relies on aggregators (Steel.dev, BenchmarkList.com) that pull from the same underlying data.",
+      "candidates": [],
+      "sources": [
+        {
+          "url": "https://som-shahlab.github.io/health-admin-bench-website/",
+          "title": "HealthAdminBench — AI Agent Benchmark for Healthcare Administration",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2604.09937v1",
+          "title": "HealthAdminBench: Evaluating Computer-Use Agents on Healthcare Administration Tasks",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://healthadminbench.stanford.edu/",
+          "title": "HealthAdminBench — AI Agent Benchmark for Healthcare Administration",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://github.com/som-shahlab/health-admin-bench",
+          "title": "GitHub - som-shahlab/health-admin-bench",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://benchmarklist.com/benchmarks/healthadminbench/",
+          "title": "HealthAdminBench Benchmark Scores & AI Model Leaderboard | BenchmarkList",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://docs.z.ai/guides/llm/glm-5.2",
+          "title": "GLM-5.2 - Overview - Z.AI DEVELOPER DOCUMENT",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://leaderboard.steel.dev/results/",
+          "title": "AI Agent Benchmark Results: All 13 Leaderboards in One Index | Steel.dev",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://leaderboard.steel.dev/leaderboards/healthadminbench/",
+          "title": "HealthAdminBench Leaderboard 2026: Latest Healthcare Admin Agent Scores | Steel.dev",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.03203v1",
+          "title": "MedCUA-Bench: A Screenshot-Only Benchmark for Clinical Computer-Use Agents",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",
+          "title": "Introducing Claude Fable 5 and Claude Mythos 5",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://openreview.net/forum?id=NNLD7776OF",
+          "title": "HealthAdminBench: Evaluating Computer-Use Agents on Healthcare...",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://kineticsystems.ai/blog/healthadminbench-automating-healthcare-administration-with-computer-use-agents",
+          "title": "Introducing HealthAdminBench: AI Agents Can Diagnose Rare Diseases, But Can They Handle Your Insurance? | Kinetic Systems",
+          "via": "html_direct"
+        }
+      ],
+      "stats": {
+        "effort": "fast",
+        "searches": 38,
+        "searchCacheHits": 2,
+        "modelCacheHits": 0,
+        "modelGatePeakWidth": 12,
+        "sourcesFetched": 12,
+        "sourcesFailed": 3,
+        "citationsBound": 8,
+        "citationsUnsupported": 1,
+        "tokens": {
+          "lead": {
+            "input": 11704,
+            "output": 2884
+          },
+          "research": {
+            "input": 239862,
+            "output": 4250
+          },
+          "write": {
+            "input": 476871,
+            "output": 5568
+          }
+        },
+        "costUSD": 0.6923,
+        "durationMs": 478983,
+        "budgetExhausted": false,
+        "tokensExhausted": true,
+        "stopReason": "tokens"
+      }
+    }
+  }
+}

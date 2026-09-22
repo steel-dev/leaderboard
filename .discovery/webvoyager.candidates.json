@@ -1,0 +1,20 @@
+{
+  "slug": "webvoyager",
+  "benchmarkName": "WebVoyager",
+  "queriedAt": "2026-06-28T09:54:22.321Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"WebVoyager\"",
+  "existingTopSystems": [
+    "Alumnium (98.5%)",
+    "Surfer 2 (97.1%)",
+    "Magnitude (93.9%)",
+    "Surfer-H + Holo1 (92.2%)",
+    "Browserable (90.4%)",
+    "Browser Use (89.1%)",
+    "GLM-5V-Turbo (88.5%)",
+    "Agent Kura (87.0%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 0,
+  "candidates": []
+}

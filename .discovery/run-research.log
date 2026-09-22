@@ -1,0 +1,38 @@
+
+> leaderboard@0.0.1 discover:research /home/agent/leaderboard
+> tsc -p tsconfig.script.json && node dist/scripts/discover-research.js -- --since-days 9 --effort fast --model glm-5.2
+
+Model: glm-5.2 via z.ai (https://api.z.ai/api/anthropic)
+
+[1/13] webvoyager — researching via Atlas (effort fast)
+  -> 0 candidate(s), ~$0.89, stop=tokens
+
+[2/13] browsecomp — researching via Atlas (effort fast)
+  -> 0 candidate(s), ~$0.93, stop=tokens
+
+[3/13] draco — researching via Atlas (effort fast)
+  -> 0 candidate(s), ~$0.90, stop=tokens
+
+[4/13] webarena — researching via Atlas (effort fast)
+  attempt 1/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  -> 8 candidate(s), ~$0.90, stop=tokens
+
+[5/13] swe-bench-verified — researching via Atlas (effort fast)
+  attempt 1/3 failed: run exceeded maxDurationMs | name=AtlasError — retrying…
+  attempt 2/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  -> 0 candidate(s), ~$0.78, stop=tokens
+
+[6/13] aider — researching via Atlas (effort fast)
+  attempt 1/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  attempt 2/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  ERROR on aider: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError
+
+[7/13] osworld — researching via Atlas (effort fast)
+  attempt 1/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  attempt 2/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  ERROR on osworld: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError
+
+[8/13] gaia — researching via Atlas (effort fast)
+  attempt 1/3 failed: No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError — retrying…
+  attempt 2/3 failed: run exceeded maxDurationMs | name=AtlasError — retrying…
+ ELIFECYCLE  Command failed.

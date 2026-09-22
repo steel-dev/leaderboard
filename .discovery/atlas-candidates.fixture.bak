@@ -1,0 +1,222 @@
+{
+  "queriedAt": "2026-06-27T15:36:51.070Z",
+  "sweepWeek": "2026-W26",
+  "model": "glm-5.2",
+  "effort": "fast",
+  "sinceDate": "2026-06-13",
+  "totalCandidates": 7,
+  "estimatedCostUSD": 0.9043,
+  "benchmarks": {
+    "browsecomp": {
+      "name": "BrowseComp",
+      "coverageNote": "Searched all four arXiv leads from the deterministic sweep: arXiv:2606.18831 (Beyond Reward Engineering) yielded 6 new absolute scores on the ORIGINAL BrowseComp benchmark (AgentCPM-Explore base + two RL checkpoints, each reported under two aggregation methods: single-run Pass@3 from Table 5 and Average Pass@3 from Table 9). All scores are on a 100-example subset of original BrowseComp. The other three arXiv leads (2606.23642, 2606.20363, 2606.15345) use BrowseComp-Plus/BrowseComp+/XBCP variants and were dropped from original-benchmark candidates. Vendor blog sweep covered OpenAI, Anthropic, Google DeepMind, Google AI, Zhipu, OpenAI Platform, DeepSeek, Alibaba Qwen, Moonshot/Kimi, and MiniMax — only MiniMax M3 surfaced a new original-BrowseComp score (83.5%, low confidence due to uncertain publication date; model card live by June 27 2026 via llm-stats.com). No official continuously-updated leaderboard maintained by benchmark authors was found. Third-party trackers (steel.dev frozen May 28, llm-stats.com updated June 27, benchlm.ai updated June 18) were checked; no other new untracked systems with original BrowseComp scores surfaced. Exa Agent blog (June 16 2026) had interactive BrowseComp charts but no extractable verbatim scores. Kimi K2.6 single-agent 83.2% is pre-lookback-window (April 2026 blog); not reported as a new candidate. Coverage gaps: MiniMax M3 model card date unconfirmed; some vendor blogs may have published after the search was conducted.",
+      "candidates": [
+        {
+          "systemName": "AgentCPM-Explore",
+          "organization": "Academic Research (Tsinghua et al.)",
+          "scoreDisplay": "27.00%",
+          "scoreValue": 27,
+          "sourceUrl": "https://arxiv.org/html/2606.18831",
+          "reportedAt": "2026-06-17",
+          "setup": "100-example subset of original BrowseComp, Pass@3, Google Serp API + DeepSeek-V3.2 fetch + Python executor; 240K ctx, 200 rounds",
+          "isSelfReported": true,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "AgentCPM-Explore | 66.1 | 27.00 | 45.57",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "AgentCPM-Explore + Ours (25 steps)",
+          "organization": "Academic Research (Tsinghua et al.)",
+          "scoreDisplay": "29.00%",
+          "scoreValue": 29,
+          "sourceUrl": "https://arxiv.org/html/2606.18831",
+          "reportedAt": "2026-06-17",
+          "setup": "100-example subset of original BrowseComp, Pass@3, long-context RL checkpoint (25 steps), Google Serp API + DeepSeek-V3.2 fetch + Python executor; 240K ctx, 200 rounds",
+          "isSelfReported": true,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "AgentCPM-Explore | 66.1 | 27.00 | 45.57",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "AgentCPM-Explore + Ours (50 steps)",
+          "organization": "Academic Research (Tsinghua et al.)",
+          "scoreDisplay": "34.00%",
+          "scoreValue": 34,
+          "sourceUrl": "https://arxiv.org/html/2606.18831",
+          "reportedAt": "2026-06-17",
+          "setup": "100-example subset of original BrowseComp, Pass@3, long-context RL checkpoint (50 steps), Google Serp API + DeepSeek-V3.2 fetch + Python executor; 240K ctx, 200 rounds",
+          "isSelfReported": true,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "+ Ours (50 steps) | 70.9 | 34.00 | 54.64",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "AgentCPM-Explore (Average Pass@3)",
+          "organization": "Academic Research (Tsinghua et al.)",
+          "scoreDisplay": "17.3%",
+          "scoreValue": 17.3,
+          "sourceUrl": "https://arxiv.org/html/2606.18831",
+          "reportedAt": "2026-06-17",
+          "setup": "100-example subset of original BrowseComp, Average Pass@3 (multiple runs averaged), Google Serp API + DeepSeek-V3.2 fetch + Python executor; 240K ctx, 200 rounds",
+          "isSelfReported": true,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "AgentCPM-Explore | 49.6 | 17.3",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "AgentCPM-Explore + Ours (25 steps, Average Pass@3)",
+          "organization": "Academic Research (Tsinghua et al.)",
+          "scoreDisplay": "17.8%",
+          "scoreValue": 17.8,
+          "sourceUrl": "https://arxiv.org/html/2606.18831",
+          "reportedAt": "2026-06-17",
+          "setup": "100-example subset of original BrowseComp, Average Pass@3 (multiple runs averaged), long-context RL checkpoint (25 steps), Google Serp API + DeepSeek-V3.2 fetch + Python executor; 240K ctx, 200 rounds",
+          "isSelfReported": true,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "AgentCPM-Explore + Ours (25 steps) | 51.3 | 17.8",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "AgentCPM-Explore + Ours (50 steps, Average Pass@3)",
+          "organization": "Academic Research (Tsinghua et al.)",
+          "scoreDisplay": "19.7%",
+          "scoreValue": 19.7,
+          "sourceUrl": "https://arxiv.org/html/2606.18831",
+          "reportedAt": "2026-06-17",
+          "setup": "100-example subset of original BrowseComp, Average Pass@3 (multiple runs averaged), long-context RL checkpoint (50 steps), Google Serp API + DeepSeek-V3.2 fetch + Python executor; 240K ctx, 200 rounds",
+          "isSelfReported": true,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "+ Ours (50 steps) | 54.9 | 19.7",
+          "sourceTier": "paper"
+        },
+        {
+          "systemName": "MiniMax M3",
+          "organization": "MiniMax",
+          "scoreDisplay": "83.5%",
+          "scoreValue": 83.5,
+          "sourceUrl": "https://www.minimax.io/models/text/m3",
+          "reportedAt": "2026-06-27",
+          "setup": "No setup details on model card; likely agent/tool-enabled",
+          "isSelfReported": true,
+          "isVariant": false,
+          "variantName": "",
+          "quotedEvidence": "On BrowseComp, M3 scores 83.5, surpassing Opus 4.7 (79.3), demonstrating strong autonomous browsing and information retrieval capabilities.",
+          "sourceTier": "model-card"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2606.20363",
+          "title": "Automating SKILL.md Generation for Computer-Using Agents via Interaction Trajectory Mining",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.23642",
+          "title": "Improving Long-Context Retrieval with Multi-Prefix Embedding",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.15345",
+          "title": "Beyond Monolingual Deep Research: Evaluating Agents and Retrievers with Cross-Lingual BrowseComp-Plus",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/abs/2606.18831",
+          "title": "Beyond Reward Engineering: A Data Recipe for Long-Context Reinforcement Learning",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.23642",
+          "title": "Improving Long-Context Retrieval with Multi-Prefix Embedding",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://benchlm.ai/benchmarks/browseComp",
+          "title": "BrowseComp Benchmark 2026: 26 LLM scores",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://leaderboard.steel.dev/leaderboards/browsecomp/",
+          "title": "BrowseComp Leaderboard 2026: Latest Web Research Agent Scores | Steel.dev",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.18831",
+          "title": "Beyond Reward Engineering: A Data Recipe for Long-Context Reinforcement Learning",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.20363",
+          "title": "Automating SKILL.md Generation for Computer-Using Agents via Interaction Trajectory Mining",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://llm-stats.com/benchmarks/browsecomp",
+          "title": "BrowseComp Leaderboard",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.15345",
+          "title": "Beyond Monolingual Deep Research: Evaluating Agents and Retrievers with Cross-Lingual BrowseComp-Plus",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.13120v1",
+          "title": "EvoBrowseComp: Benchmarking Search Agents on Evolving Knowledge",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://www.kimi.com/blog/kimi-k2-6",
+          "title": "Kimi K2.6 Tech Blog: Advancing Open-Source Coding",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://www.minimax.io/models/text/m3",
+          "title": "MiniMax M3 - Coding & Agentic Frontier, 1M Context, Multimodal",
+          "via": "html_direct"
+        },
+        {
+          "url": "https://exa.ai/blog/exa-agent",
+          "title": "Introducing Exa Agent",
+          "via": "html_direct"
+        }
+      ],
+      "stats": {
+        "effort": "fast",
+        "searches": 25,
+        "searchCacheHits": 0,
+        "modelCacheHits": 0,
+        "modelGatePeakWidth": 11,
+        "sourcesFetched": 15,
+        "sourcesFailed": 0,
+        "citationsBound": 10,
+        "citationsUnsupported": 1,
+        "tokens": {
+          "lead": {
+            "input": 13210,
+            "output": 3497
+          },
+          "research": {
+            "input": 168678,
+            "output": 2589
+          },
+          "write": {
+            "input": 615455,
+            "output": 10233
+          }
+        },
+        "costUSD": 0.9043,
+        "durationMs": 475147,
+        "budgetExhausted": false,
+        "tokensExhausted": true,
+        "stopReason": "tokens"
+      }
+    }
+  }
+}

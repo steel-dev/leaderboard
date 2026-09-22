@@ -1,0 +1,98 @@
+{
+  "slug": "swe-bench-verified",
+  "benchmarkName": "SWE-bench Verified",
+  "queriedAt": "2026-06-28T09:54:36.328Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"SWE-bench+Verified\"",
+  "existingTopSystems": [
+    "Claude Mythos 5 (95.5%)",
+    "Claude Fable 5 (95.0%)",
+    "Claude Mythos Preview (93.9%)",
+    "Claude Opus 4.8 (88.6%)",
+    "Claude Opus 4.7 (87.6%)",
+    "Claude Opus 4.5 (80.9%)",
+    "Claude Opus 4.6 (80.8%)",
+    "DeepSeek-V4-Pro-Max (80.6%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 5,
+  "candidates": [
+    {
+      "arxivId": "2606.25514",
+      "url": "https://arxiv.org/abs/2606.25514",
+      "title": "Unlocking Model Potentials Through Adaptive Multi-Agent Scaffolding for Efficient Issue Resolution",
+      "authors": [
+        "Yang Chen",
+        "Aliya Ahmad",
+        "Yiheng Zhou",
+        "Reyhaneh Jabbarvand"
+      ],
+      "publishedAt": "2026-06-24T07:48:05Z",
+      "summary": "Resolving issues with ambiguous and incomplete descriptions, particularly concerning complex bugs, requires a sophisticated, long-horizon workflow. Agents must navigate codebases to locate the root cause, reproduce the failure, implement a fix, and validate the resulting patch. Inefficient context management, thereby, can lead to rapid context degradation and context poisoning, preventing successful resolution. We propose icat-agent, a decentralized, multi-agent scaffolding that replaces shared context with synchronous, event-based message passing. Utilizing a rubric-based issue quality check, icat-agent strategically pivots its workflow: it initiates parallel patching and validation for well-defined issues, while deploying preliminary exploration for low-quality ones. A comprehensive evaluation of icat-agent on SWE-bench Verified and SWE-bench Pro demonstrates that it consistently outperforms prominent baselines across all difficulty levels, including SWE-agent, mini-SWE-agent, and Claude Code, while using the same underlying models, improving by 3.6-8.4% on SWE-bench Verified and 6.3-18.5% on SWE-bench Pro. icat-agent is also computationally efficient, reducing the average cost by $1.18 per instance compared with the multi-agent Claude Code baseline. Our findings reveal that a robust scaffold such as icat-agent unlocks substantial latent capability within a fixed model, with the same backbone resolving markedly more issues under icat-agent than under existing scaffolds. icat-agent +GPT-5.4-xhigh resolves 67.4% of SWE-bench Pro problems, outperforming the current best result on SWE-bench Pro (59.10%, mini-SWE-agent+GPT-5.4-xhigh) by 8.3 percentage points.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.24820",
+      "url": "https://arxiv.org/abs/2606.24820",
+      "title": "SHERLOC: Structured Diagnostic Localization for Code Repair Agents",
+      "authors": [
+        "Hovhannes Tamoyan",
+        "Sean Narenthiran",
+        "Erik Arakelyan",
+        "Mira Mezini",
+        "Boris Ginsburg"
+      ],
+      "publishedAt": "2026-06-23T17:05:50Z",
+      "summary": "LLM agents solve repository-level coding tasks through multi-turn tool use, but utilize half their budget on locating faults before editing. Dedicated localization frameworks have emerged, yet are still evaluated as file retrieval rather than actionable diagnosis, producing locations without the diagnostic context a repair agent needs. We introduce SHERLOC (Structured Hypothesis-driven Exploration and Reasoning for Localization), a training-free framework pairing a reasoning LLM with compact repository tools and self-recovery, without fine-tuning or multi-agent orchestration. SHERLOC reaches state-of-the-art localization across model scales: 84.33% accuracy@1 on SWE-Bench Lite and 81.27% recall@1 on SWE-Bench Verified; at ~30B parameters, it matches or outperforms other agentic methods. Injecting our locations and diagnostic findings into repair agents yields, on average, +5.95 pp resolve rate on SWE-Bench Verified while cutting localization and total tokens by 36.7% and 23.1%.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.22906",
+      "url": "https://arxiv.org/abs/2606.22906",
+      "title": "From Fragments to Paths: Task-Level Context Recovery for Large Industrial Codebases",
+      "authors": [
+        "Jiawei He",
+        "Weisong Sun",
+        "Mengyu Shi",
+        "Jie Jia",
+        "Tong Bian",
+        "Xikai Yang",
+        "Dong Sun"
+      ],
+      "publishedAt": "2026-06-22T06:44:51Z",
+      "summary": "Large language models have shown strong performance on software engineering (SE) tasks, yet understanding large industrial repositories remains challenging. Existing methods often retrieve only local fragments and fail to recover the broader task-relevant context needed for complex repository-level tasks. We present DeepDiscovery, a task-level repository-understanding method for large industrial codebases. DeepDiscovery uses a two-stage \\textit{Location--Inference} framework to localize high-confidence task anchors and recover broader task-relevant context over multi-relational repository structure under budget constraints. Across controlled method-level evaluation, organization-internal industrial repository-understanding scenarios, and end-to-end evaluation on SWE-bench Verified, DeepDiscovery consistently improves task-relevant file recovery and downstream SE performance. On 27 medium-scale tasks, DeepDiscovery achieves the best file recovery quality among five representative baselines without offline preprocessing. On organization-internal industrial tasks from a production-scale integrated codebase ecosystem, including 27 medium-scale tasks and 40 large-scale tasks, DeepDiscovery improves Full Recall Rate across multiple AI coding systems, with absolute gains ranging from 1.6 to 9.2 percentage points on large subprojects and from 2.5 to 7.4 percentage points on medium-scale subprojects. In a controlled end-to-end evaluation on SWE-bench Verified, a system equipped with DeepDiscovery achieves a 78.6\\% Solve Rate, outperforming the corresponding baseline by 8.2 percentage points. These results suggest that stronger task-level repository understanding can improve coding-agent performance on complex SE tasks.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.22798",
+      "url": "https://arxiv.org/abs/2606.22798",
+      "title": "Does the Same Token Mean the Same State? MoE Routing as Signal for Reasoning Control",
+      "authors": [
+        "Kang Chen",
+        "Minshen Yu",
+        "Junjie Nian",
+        "Yaoning Wang",
+        "Yixin Cao",
+        "Yugang Jiang"
+      ],
+      "publishedAt": "2026-06-22T03:17:31Z",
+      "summary": "In sparse Mixture-of-Experts language models, does the same token id imply the same router state and the same experts producing it? Holding the emitted token id fixed at repeated anchors, we find it does not: the experts that produce it still separate task context, trajectory history, and reasoning-effort mode. This residual structure supports test-time control: near \\emph{boundary} anchors (the final-response transition) and \\emph{delimiter} anchors (which open the answer, e.g.\\ \\texttt{\\textbackslash boxed\\{} or code fences), routing neighborhoods already align with final-answer basins at a marker-only readout and strongest when the routing is read at the answer opening. We operationalize this as \\textbf{RAD} (Routing Agreement Decoding), an answer-string-free multi-rollout selector: it locates a fixed anchor, represents each rollout by its anchor-window MoE routing states, and returns the densest Weighted-Jaccard $K$-NN route-basin center, without parsing, normalizing, executing, or voting over answer strings. Across 10 sparse-MoE configurations (gpt-oss, Qwen3-MoE) and 6 datasets spanning math, GPQA, and code, RAD is on par with Majority where string voting is well-posed, with small positive paired deltas (RAD $73.9$ / RAD+DC $74.2$ vs.\\ Majority $73.6$). Like majority voting, RAD is not a verifier: a dense \\emph{wrong} basin can still win. Its value is the interface: the same selector gives direct pass@1 on code, where exact-string voting is ill-defined, and the same routing-density principle, re-anchored to the agentic boundary, improves best-of-16 patch selection on SWE-bench Verified over random, where patches have no answer string to vote on.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.21811",
+      "url": "https://arxiv.org/abs/2606.21811",
+      "title": "Steer, Don't Solve: Training Small Critic Models for Large Code Agents",
+      "authors": [
+        "Shubham Gandhi",
+        "Yiqing Xie",
+        "Atharva Naik",
+        "Ruichen Zhu",
+        "Carolyn Rose"
+      ],
+      "publishedAt": "2026-06-20T00:14:38Z",
+      "summary": "End-to-end code agent training is resource-intensive and plateaus on the strategy-level reasoning needed to resolve code issues, since jointly optimizing code-level execution and strategy-level reasoning leaves the latter underdeveloped. Instead, we freeze the agent and add a critic model to supply that signal. Prior code critics are post-hoc, scoring completed trajectories rather than steering the agent; we instead train a small critic that provides intra-trajectory feedback via Supervised Fine-Tuning. On SWE-bench Verified, a critic trained on CWM-32B trajectories transfers to two unseen agents (gains of +3.0 to +3.8 points), and adding target-agent trajectories to the corpus increases the gain to +3.8 on CWM-32B and +4.4 to +5.2 on two Qwen agents, at 30-92x lower critic cost than a strong teacher. On Qwen3-Next-80B-A3B, the critic-guided system is both more accurate (25.2% vs. 20.8%) and cheaper (\\$0.04 vs. \\$0.11) than the agent alone, because the critic also shortens trajectories. Our results show that a small, well-trained critic is a practical complement to scaling agent training. Code: https://github.com/shubhamrgandhi/critic-training. Data and models: https://huggingface.co/collections/shubhamrgandhi/critic-training-for-code-agents",
+      "alreadyTracked": false
+    }
+  ]
+}

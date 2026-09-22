@@ -1,0 +1,42 @@
+{
+  "slug": "draco",
+  "benchmarkName": "DRACO",
+  "queriedAt": "2026-06-28T09:54:29.303Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"DRACO\"",
+  "existingTopSystems": [
+    "Claude Mythos 5 (86.4%)",
+    "Claude Mythos Preview (83.6%)",
+    "Claude Opus 4.8 (80.4%)",
+    "Claude Opus 4.7 (77.7%)",
+    "MiniMax M3 (73.23%)",
+    "Perplexity Deep Research (Opus 4.6) (70.5%)",
+    "Perplexity Deep Research (Opus 4.5) (67.2%)",
+    "Claude Fable 5 (65.3%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 1,
+  "candidates": [
+    {
+      "arxivId": "2606.26218",
+      "url": "https://arxiv.org/abs/2606.26218",
+      "title": "Dark Matter in Draco and Boötes I: Hints of a Core in an Ultra-Faint Dwarf from Simulation-Based Inference",
+      "authors": [
+        "Tri Nguyen",
+        "Lina Necib",
+        "Ting S. Li",
+        "Justin Read",
+        "Andrés Bañares-Hernández",
+        "Claude-André Faucher-Giguère",
+        "Kohei Hayashi",
+        "Kevin McKinnon",
+        "Andrew B. Pace",
+        "Nathan R. Sandford",
+        "Hao Yang"
+      ],
+      "publishedAt": "2026-06-24T18:00:00Z",
+      "summary": "The density profiles of dwarf spheroidal galaxies are among the most sensitive probes of dark matter physics, yet extracting them from noisy stellar kinematics remains a fundamental obstacle. We present GraphNPE, a simulation-based inference method for dynamical mass modeling that incorporates measurement uncertainties and spectroscopic selection functions in the forward model. Using mock data, we show that methods relying solely on line-of-sight velocity dispersion are biased toward cuspy density profiles, even in the absence of the mass-anisotropy degeneracy. By accessing higher-order velocity moments, particularly line-of-sight kurtosis, GraphNPE breaks key degeneracies and recovers density profiles with substantially less bias. We apply GraphNPE to Draco and Boötes I using MMT/Hectochelle and DESI for Draco, and the S5 survey for Boötes I. For each, we report density profiles and dark matter $J$- and $D$-factors. For Draco, GraphNPE yields consistent results across datasets, marginally preferring a cuspy inner profile ($ρ_{150} \\sim 1.6-1.9 \\times 10^8\\,\\mathrm{M}_\\odot\\,\\mathrm{kpc}^{-3}$) in agreement with literature. On DESI, however, second-order Jeans modeling fits the dispersion but fails to reproduce the kurtosis, demonstrating higher-order moments are essential. For Boötes I, limited statistical power prevents definitive determination of the inner slope. GraphNPE recovers $ρ_{150} = 0.36^{+0.15}_{-0.11} \\times 10^8\\,\\mathrm{M}_\\odot\\,\\mathrm{kpc}^{-3}$, significantly lower than literature and consistent with a cored inner profile. This places Boötes I among the lowest density dwarfs at comparable stellar masses.",
+      "alreadyTracked": false
+    }
+  ]
+}

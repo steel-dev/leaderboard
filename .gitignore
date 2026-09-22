@@ -27,5 +27,6 @@ pnpm-debug.log*
 /scripts/
 .vercel
 
-# discovery prototype output (regenerated; not source of truth)
-.discovery/
+# discovery pipeline: raw run transcripts are large (51 MB, grows
+# each sweep) and regenerable; everything else is versioned
+.discovery/atlas-runs/

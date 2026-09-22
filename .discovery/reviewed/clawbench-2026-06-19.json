@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "clawbench",
+  "dataKey": "clawbench",
+  "summary": "0 adds; 2 dismissed (both variant — non-standard Hermes harness with LLM judge instead of paper's Agentic Evaluator SR)",
+  "adds": [],
+  "dismissals": [
+    {
+      "candidateSystemName": "claude-opus-4-6",
+      "scoreDisplay": "61.4%",
+      "sourceUrl": "https://claw-bench.com/leaderboard",
+      "reasoning": "This score uses the Hermes harness with a two-stage HTTP interception + deepseek-v4-pro LLM judge, which is a non-standard evaluation setup distinct from ClawBench's original Agentic Evaluator SR methodology used by all existing leaderboard rows; it is therefore not comparable.",
+      "category": "variant"
+    },
+    {
+      "candidateSystemName": "gpt-5.4-mini",
+      "scoreDisplay": "24.8%",
+      "sourceUrl": "https://claw-bench.com/leaderboard",
+      "reasoning": "This score uses the Hermes harness with a two-stage HTTP interception + deepseek-v4-pro LLM judge, which is a non-standard evaluation setup distinct from ClawBench's original Agentic Evaluator SR methodology used by all existing leaderboard rows; it is therefore not comparable.",
+      "category": "variant"
+    }
+  ],
+  "coverageNote": "Both candidates come from the official ClawBench leaderboard but use a variant evaluation setup (Hermes harness with a lenient LLM judge) rather than the paper's original Agentic Evaluator SR over session replay, screenshots, HTTP traffic, reasoning traces, and browser actions. All seven existing rows use the original methodology, so these scores are not comparable and were dismissed as variants. No candidates using the original benchmark methodology were found in this batch.",
+  "review": {
+    "reviewedAt": "2026-06-28",
+    "reviewerModel": "claude-code-review",
+    "windowInconsistent": false,
+    "diff": "0 adds. CORRECTION (an initial markdown-rendered page fetch was stale; a direct raw-HTML fetch of claw-bench.com/leaderboard corrected it): BOTH candidates are REAL official ClawBench V1 leaderboard rows -- claude-opus-4-6 is V1 rank #1 at 61.4% (hermes, 94/153) and gpt-5.4-mini is V1 rank #5 at 24.8% (hermes, 38/153); the verify wrapper's same-row co-occurrence was CORRECT, not a false positive. They are nonetheless NON-COMPARABLE to this board: the official leaderboard's metric gives claude-sonnet-4-6 = 56.9%, but this board's existing rows (arXiv 2604.08523) carry claude-sonnet-4-6 at 33.3% -- a different metric/scale (same model, ~24-pt gap), so inserting official-metric rows would distort the board's internal ordering. The judge's 'non-standard Hermes harness' rationale was wrong (hermes is the standard methodology, used by the V1 table too); the real reason is metric-mismatch. FLAG FOR HUMAN REVIEW: the board's metric diverges from the canonical official leaderboard (sonnet-4-6 33.3% vs 56.9%); migrating is a separate maintenance decision, not a weekly discovery add. Dismissal stands.",
+    "adds": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "online-mind2web",
+  "benchmarkName": "Online-Mind2Web",
+  "queriedAt": "2026-06-28T09:54:57.514Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"Online-Mind2Web\"",
+  "existingTopSystems": [
+    "Browser Use Cloud (bu-max) (97.0%)",
+    "GPT-5.4 Native Computer Use (93.0%)",
+    "ABP + Claude Opus 4.6 (90.53%)",
+    "TinyFish (90.0%)",
+    "UI-TARS-2 (88.2%)",
+    "OpenAGI Lux (83.6%)",
+    "Navigator (78.7%)",
+    "ChatGPT Atlas Agent Mode (71.0%)"
+  ],
+  "totalFound": 18,
+  "newCandidates": 0,
+  "candidates": []
+}

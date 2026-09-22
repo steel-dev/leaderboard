@@ -1,0 +1,38 @@
+{
+  "slug": "browsecomp",
+  "benchmarkName": "BrowseComp",
+  "queriedAt": "2026-06-28T09:54:25.807Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"BrowseComp\"",
+  "existingTopSystems": [
+    "GPT-5.5 Pro (90.1%)",
+    "GPT-5.4 Pro (89.3%)",
+    "MiroThinker-H1 (88.2%)",
+    "Claude Mythos 5 (88.0%)",
+    "Claude Mythos Preview (86.9%)",
+    "Kimi K2.6 (86.3%)",
+    "Gemini 3.1 Pro (85.9%)",
+    "GPT-5.5 (84.4%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 1,
+  "candidates": [
+    {
+      "arxivId": "2606.23642",
+      "url": "https://arxiv.org/abs/2606.23642",
+      "title": "Improving Long-Context Retrieval with Multi-Prefix Embedding",
+      "authors": [
+        "Zhenglin Yu",
+        "Xueguang Ma",
+        "Shengyao Zhuang",
+        "Zhichao Xu",
+        "Luyu Gao",
+        "Crystina Zhang",
+        "Jimmy Lin"
+      ],
+      "publishedAt": "2026-06-22T17:31:02Z",
+      "summary": "Long-context retrieval exposes a tension: single-vector embeddings lose fine-grained detail, while token-level multi-vector methods incur prohibitive storage. We propose Multi-Prefix Embedding (MPE), which partitions a document into chunks separated by EOS tokens, encodes the full sequence in a single causal forward pass, and extracts one embedding at each prefix boundary. MPE retains cross-chunk context, enables chunk-level MaxSim matching, and trains with only document-level relevance labels. Experiments on MLDR-en, BrowseComp-Plus, and LongEmbed show that MPE is competitive with or outperforms single-vector, independent-chunk, and multi-vector baselines, while providing a natural source attribution mechanism for locating evidence chunks.",
+      "alreadyTracked": false
+    }
+  ]
+}

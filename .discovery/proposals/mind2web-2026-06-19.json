@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "online-mind2web",
+  "dataKey": "mind2web",
+  "summary": "0 adds; 0 dismissed (no candidates provided).",
+  "adds": [],
+  "dismissals": [],
+  "coverageNote": "No candidates were submitted for this run. The Online-Mind2Web leaderboard currently tracks 22 entries (ranks 1–22). Nothing to adjudicate."
+}

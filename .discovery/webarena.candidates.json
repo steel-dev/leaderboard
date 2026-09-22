@@ -1,0 +1,47 @@
+{
+  "slug": "webarena",
+  "benchmarkName": "WebArena",
+  "queriedAt": "2026-06-28T09:54:32.792Z",
+  "sinceIso": "2026-06-19T09:54:21.564Z",
+  "query": "all:\"WebArena\"",
+  "existingTopSystems": [
+    "WebTactix (DeepSeek v3.2) (74.3%)",
+    "OpAgent (71.6%)",
+    "ColorBrowserAgent (71.2%)",
+    "Claude Code + GBOX MCP (68.0%)",
+    "DeepSky Agent (66.9%)",
+    "Narada AI (64.2%)",
+    "IBM CUGA (61.7%)",
+    "Kimi K2.5 (58.9%)"
+  ],
+  "totalFound": 20,
+  "newCandidates": 2,
+  "candidates": [
+    {
+      "arxivId": "2606.26669",
+      "url": "https://arxiv.org/abs/2606.26669",
+      "title": "SKILL-DISCO: Distilling and Compiling Agent Traces into Reusable Procedural Skills",
+      "authors": [
+        "Zhongxin Guo",
+        "Danrui Qi",
+        "Hanwen Gu",
+        "Peng Cheng",
+        "Yongqiang Xiong"
+      ],
+      "publishedAt": "2026-06-25T07:02:32Z",
+      "summary": "Agents often repeatedly solve similar task instances from scratch, leading to unnecessary reasoning cost and long execution traces. Prior work has explored workflow reuse and executable skill induction, but it remains unclear which task scenarios admit procedural skills and how the shared procedural structure should be represented across successful traces. We study this problem in FSM-defined scenarios, where successful traces can be viewed as paths in an unknown transition graph, and formulate procedural skills as reusable parameterized control-flow subgraphs. Based on this view, we introduce SkillDisCo, a distillation-and-compilation framework that distills reusable PFSM subgraphs from successful traces and compiles them into callable, executable, and verifiable procedural skills. Experiments on ALFWorld and WebArena show that SkillDisCo improves success rates and reduces agent turns across benchmarks and model scales, demonstrating the benefits of representing shared experience as reusable execution structures.",
+      "alreadyTracked": false
+    },
+    {
+      "arxivId": "2606.22000",
+      "url": "https://arxiv.org/abs/2606.22000",
+      "title": "CFAgentBench: A Reproducible Environment and Benchmark for Autonomous Construction-Finance Agents",
+      "authors": [
+        "Rishi Srivastava"
+      ],
+      "publishedAt": "2026-06-20T11:34:52Z",
+      "summary": "We introduce CFAgentBench, a reproducible, self-hostable environment and benchmark for autonomous construction-finance agents: a CFO/controller-class agent operating across the real software stack a US construction finance team runs - ERP, project management, email, documents, pay applications, payroll, certified payroll, lien waivers, and bank/treasury portals. It contains 1,014 machine-gradeable task specifications across 8 domains and 77 families, every family grounded in a real source; a self-validated subset of 40 tasks (54 with a project-management extension) is compiled into oracle-validated executable evaluators, the runnable suite reported here. Following WebArena, the benchmark runs on an executable environment rather than static traces: 35 mock applications (31 reconciled to one company book, plus 4 PM platforms) over 9 archetypes, each implementing a uniform self-hostable app contract, so every task is graded by functional correctness - a state diff plus forbidden-side-effect checks plus required-output regexes - with an LLM judge used only for reply quality, never as reward. A distinguishing principle is a money-movement guard: 278 instances embed a payment, payroll, e-signature, or e-filing step where the correct behavior is to stop and stage for human approval, and executing even the correct transaction fails the task. The public split (n=711) is sized for a 95% Wilson half-width of +/-4.1%; a private, contamination-protected split (n=303) is reserved for remote scoring. In a first three-model open-weight sweep (k=5), the strongest agent reaches pass^1 = 0.67 but only pass^5 = 0.38 - losing 43% of its successes when required to repeat them under temperature-0 decoding. The within-model pass^1 to pass^5 collapse and sharp per-domain heterogeneity are clear evidence that single-attempt accuracy overstates deployable construction-finance competence.",
+      "alreadyTracked": false
+    }
+  ]
+}

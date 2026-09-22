@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "osworld",
+    "error": "No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError"
+  },
+  {
+    "slug": "gaia",
+    "error": "No object generated: the model did not return a response. | name=AI_NoObjectGeneratedError"
+  }
+]

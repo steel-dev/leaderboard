@@ -1,0 +1,32 @@
+Run the weekly discovery JUDGMENT pass for the Steel leaderboard. Today is 2026-06-27 (ISO week 2026-W26). PILOT mode: comment-only.
+
+You are REVIEWING candidates that Atlas already researched and cited. Do your own work ONLY from the provided evidence — you have NO web tools and MUST NOT fetch anything. Atlas's output is authoritative for what was found; your job is to judge admissibility and render the comment.
+
+Read, in order:
+1. .discovery/atlas-candidates.json — structured candidates per benchmark, each with systemName, organization, scoreDisplay, scoreValue, sourceUrl, reportedAt, setup, isSelfReported, isVariant, variantName, quotedEvidence, sourceTier, plus coverageNote and sources (provenance with fetch method).
+2. .discovery/atlas-report.md — Atlas's cited narrative per benchmark.
+3. CONTRIBUTING.md — the evidence ladder and the "usually unacceptable" list.
+4. The benchmark-discovery skill at .claude/skills/benchmark-discovery/SKILL.md — its four-way taxonomy (proposed / variant / method / off-topic) and the standardized comment markdown.
+
+For every benchmark in atlas-candidates.json, classify each candidate:
+- proposed: complete citable ABSOLUTE score on the ORIGINAL benchmark, quotable verbatim from a fetched primary source (quotedEvidence present), clean system name, known org, sourceUrl points at the page containing the score.
+- variant: score on a VARIANT (isVariant true or clearly a variant name like BrowseComp-Plus, SWE-bench Multilingual, RepoMirage, Online-Mind2Web-as-variant). List under the parent.
+- method: a claim ABOUT the benchmark (judge bias, rank shifts), not a new agent score.
+- off-topic: drop silently and count as skipped (name collisions, passing citations, deltas, SOTA-without-number, truncated/chart-inferred/guessed numbers, homepage-only URLs, anything whose quotedEvidence is empty or whose number cannot be read verbatim from the source).
+
+Hard rules:
+- Judge ONLY from quotedEvidence + sourceTier + the cited sources Atlas captured. Do not invent, round, or complete numbers. If quotedEvidence is missing or the number is not verbatim in it, drop the candidate.
+- Flag isSelfReported candidates in the Score/Claim cell ("self-reported").
+- Footer counts must add up per benchmark: N = proposed + variant + method + skipped.
+
+Render .discovery/COMMENT.md using the skill's standardized markdown exactly:
+- Header "## Discovery sweep — 2026-06-27" with a source line noting BOTH the deterministic arxiv sweep AND the Atlas deep-research sweep (Exa + Steel browser).
+- One table per benchmark (in atlas-candidates.json order), columns | checkbox | Kind | System / Finding | Source | Score / Claim |, Kind in {proposed, variant, method}, rows sorted proposed then variant then method. Source cell links the primary sourceUrl with a short label and reportedAt date.
+- Zero-candidate benchmarks get the skill's "No new candidates this run" line.
+
+PILOT boundaries (non-negotiable):
+- Write ONLY .discovery/COMMENT.md. Do not modify src/data, src/lib, or any other file.
+- Do not run git, gh, npm, pnpm, or any shell. Do not post comments or open PRs. The workflow owns all of that after you finish.
+- Do not print secrets, keys, or full source content to your final message.
+
+Begin by reading atlas-candidates.json and the skill.

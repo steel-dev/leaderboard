@@ -1,0 +1,11 @@
+
+> leaderboard@0.0.1 discover:research /home/agent/leaderboard
+> tsc -p tsconfig.script.json && node dist/scripts/discover-research.js -- --slug browsecomp --effort fast
+
+Model: glm-5.2 via z.ai (https://api.z.ai/api/anthropic)
+
+[1/1] browsecomp — researching via Atlas (effort fast)
+  -> 7 candidate(s), ~$0.90, stop=tokens
+
+Wrote 7 candidate(s) across 1/1 benchmark(s), est. cost ~$0.90.
+Artifacts: atlas-candidates.json, atlas-report.md, atlas-trace.jsonl

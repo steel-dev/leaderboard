@@ -1,0 +1,18 @@
+{
+  "model": "glm-5.2",
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "runs": [
+    {
+      "slug": "swe-bench-verified",
+      "attempts": 1,
+      "model": "glm-5.2",
+      "candidates": 0,
+      "adds": 0,
+      "dismissals": 0,
+      "inputTokens": 2398,
+      "outputTokens": 225,
+      "totalTokens": 2623
+    }
+  ]
+}

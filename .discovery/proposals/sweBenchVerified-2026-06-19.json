@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sweepWeek": "2026-06-19",
+  "sinceDate": "2026-06-19",
+  "judgedAt": "2026-06-28",
+  "model": "glm-5.2",
+  "slug": "swe-bench-verified",
+  "dataKey": "sweBenchVerified",
+  "summary": "0 adds; 0 dismissed (no candidates provided).",
+  "adds": [],
+  "dismissals": [],
+  "coverageNote": "No candidates were submitted for judgment. The existing 18-row leaderboard (ranks 1–18, with ties at 8, 10, and 16) is unchanged. The lookback window is 2026-06-19 onward; any future candidates should be checked against these existing rows for duplicates and against the original-SWE-bench-Verified requirement (no variants or subsets)."
+}
