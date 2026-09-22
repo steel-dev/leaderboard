@@ -1,0 +1,25 @@
+# Context
+
+## Background
+.discovery/ was ignored since the prototype days ("regenerated;
+not source of truth"). By 2026-09 the dir holds the review trail
+for score changes: candidate JSONs, judge dismissal rationales,
+apply manifests, and the 2026-09-21 Astra release review.
+
+## Decision
+Version the curated artifacts on main; keep only
+.discovery/atlas-runs/ ignored. Those raw JSONL run transcripts
+are 51 MB and grow ~tens of MB per biweekly sweep, so committing
+them would permanently bloat history (removal later needs a
+history rewrite). Confirmed with the repo owner on 2026-09-22.
+
+## Gotchas
+- atlas-runs transcripts stay local-only; treat them as
+  regenerable, not as shared evidence.
+- The astra-release-review JSON is also tracked on branch
+  discovery/deact-biweekly-pdf-fix (5bae6f6, force-added before
+  this change) with identical content, so merges stay clean.
+
+## Related
+- discovery/deact-biweekly-pdf-fix (pipeline code, deliberately
+  unmerged and deactivated as of 2026-09-22)
