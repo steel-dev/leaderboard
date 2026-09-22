@@ -1,0 +1,23 @@
+# Context
+
+## Background
+Written during the 2026-09 GPT-6 Astra release sweep. That review found
+zero new rows for our boards (BrowseComp 91.5 / OSWorld 2.0 72.6 had
+already shipped via PRs #51 and #50) plus 77 untracked benchmark signals,
+which raised the wider strategy question the doc addresses.
+
+## Why This Way
+Every number in the doc is computed from src/data/*.json scoreValue and
+reportedAt fields (2026-09-22), so claims are reproducible from the repo.
+Evidence archive: .discovery/astra-release-review-2026-09-21.json
+(gitignored, local only).
+
+## Gotchas
+- Top-10 spread uses scoreValue only; clawbench mixes metrics and diverges
+  from the official leaderboard scale (33.3 vs 61.4 for the same family).
+- The frontier-model cohort used for coverage checks is listed in the doc;
+  recompute the table if the cohort changes.
+
+## Related
+- Rolling discovery issue #53
+- docs/research/ (54-benchmark corpus; seeds the canonical registry)
