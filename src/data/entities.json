@@ -191,6 +191,12 @@
       "name": "Gemini 3.1 Pro",
       "organization": "Google",
       "aliases": ["Gemini 3.1 Pro"]
+    },
+    {
+      "id": "gpt-4o-openai",
+      "name": "GPT-4o",
+      "organization": "OpenAI",
+      "aliases": ["GPT-4o"]
     }
   ]
 }
