@@ -1,0 +1,1 @@
+Issue #21 was already implemented in 7ea6cdd. All seven stored values match paper version 1 Table 2. The project now separates corpus, harness, and rubric; this commit labels the historical snapshot without mixing later scores.
