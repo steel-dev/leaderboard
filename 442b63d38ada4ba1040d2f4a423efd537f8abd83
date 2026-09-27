@@ -1,0 +1,1 @@
+Issue #53 is a continuing tracker. Scheduling remains disabled. Notification checks use a mocked GitHub CLI and cover tracker creation, duplicate suppression, quiet runs, proposed changes, and alert paths. No live sweep was triggered.
