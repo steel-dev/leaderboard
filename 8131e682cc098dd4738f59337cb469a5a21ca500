@@ -1,0 +1,1 @@
+WebShop ranks the original paper simple-mode baselines by success rate on 500 test tasks over three trials. Partial-credit task score and later subset results are excluded. README, lint, build, homepage, and page browser checks pass.
