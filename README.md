@@ -14,6 +14,21 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 <!-- LEADERBOARDS:START -->
 
+### [SWE-Bench Pro](https://leaderboard.steel.dev/leaderboards/swe-bench-pro)
+
+Coding · Agent scope · 4 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | Muse Spark 1.1 | Meta | [61.50%](https://labs.scale.com/leaderboard/swe_bench_pro) |
+| 2 | gpt-5.4 (xHigh) | OpenAI | [59.10%](https://labs.scale.com/leaderboard/swe_bench_pro) |
+| 3 | Muse Spark | Meta | [55.00%](https://labs.scale.com/leaderboard/swe_bench_pro) |
+| 4 | claude-opus-4-6 (thinking) | Anthropic | [51.90%](https://labs.scale.com/leaderboard/swe_bench_pro) |
+
+[View on the leaderboard →](https://leaderboard.steel.dev/leaderboards/swe-bench-pro)
+
+---
+
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 Browser agents · Agent scope · 21 entries tracked
