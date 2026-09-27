@@ -420,3 +420,25 @@ For a focused formatting check while drafting docs:
 ```bash
 npx prettier --check README.md CONTRIBUTING.md
 ```
+
+## Evaluation context
+
+`src/lib/evaluation-context.ts` stores five benchmark-level dimensions:
+task realism, state changes, permission assumptions, recovery behavior, and failure
+scoring. HTML, per-benchmark Markdown, and full-text exports use the same records.
+
+Each documented field requires a summary, source label, and primary source URL.
+Use the benchmark paper, protocol, evaluator code, or task configuration. State
+which release the evidence describes when protocols change. Do not infer a
+permission policy or recovery rate from the task category or success rate.
+
+When evidence is missing, use `not_documented`. This means the hub has not
+recorded evidence. It does not mean the benchmark lacks that behavior. Never
+replace unknown fields with invented values. Each benchmark always shows all
+five dimensions, including those not yet reviewed. Keep run-specific overrides
+in result notes, and distinguish partial progress from full-task completion.
+
+Initial coverage includes the seven browser and computer-use benchmarks.
+Sources were reviewed on 2026-09-27. The ClawBench context describes the original
+paper protocol. OSWorld 2.0 context distinguishes partial and binary scores;
+release-specific setup remains in each source and row note.

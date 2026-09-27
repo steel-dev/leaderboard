@@ -1,4 +1,5 @@
 ---
+import EvaluationContext from "../../components/EvaluationContext.astro";
 import Layout from "../../layouts/Layout.astro";
 import BenchmarkResultsTable from "../../components/BenchmarkResultsTable.astro";
 import CopyMarkdownButton from "../../components/CopyMarkdownButton.astro";
@@ -121,6 +122,7 @@ const breadcrumbSchema = JSON.stringify({
         <li><a href="#about">About this benchmark</a></li>
         <li><a href="#example-tasks">Example tasks</a></li>
         <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#evaluation-context">Evaluation context</a></li>
         <li><a href="#links">Links</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ol>
@@ -189,6 +191,8 @@ const breadcrumbSchema = JSON.stringify({
           {page.meta.methodology.map((item) => <li class="text-sm leading-6 muted">{item}</li>)}
         </ul>
       </section>
+
+      <EvaluationContext slug={page.meta.slug} />
 
       <section id="links" class="mt-8 scroll-mt-8">
         <h2 class="m-0 text-xl font-medium tracking-[-0.03em] text-[var(--color-text-strong)]">
