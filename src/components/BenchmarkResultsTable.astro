@@ -2,6 +2,8 @@
 import type { BenchmarkResultRow, BenchmarkScope } from "../lib/benchmark-hub";
 import { benchmarkScopeLabels } from "../lib/benchmark-hub";
 
+import { getSystemProfile, getOrganizationProfile, profileUrl } from "../lib/entity-profiles";
+
 interface Props {
   rows: BenchmarkResultRow[];
   scope: BenchmarkScope;
@@ -73,11 +75,19 @@ function formatReportedDate(reportedAt?: string): string {
       <tbody>
         {
           rows.map((row) => {
+            const system = getSystemProfile(row);
+            const organization = getOrganizationProfile(row.organization);
             return (
               <tr class="lb-row group align-middle">
                 <td class="px-3 py-3 text-[var(--color-text-strong)]">
                   <div class="flex flex-wrap items-center gap-2">
-                    <span class="system-name">{row.systemName}</span>
+                    {system ? (
+                      <a class="system-name" href={profileUrl(system)}>
+                        {row.systemName}
+                      </a>
+                    ) : (
+                      <span class="system-name">{row.systemName}</span>
+                    )}
                     {row.isNew && <span class="badge badge-accent">New</span>}
                     {row.repoUrl && (
                       <a
@@ -166,7 +176,13 @@ function formatReportedDate(reportedAt?: string): string {
                 <td class="px-3 py-3 font-semibold text-[var(--color-accent)]">
                   {row.scoreDisplay}
                 </td>
-                <td class="px-3 py-3 text-[var(--color-text-dim)]">{row.organization}</td>
+                <td class="px-3 py-3 text-[var(--color-text-dim)]">
+                  {organization ? (
+                    <a href={profileUrl(organization)}>{row.organization}</a>
+                  ) : (
+                    row.organization
+                  )}
+                </td>
                 <td class="px-3 py-3 whitespace-nowrap muted">
                   {row.reportedAt ? (
                     <time datetime={row.reportedAt}>{formatReportedDate(row.reportedAt)}</time>

@@ -1,0 +1,150 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+  getOrganizationProfile,
+  getSystemProfile,
+  profileUrl,
+  systemProfiles,
+  type EntityProfile,
+} from "../lib/entity-profiles";
+interface Props {
+  profile: EntityProfile;
+}
+const { profile } = Astro.props;
+const organization = profile.organization
+  ? getOrganizationProfile(profile.organization)
+  : undefined;
+const related = systemProfiles.filter(
+  (item) =>
+    item.id !== profile.id &&
+    item.results.some(({ row }) =>
+      profile.results.some((result) => result.row.organization === row.organization)
+    )
+);
+const benchmarkCount = new Set(profile.results.map((result) => result.benchmarkSlug)).size;
+const title = `${profile.name} benchmark results | Steel.dev`;
+const description = `Compare ${profile.results.length} source-linked ${profile.name} results across ${benchmarkCount} tracked benchmarks, including scores, reporting dates, and evaluation notes.`;
+const url = `https://leaderboard.steel.dev${profileUrl(profile)}`;
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  url,
+  description,
+  about: {
+    "@type": profile.kind === "organization" ? "Organization" : "Thing",
+    name: profile.name,
+    "@id": `${url}#entity`,
+  },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: profile.results.length,
+    itemListElement: profile.results.map((result, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: `${result.row.systemName}: ${result.row.scoreDisplay} on ${result.benchmarkName}`,
+        url: result.row.sourceUrl,
+        ...(result.row.reportedAt ? { datePublished: result.row.reportedAt } : {}),
+      },
+    })),
+  },
+});
+---
+
+<Layout title={title} description={description} structuredData={schema}>
+  <article class="mx-auto max-w-5xl py-8">
+    <a href="/" class="text-sm">All benchmark leaderboards</a>
+    <h1 class="mt-6 text-3xl font-medium tracking-[-0.03em]">{profile.name} benchmark results</h1>
+    <p class="text-sm leading-6 muted">
+      {profile.results.length} tracked results across {benchmarkCount} benchmarks.
+    </p>
+    <p class="max-w-3xl text-sm leading-6 muted">
+      {
+        profile.kind === "system"
+          ? "This profile tracks the exact named model or system. Configuration variants and agent harnesses keep their reported names."
+          : "This profile groups results by the reporting organization in the leaderboard. It does not establish ownership of the base model or system."
+      }
+      Scores from different benchmarks use different metrics. Read each source and evaluation note before
+      comparing results.
+    </p>
+    {
+      organization && (
+        <p class="text-sm">
+          Reporting organization: <a href={profileUrl(organization)}>{organization.name}</a>
+        </p>
+      )
+    }
+    <section class="mt-10" aria-label="All tracked benchmark results">
+      {
+        profile.results.map(({ benchmarkSlug, benchmarkName, row }) => {
+          const system = getSystemProfile(row);
+          return (
+            <article class="border-t border-(--color-border) py-6">
+              <div class="flex flex-wrap items-baseline justify-between gap-3">
+                <h2 class="m-0 text-xl font-medium">
+                  <a href={`/leaderboards/${benchmarkSlug}/`}>{benchmarkName} leaderboard</a>
+                </h2>
+                <span class="text-xl font-semibold text-(--color-accent)">{row.scoreDisplay}</span>
+              </div>
+              <p class="text-sm">
+                {profile.kind === "organization" && system ? (
+                  <a href={profileUrl(system)}>{row.systemName}</a>
+                ) : (
+                  row.systemName
+                )}
+              </p>
+              <p class="max-w-3xl text-sm leading-6 muted">
+                {row.notesShort || "Evaluation setup is not reported in this tracked row."}
+              </p>
+              <p class="text-xs muted">
+                Rank {row.rank} · Reported{" "}
+                {row.reportedAt ? (
+                  <time datetime={row.reportedAt}>{row.reportedAt}</time>
+                ) : (
+                  "date not reported"
+                )}{" "}
+                · {row.organization}
+              </p>
+              <p class="mb-0 text-sm">
+                <a href={row.sourceUrl} target="_blank" rel="noopener">
+                  Source for {row.systemName} on {benchmarkName}
+                </a>
+                {row.repoUrl && (
+                  <>
+                    {" "}
+                    ·{" "}
+                    <a href={row.repoUrl} target="_blank" rel="noopener">
+                      Repository
+                    </a>
+                  </>
+                )}
+              </p>
+            </article>
+          );
+        })
+      }
+    </section>
+    {
+      related.length > 0 && (
+        <section class="mt-10">
+          <h2 class="text-xl font-medium">Related models and systems</h2>
+          <ul class="flex list-none flex-wrap gap-x-6 gap-y-3 p-0 text-sm">
+            {related.map((item) => (
+              <li>
+                <a href={profileUrl(item)}>{item.name}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</Layout>
+<style>
+  h1,
+  h2 {
+    overflow-wrap: anywhere;
+  }
+</style>
