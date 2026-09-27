@@ -1,0 +1,1 @@
+Complete the Vercel legacy redirect rules for issue #27. Both root and descendant paths target the canonical GPQA Diamond page. JSON assertions, lint, and build pass.
