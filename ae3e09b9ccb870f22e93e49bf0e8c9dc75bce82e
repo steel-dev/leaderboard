@@ -1,0 +1,1 @@
+Issue #32: Model identities use exact system name plus reporting organization. Configuration suffixes remain distinct. Organization pages describe reporting attribution, not ownership. Profiles require two rows. Lint/build and all registered profile source/canonical/sitemap checks pass.
