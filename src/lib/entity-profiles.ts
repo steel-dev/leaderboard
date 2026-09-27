@@ -31,7 +31,7 @@ export const systemProfiles: EntityProfile[] = registry.systems
   .map((entity) => ({
     id: entity.id,
     name: entity.name,
-    kind: "system",
+    kind: "system" as const,
     organization: entity.organization,
     results: allResults.filter(
       ({ row }) =>
@@ -49,7 +49,7 @@ export const organizationProfiles: EntityProfile[] = organizations
   .map((name) => ({
     id: slugify(name),
     name,
-    kind: "organization",
+    kind: "organization" as const,
     results: allResults.filter(({ row }) => canonicalOrganization(row.organization) === name),
   }))
   .filter((profile) => profile.results.length >= 2);
