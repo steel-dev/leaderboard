@@ -298,6 +298,9 @@ Update `src/lib/benchmark-hub.ts`:
 - Add the key to `benchmarkMap`.
 - Use `results: benchmarkResults("benchmarkKey") ?? []` in the page entry.
 
+Also add the URL slug and data key to `BENCHMARK_SLUG_TO_DATA_KEY` in
+`src/lib/discovery-map.ts`. Discovery tools use this map to find the data file.
+
 ### 4. Add benchmark metadata
 
 Add a new object to `benchmarkPages`.
