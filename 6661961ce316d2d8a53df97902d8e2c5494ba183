@@ -1,0 +1,1 @@
+Complete the Vercel legacy redirect rules for issue #24, including descendant paths. JSON assertions, lint, and build pass. Local Astro root redirect remains available for previews.
