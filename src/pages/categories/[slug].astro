@@ -1,0 +1,78 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { benchmarkCategories, getCategoryBenchmarks } from "../../lib/benchmark-categories";
+export function getStaticPaths() {
+  return benchmarkCategories.map((category) => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+const { category } = Astro.props;
+const pages = getCategoryBenchmarks(category);
+const url = `https://leaderboard.steel.dev/categories/${category.slug}/`;
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: category.name,
+  url,
+  description: category.description,
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: pages.length,
+    itemListElement: pages.map((page, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "WebPage",
+        name: `${page.meta.name} leaderboard`,
+        url: `https://leaderboard.steel.dev/leaderboards/${page.meta.slug}/`,
+      },
+    })),
+  },
+});
+---
+
+<Layout
+  title={`${category.name} and leaderboards | Steel.dev`}
+  description={category.description}
+  structuredData={schema}
+>
+  <article class="mx-auto max-w-4xl py-8">
+    <a href="/" class="text-sm">All AI agent benchmark leaderboards</a>
+    <h1 class="mt-6 text-3xl font-medium tracking-[-0.03em]">{category.name}</h1>
+    <p class="max-w-3xl text-sm leading-6 muted">{category.description}</p>
+    <section class="mt-10" aria-label="Benchmarks in this category">
+      {
+        pages.map((page) => (
+          <article class="border-t border-(--color-border) py-6">
+            <h2 class="m-0 text-xl font-medium">
+              <a href={`/leaderboards/${page.meta.slug}/`}>{page.meta.name} leaderboard</a>
+            </h2>
+            <p class="max-w-3xl text-sm leading-6 muted">{page.meta.description}</p>
+            <p class="text-xs muted">
+              {page.meta.scope} scope · {page.results.length} tracked results · Updated{" "}
+              {page.meta.lastUpdated}
+            </p>
+            <p class="max-w-3xl text-sm leading-6 muted">
+              {page.meta.importantNotes[0] ?? page.meta.methodology[0]}
+            </p>
+          </article>
+        ))
+      }
+    </section>
+    <nav class="mt-10" aria-label="Other benchmark categories">
+      <h2 class="text-xl font-medium">Explore other categories</h2>
+      <ul class="list-disc space-y-2 pl-5 text-sm">
+        {
+          benchmarkCategories
+            .filter((item) => item.key !== category.key)
+            .map((item) => (
+              <li>
+                <a href={`/categories/${item.slug}/`}>{item.name}</a>
+              </li>
+            ))
+        }
+      </ul>
+    </nav>
+  </article>
+</Layout>

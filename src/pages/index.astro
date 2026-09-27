@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import FaqList from "../components/FaqList.astro";
 import { getAllBenchmarkPages, getTopResult, homeFaqs } from "../lib/benchmark-hub";
 
+import { benchmarkCategories, getCategoryBenchmarks } from "../lib/benchmark-categories";
+
 const pages = getAllBenchmarkPages();
 
 const benchmarkIndexSchema = JSON.stringify({
@@ -58,7 +60,7 @@ const faqSchema = JSON.stringify({
         <h1
           class="m-0 text-[2rem] font-medium leading-10 tracking-[-0.045em] text-(--color-text-strong)"
         >
-          Browser Agent Leaderboards
+          AI agent benchmark leaderboards
         </h1>
       </div>
       <p class="mb-0 mt-4 max-w-3xl text-sm leading-6 muted">
@@ -69,88 +71,99 @@ const faqSchema = JSON.stringify({
     </header>
 
     <section id="benchmarks" class="mt-16 scroll-mt-8">
-      <div class="home-card-grid">
-        {
-          pages.map((page) => {
-            const topRows = page.results.slice(0, 3);
-            const top = getTopResult(page.results);
-            return (
-              <article class="leaderboard-card">
-                <div class="lb-module-head flex items-center gap-3 px-3 py-2">
-                  <h2 class="m-0 text-sm font-normal tracking-[-0.02em] text-(--color-accent)">
-                    {page.meta.name}
-                  </h2>
-                  <div class="lb-head-lines" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                </div>
+      {
+        benchmarkCategories.map((category) => (
+          <section class="mb-12" aria-labelledby={`category-${category.slug}`}>
+            <h2
+              id={`category-${category.slug}`}
+              class="text-xl font-medium text-(--color-text-strong)"
+            >
+              <a href={`/categories/${category.slug}/`}>{category.name}</a>
+            </h2>
+            <p class="mb-6 max-w-3xl text-sm leading-6 muted">{category.description}</p>
+            <div class="home-card-grid">
+              {getCategoryBenchmarks(category).map((page) => {
+                const topRows = page.results.slice(0, 3);
+                const top = getTopResult(page.results);
+                return (
+                  <article class="leaderboard-card">
+                    <div class="lb-module-head flex items-center gap-3 px-3 py-2">
+                      <h3 class="m-0 text-sm font-normal tracking-[-0.02em] text-(--color-accent)">
+                        {page.meta.name}
+                      </h3>
+                      <div class="lb-head-lines" aria-hidden="true">
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+                    </div>
 
-                <div class="p-4">
-                  <p class="m-0 min-h-18 text-xs leading-5 muted">{page.meta.about[0]}</p>
+                    <div class="p-4">
+                      <p class="m-0 min-h-18 text-xs leading-5 muted">{page.meta.about[0]}</p>
 
-                  <table class="mt-7 w-full border-collapse text-xs">
-                    <thead class="lb-header text-left text-[0.625rem] uppercase tracking-wide text-(--color-text-dim)">
-                      <tr>
-                        <th class="py-2 pr-3 font-semibold">Model</th>
-                        <th class="py-2 pl-3 text-right font-semibold">
-                          <span class="inline-flex items-center gap-1.5">
-                            Score
-                            <span class="score-triangle" aria-hidden="true" />
-                          </span>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {topRows.map((row) => (
-                        <tr class="lb-row">
-                          <td class="py-2 pr-3 text-(--color-text-strong)">
-                            <span class="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-(--color-text-dim) align-middle" />
-                            {row.systemName}
-                          </td>
-                          <td class="py-2 pl-3 text-right font-semibold text-(--color-accent)">
-                            {row.scoreDisplay}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      <table class="mt-7 w-full border-collapse text-xs">
+                        <thead class="lb-header text-left text-[0.625rem] uppercase tracking-wide text-(--color-text-dim)">
+                          <tr>
+                            <th class="py-2 pr-3 font-semibold">Model</th>
+                            <th class="py-2 pl-3 text-right font-semibold">
+                              <span class="inline-flex items-center gap-1.5">
+                                Score
+                                <span class="score-triangle" aria-hidden="true" />
+                              </span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {topRows.map((row) => (
+                            <tr class="lb-row">
+                              <td class="py-2 pr-3 text-(--color-text-strong)">
+                                <span class="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-(--color-text-dim) align-middle" />
+                                {row.systemName}
+                              </td>
+                              <td class="py-2 pl-3 text-right font-semibold text-(--color-accent)">
+                                {row.scoreDisplay}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
 
-                  {top && (
-                    <p class="mb-0 mt-3 text-[0.6875rem] dim">
-                      Current leader:{" "}
-                      <span class="text-(--color-text-muted)">{top.systemName}</span>
-                    </p>
-                  )}
-                </div>
+                      {top && (
+                        <p class="mb-0 mt-3 text-[0.6875rem] dim">
+                          Current leader:{" "}
+                          <span class="text-(--color-text-muted)">{top.systemName}</span>
+                        </p>
+                      )}
+                    </div>
 
-                <a href={`/leaderboards/${page.meta.slug}/`} class="leaderboard-card-link">
-                  View Full Leaderboard page
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    class="leaderboard-card-link-icon"
-                  >
-                    <path d="M7 7h10v10" />
-                    <path d="M7 17 17 7" />
-                  </svg>
-                </a>
-              </article>
-            );
-          })
-        }
-      </div>
+                    <a href={`/leaderboards/${page.meta.slug}/`} class="leaderboard-card-link">
+                      View {page.meta.name} leaderboard
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        class="leaderboard-card-link-icon"
+                      >
+                        <path d="M7 7h10v10" />
+                        <path d="M7 17 17 7" />
+                      </svg>
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        ))
+      }
     </section>
 
     <section id="faq" class="mt-16 scroll-mt-8">
