@@ -34,6 +34,7 @@ export const BENCHMARK_SLUG_TO_DATA_KEY: Record<string, string> = {
   "online-mind2web": "mind2web",
   "tau-bench": "tauBench",
   agentbench: "agentBench",
+  toolbench: "toolbench",
 };
 
 export function dataKeyForSlug(slug: string): string | undefined {

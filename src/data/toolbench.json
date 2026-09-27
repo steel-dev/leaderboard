@@ -1,0 +1,37 @@
+{
+  "toolbench": [
+    {
+      "rank": 1,
+      "systemName": "GPT4-DFSDT",
+      "organization": "OpenBMB",
+      "scoreDisplay": "70.4%",
+      "scoreValue": 70.4,
+      "sourceUrl": "https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/toolbench/tooleval/results/leaderboard%23%23%23default_evalset%23%23%23tooleval_gpt-3.5-turbo_normalized%23%23%23ChatGPT-DFSDT.csv",
+      "repoUrl": "https://github.com/OpenBMB/ToolBench",
+      "notesShort": "Maintainer tracker snapshot; default_evalset aggregate WinRate with normalized GPT-3.5 ToolEval and RapidAPI tools; DFSDT planning.",
+      "reportedAt": "2023-09-29"
+    },
+    {
+      "rank": 2,
+      "systemName": "ChatGPT-DFSDT",
+      "organization": "OpenBMB",
+      "scoreDisplay": "64.3%",
+      "scoreValue": 64.3,
+      "sourceUrl": "https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/toolbench/tooleval/results/leaderboard%23%23%23default_evalset%23%23%23tooleval_gpt-3.5-turbo_normalized%23%23%23ChatGPT-DFSDT.csv",
+      "repoUrl": "https://github.com/OpenBMB/ToolBench",
+      "notesShort": "Maintainer tracker snapshot; default_evalset aggregate WinRate with normalized GPT-3.5 ToolEval and RapidAPI tools; DFSDT planning.",
+      "reportedAt": "2023-09-29"
+    },
+    {
+      "rank": 3,
+      "systemName": "ToolLLaMA-DFSDT",
+      "organization": "OpenBMB",
+      "scoreDisplay": "60%",
+      "scoreValue": 60,
+      "sourceUrl": "https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/toolbench/tooleval/results/leaderboard%23%23%23default_evalset%23%23%23tooleval_gpt-3.5-turbo_normalized%23%23%23ChatGPT-DFSDT.csv",
+      "repoUrl": "https://github.com/OpenBMB/ToolBench",
+      "notesShort": "Maintainer tracker snapshot; default_evalset aggregate WinRate with normalized GPT-3.5 ToolEval and RapidAPI tools; DFSDT planning.",
+      "reportedAt": "2023-09-29"
+    }
+  ]
+}

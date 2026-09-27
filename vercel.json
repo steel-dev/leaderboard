@@ -40,8 +40,8 @@
     { "source": "/registry/benchmarks/gpqa-diamond", "destination": "/results", "permanent": true },
     { "source": "/registry/benchmarks/gpqa-diamond/:path*", "destination": "/results", "permanent": true },
 
-    { "source": "/registry/benchmarks/toolbench", "destination": "/results", "permanent": true },
-    { "source": "/registry/benchmarks/toolbench/:path*", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/toolbench", "destination": "/leaderboards/toolbench/", "permanent": true },
+    { "source": "/registry/benchmarks/toolbench/:path*", "destination": "/leaderboards/toolbench/", "permanent": true },
 
     { "source": "/registry/benchmarks/terminal-bench-2-0", "destination": "/results", "permanent": true },
     { "source": "/registry/benchmarks/terminal-bench-2-0/:path*", "destination": "/results", "permanent": true },
