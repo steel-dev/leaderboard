@@ -427,6 +427,7 @@ jobs:
       - name: Apply proposals (--write opens PRs)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
           WEEK: ${{ steps.window.outputs.week }}
           SLUG: ${{ inputs.slug || '' }}
         run: |
@@ -465,6 +466,7 @@ jobs:
         if: ${{ needs.arxiv-baseline.result != 'success' || needs.discover.result != 'success' || needs.review.result != 'success' || needs.apply.result != 'success' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           # Alert issues use a SEPARATE label (discovery-alert) from the rolling tracker (discovery) so
@@ -486,12 +488,15 @@ jobs:
         if: ${{ needs.arxiv-baseline.result == 'success' && needs.discover.result == 'success' && needs.review.result == 'success' && needs.apply.result == 'success' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
           REPO: ${{ github.repository }}
           SERVER: ${{ github.server_url }}
         run: |
           WEEK=$(date -u +%G-W%V)
           MARKER="<!-- discovery-idempotency: $WEEK -->"
-          MANIFEST=$(ls .discovery/apply/manifest-*.json 2>/dev/null | head -1)
+          shopt -s nullglob
+          MANIFESTS=(.discovery/apply/manifest-*.json)
+          MANIFEST=${MANIFESTS[0]:-}
 
           if [ -z "$MANIFEST" ]; then
             BODY="## Discovery sweep — $WEEK
@@ -517,7 +522,7 @@ jobs:
 
           No fresh results survived the gates this sweep (quiet run). No PRs opened. Dismissals/rejections are recorded in the discovery-apply artifact."
             else
-              LIST=$(jq -r '.proposals[] | select(.prOpened==true) | "- \`\(.slug)\` — \(.survivors) add(s) (week \(.week))"' "$MANIFEST")
+              LIST=$(jq -r '.proposals[] | select(.prOpened==true) | "- `\(.slug)` — \(.survivors) add(s) (week \(.week))"' "$MANIFEST")
               BODY="## Discovery sweep — $WEEK
 
           Opened ${OPENED} discovery PR(s) for review — **auto-merge is OFF**, a human merges each:
@@ -531,11 +536,11 @@ jobs:
           gh label create discovery --description "Rolling tracker for benchmark candidate sweeps" --color C2E0C6 2>/dev/null || true
           ISSUE=$(gh issue list --label discovery --state open --json number --jq '.[0].number // empty')
           if [ -z "$ISSUE" ]; then
-            ISSUE=$(gh issue create \
+            ISSUE_URL=$(gh issue create \
               --title "Benchmark discovery — rolling sweep" \
               --label discovery \
-              --body "Rolling tracker for biweekly discovery sweeps. Each run opens one PR per leaderboard with full per-row reasoning; maintainers review and merge. The bot never merges.${MARKER}" \
-              --json number --jq '.number')
+              --body "Rolling tracker for discovery sweeps. Each run opens one PR per leaderboard with full per-row reasoning; maintainers review and merge. The bot never merges.")
+            ISSUE=${ISSUE_URL##*/}
           fi
           if gh issue view "$ISSUE" --json comments --jq '.comments[].body' | grep -qF "$MARKER"; then
             echo "This week's digest is already posted (marker found); skipping."
