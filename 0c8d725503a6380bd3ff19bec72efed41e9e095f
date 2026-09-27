@@ -1,0 +1,1 @@
+Issue #39: Detailed context uses primary sources for seven browser and computer-use benchmarks. All boards show five dimensions, with unknown meaning undocumented in the hub. Protocol context is separate from run-specific row notes. Lint, build, README compiler, browser desktop/mobile, and all-board HTML/markdown/full-text parity checks pass.
