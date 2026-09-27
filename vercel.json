@@ -46,8 +46,8 @@
     { "source": "/registry/benchmarks/terminal-bench-2-0", "destination": "/results", "permanent": true },
     { "source": "/registry/benchmarks/terminal-bench-2-0/:path*", "destination": "/results", "permanent": true },
 
-    { "source": "/registry/benchmarks/webshop", "destination": "/results", "permanent": true },
-    { "source": "/registry/benchmarks/webshop/:path*", "destination": "/results", "permanent": true },
+    { "source": "/registry/benchmarks/webshop", "destination": "/leaderboards/webshop/", "permanent": true },
+    { "source": "/registry/benchmarks/webshop/:path*", "destination": "/leaderboards/webshop/", "permanent": true },
 
     { "source": "/registry/benchmarks/livebench", "destination": "/results", "permanent": true },
     { "source": "/registry/benchmarks/livebench/:path*", "destination": "/results", "permanent": true },
