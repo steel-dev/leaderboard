@@ -1,0 +1,1 @@
+Integration review found a second exact GPT-4o/OpenAI row in the separate #27 proposal. Add a stable exact alias in advance. Standalone profile remains below threshold; merged data enables it without a naming change. Lint, README compiler, and build pass.
