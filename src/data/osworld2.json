@@ -46,6 +46,17 @@
     },
     {
       "rank": 5,
+      "systemName": "GPT-6.1 Sol",
+      "organization": "OpenAI",
+      "scoreDisplay": "70.5%",
+      "scoreValue": 70.5,
+      "sourceUrl": "https://openai.com/index/introducing-gpt-6-1-sol/",
+      "notesShort": "Partial score on the v2026.08.08 offline subset at maximum reasoning effort. Derived from the launch statement that Sol is 2.1 percentage points below Astra (72.6%); self-reported by OpenAI. Not directly comparable to combined online/offline scores.",
+      "reportedAt": "2026-09-29",
+      "isNew": true
+    },
+    {
+      "rank": 6,
       "systemName": "Claude Opus 5 (Snorkel run)",
       "organization": "Snorkel AI",
       "scoreDisplay": "68.31%",
@@ -56,7 +67,7 @@
       "isNew": true
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "Muse Spark 1.3",
       "organization": "Meta",
       "scoreDisplay": "66.9%",
@@ -67,7 +78,7 @@
       "isNew": true
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "Claude Fable 5",
       "organization": "Anthropic",
       "scoreDisplay": "66.1%",
@@ -78,7 +89,7 @@
       "isNew": true
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "GPT-5.6 Sol (offline subset)",
       "organization": "OpenAI",
       "scoreDisplay": "65.7%",
@@ -89,7 +100,7 @@
       "isNew": true
     },
     {
-      "rank": 9,
+      "rank": 10,
       "systemName": "GPT-5.6 Sol (Snorkel run)",
       "organization": "Snorkel AI",
       "scoreDisplay": "62.72%",
@@ -100,7 +111,7 @@
       "isNew": true
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "GPT-5.6 Sol",
       "organization": "OpenAI",
       "scoreDisplay": "62.6%",
@@ -111,7 +122,7 @@
       "isNew": true
     },
     {
-      "rank": 11,
+      "rank": 12,
       "systemName": "Claude Opus 4.8 (Opus 5 card table)",
       "organization": "Anthropic",
       "scoreDisplay": "55.7%",
@@ -122,7 +133,7 @@
       "isNew": true
     },
     {
-      "rank": 12,
+      "rank": 13,
       "systemName": "Claude Opus 4.8 (batched tools)",
       "organization": "Anthropic",
       "scoreDisplay": "54.8%",
@@ -133,7 +144,7 @@
       "isNew": true
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Qwen3.8-Flash-Next",
       "organization": "Alibaba",
       "scoreDisplay": "52.3%",
@@ -144,7 +155,7 @@
       "isNew": true
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "GPT-5.5 (batched tools)",
       "organization": "OpenAI",
       "scoreDisplay": "49.5%",
@@ -155,7 +166,7 @@
       "isNew": true
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "Claude Opus 4.8",
       "organization": "Anthropic",
       "scoreDisplay": "49.33%",
@@ -166,7 +177,7 @@
       "isNew": true
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "Claude Opus 4.7",
       "organization": "Anthropic",
       "scoreDisplay": "49.1%",
@@ -177,7 +188,7 @@
       "isNew": true
     },
     {
-      "rank": 17,
+      "rank": 18,
       "systemName": "Claude Opus 4.7 (batched tools)",
       "organization": "Anthropic",
       "scoreDisplay": "48.91%",
@@ -188,7 +199,7 @@
       "isNew": true
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "Claude Sonnet 4.6 (max thinking)",
       "organization": "Anthropic",
       "scoreDisplay": "41.5%",
@@ -199,7 +210,7 @@
       "isNew": true
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "Claude Sonnet 4.6 (medium thinking)",
       "organization": "Anthropic",
       "scoreDisplay": "33.9%",
@@ -210,7 +221,7 @@
       "isNew": true
     },
     {
-      "rank": 20,
+      "rank": 21,
       "systemName": "MiniMax M3",
       "organization": "MiniMax",
       "scoreDisplay": "22.3%",
@@ -221,7 +232,7 @@
       "isNew": true
     },
     {
-      "rank": 21,
+      "rank": 22,
       "systemName": "Kimi 2.6",
       "organization": "Moonshot AI",
       "scoreDisplay": "22.1%",
@@ -232,7 +243,7 @@
       "isNew": true
     },
     {
-      "rank": 22,
+      "rank": 23,
       "systemName": "Qwen 3.7-Plus",
       "organization": "Alibaba",
       "scoreDisplay": "21.5%",
