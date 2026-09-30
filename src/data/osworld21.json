@@ -1,0 +1,37 @@
+{
+  "osworld21": [
+    {
+      "rank": 1,
+      "systemName": "Claude Opus 5.5",
+      "organization": "Anthropic",
+      "scoreDisplay": "81.8%",
+      "scoreValue": 81.8,
+      "sourceUrl": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+      "notesShort": "Partial score (48.7% strict completion), averaged over five single-attempt runs at max effort, 1080p, and 500 steps; Opus 4.8 grader and compaction at 100k tokens. Anthropic self-report on its September 10 v2.1 snapshot; official v2.1 released September 16.",
+      "reportedAt": "2026-09-28",
+      "isNew": true
+    },
+    {
+      "rank": 2,
+      "systemName": "Claude Sonnet 5.5",
+      "organization": "Anthropic",
+      "scoreDisplay": "80.1%",
+      "scoreValue": 80.1,
+      "sourceUrl": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+      "notesShort": "Partial score (43.5% strict completion), averaged over five single-attempt runs at max effort, 1080p, and 500 steps; Opus 4.8 grader and compaction at 100k tokens. Anthropic self-report on its September 10 v2.1 snapshot; official v2.1 released September 16.",
+      "reportedAt": "2026-09-28",
+      "isNew": true
+    },
+    {
+      "rank": 3,
+      "systemName": "Claude Sonnet 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "57.0%",
+      "scoreValue": 57.0,
+      "sourceUrl": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+      "notesShort": "Partial score (25.6% strict completion), averaged over five single-attempt runs at max effort, 1080p, and 500 steps; Opus 4.8 grader and compaction at 100k tokens. Anthropic self-report on its September 10 v2.1 snapshot; official v2.1 released September 16.",
+      "reportedAt": "2026-09-28",
+      "isNew": true
+    }
+  ]
+}
