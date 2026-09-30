@@ -378,7 +378,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       relatedBenchmarks: ["browsecomp", "gaia", "online-mind2web"],
-      lastUpdated: "2026-09-04",
+      lastUpdated: "2026-09-30",
     },
     results: benchmarkResults("draco") ?? [],
   },
