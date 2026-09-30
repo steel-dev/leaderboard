@@ -420,3 +420,26 @@ For a focused formatting check while drafting docs:
 ```bash
 npx prettier --check README.md CONTRIBUTING.md
 ```
+
+## Entity profile pages
+
+Model and system profiles use `/models/<stable-id>/`. Organization profiles use
+`/companies/<organization-slug>/`. Titles use `<name> benchmark results | Steel.dev`.
+Descriptions include the number of tracked rows and benchmarks. Astro includes
+these static routes in the sitemap. Each page has a canonical URL and source links.
+
+System identities live in `src/data/entities.json`. Keep each ID stable after
+publication. Add exact public names to `aliases` only when the sources confirm
+they identify the same system and setup. Keep base models, agent harnesses,
+reasoning settings, preview releases, and independently named submissions separate.
+The organization field is the reporting organization from the result rows.
+
+Profiles require at least two tracked rows. Every matching row appears, including
+multiple configurations on the same benchmark. Do not average different metrics.
+Organization profiles group exact organization names, except explicit aliases in
+`src/lib/entity-profiles.ts`. Generic labels such as `Academic Research` have no
+organization page. Do not use the organization field to infer model ownership.
+
+When adding an entity, check all aliases and sources, then run lint and build.
+Check links from a leaderboard row, all source notes, canonical metadata, and the
+sitemap. Duplicate IDs fail the build.

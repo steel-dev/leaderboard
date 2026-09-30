@@ -1,0 +1,10 @@
+---
+import EntityProfile from "../../components/EntityProfile.astro";
+import { systemProfiles } from "../../lib/entity-profiles";
+export function getStaticPaths() {
+  return systemProfiles.map((profile) => ({ params: { slug: profile.id }, props: { profile } }));
+}
+const { profile } = Astro.props;
+---
+
+<EntityProfile profile={profile} />
