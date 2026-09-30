@@ -57,6 +57,18 @@
     },
     {
       "rank": 6,
+      "systemName": "MiMo-V2.6-Pro",
+      "organization": "Xiaomi",
+      "scoreDisplay": "82.0%",
+      "scoreValue": 82.0,
+      "sourceUrl": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+      "repoUrl": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+      "notesShort": "OSWorld-Verified score from Table 3 of the MiMo-V2.6 technical report and the official model card. Self-reported by Xiaomi; step budget, run count, and harness settings are not stated for this result.",
+      "reportedAt": "2026-09-22",
+      "isNew": true
+    },
+    {
+      "rank": 7,
       "systemName": "Claude Sonnet 5",
       "organization": "Anthropic",
       "scoreDisplay": "81.2%",
@@ -67,7 +79,19 @@
       "isNew": true
     },
     {
-      "rank": 7,
+      "rank": 8,
+      "systemName": "MiMo-V2.6-Flash",
+      "organization": "Xiaomi",
+      "scoreDisplay": "80.8%",
+      "scoreValue": 80.8,
+      "sourceUrl": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+      "repoUrl": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+      "notesShort": "OSWorld-Verified score from Table 3 of the MiMo-V2.6 technical report and the official model card. Self-reported by Xiaomi; step budget, run count, and harness settings are not stated for this result.",
+      "reportedAt": "2026-09-22",
+      "isNew": true
+    },
+    {
+      "rank": 9,
       "systemName": "Claude Sonnet 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "78.5%",
@@ -77,7 +101,7 @@
       "reportedAt": "2026-06-30"
     },
     {
-      "rank": 8,
+      "rank": 10,
       "systemName": "OSAgent",
       "organization": "TheAGI Company",
       "scoreDisplay": "76.26%",
@@ -87,7 +111,7 @@
       "reportedAt": "2025-10-23"
     },
     {
-      "rank": 9,
+      "rank": 11,
       "systemName": "GPT-5.4",
       "organization": "OpenAI",
       "scoreDisplay": "75.0%",
@@ -98,7 +122,7 @@
       "isNew": true
     },
     {
-      "rank": 10,
+      "rank": 12,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "72.7%",
@@ -108,7 +132,7 @@
       "reportedAt": "2026-02-05"
     },
     {
-      "rank": 11,
+      "rank": 13,
       "systemName": "Qwen3 VL 235B",
       "organization": "Alibaba",
       "scoreDisplay": "66.7%",
@@ -118,7 +142,7 @@
       "reportedAt": "2025-09-23"
     },
     {
-      "rank": 12,
+      "rank": 14,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "66.3%",
@@ -128,7 +152,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 13,
+      "rank": 15,
       "systemName": "Kimi K2.5",
       "organization": "Moonshot AI",
       "scoreDisplay": "63.3%",
@@ -138,7 +162,7 @@
       "reportedAt": "2026-01-27"
     },
     {
-      "rank": 14,
+      "rank": 16,
       "systemName": "GLM-5V-Turbo",
       "organization": "Zhipu AI",
       "scoreDisplay": "62.3%",
@@ -148,7 +172,7 @@
       "reportedAt": "2026-04-01"
     },
     {
-      "rank": 15,
+      "rank": 17,
       "systemName": "Claude Sonnet 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "61.4%",
@@ -158,7 +182,7 @@
       "reportedAt": "2025-09-29"
     },
     {
-      "rank": 16,
+      "rank": 18,
       "systemName": "UiPath Screen Agent",
       "organization": "UiPath",
       "scoreDisplay": "53.6%",
@@ -168,7 +192,7 @@
       "reportedAt": "2026-01-14"
     },
     {
-      "rank": 17,
+      "rank": 19,
       "systemName": "Claude Haiku 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "50.7%",
@@ -178,7 +202,7 @@
       "reportedAt": "2025-10-15"
     },
     {
-      "rank": 18,
+      "rank": 20,
       "systemName": "Agent S2 + Claude 3.7",
       "organization": "Simular AI",
       "scoreDisplay": "34.5%",
@@ -188,7 +212,7 @@
       "reportedAt": "2025-03-12"
     },
     {
-      "rank": 19,
+      "rank": 21,
       "systemName": "OpenAI Operator (CUA)",
       "organization": "OpenAI",
       "scoreDisplay": "32.6%",
@@ -198,7 +222,7 @@
       "reportedAt": "2025-01-23"
     },
     {
-      "rank": 20,
+      "rank": 22,
       "systemName": "Qwen2.5 VL 72B Instruct",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "8.8%",
@@ -208,7 +232,7 @@
       "reportedAt": "2025-01-26"
     },
     {
-      "rank": 21,
+      "rank": 23,
       "systemName": "Qwen2.5 VL 32B Instruct",
       "organization": "Alibaba Cloud / Qwen Team",
       "scoreDisplay": "5.9%",
