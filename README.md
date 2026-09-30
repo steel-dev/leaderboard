@@ -112,7 +112,7 @@ Coding · Model scope · 15 entries tracked
 
 ### [OSWorld](https://leaderboard.steel.dev/leaderboards/osworld)
 
-Computer use · Agent scope · 21 entries tracked
+Computer use · Agent scope · 23 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -122,7 +122,7 @@ Computer use · Agent scope · 21 entries tracked
 | 4 | Claude Fable 5 **(new)** | Anthropic | [85.0%](https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf) |
 | 5 | Claude Opus 4.8 **(new)** | Anthropic | [83.4%](https://www.anthropic.com/news/claude-opus-4-8) |
 
-[See all 21 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
+[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/osworld)
 
 ---
 

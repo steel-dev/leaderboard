@@ -629,7 +629,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         { label: "OSWorld-Verified announcement", url: "https://xlang.ai/blog/osworld-verified" },
       ],
       relatedBenchmarks: ["osworld-2", "webarena", "webvoyager", "online-mind2web"],
-      lastUpdated: "2026-09-04",
+      lastUpdated: "2026-09-30",
     },
     results: benchmarkResults("osworld") ?? [],
   },
