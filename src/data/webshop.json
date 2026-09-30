@@ -1,0 +1,37 @@
+{
+  "webshop": [
+    {
+      "rank": 1,
+      "systemName": "IL",
+      "organization": "Princeton NLP",
+      "scoreDisplay": "29.1%",
+      "scoreValue": 29.1,
+      "sourceUrl": "https://arxiv.org/pdf/2207.01206v4#page=7",
+      "repoUrl": "https://github.com/princeton-nlp/WebShop",
+      "notesShort": "Paper baseline; 500-task test split, simple mode, 3 trials; Imitation learning.",
+      "reportedAt": "2023-02-08"
+    },
+    {
+      "rank": 2,
+      "systemName": "IL+RL",
+      "organization": "Princeton NLP",
+      "scoreDisplay": "28.7%",
+      "scoreValue": 28.7,
+      "sourceUrl": "https://arxiv.org/pdf/2207.01206v4#page=7",
+      "repoUrl": "https://github.com/princeton-nlp/WebShop",
+      "notesShort": "Paper baseline; 500-task test split, simple mode, 3 trials; Imitation learning plus reinforcement learning.",
+      "reportedAt": "2023-02-08"
+    },
+    {
+      "rank": 3,
+      "systemName": "Rule",
+      "organization": "Princeton NLP",
+      "scoreDisplay": "9.6%",
+      "scoreValue": 9.6,
+      "sourceUrl": "https://arxiv.org/pdf/2207.01206v4#page=7",
+      "repoUrl": "https://github.com/princeton-nlp/WebShop",
+      "notesShort": "Paper baseline; 500-task test split, simple mode, 3 trials; Instruction query, first item, no option selection.",
+      "reportedAt": "2023-02-08"
+    }
+  ]
+}

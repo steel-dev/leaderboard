@@ -14,6 +14,20 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 <!-- LEADERBOARDS:START -->
 
+### [WebShop](https://leaderboard.steel.dev/leaderboards/webshop)
+
+Browser agents · Agent scope · 3 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | IL | Princeton NLP | [29.1%](https://arxiv.org/pdf/2207.01206v4#page=7) |
+| 2 | IL+RL | Princeton NLP | [28.7%](https://arxiv.org/pdf/2207.01206v4#page=7) |
+| 3 | Rule | Princeton NLP | [9.6%](https://arxiv.org/pdf/2207.01206v4#page=7) |
+
+[View on the leaderboard →](https://leaderboard.steel.dev/leaderboards/webshop)
+
+---
+
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 Browser agents · Agent scope · 21 entries tracked
