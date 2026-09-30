@@ -128,7 +128,7 @@ Computer use · Agent scope · 21 entries tracked
 
 ### [OSWorld 2.0](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
-Computer use · Agent scope · 22 entries tracked
+Computer use · Agent scope · 23 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -136,9 +136,9 @@ Computer use · Agent scope · 22 entries tracked
 | 2 | Simular Sai **(new)** | Simular AI | [73.0%](https://www.simular.ai/articles/sai-tops-osworld-2-0) |
 | 3 | GPT-6 Astra **(new)** | OpenAI | [72.6%](https://openai.com/index/gpt-6-astra/) |
 | 4 | Claude Opus 5 **(new)** | Anthropic | [70.6%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
-| 5 | Claude Opus 5 (Snorkel run) **(new)** | Snorkel AI | [68.31%](https://snorkel.ai/leaderboard/os-world-2-0/) |
+| 5 | Gemini 4 Argon **(new)** | Google | [69.2%](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) |
 
-[See all 22 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
+[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
 ---
 
