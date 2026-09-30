@@ -11,6 +11,7 @@ import {
   osworld2,
   sweBenchVerified,
   tauBench,
+  toolbench,
   webarena,
   webvoyager,
 } from "../data/index.js";
@@ -28,6 +29,7 @@ type BenchmarkMap = {
   osworld2: Record<string, BenchmarkResultRow[]>;
   sweBenchVerified: Record<string, BenchmarkResultRow[]>;
   tauBench: Record<string, BenchmarkResultRow[]>;
+  toolbench: Record<string, BenchmarkResultRow[]>;
   webarena: Record<string, BenchmarkResultRow[]>;
   webvoyager: Record<string, BenchmarkResultRow[]>;
 };
@@ -45,6 +47,7 @@ const benchmarkMap: BenchmarkMap = {
   osworld2,
   sweBenchVerified,
   tauBench,
+  toolbench,
   webarena,
   webvoyager,
 };
@@ -57,11 +60,7 @@ export function benchmarkResults(slug: BenchmarkSlug): BenchmarkResultRow[] {
 }
 
 export type BenchmarkCategory =
-  | "browser_agents"
-  | "computer_use"
-  | "research_search"
-  | "coding"
-  | "model_eval";
+  "browser_agents" | "computer_use" | "research_search" | "coding" | "model_eval";
 
 export type BenchmarkScope = "agent" | "model" | "mixed";
 
@@ -173,6 +172,86 @@ export function renderBenchmarkDescription(meta: BenchmarkPageMeta): string {
 }
 
 export const benchmarkPages: BenchmarkPageData[] = [
+  {
+    meta: {
+      slug: "toolbench",
+      name: "ToolBench",
+      description:
+        "ToolBench benchmark leaderboard for API tool-use agents, with historical ToolEval win rates from the maintainer tracker.",
+      seoTitle: "ToolBench Leaderboard: Tool-use Benchmark Results | Steel.dev",
+      seoDescription:
+        "Compare ToolBench leaderboard scores for API tool-use agents. Read ToolBench benchmark metrics, evaluation variants, sources, and public tasks.",
+      category: "model_eval",
+      scope: "agent",
+      categoryLabel: "Tool use",
+      about: [
+        "ToolBench evaluates agents that solve natural-language requests through application programming interfaces (APIs). Its ToolLLM paper introduces ToolLLaMA and a tool retriever.",
+        "The benchmark covers single-tool, same-category multi-tool, and same-collection multi-tool instructions. Agent results depend on the model, tool selection, and planning method.",
+        "This page starts with three historical baseline systems from the maintainer tracker dated September 29, 2023. It is not a ranking of current models.",
+      ],
+      methodology: [
+        "Displayed scores reproduce the tracker CSV aggregate WinRate column for default_evalset and tooleval_gpt-3.5-turbo_normalized. Higher is better.",
+        "Win rate measures evaluator preference between action sequences. The tracker labels its reference ChatGPT-ReACT; pass rate is a separate task-completion metric.",
+        "The tracker covers six subsets: G1 instruction, tool, and category; G2 instruction and category; and G3 instruction. Compare matching evaluator and subset configurations.",
+        "DFSDT means depth-first search decision tree. These rows use RapidAPI tools and represent complete agent configurations, not standalone model scores.",
+      ],
+      taskExamples: [
+        {
+          quote:
+            "I'm working on a logistics project for my company and need to check the health of the SQUAKE API. Can you verify the API health by calling the 'Checkhealth' API endpoint? Additionally, I would like to retrieve the list of projects using the 'Projects' API endpoint.",
+          sourceLabel: "ToolBench public G1 example, query 1",
+          sourceUrl:
+            "https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/data_example/instruction/G1_query.json",
+        },
+        {
+          quote:
+            "As a sustainability enthusiast, I'm interested in exploring the projects available on the SQUAKE platform. Could you fetch the list of projects using the 'Projects' API? Additionally, I would like to check the health of the SQUAKE API using the 'Checkhealth' API.",
+          sourceLabel: "ToolBench public G1 example, query 2",
+          sourceUrl:
+            "https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/data_example/instruction/G1_query.json",
+        },
+        {
+          quote:
+            "I'm organizing a sustainability event for my community and would like to showcase various projects promoting eco-friendly practices. Could you provide me with a list of projects available on the SQUAKE platform using the 'Projects' API? Additionally, I would like to check the health of the SQUAKE API using the 'Checkhealth' API.",
+          sourceLabel: "ToolBench public G1 example, query 3",
+          sourceUrl:
+            "https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/data_example/instruction/G1_query.json",
+        },
+      ],
+      importantNotes: [
+        "The CSV filename names ChatGPT-DFSDT, while the tracker interface labels the same file as a comparison against ChatGPT-ReACT. We retain the published tracker label.",
+        "The aggregate WinRate column does not equal the simple mean of the six subset columns for every row. Scores are copied from that column, not recomputed.",
+        "API availability and evaluator versions affect reproducibility. StableToolBench uses simulated API responses and different evaluation variants; its scores are excluded.",
+        "These are maintainer-reported historical results. Independent submissions and newer tool-use benchmarks are outside this initial snapshot.",
+      ],
+      links: [
+        {
+          label: "ToolLLM paper",
+          url: "https://arxiv.org/abs/2307.16789",
+        },
+        {
+          label: "Official ToolEval tracker",
+          url: "https://openbmb.github.io/ToolBench/",
+        },
+        {
+          label: "Repository and dataset access",
+          url: "https://github.com/OpenBMB/ToolBench#data-release",
+        },
+        {
+          label: "ToolEval methodology",
+          url: "https://github.com/OpenBMB/ToolBench/tree/master/toolbench/tooleval",
+        },
+        {
+          label: "Pinned score CSV",
+          url: "https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/toolbench/tooleval/results/leaderboard%23%23%23default_evalset%23%23%23tooleval_gpt-3.5-turbo_normalized%23%23%23ChatGPT-DFSDT.csv",
+        },
+      ],
+      relatedBenchmarks: ["tau-bench", "agentbench", "gaia"],
+      lastUpdated: "2026-09-27",
+    },
+    results: benchmarkResults("toolbench") ?? [],
+  },
+
   {
     meta: {
       slug: "webvoyager",

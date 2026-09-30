@@ -14,6 +14,20 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 <!-- LEADERBOARDS:START -->
 
+### [ToolBench](https://leaderboard.steel.dev/leaderboards/toolbench)
+
+Model evals / reasoning · Agent scope · 3 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | GPT4-DFSDT | OpenBMB | [70.4%](https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/toolbench/tooleval/results/leaderboard%23%23%23default_evalset%23%23%23tooleval_gpt-3.5-turbo_normalized%23%23%23ChatGPT-DFSDT.csv) |
+| 2 | ChatGPT-DFSDT | OpenBMB | [64.3%](https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/toolbench/tooleval/results/leaderboard%23%23%23default_evalset%23%23%23tooleval_gpt-3.5-turbo_normalized%23%23%23ChatGPT-DFSDT.csv) |
+| 3 | ToolLLaMA-DFSDT | OpenBMB | [60%](https://github.com/OpenBMB/ToolBench/blob/a58986860c63de22be55d7b88125366c4f2607f6/toolbench/tooleval/results/leaderboard%23%23%23default_evalset%23%23%23tooleval_gpt-3.5-turbo_normalized%23%23%23ChatGPT-DFSDT.csv) |
+
+[View on the leaderboard →](https://leaderboard.steel.dev/leaderboards/toolbench)
+
+---
+
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 Browser agents · Agent scope · 21 entries tracked
