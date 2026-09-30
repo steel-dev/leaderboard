@@ -142,6 +142,20 @@ Computer use · Agent scope · 22 entries tracked
 
 ---
 
+### [OSWorld 2.1](https://leaderboard.steel.dev/leaderboards/osworld-2-1)
+
+Computer use · Agent scope · 3 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | Claude Opus 5.5 **(new)** | Anthropic | [81.8%](https://www.anthropic.com/claude-sonnet-5-5-system-card) |
+| 2 | Claude Sonnet 5.5 **(new)** | Anthropic | [80.1%](https://www.anthropic.com/claude-sonnet-5-5-system-card) |
+| 3 | Claude Sonnet 5 **(new)** | Anthropic | [57.0%](https://www.anthropic.com/claude-sonnet-5-5-system-card) |
+
+[View on the leaderboard →](https://leaderboard.steel.dev/leaderboards/osworld-2-1)
+
+---
+
 ### [GAIA](https://leaderboard.steel.dev/leaderboards/gaia)
 
 Model evals / reasoning · Agent scope · 21 entries tracked

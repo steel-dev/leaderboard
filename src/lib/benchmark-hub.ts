@@ -9,6 +9,7 @@ import {
   mind2web,
   osworld,
   osworld2,
+  osworld21,
   sweBenchVerified,
   tauBench,
   webarena,
@@ -26,6 +27,7 @@ type BenchmarkMap = {
   mind2web: Record<string, BenchmarkResultRow[]>;
   osworld: Record<string, BenchmarkResultRow[]>;
   osworld2: Record<string, BenchmarkResultRow[]>;
+  osworld21: Record<string, BenchmarkResultRow[]>;
   sweBenchVerified: Record<string, BenchmarkResultRow[]>;
   tauBench: Record<string, BenchmarkResultRow[]>;
   webarena: Record<string, BenchmarkResultRow[]>;
@@ -43,6 +45,7 @@ const benchmarkMap: BenchmarkMap = {
   mind2web,
   osworld,
   osworld2,
+  osworld21,
   sweBenchVerified,
   tauBench,
   webarena,
@@ -693,10 +696,59 @@ export const benchmarkPages: BenchmarkPageData[] = [
           url: "https://snorkel.ai/leaderboard/os-world-2-0/",
         },
       ],
-      relatedBenchmarks: ["osworld", "webarena"],
+      relatedBenchmarks: ["osworld-2-1", "osworld", "webarena"],
       lastUpdated: "2026-09-04",
     },
     results: benchmarkResults("osworld2") ?? [],
+  },
+  {
+    meta: {
+      slug: "osworld-2-1",
+      name: "OSWorld 2.1",
+      description:
+        "OSWorld 2.1 leaderboard for computer-use agents on 108 long-horizon desktop workflows, with partial scores and strict completion rates.",
+      categoryLabel: "Computer Use Agent",
+      seoHook: "computer-use agents on the revised 108-task desktop benchmark",
+      category: "computer_use",
+      scope: "agent",
+      about: [
+        "OSWorld 2.1 is an updated release of OSWorld 2.0, with 108 long-horizon workflows in real Ubuntu desktop environments.",
+        "The release fixes evaluation bugs and updates task files, assets, mocked websites, agent workflows, and pinned environment references. The benchmark authors recommend version 2.1 for new evaluations.",
+        "This page tracks version 2.1 results separately from OSWorld 2.0 and OSWorld Verified. Changes to tasks and evaluation settings prevent assuming that scores across releases are directly comparable.",
+      ],
+      methodology: [
+        "We rank by partial score: the mean credit earned across weighted checkpoints for each task. Strict completion requires every checkpoint to pass and is recorded in each row's note.",
+        "The initial rows are Anthropic self-reports averaged over five single-attempt runs at maximum effort, 1080p resolution, and a 500-step budget. Tasks that require a model grader use Claude Opus 4.8.",
+        "Anthropic retains every screenshot and uses server-side context management to compact conversations above 100k tokens. All three models use the same evaluation configuration.",
+      ],
+      taskExamples: [
+        {
+          quote: "Please help me submit a reimbursement claim in the ExpenseFlow system.",
+          sourceLabel: "OSWorld 2.0 paper (Task 008)",
+          sourceUrl: "https://arxiv.org/abs/2606.29537",
+        },
+      ],
+      importantNotes: [
+        "These results are vendor self-reports, not independent reproductions. A partial score measures progress through checkpoints, not the percentage of fully completed tasks.",
+        "Anthropic identifies its task files, assets, and websites as the September 10, 2026 v2.1 snapshot. The official osworld-v2.1 release is dated September 16. The sources do not establish that these snapshots are identical.",
+        "Do not compare this full-task-set table directly with the OSWorld 2.0 offline-subset results reported by OpenAI and Google.",
+      ],
+      links: [
+        {
+          label: "OSWorld 2.1 release",
+          url: "https://github.com/xlang-ai/OSWorld-V2/releases/tag/osworld-v2.1",
+        },
+        { label: "OSWorld project", url: "https://osworld-v2.xlang.ai/" },
+        { label: "OSWorld 2.0 paper", url: "https://arxiv.org/abs/2606.29537" },
+        {
+          label: "Sonnet 5.5 system card (section 8.13.3)",
+          url: "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+        },
+      ],
+      relatedBenchmarks: ["osworld-2", "osworld", "webarena"],
+      lastUpdated: "2026-09-28",
+    },
+    results: benchmarkResults("osworld21") ?? [],
   },
   {
     meta: {
