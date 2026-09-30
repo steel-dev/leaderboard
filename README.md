@@ -48,17 +48,17 @@ Research/search · Mixed scope · 100 entries tracked
 
 ### [DRACO](https://leaderboard.steel.dev/leaderboards/draco)
 
-Research/search · Mixed scope · 14 entries tracked
+Research/search · Mixed scope · 15 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
 | 1 | Claude Opus 5 **(new)** | Anthropic | [88.6%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
-| 2 | Claude Mythos 5 **(new)** | Anthropic | [86.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 3 | Claude Mythos Preview | Anthropic | [83.6%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 4 | Claude Opus 4.8 | Anthropic | [80.4%](https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf) |
-| 5 | Claude Opus 4.7 | Anthropic | [77.7%](https://www-cdn.anthropic.com/037f06850df7fbe871e206dad004c3db5fd50340/Claude%20Opus%204.7%20System%20Card.pdf) |
+| 2 | Claude Sonnet 5.5 **(new)** | Anthropic | [87.0%](https://www.anthropic.com/claude-sonnet-5-5-system-card) |
+| 3 | Claude Mythos 5 **(new)** | Anthropic | [86.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 4 | Claude Mythos Preview | Anthropic | [83.6%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 5 | Claude Opus 4.8 | Anthropic | [80.4%](https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf) |
 
-[See all 14 entries →](https://leaderboard.steel.dev/leaderboards/draco)
+[See all 15 entries →](https://leaderboard.steel.dev/leaderboards/draco)
 
 ---
 
