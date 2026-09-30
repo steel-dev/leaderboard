@@ -28,6 +28,7 @@ export const BENCHMARK_SLUG_TO_DATA_KEY: Record<string, string> = {
   aider: "aiderPolyglot",
   osworld: "osworld",
   "osworld-2": "osworld2",
+  "gpqa-diamond": "gpqaDiamond",
   gaia: "gaia",
   clawbench: "clawbench",
   healthadminbench: "healthAdminBench",

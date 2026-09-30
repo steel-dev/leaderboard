@@ -14,6 +14,20 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 <!-- LEADERBOARDS:START -->
 
+### [GPQA Diamond](https://leaderboard.steel.dev/leaderboards/gpqa-diamond)
+
+Model evals / reasoning · Model scope · 3 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | o1 | OpenAI | [77.3%](https://openai.com/index/learning-to-reason-with-llms/#appendix-a) |
+| 2 | o1-preview | OpenAI | [73.3%](https://openai.com/index/learning-to-reason-with-llms/#appendix-a) |
+| 3 | GPT-4o | OpenAI | [50.6%](https://openai.com/index/learning-to-reason-with-llms/#appendix-a) |
+
+[View on the leaderboard →](https://leaderboard.steel.dev/leaderboards/gpqa-diamond)
+
+---
+
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 Browser agents · Agent scope · 21 entries tracked
