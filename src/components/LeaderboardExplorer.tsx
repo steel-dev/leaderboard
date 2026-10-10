@@ -1,0 +1,818 @@
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { BarChart } from "./dither-kit/bar-chart";
+import { Bar } from "./dither-kit/bar";
+import { useChart, type ChartConfig } from "./dither-kit/chart-context";
+import {
+  basisLabels,
+  benchmarkChartHref,
+  blendedPrice,
+  defaultFilters,
+  filterResults,
+  readChartFilters,
+  sizeDescriptions,
+  sizeLabels,
+  sizes,
+  weightLabels,
+  writeChartFilters,
+  writeChartBenchmark,
+  type ChartFilters,
+  type ClassifiedResult,
+  type ModelRecord,
+  type WeightFilter,
+} from "../lib/model-classification";
+import "../styles/leaderboard-chart.css";
+
+const chartConfig: ChartConfig = {
+  open: { label: "Open weights", color: "steel" },
+  closed: { label: "Closed weights", color: "stone" },
+  mixed: { label: "Mixed weights", color: "warm" },
+  uncertain: { label: "Uncertain weights", color: "warm" },
+};
+const weightOptions: { value: WeightFilter; label: string }[] = [
+  { value: "all", label: "All weights" },
+  { value: "open", label: "Open weights" },
+  { value: "closed", label: "Closed weights" },
+  { value: "other", label: "Mixed / uncertain" },
+];
+const kindLabels = { model: "Model", harness: "Harness", system: "System" };
+const money = new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 });
+
+function ModelEvidence({ model }: { model: ModelRecord }) {
+  const price =
+    model.inputUsdPerMillion !== undefined && model.outputUsdPerMillion !== undefined
+      ? blendedPrice(model.inputUsdPerMillion, model.outputUsdPerMillion)
+      : undefined;
+  return (
+    <div className="chart-model-evidence">
+      <h5>{model.name}</h5>
+      <p className="chart-model-facts">
+        {weightLabels[model.weights]} · {sizeLabels[model.size]} · {basisLabels[model.basis]}
+        {model.totalParametersB !== undefined && (
+          <> · {model.totalParametersB.toLocaleString()}B total</>
+        )}
+        {model.activeParametersB !== undefined && (
+          <> · {model.activeParametersB.toLocaleString()}B active</>
+        )}
+        {model.parameterEstimateB && (
+          <> · estimated {model.parameterEstimateB.join("–")}B parameters</>
+        )}
+      </p>
+      {price !== undefined && (
+        <p>
+          Token price: ${money.format(model.inputUsdPerMillion!)} input / $
+          {money.format(model.outputUsdPerMillion!)} output per million. Blended 3:1: $
+          {money.format(price)}/M.
+        </p>
+      )}
+      <p>{model.notes}</p>
+      <ul className="chart-source-list">
+        {model.sources.map((source) => (
+          <li key={source.url}>
+            <a href={source.url} target="_blank" rel="noopener noreferrer">
+              {source.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="chart-evidence-date">
+        Checked {model.checkedAt} · {model.confidence} confidence
+      </p>
+    </div>
+  );
+}
+
+function ClassificationBadges({ row }: { row: ClassifiedResult }) {
+  const c = row.classification;
+  return (
+    <span className="chart-badges">
+      <span className={`chart-weight-tag chart-weight-${c.weights}`}>
+        {weightLabels[c.weights]}
+      </span>
+      <span>{sizeLabels[c.size]}</span>
+      {c.basis !== "parameters" && <span className="chart-basis-tag">{basisLabels[c.basis]}</span>}
+      {c.models.length > 1 && <span className="chart-basis-tag">Largest component</span>}
+    </span>
+  );
+}
+
+function ResearchDetails({ row }: { row: ClassifiedResult }) {
+  const c = row.classification;
+  return (
+    <div className="chart-research-details">
+      <p>{c.notes}</p>
+      <p>
+        Harness code:{" "}
+        {c.harnessCode === "not-applicable" ? "not separately classified" : c.harnessCode}.
+        {c.models.length > 1 &&
+          " Size uses the largest component category as an approximation; it does not sum the stack's parameters."}
+      </p>
+      {c.sources.length > 0 && (
+        <ul className="chart-source-list">
+          {c.sources.map((source) => (
+            <li key={source.url}>
+              <a href={source.url} target="_blank" rel="noopener noreferrer">
+                {source.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+      {c.models.map((model) => (
+        <ModelEvidence key={model.id} model={model} />
+      ))}
+    </div>
+  );
+}
+
+type ChartPreview = {
+  index: number;
+  target: SVGRectElement;
+  anchor: { left: number; right: number; top: number };
+};
+
+function ChartHoverCard({
+  row,
+  preview,
+  onKeepOpen,
+  onLeave,
+  onDetails,
+}: {
+  row: ClassifiedResult;
+  preview: ChartPreview;
+  onKeepOpen: () => void;
+  onLeave: () => void;
+  onDetails: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ left: 0, top: 0 });
+  useLayoutEffect(() => {
+    const card = ref.current;
+    if (!card) return;
+    const { width, height } = card.getBoundingClientRect();
+    const { anchor } = preview;
+    // Touch the hit target's edge so the pointer cannot enter an adjacent bar
+    // while crossing to the card. The target already pads the painted bar.
+    const right = anchor.right;
+    setPosition({
+      left: Math.max(
+        12,
+        Math.min(
+          right + width <= window.innerWidth - 12 ? right : anchor.left - width,
+          window.innerWidth - width - 12
+        )
+      ),
+      top: Math.max(12, Math.min(anchor.top, window.innerHeight - height - 12)),
+    });
+  }, [preview]);
+  return (
+    <div
+      ref={ref}
+      id="chart-hover-card"
+      className="chart-hover-card"
+      role="dialog"
+      aria-labelledby="chart-hover-title"
+      style={position}
+      onPointerEnter={onKeepOpen}
+      onPointerLeave={onLeave}
+      onFocus={onKeepOpen}
+      onBlur={onLeave}
+    >
+      <h3 id="chart-hover-title">{row.systemName}</h3>
+      <dl>
+        <div>
+          <dt>Success rate</dt>
+          <dd className="chart-hover-score">{row.scoreDisplay}</dd>
+        </div>
+        <div>
+          <dt>Model weights</dt>
+          <dd>{weightLabels[row.classification.weights]}</dd>
+        </div>
+        <div>
+          <dt>Model size</dt>
+          <dd>{sizeLabels[row.classification.size]}</dd>
+        </div>
+        <div>
+          <dt>Size basis</dt>
+          <dd>{basisLabels[row.classification.basis]}</dd>
+        </div>
+      </dl>
+      {row.classification.models.length > 1 && (
+        <p className="chart-hover-note">
+          Largest component · {row.classification.models.length} models
+        </p>
+      )}
+      <button type="button" onClick={onDetails}>
+        More details <span aria-hidden="true">↗</span>
+      </button>
+    </div>
+  );
+}
+
+function ChartMarks({
+  rows,
+  activeIndex,
+  previewIndex,
+  onPreview,
+  onLeave,
+  onDetails,
+}: {
+  rows: ClassifiedResult[];
+  activeIndex: number;
+  previewIndex: number | null;
+  onPreview: (index: number, target: SVGRectElement, top: number) => void;
+  onLeave: () => void;
+  onDetails: (index: number) => void;
+}) {
+  const chart = useChart();
+  const bars = useRef<(SVGRectElement | null)[]>([]);
+  const pointerType = useRef("");
+  if (!chart.ready) return null;
+  return (
+    <g>
+      <g aria-hidden="true">
+        {[0, 20, 40, 60, 80, 100].map((tick) => (
+          <g key={tick}>
+            <line
+              x1={0}
+              x2={chart.plot.width}
+              y1={chart.y(tick)}
+              y2={chart.y(tick)}
+              className="chart-gridline"
+            />
+            <text
+              x={-12}
+              y={chart.y(tick)}
+              textAnchor="end"
+              dominantBaseline="central"
+              className="chart-y-tick"
+            >
+              {tick}
+            </text>
+          </g>
+        ))}
+      </g>
+      {rows.map((row, index) => {
+        const x = chart.xCenter(index);
+        const top = chart.y(row.scoreValue ?? 0);
+        const slot = chart.barSlot(index, 0, 1);
+        const active = previewIndex === index;
+        const label =
+          row.systemName.length > 25 ? `${row.systemName.slice(0, 24)}…` : row.systemName;
+        return (
+          <g key={row.systemName}>
+            <text
+              x={x}
+              y={top - 11}
+              textAnchor="middle"
+              className={`chart-score-label${active ? " is-active" : ""}`}
+              aria-hidden="true"
+            >
+              {row.scoreDisplay}
+            </text>
+            <text
+              transform={`translate(${x + 3},${chart.plot.height + 19}) rotate(-52)`}
+              textAnchor="end"
+              className={`chart-x-label${active ? " is-active" : ""}`}
+              aria-hidden="true"
+            >
+              {label}
+            </text>
+            <rect
+              ref={(element) => {
+                bars.current[index] = element;
+              }}
+              x={slot.x - 4}
+              y={0}
+              width={slot.width + 8}
+              height={chart.plot.height + 8}
+              fill="transparent"
+              className={`chart-bar-target${active ? " is-active" : ""}`}
+              role="button"
+              tabIndex={activeIndex === index ? 0 : -1}
+              aria-label={`${row.systemName}, ${row.scoreDisplay}, ${weightLabels[row.classification.weights]}, ${sizeLabels[row.classification.size]}, ${basisLabels[row.classification.basis]}. Show result details.`}
+              aria-haspopup="dialog"
+              aria-expanded={active}
+              aria-controls={active ? "chart-hover-card" : undefined}
+              onPointerDown={(event) => {
+                pointerType.current = event.pointerType;
+              }}
+              onPointerEnter={(event) => {
+                if (event.pointerType !== "touch") onPreview(index, event.currentTarget, top);
+              }}
+              onPointerLeave={(event) => {
+                if (event.pointerType !== "touch") onLeave();
+              }}
+              onFocus={(event) => {
+                if (event.currentTarget.matches(":focus-visible"))
+                  onPreview(index, event.currentTarget, top);
+              }}
+              onBlur={onLeave}
+              onClick={(event) => {
+                if (pointerType.current === "touch") onPreview(index, event.currentTarget, top);
+                else onDetails(index);
+              }}
+              onKeyDown={(event) => {
+                let next = index;
+                if (event.key === "ArrowRight" || event.key === "ArrowDown")
+                  next = Math.min(rows.length - 1, index + 1);
+                else if (event.key === "ArrowLeft" || event.key === "ArrowUp")
+                  next = Math.max(0, index - 1);
+                else if (event.key === "Home") next = 0;
+                else if (event.key === "End") next = rows.length - 1;
+                else if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  onDetails(index);
+                  return;
+                } else return;
+                event.preventDefault();
+                const target = bars.current[next];
+                target?.focus({ preventScroll: true });
+                target?.scrollIntoView({ block: "nearest", inline: "nearest" });
+                // Measure after scrolling so off-screen results get a correctly anchored card.
+                requestAnimationFrame(() => {
+                  if (target?.isConnected)
+                    onPreview(next, target, chart.y(rows[next].scoreValue ?? 0));
+                });
+              }}
+            />
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+export default function LeaderboardExplorer({
+  rows,
+  benchmark,
+  description,
+  benchmarkSlug,
+  benchmarkOptions,
+  onBenchmarkChange,
+  tablePreviewCount = 20,
+}: {
+  rows: ClassifiedResult[];
+  benchmark: string;
+  description?: string;
+  benchmarkSlug?: string;
+  benchmarkOptions?: { slug: string; name: string }[];
+  onBenchmarkChange?: (slug: string) => void;
+  tablePreviewCount?: number;
+}) {
+  const [filters, setFilters] = useState<ChartFilters>(defaultFilters);
+  const [limit, setLimit] = useState(20);
+  const [selectedName, setSelectedName] = useState<string | null>(null);
+  const [preview, setPreview] = useState<ChartPreview | null>(null);
+  const [detailName, setDetailName] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const tableRef = useRef<HTMLTableElement>(null);
+  const [expanded, setExpanded] = useState(false);
+  const [shareStatus, setShareStatus] = useState("");
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const restore = () => {
+      setFilters(readChartFilters(new URLSearchParams(window.location.search)));
+      setSelectedName(null);
+      setPreview(null);
+      setExpanded(false);
+    };
+    restore();
+    window.addEventListener("popstate", restore);
+    return () => window.removeEventListener("popstate", restore);
+  }, []);
+
+  const filtered = useMemo(() => filterResults(rows, filters), [rows, filters]);
+  const plotted = useMemo(
+    () => filtered.filter((row) => row.scoreValue !== null).slice(0, limit),
+    [filtered, limit]
+  );
+  const chartData = useMemo(
+    () =>
+      plotted.map((row) => ({
+        name: row.systemName,
+        open: row.classification.weights === "open" ? row.scoreValue : 0,
+        closed: row.classification.weights === "closed" ? row.scoreValue : 0,
+        mixed: row.classification.weights === "mixed" ? row.scoreValue : 0,
+        uncertain: row.classification.weights === "uncertain" ? row.scoreValue : 0,
+      })),
+    [plotted]
+  );
+  const selectedIndex = Math.max(
+    0,
+    plotted.findIndex((row) => row.systemName === selectedName)
+  );
+  const active = preview ? plotted[preview.index] : null;
+  const tableRows = benchmarkSlug && !expanded ? filtered.slice(0, tablePreviewCount) : filtered;
+  const isFiltered = filters.weights !== "all" || filters.sizes.length > 0;
+
+  const updateFilters = (next: ChartFilters) => {
+    setFilters(next);
+    setSelectedName(null);
+    setPreview(null);
+    setExpanded(false);
+    setShareStatus("");
+    if (scrollRef.current) scrollRef.current.scrollLeft = 0;
+    let url = writeChartFilters(new URL(window.location.href), next);
+    if (benchmarkSlug) url = writeChartBenchmark(url, benchmarkSlug);
+    window.history.pushState(null, "", url);
+  };
+  const keepPreviewOpen = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
+  const hidePreviewSoon = () => {
+    keepPreviewOpen();
+    closeTimer.current = setTimeout(() => {
+      if (document.activeElement?.closest(".chart-hover-card")) return;
+      setPreview((current) => (current?.target === document.activeElement ? current : null));
+    }, 140);
+  };
+  const showPreview = (index: number, target: SVGRectElement, top: number) => {
+    keepPreviewOpen();
+    const rect = target.getBoundingClientRect();
+    setSelectedName(plotted[index]?.systemName ?? null);
+    setPreview({
+      index,
+      target,
+      anchor: { left: rect.left, right: rect.right, top: rect.top + top },
+    });
+  };
+  const showDetails = (index: number) => {
+    keepPreviewOpen();
+    setPreview(null);
+    setExpanded(true);
+    setDetailName(plotted[index]?.systemName ?? null);
+  };
+
+  useEffect(
+    () => () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    },
+    []
+  );
+  useEffect(() => {
+    if (!detailName) return;
+    const row = Array.from(tableRef.current?.rows ?? []).find(
+      (row) => row.dataset.system === detailName
+    );
+    const details = row?.querySelector("details");
+    if (details) {
+      details.open = true;
+      details.querySelector("summary")?.focus({ preventScroll: true });
+      row?.scrollIntoView({ block: "start" });
+    }
+    setDetailName(null);
+  }, [detailName]);
+  useEffect(() => {
+    if (!preview) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        preview.target.focus({ preventScroll: true });
+        setPreview(null);
+      }
+    };
+    const onOutside = (event: PointerEvent) => {
+      if (
+        !(event.target instanceof Element) ||
+        !event.target.closest(".chart-hover-card, .chart-bar-target")
+      )
+        setPreview(null);
+    };
+    const onScroll = (event: Event) => {
+      if (!(event.target instanceof Element) || !event.target.closest(".chart-hover-card"))
+        setPreview(null);
+    };
+    const onResize = () => setPreview(null);
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onOutside);
+    document.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onOutside);
+      document.removeEventListener("scroll", onScroll, true);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [preview]);
+
+  return (
+    <div className="leaderboard-explorer" data-benchmark={benchmark}>
+      <section className="chart-shell" aria-labelledby="chart-title">
+        <header className="chart-heading">
+          <div>
+            <p className="chart-eyebrow">Performance / {benchmark}</p>
+            <h2 id="chart-title">{benchmark} performance</h2>
+          </div>
+          <a
+            href={benchmarkSlug ? benchmarkChartHref(benchmarkSlug, filters) : "#chart-results"}
+            className="chart-table-link"
+          >
+            {benchmarkSlug ? "Full leaderboard" : "View results"} <span aria-hidden="true">↗</span>
+          </a>
+        </header>
+        <p className="chart-intro">
+          {description ??
+            "Compare reported scores by model weights and size. Select a bar to explore the evaluated system."}
+        </p>
+        <div className="chart-filters">
+          {benchmarkOptions && (
+            <label className="chart-benchmark-control">
+              <span>Benchmark</span>
+              <select
+                value={benchmarkSlug}
+                onChange={(event) => onBenchmarkChange?.(event.target.value)}
+              >
+                {benchmarkOptions.map((option) => (
+                  <option value={option.slug} key={option.slug}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <label className="chart-weights-control">
+            <span>Model weights</span>
+            <select
+              value={filters.weights}
+              onChange={(event) =>
+                updateFilters({ ...filters, weights: event.target.value as WeightFilter })
+              }
+            >
+              {weightOptions.map((option) => (
+                <option value={option.value} key={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <fieldset className="chart-size-control">
+            <legend>Model size</legend>
+            <div className="chart-size-buttons">
+              <button
+                type="button"
+                aria-pressed={!filters.sizes.length}
+                onClick={() => updateFilters({ ...filters, sizes: [] })}
+              >
+                All
+              </button>
+              {sizes.map((size) => (
+                <button
+                  key={size}
+                  type="button"
+                  aria-pressed={filters.sizes.includes(size)}
+                  title={sizeDescriptions[size]}
+                  onClick={() =>
+                    updateFilters({
+                      ...filters,
+                      sizes: filters.sizes.includes(size)
+                        ? filters.sizes.filter((s) => s !== size)
+                        : sizes.filter((s) => s === size || filters.sizes.includes(s)),
+                    })
+                  }
+                >
+                  {sizeLabels[size]}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+          <button
+            type="button"
+            className="chart-share-button"
+            onClick={async () => {
+              try {
+                const url = benchmarkSlug
+                  ? writeChartBenchmark(new URL(window.location.href), benchmarkSlug).href
+                  : window.location.href;
+                await navigator.clipboard.writeText(url);
+                setShareStatus("Link copied");
+              } catch {
+                setShareStatus("Use the page URL to share this view.");
+              }
+            }}
+          >
+            Share view <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+        <div className="chart-toolbar">
+          <div className="chart-legend" aria-label="Bar colors">
+            <span>
+              <i className="legend-open" />
+              Open weights
+            </span>
+            <span>
+              <i className="legend-closed" />
+              Closed weights
+            </span>
+            <span>
+              <i className="legend-uncertain" />
+              Mixed / uncertain
+            </span>
+          </div>
+          <label className="chart-limit-control">
+            Show{" "}
+            <select
+              aria-label="Number of chart results"
+              value={limit}
+              onChange={(event) => {
+                setLimit(Number(event.target.value));
+                setPreview(null);
+              }}
+            >
+              <option value={20}>Top 20</option>
+              <option value={50}>Top 50</option>
+              <option value={10000}>All results</option>
+            </select>
+          </label>
+        </div>
+        <div className="chart-status-line">
+          <span role="status">
+            {shareStatus || `${plotted.length} plotted · ${filtered.length} matching systems`}
+          </span>
+          {isFiltered && (
+            <button type="button" onClick={() => updateFilters(defaultFilters)}>
+              Reset filters
+            </button>
+          )}
+        </div>
+        {plotted.length ? (
+          <>
+            <div className="chart-axis-title">
+              Success rate (%) <span>Higher is better ↑</span>
+            </div>
+            <div className="chart-scroll" ref={scrollRef}>
+              <div
+                className="chart-canvas-frame"
+                style={{ width: `max(100%, ${Math.max(580, plotted.length * 46 + 132)}px)` }}
+              >
+                <BarChart
+                  data={chartData}
+                  config={chartConfig}
+                  stackType="stacked"
+                  yDomain={[0, 100]}
+                  margins={{ top: 30, right: 24, bottom: 164, left: 104 }}
+                  animationDuration={550}
+                  bloom="off"
+                  markerIndex={preview?.index ?? null}
+                  interactive={false}
+                  ariaLabel={`${benchmark} scores. Use left and right arrow keys to explore results.`}
+                >
+                  <Bar dataKey="open" variant="gradient" />
+                  <Bar dataKey="closed" variant="gradient" />
+                  <Bar dataKey="mixed" variant="hatched" />
+                  <Bar dataKey="uncertain" variant="hatched" />
+                  <ChartMarks
+                    rows={plotted}
+                    activeIndex={selectedIndex}
+                    previewIndex={preview?.index ?? null}
+                    onPreview={showPreview}
+                    onLeave={hidePreviewSoon}
+                    onDetails={showDetails}
+                  />
+                </BarChart>
+              </div>
+            </div>
+            <p className="chart-interaction-hint">
+              Scroll to explore · Hover, tap, or use arrow keys on a bar for details
+            </p>
+            {preview && active && (
+              <ChartHoverCard
+                row={active}
+                preview={preview}
+                onKeepOpen={keepPreviewOpen}
+                onLeave={hidePreviewSoon}
+                onDetails={() => showDetails(preview.index)}
+              />
+            )}
+          </>
+        ) : (
+          <div className="chart-empty">
+            <p>No systems match these filters.</p>
+            <span>Try another size category or include more weight types.</span>
+            <button type="button" onClick={() => updateFilters(defaultFilters)}>
+              Show all systems
+            </button>
+          </div>
+        )}
+        <details className="chart-methodology">
+          <summary>How model sizes and weights are classified</summary>
+          <div>
+            <p>
+              Size classes follow the Artificial Analysis categories: Tiny ≤4B; Small &gt;4–40B;
+              Medium &gt;40–150B; Large &gt;150B total parameters. Active MoE parameters are
+              reported separately.
+            </p>
+            <p>
+              When parameters are unavailable, we use standard uncached token prices with a 3:1
+              input/output blend: Small &lt;$0.15/M, Medium $0.15–$1/M, Large &gt;$1/M. “Price
+              proxy” is a pricing category, not a parameter estimate. “Estimated” marks a
+              provisional classification and remains included in filters.
+            </p>
+            <p>
+              Harnesses inherit the evaluated model stack's class. Multi-model systems use the
+              largest component category as an approximation. Open weights requires released weights
+              for every required model; open harness code alone does not qualify. Unverified
+              backbones and unavailable evaluated checkpoints are marked uncertain.
+            </p>
+            <p>
+              Results compare evaluated systems, including their tools, compute budgets, and context
+              strategies. Size categories do not guarantee hardware compatibility.{" "}
+              <a
+                href="https://github.com/steel-dev/leaderboard/issues/new"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Suggest a correction ↗
+              </a>
+            </p>
+          </div>
+        </details>
+      </section>
+      <section
+        className="table-shell chart-results"
+        id="chart-results"
+        aria-labelledby="chart-results-title"
+      >
+        <div className="lb-module-head chart-table-heading">
+          <h2 id="chart-results-title">Results</h2>
+          <div className="lb-head-lines" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+          <span>{filtered.length} systems</span>
+        </div>
+        <div className="chart-table-scroll">
+          <table className="chart-data-table" ref={tableRef}>
+            <thead>
+              <tr>
+                <th scope="col">System / submission</th>
+                <th scope="col">Score ↓</th>
+                <th scope="col">Model class</th>
+                <th scope="col">Reported</th>
+                <th scope="col">Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableRows.map((row, index) => (
+                <tr
+                  key={row.systemName}
+                  hidden={!expanded && index >= tablePreviewCount}
+                  data-system={row.systemName}
+                >
+                  <th scope="row">
+                    <span className="chart-system-name">
+                      {row.systemName}
+                      {row.isNew && <span className="badge badge-accent">New</span>}
+                    </span>
+                    <span className="chart-table-organization">
+                      {row.organization} · {kindLabels[row.classification.kind]}
+                    </span>
+                    <details className="chart-table-note">
+                      <summary>Evaluation & model details</summary>
+                      <p>{row.notesShort}</p>
+                      <ResearchDetails row={row} />
+                    </details>
+                  </th>
+                  <td className="chart-table-score">{row.scoreDisplay}</td>
+                  <td>
+                    <ClassificationBadges row={row} />
+                  </td>
+                  <td>{row.reportedAt || "—"}</td>
+                  <td>
+                    <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer">
+                      Source ↗
+                    </a>
+                    {row.repoUrl && (
+                      <a
+                        className="chart-repo-link"
+                        href={row.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Repository ↗
+                      </a>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {!filtered.length && <p className="chart-table-empty">No matching results.</p>}
+        {filtered.length > tablePreviewCount && (
+          <button
+            type="button"
+            className="lb-expand-btn"
+            aria-expanded={expanded}
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? "Show fewer results" : `Show all ${filtered.length} results`}
+          </button>
+        )}
+      </section>
+    </div>
+  );
+}

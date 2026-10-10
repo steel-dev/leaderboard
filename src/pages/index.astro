@@ -1,9 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import FaqList from "../components/FaqList.astro";
+import HomeLeaderboardExplorer from "../components/HomeLeaderboardExplorer";
+import { getChartBenchmarks } from "../lib/benchmark-charts";
 import { getAllBenchmarkPages, getTopResult, homeFaqs } from "../lib/benchmark-hub";
 
 const pages = getAllBenchmarkPages();
+const chartBenchmarks = getChartBenchmarks();
 
 const benchmarkIndexSchema = JSON.stringify({
   "@context": "https://schema.org",
@@ -68,7 +71,17 @@ const faqSchema = JSON.stringify({
       </p>
     </header>
 
-    <section id="benchmarks" class="mt-16 scroll-mt-8">
+    <section id="performance" class="mt-10 scroll-mt-8" aria-label="Explore benchmark performance">
+      <HomeLeaderboardExplorer benchmarks={chartBenchmarks} client:load />
+    </section>
+
+    <section id="benchmarks" class="mt-16 scroll-mt-8" aria-labelledby="all-benchmarks-title">
+      <h2
+        id="all-benchmarks-title"
+        class="mb-6 text-xl font-medium tracking-tight text-(--color-text-strong)"
+      >
+        All benchmarks
+      </h2>
       <div class="home-card-grid">
         {
           pages.map((page) => {
@@ -77,9 +90,9 @@ const faqSchema = JSON.stringify({
             return (
               <article class="leaderboard-card">
                 <div class="lb-module-head flex items-center gap-3 px-3 py-2">
-                  <h2 class="m-0 text-sm font-normal tracking-[-0.02em] text-(--color-accent)">
+                  <h3 class="m-0 text-sm font-normal tracking-[-0.02em] text-(--color-accent)">
                     {page.meta.name}
-                  </h2>
+                  </h3>
                   <div class="lb-head-lines" aria-hidden="true">
                     <span />
                     <span />

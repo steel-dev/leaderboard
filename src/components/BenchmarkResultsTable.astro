@@ -36,7 +36,10 @@ function formatReportedDate(reportedAt?: string): string {
 }
 ---
 
-<section class:list={["table-shell w-full", shouldCollapse && "is-collapsed"]}>
+<section
+  data-static-results-table
+  class:list={["table-shell w-full", shouldCollapse && "is-collapsed"]}
+>
   <div class="lb-module-head flex items-center gap-3 px-3 py-2">
     <h2 class="m-0 text-sm font-normal uppercase tracking-[-0.02em] text-[var(--color-accent)]">
       {heading || "Leaderboard"}
@@ -198,14 +201,16 @@ function formatReportedDate(reportedAt?: string): string {
 </section>
 
 <script>
-  document.querySelectorAll<HTMLButtonElement>(".lb-expand-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const shell = btn.closest<HTMLElement>(".table-shell");
-      if (!shell) return;
-      shell.classList.toggle("is-collapsed");
-      btn.setAttribute("aria-expanded", String(!shell.classList.contains("is-collapsed")));
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-static-results-table] .lb-expand-btn")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const shell = btn.closest<HTMLElement>(".table-shell");
+        if (!shell) return;
+        shell.classList.toggle("is-collapsed");
+        btn.setAttribute("aria-expanded", String(!shell.classList.contains("is-collapsed")));
+      });
     });
-  });
 
   document.querySelectorAll<HTMLButtonElement>(".note-trigger").forEach((trigger) => {
     const id = trigger.getAttribute("aria-describedby");

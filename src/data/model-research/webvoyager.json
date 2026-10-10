@@ -1,0 +1,806 @@
+{
+  "models": [
+    {
+      "id": "gpt-5-nano",
+      "name": "GPT-5 nano",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.05,
+      "outputUsdPerMillion": 0.4,
+      "size": "small",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Hosted OpenAI model; total parameters undisclosed. Standard uncached $0.05 input / $0.40 output per 1M tokens gives a $0.1375 blend, below the Small cutoff. Alumnium uses it as the browser subagent.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5 nano model and standard token prices",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5-nano"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4-1",
+      "name": "GPT-4.1",
+      "weights": "closed",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 8,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Hosted OpenAI GPT-4.1 family with published 2025-04-14 snapshot; parameters undisclosed. Standard uncached $2/$8 token prices give a $3.50 blend. Surfer 2 uses it for validation inside the action/retry loop.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-4.1 model and standard token prices",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4.1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4-1-mini",
+      "name": "GPT-4.1 mini",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.4,
+      "outputUsdPerMillion": 1.6,
+      "size": "medium",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Hosted OpenAI model; parameters undisclosed. Standard uncached $0.40/$1.60 token prices give a $0.70 blend. The WebSight code names the GPT-4.1 mini API alias for planning and next-action reasoning.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-4.1 mini model and standard token prices",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4.1-mini"
+        },
+        {
+          "title": "WebSight agent planning and next-action model constants",
+          "url": "https://github.com/SuperAce100/websight/blob/main/src/websight/agent/agent.py"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4-0125-preview",
+      "name": "GPT-4 Turbo (0125 preview)",
+      "weights": "closed",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 30,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Exact January 2024 preview used by WILBUR. Parameters undisclosed; published standard uncached $10/$30 token rates give a $15 blend. Not the later stable GPT-4 Turbo snapshot.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-4 Turbo preview snapshots and standard pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4-turbo-preview"
+        },
+        {
+          "title": "WILBUR paper: runtime model and ranker hyperparameters",
+          "url": "https://arxiv.org/html/2404.05902"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4-vision-preview",
+      "name": "GPT-4 Vision preview",
+      "weights": "closed",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 30,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Original GPT-4 Vision preview, also listed as gpt-4-1106-vision-preview in OpenAI deprecations. Parameters undisclosed. Historical standard uncached $10/$30 token rates give a $15 blend; model was retired in December 2024.",
+      "sources": [
+        {
+          "title": "OpenAI deprecation table: GPT-4 Vision preview identity and prices",
+          "url": "https://developers.openai.com/api/docs/deprecations"
+        },
+        {
+          "title": "Original WebVoyager paper and GPT-4 All Tools baseline",
+          "url": "https://arxiv.org/html/2401.13919"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4o-unspecified-historical",
+      "name": "GPT-4o (historical snapshot unspecified)",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Reports/configurations name GPT-4o without a verifiable snapshot or use an unpinned Azure deployment alias. Keep separate from May, August and November 2024 checkpoints. Large is provisional from known GPT-4o standard price tiers; no exact tariff or parameter count is assigned to these historical runs.",
+      "sources": [
+        {
+          "title": "Browser Use evaluated Azure GPT-4o deployment aliases",
+          "url": "https://github.com/browser-use/eval/blob/main/run_browser_use.py"
+        },
+        {
+          "title": "Surfer-H / Holo1 report, Table 5 runtime validator ablation",
+          "url": "https://arxiv.org/html/2506.02865"
+        },
+        {
+          "title": "OpenAI GPT-4o snapshots and current standard pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4o"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "text-embedding-3-large",
+      "name": "text-embedding-3-large",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.13,
+      "size": "small",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Hosted embedding helper with undisclosed parameters. Published input price is $0.13 per 1M tokens; there is no generated-output tariff, so the required 3:1 text-generation proxy cannot be calculated. Provisional Small follows its low input cost, not the word large in its name.",
+      "sources": [
+        {
+          "title": "OpenAI text-embedding-3-large input token pricing",
+          "url": "https://developers.openai.com/api/docs/models/text-embedding-3-large"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-sonnet-4-20250514",
+      "name": "Claude Sonnet 4 (20250514)",
+      "weights": "closed",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Magnitude runner pins claude-sonnet-4-20250514. Parameters undisclosed. Standard uncached $3/$15 per 1M tokens gives a $6 blend. Claude Code is the provider wrapper, not another separately counted model.",
+      "sources": [
+        {
+          "title": "Magnitude runner: claude-sonnet-4-20250514",
+          "url": "https://github.com/magnitudedev/webvoyager/blob/main/wv-runner.ts"
+        },
+        {
+          "title": "Anthropic standard pricing for Claude Sonnet 4",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-3-5-sonnet-20241022",
+      "name": "Claude 3.5 Sonnet (20241022)",
+      "weights": "closed",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "October 2024 upgraded Sonnet introduced computer use. Parameters undisclosed. Anthropic kept the predecessor\u2019s standard $3/$15 token prices, giving a $6 blend. Historical Kura comparison identifies the official computer-use demo, not an explicitly logged snapshot.",
+      "sources": [
+        {
+          "title": "Anthropic October 2024 computer-use model release",
+          "url": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+        },
+        {
+          "title": "Original Claude 3.5 Sonnet standard token pricing",
+          "url": "https://www.anthropic.com/news/claude-3-5-sonnet"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gemini-2-0-flash",
+      "name": "Gemini 2.0 Flash",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "size": "medium",
+      "basis": "price",
+      "confidence": "medium",
+      "notes": "Hosted Gemini 2.0 Flash; parameters undisclosed. Google Cloud publishes standard uncached text/image/video input $0.15 and text output $0.60 per 1M tokens, a $0.2625 blend. This is the verified Vertex tariff, not a claim about historical benchmark billing or free quotas; the current Developer API price page no longer lists this model.",
+      "sources": [
+        {
+          "title": "Google Cloud standard Gemini 2.0 Flash token pricing",
+          "url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
+        },
+        {
+          "title": "Browserable benchmark model and fallback configuration",
+          "url": "https://www.browserable.ai/blog/web-voyager-benchmark"
+        },
+        {
+          "title": "Notte Gemini evaluation configuration",
+          "url": "https://github.com/nottelabs/open-operator-evals/blob/main/configs/notte.headless.gemini.toml"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "holo1-7b",
+      "name": "Holo1-7B",
+      "weights": "open",
+      "totalParametersB": 8.292166656,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Public ungated Apache-2.0 checkpoint with four downloadable safetensors shards. Inventory reports 8,292,166,656 total parameters including the vision components; the 7B product name describes the language-model scale. Use the inventory total for classification.",
+      "sources": [
+        {
+          "title": "H Company Holo1-7B checkpoint card",
+          "url": "https://huggingface.co/Hcompany/Holo1-7B"
+        },
+        {
+          "title": "Holo1-7B public weight files and tensor parameter total",
+          "url": "https://huggingface.co/api/models/Hcompany/Holo1-7B"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "holo1-5-7b",
+      "name": "Holo1.5-7B",
+      "weights": "open",
+      "totalParametersB": 8.292166656,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Public ungated Apache-2.0 checkpoint with four downloadable safetensors shards. Inventory reports 8,292,166,656 total parameters including the vision components; the 7B product name describes the language-model scale. Use the inventory total for classification.",
+      "sources": [
+        {
+          "title": "H Company Holo1.5-7B checkpoint card",
+          "url": "https://huggingface.co/Hcompany/Holo1.5-7B"
+        },
+        {
+          "title": "Holo1.5-7B public weight files and tensor parameter total",
+          "url": "https://huggingface.co/api/models/Hcompany/Holo1.5-7B"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "websight-7b",
+      "name": "WebSight-7B",
+      "weights": "open",
+      "totalParametersB": 8.292166656,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The agent loads tanvirb/websight-7B, a merged UI-TARS-1.5-7B fine-tune. Public ungated Apache-2.0 repository has four full safetensors shards, in addition to archived adapters. Inventory total is 8,292,166,656 parameters including vision components.",
+      "sources": [
+        {
+          "title": "WebSight merged evaluated checkpoint card",
+          "url": "https://huggingface.co/tanvirb/websight-7B"
+        },
+        {
+          "title": "WebSight checkpoint inventory and tensor parameter total",
+          "url": "https://huggingface.co/api/models/tanvirb/websight-7B"
+        },
+        {
+          "title": "WebSight agent planning and next-action model constants",
+          "url": "https://github.com/SuperAce100/websight/blob/main/src/websight/agent/agent.py"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "openai-o1-kura-historical",
+      "name": "OpenAI o1 family (Kura historical run)",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Kura names OpenAI o1 for its initial planner without a snapshot. The historical timing may indicate o1-preview, but this is unconfirmed and must not be replaced silently by the later full o1 checkpoint. Provisional Large follows the o1 frontier reasoning family\u2019s known price class; exact parameters and run-specific tariff are unavailable.",
+      "sources": [
+        {
+          "title": "Kura five-agent runtime model architecture",
+          "url": "https://www.trykura.com/technical-deep-dive"
+        },
+        {
+          "title": "OpenAI o1-preview family price evidence, not confirmation of the Kura checkpoint",
+          "url": "https://developers.openai.com/api/docs/models/o1-preview"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "project-mariner-gemini-2-0-prototype",
+      "name": "Project Mariner Gemini 2.0 prototype",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Google identifies a December 2024 research prototype built with Gemini 2.0, without a public model checkpoint, parameter count or model-specific token price. It is not identified as Gemini 2.0 Flash. Large is a low-confidence frontier-agent prior; actual scale could fall in a smaller category.",
+      "sources": [
+        {
+          "title": "Google December 2024 Project Mariner prototype",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/google-gemini-ai-update-december-2024/"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "runner-h-h-vlm-3b",
+      "name": "Runner H H-VLM 3B",
+      "weights": "uncertain",
+      "totalParametersB": 3,
+      "size": "tiny",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "H Company\u2019s historical report specifies a 3B vision-language runtime model. This is the original internal H-VLM, not the later Holo1 release. No downloadable evaluated checkpoint was verified, so weights availability remains uncertain.",
+      "sources": [
+        {
+          "title": "H Company historical Runner H research update",
+          "url": "https://lp.hcompany.ai/blog/a-research-update"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "runner-h-h-llm-2b",
+      "name": "Runner H H-LLM 2B",
+      "weights": "uncertain",
+      "totalParametersB": 2,
+      "size": "tiny",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "H Company\u2019s historical report specifies a 2B language runtime model. This is the original internal H-LLM, not a later Holo checkpoint. No downloadable evaluated checkpoint was verified, so weights availability remains uncertain.",
+      "sources": [
+        {
+          "title": "H Company historical Runner H research update",
+          "url": "https://lp.hcompany.ai/blog/a-research-update"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "runner-h-0-1-external-models",
+      "name": "Runner H 0.1 external model stack (undisclosed)",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The author says Runner H combines internal and external models but does not identify the external runtime models. Large is a provisional frontier-provider prior, not a disclosed parameter or price measurement. GPT-4o is named as a scoring evaluator only and does not establish this runtime identity.",
+      "sources": [
+        {
+          "title": "H Company historical Runner H research update",
+          "url": "https://lp.hcompany.ai/blog/a-research-update"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "wilbur-demonstration-ranker",
+      "name": "WILBUR demonstration ranker",
+      "weights": "uncertain",
+      "totalParametersB": 0.001576601,
+      "size": "tiny",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Runtime demonstration-ranking MLP. The published 7680\u2192200\u2192200\u21921 fully connected architecture implies 1,576,601 parameters including biases; this is an architecture-derived count, not an inspected checkpoint. The author project links the paper and hosted product but no trained ranker download was verified.",
+      "sources": [
+        {
+          "title": "WILBUR paper: runtime model and ranker hyperparameters",
+          "url": "https://arxiv.org/html/2404.05902"
+        },
+        {
+          "title": "WILBUR author project page",
+          "url": "https://michael-lutz.github.io/WILBUR/"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "chatgpt-gpt-4-all-tools-2023",
+      "name": "ChatGPT GPT-4 All Tools (historical baseline)",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The WebVoyager paper evaluates the GPT-4 All Tools ChatGPT product, not an identified API snapshot. Its browser/tool stack and exact underlying model are unpinned. Provisional Large follows the historical GPT-4 product family; subscription cost is not substituted for a token price.",
+      "sources": [
+        {
+          "title": "Original WebVoyager paper and GPT-4 All Tools baseline",
+          "url": "https://arxiv.org/html/2401.13919"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    }
+  ],
+  "submissions": [
+    {
+      "systemName": "browser-control (Fable 5)",
+      "kind": "harness",
+      "modelIds": [
+        "claude-fable-5"
+      ],
+      "harnessCode": "open",
+      "notes": "Published runner names claude-fable-5 through Claude Code with the public browser-control CDP tool. GPT-5.5 is an external scoring judge and is excluded. The author warns that the evaluated Fable 5 availability changed after the run; released harness code does not imply open model weights.",
+      "sources": [
+        {
+          "title": "browser-control evaluated Fable 5 and Opus 4.8 runs",
+          "url": "https://github.com/omxyz/webvoyager"
+        },
+        {
+          "title": "browser-control shell-native CDP harness",
+          "url": "https://github.com/keon/browser-control"
+        }
+      ]
+    },
+    {
+      "systemName": "Alumnium",
+      "kind": "harness",
+      "modelIds": [
+        "claude-sonnet-4-6",
+        "gpt-5-nano"
+      ],
+      "harnessCode": "open",
+      "notes": "March 2026 setup uses Claude Code/Sonnet 4.6 as orchestrator and Alumnium MCP 0.18/GPT-5 nano as browser subagent. Both are required runtime models; the stack uses the larger category. GPT-5 only scores completed trajectories and is excluded.",
+      "sources": [
+        {
+          "title": "Alumnium WebVoyager evaluation setup",
+          "url": "https://alumnium.ai/blog/webvoyager-benchmark/"
+        }
+      ]
+    },
+    {
+      "systemName": "Surfer 2",
+      "kind": "system",
+      "modelIds": [
+        "o3",
+        "claude-sonnet-4-5",
+        "gpt-4-1",
+        "holo1-5-7b"
+      ],
+      "harnessCode": "uncertain",
+      "notes": "Table 1\u2019s WebVoyager stack is o3 orchestration, Sonnet 4.5 policy, GPT-4.1 validation and Holo1.5-7B localization. Validation feeds retries, so it is runtime. This differs from the paper\u2019s WebArena configuration. Mixed open/closed weights; release of the exact Surfer 2 harness was not verified.",
+      "sources": [
+        {
+          "title": "Surfer 2 technical report, Table 1 WebVoyager configuration",
+          "url": "https://arxiv.org/html/2510.19949v1"
+        }
+      ]
+    },
+    {
+      "systemName": "Magnitude",
+      "kind": "harness",
+      "modelIds": [
+        "claude-sonnet-4-20250514"
+      ],
+      "harnessCode": "open",
+      "notes": "The 93.9% report and public runner identify Claude Sonnet 4; code pins claude-sonnet-4-20250514 through Claude Code. Original magnitude.run/webvoyager redirects to a missing page; the author\u2019s evaluation repository supplies the recovered evidence.",
+      "sources": [
+        {
+          "title": "Magnitude WebVoyager results and evaluation runner",
+          "url": "https://github.com/magnitudedev/webvoyager"
+        },
+        {
+          "title": "Magnitude runner: claude-sonnet-4-20250514",
+          "url": "https://github.com/magnitudedev/webvoyager/blob/main/wv-runner.ts"
+        }
+      ]
+    },
+    {
+      "systemName": "Surfer-H + Holo1",
+      "kind": "harness",
+      "modelIds": [
+        "holo1-7b",
+        "gpt-4o-unspecified-historical"
+      ],
+      "harnessCode": "open",
+      "notes": "The 92.2% Table 5 run uses Holo1-7B policy/localization plus GPT-4o validation with up to ten attempts. The validator supplies retry feedback and must be included; the all-Holo variant scores differently. GPT-4o snapshot is unpinned. Open CLI code and Holo weights do not make this mixed stack all-open.",
+      "sources": [
+        {
+          "title": "Surfer-H / Holo1 report, Table 5 runtime validator ablation",
+          "url": "https://arxiv.org/html/2506.02865"
+        },
+        {
+          "title": "Released Surfer-H CLI and agent implementation",
+          "url": "https://github.com/hcompai/surfer-h-cli"
+        }
+      ]
+    },
+    {
+      "systemName": "browser-control (Opus 4.8)",
+      "kind": "harness",
+      "modelIds": [
+        "claude-opus-4-8"
+      ],
+      "harnessCode": "open",
+      "notes": "Published runner names claude-opus-4-8 through Claude Code with public browser-control tooling. GPT-5.5 evaluates completed runs and is excluded from the runtime. Open harness code is distinct from closed Claude weights.",
+      "sources": [
+        {
+          "title": "browser-control evaluated Fable 5 and Opus 4.8 runs",
+          "url": "https://github.com/omxyz/webvoyager"
+        },
+        {
+          "title": "browser-control shell-native CDP harness",
+          "url": "https://github.com/keon/browser-control"
+        }
+      ]
+    },
+    {
+      "systemName": "Browserable",
+      "kind": "harness",
+      "modelIds": [
+        "gemini-2-0-flash",
+        "gpt-4o-unspecified-historical",
+        "claude-3-5-sonnet-historical"
+      ],
+      "harnessCode": "open",
+      "notes": "Author report specifies Gemini 2.0 Flash primary with GPT-4o and Claude 3.5 Sonnet fallbacks for rate limits. Include the available fallback stack; invocation shares and historical snapshots are unspecified. The retrieved report does not establish custom released fine-tuned weights.",
+      "sources": [
+        {
+          "title": "Browserable benchmark model and fallback configuration",
+          "url": "https://www.browserable.ai/blog/web-voyager-benchmark"
+        }
+      ]
+    },
+    {
+      "systemName": "Browser Use",
+      "kind": "harness",
+      "modelIds": [
+        "gpt-4o-unspecified-historical"
+      ],
+      "harnessCode": "open",
+      "notes": "December 2024 report names GPT-4o; public evaluation code routes Azure deployments named gpt-4o without a verifiable snapshot. Keep historical identity provisional. External scoring model is excluded. Public harness code does not imply open GPT-4o weights.",
+      "sources": [
+        {
+          "title": "Browser Use December 2024 evaluation report",
+          "url": "https://browser-use.com/posts/sota-technical-report"
+        },
+        {
+          "title": "Browser Use evaluated Azure GPT-4o deployment aliases",
+          "url": "https://github.com/browser-use/eval/blob/main/run_browser_use.py"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-5V-Turbo",
+      "kind": "model",
+      "modelIds": [
+        "glm-5v-turbo"
+      ],
+      "harnessCode": "not-applicable",
+      "notes": "Known Z.ai hosted model; parameter total and released evaluated weights are unverified. Large comes from the serving provider\u2019s published standard token-price proxy, not a parameter estimate or another GLM model\u2019s architecture.",
+      "sources": [
+        {
+          "title": "Z.ai GLM-5V-Turbo model guide",
+          "url": "https://docs.z.ai/guides/vlm/glm-5v-turbo"
+        },
+        {
+          "title": "OpenRouter GLM-5V-Turbo standard token prices",
+          "url": "https://openrouter.ai/z-ai/glm-5v-turbo/pricing"
+        },
+        {
+          "title": "Z.ai publisher checkpoint inventory search",
+          "url": "https://huggingface.co/api/models?author=zai-org&search=GLM-5V"
+        }
+      ]
+    },
+    {
+      "systemName": "Agent Kura",
+      "kind": "system",
+      "modelIds": [
+        "openai-o1-kura-historical",
+        "gpt-4o-unspecified-historical"
+      ],
+      "harnessCode": "uncertain",
+      "notes": "Kura describes an o1 initial planner plus GPT-4o loop planner, executor, critic and final critic. Historical snapshots are unpinned; the currently served primary pages do not prove a November 2024 checkpoint. Steel retrieved the JavaScript-rendered pages. Public benchmark assets do not establish release of the full agent implementation.",
+      "sources": [
+        {
+          "title": "Kura benchmark methodology and comparison",
+          "url": "https://www.trykura.com/benchmarks"
+        },
+        {
+          "title": "Kura five-agent runtime model architecture",
+          "url": "https://www.trykura.com/technical-deep-dive"
+        }
+      ]
+    },
+    {
+      "systemName": "Operator",
+      "kind": "system",
+      "modelIds": [
+        "openai-cua-original"
+      ],
+      "harnessCode": "closed",
+      "notes": "Original January 2025 Operator uses OpenAI\u2019s computer-using agent. Keep it separate from later computer-use-preview/API snapshots and tariffs; original model scale remains a provisional estimate.",
+      "sources": [
+        {
+          "title": "Original Operator and computer-using agent announcement",
+          "url": "https://openai.com/index/introducing-operator/"
+        }
+      ]
+    },
+    {
+      "systemName": "Notte",
+      "kind": "harness",
+      "modelIds": [
+        "gemini-2-0-flash"
+      ],
+      "harnessCode": "open",
+      "notes": "The v1.3.3 report attributes 86.2% to Gemini 2.0 Flash on WebVoyager30, a 30-task subset run eight times, using self-reported completion. Configuration and handler set both reasoning and perception to Gemini; the default Llama helper is overridden. The published external LLM score differs; preserve the existing leaderboard result.",
+      "sources": [
+        {
+          "title": "Notte v1.3.3 WebVoyager30 evaluation results",
+          "url": "https://github.com/nottelabs/open-operator-evals"
+        },
+        {
+          "title": "Notte Gemini evaluation configuration",
+          "url": "https://github.com/nottelabs/open-operator-evals/blob/main/configs/notte.headless.gemini.toml"
+        },
+        {
+          "title": "Notte handler sets reasoning and perception to the evaluated model",
+          "url": "https://github.com/nottelabs/open-operator-evals/blob/main/eval/agent_handlers/falco.py"
+        }
+      ]
+    },
+    {
+      "systemName": "Skyvern 2.0",
+      "kind": "harness",
+      "modelIds": [
+        "gpt-4o-unspecified-historical",
+        "gpt-4o-mini"
+      ],
+      "harnessCode": "open",
+      "notes": "Historical benchmark setup names GPT-4o and GPT-4o-mini as decision models and runs on Skyvern Cloud. The currently updated blog retains this setup, but does not pin GPT-4o\u2019s snapshot. Public Skyvern harness code is separate from the closed hosted model weights.",
+      "sources": [
+        {
+          "title": "Skyvern 2.0 evaluation: GPT-4o and GPT-4o-mini",
+          "url": "https://www.skyvern.com/blog/skyvern-2-0-webvoyager-benchmark-results/"
+        }
+      ]
+    },
+    {
+      "systemName": "Project Mariner",
+      "kind": "system",
+      "modelIds": [
+        "project-mariner-gemini-2-0-prototype"
+      ],
+      "harnessCode": "closed",
+      "notes": "December 2024 source describes the 83.5% single-agent research prototype as built with Gemini 2.0. It does not identify Flash or disclose an independently priced model checkpoint. Model category remains a low-confidence estimate.",
+      "sources": [
+        {
+          "title": "Google December 2024 Project Mariner prototype",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/google-gemini-ai-update-december-2024/"
+        }
+      ]
+    },
+    {
+      "systemName": "Agent-E",
+      "kind": "harness",
+      "modelIds": [
+        "gpt-4-turbo-2024-04-09"
+      ],
+      "harnessCode": "open",
+      "notes": "The paper uses GPT-4 Turbo for planner and browser navigator; July 2024 README recommends stable gpt-4-turbo. Mapping to the 2024-04-09 stable snapshot follows that API alias, not an explicit evaluation snapshot log. Current repository examples using other models do not replace the historical setup.",
+      "sources": [
+        {
+          "title": "Agent-E report and evaluated GPT-4 Turbo architecture",
+          "url": "https://arxiv.org/html/2407.13032"
+        },
+        {
+          "title": "Agent-E July 2024 README recommends stable GPT-4 Turbo alias",
+          "url": "https://github.com/EmergenceAI/Agent-E/blob/205d1bf9da7eb14d612de0d9a2ee8f94df3050cb/README.md"
+        },
+        {
+          "title": "OpenAI stable GPT-4 Turbo alias and 2024-04-09 snapshot",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4-turbo"
+        }
+      ]
+    },
+    {
+      "systemName": "WebSight",
+      "kind": "harness",
+      "modelIds": [
+        "websight-7b",
+        "gpt-4-1-mini"
+      ],
+      "harnessCode": "open",
+      "notes": "Paper and agent code use GPT-4.1 mini planning/next-action reasoning plus the released WebSight-7B action checkpoint. This is a mixed-weight runtime, so the open action model alone does not make the submission open. Teachers and external scoring judges are excluded.",
+      "sources": [
+        {
+          "title": "WebSight report: GPT-4.1 mini planning and WebSight-7B actions",
+          "url": "https://arxiv.org/html/2508.16987"
+        },
+        {
+          "title": "WebSight agent planning and next-action model constants",
+          "url": "https://github.com/SuperAce100/websight/blob/main/src/websight/agent/agent.py"
+        },
+        {
+          "title": "WebSight merged evaluated checkpoint card",
+          "url": "https://huggingface.co/tanvirb/websight-7B"
+        }
+      ]
+    },
+    {
+      "systemName": "Runner H 0.1",
+      "kind": "system",
+      "modelIds": [
+        "runner-h-h-vlm-3b",
+        "runner-h-h-llm-2b",
+        "runner-h-0-1-external-models"
+      ],
+      "harnessCode": "uncertain",
+      "notes": "Historical report identifies internal H-VLM 3B and H-LLM 2B plus unspecified external runtime models. Retain all three components; do not substitute later open Holo weights. GPT-4o is identified only for evaluation. Original source moved; author\u2019s archived research update was retrieved.",
+      "sources": [
+        {
+          "title": "H Company historical Runner H research update",
+          "url": "https://lp.hcompany.ai/blog/a-research-update"
+        }
+      ]
+    },
+    {
+      "systemName": "WebVoyager",
+      "kind": "harness",
+      "modelIds": [
+        "gpt-4-vision-preview"
+      ],
+      "harnessCode": "open",
+      "notes": "Original agent paper uses gpt-4-vision-preview. GPT-4 Turbo used to generate tasks and the external evaluation judge are excluded from runtime classification. Public Selenium agent code is separate from the closed model.",
+      "sources": [
+        {
+          "title": "Original WebVoyager paper and GPT-4 All Tools baseline",
+          "url": "https://arxiv.org/html/2401.13919"
+        },
+        {
+          "title": "WebVoyager public harness",
+          "url": "https://github.com/MinorJerry/WebVoyager"
+        }
+      ]
+    },
+    {
+      "systemName": "Anthropic Computer Use 3.5",
+      "kind": "harness",
+      "modelIds": [
+        "claude-3-5-sonnet-20241022"
+      ],
+      "harnessCode": "open",
+      "notes": "Kura\u2019s comparison uses Anthropic\u2019s official computer-use demo. October 2024 upgraded Sonnet is the supported historical computer-use model; this is a release-date inference rather than a snapshot log. The 56% comparison is on 50 tasks. Demo code availability does not imply open weights.",
+      "sources": [
+        {
+          "title": "Kura benchmark methodology and comparison",
+          "url": "https://www.trykura.com/benchmarks"
+        },
+        {
+          "title": "Anthropic October 2024 computer-use model release",
+          "url": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+        }
+      ]
+    },
+    {
+      "systemName": "WILBUR",
+      "kind": "harness",
+      "modelIds": [
+        "gpt-4-0125-preview",
+        "text-embedding-3-large",
+        "wilbur-demonstration-ranker"
+      ],
+      "harnessCode": "uncertain",
+      "notes": "Paper pins GPT-4-0125-preview and includes text-embedding-3-large retrieval plus a learned runtime MLP ranker. No trained ranker download or full public harness was verified on the author project. External GPT-4V scoring and autocurriculum-only calls are excluded.",
+      "sources": [
+        {
+          "title": "WILBUR paper: runtime model and ranker hyperparameters",
+          "url": "https://arxiv.org/html/2404.05902"
+        },
+        {
+          "title": "WILBUR author project page",
+          "url": "https://michael-lutz.github.io/WILBUR/"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-4 (All Tools)",
+      "kind": "system",
+      "modelIds": [
+        "chatgpt-gpt-4-all-tools-2023"
+      ],
+      "harnessCode": "closed",
+      "notes": "Paper\u2019s ChatGPT GPT-4 All Tools product baseline has no pinned API checkpoint or complete tool-runtime disclosure. Retain an explicitly provisional historical system identity instead of assigning a later GPT-4 Turbo model.",
+      "sources": [
+        {
+          "title": "Original WebVoyager paper and GPT-4 All Tools baseline",
+          "url": "https://arxiv.org/html/2401.13919"
+        }
+      ]
+    }
+  ]
+}

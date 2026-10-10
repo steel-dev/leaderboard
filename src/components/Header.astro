@@ -191,6 +191,21 @@ const dropdownBenchmarks = getAllBenchmarkPages().slice(0, 3);
     z-index: 30;
   }
 
+  @media (max-width: 767px) {
+    nav[aria-label="Primary"] {
+      position: relative;
+    }
+
+    .benchmarks-menu {
+      position: static;
+    }
+
+    .benchmarks-dropdown {
+      width: min(18rem, 100%);
+      min-width: 0;
+    }
+  }
+
   .benchmarks-menu:hover .benchmarks-dropdown,
   .benchmarks-menu:focus-within .benchmarks-dropdown {
     opacity: 1;

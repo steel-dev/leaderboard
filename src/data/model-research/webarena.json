@@ -1,0 +1,1652 @@
+{
+  "models": [
+    {
+      "id": "gpt-4-0613",
+      "name": "GPT-4 (0613)",
+      "weights": "closed",
+      "inputUsdPerMillion": 30,
+      "outputUsdPerMillion": 60,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Standard uncached USD text token prices per million determine the category; tool fees and cache/batch discounts are excluded. Official default GPT-4 snapshot is 0613; historical model, not GPT-4 Turbo.",
+      "sources": [
+        {
+          "title": "Official OpenAI model pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4-1106-preview",
+      "name": "GPT-4 Turbo (1106 preview)",
+      "weights": "closed",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 30,
+      "size": "large",
+      "basis": "price",
+      "confidence": "medium",
+      "notes": "Parameters are undisclosed. Standard uncached USD text token prices per million determine the category; tool fees and cache/batch discounts are excluded. November 2023 text preview. The evaluated alias is pinned in the AutoEval runtime script; the provider retains the GPT-4 Turbo Preview tariff. Exact snapshot page returned 404, while the preview family documentation and deprecation listing remain accessible.",
+      "sources": [
+        {
+          "title": "Official OpenAI model pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4-turbo-preview"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4-turbo-2024-04-09",
+      "name": "GPT-4 Turbo (2024-04-09)",
+      "weights": "closed",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 30,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Standard uncached USD text token prices per million determine the category; tool fees and cache/batch discounts are excluded. The stable Turbo snapshot is distinct from earlier previews.",
+      "sources": [
+        {
+          "title": "Official OpenAI model pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4-turbo"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4-turbo-preview-historical",
+      "name": "GPT-4 Turbo Preview (historical unpinned alias)",
+      "weights": "closed",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 30,
+      "size": "large",
+      "basis": "price",
+      "confidence": "medium",
+      "notes": "Parameters are undisclosed. Standard uncached USD text token prices per million determine the category; tool fees and cache/batch discounts are excluded. The SteP paper names gpt-4-turbo-preview without a date; the preview tariff is published, but the exact evaluation snapshot is unpinned. Later repository runs use stable April Turbo and must not replace the paper result.",
+      "sources": [
+        {
+          "title": "Official OpenAI model pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4-turbo-preview"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4o-2024-05-13",
+      "name": "GPT-4o (2024-05-13)",
+      "weights": "closed",
+      "inputUsdPerMillion": 5,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Standard uncached USD text token prices per million determine the category; tool fees and cache/batch discounts are excluded. Legacy standard table explicitly prices this May snapshot at $5/$15. Do not apply the later GPT-4o alias's $2.50/$10 rates.",
+      "sources": [
+        {
+          "title": "Official OpenAI model pricing",
+          "url": "https://developers.openai.com/api/docs/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-mini",
+      "name": "GPT-5 mini",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.25,
+      "outputUsdPerMillion": 2,
+      "size": "medium",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Standard uncached USD text token prices per million determine the category; tool fees and cache/batch discounts are excluded. Published blend is $0.6875/M: Medium despite the mini product name.",
+      "sources": [
+        {
+          "title": "Official OpenAI model pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5-mini"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-3-5-turbo-16k-0613",
+      "name": "GPT-3.5 Turbo 16K (0613)",
+      "weights": "closed",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 4,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Standard uncached USD text token prices per million determine the category; tool fees and cache/batch discounts are excluded. Historical deprecation table explicitly lists this exact 16K snapshot at $3/$4. The cheaper modern GPT-3.5 alias tariff is not substituted.",
+      "sources": [
+        {
+          "title": "Official OpenAI model pricing",
+          "url": "https://developers.openai.com/api/docs/deprecations"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-3-5-sonnet-historical",
+      "name": "Claude 3.5 Sonnet (historical unpinned snapshot)",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The source identifies Claude 3.5 Sonnet but not its June/October snapshot. Provisional Large follows this proprietary frontier family; parameters and an exact evaluated-version tariff are not asserted. Snapshot-specific records remain separate.",
+      "sources": [
+        {
+          "title": "AgentSymbiotic evaluated model",
+          "url": "https://arxiv.org/html/2502.07942"
+        },
+        {
+          "title": "Learn-by-Interact evaluated model",
+          "url": "https://arxiv.org/html/2501.10893"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-4-32b-0414",
+      "name": "GLM-4-32B-0414",
+      "weights": "open",
+      "totalParametersB": 32,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Publisher nominal 32B dense architecture; the exact off-the-shelf controller used by WebChallenger. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/zai-org/GLM-4-32B-0414"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/zai-org/GLM-4-32B-0414"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen2-5-vl-7b-instruct",
+      "name": "Qwen2.5-VL-7B-Instruct",
+      "weights": "open",
+      "totalParametersB": 8.2922,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Publisher repository tensor total rounded in billions includes the visual component; the nominal 7B name refers to the model scale. This remains Small. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen2.5-VL-7B-Instruct"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "a3-qwen3-5-9b",
+      "name": "A3-Qwen3.5-9B",
+      "weights": "open",
+      "totalParametersB": 9,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Released 9B multimodal fine-tune. Model card reports 41.5 while the BrowserGym submission reports 42.1; result data is preserved. Training annotator Gemini is excluded. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/McGill-NLP/A3-Qwen3.5-9B"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/McGill-NLP/A3-Qwen3.5-9B"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "tti-gemma3-12b-webarena",
+      "name": "TTI WebArena Gemma 3 12B",
+      "weights": "open",
+      "totalParametersB": 12,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The paper identifies the 12B base and the released config matches Gemma3ForConditionalGeneration. The full pytorch_model.bin checkpoint is listed. Its Gemma 3 27B rollout evaluator is for training, not inference. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/sjunhongs/tti_webarena"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/sjunhongs/tti_webarena"
+        },
+        {
+          "title": "TTI paper",
+          "url": "https://arxiv.org/html/2506.07976"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agenttrek-1-0-32b",
+      "name": "AgentTrek-1.0-32B",
+      "weights": "open",
+      "totalParametersB": 32,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Fine-tuned Qwen2.5-32B-Instruct. Data-generation and reward models are not runtime dependencies. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/xlangai/AgentTrek-1.0-32B"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/xlangai/AgentTrek-1.0-32B"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "nnetnav-llama3-1-8b-wa",
+      "name": "NNetNav Llama-3.1-8B WebArena",
+      "weights": "open",
+      "totalParametersB": 8,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Released WebArena-specific checkpoint; the card directly matches the stored 16.3 result. Llama-3.1-70B generated/filtered training trajectories and is excluded from inference. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/stanfordnlp/llama8b-nnetnav-wa"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/stanfordnlp/llama8b-nnetnav-wa"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen1-5-72b-chat",
+      "name": "Qwen1.5-72B-Chat",
+      "weights": "open",
+      "totalParametersB": 72,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published 72B dense chat model; distinct from Patel et al.'s subsequently fine-tuned Mixture-B checkpoint. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/Qwen/Qwen1.5-72B-Chat"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen1.5-72B-Chat"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "llama3-8b-instruct",
+      "name": "Meta Llama 3 8B Instruct",
+      "weights": "open",
+      "totalParametersB": 8,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Original Llama 3 instruction checkpoint; not Llama 3.1. Actual checkpoint files were verified in the public repository inventory. Access requires the publisher's license acceptance; this is released weight access, not an unrestricted license.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct"
+        },
+        {
+          "title": "Meta model card",
+          "url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "llama3-70b-instruct",
+      "name": "Meta Llama 3 70B Instruct",
+      "weights": "open",
+      "totalParametersB": 70,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Original Llama 3 instruction checkpoint; not Llama 3.1. Actual checkpoint files were verified in the public repository inventory. Access requires the publisher's license acceptance; this is released weight access, not an unrestricted license.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/meta-llama/Meta-Llama-3-70B-Instruct"
+        },
+        {
+          "title": "Meta model card",
+          "url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "lemur-70b-chat-v1",
+      "name": "Lemur-70B-Chat-v1",
+      "weights": "open",
+      "totalParametersB": 70,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published 70B code/text model; public PyTorch weight shards verified. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/OpenLemur/lemur-70b-chat-v1"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/OpenLemur/lemur-70b-chat-v1"
+        },
+        {
+          "title": "Lemur paper",
+          "url": "https://arxiv.org/html/2310.06830"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agent-flan-7b",
+      "name": "Agent-FLAN-7B",
+      "weights": "open",
+      "totalParametersB": 7,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Llama2-7B fine-tuned on Agent-FLAN; the exact released model card identifies this base. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/internlm/Agent-FLAN-7b"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/internlm/Agent-FLAN-7b"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "codellama-7b-instruct",
+      "name": "Code Llama 7B Instruct",
+      "weights": "open",
+      "totalParametersB": 7,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published nominal dense model size. Original publisher inventory and compatible codellama mirror contain actual weight shards. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/meta-llama/CodeLlama-7b-Instruct-hf"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/meta-llama/CodeLlama-7b-Instruct-hf"
+        },
+        {
+          "title": "Meta Code Llama model card",
+          "url": "https://github.com/meta-llama/codellama/blob/main/MODEL_CARD.md"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "codellama-34b-instruct",
+      "name": "Code Llama 34B Instruct",
+      "weights": "open",
+      "totalParametersB": 34,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published nominal dense model size. Original publisher inventory and compatible codellama mirror contain actual weight shards. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/meta-llama/CodeLlama-34b-Instruct-hf"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/meta-llama/CodeLlama-34b-Instruct-hf"
+        },
+        {
+          "title": "Meta Code Llama model card",
+          "url": "https://github.com/meta-llama/codellama/blob/main/MODEL_CARD.md"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agentlm-7b",
+      "name": "AgentLM-7B",
+      "weights": "open",
+      "totalParametersB": 7,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Llama2-chat fine-tuned with AgentInstruct plus general conversation data. Training teachers are excluded. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/THUDM/agentlm-7b"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/THUDM/agentlm-7b"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agentlm-13b",
+      "name": "AgentLM-13B",
+      "weights": "open",
+      "totalParametersB": 13,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Llama2-chat fine-tuned with AgentInstruct plus general conversation data. Training teachers are excluded. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/THUDM/agentlm-13b"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/THUDM/agentlm-13b"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agentlm-70b",
+      "name": "AgentLM-70B",
+      "weights": "open",
+      "totalParametersB": 70,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Llama2-chat fine-tuned with AgentInstruct plus general conversation data. Training teachers are excluded. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/THUDM/agentlm-70b"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/THUDM/agentlm-70b"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "mixtral-8x7b-instruct-v0-1",
+      "name": "Mixtral-8x7B-Instruct-v0.1",
+      "weights": "open",
+      "totalParametersB": 46.7,
+      "activeParametersB": 12.9,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The publisher states 46.7B total and 12.9B active. Category uses the total, not 7B, active parameters, or eight times the name. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/mistralai/Mixtral-8x7B-Instruct-v0.1"
+        },
+        {
+          "title": "Mistral architecture announcement",
+          "url": "https://mistral.ai/news/mixtral-of-experts"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "synatra-codellama-7b",
+      "name": "Synatra-CodeLlama-7B",
+      "weights": "open",
+      "totalParametersB": 7,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The official Synatra repository links this publisher checkpoint; its Synatra-CodeLlama subdirectory contains three safetensors shards. Unrelated similarly named Synatra chat models are excluded. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/oottyy/Synatra-Models"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/oottyy/Synatra-Models"
+        },
+        {
+          "title": "Synatra official checkpoint link",
+          "url": "https://github.com/web-arena-x/synatra"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "all-minilm-l6-v2",
+      "name": "all-MiniLM-L6-v2",
+      "weights": "open",
+      "totalParametersB": 0.022713728,
+      "size": "tiny",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Repository tensor total. WebOperator enables this sentence embedding model to deduplicate candidate actions at runtime. Actual checkpoint files were verified in the public repository inventory.",
+      "sources": [
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"
+        },
+        {
+          "title": "Checkpoint file inventory",
+          "url": "https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "opagent-qwen2-5-vl-72b-mft",
+      "name": "OpAgent Qwen2.5-VL-72B-MFT grounder",
+      "weights": "uncertain",
+      "totalParametersB": 72,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Paper section 4.3 names this post-trained 72B grounder. The public organization inventory lists OpAgent-32B, a different later single-model release; no matching 72B-MFT checkpoint was found. Open base weights and public orchestration code do not establish release of this fine-tune.",
+      "sources": [
+        {
+          "title": "OpAgent paper section 4.3",
+          "url": "https://arxiv.org/html/2602.13559"
+        },
+        {
+          "title": "OpAgent runtime configuration",
+          "url": "https://github.com/codefuse-ai/OpAgent/blob/main/opagent/local_agent_eval.py"
+        },
+        {
+          "title": "Publisher model inventory",
+          "url": "https://huggingface.co/api/models?author=codefuse-ai&limit=100"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "scribeagent-large-32b",
+      "name": "ScribeAgent-Large 32B",
+      "weights": "uncertain",
+      "totalParametersB": 32,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "The paper identifies a Qwen2.5-32B fine-tune on proprietary workflow data. No evaluated checkpoint was linked in the inspected paper or found by Hugging Face search; do not infer open weights from the base.",
+      "sources": [
+        {
+          "title": "ScribeAgent paper",
+          "url": "https://arxiv.org/html/2411.15004"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "patel-qwen1-5-72b-mixture-b",
+      "name": "Patel et al. Qwen1.5-72B Mixture-B",
+      "weights": "uncertain",
+      "totalParametersB": 72,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "The paper's 9.36 result belongs to Qwen1.5-72B-Chat fine-tuned on synthetic Mixture B. GPT-4 supplies reference trajectories for analysis, not this policy. Exact fine-tuned weights were not located in the source, so availability is unresolved.",
+      "sources": [
+        {
+          "title": "Self-improvement paper and Table 3",
+          "url": "https://arxiv.org/html/2405.20309"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "autowebglm-6b",
+      "name": "AutoWebGLM 6B",
+      "weights": "uncertain",
+      "totalParametersB": 6,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Official repository identifies a trained ChatGLM3-6B agent. It links inference instructions for the base but no matching downloadable fine-tuned checkpoint; Hugging Face model search returned no AutoWebGLM result. Public harness code is separate from weight availability.",
+      "sources": [
+        {
+          "title": "AutoWebGLM official repository",
+          "url": "https://github.com/THUDM/AutoWebGLM"
+        },
+        {
+          "title": "AutoWebGLM paper",
+          "url": "https://arxiv.org/html/2404.03648"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "codeactagent-7b-webarena",
+      "name": "CodeActAgent 7B (WebArena variant unpinned)",
+      "weights": "uncertain",
+      "totalParametersB": 7,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Synatra Table 1 reports 2.34 for CodeActAgent-7B but does not resolve Llama2 versus Mistral. Both original 7B variants have released weights; exact evaluated variant remains unpinned, so this record does not assert a particular checkpoint.",
+      "sources": [
+        {
+          "title": "Synatra evaluation of CodeActAgent",
+          "url": "https://arxiv.org/html/2409.15637"
+        },
+        {
+          "title": "CodeAct official model variants",
+          "url": "https://github.com/xingyaoww/code-act"
+        },
+        {
+          "title": "Released CodeActAgent Llama2 checkpoint inventory",
+          "url": "https://huggingface.co/api/models/xingyaoww/CodeActAgent-Llama-2-7b"
+        },
+        {
+          "title": "Released CodeActAgent Mistral checkpoint inventory",
+          "url": "https://huggingface.co/api/models/xingyaoww/CodeActAgent-Mistral-7b-v0.1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "fireact-7b-webarena",
+      "name": "FireAct 7B (WebArena variant unpinned)",
+      "weights": "uncertain",
+      "totalParametersB": 7,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "The 0.25 WebArena result is reported by Agent-FLAN, not the original QA-focused FireAct paper. Inventories verify the released full Llama2-7B checkpoint and Llama2/CodeLlama-7B LoRA variants, but the exact artifact used for this third-party WebArena run is unpinned. GPT-4 was a training teacher, not a required inference component.",
+      "sources": [
+        {
+          "title": "Agent-FLAN evaluation table",
+          "url": "https://arxiv.org/html/2403.12881"
+        },
+        {
+          "title": "FireAct checkpoint inventory",
+          "url": "https://huggingface.co/api/models/forestai/fireact_llama_2_7b"
+        },
+        {
+          "title": "FireAct release repository",
+          "url": "https://github.com/anchen1011/FireAct"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agentsymbiotic-retriever-unknown",
+      "name": "AgentSymbiotic undisclosed retrieval helper",
+      "weights": "uncertain",
+      "size": "small",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Runtime trajectory similarity search requires embeddings; the retrieved paper does not identify the embedding checkpoint, and the linked anonymous code endpoint returned HTTP 403. Small is a provisional category for this specialized retrieval component, not a parameter assertion. Main Claude reasoning determines the overall Large category.",
+      "sources": [
+        {
+          "title": "AgentSymbiotic retrieval section",
+          "url": "https://arxiv.org/html/2502.07942"
+        },
+        {
+          "title": "Linked anonymous code",
+          "url": "https://anonymous.4open.science/r/agent-0E80/README.md"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "learn-by-interact-vertex-embedding-historical",
+      "name": "Learn-by-Interact historical Vertex embedding helper",
+      "weights": "uncertain",
+      "size": "small",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The appendix names Vertex AI text embeddings for runtime dense retrieval but gives no model version. The mutable linked guide now demonstrates newer Gemini embeddings, which cannot identify the January 2025 helper. Small is a low-confidence specialized-retrieval estimate; no count or output-token price is fabricated.",
+      "sources": [
+        {
+          "title": "Learn-by-Interact appendix C",
+          "url": "https://arxiv.org/html/2501.10893"
+        },
+        {
+          "title": "Linked mutable Vertex embedding documentation",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gemini-1-0-pro-historical",
+      "name": "Gemini 1.0 Pro (historical WebArena model)",
+      "weights": "closed",
+      "size": "medium",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Original Gemini Pro identity follows the December 2023 tracker entry. The current official legacy table retains $0.000125 input / $0.000375 output per 1,000 characters, not tokens. This lower-priced legacy tier supports a provisional Medium category; no exact token conversion or parameter count is asserted.",
+      "sources": [
+        {
+          "title": "Official legacy character-based pricing",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+        },
+        {
+          "title": "WebArena tracker",
+          "url": "https://arxiv.org/abs/2307.13854"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepsky-agent-historical-stack",
+      "name": "DeepSky Agent historical model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Only the public tracker corroborates this named system; no primary model identity, released checkpoint or token tariff was found. Large is a low-confidence estimate for the high-performing managed agent, not a claimed model size.",
+      "sources": [
+        {
+          "title": "System result source",
+          "url": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "narada-operator-historical-stack",
+      "name": "Narada Operator historical model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The vendor post describes a proprietary operator and links Plan-and-Act research, but does not name the exact models behind 64.16. Large is a provisional frontier-system estimate; research backbones are not automatically the deployed stack.",
+      "sources": [
+        {
+          "title": "System result source",
+          "url": "https://narada.ai/blog/narada-ai-web-agent-operator"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "cuga-webarena-historical-stack",
+      "name": "IBM CUGA historical WebArena model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The historical paper says its SOTA system uses a frontier model and that smaller/open-model experiments are future work, but does not pin the 61.7 WebArena stack. Large is provisional. GPT-4.1 in a later AppWorld table and modern gpt-4o configuration examples are not substituted.",
+      "sources": [
+        {
+          "title": "System result source",
+          "url": "https://cuga.dev/"
+        },
+        {
+          "title": "Historical CUGA paper, section 5",
+          "url": "https://arxiv.org/pdf/2503.01861v2"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "jace-awa-1-5-stack",
+      "name": "Jace AWA-1.5 model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The vendor report names AWA-1.5 and proprietary DOM processing but does not disclose participating checkpoints, their parameters, or standard token rates. Large is a provisional managed-agent estimate; weight availability remains unresolved.",
+      "sources": [
+        {
+          "title": "System result source",
+          "url": "https://jace.ai/blog/awa-1-5-achieves-breakthrough-performance-on-web-arena-benchmark"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "awm-memory-evaluator-historical",
+      "name": "AWM memory evaluator (OpenAI model unpinned)",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Online AWM uses neural success predictions to select workflows retained for later test tasks, making the evaluator a runtime component. Historical code defaults conflict: trajectory evaluation names GPT-3.5-Turbo while induction expects a GPT-4o-named evaluation file; the exact published-run configuration is unavailable. Large is a provisional category covering the possible GPT-4/GPT-4o component, not a proven tariff or parameter count. All documented candidates are closed OpenAI models.",
+      "sources": [
+        {
+          "title": "AWM online memory success filtering (section 2.3)",
+          "url": "https://arxiv.org/html/2409.07429"
+        },
+        {
+          "title": "Historical evaluator defaults",
+          "url": "https://github.com/zorazrw/agent-workflow-memory/blob/2f15e359e15bf9436b6218f29b6e621eacb19f11/webarena/autoeval/evaluate_trajectory.py"
+        },
+        {
+          "title": "Historical induction defaults",
+          "url": "https://github.com/zorazrw/agent-workflow-memory/blob/2f15e359e15bf9436b6218f29b6e621eacb19f11/webarena/induce_prompt.py"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    }
+  ],
+  "submissions": [
+    {
+      "systemName": "WebTactix (DeepSeek v3.2)",
+      "kind": "system",
+      "modelIds": ["deepseek-v3-2"],
+      "harnessCode": "open",
+      "notes": "WebTactix semantic-tree search uses the reported DeepSeek-V3.2 backbone across constraint, extraction, planning and decision roles. Public code shares one selected LLM client; the current deepseek-chat alias is mutable, so the historical named version is retained.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://paper-submission-anoymous.github.io/webtactix_introduction/"
+        },
+        {
+          "title": "Shared runtime client wiring",
+          "url": "https://github.com/paper-submission-anoymous/webtactix/blob/main/main.py"
+        }
+      ]
+    },
+    {
+      "systemName": "OpAgent",
+      "kind": "system",
+      "modelIds": ["gemini-3-pro", "opagent-qwen2-5-vl-72b-mft"],
+      "harnessCode": "open",
+      "notes": "Paper section 4.3 uses Gemini-3-Pro for planner, reflector and summarizer, plus a separately post-trained Qwen2.5-VL-72B-MFT grounder. Released OpAgent-32B belongs to the later single-model mode and cannot identify this 71.6 system.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://github.com/codefuse-ai/OpAgent"
+        },
+        {
+          "title": "Exact evaluated architecture",
+          "url": "https://arxiv.org/html/2602.13559"
+        }
+      ]
+    },
+    {
+      "systemName": "ColorBrowserAgent",
+      "kind": "harness",
+      "modelIds": ["gpt-5"],
+      "harnessCode": "open",
+      "notes": "ColorBrowserAgent paper and launch README explicitly use GPT-5. Site-prior generation belongs to the same framework; no distinct required runtime model is identified.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2601.07262"
+        },
+        {
+          "title": "Runtime instructions",
+          "url": "https://github.com/MadeAgents/browser-agent"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Code + GBOX MCP",
+      "kind": "harness",
+      "modelIds": ["claude-sonnet-4-5"],
+      "harnessCode": "open",
+      "notes": "Published agent defaults and an October 25 execution log identify Bedrock claude-sonnet-4-5-20250929. GBOX provides browser controls; the agent's fallback defaults to the same model.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://github.com/babelcloud/webarena/blob/main/gbox/report.md"
+        },
+        {
+          "title": "Published agent model configuration",
+          "url": "https://github.com/babelcloud/webarena/blob/main/gbox/code/gbox_claude_agent.py"
+        },
+        {
+          "title": "Published execution log",
+          "url": "https://github.com/babelcloud/webarena/blob/main/gbox/trajectories/log_files/task_0_20251025_182851.log"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepSky Agent",
+      "kind": "system",
+      "modelIds": ["deepsky-agent-historical-stack"],
+      "harnessCode": "uncertain",
+      "notes": "The tracker does not disclose a backbone or implementation link. Full model stack remains a labeled estimate.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ"
+        }
+      ]
+    },
+    {
+      "systemName": "Narada AI",
+      "kind": "system",
+      "modelIds": ["narada-operator-historical-stack"],
+      "harnessCode": "closed",
+      "notes": "Vendor-operated system. The blog establishes the result and design lineage without identifying exact inference models.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://narada.ai/blog/narada-ai-web-agent-operator"
+        }
+      ]
+    },
+    {
+      "systemName": "IBM CUGA",
+      "kind": "system",
+      "modelIds": ["cuga-webarena-historical-stack"],
+      "harnessCode": "open",
+      "notes": "CUGA orchestration is public, but the exact historical WebArena inference stack is not disclosed. The later AppWorld GPT-4.1 table is a different benchmark.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://cuga.dev/"
+        },
+        {
+          "title": "Historical CUGA paper",
+          "url": "https://arxiv.org/pdf/2503.01861v2"
+        },
+        {
+          "title": "Public CUGA implementation",
+          "url": "https://github.com/cuga-project/cuga-agent"
+        }
+      ]
+    },
+    {
+      "systemName": "Kimi K2.5",
+      "kind": "model",
+      "modelIds": ["kimi-k2-5"],
+      "harnessCode": "uncertain",
+      "notes": "Technical report identifies GUI-only Kimi K2.5 browsing without external tools. Weights are released; exact benchmark harness release was not verified. This is not Agent Swarm.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/html/2602.02276v1"
+        }
+      ]
+    },
+    {
+      "systemName": "OpenAI Operator",
+      "kind": "system",
+      "modelIds": ["openai-cua-original"],
+      "harnessCode": "closed",
+      "notes": "Original January 2025 Operator/CUA result. Later computer-use-preview API pricing does not establish the original evaluated model's price.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://openai.com/index/operator-system-card/"
+        }
+      ]
+    },
+    {
+      "systemName": "Jace.AI (AWA-1.5)",
+      "kind": "system",
+      "modelIds": ["jace-awa-1-5-stack"],
+      "harnessCode": "closed",
+      "notes": "Proprietary AWA-1.5 system; underlying checkpoints remain undisclosed.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://jace.ai/blog/awa-1-5-achieves-breakthrough-performance-on-web-arena-benchmark"
+        }
+      ]
+    },
+    {
+      "systemName": "WebChallenger (GLM-4-32B)",
+      "kind": "harness",
+      "modelIds": ["glm-4-32b-0414", "qwen2-5-vl-7b-instruct"],
+      "harnessCode": "open",
+      "notes": "Paper explicitly uses GLM-4-32B-0414 controller plus Qwen2.5-VL-7B-Instruct image captioning on WebArena. Qwen3-VL-4B is for VisualWebArena and is excluded here.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2606.10423"
+        },
+        {
+          "title": "Reproduction instructions",
+          "url": "https://github.com/jayoohwang1/webchallenger"
+        }
+      ]
+    },
+    {
+      "systemName": "Plan-MCTS + GPT-5-mini",
+      "kind": "harness",
+      "modelIds": ["gpt-5-mini"],
+      "harnessCode": "uncertain",
+      "notes": "Table 2 identifies GPT-5-mini for the plan-search configuration. Planning, operating and dual-gating are inference roles of the selected backbone. No released implementation link was found in the retrieved paper.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/html/2602.14083v1"
+        }
+      ]
+    },
+    {
+      "systemName": "WebOperator + GPT-4o",
+      "kind": "system",
+      "modelIds": ["gpt-4o-unspecified-historical", "all-minilm-l6-v2"],
+      "harnessCode": "open",
+      "notes": "The paper calls its backend gpt-4o-2025-01-01, which is not a documented OpenAI snapshot. Released configuration uses an Azure deployment alias gpt-4o for action, reward and checklist generation, plus all-MiniLM-L6-v2 for semantic action deduplication. Preserve exact-version uncertainty.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2512.12692"
+        },
+        {
+          "title": "Runtime model and deduplication configuration",
+          "url": "https://github.com/kagnlp/WebOperator/blob/main/weboperator/configs/wa-gpt-4o.yml"
+        }
+      ]
+    },
+    {
+      "systemName": "ScribeAgent + GPT-4o",
+      "kind": "system",
+      "modelIds": ["scribeagent-large-32b", "gpt-4o-unspecified-historical"],
+      "harnessCode": "uncertain",
+      "notes": "The 53.0 result combines the 32B ScribeAgent-Large fine-tune with GPT-4o for task decomposition/action-representation mapping. Proprietary training data does not prove whether exact fine-tuned weights were released; no matching release was located.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2411.15004"
+        }
+      ]
+    },
+    {
+      "systemName": "AgentSymbiotic",
+      "kind": "system",
+      "modelIds": ["claude-3-5-sonnet-historical", "agentsymbiotic-retriever-unknown"],
+      "harnessCode": "uncertain",
+      "notes": "Table 1 assigns 52.1 to the Claude-3.5 RAG agent. Runtime trajectory embeddings are unidentified. Small distilled models and multi-LLM data synthesis are training machinery; optional privacy hybrid experiments do not establish they ran in this score configuration. Anonymous code retrieval returned HTTP 403.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://www.arxiv.org/abs/2502.07942"
+        }
+      ]
+    },
+    {
+      "systemName": "Learn-by-Interact",
+      "kind": "system",
+      "modelIds": ["claude-3-5-sonnet-historical", "learn-by-interact-vertex-embedding-historical"],
+      "harnessCode": "uncertain",
+      "notes": "The 48.0 result is Claude-3.5 Sonnet with in-context agentic retrieval, not the 22B fine-tune. Vertex text embeddings perform runtime dense retrieval. Gemini filtering and Claude grading used for dataset/evaluation preparation are excluded.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2501.10893"
+        }
+      ]
+    },
+    {
+      "systemName": "WebUncertainty + GPT-4-Turbo",
+      "kind": "harness",
+      "modelIds": ["gpt-4-turbo-2024-04-09"],
+      "harnessCode": "uncertain",
+      "notes": "Paper explicitly pins GPT-4-turbo-2024-04-09. Public repository currently contains README, project assets and dependency metadata but no executable agent implementation; a public repository alone does not establish released harness code.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/html/2604.17821v1"
+        },
+        {
+          "title": "Current project repository",
+          "url": "https://github.com/windbd/WebUncertainty"
+        }
+      ]
+    },
+    {
+      "systemName": "AgentOccam-Judge",
+      "kind": "harness",
+      "modelIds": ["gpt-4-turbo-2024-04-09"],
+      "harnessCode": "open",
+      "notes": "AgentOccam uses GPT-4-Turbo-2024-04-09; the added runtime action-selection judge is GPT-4-Turbo as well. This judge affects actions and is included through the same deduplicated model ID, unlike a post-run scoring judge.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2410.13825"
+        },
+        {
+          "title": "Official implementation",
+          "url": "https://github.com/amazon-science/AgentOccam"
+        }
+      ]
+    },
+    {
+      "systemName": "A3-Qwen3.5-9B",
+      "kind": "model",
+      "modelIds": ["a3-qwen3-5-9b"],
+      "harnessCode": "open",
+      "notes": "Exact A3 fine-tune has released weights and evaluation configuration. Stored 42.1 submission differs from the model card's 41.5 project setup; scores are preserved.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://huggingface.co/spaces/ServiceNow/browsergym-leaderboard/discussions/12"
+        },
+        {
+          "title": "Checkpoint",
+          "url": "https://huggingface.co/McGill-NLP/A3-Qwen3.5-9B"
+        },
+        {
+          "title": "Runtime model configuration",
+          "url": "https://github.com/McGill-NLP/agent-as-annotators/blob/main/configs/model_configs.json"
+        }
+      ]
+    },
+    {
+      "systemName": "GUI-API Hybrid Agent",
+      "kind": "harness",
+      "modelIds": ["gpt-4o-unspecified-historical"],
+      "harnessCode": "uncertain",
+      "notes": "Paper specifies GPT-4o for the browsing/API/hybrid agent, without a snapshot. APIs use two-stage documentation access; no additional named learned inference component is established. OpenHands is the framework, but release of this exact extension was not verified.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2410.16464"
+        }
+      ]
+    },
+    {
+      "systemName": "WebPilot",
+      "kind": "harness",
+      "modelIds": ["gpt-4o-2024-05-13"],
+      "harnessCode": "uncertain",
+      "notes": "Paper footnote pins GPT-4o-2024-05-13 for the reported WebPilot configuration. GPT-3.5-0125 is an alternative experiment, not an additional required model. No matching released implementation was identified.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://www.arxiv.org/pdf/2408.15978"
+        }
+      ]
+    },
+    {
+      "systemName": "Agent Workflow Memory",
+      "kind": "harness",
+      "modelIds": ["gpt-4-0613", "awm-memory-evaluator-historical"],
+      "harnessCode": "open",
+      "notes": "The paper pins GPT-4-0613 for action generation and workflow induction. Its online success predictor gates which experiences become memory for later test tasks, so it belongs to the runtime stack. Historical public code has conflicting GPT-3.5-Turbo/GPT-4o defaults and does not establish the evaluator used for the reported 35.5; that helper remains explicitly unpinned.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/pdf/2409.07429"
+        },
+        {
+          "title": "Online memory pipeline",
+          "url": "https://github.com/zorazrw/agent-workflow-memory/blob/main/webarena/pipeline.py"
+        },
+        {
+          "title": "Memory evaluator clients",
+          "url": "https://github.com/zorazrw/agent-workflow-memory/blob/main/webarena/autoeval/clients.py"
+        },
+        {
+          "title": "AWM online memory success filtering (section 2.3)",
+          "url": "https://arxiv.org/html/2409.07429"
+        },
+        {
+          "title": "Historical evaluator defaults",
+          "url": "https://github.com/zorazrw/agent-workflow-memory/blob/2f15e359e15bf9436b6218f29b6e621eacb19f11/webarena/autoeval/evaluate_trajectory.py"
+        },
+        {
+          "title": "Historical induction defaults",
+          "url": "https://github.com/zorazrw/agent-workflow-memory/blob/2f15e359e15bf9436b6218f29b6e621eacb19f11/webarena/induce_prompt.py"
+        }
+      ]
+    },
+    {
+      "systemName": "SteP",
+      "kind": "harness",
+      "modelIds": ["gpt-4-turbo-preview-historical"],
+      "harnessCode": "open",
+      "notes": "Paper specifies the GPT-4-Turbo-Preview alias. Repository now documents newer stable April Turbo runs; those runs do not pin the original 33.5 result.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2310.03720"
+        },
+        {
+          "title": "Released harness and later run caveat",
+          "url": "https://github.com/asappresearch/webagents-step"
+        }
+      ]
+    },
+    {
+      "systemName": "TTI",
+      "kind": "model",
+      "modelIds": ["tti-gemma3-12b-webarena"],
+      "harnessCode": "uncertain",
+      "notes": "Released WebArena Gemma3-12B checkpoint corresponds to TTI. Training uses a Gemma3-27B evaluator, which is excluded from the inference stack. Exact public runtime code availability was not established.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2506.07976"
+        }
+      ]
+    },
+    {
+      "systemName": "BrowserGym + GPT-4",
+      "kind": "harness",
+      "modelIds": ["gpt-4o-2024-05-13"],
+      "harnessCode": "open",
+      "notes": "Identity caveat: the stored label says GPT-4, but the retrieved WorkArena/BrowserGym paper explicitly assigns the matching 23.5 result to gpt-4o-2024-05-13. Mapping follows the source while leaving the saved label and score unchanged.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/pdf/2403.07718.pdf"
+        },
+        {
+          "title": "Public BrowserGym framework",
+          "url": "https://github.com/ServiceNow/BrowserGym"
+        }
+      ]
+    },
+    {
+      "systemName": "AgentTrek-1.0-32B",
+      "kind": "model",
+      "modelIds": ["agenttrek-1-0-32b"],
+      "harnessCode": "open",
+      "notes": "Released AgentTrek-1.0-32B fine-tune and evaluation scripts are linked by the official repository. Training/data-generation teachers are excluded.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://agenttrek.github.io/"
+        },
+        {
+          "title": "Official model and code links",
+          "url": "https://github.com/xlang-ai/AgentTrek"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-4 + Auto Eval",
+      "kind": "system",
+      "modelIds": ["gpt-4-1106-preview", "gpt-4-vision-preview"],
+      "harnessCode": "open",
+      "notes": "Public reproduction script uses GPT-4-1106-preview for the actor/reflection loop and GPT-4V (1106 vision preview in the paper) for runtime success feedback that triggers retries. The visual evaluator is a required runtime component here; captioner/Mixtral alternatives are separate experiments.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2404.06474"
+        },
+        {
+          "title": "Exact model-based refinement script",
+          "url": "https://github.com/Berkeley-NLP/Agent-Eval-Refine/blob/main/exps/webarena_exp/parallel_run_gae_all.sh"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-4o + Tree Search",
+      "kind": "harness",
+      "modelIds": ["gpt-4o-2024-05-13"],
+      "harnessCode": "open",
+      "notes": "The search-agents paper pins GPT-4o-2024-05-13. Policy and value roles use GPT-4o; the WebArena text-only setting does not use BLIP-2, which belongs to caption-augmented VisualWebArena experiments.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://jykoh.com/search-agents"
+        },
+        {
+          "title": "Tree-search paper",
+          "url": "https://arxiv.org/html/2407.01476"
+        },
+        {
+          "title": "Released search code",
+          "url": "https://github.com/kohjingyu/search-agents"
+        }
+      ]
+    },
+    {
+      "systemName": "AutoWebGLM",
+      "kind": "model",
+      "modelIds": ["autowebglm-6b"],
+      "harnessCode": "open",
+      "notes": "Official repository identifies ChatGLM3-6B as the trained backbone and publishes evaluation code. No matching fine-tuned checkpoint was verified; GPT data-generation teachers are excluded.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2404.03648"
+        }
+      ]
+    },
+    {
+      "systemName": "NNetNav",
+      "kind": "model",
+      "modelIds": ["nnetnav-llama3-1-8b-wa"],
+      "harnessCode": "open",
+      "notes": "Use the WebArena-specific released Llama-3.1-8B checkpoint. The larger 70B exploration/reward model is used to construct training data, not the evaluated student's runtime.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2410.02907"
+        },
+        {
+          "title": "Exact matching model card",
+          "url": "https://huggingface.co/stanfordnlp/llama8b-nnetnav-wa"
+        }
+      ]
+    },
+    {
+      "systemName": "gpt-4-0613 (no not-achievable hint)",
+      "kind": "model",
+      "modelIds": ["gpt-4-0613"],
+      "harnessCode": "open",
+      "notes": "Original exact-snapshot WebArena baseline without the not-achievable hint; task prompt difference does not create a new model.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2307.13854"
+        }
+      ]
+    },
+    {
+      "systemName": "gpt-4o-2024-05-13",
+      "kind": "model",
+      "modelIds": ["gpt-4o-2024-05-13"],
+      "harnessCode": "open",
+      "notes": "Tracker explicitly names the May 13 snapshot. Use its legacy token tariff, not later GPT-4o pricing.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ"
+        }
+      ]
+    },
+    {
+      "systemName": "gpt-4-0613 (with not-achievable hint)",
+      "kind": "model",
+      "modelIds": ["gpt-4-0613"],
+      "harnessCode": "open",
+      "notes": "Original exact-snapshot WebArena baseline with the not-achievable hint; shared checkpoint with the no-hint row.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2307.13854"
+        }
+      ]
+    },
+    {
+      "systemName": "Patel et al. + GPT-4",
+      "kind": "model",
+      "modelIds": ["patel-qwen1-5-72b-mixture-b"],
+      "harnessCode": "uncertain",
+      "notes": "Identity conflict: paper Table 3 assigns 9.36 to Qwen1.5-72B fine-tuned on synthetic Mixture B. The stored GPT-4 name is preserved, but GPT-4 only generated reference trajectories for evaluation analysis. Do not classify this row as a GPT-4 policy.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2405.20309"
+        }
+      ]
+    },
+    {
+      "systemName": "gpt-3.5-turbo-16k-0613",
+      "kind": "model",
+      "modelIds": ["gpt-3-5-turbo-16k-0613"],
+      "harnessCode": "open",
+      "notes": "Original exact 16K snapshot. Its historical $3/$4 tariff puts it in Large under the specified price proxy, despite the product generation.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2307.13854"
+        }
+      ]
+    },
+    {
+      "systemName": "Qwen-1.5-chat-72b",
+      "kind": "model",
+      "modelIds": ["qwen1-5-72b-chat"],
+      "harnessCode": "uncertain",
+      "notes": "Base Qwen1.5-72B-Chat result from the self-improvement study; not its fine-tuned Mixture-B model.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2405.20309"
+        },
+        {
+          "title": "Released checkpoint",
+          "url": "https://huggingface.co/Qwen/Qwen1.5-72B-Chat"
+        }
+      ]
+    },
+    {
+      "systemName": "Gemini Pro",
+      "kind": "model",
+      "modelIds": ["gemini-1-0-pro-historical"],
+      "harnessCode": "open",
+      "notes": "December 2023 Gemini Pro tracker baseline. Model name maps to original 1.0 Pro, not 1.5/2.x/3.x Pro; exact snapshot and token rates are unresolved.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2307.13854"
+        },
+        {
+          "title": "WebArena public tracker",
+          "url": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ"
+        }
+      ]
+    },
+    {
+      "systemName": "Llama3-chat-70b",
+      "kind": "model",
+      "modelIds": ["llama3-70b-instruct"],
+      "harnessCode": "open",
+      "notes": "Tracker names original Llama 3 chat 70B; public Instruct checkpoint is the matching instruction variant.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ"
+        },
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct"
+        }
+      ]
+    },
+    {
+      "systemName": "Synatra-CodeLLama7b",
+      "kind": "model",
+      "modelIds": ["synatra-codellama-7b"],
+      "harnessCode": "open",
+      "notes": "Exact Synatra web-agent fine-tune; public official repository links its actual checkpoint and WebArena evaluation code.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/pdf/2409.15637"
+        },
+        {
+          "title": "Official implementation and checkpoint",
+          "url": "https://github.com/web-arena-x/synatra"
+        }
+      ]
+    },
+    {
+      "systemName": "Lemur-chat-70b",
+      "kind": "model",
+      "modelIds": ["lemur-70b-chat-v1"],
+      "harnessCode": "open",
+      "notes": "Lemur paper identifies the 70B chat-v1 checkpoint and publishes weights; no additional learned runtime model is established.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2310.06830"
+        }
+      ]
+    },
+    {
+      "systemName": "Agent-FLAN",
+      "kind": "model",
+      "modelIds": ["agent-flan-7b"],
+      "harnessCode": "open",
+      "notes": "The 7B Agent-FLAN checkpoint is released and matches the paper's Llama2-7B primary experiment. Teacher models for training are excluded.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2403.12881"
+        }
+      ]
+    },
+    {
+      "systemName": "CodeLlama-instruct-34b",
+      "kind": "model",
+      "modelIds": ["codellama-34b-instruct"],
+      "harnessCode": "open",
+      "notes": "Original Code Llama 34B instruction model in the Lemur evaluation; nominal total size determines Small.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2310.06830"
+        }
+      ]
+    },
+    {
+      "systemName": "AgentLM-70b",
+      "kind": "model",
+      "modelIds": ["agentlm-70b"],
+      "harnessCode": "open",
+      "notes": "Released AgentLM-70B. GPT-4 used to produce training trajectories is excluded from inference.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2310.12823"
+        }
+      ]
+    },
+    {
+      "systemName": "Llama3-chat-8b",
+      "kind": "model",
+      "modelIds": ["llama3-8b-instruct"],
+      "harnessCode": "open",
+      "notes": "Original Llama 3 8B Instruct checkpoint; not the Llama-3.1 NNetNav fine-tune.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ"
+        }
+      ]
+    },
+    {
+      "systemName": "CodeAct Agent",
+      "kind": "model",
+      "modelIds": ["codeactagent-7b-webarena"],
+      "harnessCode": "uncertain",
+      "notes": "The matching 2.34 result is a Synatra reevaluation of CodeActAgent-7B with a generic action space. The original CodeAct paper offers both Llama2 and Mistral 7B variants; this row's exact checkpoint was not verified. The public Synatra implementation does not expose a CodeAct evaluation configuration, so exact reevaluation harness availability is unverified.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2402.01030"
+        },
+        {
+          "title": "Actual WebArena reevaluation",
+          "url": "https://arxiv.org/html/2409.15637"
+        },
+        {
+          "title": "Public evaluation implementation",
+          "url": "https://github.com/web-arena-x/synatra"
+        }
+      ]
+    },
+    {
+      "systemName": "AgentLM-13b",
+      "kind": "model",
+      "modelIds": ["agentlm-13b"],
+      "harnessCode": "open",
+      "notes": "Released AgentLM-13B; model size is distinct from the 7B and 70B rows.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2310.12823"
+        }
+      ]
+    },
+    {
+      "systemName": "Mixtral-8x7B",
+      "kind": "model",
+      "modelIds": ["mixtral-8x7b-instruct-v0-1"],
+      "harnessCode": "open",
+      "notes": "Tracker links Mixtral-8x7B-Instruct-v0.1. Its 46.7B total places it in Medium; 12.9B active is not used for size classification.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2307.13854"
+        },
+        {
+          "title": "Publisher checkpoint",
+          "url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1"
+        }
+      ]
+    },
+    {
+      "systemName": "AgentLM-7b",
+      "kind": "model",
+      "modelIds": ["agentlm-7b"],
+      "harnessCode": "open",
+      "notes": "Released AgentLM-7B; GPT training teachers are excluded.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2310.12823"
+        }
+      ]
+    },
+    {
+      "systemName": "FireAct",
+      "kind": "model",
+      "modelIds": ["fireact-7b-webarena"],
+      "harnessCode": "uncertain",
+      "notes": "The original FireAct paper evaluates QA rather than this WebArena result; Agent-FLAN Table 1 reports the matching 0.25 for FireAct-7B. The exact full/adapter checkpoint for that reevaluation is unpinned.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://arxiv.org/abs/2310.05915"
+        },
+        {
+          "title": "Actual WebArena result table",
+          "url": "https://arxiv.org/html/2403.12881"
+        }
+      ]
+    },
+    {
+      "systemName": "CodeLlama-instruct-7b",
+      "kind": "model",
+      "modelIds": ["codellama-7b-instruct"],
+      "harnessCode": "open",
+      "notes": "Tracker explicitly names the released Code Llama 7B Instruct model; zero score does not imply missing model metadata.",
+      "sources": [
+        {
+          "title": "Stored result source",
+          "url": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ"
+        }
+      ]
+    }
+  ]
+}
