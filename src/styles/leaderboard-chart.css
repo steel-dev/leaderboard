@@ -248,12 +248,6 @@
 .chart-bar-target.is-active {
   fill: rgb(225 225 225 / 3%);
 }
-.chart-interaction-hint {
-  margin: 0.4rem 0 1.2rem;
-  text-align: right;
-  font: 9px/1.6 var(--font-mono);
-  color: var(--color-text-dim);
-}
 .chart-hover-card {
   position: fixed;
   z-index: 50;
@@ -567,10 +561,6 @@
   }
   .chart-canvas-frame {
     height: 426px;
-  }
-  .chart-interaction-hint {
-    text-align: left;
-    font-size: 9px;
   }
   .chart-badges {
     font-size: 9px;

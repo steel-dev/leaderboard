@@ -647,9 +647,6 @@ export default function LeaderboardExplorer({
                   Mixed / uncertain
                 </span>
               </div>
-              <p className="chart-interaction-hint">
-                Scroll to explore · Hover, tap, or use arrow keys on a bar for details
-              </p>
               {preview && active && (
                 <ChartHoverCard
                   row={active}
