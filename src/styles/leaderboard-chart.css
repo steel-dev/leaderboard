@@ -1,6 +1,6 @@
 .leaderboard-explorer {
   --chart-open: var(--color-accent);
-  --chart-closed: var(--color-text-muted);
+  --chart-closed: #eee; /* Radix Gray 12 (dark scale). */
   --chart-uncertain: #ae8752;
 }
 @media (min-width: 1024px) {

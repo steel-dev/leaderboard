@@ -21,7 +21,8 @@ export type Seed = { fill: Rgb; line: Rgb; star: Rgb };
 // Each seed: the area-fill hue, the bright series line, and the star sparkle.
 export const PALETTE: Record<DitherColor, Seed> = {
   steel: { fill: [240, 192, 0], line: [240, 192, 0], star: [240, 192, 0] },
-  stone: { fill: [161, 160, 154], line: [225, 225, 225], star: [225, 225, 225] },
+  // Radix Gray 12 (dark scale), matching --chart-closed.
+  stone: { fill: [238, 238, 238], line: [238, 238, 238], star: [238, 238, 238] },
   warm: { fill: [174, 135, 82], line: [217, 154, 53], star: [217, 154, 53] },
   green: { fill: [40, 210, 110], line: [150, 255, 180], star: [200, 255, 220] },
   blue: { fill: [53, 143, 243], line: [150, 200, 255], star: [205, 228, 255] },
