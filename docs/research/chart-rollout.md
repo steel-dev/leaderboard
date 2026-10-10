@@ -77,3 +77,22 @@ remain provisional and can be corrected through the on-page source links.
 Local QA artifacts are kept in the ignored `tmp/` directory, including
 `tmp/home-chart-mobile.jpg`, `tmp/home-chart-rollout-final.jpg`, and the production build log
 `tmp/qa/build-rollout.log`.
+
+## Chart simplification
+
+The follow-up revision moves filters and actions above the graph card. Its header
+now matches the Results header's monospace text and repeated rules, with a
+benchmark-specific score label and percentage units. Removed the plotted/matching
+counter, generic success-rate axis title, higher-is-better label, and introductory
+paragraph. Weight-color keys sit beneath the graph; hover cards use the same
+benchmark score name.
+
+Model sizes use a compact checkbox dropdown with multiple selection, an All sizes
+reset, keyboard operation, Escape dismissal, and outside-click dismissal. Existing
+size URLs, Back navigation, benchmark switching, and shared chart/table filtering
+are preserved. Share confirmation and Reset filters remain in the control strip.
+
+Verified desktop interaction, direct-link and history restoration, multiple size
+choices, share feedback, and the 320px dropdown/header/hover-card layout. The 18
+existing tests, lint, and TypeScript checks pass. Final build output is isolated
+at `tmp/benchmark-charts-simple-dist`; its log is `tmp/qa/build-simple.log`.

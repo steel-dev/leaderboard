@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { BarChart } from "./dither-kit/bar-chart";
 import { Bar } from "./dither-kit/bar";
+import ModelSizePicker from "./ModelSizePicker";
 import { useChart, type ChartConfig } from "./dither-kit/chart-context";
 import {
   basisLabels,
@@ -9,9 +10,7 @@ import {
   defaultFilters,
   filterResults,
   readChartFilters,
-  sizeDescriptions,
   sizeLabels,
-  sizes,
   weightLabels,
   writeChartFilters,
   writeChartBenchmark,
@@ -132,12 +131,14 @@ type ChartPreview = {
 
 function ChartHoverCard({
   row,
+  metricLabel,
   preview,
   onKeepOpen,
   onLeave,
   onDetails,
 }: {
   row: ClassifiedResult;
+  metricLabel: string;
   preview: ChartPreview;
   onKeepOpen: () => void;
   onLeave: () => void;
@@ -180,7 +181,7 @@ function ChartHoverCard({
       <h3 id="chart-hover-title">{row.systemName}</h3>
       <dl>
         <div>
-          <dt>Success rate</dt>
+          <dt>{metricLabel}</dt>
           <dd className="chart-hover-score">{row.scoreDisplay}</dd>
         </div>
         <div>
@@ -345,7 +346,6 @@ function ChartMarks({
 export default function LeaderboardExplorer({
   rows,
   benchmark,
-  description,
   benchmarkSlug,
   benchmarkOptions,
   onBenchmarkChange,
@@ -353,12 +353,12 @@ export default function LeaderboardExplorer({
 }: {
   rows: ClassifiedResult[];
   benchmark: string;
-  description?: string;
   benchmarkSlug?: string;
   benchmarkOptions?: { slug: string; name: string }[];
   onBenchmarkChange?: (slug: string) => void;
   tablePreviewCount?: number;
 }) {
+  const metricLabel = `${benchmark} score`;
   const [filters, setFilters] = useState<ChartFilters>(defaultFilters);
   const [limit, setLimit] = useState(20);
   const [selectedName, setSelectedName] = useState<string | null>(null);
@@ -498,84 +498,72 @@ export default function LeaderboardExplorer({
 
   return (
     <div className="leaderboard-explorer" data-benchmark={benchmark}>
-      <section className="chart-shell" aria-labelledby="chart-title">
-        <header className="chart-heading">
-          <div>
-            <p className="chart-eyebrow">Performance / {benchmark}</p>
-            <h2 id="chart-title">{benchmark} performance</h2>
-          </div>
+      <div className="chart-filters">
+        {benchmarkOptions && (
+          <label className="chart-benchmark-control">
+            <span>Benchmark</span>
+            <select
+              value={benchmarkSlug}
+              onChange={(event) => onBenchmarkChange?.(event.target.value)}
+            >
+              {benchmarkOptions.map((option) => (
+                <option value={option.slug} key={option.slug}>
+                  {option.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        <label className="chart-weights-control">
+          <span>Model weights</span>
+          <select
+            value={filters.weights}
+            onChange={(event) =>
+              updateFilters({ ...filters, weights: event.target.value as WeightFilter })
+            }
+          >
+            {weightOptions.map((option) => (
+              <option value={option.value} key={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <ModelSizePicker
+          selected={filters.sizes}
+          onChange={(selected) => updateFilters({ ...filters, sizes: selected })}
+        />
+        <label className="chart-limit-control">
+          <span>Show</span>
+          <select
+            aria-label="Number of chart results"
+            value={limit}
+            onChange={(event) => {
+              setLimit(Number(event.target.value));
+              setPreview(null);
+            }}
+          >
+            <option value={20}>Top 20</option>
+            <option value={50}>Top 50</option>
+            <option value={10000}>All results</option>
+          </select>
+        </label>
+        <div className="chart-filter-actions">
+          {isFiltered && (
+            <button
+              className="chart-reset-button"
+              type="button"
+              onClick={() => updateFilters(defaultFilters)}
+            >
+              Reset filters
+            </button>
+          )}
           <a
             href={benchmarkSlug ? benchmarkChartHref(benchmarkSlug, filters) : "#chart-results"}
             className="chart-table-link"
           >
             {benchmarkSlug ? "Full leaderboard" : "View results"} <span aria-hidden="true">↗</span>
           </a>
-        </header>
-        <p className="chart-intro">
-          {description ??
-            "Compare reported scores by model weights and size. Select a bar to explore the evaluated system."}
-        </p>
-        <div className="chart-filters">
-          {benchmarkOptions && (
-            <label className="chart-benchmark-control">
-              <span>Benchmark</span>
-              <select
-                value={benchmarkSlug}
-                onChange={(event) => onBenchmarkChange?.(event.target.value)}
-              >
-                {benchmarkOptions.map((option) => (
-                  <option value={option.slug} key={option.slug}>
-                    {option.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-          )}
-          <label className="chart-weights-control">
-            <span>Model weights</span>
-            <select
-              value={filters.weights}
-              onChange={(event) =>
-                updateFilters({ ...filters, weights: event.target.value as WeightFilter })
-              }
-            >
-              {weightOptions.map((option) => (
-                <option value={option.value} key={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <fieldset className="chart-size-control">
-            <legend>Model size</legend>
-            <div className="chart-size-buttons">
-              <button
-                type="button"
-                aria-pressed={!filters.sizes.length}
-                onClick={() => updateFilters({ ...filters, sizes: [] })}
-              >
-                All
-              </button>
-              {sizes.map((size) => (
-                <button
-                  key={size}
-                  type="button"
-                  aria-pressed={filters.sizes.includes(size)}
-                  title={sizeDescriptions[size]}
-                  onClick={() =>
-                    updateFilters({
-                      ...filters,
-                      sizes: filters.sizes.includes(size)
-                        ? filters.sizes.filter((s) => s !== size)
-                        : sizes.filter((s) => s === size || filters.sizes.includes(s)),
-                    })
-                  }
-                >
-                  {sizeLabels[size]}
-                </button>
-              ))}
-            </div>
-          </fieldset>
           <button
             type="button"
             className="chart-share-button"
@@ -591,109 +579,98 @@ export default function LeaderboardExplorer({
               }
             }}
           >
-            Share view <span aria-hidden="true">↗</span>
+            {shareStatus || "Share view"} <span aria-hidden="true">↗</span>
           </button>
         </div>
-        <div className="chart-toolbar">
-          <div className="chart-legend" aria-label="Bar colors">
-            <span>
-              <i className="legend-open" />
-              Open weights
-            </span>
-            <span>
-              <i className="legend-closed" />
-              Closed weights
-            </span>
-            <span>
-              <i className="legend-uncertain" />
-              Mixed / uncertain
-            </span>
+        <span className="sr-only" role="status">
+          {shareStatus}
+        </span>
+      </div>
+      <section className="chart-shell" aria-labelledby="chart-title">
+        <header className="lb-module-head chart-table-heading chart-heading">
+          <h2 id="chart-title">Performance</h2>
+          <div className="lb-head-lines" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
           </div>
-          <label className="chart-limit-control">
-            Show{" "}
-            <select
-              aria-label="Number of chart results"
-              value={limit}
-              onChange={(event) => {
-                setLimit(Number(event.target.value));
-                setPreview(null);
-              }}
-            >
-              <option value={20}>Top 20</option>
-              <option value={50}>Top 50</option>
-              <option value={10000}>All results</option>
-            </select>
-          </label>
-        </div>
-        <div className="chart-status-line">
-          <span role="status">
-            {shareStatus || `${plotted.length} plotted · ${filtered.length} matching systems`}
-          </span>
-          {isFiltered && (
-            <button type="button" onClick={() => updateFilters(defaultFilters)}>
-              Reset filters
-            </button>
+          <span className="chart-metric-legend">{metricLabel} (%)</span>
+        </header>
+        <div className="chart-plot">
+          {plotted.length ? (
+            <>
+              <div className="chart-scroll" ref={scrollRef}>
+                <div
+                  className="chart-canvas-frame"
+                  style={{ width: `max(100%, ${Math.max(580, plotted.length * 46 + 132)}px)` }}
+                >
+                  <BarChart
+                    data={chartData}
+                    config={chartConfig}
+                    stackType="stacked"
+                    yDomain={[0, 100]}
+                    margins={{ top: 30, right: 24, bottom: 164, left: 104 }}
+                    animationDuration={550}
+                    bloom="off"
+                    markerIndex={preview?.index ?? null}
+                    interactive={false}
+                    ariaLabel={`${metricLabel}, percent. Use left and right arrow keys to explore results.`}
+                  >
+                    <Bar dataKey="open" variant="gradient" />
+                    <Bar dataKey="closed" variant="gradient" />
+                    <Bar dataKey="mixed" variant="hatched" />
+                    <Bar dataKey="uncertain" variant="hatched" />
+                    <ChartMarks
+                      rows={plotted}
+                      activeIndex={selectedIndex}
+                      previewIndex={preview?.index ?? null}
+                      onPreview={showPreview}
+                      onLeave={hidePreviewSoon}
+                      onDetails={showDetails}
+                    />
+                  </BarChart>
+                </div>
+              </div>
+              <div className="chart-legend" aria-label="Bar colors">
+                <span>
+                  <i className="legend-open" />
+                  Open weights
+                </span>
+                <span>
+                  <i className="legend-closed" />
+                  Closed weights
+                </span>
+                <span>
+                  <i className="legend-uncertain" />
+                  Mixed / uncertain
+                </span>
+              </div>
+              <p className="chart-interaction-hint">
+                Scroll to explore · Hover, tap, or use arrow keys on a bar for details
+              </p>
+              {preview && active && (
+                <ChartHoverCard
+                  row={active}
+                  metricLabel={metricLabel}
+                  preview={preview}
+                  onKeepOpen={keepPreviewOpen}
+                  onLeave={hidePreviewSoon}
+                  onDetails={() => showDetails(preview.index)}
+                />
+              )}
+            </>
+          ) : (
+            <div className="chart-empty">
+              <p>No systems match these filters.</p>
+              <span>Try another size category or include more weight types.</span>
+              <button type="button" onClick={() => updateFilters(defaultFilters)}>
+                Show all systems
+              </button>
+            </div>
           )}
         </div>
-        {plotted.length ? (
-          <>
-            <div className="chart-axis-title">
-              Success rate (%) <span>Higher is better ↑</span>
-            </div>
-            <div className="chart-scroll" ref={scrollRef}>
-              <div
-                className="chart-canvas-frame"
-                style={{ width: `max(100%, ${Math.max(580, plotted.length * 46 + 132)}px)` }}
-              >
-                <BarChart
-                  data={chartData}
-                  config={chartConfig}
-                  stackType="stacked"
-                  yDomain={[0, 100]}
-                  margins={{ top: 30, right: 24, bottom: 164, left: 104 }}
-                  animationDuration={550}
-                  bloom="off"
-                  markerIndex={preview?.index ?? null}
-                  interactive={false}
-                  ariaLabel={`${benchmark} scores. Use left and right arrow keys to explore results.`}
-                >
-                  <Bar dataKey="open" variant="gradient" />
-                  <Bar dataKey="closed" variant="gradient" />
-                  <Bar dataKey="mixed" variant="hatched" />
-                  <Bar dataKey="uncertain" variant="hatched" />
-                  <ChartMarks
-                    rows={plotted}
-                    activeIndex={selectedIndex}
-                    previewIndex={preview?.index ?? null}
-                    onPreview={showPreview}
-                    onLeave={hidePreviewSoon}
-                    onDetails={showDetails}
-                  />
-                </BarChart>
-              </div>
-            </div>
-            <p className="chart-interaction-hint">
-              Scroll to explore · Hover, tap, or use arrow keys on a bar for details
-            </p>
-            {preview && active && (
-              <ChartHoverCard
-                row={active}
-                preview={preview}
-                onKeepOpen={keepPreviewOpen}
-                onLeave={hidePreviewSoon}
-                onDetails={() => showDetails(preview.index)}
-              />
-            )}
-          </>
-        ) : (
-          <div className="chart-empty">
-            <p>No systems match these filters.</p>
-            <span>Try another size category or include more weight types.</span>
-            <button type="button" onClick={() => updateFilters(defaultFilters)}>
-              Show all systems
-            </button>
-          </div>
-        )}
         <details className="chart-methodology">
           <summary>How model sizes and weights are classified</summary>
           <div>

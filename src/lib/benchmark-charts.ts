@@ -28,7 +28,6 @@ export function getChartBenchmarks(): ChartBenchmark[] {
     return {
       slug,
       name: page.meta.name,
-      description: page.meta.description,
       rows: classifyBenchmarkRows(page.results, researchByBenchmark[slug], models),
     };
   });

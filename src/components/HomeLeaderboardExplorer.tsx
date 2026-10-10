@@ -38,7 +38,6 @@ export default function HomeLeaderboardExplorer({ benchmarks }: { benchmarks: Ch
         key={selected.slug}
         rows={selected.rows}
         benchmark={selected.name}
-        description={selected.description}
         benchmarkSlug={selected.slug}
         benchmarkOptions={benchmarks.map(({ slug, name }) => ({ slug, name }))}
         onBenchmarkChange={(next) => {

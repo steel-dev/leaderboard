@@ -43,7 +43,6 @@ export interface ClassifiedResult extends BenchmarkResultRow {
 export interface ChartBenchmark {
   slug: string;
   name: string;
-  description: string;
   rows: ClassifiedResult[];
 }
 
