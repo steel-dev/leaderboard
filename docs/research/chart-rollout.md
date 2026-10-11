@@ -138,3 +138,22 @@ same global layout as main again: 16.5rem side rails, a content column capped at
 48rem, and 2rem/1rem panel padding. At 1440px, the panel measures 768px and its
 chart/text area 736px. At 320px, the size popup stays within the narrower toolbar;
 chart and table overflow is contained in their own horizontal scrollers.
+
+## Compact benchmark charts and filter rendering
+
+Benchmark pages opt into a compact chart layout; the homepage retains its existing
+dimensions. Controls are 28px instead of 32px, the desktop canvas is 360px instead
+of 456px, and its left plot margin is 60px instead of 104px. Narrower bar spacing,
+slightly steeper labels, a smaller hover card, and tighter padding preserve more
+visible results within the original content column. Mobile uses a 340px canvas.
+
+Equivalent chart rows now retain their animation revision even when a filter
+creates a new data array. Selecting Large when the same top 20 remain visible
+therefore avoids replaying the dither animation. Changed values, labels, ordering,
+row counts, and explicit replay tokens still restart it.
+
+The reported Brave “Aw, Snap” Error 5 was not reproduced in either Brave or the
+in-app browser. Repeated Large selections, all 74 Large results, empty-to-Large
+recovery, and filtered reload worked. The revision change reduces unnecessary
+rendering but is not a confirmed fix for that renderer crash. Desktop proof:
+`tmp/benchmark-compact-brave.jpg`. The size dropdown stays in bounds at 320px.

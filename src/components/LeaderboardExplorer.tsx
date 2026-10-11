@@ -222,6 +222,7 @@ function ChartHoverCard({
 
 function ChartMarks({
   rows,
+  compact,
   activeIndex,
   previewIndex,
   onPreview,
@@ -229,6 +230,7 @@ function ChartMarks({
   onDetails,
 }: {
   rows: ClassifiedResult[];
+  compact: boolean;
   activeIndex: number;
   previewIndex: number | null;
   onPreview: (index: number, target: SVGRectElement, top: number) => void;
@@ -268,8 +270,11 @@ function ChartMarks({
         const top = chart.y(row.scoreValue ?? 0);
         const slot = chart.barSlot(index, 0, 1);
         const active = previewIndex === index;
+        const labelLength = compact ? 22 : 25;
         const label =
-          row.systemName.length > 25 ? `${row.systemName.slice(0, 24)}…` : row.systemName;
+          row.systemName.length > labelLength
+            ? `${row.systemName.slice(0, labelLength - 1)}…`
+            : row.systemName;
         return (
           <g key={row.systemName}>
             <text
@@ -282,7 +287,7 @@ function ChartMarks({
               {row.scoreDisplay}
             </text>
             <text
-              transform={`translate(${x + 3},${chart.plot.height + 19}) rotate(-52)`}
+              transform={`translate(${x + 3},${chart.plot.height + 19}) rotate(${compact ? -58 : -52})`}
               textAnchor="end"
               className={`chart-x-label${active ? " is-active" : ""}`}
               aria-hidden="true"
@@ -362,6 +367,7 @@ export default function LeaderboardExplorer({
   onBenchmarkChange,
   tablePreviewCount = 20,
   showResults = true,
+  compact = false,
 }: {
   rows: ClassifiedResult[];
   benchmark: string;
@@ -370,6 +376,7 @@ export default function LeaderboardExplorer({
   onBenchmarkChange?: (slug: string) => void;
   tablePreviewCount?: number;
   showResults?: boolean;
+  compact?: boolean;
 }) {
   const metricLabel = `${benchmark} score`;
   const [filters, setFilters] = useState<ChartFilters>(defaultFilters);
@@ -535,7 +542,10 @@ export default function LeaderboardExplorer({
   }, [preview]);
 
   return (
-    <div className="leaderboard-explorer" data-benchmark={benchmark}>
+    <div
+      className={`leaderboard-explorer${compact ? " leaderboard-explorer--compact" : ""}`}
+      data-benchmark={benchmark}
+    >
       <section className="chart-shell" aria-labelledby="chart-title">
         <header className="lb-module-head chart-table-heading chart-heading">
           <h2 id="chart-title">Score</h2>
@@ -683,14 +693,24 @@ export default function LeaderboardExplorer({
               <div className="chart-scroll" ref={scrollRef}>
                 <div
                   className="chart-canvas-frame"
-                  style={{ width: `max(100%, ${Math.max(580, plotted.length * 46 + 132)}px)` }}
+                  style={{
+                    width: `max(100%, ${
+                      compact
+                        ? Math.max(440, plotted.length * 38 + 76)
+                        : Math.max(580, plotted.length * 46 + 132)
+                    }px)`,
+                  }}
                 >
                   <BarChart
                     data={chartData}
                     config={chartConfig}
                     stackType="stacked"
                     yDomain={[0, 100]}
-                    margins={{ top: 30, right: 24, bottom: 164, left: 104 }}
+                    margins={
+                      compact
+                        ? { top: 26, right: 16, bottom: 130, left: 60 }
+                        : { top: 30, right: 24, bottom: 164, left: 104 }
+                    }
                     animationDuration={550}
                     bloom="off"
                     markerIndex={preview?.index ?? null}
@@ -703,6 +723,7 @@ export default function LeaderboardExplorer({
                     <Bar dataKey="uncertain" variant="hatched" />
                     <ChartMarks
                       rows={plotted}
+                      compact={compact}
                       activeIndex={selectedIndex}
                       previewIndex={preview?.index ?? null}
                       onPreview={showPreview}

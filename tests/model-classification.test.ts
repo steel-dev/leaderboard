@@ -28,6 +28,65 @@ import {
   computeBands,
   indexAtBand,
 } from "../src/components/dither-kit/scales";
+import { nextChartRevision } from "../src/components/dither-kit/chart-revision";
+
+test("equivalent chart rows keep the animation revision while retaining the latest data", () => {
+  const data = [
+    { name: "First", open: 90, closed: 0 },
+    { name: "Second", open: 0, closed: 80 },
+  ];
+  const initial = { data, token: 0, revision: 3 };
+  const equivalent = data.map((row) => ({ closed: row.closed, name: row.name, open: row.open }));
+  const next = nextChartRevision(initial, equivalent, 0);
+  assert.equal(next.revision, 3);
+  assert.equal(next.data, equivalent);
+  assert.equal(nextChartRevision(next, equivalent, 0), next);
+  assert.deepEqual(initial, { data, token: 0, revision: 3 });
+});
+
+test("chart value, label, row order, row count, and own-key changes replay the animation", () => {
+  const data = [
+    { name: "First", score: 90 },
+    { name: "Second", score: 80 },
+  ];
+  const initial = { data, token: 0, revision: 3 };
+  for (const changed of [
+    [{ name: "First", score: 89 }, data[1]],
+    [{ name: "Renamed", score: 90 }, data[1]],
+    [...data].reverse(),
+    data.slice(0, 1),
+    [{ ...data[0], extra: undefined }, data[1]],
+  ]) {
+    assert.equal(nextChartRevision(initial, changed, 0).revision, 4);
+  }
+});
+
+test("explicit replay tokens restart unchanged chart data", () => {
+  const data = [{ name: "First", score: 90 }];
+  const initial = { data, token: 0, revision: 3 };
+  assert.equal(nextChartRevision(initial, data, 1).revision, 4);
+  const equivalent = data.map((row) => ({ ...row }));
+  assert.equal(nextChartRevision(initial, equivalent, 1).revision, 4);
+});
+
+test("chart comparison preserves nested identity and does not invoke accessors", () => {
+  const nested = { score: 90 };
+  const initial = { data: [{ name: "First", nested }], token: 0, revision: 3 };
+  assert.equal(nextChartRevision(initial, [{ name: "First", nested }], 0).revision, 3);
+  assert.equal(
+    nextChartRevision(initial, [{ name: "First", nested: { score: 90 } }], 0).revision,
+    4
+  );
+  const accessor = {
+    get score() {
+      throw new Error("Animation comparison must not evaluate getters");
+    },
+  };
+  assert.equal(
+    nextChartRevision({ data: [accessor], token: 0, revision: 3 }, [{ score: 90 }], 0).revision,
+    4
+  );
+});
 
 function model(overrides: Partial<ModelRecord> = {}): ModelRecord {
   return {

@@ -579,6 +579,64 @@
   font-size: 12px;
   color: var(--color-text-muted);
 }
+.leaderboard-explorer--compact .chart-toolbar {
+  gap: 0.65rem 1rem;
+  padding: 1rem 1rem 0.5rem;
+}
+.leaderboard-explorer--compact .chart-benchmark-title {
+  font-size: 16px;
+}
+.leaderboard-explorer--compact .chart-filters {
+  gap: 0.35rem;
+}
+.leaderboard-explorer--compact .chart-size-control {
+  width: 6.75rem;
+}
+.leaderboard-explorer--compact .chart-weights-control select,
+.leaderboard-explorer--compact .chart-limit-control select,
+.leaderboard-explorer--compact .chart-size-picker summary {
+  min-height: 28px;
+  font-size: 10px;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.leaderboard-explorer--compact .chart-table-link,
+.leaderboard-explorer--compact .chart-share-button {
+  width: 28px;
+  height: 28px;
+}
+.leaderboard-explorer--compact .chart-reset-button {
+  font-size: 10px;
+}
+.leaderboard-explorer--compact .chart-plot {
+  padding: 0.5rem 0.75rem 0;
+}
+.leaderboard-explorer--compact .chart-canvas-frame {
+  height: 360px;
+}
+.leaderboard-explorer--compact .chart-y-tick,
+.leaderboard-explorer--compact .chart-score-label,
+.leaderboard-explorer--compact .chart-x-label {
+  font-size: 9px;
+}
+.leaderboard-explorer--compact .chart-legend {
+  margin-top: 0.5rem;
+  font-size: 9px;
+}
+.leaderboard-explorer--compact .chart-methodology {
+  padding: 0.75rem 1rem;
+}
+.leaderboard-explorer--compact .chart-hover-card {
+  width: 228px;
+  padding: 10px;
+  font-size: 10px;
+}
+.leaderboard-explorer--compact .chart-hover-card h3 {
+  font-size: 11px;
+}
+.leaderboard-explorer--compact .chart-hover-card dd {
+  font-size: 9px;
+}
 @media (max-width: 639px) {
   .chart-plot {
     padding: 0.5rem 1rem 0;
@@ -602,7 +660,8 @@
   }
   .chart-weights-control,
   .chart-size-control,
-  .chart-limit-control {
+  .chart-limit-control,
+  .leaderboard-explorer--compact .chart-size-control {
     min-width: 0;
     width: 100%;
   }
@@ -632,6 +691,15 @@
   }
   .chart-methodology {
     padding: 0.85rem 1rem;
+  }
+  .leaderboard-explorer--compact .chart-toolbar > .chart-benchmark-title {
+    margin-bottom: 0.65rem;
+  }
+  .leaderboard-explorer--compact .chart-filters {
+    gap: 0.5rem;
+  }
+  .leaderboard-explorer--compact .chart-canvas-frame {
+    height: 340px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

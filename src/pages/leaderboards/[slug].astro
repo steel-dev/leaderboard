@@ -136,7 +136,7 @@ const breadcrumbSchema = JSON.stringify({
       <section id="leaderboard" class="scroll-mt-8">
         {
           chartRows ? (
-            <LeaderboardExplorer rows={chartRows} benchmark={page.meta.name} client:load />
+            <LeaderboardExplorer rows={chartRows} benchmark={page.meta.name} compact client:load />
           ) : (
             <BenchmarkResultsTable
               rows={page.results}
