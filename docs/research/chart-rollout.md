@@ -125,3 +125,8 @@ the appropriate column on homepage and benchmark pages to stay inside the viewpo
 
 Verified both layouts at 320px, size/weight filtering, reset, icon navigation, and
 visible checkmark plus announced feedback after copying a share link.
+
+The homepage benchmark heading now doubles as the native benchmark picker, with
+a caret next to the title and no duplicate dropdown in the filter row. Benchmark
+pages keep a plain heading. Verified title updates, URL/filter preservation,
+keyboard focus restoration, Back navigation, and the size menu at 320px.

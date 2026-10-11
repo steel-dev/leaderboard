@@ -547,23 +547,28 @@ export default function LeaderboardExplorer({
           </div>
         </header>
         <div className="chart-toolbar">
-          <h3 className="chart-benchmark-title">{benchmark} scores</h3>
-          <div className={`chart-filters${benchmarkOptions ? " has-benchmark" : ""}`}>
-            {benchmarkOptions && (
-              <label className="chart-benchmark-control">
-                <span className="sr-only">Benchmark</span>
-                <select
-                  value={benchmarkSlug}
-                  onChange={(event) => onBenchmarkChange?.(event.target.value)}
-                >
-                  {benchmarkOptions.map((option) => (
-                    <option value={option.slug} key={option.slug}>
-                      {option.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            )}
+          {benchmarkOptions ? (
+            <div className="chart-benchmark-control">
+              <h3 className="chart-benchmark-title">{benchmark} scores</h3>
+              <svg width="16" height="16" viewBox="0 0 12 12" aria-hidden="true">
+                <path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+              <select
+                aria-label="Benchmark"
+                value={benchmarkSlug}
+                onChange={(event) => onBenchmarkChange?.(event.target.value)}
+              >
+                {benchmarkOptions.map((option) => (
+                  <option value={option.slug} key={option.slug}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ) : (
+            <h3 className="chart-benchmark-title">{benchmark} scores</h3>
+          )}
+          <div className="chart-filters">
             <label className="chart-weights-control">
               <span className="sr-only">Model weights</span>
               <select

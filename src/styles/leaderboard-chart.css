@@ -42,6 +42,39 @@
   font: 500 18px/1.4 var(--font-sans);
   letter-spacing: -0.025em;
 }
+.chart-benchmark-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 32px;
+  border-radius: 2px;
+}
+.chart-benchmark-control > svg {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+.chart-benchmark-control:hover .chart-benchmark-title,
+.chart-benchmark-control:hover > svg {
+  color: var(--color-accent);
+}
+.chart-benchmark-control:focus-within {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+.chart-benchmark-control select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font: 16px var(--font-sans);
+  color-scheme: dark;
+}
 .chart-filters {
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +90,6 @@
   max-width: 100%;
 }
 .chart-weights-control select,
-.chart-benchmark-control select,
 .chart-limit-control select,
 .chart-size-picker summary {
   background: var(--color-surface);
@@ -71,7 +103,6 @@
   color-scheme: dark;
 }
 .chart-weights-control select,
-.chart-benchmark-control select,
 .chart-limit-control select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%23a1a09a' stroke-width='1.5'/%3E%3C/svg%3E");
@@ -564,7 +595,8 @@
     display: block;
     padding: 1rem;
   }
-  .chart-benchmark-title {
+  .chart-toolbar > .chart-benchmark-title,
+  .chart-benchmark-control {
     margin-bottom: 0.85rem;
   }
   .chart-filters {
@@ -577,24 +609,18 @@
     grid-column: 1 / -1;
   }
   .chart-weights-control,
-  .chart-benchmark-control,
   .chart-size-control,
   .chart-limit-control {
     min-width: 0;
     width: 100%;
   }
   .chart-weights-control select,
-  .chart-benchmark-control select,
   .chart-limit-control select {
     width: 100%;
   }
   .chart-size-menu {
     left: auto;
     right: 0;
-  }
-  .chart-filters.has-benchmark .chart-size-menu {
-    left: 0;
-    right: auto;
   }
   .chart-filter-actions {
     justify-content: flex-end;
