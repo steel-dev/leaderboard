@@ -3,11 +3,6 @@
   --chart-closed: #eee; /* Radix Gray 12 (dark scale). */
   --chart-uncertain: #ae8752;
 }
-@media (min-width: 1024px) {
-  .benchmark-detail-layout.has-chart {
-    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
-  }
-}
 .leaderboard-explorer {
   min-width: 0;
 }
@@ -585,9 +580,6 @@
   color: var(--color-text-muted);
 }
 @media (max-width: 639px) {
-  .has-chart .benchmark-content-panel {
-    padding: 0;
-  }
   .chart-plot {
     padding: 0.5rem 1rem 0;
   }
@@ -621,6 +613,7 @@
   .chart-size-menu {
     left: auto;
     right: 0;
+    max-width: calc(200% + 0.5rem);
   }
   .chart-filter-actions {
     justify-content: flex-end;

@@ -130,3 +130,11 @@ The homepage benchmark heading now doubles as the native benchmark picker, with
 a caret next to the title and no duplicate dropdown in the filter row. Benchmark
 pages keep a plain heading. Verified title updates, URL/filter preservation,
 keyboard focus restoration, Back navigation, and the size menu at 320px.
+
+## Restore benchmark page width
+
+Removed the chart-only grid and mobile padding overrides. Benchmark pages use the
+same global layout as main again: 16.5rem side rails, a content column capped at
+48rem, and 2rem/1rem panel padding. At 1440px, the panel measures 768px and its
+chart/text area 736px. At 320px, the size popup stays within the narrower toolbar;
+chart and table overflow is contained in their own horizontal scrollers.
