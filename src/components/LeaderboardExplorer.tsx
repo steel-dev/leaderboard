@@ -548,7 +548,7 @@ export default function LeaderboardExplorer({
     >
       <section className="chart-shell" aria-labelledby="chart-title">
         <header className="lb-module-head chart-table-heading chart-heading">
-          <h2 id="chart-title">Score</h2>
+          <h2 id="chart-title">Scores</h2>
           <div className="lb-head-lines" aria-hidden="true">
             <span />
             <span />
