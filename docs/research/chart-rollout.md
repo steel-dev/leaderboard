@@ -1,42 +1,57 @@
-# Featured benchmark chart rollout
+# Featured benchmark charts
 
-Implemented October 10, 2026. Extends the approved BrowseComp Dither chart to the
-homepage and three more representative benchmarks: WebVoyager (live browsing),
-WebArena (controlled websites), and OSWorld (desktop computer use).
+The homepage opens on **WebVoyager** and offers BrowseComp, WebArena, and OSWorld
+in the chart heading's benchmark picker. It contains the chart and benchmark
+directory. Each featured benchmark page has a compact chart and its full results
+table; other benchmark pages retain their existing tables.
 
 | Benchmark  | Classified results |
 | ---------- | -----------------: |
-| BrowseComp |                100 |
-| WebVoyager |                 21 |
+| BrowseComp |                102 |
+| WebVoyager |                 22 |
 | WebArena   |                 50 |
 | OSWorld    |                 23 |
-| Total      |                194 |
+| Total      |                197 |
 
-The homepage defaults to BrowseComp, offers these four benchmarks in a selector,
-and previews five results beneath the chart. Model-weight and multi-size filters
-carry across benchmark changes. Benchmark selection and filters are restored from
-direct URLs and browser history. Full-leaderboard links preserve the filters.
-Other benchmark pages retain their existing tables.
+## Interaction and presentation
 
-All four charts use the same compact hover/focus/tap card. More details expands
-the table and focuses the matching evidence entry, including results outside the
-initial preview. The methodology explains provisional estimates, price proxies,
-multi-model classifications, and how to suggest a correction.
+- The card header reads **Scores**, followed by the repeated yellow rules.
+  Homepage headings switch benchmarks; benchmark-page headings are fixed.
+- Weight and multi-select size filters apply to both chart and results. Filter
+  state and benchmark selection survive shared URLs and Back/Forward navigation.
+- Top 20, Top 50, and All results control the plotted bars. The chart scrolls
+  horizontally within its card, with a fixed 0–100 percent axis.
+- Open weights use yellow, closed weights use Radix gray-12, and mixed/uncertain
+  stacks use a distinct pattern. The legend and text labels identify each class.
+- Hover, keyboard focus, and touch expose a compact details card. Homepage result
+  activation navigates to the matching benchmark result. Benchmark pages expand
+  the results and focus that result's evaluation details, including rows beyond
+  the initial preview. Result fragments preserve exact names and punctuation.
+- Benchmark pages retain the original 48rem content column, smaller controls,
+  shorter bars, and less left padding. The homepage retains its larger chart.
+- Removed plotted/matching counts and redundant metric/instruction labels from
+  the graph. Full benchmark tables retain their result count.
 
-## Research and data integrity
+## Classification and evidence
 
-The shared registry validates category boundaries, parameter and price evidence,
-duplicate model consistency, exact submission coverage, and required runtime
-components. Existing result names, ranks, scores, dates, notes, and source links
-remain unchanged; tests compare every original result field.
+Size categories use total parameters: Tiny ≤4B, Small >4–40B, Medium >40–150B,
+and Large >150B. Active MoE parameters are recorded separately. When published
+parameters are unavailable, standard uncached USD token prices use a 3:1
+input/output blend: Small <$0.15/M, Medium $0.15–$1/M, and Large >$1/M.
 
-Uncertain historical model identities and unreleased evaluated checkpoints remain
-explicitly uncertain. Open harness code does not qualify a closed or uncertain
-runtime for the open-weight filter. The researched WebVoyager submissions have
-no fully verified all-open stack, so its open-weight filter correctly shows an
-empty state.
+Price categories are labeled **Price proxy**; provisional classifications are
+labeled **Estimated** and remain filterable. Multi-model systems inherit their
+largest component category, with their components and caveats disclosed. Open
+weights require released weights for every required model. Open harness code
+alone does not establish an open model stack.
 
-Benchmark-specific evidence and caveats:
+The registry validates evidence fields, parameter/price boundaries, conflicting
+model definitions, exact result coverage, and required model references. The
+chart preserves the input result fields; source corrections are made in the
+underlying benchmark dataset so tables, charts, Markdown, and result images agree.
+The methodology includes a correction link.
+
+Research notes:
 
 - BrowseComp: [batch 1](browsecomp/models-1.md), [batch 2](browsecomp/models-2.md),
   [batch 3](browsecomp/models-3.md).
@@ -44,130 +59,35 @@ Benchmark-specific evidence and caveats:
 - [WebArena](webarena/model-classification.md).
 - [OSWorld](osworld/model-classification.md).
 
-## Validation
+## Brave filter crash regression
 
-- All 18 classification, registry, URL, chart geometry, and full-coverage tests
-  pass with `npm run test:charts`.
-- `npm run lint`, `npx tsc --noEmit`, and `git diff --check` pass.
-- `npm run build -- --outDir tmp/benchmark-charts-dist` passes: 17 pages plus
-  endpoints and images, completed at 15:16 local time in 164.56 seconds. Isolated
-  output avoids the concurrent development work's `dist/` directory.
-- Browser checks cover all four homepage selections, combined weight/size
-  filters, empty-state recovery, Back/Forward restoration, and filtered links
-  from the homepage to benchmark pages.
-- Each benchmark page was checked with all results plotted and the final bar
-  selected by keyboard. More details opens the correct table entry and expands
-  all rows (100, 21, 50, and 23 respectively).
-- Homepage benchmark changes retain keyboard focus on the selector. Shared
-  table controls retain the existing New badges. The static GAIA table still
-  expands independently; its script no longer attaches to React table controls.
-- At 320px, the homepage, filters, and OSWorld hover card remain within the
-  viewport. Desktop keyboard navigation, dismissal, and details focus work.
-  The shared pointer/touch handlers retain the behavior verified in the
-  [BrowseComp hover-card checks](browsecomp/chart-qa.md).
-- The compiled production preview passes filtered-route checks for all four
-  benchmarks and homepage selection, preserved filters, Back navigation, the
-  Share view success state, keyboard cards, and table-details focus. No browser
-  errors or warnings were recorded in the final preview. A duplicate SMTL source
-  citation found during development was consolidated before the final build.
-
-These checks do not constitute a manual screen-reader audit. Research estimates
-remain provisional and can be corrected through the on-page source links.
-
-Local QA artifacts are kept in the ignored `tmp/` directory, including
-`tmp/home-chart-mobile.jpg`, `tmp/home-chart-rollout-final.jpg`, and the production build log
-`tmp/qa/build-rollout.log`.
-
-## Chart simplification
-
-The follow-up revision moves filters and actions above the graph card. Its header
-now matches the Results header's monospace text and repeated rules, with a
-benchmark-specific score label and percentage units. Removed the plotted/matching
-counter, generic success-rate axis title, higher-is-better label, and introductory
-paragraph. Weight-color keys sit beneath the graph; hover cards use the same
-benchmark score name.
-
-Model sizes use a compact checkbox dropdown with multiple selection, an All sizes
-reset, keyboard operation, Escape dismissal, and outside-click dismissal. Existing
-size URLs, Back navigation, benchmark switching, and shared chart/table filtering
-are preserved. Share confirmation and Reset filters remain in the control strip.
-
-Verified desktop interaction, direct-link and history restoration, multiple size
-choices, share feedback, and the 320px dropdown/header/hover-card layout. The 18
-existing tests, lint, and TypeScript checks pass. Final build output is isolated
-at `tmp/benchmark-charts-simple-dist`; its log is `tmp/qa/build-simple.log`.
-
-## Homepage navigation simplification
-
-The homepage now contains the chart and benchmark directory beneath its introduction;
-its Results table and FAQ section are removed. Filters and sharing actions sit inside
-the chart card below the ruled header on both the homepage and benchmark pages.
-
-Homepage bar activation and the hover card's More details link navigate to the selected
-benchmark's matching result. Links preserve weight/size filters and use a stable result
-fragment. Benchmark pages expand their results, open that row's evaluation details, and
-move focus to its summary. Direct links and browser history restore the same selection.
-
-Validated the card layout and dropdown at 375px, homepage benchmark switching,
-filtered hover-card links, keyboard activation of the 30th result, direct reload,
-Back navigation, and sidebar anchors with expanded results. URL tests cover
-punctuation, Unicode, distinct system IDs, and malformed fragments (20 tests pass).
-Lint and TypeScript checks pass. Desktop proof: `tmp/chart-home-only-desktop.jpg`.
-
-## Compact chart toolbar
-
-The chart header now reads Score with four rules extending across the remaining
-width. Each card has a benchmark heading inside, aligned with compact 32px dropdowns
-and navigation/share icon actions on desktop. Native dropdowns and the size picker
-use matching chevrons; their labels remain available to assistive technology.
-On mobile, the title sits above two columns of controls. The size menu anchors to
-the appropriate column on homepage and benchmark pages to stay inside the viewport.
-
-Verified both layouts at 320px, size/weight filtering, reset, icon navigation, and
-visible checkmark plus announced feedback after copying a share link.
-
-The homepage benchmark heading now doubles as the native benchmark picker, with
-a caret next to the title and no duplicate dropdown in the filter row. Benchmark
-pages keep a plain heading. Verified title updates, URL/filter preservation,
-keyboard focus restoration, Back navigation, and the size menu at 320px.
-
-## Restore benchmark page width
-
-Removed the chart-only grid and mobile padding overrides. Benchmark pages use the
-same global layout as main again: 16.5rem side rails, a content column capped at
-48rem, and 2rem/1rem panel padding. At 1440px, the panel measures 768px and its
-chart/text area 736px. At 320px, the size popup stays within the narrower toolbar;
-chart and table overflow is contained in their own horizontal scrollers.
-
-## Compact benchmark charts and filter rendering
-
-Benchmark pages opt into a compact chart layout; the homepage retains its existing
-dimensions. Controls are 28px instead of 32px, the desktop canvas is 360px instead
-of 456px, and its left plot margin is 60px instead of 104px. Narrower bar spacing,
-slightly steeper labels, a smaller hover card, and tighter padding preserve more
-visible results within the original content column. Mobile uses a 340px canvas.
-
-Equivalent chart rows now retain their animation revision even when a filter
-creates a new data array. Selecting Large when the same top 20 remain visible
-therefore avoids replaying the dither animation. Changed values, labels, ordering,
-row counts, and explicit replay tokens still restart it.
-
-The reported Brave “Aw, Snap” Error 5 was not reproduced in either Brave or the
-in-app browser. Repeated Large selections, all 74 Large results, empty-to-Large
-recovery, and filtered reload worked. The revision change reduces unnecessary
-rendering but is not a confirmed fix for that renderer crash. Desktop proof:
-`tmp/benchmark-compact-brave.jpg`. The size dropdown stays in bounds at 320px.
-
-## Brave size-label crash
-
-Reproduced the renderer crash by opening the size picker with its summary focused,
-then clicking the **Large label text**, rather than the checkbox input. That mouse
-press temporarily blurs the summary with a null `relatedTarget`. Closing the native
-details element in that blur handler hides the clicked text before Chromium finishes
-hit testing. Matching Brave symbols and a fresh reproduction dump identify the
+The renderer crash occurred when the size-picker summary had focus and the user
+pressed the **Large label text**, rather than the checkbox. That press temporarily
+moves focus to the document with a null `relatedTarget`. Closing the native details
+element in that blur handler hid the clicked text while Chromium was hit testing.
+Matching Brave symbols and a fresh reproduction dump identified the
 [display-lock assertion in HitTestResult::GetPosition](https://github.com/chromium/chromium/blob/153.0.8010.53/third_party/blink/renderer/core/layout/hit_test_result.cc#L215).
 
-The blur handler now closes only when focus has a known destination outside the
-picker. Outside pointer presses and Escape retain their existing dismissal paths.
-Regression checks cover the exact summary-to-label click, repeated label toggles,
-multiple sizes, checkbox/keyboard activation, Tab dismissal, Escape, and click-away.
+The handler closes only when focus has a known destination outside the picker.
+Outside pointer presses, Tab, and Escape retain their dismissal paths. Regression
+checks exercise the label text after summary focus, repeated toggles, multiple
+sizes, keyboard activation, Escape, and click-away.
+
+Equivalent chart rows also retain their animation revision during filter changes.
+Changed values, labels, ordering, row counts, and explicit replay tokens restart
+animation. This optimization is separate from the confirmed crash fix.
+
+## Verification
+
+`npm run test:charts` covers classifications, coverage of all four datasets,
+filter intersections, URL/result-fragment round trips, sorting, chart geometry,
+and animation revisions. Required release checks are `npm run lint`,
+`npx tsc --noEmit`, `npm run build`, and `git diff --check`. Regenerate the README
+when benchmark data changes.
+
+Release evidence and source corrections are recorded in the [BrowseComp audit](browsecomp/verification-2026-10-11.md),
+[WebVoyager/WebArena/OSWorld audit](chart-data-verification-2026-10-11.md), and
+[release QA report](chart-release-qa-2026-10-11.md). Browser checks cover all featured charts, filtered chart/table agreement,
+empty states, history restoration, exact-result navigation, desktop keyboard
+controls, and narrow layouts. Automated checks do not constitute a manual screen
+reader audit or independent reproduction of the reported benchmark evaluations.

@@ -2,6 +2,12 @@
   "source": "https://github.com/Boring-Software-Inc/dither-kit",
   "registries": ["https://www.tripwire.sh/r/core.json", "https://www.tripwire.sh/r/bar-chart.json"],
   "retrievedAt": "2026-10-10",
+  "license": {
+    "declaredSpdx": "MIT",
+    "source": "https://github.com/Boring-Software-Inc/dither-kit/blob/1e7faee9aa252e499651e6736ed65f7a07d9a6bd/package.json",
+    "checkedAt": "2026-10-11",
+    "notes": "Upstream declares MIT in package.json. This revision bundles no license or notice file, and the manifest supplies no copyright notice. No replacement copyright notice has been invented."
+  },
   "sha256BeforeLocalChanges": {
     "bar-canvas.tsx": "80ed40b87eb3dbf3d9f768cf42b3b55f4f738db8b193c1a616f7abf525d83f87",
     "bar-chart.tsx": "e19ce3540f15756aba615eb19072aeec81d8ac71e51219691cc1d0be004c18bb",

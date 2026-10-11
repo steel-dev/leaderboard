@@ -1,8 +1,9 @@
 # OSWorld model classification
 
-Checked 2026-10-10 using the repository’s model-classification-research skill. All 23 existing
-submissions have exact-name mappings. Scores, dates, names, and original result-source URLs are
-unchanged. The batch defines 15 new model records and references nine existing BrowseComp records.
+Initially checked 2026-10-10; audited and corrected 2026-10-11 using the repository’s model-classification-research skill. All 23 existing
+submissions have exact-name mappings. The audit corrected the Qwen3-VL score/variant and UiPath backbone, and repaired result links; see
+[verification report](../chart-data-verification-2026-10-11.md). The batch defines 15 model records and
+references ten shared BrowseComp records.
 
 ## Findings that affect filters
 
@@ -11,7 +12,7 @@ unchanged. The batch defines 15 new model records and references nine existing B
 | Qwen3.8-Max                           | Uncertain evaluated checkpoint | Large, 2.4T published total                  |
 | MiMo-V2.6-Pro / Flash                 | Open                           | Large, 1.02T / 309B total; 42B / 15B active  |
 | OSAgent                               | Uncertain backbone             | Large, provisional estimate, low confidence  |
-| Qwen3 VL 235B                         | Uncertain evaluated variant    | Large, 235B total / 22B active               |
+| Qwen3-VL-235B-A22B-Instruct           | Open                           | Large, 235B total / 22B active               |
 | Kimi K2.5                             | Open                           | Large, existing parameter record             |
 | GLM-5V-Turbo                          | Uncertain evaluated weights    | Large, $1.90/M price blend                   |
 | Agent S2 + Claude 3.7                 | Mixed                          | Large, largest component; open harness       |
@@ -43,11 +44,16 @@ invented zero output price. Claude 3.7 remains the largest component.
   UI-TARS-72B-DPO, and both Qwen2.5-VL checkpoints. Full stored Qwen2.5-VL totals are approximately
   73.4108B and 33.4527B including visual components, with 38 and 18 shards. Published MiMo
   architectural totals take precedence over larger stored inventories containing auxiliary tensors.
-- The unsuffixed Qwen3-VL source URL returns HTTP 401. Both actual Instruct and Thinking releases
-  have 96 public shards, but the existing 66.7 result does not pin either. The
-  [technical report](https://arxiv.org/html/2511.21631v1) establishes the architecture; the
-  [Kimi comparison](https://arxiv.org/html/2602.02276v1) reports 38.1 for this family. This is a
-  provenance issue to resolve separately, not authorization to replace the existing score.
+- The original Qwen3-VL 66.7 score was **OSWorldG grounding**, not OSWorld task success.
+  [Table 2, page 15](https://arxiv.org/pdf/2511.21631v1#page=15) gives the exact Instruct model
+  **31.6** on OSWorld. The score, name, rank, and mapping now reflect that result. Its exact
+  [Instruct inventory](https://huggingface.co/api/models/Qwen/Qwen3-VL-235B-A22B-Instruct)
+  has 96 public shards at revision `710c13861be6c466e66de3f484069440b8f31389`; published 235B
+  total / 22B active remains the classification basis.
+- The [official OSWorld workbook](https://osworld-v1.xlang.ai/static/data/osworld_verified_results.xlsx)
+  assigns 53.63% to **UiPath Screen Agent w/ GPT-5**, 50 steps, September 14, 2025. The row retains
+  its rounded 53.6%, with corrected name/backbone/date. January's Opus 4.5 results are different runs.
+  Exact historical scaffold release is unverified; harness availability is now Uncertain.
 - [OSAgent’s launch](https://www.theagi.company/blog/osworld) discloses an unnamed general-reasoning
   base and RL policy. A later `agi-inc` 32B repository was created in April 2026 and has no model
   card; it cannot establish the October 2025 evaluation identity. No parameter count is invented.
@@ -70,11 +76,12 @@ model. Existing model identities are reused; changed evaluation settings remain 
 ## Shared records and validation
 
 Existing IDs reused: `claude-mythos-preview`, `claude-mythos-5`, `claude-fable-5`, `claude-opus-4-8`,
-`claude-sonnet-5`, `claude-sonnet-4-6`, `claude-opus-4-6`, `gpt-5-4`, and `kimi-k2-5`.
+`claude-sonnet-5`, `claude-sonnet-4-6`, `claude-opus-4-6`, `gpt-5-4`, `gpt-5`, and `kimi-k2-5`.
 New common records available to other batches include `openai-cua-original`, `claude-3-7-sonnet`,
 `claude-opus-4-5`, `claude-sonnet-4-5`, `claude-haiku-4-5`, and both Qwen2.5-VL Instruct IDs.
 
 Validation checks exact 23-name coverage, unique new IDs, references across the shared registry,
 required fields, source URLs, check dates, finite nonnegative numbers, category boundaries, and
-active-versus-total counts. No benchmark-result files were edited and no build was run; integration
-checks belong to the parent task.
+active-versus-total counts. The October 11 audit updated benchmark results as described above. No build was run in this
+research subtask; integration checks belong to the parent task. Final counts are 21 Large, 1 Medium,
+1 Small; 6 Open, 13 Closed, 1 Mixed, 3 Uncertain.

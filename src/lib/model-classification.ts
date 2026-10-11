@@ -110,9 +110,15 @@ export function writeChartFilters(url: URL, filters: ChartFilters): URL {
   return next;
 }
 
+export const defaultChartBenchmark = "webvoyager";
+
 export function readChartBenchmark(params: URLSearchParams, slugs: readonly string[]): string {
   const requested = params.get("benchmark");
-  return slugs.find((slug) => slug === requested) ?? slugs[0];
+  return (
+    slugs.find((slug) => slug === requested) ??
+    slugs.find((slug) => slug === defaultChartBenchmark) ??
+    slugs[0]
+  );
 }
 
 export function writeChartBenchmark(url: URL, slug: string): URL {

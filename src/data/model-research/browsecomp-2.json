@@ -366,8 +366,8 @@
       "notes": "Provisional Large for the hosted high-compute research stack. The checked vendor page does not identify exact underlying weights or per-token pricing. Ultra multipliers increase task compute; they are not parameter counts. Per-query cost is not used as token pricing.",
       "sources": [
         {
-          "title": "Parallel Task API benchmarks and methodology",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         }
       ],
       "checkedAt": "2026-10-10"
@@ -875,11 +875,11 @@
       "kind": "system",
       "modelIds": ["parallel-task-ultra-stack"],
       "harnessCode": "closed",
-      "notes": "Hosted Task API configuration. Original row retains its historical 100-question sample score; the live vendor page has newer August 2026 results and does not verify that earlier score.",
+      "notes": "Hosted Task API configuration on a fixed random 100-question BrowseComp subset, measured August 11–29, 2025. The dated September 2025 report directly confirms this historical score; exact underlying model stack remains undisclosed.",
       "sources": [
         {
-          "title": "Parallel benchmark page; content has changed",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         }
       ]
     },
@@ -888,11 +888,11 @@
       "kind": "system",
       "modelIds": ["parallel-task-ultra-stack"],
       "harnessCode": "closed",
-      "notes": "Hosted Task API configuration. Original row retains its historical 100-question sample score; the live vendor page has newer August 2026 results and does not verify that earlier score.",
+      "notes": "Hosted Task API configuration on a fixed random 100-question BrowseComp subset, measured August 11–29, 2025. The dated September 2025 report directly confirms this historical score; exact underlying model stack remains undisclosed.",
       "sources": [
         {
-          "title": "Parallel benchmark page; content has changed",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         }
       ]
     },
@@ -906,6 +906,10 @@
         {
           "title": "OpenAI GPT-5 API model documentation",
           "url": "https://developers.openai.com/api/docs/models/gpt-5"
+        },
+        {
+          "title": "OpenAI launch BrowseComp chart, GPT-5 with thinking 54.9%",
+          "url": "https://openai.com/index/introducing-gpt-5/"
         }
       ]
     },
@@ -914,11 +918,11 @@
       "kind": "harness",
       "modelIds": ["gpt-5-4"],
       "harnessCode": "uncertain",
-      "notes": "Historical row explicitly names GPT-5.4 as the reasoning model. Live benchmark page now uses GPT-5.6 Sol/Luna and newer results, so it no longer independently verifies this older harness. Search-provider brand does not determine model size or weights.",
+      "notes": "The dated April 21, 2026 report explicitly identifies a shared single GPT-5.4 actor with search/fetch tools and up to 25 tool calls, tested April 19–21. The separate GPT-5.4 scoring judge is excluded. Search-provider identity does not determine model size or weight availability; original harness code release remains unverified.",
       "sources": [
         {
-          "title": "Parallel benchmark page; historical harness drift",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel April 2026 Search and Extract API benchmarks and GPT-5.4 harness",
+          "url": "https://parallel.ai/blog/parallel-search-api"
         }
       ]
     },
@@ -940,11 +944,15 @@
       "kind": "model",
       "modelIds": ["o4-mini"],
       "harnessCode": "not-applicable",
-      "notes": "With Python and browsing. The plan’s price rule classifies this as Large (blended $1.925/M) despite mini branding.",
+      "notes": "With Python and browsing at high reasoning effort; OpenAI’s source chart labels o4-mini 28.3%, separately from Deep Research 51.5%. The price rule classifies o4-mini as Large (blended $1.925/M) despite mini branding.",
       "sources": [
         {
           "title": "OpenAI o4-mini API model documentation",
           "url": "https://developers.openai.com/api/docs/models/o4-mini"
+        },
+        {
+          "title": "OpenAI o3 and o4-mini launch BrowseComp chart",
+          "url": "https://openai.com/index/introducing-o3-and-o4-mini/"
         }
       ]
     },
@@ -996,11 +1004,11 @@
       "kind": "harness",
       "modelIds": ["gpt-5-4"],
       "harnessCode": "uncertain",
-      "notes": "Historical row explicitly names GPT-5.4 as the reasoning model. Live benchmark page now uses GPT-5.6 Sol/Luna and newer results, so it no longer independently verifies this older harness. Search-provider brand does not determine model size or weights.",
+      "notes": "The dated April 21, 2026 report explicitly identifies a shared single GPT-5.4 actor with search/fetch tools and up to 25 tool calls, tested April 19–21. The separate GPT-5.4 scoring judge is excluded. Search-provider identity does not determine model size or weight availability; original harness code release remains unverified.",
       "sources": [
         {
-          "title": "Parallel benchmark page; historical harness drift",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel April 2026 Search and Extract API benchmarks and GPT-5.4 harness",
+          "url": "https://parallel.ai/blog/parallel-search-api"
         }
       ]
     },
@@ -1009,11 +1017,11 @@
       "kind": "system",
       "modelIds": ["parallel-task-ultra-stack"],
       "harnessCode": "closed",
-      "notes": "Hosted Task API configuration. Original row retains its historical 100-question sample score; the live vendor page has newer August 2026 results and does not verify that earlier score.",
+      "notes": "Hosted Task API configuration on a fixed random 100-question BrowseComp subset, measured August 11–29, 2025. The dated September 2025 report directly confirms this historical score; exact underlying model stack remains undisclosed.",
       "sources": [
         {
-          "title": "Parallel benchmark page; content has changed",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         }
       ]
     },
@@ -1159,11 +1167,11 @@
       "kind": "system",
       "modelIds": ["parallel-task-ultra-stack"],
       "harnessCode": "closed",
-      "notes": "Hosted Task API configuration. Original row retains its historical 100-question sample score; the live vendor page has newer August 2026 results and does not verify that earlier score.",
+      "notes": "Hosted Task API configuration on a fixed random 100-question BrowseComp subset, measured August 11–29, 2025. The dated September 2025 report directly confirms this historical score; exact underlying model stack remains undisclosed.",
       "sources": [
         {
-          "title": "Parallel benchmark page; content has changed",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         }
       ]
     }

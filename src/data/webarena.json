@@ -8,7 +8,7 @@
       "scoreValue": 74.3,
       "sourceUrl": "https://paper-submission-anoymous.github.io/webtactix_introduction/",
       "repoUrl": "https://github.com/paper-submission-anoymous/webtactix",
-      "notesShort": "Project page reports 594/812 correct tasks, or 74.34%; this is a WebTactix system using DeepSeek v3.2, not a bare model result.",
+      "notesShort": "Project reports 594 correct, 205 failed, and 13 N/A among 812 tasks; 74.34% excludes the 13 N/A tasks (594/799). DeepSeek v3.2 runtime.",
       "reportedAt": "2026-02"
     },
     {
@@ -70,7 +70,7 @@
       "organization": "IBM",
       "scoreDisplay": "61.7%",
       "scoreValue": 61.7,
-      "sourceUrl": "https://cuga.dev/",
+      "sourceUrl": "https://arxiv.org/pdf/2503.01861v2",
       "repoUrl": "https://github.com/cuga-project/cuga-agent",
       "notesShort": "CUGA reports 61.7% on WebArena and publishes code, evaluation artifacts, and results.",
       "reportedAt": "2025-02-17"
@@ -92,7 +92,7 @@
       "organization": "OpenAI",
       "scoreDisplay": "58.1%",
       "scoreValue": 58.1,
-      "sourceUrl": "https://openai.com/index/operator-system-card/",
+      "sourceUrl": "https://openai.com/index/computer-using-agent/",
       "notesShort": "OpenAI Computer-Using Agent result reported with the Operator system card and public WebArena tracker.",
       "reportedAt": "2025-01"
     },
@@ -260,13 +260,13 @@
     },
     {
       "rank": 25,
-      "systemName": "BrowserGym + GPT-4",
+      "systemName": "BrowserGym + GPT-4o",
       "organization": "ServiceNow Research",
       "scoreDisplay": "23.5%",
       "scoreValue": 23.5,
-      "sourceUrl": "https://arxiv.org/pdf/2403.07718.pdf",
+      "sourceUrl": "https://arxiv.org/html/2403.07718",
       "repoUrl": "https://github.com/ServiceNow/BrowserGym",
-      "notesShort": "BrowserGym/WorkArena paper reports this WebArena baseline; BrowserGym is open source.",
+      "notesShort": "WorkArena/BrowserGym reports 23.5% for GPT-4o-2024-05-13 on 812 WebArena tasks; open BrowserGym harness.",
       "reportedAt": "2024-04"
     },
     {
@@ -328,7 +328,7 @@
       "organization": "OpenAI",
       "scoreDisplay": "14.9%",
       "scoreValue": 14.9,
-      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
       "notesShort": "Original WebArena baseline without providing the not-achievable task hint.",
       "reportedAt": "2023-06"
     },
@@ -348,18 +348,18 @@
       "organization": "OpenAI",
       "scoreDisplay": "11.7%",
       "scoreValue": 11.7,
-      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
       "notesShort": "Original WebArena GPT-4 baseline when the not-achievable task hint is provided.",
       "reportedAt": "2023-06"
     },
     {
       "rank": 34,
-      "systemName": "Patel et al. + GPT-4",
+      "systemName": "Patel et al. (Qwen1.5-72B, Mixture B)",
       "organization": "Academic Research",
       "scoreDisplay": "9.36%",
       "scoreValue": 9.36,
-      "sourceUrl": "https://arxiv.org/abs/2405.20309",
-      "notesShort": "Patel et al. report a GPT-4 WebArena evaluation row in the public tracker.",
+      "sourceUrl": "https://arxiv.org/html/2405.20309#S4.T3",
+      "notesShort": "Table 3 reports 9.36% for the Qwen1.5-72B policy fine-tuned on synthetic Mixture B; GPT-4 generated reference trajectories for analysis.",
       "reportedAt": "2024-05"
     },
     {
@@ -389,7 +389,7 @@
       "organization": "Google",
       "scoreDisplay": "7.12%",
       "scoreValue": 7.12,
-      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
       "notesShort": "WebArena tracker baseline for Gemini Pro; implementation is proprietary.",
       "reportedAt": "2023-12"
     },
@@ -475,9 +475,9 @@
       "organization": "Academic Research",
       "scoreDisplay": "2.3%",
       "scoreValue": 2.3,
-      "sourceUrl": "https://arxiv.org/abs/2402.01030",
+      "sourceUrl": "https://arxiv.org/html/2409.15637v1",
       "repoUrl": "https://github.com/xingyaoww/code-act",
-      "notesShort": "CodeAct paper reports a WebArena row; official CodeAct repository is public.",
+      "notesShort": "Synatra reevaluation reports 2.34%, rounded here to 2.3%; the exact evaluated 7B CodeAct checkpoint remains unspecified.",
       "reportedAt": "2024-02"
     },
     {
@@ -497,7 +497,7 @@
       "organization": "Mistral AI",
       "scoreDisplay": "1.39%",
       "scoreValue": 1.39,
-      "sourceUrl": "https://arxiv.org/abs/2307.13854",
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ",
       "repoUrl": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
       "notesShort": "Public tracker baseline for the open-weight Mixtral-8x7B Instruct model.",
       "reportedAt": "2024-01"
@@ -519,8 +519,8 @@
       "organization": "Academic Research",
       "scoreDisplay": "0.25%",
       "scoreValue": 0.25,
-      "sourceUrl": "https://arxiv.org/abs/2310.05915",
-      "notesShort": "FireAct WebArena row from the public tracker; no public WebArena implementation artifact was found.",
+      "sourceUrl": "https://arxiv.org/html/2403.12881v1",
+      "notesShort": "Agent-FLAN reevaluation reports 0.25%; the exact evaluated 7B FireAct checkpoint remains unspecified.",
       "reportedAt": "2023-10"
     },
     {

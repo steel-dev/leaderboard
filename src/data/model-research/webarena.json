@@ -863,6 +863,34 @@
         }
       ],
       "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gbox-coordinate-model-historical",
+      "name": "GBOX historical visual-coordinate model (unidentified)",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The reported October 2025 runtime uses natural-language screenshot targeting delegated to GBOX, in addition to Claude reasoning. Current documentation names gbox-handy-1, but does not pin the historical run or disclose parameters, token prices, or matching released weights. Large is a provisional estimate allowing an undisclosed frontier vision backend; no numerical parameter claim is made. The known Sonnet component already places the complete stack in Large.",
+      "sources": [
+        {
+          "title": "Historical GBOX evaluation and semantic targeting",
+          "url": "https://github.com/babelcloud/webarena/blob/main/gbox/report.md"
+        },
+        {
+          "title": "Historical execution log with natural-language target calls",
+          "url": "https://github.com/babelcloud/webarena/blob/main/gbox/trajectories/log_files/task_0_20251025_182851.log"
+        },
+        {
+          "title": "GBOX hosted visual coordinate model API (current documentation)",
+          "url": "https://docs.gbox.ai/api-reference/model/generate-coordinates-for-a-model"
+        },
+        {
+          "title": "MCP click delegates semantic target to hosted SDK",
+          "url": "https://github.com/babelcloud/gbox-mcp-server/blob/main/src/tools/click.ts"
+        }
+      ],
+      "checkedAt": "2026-10-11"
     }
   ],
   "submissions": [
@@ -920,9 +948,9 @@
     {
       "systemName": "Claude Code + GBOX MCP",
       "kind": "harness",
-      "modelIds": ["claude-sonnet-4-5"],
+      "modelIds": ["claude-sonnet-4-5", "gbox-coordinate-model-historical"],
       "harnessCode": "open",
-      "notes": "Published agent defaults and an October 25 execution log identify Bedrock claude-sonnet-4-5-20250929. GBOX provides browser controls; the agent's fallback defaults to the same model.",
+      "notes": "Published agent defaults and an October 25 execution log identify Bedrock claude-sonnet-4-5-20250929. Logs and the report also require GBOX semantic visual targeting; a separate hosted coordinate model is represented explicitly because its historical identity and weights are unverified. Current gbox-handy-1 documentation is not an exact historical model pin. Public orchestration code is separate from the hosted grounding service.",
       "sources": [
         {
           "title": "Stored result source",
@@ -935,6 +963,14 @@
         {
           "title": "Published execution log",
           "url": "https://github.com/babelcloud/webarena/blob/main/gbox/trajectories/log_files/task_0_20251025_182851.log"
+        },
+        {
+          "title": "GBOX hosted visual coordinate model API (current documentation)",
+          "url": "https://docs.gbox.ai/api-reference/model/generate-coordinates-for-a-model"
+        },
+        {
+          "title": "MCP click delegates semantic target to hosted SDK",
+          "url": "https://github.com/babelcloud/gbox-mcp-server/blob/main/src/tools/click.ts"
         }
       ]
     },
@@ -1255,11 +1291,11 @@
       ]
     },
     {
-      "systemName": "BrowserGym + GPT-4",
+      "systemName": "BrowserGym + GPT-4o",
       "kind": "harness",
       "modelIds": ["gpt-4o-2024-05-13"],
       "harnessCode": "open",
-      "notes": "Identity caveat: the stored label says GPT-4, but the retrieved WorkArena/BrowserGym paper explicitly assigns the matching 23.5 result to gpt-4o-2024-05-13. Mapping follows the source while leaving the saved label and score unchanged.",
+      "notes": "The WorkArena/BrowserGym paper explicitly assigns the 23.5% WebArena result to gpt-4o-2024-05-13. The public label was corrected from GPT-4 to GPT-4o; score is preserved.",
       "sources": [
         {
           "title": "Stored result source",
@@ -1396,15 +1432,15 @@
       ]
     },
     {
-      "systemName": "Patel et al. + GPT-4",
+      "systemName": "Patel et al. (Qwen1.5-72B, Mixture B)",
       "kind": "model",
       "modelIds": ["patel-qwen1-5-72b-mixture-b"],
       "harnessCode": "uncertain",
-      "notes": "Identity conflict: paper Table 3 assigns 9.36 to Qwen1.5-72B fine-tuned on synthetic Mixture B. The stored GPT-4 name is preserved, but GPT-4 only generated reference trajectories for evaluation analysis. Do not classify this row as a GPT-4 policy.",
+      "notes": "Paper Table 3 assigns 9.36% to Qwen1.5-72B fine-tuned on synthetic Mixture B. GPT-4 generated reference trajectories for evaluation analysis, not the runtime policy. No matching evaluated fine-tune release was verified.",
       "sources": [
         {
-          "title": "Stored result source",
-          "url": "https://arxiv.org/abs/2405.20309"
+          "title": "Evaluated Mixture B policy, Table 3 and Appendix A",
+          "url": "https://arxiv.org/html/2405.20309"
         }
       ]
     },

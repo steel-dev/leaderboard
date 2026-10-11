@@ -730,7 +730,7 @@
       "kind": "model",
       "modelIds": ["claude-opus-5"],
       "harnessCode": "not-applicable",
-      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "notes": "Single-agent score 90.8% appears in system-card summary and Figure 8.10.2.B at max effort with a 10M-token budget, compaction at 200k, and an external Opus 4.7 scoring judge. The separate token-scaling chart uses an unreleased effort setting and reports 90.2%; it is not the stored run.",
       "sources": [
         {
           "title": "Reported BrowseComp evaluation",

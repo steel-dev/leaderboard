@@ -402,6 +402,23 @@
         }
       ],
       "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "wuying-browser-agent-27b",
+      "name": "Wuying-Browser-Agent-27B",
+      "weights": "uncertain",
+      "totalParametersB": 27,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Qwen3.5-27B-based trained browser policy; 27B is the published nominal parameter count. The paper describes an open-source release, but exact evaluated checkpoint files and harness release were not independently verified in this refresh.",
+      "sources": [
+        {
+          "title": "Wuying-Browser-Agent paper, training settings and Table 2",
+          "url": "https://arxiv.org/html/2608.17319v1"
+        }
+      ],
+      "checkedAt": "2026-10-11"
     }
   ],
   "submissions": [
@@ -799,6 +816,21 @@
         {
           "title": "Original WebVoyager paper and GPT-4 All Tools baseline",
           "url": "https://arxiv.org/html/2401.13919"
+        }
+      ]
+    },
+    {
+      "systemName": "Wuying-Browser-Agent-27B",
+      "kind": "system",
+      "modelIds": [
+        "wuying-browser-agent-27b"
+      ],
+      "harnessCode": "uncertain",
+      "notes": "The evaluated fine-tuned policy is identified by the primary paper; scoring judges and training teachers are excluded from the runtime model classification. Exact evaluated weight availability has not been verified in this refresh.",
+      "sources": [
+        {
+          "title": "Wuying-Browser-Agent paper, training settings and Table 2",
+          "url": "https://arxiv.org/html/2608.17319v1"
         }
       ]
     }

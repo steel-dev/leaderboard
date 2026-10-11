@@ -16,23 +16,23 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
-Browser agents · Agent scope · 21 entries tracked
+Browser agents · Agent scope · 22 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
 | 1 | browser-control (Fable 5) **(new)** | Om Labs | [99.19%](https://github.com/omxyz/webvoyager) |
 | 2 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
 | 3 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
-| 4 | Magnitude | Magnitude | [93.9%](https://magnitude.run/webvoyager) |
+| 4 | Magnitude | Magnitude | [93.9%](https://github.com/magnitudedev/webvoyager) |
 | 5 | Surfer-H + Holo1 | H Company | [92.2%](https://arxiv.org/pdf/2506.02865) |
 
-[See all 21 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
+[See all 22 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 ---
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 100 entries tracked
+Research/search · Mixed scope · 102 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -42,7 +42,7 @@ Research/search · Mixed scope · 100 entries tracked
 | 4 | Claude Opus 5 **(new)** | Anthropic | [90.8%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
 | 5 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
 
-[See all 100 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 102 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
 ---
 

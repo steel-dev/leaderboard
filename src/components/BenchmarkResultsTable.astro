@@ -75,7 +75,7 @@ function formatReportedDate(reportedAt?: string): string {
       </thead>
       <tbody>
         {
-          rows.map((row) => {
+          rows.map((row, index) => {
             return (
               <tr class="lb-row group align-middle">
                 <td class="px-3 py-3 text-[var(--color-text-strong)]">
@@ -135,7 +135,7 @@ function formatReportedDate(reportedAt?: string): string {
                           type="button"
                           class="note-trigger"
                           aria-label={`Note for ${row.systemName}`}
-                          aria-describedby={`note-${slug}-${row.rank}`}
+                          aria-describedby={`note-${slug}-${index + 1}`}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@ function formatReportedDate(reportedAt?: string): string {
                           </svg>
                         </button>
                         <div
-                          id={`note-${slug}-${row.rank}`}
+                          id={`note-${slug}-${index + 1}`}
                           role="tooltip"
                           popover="manual"
                           class="note-bubble"

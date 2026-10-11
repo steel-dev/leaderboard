@@ -504,11 +504,11 @@
       "size": "large",
       "basis": "estimate",
       "confidence": "low",
-      "notes": "The 2025 Research Pro row is a hosted research system, without a pinned backbone or token price. Large is provisional based on Exa\u2019s documented frontier research-model approach, which is not proof of this earlier stack. Live benchmark page has been replaced by newer runs.",
+      "notes": "The 2025 Research Pro row is a hosted research system, without a pinned backbone or token price. Large is provisional based on Exa\u2019s documented frontier research-model approach, which is not proof of this earlier stack. The historical score and product identity are confirmed by Parallel\u2019s dated September 2025 report.",
       "sources": [
         {
-          "title": "Parallel benchmarks (mutable page)",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         },
         {
           "title": "Exa Agent launch",
@@ -679,8 +679,8 @@
           "url": "https://docs.perplexity.ai/docs/resources/changelog"
         },
         {
-          "title": "Parallel benchmarks (mutable page)",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         }
       ],
       "checkedAt": "2026-10-10"
@@ -891,11 +891,11 @@
       "kind": "harness",
       "modelIds": ["gpt-5-4"],
       "harnessCode": "uncertain",
-      "notes": "Historical shared GPT-5.4 search/fetch harness named in the leaderboard\u2019s April 2026 record. Live Parallel page now reports GPT-5.6 runs; the historic identity is retained, not silently upgraded. Exact old harness code release is unverified.",
+      "notes": "The dated April 21, 2026 report explicitly identifies a shared single GPT-5.4 actor with search/fetch tools and up to 25 tool calls, tested April 19\u201321. The separate GPT-5.4 scoring judge is excluded. Search-provider identity does not determine model size or weight availability; original harness code release remains unverified.",
       "sources": [
         {
-          "title": "Parallel benchmarks (mutable page)",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel April 2026 Search and Extract API benchmarks and GPT-5.4 harness",
+          "url": "https://parallel.ai/blog/parallel-search-api"
         },
         {
           "title": "GPT-5.4 model documentation",
@@ -921,11 +921,11 @@
       "kind": "harness",
       "modelIds": ["gpt-5-4"],
       "harnessCode": "uncertain",
-      "notes": "Historical shared GPT-5.4 search/fetch harness named in the leaderboard\u2019s April 2026 record. Live Parallel page now reports GPT-5.6 runs; the historic identity is retained, not silently upgraded. Exact old harness code release is unverified.",
+      "notes": "The dated April 21, 2026 report explicitly identifies a shared single GPT-5.4 actor with search/fetch tools and up to 25 tool calls, tested April 19\u201321. The separate GPT-5.4 scoring judge is excluded. Search-provider identity does not determine model size or weight availability; original harness code release remains unverified.",
       "sources": [
         {
-          "title": "Parallel benchmarks (mutable page)",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel April 2026 Search and Extract API benchmarks and GPT-5.4 harness",
+          "url": "https://parallel.ai/blog/parallel-search-api"
         },
         {
           "title": "GPT-5.4 model documentation",
@@ -1131,11 +1131,11 @@
       "kind": "system",
       "modelIds": ["exa-research-pro-undisclosed"],
       "harnessCode": "closed",
-      "notes": "Historical hosted Research Pro competitor result. Exact evaluated model stack is undisclosed and live Parallel benchmark page now shows newer runs.",
+      "notes": "Historical hosted Research Pro competitor result, directly confirmed in Parallel\u2019s September 2025 report on its fixed random 100-question subset. Exact evaluated model stack is undisclosed.",
       "sources": [
         {
-          "title": "Parallel benchmarks (mutable page)",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         },
         {
           "title": "Exa Agent launch",
@@ -1229,11 +1229,11 @@
       "kind": "model",
       "modelIds": ["claude-opus-4-1"],
       "harnessCode": "uncertain",
-      "notes": "Third-party historical Parallel Task API comparison. The live page has newer benchmarks; retain the exact historical model and score.",
+      "notes": "Third-party Parallel Task API comparison on a fixed random 100-question subset, measured August 11\u201329, 2025. The dated report explicitly names Claude Opus 4.1 and confirms 7%.",
       "sources": [
         {
-          "title": "Parallel benchmarks (mutable page)",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         },
         {
           "title": "Claude token pricing",
@@ -1263,11 +1263,11 @@
       "kind": "system",
       "modelIds": ["sonar-deep-research-undisclosed"],
       "harnessCode": "closed",
-      "notes": "Legacy hosted Sonar Deep Research at high reasoning effort. Live old model/pricing pages redirect to successor documentation, leaving historical component identity and token prices unverified.",
+      "notes": "Legacy hosted Sonar Deep Research at high reasoning effort, directly confirmed as 6% in Parallel\u2019s dated report on a fixed random 100-question subset. Redirected old model/pricing pages still leave historical component identity and token prices unverified.",
       "sources": [
         {
-          "title": "Parallel benchmarks (mutable page)",
-          "url": "https://parallel.ai/benchmarks"
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
         },
         {
           "title": "Sonar migration documentation",

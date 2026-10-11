@@ -94,42 +94,30 @@
       "checkedAt": "2026-10-10"
     },
     {
-      "id": "qwen3-vl-235b-a22b-evaluated-unspecified",
-      "name": "Qwen3-VL-235B-A22B (evaluated variant unresolved)",
-      "weights": "uncertain",
+      "id": "qwen3-vl-235b-a22b-instruct",
+      "name": "Qwen3-VL-235B-A22B-Instruct",
+      "weights": "open",
       "totalParametersB": 235,
       "activeParametersB": 22,
       "size": "large",
       "basis": "parameters",
-      "confidence": "medium",
-      "notes": "The official report gives 235B total/22B active for this architecture. Instruct and Thinking checkpoints each have 96 public weight shards, but the original unsuffixed leaderboard URL returns HTTP 401 and does not identify which variant produced the listed result. The inspected paper does not corroborate the local 66.7 score; a separate Kimi comparison reports 38.1 for this family. Preserve the score and flag the exact evaluated checkpoint/provenance as unresolved rather than selecting a released variant silently.",
+      "confidence": "high",
+      "notes": "The official report specifies 235B total and 22B active parameters. Its Table 2 distinguishes the Instruct model's 31.6 OSWorld score from its 66.7 OSWorldG grounding score. The exact Instruct checkpoint inventory is public and ungated, with 96 safetensors shards at revision 710c13861be6c466e66de3f484069440b8f31389. Stored tensors total 235.670022896B including auxiliary components; the published architectural total determines the unchanged Large category.",
       "sources": [
         {
-          "title": "Qwen3-VL technical report",
-          "url": "https://arxiv.org/html/2511.21631v1"
+          "title": "Qwen3-VL technical report, Table 2 (page 15)",
+          "url": "https://arxiv.org/pdf/2511.21631v1#page=15"
         },
         {
-          "title": "Qwen/Qwen3-VL-235B-A22B-Instruct model card and released files",
+          "title": "Qwen3-VL-235B-A22B-Instruct model card and released files",
           "url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Instruct"
         },
         {
-          "title": "Qwen/Qwen3-VL-235B-A22B-Instruct checkpoint inventory",
+          "title": "Qwen3-VL-235B-A22B-Instruct checkpoint inventory",
           "url": "https://huggingface.co/api/models/Qwen/Qwen3-VL-235B-A22B-Instruct"
-        },
-        {
-          "title": "Qwen/Qwen3-VL-235B-A22B-Thinking model card and released files",
-          "url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Thinking"
-        },
-        {
-          "title": "Qwen/Qwen3-VL-235B-A22B-Thinking checkpoint inventory",
-          "url": "https://huggingface.co/api/models/Qwen/Qwen3-VL-235B-A22B-Thinking"
-        },
-        {
-          "title": "Kimi K2.5 comparison table",
-          "url": "https://arxiv.org/html/2602.02276v1"
         }
       ],
-      "checkedAt": "2026-10-10"
+      "checkedAt": "2026-10-11"
     },
     {
       "id": "claude-opus-4-5",
@@ -524,15 +512,19 @@
       ]
     },
     {
-      "systemName": "Qwen3 VL 235B",
+      "systemName": "Qwen3-VL-235B-A22B-Instruct",
       "kind": "model",
-      "modelIds": ["qwen3-vl-235b-a22b-evaluated-unspecified"],
+      "modelIds": ["qwen3-vl-235b-a22b-instruct"],
       "harnessCode": "uncertain",
-      "notes": "The family architecture is established, but the unsuffixed source URL is inaccessible and exact Instruct/Thinking identity behind the local score is unresolved. The score is preserved without claiming it was reverified.",
+      "notes": "Exact Instruct checkpoint identified by Table 2 of the primary technical report. Corrected a previously imported OSWorldG grounding score to the matching 31.6 OSWorld result; Thinking is a distinct evaluated variant and is not substituted. Official downloadable Instruct weights verified; exact evaluation harness release remains unverified.",
       "sources": [
         {
-          "title": "Reported OSWorld evaluation",
-          "url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B"
+          "title": "Qwen3-VL technical report, Table 2 (page 15)",
+          "url": "https://arxiv.org/pdf/2511.21631v1#page=15"
+        },
+        {
+          "title": "Qwen3-VL-235B-A22B-Instruct model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Instruct"
         }
       ]
     },
@@ -589,15 +581,19 @@
       ]
     },
     {
-      "systemName": "UiPath Screen Agent",
+      "systemName": "UiPath Screen Agent w/ GPT-5",
       "kind": "harness",
-      "modelIds": ["claude-opus-4-5"],
-      "harnessCode": "closed",
-      "notes": "UiPath\u2019s January 2026 announcement explicitly identifies Claude Opus 4.5 as the backbone. Its enterprise automation scaffold is proprietary and is separate from model-weight availability; the earlier GPT-5 UiPath result is not substituted.",
+      "modelIds": ["gpt-5"],
+      "harnessCode": "uncertain",
+      "notes": "The official OSWorld-Verified workbook identifies the 53.63% (stored rounded 53.6%) result as UiPath Screen Agent w/ GPT-5, 50 steps, dated September 14, 2025. Opus 4.5 results in the same workbook are separate later runs. Exact historical scaffold release and auxiliary-model configuration are unverified; current UiPath evaluation code does not prove the older run was released.",
       "sources": [
         {
-          "title": "Reported OSWorld evaluation",
-          "url": "https://www.uipath.com/newsroom/uipath-screenagent-osworld-benchmark-top-ranking"
+          "title": "Official OSWorld-Verified results workbook",
+          "url": "https://osworld-v1.xlang.ai/static/data/osworld_verified_results.xlsx"
+        },
+        {
+          "title": "Official benchmark and workbook host",
+          "url": "https://osworld-v1.xlang.ai/"
         }
       ]
     },

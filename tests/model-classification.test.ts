@@ -347,8 +347,8 @@ test("homepage benchmark switching retains filters and supports direct-link rest
   assert.equal(selected.searchParams.get("utm_source"), "qa");
   const changed = writeChartFilters(selected, { weights: "closed", sizes: ["large"] });
   assert.equal(readChartBenchmark(changed.searchParams, slugs), "webarena");
-  assert.equal(readChartBenchmark(new URLSearchParams("benchmark=invalid"), slugs), "browsecomp");
-  assert.equal(readChartBenchmark(new URLSearchParams(), slugs), "browsecomp");
+  assert.equal(readChartBenchmark(new URLSearchParams("benchmark=invalid"), slugs), "webvoyager");
+  assert.equal(readChartBenchmark(new URLSearchParams(), slugs), "webvoyager");
   assert.equal(
     benchmarkChartHref("webarena", readChartFilters(selected.searchParams)),
     "/leaderboards/webarena/?weights=open&sizes=small%2Cmedium"
@@ -430,11 +430,11 @@ test("hover hit testing resolves the visible center of every bar across result l
   }
 });
 
-test("all 100 BrowseComp results have supported research mappings without changing scores", async () => {
+test("all BrowseComp results have supported research mappings without changing scores", async () => {
   const { getBrowsecompChartRows } = await import("../src/lib/browsecomp-classification");
   const rows = getBrowsecompChartRows(browsecomp.browsecomp);
-  assert.equal(rows.length, 100);
-  assert.equal(new Set(rows.map((row) => row.systemName)).size, 100);
+  assert.equal(rows.length, 102);
+  assert.equal(new Set(rows.map((row) => row.systemName)).size, 102);
   rows.forEach((row, index) => {
     const { classification, ...original } = row;
     assert.deepEqual(original, browsecomp.browsecomp[index]);
@@ -473,7 +473,7 @@ test("all four featured benchmarks have complete classifications and preserve ev
   );
   assert.deepEqual(
     benchmarks.map(({ rows }) => rows.length),
-    [100, 21, 50, 23]
+    [102, 22, 50, 23]
   );
   for (const benchmark of benchmarks) {
     const originals = getBenchmarkPage(benchmark.slug)!.results;

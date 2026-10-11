@@ -7,7 +7,12 @@ import {
 } from "../lib/model-classification";
 
 export default function HomeLeaderboardExplorer({ benchmarks }: { benchmarks: ChartBenchmark[] }) {
-  const [slug, setSlug] = useState(benchmarks[0].slug);
+  const [slug, setSlug] = useState(() =>
+    readChartBenchmark(
+      new URLSearchParams(),
+      benchmarks.map((item) => item.slug)
+    )
+  );
   const container = useRef<HTMLDivElement>(null);
   const restoreSelectorFocus = useRef(false);
   useLayoutEffect(() => {

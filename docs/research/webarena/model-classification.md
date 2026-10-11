@@ -1,6 +1,6 @@
 # WebArena model classification
 
-Checked **2026-10-10**. Scope: all 50 existing WebArena submissions. The batch adds 41 model records and reuses eight records from BrowseComp, OSWorld, and WebVoyager. Benchmark names, scores, dates, and result-source links remain unchanged.
+Initially checked **2026-10-10**, audited **2026-10-11**. Scope: all 50 WebArena submissions. The batch defines 42 model records and reuses eight shared records. The audit corrected BrowserGym/Patel names, source links, and denominator notes without changing scores; see the [verification report](../chart-data-verification-2026-10-11.md).
 
 Research followed the repository's model-classification skill and the OpenAI Docs skill. Retrieved paper HTML/PDF text, author reports, repository trees and evaluation configurations, provider documentation, and actual checkpoint file inventories. An inaccessible source, an open base model, or a public harness does not establish release of evaluated fine-tuned weights.
 
@@ -9,13 +9,21 @@ Total parameters determine Tiny (≤4B), Small (>4–40B), Medium (>40–150B), 
 ## Evidence that changes interpretation
 
 - **OpAgent's 71.6 result is a composite system.** [Section 4.3](https://arxiv.org/html/2602.13559) names Gemini 3 Pro for planning, reflection, and summarization, with a separately post-trained Qwen2.5-VL-72B-MFT grounder. The publisher inventory contains a later OpAgent-32B release, but did not establish release of the evaluated 72B fine-tune. This row is Large and Uncertain, rather than a Small open model.
-- **BrowserGym + GPT-4 has an identity mismatch.** The retrieved [WorkArena/BrowserGym paper](https://arxiv.org/html/2403.07718) assigns the matching 23.5 result to GPT-4o-2024-05-13. The classification follows that evidence while retaining the stored name and score.
-- **Patel et al. + GPT-4 has another identity mismatch.** [Table 3 of the linked study](https://arxiv.org/html/2405.20309) assigns the matching 9.36 result to a Qwen1.5-72B policy fine-tuned on Mixture B. GPT-4 generates reference trajectories used in the analysis, not the policy for that result. No matching fine-tuned checkpoint was verified; the classification is Medium and Uncertain.
+- **BrowserGym + GPT-4o corrects the former GPT-4 label.** The retrieved [WorkArena/BrowserGym paper](https://arxiv.org/html/2403.07718) assigns the matching 23.5 result to GPT-4o-2024-05-13. The public name and classification now both follow that evidence; the score is unchanged.
+- **Patel et al. (Qwen1.5-72B, Mixture B) corrects the former GPT-4 label.** [Table 3 of the linked study](https://arxiv.org/html/2405.20309) assigns the matching 9.36 result to a Qwen1.5-72B policy fine-tuned on Mixture B. GPT-4 generates reference trajectories used in the analysis, not the policy for that result. No matching fine-tuned checkpoint was verified; the classification is Medium and Uncertain.
 - **WebOperator's advertised snapshot is unverified.** Its paper names `gpt-4o-2025-01-01`, which is not in the retrieved OpenAI snapshot documentation. The released configuration uses an Azure `gpt-4o` deployment alias. It also loads the released `all-MiniLM-L6-v2` checkpoint for semantic action deduplication. This is a mixed stack with an unpinned GPT-4o version, not a precise January snapshot.
 - **Original Operator remains the January 2025 CUA system.** Neither the later `computer-use-preview` API name nor its tariff establishes the historical model. Its shared record is Large/Estimated.
 - **A3's stored 42.1 result is preserved.** The exact released A3-Qwen3.5-9B model card reports 41.5 under its project setup. The discrepancy is documented without changing either source.
 
 ## Runtime helpers and training exclusions
+
+The [GBOX evaluation](https://github.com/babelcloud/webarena/blob/main/gbox/report.md) and execution
+logs require semantic screenshot targeting alongside Sonnet 4.5. The public MCP delegates this to a
+hosted visual-coordinate service. [Current API docs](https://docs.gbox.ai/api-reference/model/generate-coordinates-for-a-model)
+name `gbox-handy-1`, but do not identify the historical backend or establish released weights.
+An explicit low-confidence helper preserves that uncertainty; its Large estimate allows an
+undisclosed frontier vision backend, without inventing a parameter count. Sonnet already determines
+Large for the complete stack. The stack's weights are now Uncertain.
 
 [WebChallenger](https://arxiv.org/html/2606.10423) uses GLM-4-32B-0414 and Qwen2.5-VL-7B-Instruct captioning on WebArena; the Qwen3-VL-4B configuration belongs to VisualWebArena and is excluded. [ScribeAgent](https://arxiv.org/html/2411.15004) combines its 32B policy with GPT-4o task decomposition and action mapping. [AgentSymbiotic](https://arxiv.org/html/2502.07942) uses Claude 3.5 plus runtime trajectory embeddings for its 52.1 configuration, while [Learn-by-Interact](https://arxiv.org/html/2501.10893) uses Claude 3.5 and Vertex text embeddings for its 48.0 configuration. Both embedding identities remain unresolved and explicitly provisional. Optional hybrid experiments and training distillation models do not establish extra models in these score configurations.
 
@@ -64,7 +72,7 @@ The table reports aggregate runtime classifications. Full source URLs, roles, ex
 | WebTactix (DeepSeek v3.2)             | `deepseek-v3-2`                                                                 | Large  | Open      |
 | OpAgent                               | `gemini-3-pro`, `opagent-qwen2-5-vl-72b-mft`                                    | Large  | Uncertain |
 | ColorBrowserAgent                     | `gpt-5`                                                                         | Large  | Closed    |
-| Claude Code + GBOX MCP                | `claude-sonnet-4-5`                                                             | Large  | Closed    |
+| Claude Code + GBOX MCP                | `claude-sonnet-4-5`, `gbox-coordinate-model-historical`                         | Large  | Uncertain |
 | DeepSky Agent                         | `deepsky-agent-historical-stack`                                                | Large  | Uncertain |
 | Narada AI                             | `narada-operator-historical-stack`                                              | Large  | Uncertain |
 | IBM CUGA                              | `cuga-webarena-historical-stack`                                                | Large  | Uncertain |
@@ -85,7 +93,7 @@ The table reports aggregate runtime classifications. Full source URLs, roles, ex
 | Agent Workflow Memory                 | `gpt-4-0613`, `awm-memory-evaluator-historical`                                 | Large  | Closed    |
 | SteP                                  | `gpt-4-turbo-preview-historical`                                                | Large  | Closed    |
 | TTI                                   | `tti-gemma3-12b-webarena`                                                       | Small  | Open      |
-| BrowserGym + GPT-4                    | `gpt-4o-2024-05-13`                                                             | Large  | Closed    |
+| BrowserGym + GPT-4o                   | `gpt-4o-2024-05-13`                                                             | Large  | Closed    |
 | AgentTrek-1.0-32B                     | `agenttrek-1-0-32b`                                                             | Small  | Open      |
 | GPT-4 + Auto Eval                     | `gpt-4-1106-preview`, `gpt-4-vision-preview`                                    | Large  | Closed    |
 | GPT-4o + Tree Search                  | `gpt-4o-2024-05-13`                                                             | Large  | Closed    |
@@ -94,7 +102,7 @@ The table reports aggregate runtime classifications. Full source URLs, roles, ex
 | gpt-4-0613 (no not-achievable hint)   | `gpt-4-0613`                                                                    | Large  | Closed    |
 | gpt-4o-2024-05-13                     | `gpt-4o-2024-05-13`                                                             | Large  | Closed    |
 | gpt-4-0613 (with not-achievable hint) | `gpt-4-0613`                                                                    | Large  | Closed    |
-| Patel et al. + GPT-4                  | `patel-qwen1-5-72b-mixture-b`                                                   | Medium | Uncertain |
+| Patel et al. (Qwen1.5-72B, Mixture B) | `patel-qwen1-5-72b-mixture-b`                                                   | Medium | Uncertain |
 | gpt-3.5-turbo-16k-0613                | `gpt-3-5-turbo-16k-0613`                                                        | Large  | Closed    |
 | Qwen-1.5-chat-72b                     | `qwen1-5-72b-chat`                                                              | Medium | Open      |
 | Gemini Pro                            | `gemini-1-0-pro-historical`                                                     | Medium | Closed    |
@@ -114,9 +122,9 @@ The table reports aggregate runtime classifications. Full source URLs, roles, ex
 
 ## Validation
 
-- Parsed all 41 new model records and 50 submissions using `researchBatchSchema`.
+- Parsed all 42 model records and 50 submissions using `researchBatchSchema`.
 - Verified exact name coverage against all 50 existing WebArena rows, with no missing or duplicate submissions.
 - Verified unique owned IDs and every reference against the combined registry. Shared IDs: `deepseek-v3-2`, `gemini-3-pro`, `gpt-5`, `claude-sonnet-4-5`, `kimi-k2-5`, `openai-cua-original`, `gpt-4-vision-preview`, and `gpt-4o-unspecified-historical`.
 - Recomputed every parameter and price category, checked model dates and source URL shapes, and reviewed provisional records and unverified releases.
-- Aggregate counts: **27 Large, 8 Medium, 15 Small, 0 Tiny**; **19 Open, 18 Closed, 1 Mixed, 12 Uncertain**. Basis: 23 Published size, 14 Price proxy, 13 Estimated. Confidence: 31 High, 7 Medium, 12 Low.
-- Formatted the two owned files with Prettier. No benchmark result files changed. Parent integration handles combined tests, lint, type checks, build, and browser QA; this research task does not build.
+- Aggregate counts: **27 Large, 8 Medium, 15 Small, 0 Tiny**; **19 Open, 17 Closed, 1 Mixed, 13 Uncertain**. Basis: 23 Published size, 13 Price proxy, 14 Estimated. Confidence: 30 High, 7 Medium, 13 Low.
+- Formatted the two owned files with Prettier. Benchmark names and source/interpretation notes changed as recorded above; scores did not. Parent integration handles combined tests, lint, type checks, build, and browser QA; this research task does not build.

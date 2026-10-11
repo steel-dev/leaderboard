@@ -1,9 +1,9 @@
 # WebVoyager model classification
 
-Checked **2026-10-10**. Scope: all 21 existing WebVoyager submissions. Classification lives in
-`src/data/model-research/webvoyager.json`; benchmark names, ranks, scores, dates and source links are
-unchanged. This batch adds 20 model records and references models shared with BrowseComp, WebArena
-and OSWorld.
+Initially checked **2026-10-10**; audited **2026-10-11** including the refresh to 22 submissions.
+Classification lives in `src/data/model-research/webvoyager.json`. The audit repaired Magnitude and
+Runner H result links and pointed Operator directly to its numeric evaluation report. The separate
+refresh added Wuying; its 80.6% primary-paper result and Qwen3.5-27B policy were checked here.
 
 ## Evidence and method
 
@@ -21,29 +21,30 @@ External scoring judges and training-only teachers are excluded.
 
 ## Evaluated stacks and meaningful caveats
 
-| Submission | Runtime identified from primary evidence | Identity or release caveat |
-| --- | --- | --- |
-| browser-control (Fable 5) | Fable 5 through Claude Code and browser-control | Author runner names the model; Fable availability subsequently changed. GPT-5.5 scores completed runs only. |
-| Alumnium | Sonnet 4.6 orchestrator + GPT-5 nano browser subagent | Both participate in execution. GPT-5 scoring is excluded. |
-| Surfer 2 | o3 + Sonnet 4.5 + GPT-4.1 validator + Holo1.5-7B localizer | Use the paper's WebVoyager configuration, not its different WebArena stack. Exact Surfer 2 harness release unverified. |
-| Magnitude | Sonnet 4, pinned `claude-sonnet-4-20250514` | Recovered author evaluation repository after original marketing route became a 404. |
-| Surfer-H + Holo1 | Holo1-7B policy/localizer + GPT-4o validator | 92.2% uses the closed validator and ten-attempt configuration; all-Holo results differ. GPT-4o snapshot unpinned. |
-| browser-control (Opus 4.8) | Opus 4.8 through Claude Code and browser-control | Public harness, closed weights; external judge excluded. |
-| Browserable | Gemini 2.0 Flash + GPT-4o/Sonnet 3.5 rate-limit fallbacks | Source does not establish released custom fine-tuned weights. Fallback invocation shares and snapshots unspecified. |
-| Browser Use | GPT-4o | Evaluation code uses Azure deployment aliases; no exact historical checkpoint verified. |
-| GLM-5V-Turbo | Named Z.ai API model | No parameter total or evaluated downloadable checkpoint verified. Independent OpenRouter $1.20/$4 tariff matches the shared OSWorld record's Vercel evidence. |
-| Agent Kura | o1 initial planner + four GPT-4o agent roles | Historical snapshots unpinned. Current primary pages cannot prove an exact November 2024 checkpoint or release of full agent code. |
-| Operator | Original January 2025 OpenAI CUA | Do not replace with later computer-use-preview API model or its tariff. |
-| Notte | Gemini 2.0 Flash reasoning and perception | 86.2% is self-reported completion on WebVoyager30, 30 tasks × eight runs. Handler overrides the default Llama perception helper. |
-| Skyvern 2.0 | GPT-4o + GPT-4o-mini | Updated author page retains historical setup; GPT-4o snapshot unpinned. Evaluation ran on Skyvern Cloud. |
-| Project Mariner | December 2024 Gemini 2.0 prototype | Author does not identify it as Flash or provide a model-specific tariff. Provisional Large could be revised downward. |
-| Agent-E | GPT-4 Turbo for planner and navigator | Stable April 2024 snapshot mapping follows the historical recommended API alias, not an explicit run log. |
-| WebSight | WebSight-7B action model + GPT-4.1 mini reasoning | Open action checkpoint plus closed planner is a mixed stack. |
-| Runner H 0.1 | H-VLM 3B + H-LLM 2B + undisclosed external models | No verified original weight release; later Holo weights are not evidence for this run. External runtime is provisionally Large. |
-| WebVoyager | GPT-4 Vision preview | Original evaluation model; task-generation and scoring models excluded. |
-| Anthropic Computer Use 3.5 | October 2024 Sonnet computer-use demo | Release-date inference rather than snapshot log; Kura comparison covers 50 tasks. |
-| WILBUR | GPT-4-0125-preview + text-embedding-3-large + learned MLP ranker | No public trained ranker download/full harness verified; retain uncertainty. |
-| GPT-4 (All Tools) | Historical ChatGPT tool-enabled product | No pinned API checkpoint or full runtime disclosure; provisional Large. |
+| Submission                 | Runtime identified from primary evidence                         | Identity or release caveat                                                                                                                                    |
+| -------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| browser-control (Fable 5)  | Fable 5 through Claude Code and browser-control                  | Author runner names the model; Fable availability subsequently changed. GPT-5.5 scores completed runs only.                                                   |
+| Alumnium                   | Sonnet 4.6 orchestrator + GPT-5 nano browser subagent            | Both participate in execution. GPT-5 scoring is excluded.                                                                                                     |
+| Surfer 2                   | o3 + Sonnet 4.5 + GPT-4.1 validator + Holo1.5-7B localizer       | Use the paper's WebVoyager configuration, not its different WebArena stack. Exact Surfer 2 harness release unverified.                                        |
+| Magnitude                  | Sonnet 4, pinned `claude-sonnet-4-20250514`                      | Recovered author evaluation repository after original marketing route became a 404.                                                                           |
+| Surfer-H + Holo1           | Holo1-7B policy/localizer + GPT-4o validator                     | 92.2% uses the closed validator and ten-attempt configuration; all-Holo results differ. GPT-4o snapshot unpinned.                                             |
+| browser-control (Opus 4.8) | Opus 4.8 through Claude Code and browser-control                 | Public harness, closed weights; external judge excluded.                                                                                                      |
+| Browserable                | Gemini 2.0 Flash + GPT-4o/Sonnet 3.5 rate-limit fallbacks        | Source does not establish released custom fine-tuned weights. Fallback invocation shares and snapshots unspecified.                                           |
+| Browser Use                | GPT-4o                                                           | Evaluation code uses Azure deployment aliases; no exact historical checkpoint verified.                                                                       |
+| GLM-5V-Turbo               | Named Z.ai API model                                             | No parameter total or evaluated downloadable checkpoint verified. Independent OpenRouter $1.20/$4 tariff matches the shared OSWorld record's Vercel evidence. |
+| Agent Kura                 | o1 initial planner + four GPT-4o agent roles                     | Historical snapshots unpinned. Current primary pages cannot prove an exact November 2024 checkpoint or release of full agent code.                            |
+| Operator                   | Original January 2025 OpenAI CUA                                 | Do not replace with later computer-use-preview API model or its tariff.                                                                                       |
+| Notte                      | Gemini 2.0 Flash reasoning and perception                        | 86.2% is self-reported completion on WebVoyager30, 30 tasks × eight runs. Handler overrides the default Llama perception helper.                              |
+| Skyvern 2.0                | GPT-4o + GPT-4o-mini                                             | Updated author page retains historical setup; GPT-4o snapshot unpinned. Evaluation ran on Skyvern Cloud.                                                      |
+| Project Mariner            | December 2024 Gemini 2.0 prototype                               | Author does not identify it as Flash or provide a model-specific tariff. Provisional Large could be revised downward.                                         |
+| Wuying-Browser-Agent-27B   | Qwen3.5-27B post-trained browser policy                          | Paper Table 2 gives 80.6%; no matching released checkpoint verified. Training teachers and post-run judges excluded.                                          |
+| Agent-E                    | GPT-4 Turbo for planner and navigator                            | Stable April 2024 snapshot mapping follows the historical recommended API alias, not an explicit run log.                                                     |
+| WebSight                   | WebSight-7B action model + GPT-4.1 mini reasoning                | Open action checkpoint plus closed planner is a mixed stack.                                                                                                  |
+| Runner H 0.1               | H-VLM 3B + H-LLM 2B + undisclosed external models                | No verified original weight release; later Holo weights are not evidence for this run. External runtime is provisionally Large.                               |
+| WebVoyager                 | GPT-4 Vision preview                                             | Original evaluation model; task-generation and scoring models excluded.                                                                                       |
+| Anthropic Computer Use 3.5 | October 2024 Sonnet computer-use demo                            | Release-date inference rather than snapshot log; Kura comparison covers 50 tasks.                                                                             |
+| WILBUR                     | GPT-4-0125-preview + text-embedding-3-large + learned MLP ranker | No public trained ranker download/full harness verified; retain uncertainty.                                                                                  |
+| GPT-4 (All Tools)          | Historical ChatGPT tool-enabled product                          | No pinned API checkpoint or full runtime disclosure; provisional Large.                                                                                       |
 
 Runtime validators in Surfer 2 and Surfer-H feed corrective feedback into another attempt. They are
 part of the evaluated agent, unlike the post-run judge. Open harness code never establishes open model
@@ -64,16 +65,16 @@ not from an inspected released checkpoint. The Tiny classification is robust to 
 Its embedding helper has only a published input tariff: no output price of zero was invented.
 That helper is Small/Estimated with low confidence, so WILBUR's aggregate basis remains Estimated.
 
-| New priced record | Standard input / output, USD per 1M tokens | Blend | Category |
-| --- | ---: | ---: | --- |
-| GPT-5 nano | 0.05 / 0.40 | 0.1375 | Small |
-| GPT-4.1 | 2 / 8 | 3.50 | Large |
-| GPT-4.1 mini | 0.40 / 1.60 | 0.70 | Medium |
-| GPT-4-0125-preview | 10 / 30 | 15 | Large |
-| GPT-4 Vision preview | 10 / 30 | 15 | Large |
-| Claude Sonnet 4 | 3 / 15 | 6 | Large |
-| Claude 3.5 Sonnet October 2024 | 3 / 15 | 6 | Large |
-| Gemini 2.0 Flash, Google Cloud | 0.15 / 0.60 | 0.2625 | Medium |
+| New priced record              | Standard input / output, USD per 1M tokens |  Blend | Category |
+| ------------------------------ | -----------------------------------------: | -----: | -------- |
+| GPT-5 nano                     |                                0.05 / 0.40 | 0.1375 | Small    |
+| GPT-4.1                        |                                      2 / 8 |   3.50 | Large    |
+| GPT-4.1 mini                   |                                0.40 / 1.60 |   0.70 | Medium   |
+| GPT-4-0125-preview             |                                    10 / 30 |     15 | Large    |
+| GPT-4 Vision preview           |                                    10 / 30 |     15 | Large    |
+| Claude Sonnet 4                |                                     3 / 15 |      6 | Large    |
+| Claude 3.5 Sonnet October 2024 |                                     3 / 15 |      6 | Large    |
+| Gemini 2.0 Flash, Google Cloud |                                0.15 / 0.60 | 0.2625 | Medium   |
 
 OpenAI prices came from its retrieved model documentation and legacy Vision deprecation table;
 Claude 3.5 pricing combines the original launch tariff with the October announcement that pricing was
@@ -123,7 +124,12 @@ Sonnet fallback and several proprietary prototypes remain historically unpinned.
 publisher search returned no matching downloadable checkpoint; that is not proof that no release
 could exist elsewhere. No release assertion is based solely on a public GitHub repository.
 
-Validated the batch with `researchBatchSchema`, exact name/order coverage for 21 source rows,
+Validated the batch with `researchBatchSchema`, exact name coverage for 22 source rows,
 unique owned model IDs, parameter/category boundaries, standard-price calculations, low confidence
 on every provisional record, and references against the combined registry. Parent integration runs
 lint/build and combined tests; this research task does not build or change benchmark scores.
+
+## October 11 verification
+
+The [verification report](../chart-data-verification-2026-10-11.md) records all 22 score checks, source
+repairs, evaluation differences, and shared-registry validation. Wuying adds one Small/Uncertain row.
