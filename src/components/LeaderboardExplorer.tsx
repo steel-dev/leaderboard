@@ -538,104 +538,139 @@ export default function LeaderboardExplorer({
     <div className="leaderboard-explorer" data-benchmark={benchmark}>
       <section className="chart-shell" aria-labelledby="chart-title">
         <header className="lb-module-head chart-table-heading chart-heading">
-          <h2 id="chart-title">Performance</h2>
+          <h2 id="chart-title">Score</h2>
           <div className="lb-head-lines" aria-hidden="true">
             <span />
             <span />
             <span />
             <span />
-            <span />
           </div>
-          <span className="chart-metric-legend">{metricLabel} (%)</span>
         </header>
-        <div className="chart-filters">
-          {benchmarkOptions && (
-            <label className="chart-benchmark-control">
-              <span>Benchmark</span>
+        <div className="chart-toolbar">
+          <h3 className="chart-benchmark-title">{benchmark} scores</h3>
+          <div className={`chart-filters${benchmarkOptions ? " has-benchmark" : ""}`}>
+            {benchmarkOptions && (
+              <label className="chart-benchmark-control">
+                <span className="sr-only">Benchmark</span>
+                <select
+                  value={benchmarkSlug}
+                  onChange={(event) => onBenchmarkChange?.(event.target.value)}
+                >
+                  {benchmarkOptions.map((option) => (
+                    <option value={option.slug} key={option.slug}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+            <label className="chart-weights-control">
+              <span className="sr-only">Model weights</span>
               <select
-                value={benchmarkSlug}
-                onChange={(event) => onBenchmarkChange?.(event.target.value)}
+                value={filters.weights}
+                onChange={(event) =>
+                  updateFilters({ ...filters, weights: event.target.value as WeightFilter })
+                }
               >
-                {benchmarkOptions.map((option) => (
-                  <option value={option.slug} key={option.slug}>
-                    {option.name}
+                {weightOptions.map((option) => (
+                  <option value={option.value} key={option.value}>
+                    {option.label}
                   </option>
                 ))}
               </select>
             </label>
-          )}
-          <label className="chart-weights-control">
-            <span>Model weights</span>
-            <select
-              value={filters.weights}
-              onChange={(event) =>
-                updateFilters({ ...filters, weights: event.target.value as WeightFilter })
-              }
-            >
-              {weightOptions.map((option) => (
-                <option value={option.value} key={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <ModelSizePicker
-            selected={filters.sizes}
-            onChange={(selected) => updateFilters({ ...filters, sizes: selected })}
-          />
-          <label className="chart-limit-control">
-            <span>Show</span>
-            <select
-              aria-label="Number of chart results"
-              value={limit}
-              onChange={(event) => {
-                setLimit(Number(event.target.value));
-                setPreview(null);
-              }}
-            >
-              <option value={20}>Top 20</option>
-              <option value={50}>Top 50</option>
-              <option value={10000}>All results</option>
-            </select>
-          </label>
-          <div className="chart-filter-actions">
-            {isFiltered && (
-              <button
-                className="chart-reset-button"
-                type="button"
-                onClick={() => updateFilters(defaultFilters)}
+            <ModelSizePicker
+              selected={filters.sizes}
+              onChange={(selected) => updateFilters({ ...filters, sizes: selected })}
+            />
+            <label className="chart-limit-control">
+              <span className="sr-only">Show</span>
+              <select
+                aria-label="Number of chart results"
+                value={limit}
+                onChange={(event) => {
+                  setLimit(Number(event.target.value));
+                  setPreview(null);
+                }}
               >
-                Reset filters
+                <option value={20}>Top 20</option>
+                <option value={50}>Top 50</option>
+                <option value={10000}>All results</option>
+              </select>
+            </label>
+            <div className="chart-filter-actions">
+              {isFiltered && (
+                <button
+                  className="chart-reset-button"
+                  aria-label="Reset filters"
+                  type="button"
+                  onClick={() => updateFilters(defaultFilters)}
+                >
+                  Reset
+                </button>
+              )}
+              <a
+                href={benchmarkSlug ? benchmarkChartHref(benchmarkSlug, filters) : "#chart-results"}
+                className="chart-table-link"
+                aria-label={benchmarkSlug ? "Full leaderboard" : "View results"}
+                title={benchmarkSlug ? "Full leaderboard" : "View results"}
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M3 9h18M3 15h18M9 3v18" />
+                </svg>
+              </a>
+              <button
+                type="button"
+                className="chart-share-button"
+                aria-label={shareStatus || "Share view"}
+                title={shareStatus || "Share view"}
+                onClick={async () => {
+                  try {
+                    const url = benchmarkSlug
+                      ? writeChartBenchmark(new URL(window.location.href), benchmarkSlug).href
+                      : window.location.href;
+                    await navigator.clipboard.writeText(url);
+                    setShareStatus("Link copied");
+                  } catch {
+                    setShareStatus("Use the page URL to share this view.");
+                  }
+                }}
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  {shareStatus === "Link copied" ? (
+                    <path d="m5 12 4 4L19 6" />
+                  ) : (
+                    <>
+                      <path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2" />
+                      <path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2" />
+                    </>
+                  )}
+                </svg>
               </button>
-            )}
-            <a
-              href={benchmarkSlug ? benchmarkChartHref(benchmarkSlug, filters) : "#chart-results"}
-              className="chart-table-link"
-            >
-              {benchmarkSlug ? "Full leaderboard" : "View results"}{" "}
-              <span aria-hidden="true">↗</span>
-            </a>
-            <button
-              type="button"
-              className="chart-share-button"
-              onClick={async () => {
-                try {
-                  const url = benchmarkSlug
-                    ? writeChartBenchmark(new URL(window.location.href), benchmarkSlug).href
-                    : window.location.href;
-                  await navigator.clipboard.writeText(url);
-                  setShareStatus("Link copied");
-                } catch {
-                  setShareStatus("Use the page URL to share this view.");
-                }
-              }}
-            >
-              {shareStatus || "Share view"} <span aria-hidden="true">↗</span>
-            </button>
+            </div>
+            <span className="sr-only" role="status">
+              {shareStatus}
+            </span>
           </div>
-          <span className="sr-only" role="status">
-            {shareStatus}
-          </span>
         </div>
         <div className="chart-plot">
           {plotted.length ? (

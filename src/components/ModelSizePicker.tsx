@@ -30,7 +30,7 @@ export default function ModelSizePicker({
 
   return (
     <div className="chart-size-control">
-      <span>Model size</span>
+      <span className="sr-only">Model size</span>
       <details
         ref={menu}
         className="chart-size-picker"

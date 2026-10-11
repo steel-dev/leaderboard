@@ -113,3 +113,15 @@ filtered hover-card links, keyboard activation of the 30th result, direct reload
 Back navigation, and sidebar anchors with expanded results. URL tests cover
 punctuation, Unicode, distinct system IDs, and malformed fragments (20 tests pass).
 Lint and TypeScript checks pass. Desktop proof: `tmp/chart-home-only-desktop.jpg`.
+
+## Compact chart toolbar
+
+The chart header now reads Score with four rules extending across the remaining
+width. Each card has a benchmark heading inside, aligned with compact 32px dropdowns
+and navigation/share icon actions on desktop. Native dropdowns and the size picker
+use matching chevrons; their labels remain available to assistive technology.
+On mobile, the title sits above two columns of controls. The size menu anchors to
+the appropriate column on homepage and benchmark pages to stay inside the viewport.
+
+Verified both layouts at 320px, size/weight filtering, reset, icon navigation, and
+visible checkmark plus announced feedback after copying a share link.
