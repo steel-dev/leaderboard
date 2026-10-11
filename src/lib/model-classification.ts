@@ -129,6 +129,28 @@ export function benchmarkChartHref(slug: string, filters: ChartFilters): string 
   return `${url.pathname}${url.search}`;
 }
 
+export function chartResultId(systemName: string): string {
+  return `result-${encodeURIComponent(systemName)}`;
+}
+
+export function benchmarkResultHref(
+  slug: string,
+  filters: ChartFilters,
+  systemName: string
+): string {
+  // Encode the ID again for the URL fragment so native anchor navigation resolves it.
+  return `${benchmarkChartHref(slug, filters)}#${encodeURIComponent(chartResultId(systemName))}`;
+}
+
+export function readChartResult(hash: string): string | null {
+  try {
+    const id = decodeURIComponent(hash.replace(/^#/, ""));
+    return id.startsWith("result-") ? decodeURIComponent(id.slice(7)) || null : null;
+  } catch {
+    return null;
+  }
+}
+
 export function filterResults(rows: ClassifiedResult[], filters: ChartFilters): ClassifiedResult[] {
   return rows
     .filter(

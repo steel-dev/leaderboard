@@ -6,10 +6,13 @@ import { useChart, type ChartConfig } from "./dither-kit/chart-context";
 import {
   basisLabels,
   benchmarkChartHref,
+  benchmarkResultHref,
   blendedPrice,
+  chartResultId,
   defaultFilters,
   filterResults,
   readChartFilters,
+  readChartResult,
   sizeLabels,
   weightLabels,
   writeChartFilters,
@@ -136,6 +139,7 @@ function ChartHoverCard({
   onKeepOpen,
   onLeave,
   onDetails,
+  detailsHref,
 }: {
   row: ClassifiedResult;
   metricLabel: string;
@@ -143,6 +147,7 @@ function ChartHoverCard({
   onKeepOpen: () => void;
   onLeave: () => void;
   onDetails: () => void;
+  detailsHref?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ left: 0, top: 0 });
@@ -202,9 +207,15 @@ function ChartHoverCard({
           Largest component · {row.classification.models.length} models
         </p>
       )}
-      <button type="button" onClick={onDetails}>
-        More details <span aria-hidden="true">↗</span>
-      </button>
+      {detailsHref ? (
+        <a className="chart-hover-details" href={detailsHref}>
+          More details <span aria-hidden="true">↗</span>
+        </a>
+      ) : (
+        <button className="chart-hover-details" type="button" onClick={onDetails}>
+          More details <span aria-hidden="true">↗</span>
+        </button>
+      )}
     </div>
   );
 }
@@ -350,6 +361,7 @@ export default function LeaderboardExplorer({
   benchmarkOptions,
   onBenchmarkChange,
   tablePreviewCount = 20,
+  showResults = true,
 }: {
   rows: ClassifiedResult[];
   benchmark: string;
@@ -357,9 +369,11 @@ export default function LeaderboardExplorer({
   benchmarkOptions?: { slug: string; name: string }[];
   onBenchmarkChange?: (slug: string) => void;
   tablePreviewCount?: number;
+  showResults?: boolean;
 }) {
   const metricLabel = `${benchmark} score`;
   const [filters, setFilters] = useState<ChartFilters>(defaultFilters);
+  const currentFilters = useRef<ChartFilters>(defaultFilters);
   const [limit, setLimit] = useState(20);
   const [selectedName, setSelectedName] = useState<string | null>(null);
   const [preview, setPreview] = useState<ChartPreview | null>(null);
@@ -371,16 +385,31 @@ export default function LeaderboardExplorer({
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const restore = () => {
-      setFilters(readChartFilters(new URLSearchParams(window.location.search)));
+    const restore = (preserveSectionState: boolean) => {
+      const nextFilters = readChartFilters(new URLSearchParams(window.location.search));
+      const result = showResults ? readChartResult(window.location.hash) : null;
+      const detail = filterResults(rows, nextFilters).find((row) => row.systemName === result);
+      const filtersChanged =
+        nextFilters.weights !== currentFilters.current.weights ||
+        nextFilters.sizes.join(",") !== currentFilters.current.sizes.join(",");
+      if (preserveSectionState && !detail && !filtersChanged) return;
+      currentFilters.current = nextFilters;
+      setFilters(nextFilters);
       setSelectedName(null);
       setPreview(null);
-      setExpanded(false);
+      setExpanded(Boolean(detail));
+      setDetailName(detail?.systemName ?? null);
     };
-    restore();
-    window.addEventListener("popstate", restore);
-    return () => window.removeEventListener("popstate", restore);
-  }, []);
+    const onHistory = () => restore(true);
+    const onHash = () => restore(true);
+    restore(false);
+    window.addEventListener("popstate", onHistory);
+    window.addEventListener("hashchange", onHash);
+    return () => {
+      window.removeEventListener("popstate", onHistory);
+      window.removeEventListener("hashchange", onHash);
+    };
+  }, [rows, showResults]);
 
   const filtered = useMemo(() => filterResults(rows, filters), [rows, filters]);
   const plotted = useMemo(
@@ -407,6 +436,7 @@ export default function LeaderboardExplorer({
   const isFiltered = filters.weights !== "all" || filters.sizes.length > 0;
 
   const updateFilters = (next: ChartFilters) => {
+    currentFilters.current = next;
     setFilters(next);
     setSelectedName(null);
     setPreview(null);
@@ -414,6 +444,7 @@ export default function LeaderboardExplorer({
     setShareStatus("");
     if (scrollRef.current) scrollRef.current.scrollLeft = 0;
     let url = writeChartFilters(new URL(window.location.href), next);
+    if (readChartResult(url.hash)) url.hash = "";
     if (benchmarkSlug) url = writeChartBenchmark(url, benchmarkSlug);
     window.history.pushState(null, "", url);
   };
@@ -438,10 +469,17 @@ export default function LeaderboardExplorer({
     });
   };
   const showDetails = (index: number) => {
+    const row = plotted[index];
+    if (!row) return;
+    if (!showResults && benchmarkSlug) {
+      window.location.assign(benchmarkResultHref(benchmarkSlug, filters, row.systemName));
+      return;
+    }
     keepPreviewOpen();
     setPreview(null);
     setExpanded(true);
-    setDetailName(plotted[index]?.systemName ?? null);
+    window.history.pushState(null, "", `#${encodeURIComponent(chartResultId(row.systemName))}`);
+    setDetailName(row.systemName);
   };
 
   useEffect(
@@ -498,94 +536,6 @@ export default function LeaderboardExplorer({
 
   return (
     <div className="leaderboard-explorer" data-benchmark={benchmark}>
-      <div className="chart-filters">
-        {benchmarkOptions && (
-          <label className="chart-benchmark-control">
-            <span>Benchmark</span>
-            <select
-              value={benchmarkSlug}
-              onChange={(event) => onBenchmarkChange?.(event.target.value)}
-            >
-              {benchmarkOptions.map((option) => (
-                <option value={option.slug} key={option.slug}>
-                  {option.name}
-                </option>
-              ))}
-            </select>
-          </label>
-        )}
-        <label className="chart-weights-control">
-          <span>Model weights</span>
-          <select
-            value={filters.weights}
-            onChange={(event) =>
-              updateFilters({ ...filters, weights: event.target.value as WeightFilter })
-            }
-          >
-            {weightOptions.map((option) => (
-              <option value={option.value} key={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <ModelSizePicker
-          selected={filters.sizes}
-          onChange={(selected) => updateFilters({ ...filters, sizes: selected })}
-        />
-        <label className="chart-limit-control">
-          <span>Show</span>
-          <select
-            aria-label="Number of chart results"
-            value={limit}
-            onChange={(event) => {
-              setLimit(Number(event.target.value));
-              setPreview(null);
-            }}
-          >
-            <option value={20}>Top 20</option>
-            <option value={50}>Top 50</option>
-            <option value={10000}>All results</option>
-          </select>
-        </label>
-        <div className="chart-filter-actions">
-          {isFiltered && (
-            <button
-              className="chart-reset-button"
-              type="button"
-              onClick={() => updateFilters(defaultFilters)}
-            >
-              Reset filters
-            </button>
-          )}
-          <a
-            href={benchmarkSlug ? benchmarkChartHref(benchmarkSlug, filters) : "#chart-results"}
-            className="chart-table-link"
-          >
-            {benchmarkSlug ? "Full leaderboard" : "View results"} <span aria-hidden="true">↗</span>
-          </a>
-          <button
-            type="button"
-            className="chart-share-button"
-            onClick={async () => {
-              try {
-                const url = benchmarkSlug
-                  ? writeChartBenchmark(new URL(window.location.href), benchmarkSlug).href
-                  : window.location.href;
-                await navigator.clipboard.writeText(url);
-                setShareStatus("Link copied");
-              } catch {
-                setShareStatus("Use the page URL to share this view.");
-              }
-            }}
-          >
-            {shareStatus || "Share view"} <span aria-hidden="true">↗</span>
-          </button>
-        </div>
-        <span className="sr-only" role="status">
-          {shareStatus}
-        </span>
-      </div>
       <section className="chart-shell" aria-labelledby="chart-title">
         <header className="lb-module-head chart-table-heading chart-heading">
           <h2 id="chart-title">Performance</h2>
@@ -598,6 +548,95 @@ export default function LeaderboardExplorer({
           </div>
           <span className="chart-metric-legend">{metricLabel} (%)</span>
         </header>
+        <div className="chart-filters">
+          {benchmarkOptions && (
+            <label className="chart-benchmark-control">
+              <span>Benchmark</span>
+              <select
+                value={benchmarkSlug}
+                onChange={(event) => onBenchmarkChange?.(event.target.value)}
+              >
+                {benchmarkOptions.map((option) => (
+                  <option value={option.slug} key={option.slug}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <label className="chart-weights-control">
+            <span>Model weights</span>
+            <select
+              value={filters.weights}
+              onChange={(event) =>
+                updateFilters({ ...filters, weights: event.target.value as WeightFilter })
+              }
+            >
+              {weightOptions.map((option) => (
+                <option value={option.value} key={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <ModelSizePicker
+            selected={filters.sizes}
+            onChange={(selected) => updateFilters({ ...filters, sizes: selected })}
+          />
+          <label className="chart-limit-control">
+            <span>Show</span>
+            <select
+              aria-label="Number of chart results"
+              value={limit}
+              onChange={(event) => {
+                setLimit(Number(event.target.value));
+                setPreview(null);
+              }}
+            >
+              <option value={20}>Top 20</option>
+              <option value={50}>Top 50</option>
+              <option value={10000}>All results</option>
+            </select>
+          </label>
+          <div className="chart-filter-actions">
+            {isFiltered && (
+              <button
+                className="chart-reset-button"
+                type="button"
+                onClick={() => updateFilters(defaultFilters)}
+              >
+                Reset filters
+              </button>
+            )}
+            <a
+              href={benchmarkSlug ? benchmarkChartHref(benchmarkSlug, filters) : "#chart-results"}
+              className="chart-table-link"
+            >
+              {benchmarkSlug ? "Full leaderboard" : "View results"}{" "}
+              <span aria-hidden="true">↗</span>
+            </a>
+            <button
+              type="button"
+              className="chart-share-button"
+              onClick={async () => {
+                try {
+                  const url = benchmarkSlug
+                    ? writeChartBenchmark(new URL(window.location.href), benchmarkSlug).href
+                    : window.location.href;
+                  await navigator.clipboard.writeText(url);
+                  setShareStatus("Link copied");
+                } catch {
+                  setShareStatus("Use the page URL to share this view.");
+                }
+              }}
+            >
+              {shareStatus || "Share view"} <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <span className="sr-only" role="status">
+            {shareStatus}
+          </span>
+        </div>
         <div className="chart-plot">
           {plotted.length ? (
             <>
@@ -655,6 +694,11 @@ export default function LeaderboardExplorer({
                   onKeepOpen={keepPreviewOpen}
                   onLeave={hidePreviewSoon}
                   onDetails={() => showDetails(preview.index)}
+                  detailsHref={
+                    !showResults && benchmarkSlug
+                      ? benchmarkResultHref(benchmarkSlug, filters, active.systemName)
+                      : undefined
+                  }
                 />
               )}
             </>
@@ -702,91 +746,94 @@ export default function LeaderboardExplorer({
           </div>
         </details>
       </section>
-      <section
-        className="table-shell chart-results"
-        id="chart-results"
-        aria-labelledby="chart-results-title"
-      >
-        <div className="lb-module-head chart-table-heading">
-          <h2 id="chart-results-title">Results</h2>
-          <div className="lb-head-lines" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
+      {showResults && (
+        <section
+          className="table-shell chart-results"
+          id="chart-results"
+          aria-labelledby="chart-results-title"
+        >
+          <div className="lb-module-head chart-table-heading">
+            <h2 id="chart-results-title">Results</h2>
+            <div className="lb-head-lines" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+            <span>{filtered.length} systems</span>
           </div>
-          <span>{filtered.length} systems</span>
-        </div>
-        <div className="chart-table-scroll">
-          <table className="chart-data-table" ref={tableRef}>
-            <thead>
-              <tr>
-                <th scope="col">System / submission</th>
-                <th scope="col">Score ↓</th>
-                <th scope="col">Model class</th>
-                <th scope="col">Reported</th>
-                <th scope="col">Source</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableRows.map((row, index) => (
-                <tr
-                  key={row.systemName}
-                  hidden={!expanded && index >= tablePreviewCount}
-                  data-system={row.systemName}
-                >
-                  <th scope="row">
-                    <span className="chart-system-name">
-                      {row.systemName}
-                      {row.isNew && <span className="badge badge-accent">New</span>}
-                    </span>
-                    <span className="chart-table-organization">
-                      {row.organization} · {kindLabels[row.classification.kind]}
-                    </span>
-                    <details className="chart-table-note">
-                      <summary>Evaluation & model details</summary>
-                      <p>{row.notesShort}</p>
-                      <ResearchDetails row={row} />
-                    </details>
-                  </th>
-                  <td className="chart-table-score">{row.scoreDisplay}</td>
-                  <td>
-                    <ClassificationBadges row={row} />
-                  </td>
-                  <td>{row.reportedAt || "—"}</td>
-                  <td>
-                    <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer">
-                      Source ↗
-                    </a>
-                    {row.repoUrl && (
-                      <a
-                        className="chart-repo-link"
-                        href={row.repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Repository ↗
-                      </a>
-                    )}
-                  </td>
+          <div className="chart-table-scroll">
+            <table className="chart-data-table" ref={tableRef}>
+              <thead>
+                <tr>
+                  <th scope="col">System / submission</th>
+                  <th scope="col">Score ↓</th>
+                  <th scope="col">Model class</th>
+                  <th scope="col">Reported</th>
+                  <th scope="col">Source</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {!filtered.length && <p className="chart-table-empty">No matching results.</p>}
-        {filtered.length > tablePreviewCount && (
-          <button
-            type="button"
-            className="lb-expand-btn"
-            aria-expanded={expanded}
-            onClick={() => setExpanded(!expanded)}
-          >
-            {expanded ? "Show fewer results" : `Show all ${filtered.length} results`}
-          </button>
-        )}
-      </section>
+              </thead>
+              <tbody>
+                {tableRows.map((row, index) => (
+                  <tr
+                    key={row.systemName}
+                    id={chartResultId(row.systemName)}
+                    hidden={!expanded && index >= tablePreviewCount}
+                    data-system={row.systemName}
+                  >
+                    <th scope="row">
+                      <span className="chart-system-name">
+                        {row.systemName}
+                        {row.isNew && <span className="badge badge-accent">New</span>}
+                      </span>
+                      <span className="chart-table-organization">
+                        {row.organization} · {kindLabels[row.classification.kind]}
+                      </span>
+                      <details className="chart-table-note">
+                        <summary>Evaluation & model details</summary>
+                        <p>{row.notesShort}</p>
+                        <ResearchDetails row={row} />
+                      </details>
+                    </th>
+                    <td className="chart-table-score">{row.scoreDisplay}</td>
+                    <td>
+                      <ClassificationBadges row={row} />
+                    </td>
+                    <td>{row.reportedAt || "—"}</td>
+                    <td>
+                      <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer">
+                        Source ↗
+                      </a>
+                      {row.repoUrl && (
+                        <a
+                          className="chart-repo-link"
+                          href={row.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Repository ↗
+                        </a>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {!filtered.length && <p className="chart-table-empty">No matching results.</p>}
+          {filtered.length > tablePreviewCount && (
+            <button
+              type="button"
+              className="lb-expand-btn"
+              aria-expanded={expanded}
+              onClick={() => setExpanded(!expanded)}
+            >
+              {expanded ? "Show fewer results" : `Show all ${filtered.length} results`}
+            </button>
+          )}
+        </section>
+      )}
     </div>
   );
 }

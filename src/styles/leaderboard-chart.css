@@ -15,10 +15,11 @@
   border: 1px solid var(--color-border);
   border-radius: 3px;
   background: var(--color-bg);
-  overflow: hidden;
+  overflow: visible;
 }
 .chart-heading {
   font-family: var(--font-mono);
+  border-radius: 2px 2px 0 0;
 }
 .chart-heading .lb-head-lines {
   min-width: 1rem;
@@ -39,7 +40,8 @@
   flex-wrap: wrap;
   align-items: flex-end;
   gap: 1rem;
-  margin-bottom: 1.25rem;
+  margin: 0;
+  padding: 1.25rem 1.5rem 0.75rem;
 }
 .chart-weights-control > span,
 .chart-benchmark-control > span,
@@ -296,7 +298,8 @@
   color: var(--color-text-muted);
   font-size: 10px;
 }
-.chart-hover-card button {
+.chart-hover-details {
+  display: block;
   width: 100%;
   min-height: 24px;
   margin-top: 9px;
@@ -306,9 +309,10 @@
   color: var(--color-text-muted);
   font: inherit;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
 }
-.chart-hover-card button:hover {
+.chart-hover-details:hover {
   color: var(--color-accent);
 }
 .chart-badges {
@@ -476,6 +480,9 @@
 .chart-data-table tbody tr:last-child > * {
   border-bottom: 0;
 }
+.chart-data-table tr {
+  scroll-margin-top: 1rem;
+}
 .chart-system-name {
   color: var(--color-text-strong);
   display: flex;
@@ -529,6 +536,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.8rem;
+    padding: 1rem;
   }
   .chart-benchmark-control,
   .chart-filter-actions {

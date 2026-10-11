@@ -96,3 +96,20 @@ Verified desktop interaction, direct-link and history restoration, multiple size
 choices, share feedback, and the 320px dropdown/header/hover-card layout. The 18
 existing tests, lint, and TypeScript checks pass. Final build output is isolated
 at `tmp/benchmark-charts-simple-dist`; its log is `tmp/qa/build-simple.log`.
+
+## Homepage navigation simplification
+
+The homepage now contains the chart and benchmark directory beneath its introduction;
+its Results table and FAQ section are removed. Filters and sharing actions sit inside
+the chart card below the ruled header on both the homepage and benchmark pages.
+
+Homepage bar activation and the hover card's More details link navigate to the selected
+benchmark's matching result. Links preserve weight/size filters and use a stable result
+fragment. Benchmark pages expand their results, open that row's evaluation details, and
+move focus to its summary. Direct links and browser history restore the same selection.
+
+Validated the card layout and dropdown at 375px, homepage benchmark switching,
+filtered hover-card links, keyboard activation of the 30th result, direct reload,
+Back navigation, and sidebar anchors with expanded results. URL tests cover
+punctuation, Unicode, distinct system IDs, and malformed fragments (20 tests pass).
+Lint and TypeScript checks pass. Desktop proof: `tmp/chart-home-only-desktop.jpg`.

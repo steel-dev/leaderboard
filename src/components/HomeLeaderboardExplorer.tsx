@@ -49,7 +49,7 @@ export default function HomeLeaderboardExplorer({ benchmarks }: { benchmarks: Ch
           );
           setSlug(next);
         }}
-        tablePreviewCount={5}
+        showResults={false}
       />
     </div>
   );

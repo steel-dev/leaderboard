@@ -4,11 +4,14 @@ import browsecomp from "../src/data/browsecomp.json";
 import {
   blendedPrice,
   benchmarkChartHref,
+  benchmarkResultHref,
+  chartResultId,
   classifyModels,
   defaultFilters,
   filterResults,
   readChartFilters,
   readChartBenchmark,
+  readChartResult,
   sizeFromParameters,
   sizeFromPrice,
   writeChartFilters,
@@ -454,4 +457,30 @@ test("all four featured benchmarks have complete classifications and preserve ev
     }
   }
   assert.equal(getBenchmarkChartRows("gaia", getBenchmarkPage("gaia")!.results), null);
+});
+
+test("benchmark result links preserve filters and target the exact system without ID collisions", () => {
+  const names = ["Agent A/B", "Agent A B", "Agent A%20B", "模型 (試験) + 50% #1"];
+  assert.equal(new Set(names.map(chartResultId)).size, names.length);
+  for (const name of names) {
+    const href = benchmarkResultHref("browsecomp", { weights: "open", sizes: ["small"] }, name);
+    const url = new URL(href, "https://leaderboard.steel.dev");
+    assert.equal(url.pathname, "/leaderboards/browsecomp/");
+    assert.deepEqual(readChartFilters(url.searchParams), { weights: "open", sizes: ["small"] });
+    assert.equal(decodeURIComponent(url.hash.slice(1)), chartResultId(name));
+    assert.equal(readChartResult(url.hash), name);
+  }
+});
+
+test("unrelated, empty, and malformed result fragments are ignored", () => {
+  for (const hash of [
+    "",
+    "#chart-results",
+    "#result-",
+    "#result-%",
+    "#result-%25",
+    "#result-%FF",
+  ]) {
+    assert.equal(readChartResult(hash), null);
+  }
 });
