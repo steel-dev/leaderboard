@@ -43,7 +43,15 @@ export default function ModelSizePicker({
           }
         }}
         onBlur={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget) && menu.current) {
+          // Pressing a label's text can temporarily move focus to the document.
+          // Keep it visible until the label activates its checkbox: closing a
+          // details subtree during that mouse press crashes Chromium hit testing.
+          // Outside pointer presses are handled by dismiss; Tab has a target.
+          if (
+            event.relatedTarget &&
+            !event.currentTarget.contains(event.relatedTarget) &&
+            menu.current
+          ) {
             menu.current.open = false;
           }
         }}

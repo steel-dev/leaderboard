@@ -157,3 +157,17 @@ in-app browser. Repeated Large selections, all 74 Large results, empty-to-Large
 recovery, and filtered reload worked. The revision change reduces unnecessary
 rendering but is not a confirmed fix for that renderer crash. Desktop proof:
 `tmp/benchmark-compact-brave.jpg`. The size dropdown stays in bounds at 320px.
+
+## Brave size-label crash
+
+Reproduced the renderer crash by opening the size picker with its summary focused,
+then clicking the **Large label text**, rather than the checkbox input. That mouse
+press temporarily blurs the summary with a null `relatedTarget`. Closing the native
+details element in that blur handler hides the clicked text before Chromium finishes
+hit testing. Matching Brave symbols and a fresh reproduction dump identify the
+[display-lock assertion in HitTestResult::GetPosition](https://github.com/chromium/chromium/blob/153.0.8010.53/third_party/blink/renderer/core/layout/hit_test_result.cc#L215).
+
+The blur handler now closes only when focus has a known destination outside the
+picker. Outside pointer presses and Escape retain their existing dismissal paths.
+Regression checks cover the exact summary-to-label click, repeated label toggles,
+multiple sizes, checkbox/keyboard activation, Tab dismissal, Escape, and click-away.
