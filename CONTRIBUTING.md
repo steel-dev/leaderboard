@@ -72,6 +72,32 @@ Self-reported results are allowed when they are public and specific, but `notesS
 that clear. Do not silently present self-reported, filtered, or custom-harness scores as official
 apples-to-apples results.
 
+### Comparability and admission
+
+Use the same rules for manual curation and automated discovery:
+
+- Match the benchmark page's task definition and metric. A separately named variant belongs on
+  its own page; Online-Mind2Web is valid on its own page, not an original Mind2Web result.
+- Documented custom harnesses, tools, judges, reasoning budgets, and attempt policies are
+  admissible when the page's scope supports the system and `notesShort` identifies the setup.
+  These differences do not establish direct comparability or independent verification.
+- Keep filtered task sets separate by default. Admit one only when the page's methodology or
+  important notes explicitly allow that type of filtering and the source states the evaluated
+  denominator and exclusions. Do not extrapolate it to the full benchmark.
+- Keep incompatible benchmark releases, splits, metrics, and selected/retried aggregates
+  separate unless the page explicitly supports those configurations. A partial-credit score is
+  not a binary success rate, and a selected ensemble submission is not a single model attempt.
+- Exact numbers printed in table cells or chart labels are published evidence. Verify the
+  associated system and configuration; never estimate a score from a bar, line, or axis position.
+- Defer a candidate to research notes when material setup details cannot be established. A
+  public number alone is insufficient when the task set, metric, or attributed system is unclear.
+
+The automated lookback window prioritizes recent discovery; intentional backfills can use
+older sources with their original publication dates in both manual and automated curation.
+Automated source checks only confirm that score and name text occur in a fetched document. They
+do not reproduce an evaluation or establish that the number belongs to the claimed row; a
+maintainer must inspect attribution before merging.
+
 ## What WebVoyager And BrowseComp Teach Us
 
 Use these two leaderboards as the practical evidence bar.

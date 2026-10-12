@@ -43,7 +43,7 @@ const proposalSchema = z.object({
       reasoning: z
         .string()
         .describe(
-          "Why ADD: evidence tier, why the number is verbatim, why it is the ORIGINAL benchmark (not variant/subset), why not a duplicate of an existing row, in-window."
+          "Why ADD: evidence tier, verbatim number and attribution, matching benchmark/metric or explicitly permitted filtering, documented setup, not a duplicate, source date and intentional backfill if pre-window."
         ),
       evidenceTier: z.enum([
         "official-leaderboard",
@@ -66,7 +66,7 @@ const proposalSchema = z.object({
       category: z.enum([
         "verbatim-missing",
         "variant",
-        "out-of-window",
+        "future-dated",
         "duplicate",
         "weak-source",
         "subset-not-comparable",
@@ -166,15 +166,18 @@ EVIDENCE LADDER (CONTRIBUTING.md), strongest to weakest:
 3. official model card / product post / launch post / eval PDF from the reporting org
 4. public repo with reproducible eval artifacts or a clear results table
 5. independent third-party eval with enough methodology to inspect
-Usually UNACCEPTABLE: social posts without an artifact, screenshots with no stable URL, private docs, aggregators that don't link the primary, "state of the art" with no number, numbers inferred from a chart, and source URLs that are just a homepage.
+Usually UNACCEPTABLE: social posts without an artifact, screenshots with no stable URL, private docs, aggregators that don't link the primary, "state of the art" with no number, numbers estimated from chart geometry, and source URLs that are just a homepage.
 
 HARD RULES:
-- ADMIT an add only if it is an ABSOLUTE, COMPLETE number on the ORIGINAL benchmark AND that exact number appears VERBATIM in quotedEvidence. Reject deltas ("+8 points"), "SOTA" with no number, and truncated/chart-inferred/guessed/rounded numbers — those become dismissals with category verbatim-missing. If scoreValue cannot be read verbatim from quotedEvidence, it is verbatim-missing.
-- ADMIT only ORIGINAL-benchmark scores. A score on a VARIANT (e.g. BrowseComp-Plus, SWE-bench Multilingual/Pro, RepoMirage, Online-Mind2Web-as-variant) OR on a filtered SUBSET / non-standard judge / pass@k-on-a-subset is NOT comparable to full-test rows and MUST be dismissed (category variant or subset-not-comparable). Preserve the setup distinction in the dismissal reason.
-- ADMIT only candidates published inside the lookback window [sinceDate, today]; otherwise dismiss as out-of-window.
+- ADMIT an add only if it is an ABSOLUTE, COMPLETE number for the TARGET benchmark AND that exact number appears VERBATIM in quotedEvidence. Exact printed table cells and chart labels are admissible when the source unambiguously attributes them to the system and configuration. Reject deltas ("+8 points"), "SOTA" with no number, and truncated/visually estimated/guessed/rounded numbers — category verbatim-missing.
+- Match the target page's task definition and metric. Separately named variants (e.g. BrowseComp-Plus, SWE-bench Multilingual/Pro, RepoMirage) belong on their own pages — category variant. Online-Mind2Web is valid on its own target page; it is a variant only when submitted as original Mind2Web.
+- Documented custom harnesses, tools, judges, reasoning budgets, and attempt policies ARE admissible when the page's scope supports the system. Do not reject merely for a non-standard judge or harness. notesShort MUST identify the material setup difference and state when other configurations are not directly comparable.
+- Keep filtered subsets separate by default — category subset-not-comparable. Admit one ONLY if the supplied page methodology or important notes explicitly allow that type of filtering AND quotedEvidence/setup state the evaluated denominator and exclusions. Never extrapolate to the full benchmark.
+- Keep incompatible releases, splits, metrics, and selected/retried aggregates separate unless the supplied page explicitly supports them. Do not treat partial credit as binary success or a selected ensemble submission as a single model attempt. If the task set, metric, attributed system, or other material setup cannot be established, dismiss as weak-source and identify the missing evidence.
+- The lookback window [sinceDate, today] prioritizes recent discovery. A genuine missing result published before sinceDate IS admissible as an intentional backfill; state that in reasoning and retain its original publication date. Never dismiss a candidate merely for predating the window. Reject future-dated candidates — category future-dated — and identify the invalid publication date. Never describe a pre-window date as in-window.
 - ADMIT only if NOT already tracked — compare against the EXISTING ROWS list (same system + same/similar score); otherwise dismiss as duplicate.
 - Self-reported (reporting org == system vendor) IS admissible when public and specific, but notesShort MUST state it is self-reported.
-- For every ADD: produce a complete entry (systemName, organization, scoreDisplay, scoreValue = the verbatim number, sourceUrl that CONTAINS the score, notesShort capturing setup + caveat in one sentence, reportedAt, isNew:true) and a one-sentence reasoning citing the evidence tier and why it is original, in-window, and not a duplicate.
+- For every ADD: produce a complete entry (systemName, organization, scoreDisplay, scoreValue = the verbatim number, sourceUrl that CONTAINS the score, notesShort capturing setup + caveat in one sentence, reportedAt, isNew:true) and a one-sentence reasoning citing the evidence tier, matching benchmark/metric or explicit subset permission, setup, source date (in-window or intentional backfill), and non-duplication.
 - For every DISMISSAL: include candidateSystemName, sourceUrl, a one-sentence reason, and a category.
 - COMPREHENSIVE: every input candidate is either an add or a dismissal (the counts must reconcile). Do not drop a candidate silently.
 - Never invent a source, round a number, or guess. You have no tools — work only from the provided evidence.`;
@@ -192,7 +195,7 @@ function buildUserPrompt(
   const meth = methodology.length ? methodology.map((m) => `- ${m}`).join("\n") : "(none)";
   const notes = importantNotes.length ? importantNotes.map((n) => `- ${n}`).join("\n") : "(none)";
   return `Benchmark: ${name} (slug: ${slug}).
-Lookback window: candidates must have been published on or after ${sinceDate} (and not in the future). Today is the run date in the candidates file.
+Lookback window: prioritize candidates published on or after ${sinceDate}. Earlier genuine missing results may be intentional backfills; retain their original dates and label the backfill in reasoning. Never admit future dates. Today is the run date in the candidates file.
 
 Methodology / scoring context for this leaderboard:
 ${meth}

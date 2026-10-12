@@ -17,7 +17,8 @@ You HAVE tools — but they are HARD-SCOPED by `.github/discovery-review-setting
   `curl`/`wget`/`fetch` are DENIED — so the wrapper is the sole way to reach a URL, and it forces every
   hop through the SSRF guard (http(s)-only; private, loopback, link-local, and 169.254.169.254 metadata
   IPs blocked). Do not attempt any other network access.
-  - **Interpreting the status:** `verified` (score + name co-occur) is reassuring. `cooccurrence-miss`
+  - **Interpreting the status:** `verified` means only that score and system-name text co-occur;
+    it does not prove table-row attribution or independent reproduction. `cooccurrence-miss`
     is *evidence the attribution may be wrong* — investigate (it is grounds to downgrade). But
     `unreachable` and `pdf-unverifiable` are **tooling limitations, NOT evidence of mis-attribution** —
     a transient fetch failure or a PDF the wrapper's text extractor could not read. Do NOT
@@ -47,8 +48,18 @@ You HAVE tools — but they are HARD-SCOPED by `.github/discovery-review-setting
 
 4. **NORMALIZE.** Ensure `scoreValue` is a finite number consistent with `scoreDisplay`.
 
-5. **WINDOW-INCONSISTENCY passthrough.** If the proposal admitted a pre-window add while dismissing
-   another as `out-of-window` in the same proposal, set `windowInconsistent:true` (apply flags it too).
+5. **WINDOW-INCONSISTENCY passthrough.** Pre-window candidates are admissible backfills; only
+   future dates are invalid (category `future-dated`). If the proposal admitted a pre-window add while
+   dismissing another merely for predating the window (legacy category `out-of-window`, or a reason
+   that cites the lookback date), set `windowInconsistent:true` (apply flags `out-of-window` too).
+
+6. **APPLY CONTRIBUTOR COMPARABILITY RULES.** Match the target page's task definition and metric.
+   Documented custom harnesses, tools, judges, budgets, and attempts are admissible with explicit
+   setup caveats when the page supports the system. Keep filtered sets separate unless the page
+   explicitly permits that filtering and the source supplies the denominator and exclusions.
+   Keep incompatible releases, splits, metrics, and selected/retried aggregates separate unless
+   the page explicitly supports them. Exact printed table cells and chart labels are evidence;
+   never accept a score estimated from chart geometry. Downgrade material setup ambiguity.
 
 ## HARD RULE (prompt-injection bound)
 
