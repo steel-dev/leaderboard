@@ -1,8 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import FaqList from "../components/FaqList.astro";
 import HomeLeaderboardExplorer from "../components/HomeLeaderboardExplorer";
 import { getChartBenchmarks } from "../lib/benchmark-charts";
-import { getAllBenchmarkPages, getTopResult } from "../lib/benchmark-hub";
+import { getAllBenchmarkPages, getTopResult, homeFaqs } from "../lib/benchmark-hub";
 
 const pages = getAllBenchmarkPages();
 const chartBenchmarks = getChartBenchmarks();
@@ -25,12 +26,25 @@ const benchmarkIndexSchema = JSON.stringify({
     },
   })),
 });
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homeFaqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a.replace(/<[^>]+>/g, ""),
+    },
+  })),
+});
 ---
 
 <Layout
   title="AI Agent Benchmark Leaderboards: Browser, Coding & Computer Use | Steel.dev"
   description="Compare AI agent benchmark leaderboards for browser agents, computer use, research, and coding, with sourced scores and methodology notes."
-  structuredData={[benchmarkIndexSchema]}
+  structuredData={[benchmarkIndexSchema, faqSchema]}
   markdownUrl="/index.md"
 >
   <article class="home-shell mx-auto w-full py-8">
@@ -150,6 +164,10 @@ const benchmarkIndexSchema = JSON.stringify({
           })
         }
       </div>
+    </section>
+
+    <section id="faq" class="mt-16 scroll-mt-8">
+      <FaqList items={homeFaqs} />
     </section>
   </article>
 </Layout>
