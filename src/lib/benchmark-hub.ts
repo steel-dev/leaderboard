@@ -1,3 +1,5 @@
+import { evaluationDimensions, getEvaluationContext } from "./evaluation-context.js";
+
 import {
   agentBench,
   aiderPolyglot,
@@ -1244,6 +1246,19 @@ export function renderBenchmarkMarkdown(
   lines.push("Methodology:");
   page.meta.methodology.forEach((item) => {
     lines.push(`- ${item}`);
+  });
+  lines.push("");
+
+  lines.push("Evaluation context (benchmark protocol; individual runs can differ):");
+  const context = getEvaluationContext(page.meta.slug);
+  evaluationDimensions.forEach(({ key, label }) => {
+    const entry = context[key];
+    const status =
+      entry.status === "documented" ? "Source documented" : "Not documented in this hub";
+    lines.push(`- ${label} [${status}]: ${entry.summary}`);
+    if (entry.status === "documented") {
+      lines.push(`  Source: ${entry.sourceLabel} — ${entry.sourceUrl}`);
+    }
   });
   lines.push("");
 
