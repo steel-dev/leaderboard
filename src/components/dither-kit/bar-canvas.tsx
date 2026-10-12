@@ -54,12 +54,15 @@ export function BarCanvas() {
 
   // The RAF loop reads these through refs so it always sees the latest values;
   // refs are written in an effect (never during render) — mutating a ref
-  // mid-render tears under Strict Mode / concurrent rendering.
+  // mid-render tears under Strict Mode / concurrent rendering. Everything the
+  // loop reads arrives through a render, so each render also wakes an idle loop.
   const state = useRef(ctx);
   const targetsRef = useRef(targets);
+  const wakeRef = useRef<(() => void) | null>(null);
   useEffect(() => {
     state.current = ctx;
     targetsRef.current = targets;
+    wakeRef.current?.();
   });
 
   useEffect(() => {
@@ -128,6 +131,7 @@ export function BarCanvas() {
     };
 
     let raf = 0;
+    let running = false;
     let animStart = 0;
     let lastProg = -1;
     let lastRevision = state.current.revision;
@@ -136,17 +140,13 @@ export function BarCanvas() {
     let lastPaintSig = "";
     let lastSelected: string | null | undefined = Symbol() as never;
     let lastHover: number | null | undefined = Symbol() as never;
+    let lastBloom = false;
 
     const draw = (now: number) => {
-      raf = requestAnimationFrame(draw);
       const s = state.current;
-      if (!s.ready) return;
-      if (bloomCtx) {
-        const on = s.bloom !== "off" && (!s.bloomOnHover || s.isMouseInChart || s.hovered);
-        if (on) {
-          bloomCtx.clearRect(0, 0, cols, rows);
-          bloomCtx.drawImage(canvas, 0, 0);
-        }
+      if (!s.ready) {
+        running = false; // the render that sets `ready` wakes the loop
+        return;
       }
       if (s.revision !== lastRevision) {
         lastRevision = s.revision;
@@ -184,13 +184,38 @@ export function BarCanvas() {
         needsFill = true;
       }
 
-      if (!needsFill) return;
-      paint(prog);
-      needsFill = false;
+      const painted = needsFill;
+      if (needsFill) {
+        paint(prog);
+        needsFill = false;
+      }
+      const bloomOn = s.bloom !== "off" && (!s.bloomOnHover || s.isMouseInChart || s.hovered);
+      if (bloomCtx && bloomOn && (painted || !lastBloom)) {
+        bloomCtx.clearRect(0, 0, cols, rows);
+        bloomCtx.drawImage(canvas, 0, 0);
+      }
+      lastBloom = bloomOn;
+
+      // Idle once the entrance wave and the hover lift have settled.
+      if (prog >= 1 && intensity === itTarget) {
+        running = false;
+        return;
+      }
+      raf = requestAnimationFrame(draw);
     };
 
-    raf = requestAnimationFrame(draw);
-    return () => cancelAnimationFrame(raf);
+    const wake = () => {
+      if (running) return;
+      running = true;
+      raf = requestAnimationFrame(draw);
+    };
+    wakeRef.current = wake;
+    wake();
+    return () => {
+      cancelAnimationFrame(raf);
+      running = false;
+      if (wakeRef.current === wake) wakeRef.current = null;
+    };
   }, [cols, rows, width]);
 
   const bloomActive = ctx.bloomOnHover ? ctx.isMouseInChart || ctx.hovered : true;

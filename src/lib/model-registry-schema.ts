@@ -53,3 +53,4 @@ export const researchBatchSchema = z.object({
 });
 export type ModelRecord = z.infer<typeof modelSchema>;
 export type SubmissionRecord = z.infer<typeof submissionSchema>;
+export type ResearchBatch = z.infer<typeof researchBatchSchema>;

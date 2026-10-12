@@ -9,6 +9,7 @@ import LeaderboardExplorer from "../../components/LeaderboardExplorer";
 import { getBenchmarkChartRows } from "../../lib/benchmark-charts";
 import { getAtlasNote } from "../../lib/atlas";
 import {
+  benchmarkScopeLabels,
   buildBenchmarkFaqFacts,
   generateBenchmarkFaq,
   getAllBenchmarkPages,
@@ -136,7 +137,13 @@ const breadcrumbSchema = JSON.stringify({
       <section id="leaderboard" class="scroll-mt-8">
         {
           chartRows ? (
-            <LeaderboardExplorer rows={chartRows} benchmark={page.meta.name} compact client:load />
+            <LeaderboardExplorer
+              rows={chartRows}
+              benchmark={page.meta.name}
+              scope={benchmarkScopeLabels[page.meta.scope]}
+              compact
+              client:load
+            />
           ) : (
             <BenchmarkResultsTable
               rows={page.results}

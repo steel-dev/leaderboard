@@ -1,4 +1,4 @@
-import { researchBatchSchema } from "./model-registry-schema";
+import { researchBatchSchema, type ResearchBatch } from "./model-registry-schema";
 import type { BenchmarkResultRow } from "./benchmark-hub";
 import {
   classifyModels,
@@ -9,7 +9,11 @@ import {
   type SubmissionRecord,
 } from "./model-classification";
 
-export function buildModelRegistry(rawBatches: unknown[]): Map<string, ModelRecord> {
+export function parseResearchBatches(rawBatches: unknown[]): ResearchBatch[] {
+  return rawBatches.map((rawBatch) => researchBatchSchema.parse(rawBatch));
+}
+
+export function buildModelRegistry(batches: ResearchBatch[]): Map<string, ModelRecord> {
   const models = new Map<string, ModelRecord>();
   const classificationFields = [
     "size",
@@ -21,8 +25,8 @@ export function buildModelRegistry(rawBatches: unknown[]): Map<string, ModelReco
     "outputUsdPerMillion",
     "parameterEstimateB",
   ] as const;
-  for (const rawBatch of rawBatches) {
-    for (const model of researchBatchSchema.parse(rawBatch).models) {
+  for (const batch of batches) {
+    for (const model of batch.models) {
       if (
         model.basis === "parameters" &&
         (model.totalParametersB === undefined ||
@@ -51,26 +55,38 @@ export function buildModelRegistry(rawBatches: unknown[]): Map<string, ModelReco
   return models;
 }
 
-export function classifyBenchmarkRows(
-  rows: BenchmarkResultRow[],
-  rawBatches: unknown[],
-  models: Map<string, ModelRecord>
-): ClassifiedResult[] {
+function submissionsByName(batches: ResearchBatch[]): Map<string, SubmissionRecord> {
   const submissions = new Map<string, SubmissionRecord>();
-  for (const rawBatch of rawBatches) {
-    for (const submission of researchBatchSchema.parse(rawBatch).submissions) {
+  for (const batch of batches) {
+    for (const submission of batch.submissions) {
       if (submissions.has(submission.systemName))
         throw new Error(`Duplicate submission: ${submission.systemName}`);
       submissions.set(submission.systemName, submission);
     }
   }
+  return submissions;
+}
+
+// Result rows without research (e.g. a fresh discovery add) and research left behind by a renamed
+// row are reported rather than thrown, so a data-only change never breaks the site build.
+export function findResearchGaps(rows: BenchmarkResultRow[], batches: ResearchBatch[]) {
+  const submissions = submissionsByName(batches);
   const names = new Set(rows.map((row) => row.systemName));
-  for (const name of submissions.keys()) {
-    if (!names.has(name)) throw new Error(`Research has no matching result: ${name}`);
-  }
+  return {
+    unresearched: [...names].filter((name) => !submissions.has(name)),
+    orphaned: [...submissions.keys()].filter((name) => !names.has(name)),
+  };
+}
+
+export function classifyBenchmarkRows(
+  rows: BenchmarkResultRow[],
+  batches: ResearchBatch[],
+  models: Map<string, ModelRecord>
+): ClassifiedResult[] {
+  const submissions = submissionsByName(batches);
   return rows.map((row) => {
     const submission = submissions.get(row.systemName);
-    if (!submission) throw new Error(`Missing model research: ${row.systemName}`);
+    if (!submission) return { ...row, classification: null };
     const components = submission.modelIds.map((id) => {
       const model = models.get(id);
       if (!model) throw new Error(`Missing model: ${id}`);

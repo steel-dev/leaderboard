@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import LeaderboardExplorer from "./LeaderboardExplorer";
 import {
   readChartBenchmark,
@@ -7,12 +7,9 @@ import {
 } from "../lib/model-classification";
 
 export default function HomeLeaderboardExplorer({ benchmarks }: { benchmarks: ChartBenchmark[] }) {
-  const [slug, setSlug] = useState(() =>
-    readChartBenchmark(
-      new URLSearchParams(),
-      benchmarks.map((item) => item.slug)
-    )
-  );
+  const slugs = useMemo(() => benchmarks.map((item) => item.slug), [benchmarks]);
+  // The server render cannot see the query, so hydration starts on the default benchmark.
+  const [slug, setSlug] = useState(() => readChartBenchmark(new URLSearchParams(), slugs));
   const container = useRef<HTMLDivElement>(null);
   const restoreSelectorFocus = useRef(false);
   useLayoutEffect(() => {
@@ -23,18 +20,15 @@ export default function HomeLeaderboardExplorer({ benchmarks }: { benchmarks: Ch
       restoreSelectorFocus.current = false;
     }
   }, [slug]);
-  useEffect(() => {
+  // A layout effect swaps in the linked benchmark before the first client paint, so a shared
+  // ?benchmark= link never draws or animates the default chart first.
+  useLayoutEffect(() => {
     const restore = () =>
-      setSlug(
-        readChartBenchmark(
-          new URLSearchParams(window.location.search),
-          benchmarks.map((item) => item.slug)
-        )
-      );
+      setSlug(readChartBenchmark(new URLSearchParams(window.location.search), slugs));
     restore();
     window.addEventListener("popstate", restore);
     return () => window.removeEventListener("popstate", restore);
-  }, [benchmarks]);
+  }, [slugs]);
 
   const selected = benchmarks.find((item) => item.slug === slug) ?? benchmarks[0];
   return (

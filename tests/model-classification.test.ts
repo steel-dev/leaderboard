@@ -6,12 +6,14 @@ import {
   benchmarkChartHref,
   benchmarkResultHref,
   chartResultId,
+  chartResultIds,
   classifyModels,
   defaultFilters,
   filterResults,
   readChartFilters,
   readChartBenchmark,
   readChartResult,
+  sizeBasisNote,
   sizeFromParameters,
   sizeFromPrice,
   writeChartFilters,
@@ -211,6 +213,61 @@ test("estimated components retain the weakest confidence and an explicit estimat
   assert.equal(classifyModels([model(), model({ confidence: "medium" })]).confidence, "medium");
 });
 
+test("an estimated helper smaller than the sizing component lowers confidence, not the basis", () => {
+  const published = model({ id: "published", totalParametersB: 72, size: "medium" });
+  const helper = model({
+    id: "helper",
+    totalParametersB: undefined,
+    size: "small",
+    basis: "estimate",
+    confidence: "low",
+  });
+  assert.deepEqual(classifyModels([published, helper]), {
+    size: "medium",
+    weights: "open",
+    basis: "parameters",
+    confidence: "low",
+  });
+  assert.equal(classifyModels([helper, { ...published, size: "small" }]).basis, "estimate");
+});
+
+test("size basis notes name only the models that set the size class", () => {
+  const published = model({
+    id: "published",
+    name: "Big open model",
+    totalParametersB: 72,
+    size: "medium",
+  });
+  const helper = model({
+    id: "helper",
+    name: "Hidden summarizer",
+    totalParametersB: undefined,
+    size: "small",
+    basis: "estimate",
+    confidence: "low",
+  });
+  const priced = model({
+    id: "priced",
+    name: "Closed flagship",
+    weights: "closed",
+    totalParametersB: undefined,
+    size: "large",
+    basis: "price",
+    inputUsdPerMillion: 2,
+    outputUsdPerMillion: 10,
+  });
+  const note = (components: ModelRecord[]) =>
+    sizeBasisNote(result("Stack", 50, components).classification!);
+  assert.equal(note([published]), "Published size: from the parameter count of Big open model.");
+  assert.equal(
+    note([published, helper]),
+    "Published size: from the parameter count of Big open model. Size reflects the largest of 2 models; parameters are not summed."
+  );
+  assert.match(note([helper]), /^Estimated for Hidden summarizer: /);
+  assert.match(note([priced, published]), /^Price proxy: .* of Closed flagship; /);
+  assert.doesNotMatch(note([priced, published]), /Big open model/);
+});
+
 test("the basis of equally sized mixed stacks is independent of component order", () => {
   const published = model({ size: "large", totalParametersB: 397 });
   const priced = model({
@@ -246,6 +303,7 @@ test("weight and multi-size filters intersect while estimates remain in their as
     result("Closed", 70, [closed]),
     result("Mixed", 80, [large, closed]),
     result("Estimated", 50, [unknown]),
+    { ...result("Unclassified", 40, [small]), classification: null },
   ];
   const names = (filters: ChartFilters) =>
     filterResults(rows, filters).map((row) => row.systemName);
@@ -254,9 +312,10 @@ test("weight and multi-size filters intersect while estimates remain in their as
     "Open small",
   ]);
   assert.deepEqual(names({ weights: "closed", sizes: [] }), ["Closed"]);
-  assert.deepEqual(names({ weights: "other", sizes: [] }), ["Mixed", "Estimated"]);
+  assert.deepEqual(names({ weights: "other", sizes: [] }), ["Mixed", "Estimated", "Unclassified"]);
   assert.deepEqual(names({ weights: "all", sizes: ["medium"] }), ["Estimated"]);
   assert.deepEqual(names({ weights: "open", sizes: ["tiny"] }), []);
+  assert.ok(names(defaultFilters).includes("Unclassified"));
 });
 
 test("results sort descending, preserve tie rank, retain missing scores last, and do not mutate input", () => {
@@ -377,7 +436,7 @@ test("shared research rejects conflicting prices, invalid categories, and missin
     /Invalid parameter classification/
   );
   const row = result("Harness", 70, [model()]);
-  const submission = { ...row.classification, modelIds: ["unmapped-helper"] };
+  const submission = { ...row.classification!, modelIds: ["unmapped-helper"] };
   assert.throws(
     () =>
       classifyBenchmarkRows(
@@ -430,41 +489,27 @@ test("hover hit testing resolves the visible center of every bar across result l
   }
 });
 
-test("all BrowseComp results have supported research mappings without changing scores", async () => {
-  const { getBrowsecompChartRows } = await import("../src/lib/browsecomp-classification");
-  const rows = getBrowsecompChartRows(browsecomp.browsecomp);
-  assert.equal(rows.length, 102);
-  assert.equal(new Set(rows.map((row) => row.systemName)).size, 102);
-  rows.forEach((row, index) => {
-    const { classification, ...original } = row;
-    assert.deepEqual(original, browsecomp.browsecomp[index]);
-    assert.equal(classification.systemName, row.systemName);
-    assert.ok(classification.models.length > 0);
-    assert.deepEqual(
-      classification.modelIds,
-      classification.models.map((component) => component.id)
-    );
-    for (const component of classification.models) {
-      assert.equal(modelSchema.safeParse(component).success, true);
-      if (component.totalParametersB !== undefined) {
-        assert.equal(component.basis, "parameters", component.id);
-        assert.equal(component.size, sizeFromParameters(component.totalParametersB), component.id);
-      }
-    }
+test("rows without research stay on the board unclassified instead of failing the build", async () => {
+  const { getBenchmarkChartRows, getChartResearchGaps } =
+    await import("../src/lib/benchmark-charts");
+  const extra = { ...browsecomp.browsecomp[0], systemName: "Unresearched model" };
+  const rows = getBenchmarkChartRows("browsecomp", [...browsecomp.browsecomp, extra])!;
+  assert.equal(rows.length, 103);
+  assert.equal(rows.at(-1)!.classification, null);
+  assert.ok(rows.slice(0, -1).every((row) => row.classification !== null));
+  assert.deepEqual(getChartResearchGaps("browsecomp", [...browsecomp.browsecomp, extra]), {
+    unresearched: ["Unresearched model"],
+    orphaned: [],
   });
-  assert.throws(
-    () =>
-      getBrowsecompChartRows([
-        ...browsecomp.browsecomp,
-        { ...browsecomp.browsecomp[0], systemName: "Unresearched model" },
-      ]),
-    /Missing model research/
-  );
-  assert.throws(() => getBrowsecompChartRows(browsecomp.browsecomp.slice(1)), /no matching result/);
+  assert.deepEqual(getChartResearchGaps("browsecomp", browsecomp.browsecomp.slice(1)), {
+    unresearched: [],
+    orphaned: [browsecomp.browsecomp[0].systemName],
+  });
 });
 
 test("all four featured benchmarks have complete classifications and preserve every result field", async () => {
-  const { getChartBenchmarks, getBenchmarkChartRows } = await import("../src/lib/benchmark-charts");
+  const { getChartBenchmarks, getBenchmarkChartRows, getChartResearchGaps } =
+    await import("../src/lib/benchmark-charts");
   const { getBenchmarkPage } = await import("../src/lib/benchmark-hub");
   const benchmarks = getChartBenchmarks();
   assert.deepEqual(
@@ -477,11 +522,27 @@ test("all four featured benchmarks have complete classifications and preserve ev
   );
   for (const benchmark of benchmarks) {
     const originals = getBenchmarkPage(benchmark.slug)!.results;
+    assert.deepEqual(getChartResearchGaps(benchmark.slug, originals), {
+      unresearched: [],
+      orphaned: [],
+    });
     assert.equal(new Set(benchmark.rows.map((row) => row.systemName)).size, originals.length);
     for (const [index, row] of benchmark.rows.entries()) {
       const { classification, ...resultFields } = row;
       assert.deepEqual(resultFields, originals[index]);
+      assert.ok(classification);
       assert.ok(classification.models.length > 0);
+      for (const component of classification.models) {
+        assert.equal(modelSchema.safeParse(component).success, true);
+        if (component.totalParametersB !== undefined) {
+          assert.equal(component.basis, "parameters", component.id);
+          assert.equal(
+            component.size,
+            sizeFromParameters(component.totalParametersB),
+            component.id
+          );
+        }
+      }
       assert.deepEqual(
         classification.modelIds,
         classification.models.map(({ id }) => id)
@@ -509,8 +570,8 @@ test("all four featured benchmarks have complete classifications and preserve ev
         const filtered = filterResults(benchmark.rows, { weights, sizes: size });
         for (const row of filtered) {
           if (weights === "open")
-            assert.ok(row.classification.models.every(({ weights }) => weights === "open"));
-          if (size.length) assert.ok(size.includes(row.classification.size));
+            assert.ok(row.classification!.models.every(({ weights }) => weights === "open"));
+          if (size.length) assert.ok(size.includes(row.classification!.size));
         }
       }
     }
@@ -519,15 +580,19 @@ test("all four featured benchmarks have complete classifications and preserve ev
 });
 
 test("benchmark result links preserve filters and target the exact system without ID collisions", () => {
-  const names = ["Agent A/B", "Agent A B", "Agent A%20B", "模型 (試験) + 50% #1"];
-  assert.equal(new Set(names.map(chartResultId)).size, names.length);
-  for (const name of names) {
-    const href = benchmarkResultHref("browsecomp", { weights: "open", sizes: ["small"] }, name);
+  const names = ["Agent A/B", "Agent A B", "Agent A%20B", "模型 (試験) + 50% #1", "Agent", "Agent"];
+  const ids = chartResultIds(names.map((systemName) => ({ systemName })));
+  assert.equal(new Set(ids).size, names.length);
+  assert.equal(ids[0], chartResultId("Agent A/B"));
+  assert.equal(ids[5], chartResultId("Agent", 2));
+  assert.notEqual(chartResultId("Agent", 2), chartResultId("Agent/2"));
+  for (const id of ids) {
+    const href = benchmarkResultHref("browsecomp", { weights: "open", sizes: ["small"] }, id);
     const url = new URL(href, "https://leaderboard.steel.dev");
     assert.equal(url.pathname, "/leaderboards/browsecomp/");
     assert.deepEqual(readChartFilters(url.searchParams), { weights: "open", sizes: ["small"] });
-    assert.equal(decodeURIComponent(url.hash.slice(1)), chartResultId(name));
-    assert.equal(readChartResult(url.hash), name);
+    assert.equal(decodeURIComponent(url.hash.slice(1)), id);
+    assert.equal(readChartResult(url.hash), id);
   }
 });
 
@@ -539,6 +604,9 @@ test("unrelated, empty, and malformed result fragments are ignored", () => {
     "#result-%",
     "#result-%25",
     "#result-%FF",
+    "#result-Agent/1",
+    "#result-Agent/02",
+    "#result-/2",
   ]) {
     assert.equal(readChartResult(hash), null);
   }

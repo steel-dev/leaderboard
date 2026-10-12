@@ -8,11 +8,12 @@ import {
   benchmarkChartHref,
   benchmarkResultHref,
   blendedPrice,
-  chartResultId,
+  chartResultIds,
   defaultFilters,
   filterResults,
   readChartFilters,
   readChartResult,
+  sizeBasisNote,
   sizeLabels,
   weightLabels,
   writeChartFilters,
@@ -83,30 +84,57 @@ function ModelEvidence({ model }: { model: ModelRecord }) {
   );
 }
 
+const unclassifiedLabel = "Unclassified";
+
 function ClassificationBadges({ row }: { row: ClassifiedResult }) {
   const c = row.classification;
+  if (!c)
+    return (
+      <span className="chart-badges">
+        <span className="chart-weight-tag chart-weight-uncertain">{unclassifiedLabel}</span>
+      </span>
+    );
+  // The full note stays in the row details for keyboard and touch users; the title is a shortcut.
+  const note = sizeBasisNote(c);
   return (
     <span className="chart-badges">
       <span className={`chart-weight-tag chart-weight-${c.weights}`}>
         {weightLabels[c.weights]}
       </span>
-      <span>{sizeLabels[c.size]}</span>
-      {c.basis !== "parameters" && <span className="chart-basis-tag">{basisLabels[c.basis]}</span>}
-      {c.models.length > 1 && <span className="chart-basis-tag">Largest component</span>}
+      <span className="chart-size-tag" title={note}>
+        {sizeLabels[c.size]}
+      </span>
+      {c.basis !== "parameters" && (
+        <span className="chart-basis-tag" title={note}>
+          {basisLabels[c.basis]}
+        </span>
+      )}
+      {c.models.length > 1 && (
+        <span className="chart-basis-tag" title={note}>
+          Largest component
+        </span>
+      )}
     </span>
   );
 }
 
 function ResearchDetails({ row }: { row: ClassifiedResult }) {
   const c = row.classification;
+  if (!c)
+    return (
+      <div className="chart-research-details">
+        <p>
+          Model research for this result is pending, so its weights and size are not classified yet.
+        </p>
+      </div>
+    );
   return (
     <div className="chart-research-details">
       <p>{c.notes}</p>
       <p>
         Harness code:{" "}
-        {c.harnessCode === "not-applicable" ? "not separately classified" : c.harnessCode}.
-        {c.models.length > 1 &&
-          " Size uses the largest component category as an approximation; it does not sum the stack's parameters."}
+        {c.harnessCode === "not-applicable" ? "not separately classified" : c.harnessCode}.{" "}
+        {sizeBasisNote(c)}
       </p>
       {c.sources.length > 0 && (
         <ul className="chart-source-list">
@@ -149,6 +177,7 @@ function ChartHoverCard({
   onDetails: () => void;
   detailsHref?: string;
 }) {
+  const c = row.classification;
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ left: 0, top: 0 });
   useLayoutEffect(() => {
@@ -189,23 +218,30 @@ function ChartHoverCard({
           <dt>{metricLabel}</dt>
           <dd className="chart-hover-score">{row.scoreDisplay}</dd>
         </div>
-        <div>
-          <dt>Model weights</dt>
-          <dd>{weightLabels[row.classification.weights]}</dd>
-        </div>
-        <div>
-          <dt>Model size</dt>
-          <dd>{sizeLabels[row.classification.size]}</dd>
-        </div>
-        <div>
-          <dt>Size basis</dt>
-          <dd>{basisLabels[row.classification.basis]}</dd>
-        </div>
+        {c ? (
+          <>
+            <div>
+              <dt>Model weights</dt>
+              <dd>{weightLabels[c.weights]}</dd>
+            </div>
+            <div>
+              <dt>Model size</dt>
+              <dd>{sizeLabels[c.size]}</dd>
+            </div>
+            <div>
+              <dt>Size basis</dt>
+              <dd>{basisLabels[c.basis]}</dd>
+            </div>
+          </>
+        ) : (
+          <div>
+            <dt>Model class</dt>
+            <dd>{unclassifiedLabel}</dd>
+          </div>
+        )}
       </dl>
-      {row.classification.models.length > 1 && (
-        <p className="chart-hover-note">
-          Largest component · {row.classification.models.length} models
-        </p>
+      {c && (c.basis !== "parameters" || c.models.length > 1) && (
+        <p className="chart-hover-note">{sizeBasisNote(c)}</p>
       )}
       {detailsHref ? (
         <a className="chart-hover-details" href={detailsHref}>
@@ -220,8 +256,16 @@ function ChartHoverCard({
   );
 }
 
+function classLabel(row: ClassifiedResult): string {
+  const c = row.classification;
+  return c
+    ? `${weightLabels[c.weights]}, ${sizeLabels[c.size]}, ${basisLabels[c.basis]}`
+    : unclassifiedLabel;
+}
+
 function ChartMarks({
   rows,
+  rowIds,
   compact,
   activeIndex,
   previewIndex,
@@ -230,6 +274,7 @@ function ChartMarks({
   onDetails,
 }: {
   rows: ClassifiedResult[];
+  rowIds: string[];
   compact: boolean;
   activeIndex: number;
   previewIndex: number | null;
@@ -276,7 +321,7 @@ function ChartMarks({
             ? `${row.systemName.slice(0, labelLength - 1)}…`
             : row.systemName;
         return (
-          <g key={row.systemName}>
+          <g key={rowIds[index]}>
             <text
               x={x}
               y={top - 11}
@@ -306,7 +351,7 @@ function ChartMarks({
               className={`chart-bar-target${active ? " is-active" : ""}`}
               role="button"
               tabIndex={activeIndex === index ? 0 : -1}
-              aria-label={`${row.systemName}, ${row.scoreDisplay}, ${weightLabels[row.classification.weights]}, ${sizeLabels[row.classification.size]}, ${basisLabels[row.classification.basis]}. Show result details.`}
+              aria-label={`${row.systemName}, ${row.scoreDisplay}, ${classLabel(row)}. Show result details.`}
               aria-haspopup="dialog"
               aria-expanded={active}
               aria-controls={active ? "chart-hover-card" : undefined}
@@ -362,6 +407,7 @@ function ChartMarks({
 export default function LeaderboardExplorer({
   rows,
   benchmark,
+  scope,
   benchmarkSlug,
   benchmarkOptions,
   onBenchmarkChange,
@@ -371,6 +417,7 @@ export default function LeaderboardExplorer({
 }: {
   rows: ClassifiedResult[];
   benchmark: string;
+  scope?: string;
   benchmarkSlug?: string;
   benchmarkOptions?: { slug: string; name: string }[];
   onBenchmarkChange?: (slug: string) => void;
@@ -382,30 +429,35 @@ export default function LeaderboardExplorer({
   const [filters, setFilters] = useState<ChartFilters>(defaultFilters);
   const currentFilters = useRef<ChartFilters>(defaultFilters);
   const [limit, setLimit] = useState(20);
-  const [selectedName, setSelectedName] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [preview, setPreview] = useState<ChartPreview | null>(null);
-  const [detailName, setDetailName] = useState<string | null>(null);
+  const [detailId, setDetailId] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tableRef = useRef<HTMLTableElement>(null);
   const [expanded, setExpanded] = useState(false);
   const [shareStatus, setShareStatus] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const resultIds = useMemo(() => {
+    const ids = chartResultIds(rows);
+    return new Map(rows.map((row, index) => [row, ids[index]]));
+  }, [rows]);
+  const idOf = (row: ClassifiedResult) => resultIds.get(row)!;
 
   useEffect(() => {
     const restore = (preserveSectionState: boolean) => {
       const nextFilters = readChartFilters(new URLSearchParams(window.location.search));
       const result = showResults ? readChartResult(window.location.hash) : null;
-      const detail = filterResults(rows, nextFilters).find((row) => row.systemName === result);
+      const detail = filterResults(rows, nextFilters).find((row) => resultIds.get(row) === result);
       const filtersChanged =
         nextFilters.weights !== currentFilters.current.weights ||
         nextFilters.sizes.join(",") !== currentFilters.current.sizes.join(",");
       if (preserveSectionState && !detail && !filtersChanged) return;
       currentFilters.current = nextFilters;
       setFilters(nextFilters);
-      setSelectedName(null);
+      setSelectedId(null);
       setPreview(null);
       setExpanded(Boolean(detail));
-      setDetailName(detail?.systemName ?? null);
+      setDetailId(detail ? (resultIds.get(detail) ?? null) : null);
     };
     const onHistory = () => restore(true);
     const onHash = () => restore(true);
@@ -416,7 +468,7 @@ export default function LeaderboardExplorer({
       window.removeEventListener("popstate", onHistory);
       window.removeEventListener("hashchange", onHash);
     };
-  }, [rows, showResults]);
+  }, [rows, resultIds, showResults]);
 
   const filtered = useMemo(() => filterResults(rows, filters), [rows, filters]);
   const plotted = useMemo(
@@ -427,17 +479,17 @@ export default function LeaderboardExplorer({
     () =>
       plotted.map((row) => ({
         name: row.systemName,
-        open: row.classification.weights === "open" ? row.scoreValue : 0,
-        closed: row.classification.weights === "closed" ? row.scoreValue : 0,
-        mixed: row.classification.weights === "mixed" ? row.scoreValue : 0,
-        uncertain: row.classification.weights === "uncertain" ? row.scoreValue : 0,
+        open: row.classification?.weights === "open" ? row.scoreValue : 0,
+        closed: row.classification?.weights === "closed" ? row.scoreValue : 0,
+        mixed: row.classification?.weights === "mixed" ? row.scoreValue : 0,
+        // Unclassified rows plot with the uncertain series until their research lands.
+        uncertain:
+          (row.classification?.weights ?? "uncertain") === "uncertain" ? row.scoreValue : 0,
       })),
     [plotted]
   );
-  const selectedIndex = Math.max(
-    0,
-    plotted.findIndex((row) => row.systemName === selectedName)
-  );
+  const plottedIds = plotted.map(idOf);
+  const selectedIndex = Math.max(0, plottedIds.indexOf(selectedId ?? ""));
   const active = preview ? plotted[preview.index] : null;
   const tableRows = benchmarkSlug && !expanded ? filtered.slice(0, tablePreviewCount) : filtered;
   const isFiltered = filters.weights !== "all" || filters.sizes.length > 0;
@@ -445,7 +497,7 @@ export default function LeaderboardExplorer({
   const updateFilters = (next: ChartFilters) => {
     currentFilters.current = next;
     setFilters(next);
-    setSelectedName(null);
+    setSelectedId(null);
     setPreview(null);
     setExpanded(false);
     setShareStatus("");
@@ -468,7 +520,7 @@ export default function LeaderboardExplorer({
   const showPreview = (index: number, target: SVGRectElement, top: number) => {
     keepPreviewOpen();
     const rect = target.getBoundingClientRect();
-    setSelectedName(plotted[index]?.systemName ?? null);
+    setSelectedId(plottedIds[index] ?? null);
     setPreview({
       index,
       target,
@@ -479,14 +531,14 @@ export default function LeaderboardExplorer({
     const row = plotted[index];
     if (!row) return;
     if (!showResults && benchmarkSlug) {
-      window.location.assign(benchmarkResultHref(benchmarkSlug, filters, row.systemName));
+      window.location.assign(benchmarkResultHref(benchmarkSlug, filters, idOf(row)));
       return;
     }
     keepPreviewOpen();
     setPreview(null);
     setExpanded(true);
-    window.history.pushState(null, "", `#${encodeURIComponent(chartResultId(row.systemName))}`);
-    setDetailName(row.systemName);
+    window.history.pushState(null, "", `#${encodeURIComponent(idOf(row))}`);
+    setDetailId(idOf(row));
   };
 
   useEffect(
@@ -496,18 +548,16 @@ export default function LeaderboardExplorer({
     []
   );
   useEffect(() => {
-    if (!detailName) return;
-    const row = Array.from(tableRef.current?.rows ?? []).find(
-      (row) => row.dataset.system === detailName
-    );
+    if (!detailId) return;
+    const row = Array.from(tableRef.current?.rows ?? []).find((row) => row.id === detailId);
     const details = row?.querySelector("details");
     if (details) {
       details.open = true;
       details.querySelector("summary")?.focus({ preventScroll: true });
       row?.scrollIntoView({ block: "start" });
     }
-    setDetailName(null);
-  }, [detailName]);
+    setDetailId(null);
+  }, [detailId]);
   useEffect(() => {
     if (!preview) return;
     const onKey = (event: KeyboardEvent) => {
@@ -723,6 +773,7 @@ export default function LeaderboardExplorer({
                     <Bar dataKey="uncertain" variant="hatched" />
                     <ChartMarks
                       rows={plotted}
+                      rowIds={plottedIds}
                       compact={compact}
                       activeIndex={selectedIndex}
                       previewIndex={preview?.index ?? null}
@@ -757,7 +808,7 @@ export default function LeaderboardExplorer({
                   onDetails={() => showDetails(preview.index)}
                   detailsHref={
                     !showResults && benchmarkSlug
-                      ? benchmarkResultHref(benchmarkSlug, filters, active.systemName)
+                      ? benchmarkResultHref(benchmarkSlug, filters, idOf(active))
                       : undefined
                   }
                 />
@@ -785,7 +836,8 @@ export default function LeaderboardExplorer({
               When parameters are unavailable, we use standard uncached token prices with a 3:1
               input/output blend: Small &lt;$0.15/M, Medium $0.15–$1/M, Large &gt;$1/M. “Price
               proxy” is a pricing category, not a parameter estimate. “Estimated” marks a
-              provisional classification and remains included in filters.
+              provisional classification and remains included in filters. “Unclassified” results
+              await model research and match only the all and mixed / uncertain weight filters.
             </p>
             <p>
               Harnesses inherit the evaluated model stack's class. Multi-model systems use the
@@ -822,12 +874,18 @@ export default function LeaderboardExplorer({
               <span />
               <span />
             </div>
-            <span>{filtered.length} systems</span>
+            <span>
+              {scope && <>{scope} scope · </>}
+              {filtered.length} systems
+            </span>
           </div>
           <div className="chart-table-scroll">
             <table className="chart-data-table" ref={tableRef}>
               <thead>
                 <tr>
+                  <th scope="col" className="chart-table-rank">
+                    Rank
+                  </th>
                   <th scope="col">System / submission</th>
                   <th scope="col">Score ↓</th>
                   <th scope="col">Model class</th>
@@ -838,18 +896,19 @@ export default function LeaderboardExplorer({
               <tbody>
                 {tableRows.map((row, index) => (
                   <tr
-                    key={row.systemName}
-                    id={chartResultId(row.systemName)}
+                    key={idOf(row)}
+                    id={idOf(row)}
                     hidden={!expanded && index >= tablePreviewCount}
-                    data-system={row.systemName}
                   >
+                    <td className="chart-table-rank">{row.rank}</td>
                     <th scope="row">
                       <span className="chart-system-name">
                         {row.systemName}
                         {row.isNew && <span className="badge badge-accent">New</span>}
                       </span>
                       <span className="chart-table-organization">
-                        {row.organization} · {kindLabels[row.classification.kind]}
+                        {row.organization}
+                        {row.classification && <> · {kindLabels[row.classification.kind]}</>}
                       </span>
                       <details className="chart-table-note">
                         <summary>Evaluation & model details</summary>

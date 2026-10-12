@@ -409,6 +409,10 @@
   padding: 0 4px;
   font-size: 9px;
 }
+.chart-size-tag[title],
+.chart-basis-tag[title] {
+  cursor: help;
+}
 .chart-research-details {
   color: var(--color-text-muted);
   font: 11px/1.7 var(--font-sans);
@@ -528,10 +532,15 @@
   width: 36%;
   font-weight: 400;
 }
-.chart-data-table tbody td:nth-child(3) {
-  width: 24%;
+.chart-data-table .chart-table-rank {
+  width: 3rem;
+  color: var(--color-text-dim);
+  font-variant-numeric: tabular-nums;
 }
 .chart-data-table tbody td:nth-child(4) {
+  width: 24%;
+}
+.chart-data-table tbody td:nth-child(5) {
   white-space: nowrap;
   color: var(--color-text-muted);
 }

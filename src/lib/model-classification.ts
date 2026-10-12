@@ -30,14 +30,17 @@ export const basisLabels = {
   estimate: "Estimated",
 } as const;
 
+export type Classification = SubmissionRecord & {
+  models: ModelRecord[];
+  size: ModelSize;
+  weights: Weights;
+  basis: ModelRecord["basis"];
+  confidence: ModelRecord["confidence"];
+};
+
 export interface ClassifiedResult extends BenchmarkResultRow {
-  classification: SubmissionRecord & {
-    models: ModelRecord[];
-    size: ModelSize;
-    weights: Weights;
-    basis: ModelRecord["basis"];
-    confidence: ModelRecord["confidence"];
-  };
+  // null until model research for the row lands in src/data/model-research/.
+  classification: Classification | null;
 }
 
 export interface ChartBenchmark {
@@ -73,9 +76,12 @@ export function classifyModels(models: ModelRecord[]) {
       : models.every((model) => model.weights === "closed")
         ? "closed"
         : "mixed";
-  const basis = models.some((model) => model.basis === "estimate")
+  // Only components in the largest category determine the stack's size, so only they set its basis.
+  // Uncertainty in smaller helpers still lowers the confidence below.
+  const sizing = models.filter((model) => model.size === largest.size);
+  const basis = sizing.some((model) => model.basis === "estimate")
     ? "estimate"
-    : models.some((model) => model.size === largest.size && model.basis === "price")
+    : sizing.some((model) => model.basis === "price")
       ? "price"
       : "parameters";
   const confidence = models.some((model) => model.confidence === "low")
@@ -84,6 +90,24 @@ export function classifyModels(models: ModelRecord[]) {
       ? "medium"
       : "high";
   return { size: largest.size, weights, basis, confidence } as const;
+}
+
+// Plain-language reason for a stack's size badge, naming the models that set its size class.
+export function sizeBasisNote(c: Classification): string {
+  const names = (basis: ModelRecord["basis"]) =>
+    c.models
+      .filter((model) => model.size === c.size && model.basis === basis)
+      .map((model) => model.name)
+      .join(", ");
+  const note =
+    c.basis === "estimate"
+      ? `Estimated for ${names("estimate")}: no verified parameter count or standard token price, so the size class is provisional.`
+      : c.basis === "price"
+        ? `Price proxy: the size class comes from the standard token price of ${names("price")}; parameters are undisclosed.`
+        : `Published size: from the parameter count of ${names("parameters")}.`;
+  return c.models.length > 1
+    ? `${note} Size reflects the largest of ${c.models.length} models; parameters are not summed.`
+    : note;
 }
 
 export interface ChartFilters {
@@ -135,23 +159,33 @@ export function benchmarkChartHref(slug: string, filters: ChartFilters): string 
   return `${url.pathname}${url.search}`;
 }
 
-export function chartResultId(systemName: string): string {
-  return `result-${encodeURIComponent(systemName)}`;
+export function chartResultId(systemName: string, occurrence = 1): string {
+  // encodeURIComponent always escapes "/", so the suffix cannot collide with a system name.
+  return `result-${encodeURIComponent(systemName)}${occurrence > 1 ? `/${occurrence}` : ""}`;
 }
 
-export function benchmarkResultHref(
-  slug: string,
-  filters: ChartFilters,
-  systemName: string
-): string {
+// One DOM id per row, in board order, so repeated system names still get distinct ids.
+export function chartResultIds(rows: { systemName: string }[]): string[] {
+  const seen = new Map<string, number>();
+  return rows.map(({ systemName }) => {
+    const occurrence = (seen.get(systemName) ?? 0) + 1;
+    seen.set(systemName, occurrence);
+    return chartResultId(systemName, occurrence);
+  });
+}
+
+export function benchmarkResultHref(slug: string, filters: ChartFilters, resultId: string): string {
   // Encode the ID again for the URL fragment so native anchor navigation resolves it.
-  return `${benchmarkChartHref(slug, filters)}#${encodeURIComponent(chartResultId(systemName))}`;
+  return `${benchmarkChartHref(slug, filters)}#${encodeURIComponent(resultId)}`;
 }
 
 export function readChartResult(hash: string): string | null {
   try {
     const id = decodeURIComponent(hash.replace(/^#/, ""));
-    return id.startsWith("result-") ? decodeURIComponent(id.slice(7)) || null : null;
+    const match = /^result-([^/]+)(?:\/(?:[2-9]|[1-9]\d+))?$/.exec(id);
+    if (!match) return null;
+    decodeURIComponent(match[1]); // Rejects ids whose name part is not valid percent-encoding.
+    return id;
   } catch {
     return null;
   }
@@ -159,13 +193,16 @@ export function readChartResult(hash: string): string | null {
 
 export function filterResults(rows: ClassifiedResult[], filters: ChartFilters): ClassifiedResult[] {
   return rows
-    .filter(
-      ({ classification: c }) =>
+    .filter(({ classification: c }) => {
+      // Unclassified rows have unknown weights and size: they count as uncertain and match no size.
+      const weights = c?.weights ?? "uncertain";
+      return (
         (filters.weights === "all" ||
           (filters.weights === "other"
-            ? c.weights === "mixed" || c.weights === "uncertain"
-            : c.weights === filters.weights)) &&
-        (!filters.sizes.length || filters.sizes.includes(c.size))
-    )
+            ? weights === "mixed" || weights === "uncertain"
+            : weights === filters.weights)) &&
+        (!filters.sizes.length || (c !== null && filters.sizes.includes(c.size)))
+      );
+    })
     .sort((a, b) => (b.scoreValue ?? -Infinity) - (a.scoreValue ?? -Infinity) || a.rank - b.rank);
 }
