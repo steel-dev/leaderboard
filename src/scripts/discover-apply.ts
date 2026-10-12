@@ -24,6 +24,7 @@ const PROPOSALS_DIR = path.join(OUT_DIR, "proposals");
 const REVIEWED_DIR = path.join(OUT_DIR, "reviewed"); // populated by the review pass (claude-code-action)
 const APPLY_DIR = path.join(OUT_DIR, "apply");
 const SCHEMA_PATH = path.join(ROOT, "src", "data", "schema.json");
+const MODEL_RESEARCH_DIR = path.join(ROOT, "src", "data", "model-research");
 
 interface Entry {
   rank: number;
@@ -290,7 +291,7 @@ async function softVerify(entry: Omit<Entry, "rank">, noFetch: boolean): Promise
 function verifyEmoji(v: VerifyFlag): string {
   switch (v.status) {
     case "verified":
-      return "✅ verified at source";
+      return "✅ score + system token found (manual attribution review required)";
     case "cooccurrence-miss":
       return `⚠️ co-occurrence miss — ${v.detail}`;
     case "pdf-unverifiable":
@@ -312,6 +313,19 @@ function renderAdd(s: SurvivingAdd): string[] {
     `  - _Verbatim:_ "${sanitizeText(s.add.quotedEvidence, 240)}"`,
     `  - _notesShort:_ ${e.notesShort}`,
   ];
+}
+
+// Chart boards keep model research beside the results (<slug>.json or <slug>-N.json). Apply never
+// writes it, so new rows build fine but show as unclassified until a maintainer adds research.
+function modelResearchFiles(slug: string): string[] {
+  if (!fs.existsSync(MODEL_RESEARCH_DIR)) return [];
+  return fs
+    .readdirSync(MODEL_RESEARCH_DIR)
+    .filter(
+      (f) =>
+        f === `${slug}.json` ||
+        (f.startsWith(`${slug}-`) && /^\d+\.json$/.test(f.slice(slug.length + 1)))
+    );
 }
 
 function renderPrBody(
@@ -456,6 +470,14 @@ function renderPrBody(
   lines.push(
     "- [ ] Bump `lastUpdated` for this benchmark in `src/lib/benchmark-hub.ts` (human step)."
   );
+  const researchFiles = modelResearchFiles(p.slug);
+  if (researchFiles.length > 0) {
+    lines.push(
+      `- [ ] Add model research for each new row to ${researchFiles
+        .map((f) => `\`src/data/model-research/${f}\``)
+        .join(" / ")} (human step); until then the chart shows the row as Unclassified.`
+    );
+  }
   lines.push("");
 
   // Sanitized projection of the proposal into the audit block. We do NOT spread raw `...p`: judge
@@ -583,6 +605,8 @@ function loadProposals(slugs: Set<string> | null, week: string | null): Proposal
 // freshness gate caught. Now that past-dated rows ROUTE to a backfill tier (not hard-reject), we keep
 // the catch as a code property: any admitted backfill alongside an out-of-window dismissal means the
 // judge applied two different windows in one proposal. Surfaced as a banner the human clears.
+// The judge schema no longer offers out-of-window (future dates use future-dated), so this only
+// fires for proposals written before that change or edited by hand.
 function windowInconsistency(hasBackfill: boolean, dismissals: ProposalDismissal[]): string | null {
   if (!hasBackfill) return null;
   if (!dismissals.some((d) => d.category === "out-of-window")) return null;

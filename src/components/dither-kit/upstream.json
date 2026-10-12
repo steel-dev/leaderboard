@@ -1,0 +1,25 @@
+{
+  "source": "https://github.com/Boring-Software-Inc/dither-kit",
+  "registries": ["https://www.tripwire.sh/r/core.json", "https://www.tripwire.sh/r/bar-chart.json"],
+  "retrievedAt": "2026-10-10",
+  "license": {
+    "declaredSpdx": "MIT",
+    "source": "https://github.com/Boring-Software-Inc/dither-kit/blob/1e7faee9aa252e499651e6736ed65f7a07d9a6bd/package.json",
+    "checkedAt": "2026-10-11",
+    "notes": "Upstream declares MIT in package.json. This revision bundles no license or notice file, and the manifest supplies no copyright notice. No replacement copyright notice has been invented."
+  },
+  "sha256BeforeLocalChanges": {
+    "bar-canvas.tsx": "80ed40b87eb3dbf3d9f768cf42b3b55f4f738db8b193c1a616f7abf525d83f87",
+    "bar-chart.tsx": "e19ce3540f15756aba615eb19072aeec81d8ac71e51219691cc1d0be004c18bb",
+    "bar.tsx": "2904ff1b0813ae20b976f5a78d57a314729ea3e890b18ba762bbb46d2f550057",
+    "cartesian-root.tsx": "6b5297d75de22ae5a0fc1960bef0419a4984b54ff493e7acd527aa0ccb150098",
+    "chart-context.tsx": "955657f21fdbf7e04b80917be52b7c3839eb535b8d07f15053c06d9320683d8f",
+    "common-context.tsx": "aafb26404977148144a3d81da81a678d5956e14024f394ccdc7ae881dd07e52a",
+    "dither-paint.ts": "1bcd3d7de3ae3091caf63ed4c2c862d80d1899c9b55a70078acb12f7b44e51c7",
+    "lib.ts": "41493601eb53a70f7629f6e50bad233f7185eaad42ba2397ca56ac1afcf1bb5f",
+    "palette.ts": "fd020c230ad818a5d9d6dfdfcb6ef50b0dba012c77f44f1a61449fc9a65947f7",
+    "scales.ts": "62ec74acdd3e335b959423a228b47edd70c14f07a468a385d039f5c6b66ebc2b",
+    "series-context.tsx": "1802f1f488cc46542294f533c55fae03a4b067feca0761df75ce21de8a6a429a",
+    "use-chart-dimensions.ts": "74b7f2a08cce5b891348eed845fc8c218ed16fce362ef4f35587ec4cc864c834"
+  }
+}

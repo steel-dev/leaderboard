@@ -14,22 +14,34 @@
     "discover:research": "tsc -p tsconfig.script.json && node dist/scripts/discover-research.js",
     "discover:judge": "tsc -p tsconfig.script.json && node dist/scripts/discover-judge.js",
     "discover:apply": "tsc -p tsconfig.script.json && node dist/scripts/discover-apply.js",
-    "discover:verify": "tsc -p tsconfig.script.json && node dist/scripts/discover-verify.js"
+    "discover:verify": "tsc -p tsconfig.script.json && node dist/scripts/discover-verify.js",
+    "test:charts": "tsx --test tests/model-classification.test.ts"
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.1",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.0.9",
     "astro": "^5.18.0",
+    "clsx": "^2.1.1",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
     "posthog-js": "^1.225.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "satori": "^0.26.0",
+    "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.0.9"
   },
   "devDependencies": {
     "@ai-sdk/anthropic": "^3.0.0",
     "@eslint/js": "^9.21.0",
     "@steel-dev/atlas": "^0.1.2",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.2.0",
     "@types/node": "^20.11.24",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.26.0",
     "ai": "^6.0.0",
@@ -43,6 +55,7 @@
     "prettier": "^3.5.2",
     "prettier-plugin-astro": "^0.14.1",
     "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.25.0",
     "zod": "^4.1.0"

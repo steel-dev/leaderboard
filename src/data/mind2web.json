@@ -43,6 +43,17 @@
     },
     {
       "rank": 5,
+      "systemName": "CUAWright + GPT-5.5",
+      "organization": "Microsoft Research / Academic Research",
+      "scoreDisplay": "89.4%",
+      "scoreValue": 89.4,
+      "sourceUrl": "https://arxiv.org/html/2610.04116v1",
+      "notesShort": "Paper self-report on the full 300-task suite with official automated evaluation; GPT-5.5 uses a terminal/filesystem harness and generated browser code, so this is a harness result rather than a GUI-only model score.",
+      "reportedAt": "2026-10-02",
+      "isNew": true
+    },
+    {
+      "rank": 6,
       "systemName": "UI-TARS-2",
       "organization": "ByteDance / VLM-Research",
       "scoreDisplay": "88.2%",
@@ -52,7 +63,7 @@
       "reportedAt": "2025-09-02"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "OpenAGI Lux",
       "organization": "OpenAGI Foundation",
       "scoreDisplay": "83.6%",
@@ -62,7 +73,7 @@
       "reportedAt": "2025-12-01"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "Navigator",
       "organization": "Yutori",
       "scoreDisplay": "78.7%",
@@ -72,7 +83,7 @@
       "reportedAt": "2025-11-19"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "ChatGPT Atlas Agent Mode",
       "organization": "OpenAI",
       "scoreDisplay": "71.0%",
@@ -82,7 +93,7 @@
       "reportedAt": "2026-03-05"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "systemName": "Gemini 2.5 Computer Use",
       "organization": "Google DeepMind",
       "scoreDisplay": "69.0%",
@@ -92,7 +103,18 @@
       "reportedAt": "2025-10-07"
     },
     {
-      "rank": 10,
+      "rank": 11,
+      "systemName": "Wuying-Browser-Agent-27B",
+      "organization": "Alibaba Cloud",
+      "scoreDisplay": "66.7%",
+      "scoreValue": 66.7,
+      "sourceUrl": "https://arxiv.org/html/2608.17319v1",
+      "notesShort": "Alibaba self-report: pass@1 on Online-Mind2Web (300-task benchmark), 100 steps, custom browser-use with DOM and screenshots; the judge family also supplies RL rewards, with 96.4% agreement in a 500-trajectory human audit.",
+      "reportedAt": "2026-08-18",
+      "isNew": true
+    },
+    {
+      "rank": 12,
       "systemName": "Stagehand (Gemini 2.5 CU)",
       "organization": "Browserbase",
       "scoreDisplay": "65.0%",
@@ -103,7 +125,7 @@
       "isNew": true
     },
     {
-      "rank": 11,
+      "rank": 13,
       "systemName": "OpenAI Operator",
       "organization": "OpenAI",
       "scoreDisplay": "61.3%",
@@ -113,7 +135,7 @@
       "reportedAt": "2025-04-02"
     },
     {
-      "rank": 12,
+      "rank": 14,
       "systemName": "Claude 4.0",
       "organization": "Anthropic",
       "scoreDisplay": "61.0%",
@@ -123,7 +145,7 @@
       "reportedAt": "2025-11-19"
     },
     {
-      "rank": 13,
+      "rank": 15,
       "systemName": "ACT-1-20250814",
       "organization": "Enhans",
       "scoreDisplay": "57.3%",
@@ -133,7 +155,7 @@
       "reportedAt": "2025-08-14"
     },
     {
-      "rank": 14,
+      "rank": 16,
       "systemName": "Claude Computer Use 3.7 (w/o thinking)",
       "organization": "Anthropic",
       "scoreDisplay": "56.3%",
@@ -143,7 +165,7 @@
       "reportedAt": "2025-02-24"
     },
     {
-      "rank": 15,
+      "rank": 17,
       "systemName": "Claude 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "55.0%",
@@ -153,7 +175,7 @@
       "reportedAt": "2025-11-19"
     },
     {
-      "rank": 15,
+      "rank": 17,
       "systemName": "Stagehand (Sonnet 4.5)",
       "organization": "Browserbase",
       "scoreDisplay": "55.0%",
@@ -163,7 +185,7 @@
       "reportedAt": "2026-03-25"
     },
     {
-      "rank": 17,
+      "rank": 19,
       "systemName": "WebChallenger (GLM-4-32B)",
       "organization": "Independent Research",
       "scoreDisplay": "51.0%",
@@ -175,7 +197,7 @@
       "isNew": true
     },
     {
-      "rank": 18,
+      "rank": 20,
       "systemName": "ACT-1-20250703",
       "organization": "Enhans",
       "scoreDisplay": "45.7%",
@@ -185,7 +207,7 @@
       "reportedAt": "2025-07-03"
     },
     {
-      "rank": 19,
+      "rank": 21,
       "systemName": "SeeAct (gpt-4o)",
       "organization": "OSU NLP",
       "scoreDisplay": "30.7%",
@@ -195,7 +217,7 @@
       "reportedAt": "2024-01-16"
     },
     {
-      "rank": 20,
+      "rank": 22,
       "systemName": "Browser Use (gpt-4o)",
       "organization": "Browser Use",
       "scoreDisplay": "30.0%",
@@ -205,7 +227,7 @@
       "reportedAt": "2024-11-06"
     },
     {
-      "rank": 20,
+      "rank": 22,
       "systemName": "HAL Leaderboard baseline (best open)",
       "organization": "Princeton / OSU",
       "scoreDisplay": "~30%",
@@ -215,7 +237,7 @@
       "reportedAt": "2025-04"
     },
     {
-      "rank": 22,
+      "rank": 24,
       "systemName": "Claude Computer Use 3.5",
       "organization": "Anthropic",
       "scoreDisplay": "29.0%",
@@ -225,7 +247,7 @@
       "reportedAt": "2024-10-22"
     },
     {
-      "rank": 23,
+      "rank": 25,
       "systemName": "Agent-E (gpt-4o)",
       "organization": "Emergence AI",
       "scoreDisplay": "28.0%",

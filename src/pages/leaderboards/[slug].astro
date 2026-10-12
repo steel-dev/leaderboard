@@ -5,8 +5,11 @@ import CopyMarkdownButton from "../../components/CopyMarkdownButton.astro";
 import FaqList from "../../components/FaqList.astro";
 import TocObserver from "../../components/TocObserver.astro";
 import AtlasCallout from "../../components/AtlasCallout.astro";
+import LeaderboardExplorer from "../../components/LeaderboardExplorer";
+import { getBenchmarkChartRows } from "../../lib/benchmark-charts";
 import { getAtlasNote } from "../../lib/atlas";
 import {
+  benchmarkScopeLabels,
   buildBenchmarkFaqFacts,
   generateBenchmarkFaq,
   getAllBenchmarkPages,
@@ -33,6 +36,7 @@ const atlasNote = getAtlasNote(page.meta.slug);
 const pageUrl = `https://leaderboard.steel.dev/leaderboards/${page.meta.slug}/`;
 const pageTitle = page.meta.seoTitle ?? renderBenchmarkTitle(page.meta);
 const pageDescription = page.meta.seoDescription ?? renderBenchmarkDescription(page.meta);
+const chartRows = getBenchmarkChartRows(page.meta.slug, page.results);
 
 const faqSchema = JSON.stringify({
   "@context": "https://schema.org",
@@ -131,12 +135,24 @@ const breadcrumbSchema = JSON.stringify({
 
     <article class="article-shell benchmark-content-panel">
       <section id="leaderboard" class="scroll-mt-8">
-        <BenchmarkResultsTable
-          rows={page.results}
-          scope={page.meta.scope}
-          heading="Leaderboard"
-          slug={page.meta.slug}
-        />
+        {
+          chartRows ? (
+            <LeaderboardExplorer
+              rows={chartRows}
+              benchmark={page.meta.name}
+              scope={benchmarkScopeLabels[page.meta.scope]}
+              compact
+              client:load
+            />
+          ) : (
+            <BenchmarkResultsTable
+              rows={page.results}
+              scope={page.meta.scope}
+              heading="Leaderboard"
+              slug={page.meta.slug}
+            />
+          )
+        }
       </section>
 
       {atlasNote && <AtlasCallout note={atlasNote} class="mt-6" />}

@@ -58,7 +58,9 @@ const candidateSchema = z.object({
       variantName: z.string().optional().describe("Variant name when isVariant is true."),
       quotedEvidence: z
         .string()
-        .describe("Verbatim sentence from the fetched source containing the exact number."),
+        .describe(
+          "Verbatim excerpt from the fetched source containing the exact number and attributable system/configuration; printed table cells and chart labels are valid."
+        ),
       sourceTier: z.enum([
         "official-leaderboard",
         "paper",
@@ -168,11 +170,12 @@ Search broadly and FETCH each source (a search snippet is NOT a score):
 4. System-card and evaluation PDFs.
 5. arXiv FULL TEXT — recover truncated numbers like "achieves 41..." from the HTML/PDF.
 
-For EACH score, return: canonical system/agent name, reporting organization, the absolute score (scoreDisplay + numeric scoreValue), the primary source URL that CONTAINS the score (never a homepage), publication date, a one-line setup note (tools/attempts/judge/subset if non-standard), isSelfReported (vendor == reporting org), isVariant + variantName, a VERBATIM sentence from the fetched source containing the exact number (quotedEvidence), and sourceTier.
+For EACH score, return: canonical system/agent name, reporting organization, the absolute score (scoreDisplay + numeric scoreValue), the primary source URL that CONTAINS the score (never a homepage), publication date, a one-line setup note (tools/attempts/judge/subset if non-standard), isSelfReported (vendor == reporting org), isVariant + variantName, a VERBATIM source excerpt containing the exact number and attributable system/configuration (quotedEvidence), and sourceTier.
 
 HARD RULES:
-- Only ABSOLUTE, COMPLETE, citable numbers. Never a delta ("+8 points"), never "SOTA" without a number, never a truncated/chart-inferred/guessed/rounded number. If the exact number cannot be read from a fetched source, OMIT it.
-- Only the ORIGINAL benchmark. Variant scores (e.g. BrowseComp-Plus / V3, SWE-bench Multilingual / Pro, RepoMirage, Online-Mind2Web-as-variant) must set isVariant=true and variantName, and are tracked separately — not as original rows.
+- Only ABSOLUTE, COMPLETE, citable numbers. Exact printed table cells or chart labels are valid if the system/configuration is unambiguous; never estimate from chart geometry. Never a delta ("+8 points"), "SOTA" without a number, or a truncated/guessed/rounded number. If the exact number cannot be read from a fetched source, OMIT it.
+- Match the TARGET benchmark. Separately named variants (e.g. BrowseComp-Plus / V3, SWE-bench Multilingual / Pro, RepoMirage) must set isVariant=true and variantName. Online-Mind2Web is valid on its own page; mark it as a variant only when researching original Mind2Web.
+- Documented custom harnesses and judges are valid candidates; describe them explicitly rather than marking the benchmark as a variant solely for that difference. For filtered sets or changed releases/splits, record the denominator, exclusions, version, metric, and attempt policy so the judge can apply the contributor guide and page-specific rules.
 - Every scoreValue MUST be backed by quotedEvidence found verbatim at sourceUrl in a fetched source. No source, no candidate.
 - Name collisions are off-topic (e.g. ESA Gaia stellar spectroscopy is NOT the GAIA agent benchmark) — omit them.
 

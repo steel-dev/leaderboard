@@ -40,7 +40,7 @@
       "organization": "Magnitude",
       "scoreDisplay": "93.9%",
       "scoreValue": 93.9,
-      "sourceUrl": "https://magnitude.run/webvoyager",
+      "sourceUrl": "https://github.com/magnitudedev/webvoyager",
       "repoUrl": "https://github.com/magnitudedev/browser-agent",
       "notesShort": "Open-source architecture utilizing a modular agentic stack.",
       "reportedAt": "2025-07"
@@ -117,7 +117,7 @@
       "organization": "OpenAI",
       "scoreDisplay": "87%",
       "scoreValue": 87,
-      "sourceUrl": "https://openai.com/index/introducing-operator/",
+      "sourceUrl": "https://openai.com/index/computer-using-agent/",
       "notesShort": "Native browser integration using proprietary vision-control models.",
       "reportedAt": "2025-01"
     },
@@ -155,6 +155,17 @@
     },
     {
       "rank": 15,
+      "systemName": "Wuying-Browser-Agent-27B",
+      "organization": "Alibaba Cloud",
+      "scoreDisplay": "80.6%",
+      "scoreValue": 80.6,
+      "sourceUrl": "https://arxiv.org/html/2608.17319v1",
+      "notesShort": "Alibaba self-report: pass@1 on WebVoyager (643-task benchmark), 100 steps, custom browser-use with DOM and screenshots; the judge family also supplies RL rewards, with 96.4% agreement in a 500-trajectory human audit.",
+      "reportedAt": "2026-08-18",
+      "isNew": true
+    },
+    {
+      "rank": 16,
       "systemName": "Agent-E",
       "organization": "Emergence AI",
       "scoreDisplay": "73.2%",
@@ -165,7 +176,7 @@
       "reportedAt": "2024-07"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "WebSight",
       "organization": "Academic Research",
       "scoreDisplay": "68%",
@@ -175,17 +186,17 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "systemName": "Runner H 0.1",
       "organization": "H Company",
       "scoreDisplay": "67%",
       "scoreValue": 67,
-      "sourceUrl": "https://www.hcompany.ai/blog/a-research-update",
+      "sourceUrl": "https://lp.hcompany.ai/blog/a-research-update",
       "notesShort": "Foundational agent architecture for general web interaction.",
       "reportedAt": "2025-03"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "WebVoyager",
       "organization": "Academic Research",
       "scoreDisplay": "59.1%",
@@ -196,7 +207,7 @@
       "reportedAt": "2024-01"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "Anthropic Computer Use 3.5",
       "organization": "Anthropic",
       "scoreDisplay": "56.0%",
@@ -206,7 +217,7 @@
       "reportedAt": "2024-11"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "systemName": "WILBUR",
       "organization": "Bardeen / UC Berkeley",
       "scoreDisplay": "53%",
@@ -216,7 +227,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "systemName": "GPT-4 (All Tools)",
       "organization": "OpenAI",
       "scoreDisplay": "30.8%",

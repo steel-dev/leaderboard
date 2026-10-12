@@ -5,7 +5,7 @@ import tseslint from "typescript-eslint";
 export default [
   // Global configuration
   {
-    ignores: ["dist/**", "node_modules/**", "**/*.astro", "**/*.d.ts"],
+    ignores: ["dist/**", "node_modules/**", "tmp/**", "**/*.astro", "**/*.d.ts"],
   },
 
   // Base JS configuration

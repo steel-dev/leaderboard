@@ -16,23 +16,23 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
-Browser agents · Agent scope · 21 entries tracked
+Browser agents · Agent scope · 22 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
 | 1 | browser-control (Fable 5) **(new)** | Om Labs | [99.19%](https://github.com/omxyz/webvoyager) |
 | 2 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
 | 3 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
-| 4 | Magnitude | Magnitude | [93.9%](https://magnitude.run/webvoyager) |
+| 4 | Magnitude | Magnitude | [93.9%](https://github.com/magnitudedev/webvoyager) |
 | 5 | Surfer-H + Holo1 | H Company | [92.2%](https://arxiv.org/pdf/2506.02865) |
 
-[See all 21 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
+[See all 22 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 ---
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 100 entries tracked
+Research/search · Mixed scope · 102 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -42,23 +42,23 @@ Research/search · Mixed scope · 100 entries tracked
 | 4 | Claude Opus 5 **(new)** | Anthropic | [90.8%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
 | 5 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
 
-[See all 100 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 102 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
 ---
 
 ### [DRACO](https://leaderboard.steel.dev/leaderboards/draco)
 
-Research/search · Mixed scope · 15 entries tracked
+Research/search · Mixed scope · 17 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
 | 1 | Claude Opus 5 **(new)** | Anthropic | [88.6%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
-| 2 | Claude Sonnet 5.5 **(new)** | Anthropic | [87.0%](https://www.anthropic.com/claude-sonnet-5-5-system-card) |
-| 3 | Claude Mythos 5 **(new)** | Anthropic | [86.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 4 | Claude Mythos Preview | Anthropic | [83.6%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
-| 5 | Claude Opus 4.8 | Anthropic | [80.4%](https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf) |
+| 2 | Claude Opus 5.5 **(new)** | Anthropic | [87.4%](https://www.anthropic.com/claude-opus-5-5-system-card) |
+| 3 | Claude Sonnet 5.5 **(new)** | Anthropic | [87.0%](https://www.anthropic.com/claude-sonnet-5-5-system-card) |
+| 4 | Claude Mythos 5 **(new)** | Anthropic | [86.4%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
+| 5 | Claude Mythos Preview | Anthropic | [83.6%](https://www.anthropic.com/claude-fable-5-mythos-5-system-card) |
 
-[See all 15 entries →](https://leaderboard.steel.dev/leaderboards/draco)
+[See all 17 entries →](https://leaderboard.steel.dev/leaderboards/draco)
 
 ---
 
@@ -192,7 +192,7 @@ Browser agents · Agent scope · 11 entries tracked
 
 ### [Online-Mind2Web](https://leaderboard.steel.dev/leaderboards/online-mind2web)
 
-Browser agents · Agent scope · 23 entries tracked
+Browser agents · Agent scope · 25 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -200,9 +200,9 @@ Browser agents · Agent scope · 23 entries tracked
 | 2 | GPT-5.4 Native Computer Use | OpenAI | [93.0%](https://openai.com/index/introducing-gpt-5-4/) |
 | 3 | ABP + Claude Opus 4.6 | theredsix | [90.53%](https://github.com/theredsix/abp-online-mind2web-results) |
 | 4 | TinyFish | TinyFish AI | [90.0%](https://www.tinyfish.ai/blog/mind2web) |
-| 5 | UI-TARS-2 | ByteDance / VLM-Research | [88.2%](https://arxiv.org/abs/2509.02544) |
+| 5 | CUAWright + GPT-5.5 **(new)** | Microsoft Research / Academic Research | [89.4%](https://arxiv.org/html/2610.04116v1) |
 
-[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/online-mind2web)
+[See all 25 entries →](https://leaderboard.steel.dev/leaderboards/online-mind2web)
 
 ---
 

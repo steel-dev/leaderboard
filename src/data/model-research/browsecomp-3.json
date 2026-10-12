@@ -1,0 +1,1330 @@
+{
+  "models": [
+    {
+      "id": "grok-4-fast",
+      "name": "Grok 4 Fast",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.2,
+      "outputUsdPerMillion": 0.5,
+      "size": "medium",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameter count undisclosed. Standard uncached short-context rates; the launch lists higher long-context rates. Medium is a price proxy, not a parameter estimate.",
+      "sources": [
+        {
+          "title": "Grok 4 Fast launch and standard pricing",
+          "url": "https://x.ai/news/grok-4-fast"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "minimax-m2",
+      "name": "MiniMax M2",
+      "weights": "open",
+      "totalParametersB": 230,
+      "activeParametersB": 10,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published architectural total; checkpoint storage is approximately 228.7B tensors. Released modified-MIT checkpoint contains 130 safetensor shards. Active count does not determine size.",
+      "sources": [
+        {
+          "title": "MiniMaxAI/MiniMax-M2 model card and released files",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2"
+        },
+        {
+          "title": "MiniMaxAI/MiniMax-M2 checkpoint inventory",
+          "url": "https://huggingface.co/api/models/MiniMaxAI/MiniMax-M2"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "exa-agent-low-undisclosed",
+      "name": "Exa Agent Low undisclosed model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Exa describes a combination of top language models and model fusion without naming this evaluated tier\u2019s backbones. Large is a provisional frontier-model inference. No token prices or parameter counts inferred from its per-query cost; exact weights remain uncertain.",
+      "sources": [
+        {
+          "title": "Exa Agent launch",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "tongyi-deepresearch-30b-a3b",
+      "name": "Tongyi DeepResearch 30B-A3B",
+      "weights": "open",
+      "totalParametersB": 30.5,
+      "activeParametersB": 3.3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Repository publishes 30.5B total and 3.3B active; model card rounds these to 30B/3B. Exact checkpoint weights are released. A separate runtime summary model is tracked at submission level.",
+      "sources": [
+        {
+          "title": "Alibaba-NLP/Tongyi-DeepResearch-30B-A3B model card and released files",
+          "url": "https://huggingface.co/Alibaba-NLP/Tongyi-DeepResearch-30B-A3B"
+        },
+        {
+          "title": "Alibaba-NLP/DeepResearch repository",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-4-7-flash",
+      "name": "GLM-4.7-Flash",
+      "weights": "open",
+      "totalParametersB": 30,
+      "activeParametersB": 3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Model card describes 30B-A3B; MIT checkpoint files are publicly available. Stored tensor inventory is approximately 31.2B, without affecting the category.",
+      "sources": [
+        {
+          "title": "zai-org/GLM-4.7-Flash model card and released files",
+          "url": "https://huggingface.co/zai-org/GLM-4.7-Flash"
+        },
+        {
+          "title": "zai-org/GLM-4.7-Flash checkpoint inventory",
+          "url": "https://huggingface.co/api/models/zai-org/GLM-4.7-Flash"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-4",
+      "name": "GPT-5.4",
+      "weights": "closed",
+      "inputUsdPerMillion": 2.5,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Official standard uncached short-context pricing. Parameters and downloadable weights are not published. Prompts above 272K tokens have a surcharge; tool fees are excluded from the proxy.",
+      "sources": [
+        {
+          "title": "GPT-5.4 model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepseek-v3-2-exp",
+      "name": "DeepSeek-V3.2-Exp",
+      "weights": "open",
+      "totalParametersB": 685.4,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Released MIT checkpoint; 685.397B is the repository safetensors inventory rounded to 0.1B, including auxiliary tensors. The card says V3.1-Terminus plus sparse attention; exact activated count is not asserted here.",
+      "sources": [
+        {
+          "title": "deepseek-ai/DeepSeek-V3.2-Exp model card and released files",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp"
+        },
+        {
+          "title": "deepseek-ai/DeepSeek-V3.2-Exp checkpoint inventory",
+          "url": "https://huggingface.co/api/models/deepseek-ai/DeepSeek-V3.2-Exp"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agentfounder-30b",
+      "name": "AgentFounder-30B",
+      "weights": "uncertain",
+      "totalParametersB": 30,
+      "activeParametersB": 3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Post-trained Qwen3-30B-A3B variant from the paper. No exact AgentFounder evaluated checkpoint was located; released Tongyi DeepResearch is a different result and is not substituted.",
+      "sources": [
+        {
+          "title": "AgentFounder paper",
+          "url": "https://arxiv.org/html/2509.13310v1"
+        },
+        {
+          "title": "AgentFounder project page",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/Agent/AgentFounder"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "sarvam-30b",
+      "name": "Sarvam-30B",
+      "weights": "open",
+      "totalParametersB": 30,
+      "activeParametersB": 2.4,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published 30B architectural class; full checkpoint inventory is approximately 32.15B. The reported 2.4B active count excludes embeddings. Apache-2.0 weights are available.",
+      "sources": [
+        {
+          "title": "sarvamai/sarvam-30b model card and released files",
+          "url": "https://huggingface.co/sarvamai/sarvam-30b"
+        },
+        {
+          "title": "sarvamai/sarvam-30b checkpoint inventory",
+          "url": "https://huggingface.co/api/models/sarvamai/sarvam-30b"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepminer-32b",
+      "name": "DeepMiner-32B",
+      "weights": "uncertain",
+      "totalParametersB": 32,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Paper identifies an RL-trained Qwen3-32B checkpoint with dynamic context windows and no external summarization model. No author-hosted evaluated checkpoint was located; an unrelated similarly named HF upload is not evidence of release.",
+      "sources": [
+        {
+          "title": "DeepMiner paper",
+          "url": "https://arxiv.org/html/2510.08276v1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "nemotron-3-super-120b-a12b",
+      "name": "Nemotron 3 Super 120B-A12B",
+      "weights": "open",
+      "totalParametersB": 120,
+      "activeParametersB": 12,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "NVIDIA publishes 120B total/12B active. Public BF16 checkpoint exists under the full NVIDIA-prefixed repository name; the leaderboard\u2019s shorter HF URL failed retrieval. NVIDIA open model license.",
+      "sources": [
+        {
+          "title": "NVIDIA model card",
+          "url": "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b/modelcard"
+        },
+        {
+          "title": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16 model card and released files",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepseek-v3-1",
+      "name": "DeepSeek-V3.1",
+      "weights": "open",
+      "totalParametersB": 671,
+      "activeParametersB": 37,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Official model card reports 671B total and 37B active; released MIT checkpoint includes additional storage tensors, accounting for the larger HF inventory.",
+      "sources": [
+        {
+          "title": "deepseek-ai/DeepSeek-V3.1 model card and released files",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
+        },
+        {
+          "title": "deepseek-ai/DeepSeek-V3.1 checkpoint inventory",
+          "url": "https://huggingface.co/api/models/deepseek-ai/DeepSeek-V3.1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepseek-r1",
+      "name": "DeepSeek-R1",
+      "weights": "open",
+      "totalParametersB": 671,
+      "activeParametersB": 37,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Original R1, distinct from the May 2025 update; official model table reports 671B total/37B active. Public MIT checkpoint. BrowseMaster names this version as executor.",
+      "sources": [
+        {
+          "title": "deepseek-ai/DeepSeek-R1 model card and released files",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+        },
+        {
+          "title": "deepseek-ai/DeepSeek-R1 checkpoint inventory",
+          "url": "https://huggingface.co/api/models/deepseek-ai/DeepSeek-R1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepseek-r1-0528",
+      "name": "DeepSeek-R1-0528",
+      "weights": "open",
+      "totalParametersB": 671,
+      "activeParametersB": 37,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "May 28 update of R1 retains the published 671B/37B architecture; its MIT weights are present. The HF tensor count includes auxiliary tensors and is larger than the architectural count.",
+      "sources": [
+        {
+          "title": "deepseek-ai/DeepSeek-R1-0528 model card and released files",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+        },
+        {
+          "title": "deepseek-ai/DeepSeek-R1 model card and released files",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "openseeker-v1-30b-sft",
+      "name": "OpenSeeker v1 30B SFT",
+      "weights": "open",
+      "totalParametersB": 30,
+      "activeParametersB": 3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Evaluated v1 checkpoint fine-tunes Qwen3-30B-A3B-Thinking-2507. Public MIT weights verified. Synthesis teacher is training-only; runtime Visit summarizer identity is tracked separately.",
+      "sources": [
+        {
+          "title": "PolarSeeker/OpenSeeker-v1-30B-SFT model card and released files",
+          "url": "https://huggingface.co/PolarSeeker/OpenSeeker-v1-30B-SFT"
+        },
+        {
+          "title": "OpenSeeker paper",
+          "url": "https://arxiv.org/html/2603.15594v1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-4-5",
+      "name": "GLM-4.5",
+      "weights": "open",
+      "totalParametersB": 355,
+      "activeParametersB": 32,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published 355B total/32B active architecture, MIT weights. Stored tensor count is approximately 358.3B; the category is unchanged.",
+      "sources": [
+        {
+          "title": "zai-org/GLM-4.5 model card and released files",
+          "url": "https://huggingface.co/zai-org/GLM-4.5"
+        },
+        {
+          "title": "zai-org/GLM-4.5 checkpoint inventory",
+          "url": "https://huggingface.co/api/models/zai-org/GLM-4.5"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-4-5-air",
+      "name": "GLM-4.5-Air",
+      "weights": "open",
+      "totalParametersB": 106,
+      "activeParametersB": 12,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published 106B total/12B active architecture, MIT weights. Stored tensor count is approximately 110.5B; the category is unchanged.",
+      "sources": [
+        {
+          "title": "zai-org/GLM-4.5-Air model card and released files",
+          "url": "https://huggingface.co/zai-org/GLM-4.5-Air"
+        },
+        {
+          "title": "zai-org/GLM-4.5-Air checkpoint inventory",
+          "url": "https://huggingface.co/api/models/zai-org/GLM-4.5-Air"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "perplexity-agent-pro-undisclosed",
+      "name": "Perplexity Agent Pro historical stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Historical June 2026 Pro evaluation did not pin its underlying model. Large is a provisional inference from the multi-step flagship-model preset at launch. Current dynamic presets have changed and cannot verify the historical stack; per-query costs are not token prices.",
+      "sources": [
+        {
+          "title": "Exa Agent launch",
+          "url": "https://exa.ai/blog/exa-agent"
+        },
+        {
+          "title": "Perplexity preset configuration and versioning",
+          "url": "https://docs.perplexity.ai/docs/agent-api/presets"
+        },
+        {
+          "title": "Agent API launch",
+          "url": "https://community.perplexity.ai/t/introducing-the-agent-api-a-managed-runtime-for-agentic-workflows/4733"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "webexplorer-8b",
+      "name": "WebExplorer-8B",
+      "weights": "open",
+      "totalParametersB": 8,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Qwen3-8B-derived RL checkpoint is released under Apache-2.0. The 15.7% result uses Avg@4 and an LLM judge; scoring judges are not runtime backbone models.",
+      "sources": [
+        {
+          "title": "hkust-nlp/WebExplorer-8B model card and released files",
+          "url": "https://huggingface.co/hkust-nlp/WebExplorer-8B"
+        },
+        {
+          "title": "WebExplorer paper",
+          "url": "https://arxiv.org/html/2509.06501v1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "infoagent-14b",
+      "name": "InfoAgent-14B",
+      "weights": "uncertain",
+      "totalParametersB": 14,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Evaluated Qwen3-14B post-trained model. The current Microsoft HF repository contains RE-TRAC-30B-A3B weights, not this exact 14B checkpoint. Do not treat the later release as proof of the evaluated checkpoint\u2019s availability.",
+      "sources": [
+        {
+          "title": "InfoAgent paper, especially appendix B.2",
+          "url": "https://arxiv.org/html/2509.25189v1"
+        },
+        {
+          "title": "microsoft/InfoAgent repository",
+          "url": "https://github.com/microsoft/InfoAgent"
+        },
+        {
+          "title": "microsoft/InfoAgent model card and released files",
+          "url": "https://huggingface.co/microsoft/InfoAgent"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4o-mini",
+      "name": "GPT-4o mini",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "size": "medium",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Standard uncached input/output pricing gives a $0.2625/M blend: Medium price proxy. InfoAgent uses this hosted model for search snippets. Parameter count is undisclosed.",
+      "sources": [
+        {
+          "title": "GPT-4o mini model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4o-mini"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen3-embedding-0-6b",
+      "name": "Qwen3 Embedding 0.6B",
+      "weights": "open",
+      "totalParametersB": 0.6,
+      "size": "tiny",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Public Apache-2.0 embedding checkpoint, used in InfoAgent\u2019s retrieval environment.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen3-Embedding-0.6B model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen3-reranker-0-6b",
+      "name": "Qwen3 Reranker 0.6B",
+      "weights": "open",
+      "totalParametersB": 0.6,
+      "size": "tiny",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Public Apache-2.0 reranker checkpoint, used in InfoAgent\u2019s retrieval environment.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen3-Reranker-0.6B model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen3-Reranker-0.6B"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepdive-32b",
+      "name": "DeepDive-32B",
+      "weights": "uncertain",
+      "totalParametersB": 32,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "The authors\u2019 repository identifies a 32B trained model but its model table still marks Hugging Face release as coming soon. Exact checkpoint availability remains unverified. OpenReview PDF retrieval encountered browser verification.",
+      "sources": [
+        {
+          "title": "THUDM/DeepDive repository",
+          "url": "https://github.com/THUDM/DeepDive"
+        },
+        {
+          "title": "DeepDive paper (retrieval encountered browser verification)",
+          "url": "https://openreview.net/pdf?id=gA8mn8eXjo"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "exa-research-pro-undisclosed",
+      "name": "Exa Research Pro historical stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The 2025 Research Pro row is a hosted research system, without a pinned backbone or token price. Large is provisional based on Exa\u2019s documented frontier research-model approach, which is not proof of this earlier stack. The historical score and product identity are confirmed by Parallel\u2019s dated September 2025 report.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        },
+        {
+          "title": "Exa Agent launch",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "websailor-72b",
+      "name": "WebSailor-72B",
+      "weights": "uncertain",
+      "totalParametersB": 72,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Paper identifies 72B evaluated backbone. No official 72B checkpoint was found; the parent HF repository has no weight shards and says coming soon. Released 7B and 32B versions do not prove 72B availability.",
+      "sources": [
+        {
+          "title": "WebSailor paper, appendix A.1",
+          "url": "https://arxiv.org/html/2507.02592v1"
+        },
+        {
+          "title": "Alibaba-NLP/WebSailor model card and released files",
+          "url": "https://huggingface.co/Alibaba-NLP/WebSailor"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "websailor-32b",
+      "name": "WebSailor-32B",
+      "weights": "open",
+      "totalParametersB": 32,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Public Apache-2.0 checkpoint verified. The evaluation also uses Qwen2.5-72B-Instruct for webpage summaries; classify the complete runtime stack separately.",
+      "sources": [
+        {
+          "title": "Alibaba-NLP/WebSailor-32B model card and released files",
+          "url": "https://huggingface.co/Alibaba-NLP/WebSailor-32B"
+        },
+        {
+          "title": "WebSailor paper, appendix A.1",
+          "url": "https://arxiv.org/html/2507.02592v1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "websailor-7b",
+      "name": "WebSailor-7B",
+      "weights": "open",
+      "totalParametersB": 7,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Public Apache-2.0 checkpoint verified. The evaluation also uses Qwen2.5-72B-Instruct for webpage summaries; classify the complete runtime stack separately.",
+      "sources": [
+        {
+          "title": "Alibaba-NLP/WebSailor-7B model card and released files",
+          "url": "https://huggingface.co/Alibaba-NLP/WebSailor-7B"
+        },
+        {
+          "title": "WebSailor paper, appendix A.1",
+          "url": "https://arxiv.org/html/2507.02592v1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen2-5-72b-instruct",
+      "name": "Qwen2.5-72B-Instruct",
+      "weights": "open",
+      "totalParametersB": 72.7,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Published total is 72.7B, with 70B non-embedding parameters. Public weights under the Qwen license. WebSailor\u2019s evaluation instructions explicitly name this as summary model.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen2.5-72B-Instruct model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "perplexity-agent-fast-undisclosed",
+      "name": "Perplexity Agent Fast historical stack",
+      "weights": "uncertain",
+      "size": "medium",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "June 2026 Fast preset is not pinned. Medium is a provisional estimate based on the provider\u2019s low-cost, single-lookup preset role, not on the $0.005/query figure. Current preset models are mutable and do not prove historical identity or weights availability.",
+      "sources": [
+        {
+          "title": "Exa Agent launch",
+          "url": "https://exa.ai/blog/exa-agent"
+        },
+        {
+          "title": "Perplexity preset configuration and versioning",
+          "url": "https://docs.perplexity.ai/docs/agent-api/presets"
+        },
+        {
+          "title": "Agent API launch",
+          "url": "https://community.perplexity.ai/t/introducing-the-agent-api-a-managed-runtime-for-agentic-workflows/4733"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "openai-o1",
+      "name": "OpenAI o1",
+      "weights": "closed",
+      "inputUsdPerMillion": 15,
+      "outputUsdPerMillion": 60,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Published standard uncached rates for the original full o1 model; no parameter count published. Original BrowseComp baseline has no browsing tools.",
+      "sources": [
+        {
+          "title": "OpenAI o1 model documentation",
+          "url": "https://developers.openai.com/api/docs/models/o1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-opus-4-1",
+      "name": "Claude Opus 4.1",
+      "weights": "closed",
+      "inputUsdPerMillion": 15,
+      "outputUsdPerMillion": 75,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Standard input/output prices, excluding cache and batch discounts. Exact parameter count and model weights are not public. Historical Parallel test is distinct from Anthropic\u2019s own evaluation.",
+      "sources": [
+        {
+          "title": "Claude standard token pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "sonar-deep-research-undisclosed",
+      "name": "Perplexity Sonar Deep Research historical stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Legacy 2025 Sonar research stack has no published parameter count in retrieved sources. Large is provisional based on its long-reasoning research configuration. Historical token rates could not be reverified: old model/pricing pages now redirect to the newer Agent API. No replacement model is substituted.",
+      "sources": [
+        {
+          "title": "Sonar migration documentation",
+          "url": "https://docs.perplexity.ai/docs/agent-api/migrate-from-sonar/overview"
+        },
+        {
+          "title": "Perplexity historical changelog",
+          "url": "https://docs.perplexity.ai/docs/resources/changelog"
+        },
+        {
+          "title": "Parallel September 2025 benchmark report",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4o-2024-08-06",
+      "name": "GPT-4o (2024-08-06)",
+      "weights": "closed",
+      "inputUsdPerMillion": 2.5,
+      "outputUsdPerMillion": 10,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "The BrowseComp paper section 4.1 pins the no-browsing baseline to gpt-4o-2024-08-06. Official GPT-4o documentation lists this snapshot with standard uncached text pricing of $2.50 input/$10 output per million tokens. The $4.375/M blend is a Large price proxy; parameter count is undisclosed.",
+      "sources": [
+        {
+          "title": "GPT-4o model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4o"
+        },
+        {
+          "title": "BrowseComp paper, section 4.1: evaluated model snapshots",
+          "url": "https://arxiv.org/html/2504.12516"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4o-search-preview-2025-03-11",
+      "name": "GPT-4o Search Preview (2025-03-11)",
+      "weights": "closed",
+      "inputUsdPerMillion": 2.5,
+      "outputUsdPerMillion": 10,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "The BrowseComp paper section 4.1 pins GPT-4o with browsing to this specialized search model. Official documentation lists the exact snapshot, now deprecated, with standard uncached text prices of $2.50 input/$10 output per million tokens. The $4.375/M blend is a Large price proxy. Search tool-call fees are excluded; parameter count is undisclosed.",
+      "sources": [
+        {
+          "title": "GPT-4o Search Preview model documentation and snapshot pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4o-search-preview"
+        },
+        {
+          "title": "BrowseComp paper, section 4.1: evaluated model snapshots",
+          "url": "https://arxiv.org/html/2504.12516"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4-5",
+      "name": "GPT-4.5",
+      "weights": "closed",
+      "inputUsdPerMillion": 75,
+      "outputUsdPerMillion": 150,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Published standard uncached rates for GPT-4.5 Preview (2025-02-27); API is now deprecated. Parameter count and weights are not published.",
+      "sources": [
+        {
+          "title": "GPT-4.5 Preview model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4.5-preview"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "tongyi-deepresearch-summary-unknown",
+      "name": "Tongyi DeepResearch undisclosed summarizer",
+      "weights": "uncertain",
+      "size": "medium",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "A webpage summary model is required, but evaluated identity and weights are not published in the inspected source/configuration. Medium is a low-confidence provisional category informed by the related WebSailor pipeline\u2019s 72B summary helper; it is not an asserted parameter count or confirmed model identity.",
+      "sources": [
+        {
+          "title": "Tongyi DeepResearch tool appendix",
+          "url": "https://arxiv.org/html/2510.24701v1"
+        },
+        {
+          "title": "Summary model configuration",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/blob/main/.env.example"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agentfounder-summary-unknown",
+      "name": "AgentFounder undisclosed summarizer",
+      "weights": "uncertain",
+      "size": "medium",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "A webpage summary model is required, but evaluated identity and weights are not published in the inspected source/configuration. Medium is a low-confidence provisional category informed by the related WebSailor pipeline\u2019s 72B summary helper; it is not an asserted parameter count or confirmed model identity.",
+      "sources": [
+        {
+          "title": "AgentFounder paper",
+          "url": "https://arxiv.org/html/2509.13310v1"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "openseeker-summary-unknown",
+      "name": "OpenSeeker undisclosed Visit summarizer",
+      "weights": "uncertain",
+      "size": "medium",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "A webpage summary model is required, but evaluated identity and weights are not published in the inspected source/configuration. Medium is a low-confidence provisional category informed by the related WebSailor pipeline\u2019s 72B summary helper; it is not an asserted parameter count or confirmed model identity. This is the runtime Visit helper; the training-only historical-context teacher is excluded.",
+      "sources": [
+        {
+          "title": "OpenSeeker runtime tool calls",
+          "url": "https://github.com/PolarSeeker/OpenSeeker/blob/main/src/llm_tool_openseeker.py"
+        },
+        {
+          "title": "OpenSeeker Visit implementation",
+          "url": "https://github.com/PolarSeeker/OpenSeeker/blob/main/src/tools/visit.py"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    }
+  ],
+  "submissions": [
+    {
+      "systemName": "Grok 4 Fast",
+      "kind": "model",
+      "modelIds": ["grok-4-fast"],
+      "harnessCode": "uncertain",
+      "notes": "Pass@1 agentic search result; reported by xAI.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://x.ai/news/grok-4-fast"
+        }
+      ]
+    },
+    {
+      "systemName": "MiniMax M2",
+      "kind": "model",
+      "modelIds": ["minimax-m2"],
+      "harnessCode": "not-applicable",
+      "notes": "Open-weight model; baseline row reported in MiniMax M2.5 announcement.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://www.minimax.io/news/minimax-m25"
+        }
+      ]
+    },
+    {
+      "systemName": "Exa Agent Low",
+      "kind": "system",
+      "modelIds": ["exa-agent-low-undisclosed"],
+      "harnessCode": "closed",
+      "notes": "Hosted Exa Agent low-effort tier. Neither its exact model stack nor model weights are established; per-query cost is not used as a size proxy.",
+      "sources": [
+        {
+          "title": "Exa Agent launch",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ]
+    },
+    {
+      "systemName": "Tongyi DeepResearch",
+      "kind": "system",
+      "modelIds": ["tongyi-deepresearch-30b-a3b", "tongyi-deepresearch-summary-unknown"],
+      "harnessCode": "open",
+      "notes": "Open 30.5B backbone with an unnamed runtime summarizer. Largest-component category is a provisional approximation; exact complete-stack weights are uncertain.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://tongyi-agent.github.io/blog/introducing-tongyi-deep-research/"
+        },
+        {
+          "title": "Alibaba-NLP/DeepResearch repository",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-4.7-Flash",
+      "kind": "model",
+      "modelIds": ["glm-4-7-flash"],
+      "harnessCode": "not-applicable",
+      "notes": "Open-weight model; compact Flash variant BrowseComp result reported by Z.ai.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://docs.z.ai/guides/llm/glm-4.7"
+        }
+      ]
+    },
+    {
+      "systemName": "Tavily + GPT-5.4 harness",
+      "kind": "harness",
+      "modelIds": ["gpt-5-4"],
+      "harnessCode": "uncertain",
+      "notes": "The dated April 21, 2026 report explicitly identifies a shared single GPT-5.4 actor with search/fetch tools and up to 25 tool calls, tested April 19\u201321. The separate GPT-5.4 scoring judge is excluded. Search-provider identity does not determine model size or weight availability; original harness code release remains unverified.",
+      "sources": [
+        {
+          "title": "Parallel April 2026 Search and Extract API benchmarks and GPT-5.4 harness",
+          "url": "https://parallel.ai/blog/parallel-search-api"
+        },
+        {
+          "title": "GPT-5.4 model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepSeek-V3.2-Exp",
+      "kind": "model",
+      "modelIds": ["deepseek-v3-2-exp"],
+      "harnessCode": "not-applicable",
+      "notes": "Open-weight MIT experimental model; agentic tool-use result reported on Hugging Face.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp"
+        }
+      ]
+    },
+    {
+      "systemName": "Exa + GPT-5.4 harness",
+      "kind": "harness",
+      "modelIds": ["gpt-5-4"],
+      "harnessCode": "uncertain",
+      "notes": "The dated April 21, 2026 report explicitly identifies a shared single GPT-5.4 actor with search/fetch tools and up to 25 tool calls, tested April 19\u201321. The separate GPT-5.4 scoring judge is excluded. Search-provider identity does not determine model size or weight availability; original harness code release remains unverified.",
+      "sources": [
+        {
+          "title": "Parallel April 2026 Search and Extract API benchmarks and GPT-5.4 harness",
+          "url": "https://parallel.ai/blog/parallel-search-api"
+        },
+        {
+          "title": "GPT-5.4 model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4"
+        }
+      ]
+    },
+    {
+      "systemName": "AgentFounder-30B",
+      "kind": "system",
+      "modelIds": ["agentfounder-30b", "agentfounder-summary-unknown"],
+      "harnessCode": "uncertain",
+      "notes": "Paper\u2019s 30B evaluated checkpoint plus unspecified summary helper. Public project documentation is not proof of released exact weights or the original complete harness.",
+      "sources": [
+        {
+          "title": "AgentFounder paper",
+          "url": "https://arxiv.org/html/2509.13310v1"
+        },
+        {
+          "title": "Alibaba-NLP/DeepResearch repository",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch"
+        }
+      ]
+    },
+    {
+      "systemName": "Sarvam-30B",
+      "kind": "model",
+      "modelIds": ["sarvam-30b"],
+      "harnessCode": "not-applicable",
+      "notes": "Open-source model; self-reported BrowseComp result in Sarvam's release post.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://www.sarvam.ai/blogs/sarvam-30b-105b"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepMiner-32B",
+      "kind": "model",
+      "modelIds": ["deepminer-32b"],
+      "harnessCode": "uncertain",
+      "notes": "Paper specifies Qwen3-32B post-training and eliminates external summarization. Evaluated checkpoint and runnable author code release not located.",
+      "sources": [
+        {
+          "title": "DeepMiner paper",
+          "url": "https://arxiv.org/html/2510.08276v1"
+        }
+      ]
+    },
+    {
+      "systemName": "Nemotron 3 Super (120B A12B)",
+      "kind": "model",
+      "modelIds": ["nemotron-3-super-120b-a12b"],
+      "harnessCode": "not-applicable",
+      "notes": "Open model; with search; reported on NVIDIA Build model card.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b/modelcard"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepSeek-V3.1",
+      "kind": "model",
+      "modelIds": ["deepseek-v3-1"],
+      "harnessCode": "not-applicable",
+      "notes": "Open-weight MIT model; thinking mode with search agent; reported on Hugging Face.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
+        }
+      ]
+    },
+    {
+      "systemName": "BrowseMaster",
+      "kind": "harness",
+      "modelIds": ["deepseek-r1-0528", "deepseek-r1"],
+      "harnessCode": "uncertain",
+      "notes": "Paper section 4.1 specifies R1-0528 planner and R1 executor. Both model weights are available; largest-component Large is used without summing parameters. Linked author code repository returned 404.",
+      "sources": [
+        {
+          "title": "BrowseMaster paper section 4.1",
+          "url": "https://arxiv.org/html/2508.09129v1"
+        }
+      ]
+    },
+    {
+      "systemName": "OpenSeeker",
+      "kind": "system",
+      "modelIds": ["openseeker-v1-30b-sft", "openseeker-summary-unknown"],
+      "harnessCode": "open",
+      "notes": "The released v1 30B backbone is open. Evaluation code calls a configurable Visit summarizer whose exact model is not pinned; full runtime stack weights remain uncertain. Training teachers are excluded.",
+      "sources": [
+        {
+          "title": "PolarSeeker/OpenSeeker repository",
+          "url": "https://github.com/PolarSeeker/OpenSeeker"
+        },
+        {
+          "title": "OpenSeeker paper",
+          "url": "https://arxiv.org/html/2603.15594v1"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-4.5",
+      "kind": "model",
+      "modelIds": ["glm-4-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Open-weight model; standard BrowseComp result reported by Z.ai.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://docs.z.ai/guides/llm/glm-4.5"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-4.5-Air",
+      "kind": "model",
+      "modelIds": ["glm-4-5-air"],
+      "harnessCode": "not-applicable",
+      "notes": "Open-weight model; standard BrowseComp result reported by Z.ai.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://docs.z.ai/guides/llm/glm-4.5"
+        }
+      ]
+    },
+    {
+      "systemName": "Perplexity Agent Pro",
+      "kind": "system",
+      "modelIds": ["perplexity-agent-pro-undisclosed"],
+      "harnessCode": "closed",
+      "notes": "Third-party evaluation of a mutable managed preset. Historical backbone unresolved; Large is a low-confidence estimate, with weights uncertain.",
+      "sources": [
+        {
+          "title": "Exa Agent launch",
+          "url": "https://exa.ai/blog/exa-agent"
+        },
+        {
+          "title": "Perplexity preset configuration and versioning",
+          "url": "https://docs.perplexity.ai/docs/agent-api/presets"
+        }
+      ]
+    },
+    {
+      "systemName": "WebExplorer-8B (RL)",
+      "kind": "model",
+      "modelIds": ["webexplorer-8b"],
+      "harnessCode": "uncertain",
+      "notes": "Released 8B RL weights; reported Avg@4 with an LLM judge. The author GitHub URL returned 404 during this check, so runnable harness release is unverified.",
+      "sources": [
+        {
+          "title": "hkust-nlp/WebExplorer-8B model card and released files",
+          "url": "https://huggingface.co/hkust-nlp/WebExplorer-8B"
+        },
+        {
+          "title": "WebExplorer paper",
+          "url": "https://arxiv.org/html/2509.06501v1"
+        }
+      ]
+    },
+    {
+      "systemName": "InfoAgent",
+      "kind": "system",
+      "modelIds": ["infoagent-14b", "gpt-4o-mini", "qwen3-embedding-0-6b", "qwen3-reranker-0-6b"],
+      "harnessCode": "uncertain",
+      "notes": "Paper appendix B.2 uses open Qwen retrieval helpers and closed GPT-4o-mini for snippet generation. Complete-stack weight availability remains uncertain because the evaluated 14B checkpoint is unverified. The largest-component category is Medium via the GPT-4o-mini price proxy. Current public code targets RE-TRAC.",
+      "sources": [
+        {
+          "title": "InfoAgent paper, especially appendix B.2",
+          "url": "https://arxiv.org/html/2509.25189v1"
+        },
+        {
+          "title": "microsoft/InfoAgent repository",
+          "url": "https://github.com/microsoft/InfoAgent"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepDive-32B",
+      "kind": "model",
+      "modelIds": ["deepdive-32b"],
+      "harnessCode": "open",
+      "notes": "Public training/tool code exists, but model table still says weights are coming soon. The original score/source is preserved; OpenReview paper retrieval hit browser verification.",
+      "sources": [
+        {
+          "title": "THUDM/DeepDive repository",
+          "url": "https://github.com/THUDM/DeepDive"
+        },
+        {
+          "title": "Reported paper",
+          "url": "https://openreview.net/pdf?id=gA8mn8eXjo"
+        }
+      ]
+    },
+    {
+      "systemName": "Exa Research Pro",
+      "kind": "system",
+      "modelIds": ["exa-research-pro-undisclosed"],
+      "harnessCode": "closed",
+      "notes": "Historical hosted Research Pro competitor result, directly confirmed in Parallel\u2019s September 2025 report on its fixed random 100-question subset. Exact evaluated model stack is undisclosed.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        },
+        {
+          "title": "Exa Agent launch",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ]
+    },
+    {
+      "systemName": "WebSailor-72B",
+      "kind": "system",
+      "modelIds": ["websailor-72b", "qwen2-5-72b-instruct"],
+      "harnessCode": "open",
+      "notes": "WebSailor uses Qwen2.5-72B-Instruct for webpage summaries (paper appendix A.1 and inference README). Medium is the largest-component approximation; it is not a claim that the primary backbone has 72B parameters.",
+      "sources": [
+        {
+          "title": "WebSailor paper, appendix A.1",
+          "url": "https://arxiv.org/html/2507.02592v1"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ]
+    },
+    {
+      "systemName": "WebSailor-32B",
+      "kind": "system",
+      "modelIds": ["websailor-32b", "qwen2-5-72b-instruct"],
+      "harnessCode": "open",
+      "notes": "WebSailor uses Qwen2.5-72B-Instruct for webpage summaries (paper appendix A.1 and inference README). Medium is the largest-component approximation; it is not a claim that the primary backbone has 72B parameters.",
+      "sources": [
+        {
+          "title": "WebSailor paper, appendix A.1",
+          "url": "https://arxiv.org/html/2507.02592v1"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ]
+    },
+    {
+      "systemName": "Perplexity Agent Fast",
+      "kind": "system",
+      "modelIds": ["perplexity-agent-fast-undisclosed"],
+      "harnessCode": "closed",
+      "notes": "Historical Fast preset; exact evaluated backbone unresolved. Medium is a low-confidence estimate. Per-query spending is not treated as a token price.",
+      "sources": [
+        {
+          "title": "Exa Agent launch",
+          "url": "https://exa.ai/blog/exa-agent"
+        },
+        {
+          "title": "Perplexity preset configuration and versioning",
+          "url": "https://docs.perplexity.ai/docs/agent-api/presets"
+        }
+      ]
+    },
+    {
+      "systemName": "OpenAI o1",
+      "kind": "model",
+      "modelIds": ["openai-o1"],
+      "harnessCode": "not-applicable",
+      "notes": "Original BrowseComp no-browsing reasoning-model baseline reported by OpenAI. BrowseComp paper section 4.1 pins this baseline to o1-2024-12-17 with medium reasoning effort.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://openai.com/index/browsecomp/"
+        },
+        {
+          "title": "BrowseComp paper, section 4.1: evaluated model snapshots",
+          "url": "https://arxiv.org/html/2504.12516"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepSeek-R1-0528",
+      "kind": "model",
+      "modelIds": ["deepseek-r1-0528"],
+      "harnessCode": "uncertain",
+      "notes": "Open-weight MIT model; search agent with pre-defined workflow.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Opus 4.1 (Parallel Task API benchmark)",
+      "kind": "model",
+      "modelIds": ["claude-opus-4-1"],
+      "harnessCode": "uncertain",
+      "notes": "Third-party Parallel Task API comparison on a fixed random 100-question subset, measured August 11\u201329, 2025. The dated report explicitly names Claude Opus 4.1 and confirms 7%.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        },
+        {
+          "title": "Claude token pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ]
+    },
+    {
+      "systemName": "WebSailor-7B",
+      "kind": "system",
+      "modelIds": ["websailor-7b", "qwen2-5-72b-instruct"],
+      "harnessCode": "open",
+      "notes": "WebSailor uses Qwen2.5-72B-Instruct for webpage summaries (paper appendix A.1 and inference README). Medium is the largest-component approximation; it is not a claim that the primary backbone has 72B parameters.",
+      "sources": [
+        {
+          "title": "WebSailor paper, appendix A.1",
+          "url": "https://arxiv.org/html/2507.02592v1"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ]
+    },
+    {
+      "systemName": "Perplexity Sonar Deep Research",
+      "kind": "system",
+      "modelIds": ["sonar-deep-research-undisclosed"],
+      "harnessCode": "closed",
+      "notes": "Legacy hosted Sonar Deep Research at high reasoning effort, directly confirmed as 6% in Parallel\u2019s dated report on a fixed random 100-question subset. Redirected old model/pricing pages still leave historical component identity and token prices unverified.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        },
+        {
+          "title": "Sonar migration documentation",
+          "url": "https://docs.perplexity.ai/docs/agent-api/migrate-from-sonar/overview"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-4o + browsing",
+      "kind": "harness",
+      "modelIds": ["gpt-4o-search-preview-2025-03-11"],
+      "harnessCode": "uncertain",
+      "notes": "BrowseComp paper section 4.1 identifies the browsing baseline as the specialized gpt-4o-search-preview-2025-03-11 model. It is distinct from the no-browsing GPT-4o snapshot. Full evaluated browsing implementation availability remains unverified.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://openai.com/index/browsecomp/"
+        },
+        {
+          "title": "BrowseComp paper, section 4.1: evaluated model snapshots",
+          "url": "https://arxiv.org/html/2504.12516"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-4.5",
+      "kind": "model",
+      "modelIds": ["gpt-4-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Original BrowseComp no-browsing baseline reported by OpenAI. BrowseComp paper section 4.1 pins this baseline to gpt-4.5-preview-2025-02-27.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://openai.com/index/browsecomp/"
+        },
+        {
+          "title": "BrowseComp paper, section 4.1: evaluated model snapshots",
+          "url": "https://arxiv.org/html/2504.12516"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-4o",
+      "kind": "model",
+      "modelIds": ["gpt-4o-2024-08-06"],
+      "harnessCode": "not-applicable",
+      "notes": "Original no-browsing baseline. BrowseComp paper section 4.1 explicitly identifies gpt-4o-2024-08-06.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://openai.com/index/browsecomp/"
+        },
+        {
+          "title": "BrowseComp paper, section 4.1: evaluated model snapshots",
+          "url": "https://arxiv.org/html/2504.12516"
+        }
+      ]
+    }
+  ]
+}

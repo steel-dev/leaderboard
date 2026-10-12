@@ -1,0 +1,1179 @@
+{
+  "models": [
+    {
+      "id": "longcat-flash-thinking-2601",
+      "name": "LongCat-Flash-Thinking-2601",
+      "weights": "open",
+      "totalParametersB": 560,
+      "activeParametersB": 27,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT weights are available. Card reports 560B total and 27B activated; Heavy Thinking is an inference mode of this checkpoint. No standard USD token price verified.",
+      "sources": [
+        {
+          "title": "meituan-longcat/LongCat-Flash-Thinking-2601 model card",
+          "url": "https://huggingface.co/meituan-longcat/LongCat-Flash-Thinking-2601"
+        },
+        {
+          "title": "meituan-longcat/LongCat-Flash-Thinking-2601 weight files",
+          "url": "https://huggingface.co/meituan-longcat/LongCat-Flash-Thinking-2601/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "step-3-5-flash",
+      "name": "Step-3.5-Flash",
+      "weights": "open",
+      "totalParametersB": 196.81,
+      "activeParametersB": 11,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 weights are available. Card specifies 196B backbone plus 0.81B head and approximately 11B active. No standard USD token price verified.",
+      "sources": [
+        {
+          "title": "stepfun-ai/Step-3.5-Flash model card",
+          "url": "https://huggingface.co/stepfun-ai/Step-3.5-Flash"
+        },
+        {
+          "title": "stepfun-ai/Step-3.5-Flash weight files",
+          "url": "https://huggingface.co/stepfun-ai/Step-3.5-Flash/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-4-7",
+      "name": "GLM-4.7",
+      "weights": "open",
+      "totalParametersB": 358.3378,
+      "inputUsdPerMillion": 0.6,
+      "outputUsdPerMillion": 2.2,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT weight shards verified. Total is the publisher repository safetensors count, rounded to four decimals in billions; it includes stored auxiliary tensors. Active count was not established by the checked model card. Z.AI lists $0.60 input / $2.20 output per 1M tokens.",
+      "sources": [
+        {
+          "title": "zai-org/GLM-4.7 model card",
+          "url": "https://huggingface.co/zai-org/GLM-4.7"
+        },
+        {
+          "title": "zai-org/GLM-4.7 weight files",
+          "url": "https://huggingface.co/zai-org/GLM-4.7/tree/main"
+        },
+        {
+          "title": "Z.AI standard USD pricing",
+          "url": "https://docs.z.ai/guides/overview/pricing"
+        },
+        {
+          "title": "Publisher weight metadata",
+          "url": "https://huggingface.co/api/models/zai-org/GLM-4.7"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-2",
+      "name": "GPT-5.2",
+      "weights": "closed",
+      "inputUsdPerMillion": 1.75,
+      "outputUsdPerMillion": 14,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameter count is undisclosed. Large is a price proxy from standard uncached API text rates; it does not assert a physical parameter size. Tool fees and cached, batch, flex, and priority rates are excluded.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.2 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.2"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5",
+      "name": "GPT-5",
+      "weights": "closed",
+      "inputUsdPerMillion": 1.25,
+      "outputUsdPerMillion": 10,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameter count is undisclosed. Large is a price proxy from standard uncached API text rates; it does not assert a physical parameter size. Tool fees and cached, batch, flex, and priority rates are excluded.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-4",
+      "name": "GPT-5.4",
+      "weights": "closed",
+      "inputUsdPerMillion": 2.5,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameter count is undisclosed. Large is a price proxy from standard uncached API text rates; it does not assert a physical parameter size. Tool fees and cached, batch, flex, and priority rates are excluded.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.4 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "o4-mini",
+      "name": "o4-mini",
+      "weights": "closed",
+      "inputUsdPerMillion": 1.1,
+      "outputUsdPerMillion": 4.4,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameter count is undisclosed. Large is a price proxy from standard uncached API text rates; it does not assert a physical parameter size. Tool fees and cached, batch, flex, and priority rates are excluded.",
+      "sources": [
+        {
+          "title": "OpenAI o4-mini API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/o4-mini"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "o3",
+      "name": "o3",
+      "weights": "closed",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 8,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameter count is undisclosed. Large is a price proxy from standard uncached API text rates; it does not assert a physical parameter size. Tool fees and cached, batch, flex, and priority rates are excluded.",
+      "sources": [
+        {
+          "title": "OpenAI o3 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/o3"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen3-5-122b-a10b",
+      "name": "Qwen3.5-122B-A10B",
+      "weights": "open",
+      "totalParametersB": 122,
+      "activeParametersB": 10,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 weights are available. Uses the card’s nominal 122B total / 10B active count. No standard USD token price for this exact checkpoint verified.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen3.5-122B-A10B model card",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B"
+        },
+        {
+          "title": "Qwen/Qwen3.5-122B-A10B weight files",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "minimax-m2-1",
+      "name": "MiniMax M2.1",
+      "weights": "open",
+      "totalParametersB": 228.6898,
+      "inputUsdPerMillion": 0.3,
+      "outputUsdPerMillion": 1.2,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Modified-MIT weight shards verified. Total is the publisher repository safetensors count, rounded in billions. Active count was not established for this exact version by the checked card. Standard legacy-model API rates are $0.30 input / $1.20 output per 1M.",
+      "sources": [
+        {
+          "title": "MiniMaxAI/MiniMax-M2.1 model card",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.1"
+        },
+        {
+          "title": "MiniMaxAI/MiniMax-M2.1 weight files",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.1/tree/main"
+        },
+        {
+          "title": "MiniMax standard pay-as-you-go pricing",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo"
+        },
+        {
+          "title": "Publisher weight metadata",
+          "url": "https://huggingface.co/api/models/MiniMaxAI/MiniMax-M2.1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "longseeker-30b-sft",
+      "name": "LongSeeker-30B-SFT",
+      "weights": "open",
+      "totalParametersB": 30.5,
+      "activeParametersB": 3.3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Available MIT finetuned weights identify Qwen3-30B-A3B-Thinking-2507 as the base. Count follows that published base architecture and matches the 30.532B stored tensors. No standard token price published in the checked sources.",
+      "sources": [
+        {
+          "title": "PolarSeeker/LongSeeker-30B-SFT model card",
+          "url": "https://huggingface.co/PolarSeeker/LongSeeker-30B-SFT"
+        },
+        {
+          "title": "PolarSeeker/LongSeeker-30B-SFT weight files",
+          "url": "https://huggingface.co/PolarSeeker/LongSeeker-30B-SFT/tree/main"
+        },
+        {
+          "title": "Qwen3 base architecture",
+          "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"
+        },
+        {
+          "title": "LongSeeker paper",
+          "url": "https://arxiv.org/html/2605.05191"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen3-5-27b",
+      "name": "Qwen3.5-27B",
+      "weights": "open",
+      "totalParametersB": 27,
+      "activeParametersB": 27,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 dense weights are available; all 27B nominal parameters are active. No standard USD token price for this exact checkpoint verified.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen3.5-27B model card",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-27B"
+        },
+        {
+          "title": "Qwen/Qwen3.5-27B weight files",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-27B/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen3-5-35b-a3b",
+      "name": "Qwen3.5-35B-A3B",
+      "weights": "open",
+      "totalParametersB": 35,
+      "activeParametersB": 3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 weights are available. Uses published 35B total / 3B active count. No standard USD token price for this exact checkpoint verified.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen3.5-35B-A3B model card",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B"
+        },
+        {
+          "title": "Qwen/Qwen3.5-35B-A3B weight files",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "kimi-k2-thinking",
+      "name": "Kimi K2 Thinking",
+      "weights": "open",
+      "totalParametersB": 1000,
+      "activeParametersB": 32,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Modified-MIT downloadable weights verified; card reports 1T total / 32B active. Current pricing page did not expose this historical model in readable text and direct retrieval returned HTTP 403, so token prices remain unset.",
+      "sources": [
+        {
+          "title": "moonshotai/Kimi-K2-Thinking model card",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2-Thinking"
+        },
+        {
+          "title": "moonshotai/Kimi-K2-Thinking weight files",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2-Thinking/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gemini-3-pro",
+      "name": "Gemini 3 Pro",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Provisional Large based on Google’s flagship Pro positioning. Parameters are undisclosed; current Google pricing pages have replaced this version with Gemini 3.1 Pro, so no exact-version current token rate is asserted.",
+      "sources": [
+        {
+          "title": "Google Gemini 3.1 Pro model card, including Gemini 3 Pro comparison",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+        },
+        {
+          "title": "Current Gemini pricing, checked for exact-version coverage",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "mimo-v2-flash",
+      "name": "MiMo-V2-Flash",
+      "weights": "open",
+      "totalParametersB": 309,
+      "activeParametersB": 15,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT downloadable weights verified. Card states 309B total / 15B active. No standard USD token price verified; Flash does not mean Small under the parameter rule.",
+      "sources": [
+        {
+          "title": "XiaomiMiMo/MiMo-V2-Flash model card",
+          "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2-Flash"
+        },
+        {
+          "title": "XiaomiMiMo/MiMo-V2-Flash weight files",
+          "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2-Flash/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "parallel-task-ultra-stack",
+      "name": "Parallel Task Ultra model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Provisional Large for the hosted high-compute research stack. The checked vendor page does not identify exact underlying weights or per-token pricing. Ultra multipliers increase task compute; they are not parameter counts. Per-query cost is not used as token pricing.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "exa-agent-medium-stack",
+      "name": "Exa Agent Medium model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Provisional Large: vendor describes a fusion of frontier and cost-effective language models but does not identify the Medium tier’s exact model mix or release underlying weights. No standard per-token price can be assigned to its per-query charge.",
+      "sources": [
+        {
+          "title": "Exa Agent launch and model-fusion description",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "openai-deep-research-original",
+      "name": "OpenAI original Deep Research model",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Original 2025 BrowseComp research system. Provisional Large based on its specialized persistent-browsing research positioning. The later o3-deep-research API snapshot is dated June 26, 2025; its token rates are not assigned to the earlier February/April system without an exact checkpoint match.",
+      "sources": [
+        {
+          "title": "OpenAI deep research API model and dated snapshot",
+          "url": "https://developers.openai.com/api/docs/models/o3-deep-research"
+        },
+        {
+          "title": "BrowseComp paper",
+          "url": "https://arxiv.org/html/2504.12516"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepseek-v3-2",
+      "name": "DeepSeek-V3.2",
+      "weights": "open",
+      "totalParametersB": 685.3553,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT downloadable weights verified. Total is publisher safetensors metadata, rounded in billions, including auxiliary tensors. V3.2 adds sparse-attention indexing to the V3.1 architecture; active count was not independently established here. Current API pricing page now describes successor models, so historical V3.2 prices remain unset.",
+      "sources": [
+        {
+          "title": "deepseek-ai/DeepSeek-V3.2 model card",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"
+        },
+        {
+          "title": "deepseek-ai/DeepSeek-V3.2 weight files",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2/tree/main"
+        },
+        {
+          "title": "DeepSeek-V3.2 technical report",
+          "url": "https://arxiv.org/html/2512.02556"
+        },
+        {
+          "title": "Publisher weight metadata",
+          "url": "https://huggingface.co/api/models/deepseek-ai/DeepSeek-V3.2"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "sarvam-105b",
+      "name": "Sarvam-105B",
+      "weights": "open",
+      "totalParametersB": 105,
+      "activeParametersB": 10.3,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 downloadable weights verified. Published card identifies a 105B MoE with 10.3B active. No standard USD token rate verified.",
+      "sources": [
+        {
+          "title": "sarvamai/sarvam-105b model card",
+          "url": "https://huggingface.co/sarvamai/sarvam-105b"
+        },
+        {
+          "title": "sarvamai/sarvam-105b weight files",
+          "url": "https://huggingface.co/sarvamai/sarvam-105b/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "perplexity-agent-advanced-historical-stack",
+      "name": "Perplexity Agent Advanced historical stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Provisional Large for the historical advanced research preset. Current documentation explicitly says dynamic presets can change their underlying model; advanced-deep-research has been renamed high. Exact June 2026 backbone is not established, so no current preset model or per-query fee is misrepresented as its token price.",
+      "sources": [
+        {
+          "title": "Perplexity preset configuration and versioning",
+          "url": "https://docs.perplexity.ai/docs/agent-api/presets"
+        },
+        {
+          "title": "Exa June 2026 comparison",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "smtl-30b",
+      "name": "SMTL-30B",
+      "weights": "open",
+      "totalParametersB": 30.5321,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 weight shards verified. Sparse Qwen3 architecture is confirmed in config.json; total comes from 30,532,122,624 published tensors. Card is otherwise empty, so exact base checkpoint and active count are not asserted. No standard token price verified.",
+      "sources": [
+        {
+          "title": "PersonalAILab/SMTL-30B model card",
+          "url": "https://huggingface.co/PersonalAILab/SMTL-30B"
+        },
+        {
+          "title": "PersonalAILab/SMTL-30B weight files",
+          "url": "https://huggingface.co/PersonalAILab/SMTL-30B/tree/main"
+        },
+        {
+          "title": "SMTL model configuration",
+          "url": "https://huggingface.co/PersonalAILab/SMTL-30B/blob/main/config.json"
+        },
+        {
+          "title": "SMTL technical report",
+          "url": "https://arxiv.org/html/2602.22675"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "mirothinker-v1-0-72b",
+      "name": "MiroThinker v1.0-72B",
+      "weights": "open",
+      "totalParametersB": 72,
+      "activeParametersB": 72,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT downloadable dense weights verified; model card identifies Qwen2.5-72B-Instruct as the base. No standard USD token price published in the checked card.",
+      "sources": [
+        {
+          "title": "miromind-ai/MiroThinker-v1.0-72B model card",
+          "url": "https://huggingface.co/miromind-ai/MiroThinker-v1.0-72B"
+        },
+        {
+          "title": "miromind-ai/MiroThinker-v1.0-72B weight files",
+          "url": "https://huggingface.co/miromind-ai/MiroThinker-v1.0-72B/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "perplexity-agent-deep-historical-stack",
+      "name": "Perplexity Agent Deep historical stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Provisional Large for the historical deep research preset. Current docs rename deep-research to medium and state backbones can change; the exact June 2026 model is unresolved. This category is a low-confidence editorial estimate, not derived from the product effort name or query fee.",
+      "sources": [
+        {
+          "title": "Perplexity preset configuration and versioning",
+          "url": "https://docs.perplexity.ai/docs/agent-api/presets"
+        },
+        {
+          "title": "Exa June 2026 comparison",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "openseeker-v2-30b-sft",
+      "name": "OpenSeeker-v2-30B-SFT",
+      "weights": "open",
+      "totalParametersB": 30.5321,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 weight shards verified; config confirms sparse Qwen3 architecture. Total from 30,532,122,624 published tensors. Exact base revision and active count are not separately asserted. No standard USD token price published in the checked sources.",
+      "sources": [
+        {
+          "title": "PolarSeeker/OpenSeeker-v2-30B-SFT model card",
+          "url": "https://huggingface.co/PolarSeeker/OpenSeeker-v2-30B-SFT"
+        },
+        {
+          "title": "PolarSeeker/OpenSeeker-v2-30B-SFT weight files",
+          "url": "https://huggingface.co/PolarSeeker/OpenSeeker-v2-30B-SFT/tree/main"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "webanchor-30b",
+      "name": "WebAnchor-30B",
+      "weights": "uncertain",
+      "totalParametersB": 30,
+      "activeParametersB": 3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Paper trains the 30B Tongyi DeepResearch base with Anchor-GRPO. Total and active counts follow that cited 30B/3B base. No WebAnchor-specific downloadable weights or harness release was found in the paper or Hugging Face model search; an open base does not establish open finetuned weights. No standard token price verified.",
+      "sources": [
+        {
+          "title": "WebAnchor paper, base policies and training",
+          "url": "https://arxiv.org/html/2601.03164"
+        },
+        {
+          "title": "Tongyi DeepResearch base architecture",
+          "url": "https://huggingface.co/Alibaba-NLP/Tongyi-DeepResearch-30B-A3B"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-4-6",
+      "name": "GLM-4.6",
+      "weights": "open",
+      "totalParametersB": 356.7859,
+      "inputUsdPerMillion": 0.6,
+      "outputUsdPerMillion": 2.2,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT weight shards verified. Total is publisher safetensors count, rounded in billions, including auxiliary tensors. Active count was not established by checked exact-version card. Standard Z.AI price is $0.60 input / $2.20 output per 1M.",
+      "sources": [
+        {
+          "title": "zai-org/GLM-4.6 model card",
+          "url": "https://huggingface.co/zai-org/GLM-4.6"
+        },
+        {
+          "title": "zai-org/GLM-4.6 weight files",
+          "url": "https://huggingface.co/zai-org/GLM-4.6/tree/main"
+        },
+        {
+          "title": "Z.AI standard USD pricing",
+          "url": "https://docs.z.ai/guides/overview/pricing"
+        },
+        {
+          "title": "Publisher weight metadata",
+          "url": "https://huggingface.co/api/models/zai-org/GLM-4.6"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "longseeker-summary-unknown",
+      "name": "LongSeeker undisclosed Visit summarizer",
+      "weights": "uncertain",
+      "size": "medium",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Runtime visit_web uses SUMMARY_MODEL_NAME, which is left blank in the public configuration. The evaluated helper identity, weights, parameters and price are unresolved. Medium is a low-confidence provisional category informed by the related WebSailor Visit pipeline’s 72B helper; it is not an asserted parameter count or confirmed identity. DeepSeek-V3.2 is named as a training teacher, which does not establish that it is this runtime helper.",
+      "sources": [
+        {
+          "title": "LongSeeker summary-model configuration and tools",
+          "url": "https://github.com/PolarSeeker/LongSeeker"
+        },
+        {
+          "title": "LongSeeker runtime summary client",
+          "url": "https://github.com/PolarSeeker/LongSeeker/blob/main/tools/utils.py"
+        },
+        {
+          "title": "LongSeeker paper",
+          "url": "https://arxiv.org/html/2605.05191"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "openseeker-summary-unknown",
+      "name": "OpenSeeker undisclosed Visit summarizer",
+      "weights": "uncertain",
+      "size": "medium",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "A webpage summary model is required, but evaluated identity and weights are not published in the inspected source/configuration. Medium is a low-confidence provisional category informed by the related WebSailor pipeline’s 72B summary helper; it is not an asserted parameter count or confirmed model identity. This is the runtime Visit helper; the training-only historical-context teacher is excluded.",
+      "sources": [
+        {
+          "title": "OpenSeeker runtime tool calls",
+          "url": "https://github.com/PolarSeeker/OpenSeeker/blob/main/src/llm_tool_openseeker.py"
+        },
+        {
+          "title": "OpenSeeker Visit implementation",
+          "url": "https://github.com/PolarSeeker/OpenSeeker/blob/main/src/tools/visit.py"
+        },
+        {
+          "title": "WebSailor inference instructions",
+          "url": "https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "mirothinker-v1-0-summary-unknown",
+      "name": "MiroThinker v1.0 undisclosed webpage summarizer",
+      "weights": "uncertain",
+      "size": "small",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The v1.0 agent configuration enables jina_scrape_llm_summary with a separate SUMMARY_LLM_MODEL_NAME left unpinned. Its paper describes a lightweight summarizer and gives Qwen3-14B as an example, supporting a provisional Small category but not a confirmed identity or count. Current README also allows open Qwen3-14B or closed GPT-5-Nano; full-stack weight availability is therefore unresolved. Post-run grading models are excluded.",
+      "sources": [
+        {
+          "title": "MiroThinker v1.0 paper tool description",
+          "url": "https://arxiv.org/html/2511.11793"
+        },
+        {
+          "title": "MiroThinker v1.0 tool configuration",
+          "url": "https://github.com/MiroMindAI/MiroThinker/blob/main/apps/miroflow-agent/conf/agent/mirothinker_v1.0.yaml"
+        },
+        {
+          "title": "MiroThinker runtime summary tool",
+          "url": "https://github.com/MiroMindAI/MiroThinker/blob/main/libs/miroflow-tools/src/miroflow_tools/dev_mcp_servers/jina_scrape_llm_summary.py"
+        },
+        {
+          "title": "MiroThinker summary setup instructions",
+          "url": "https://github.com/MiroMindAI/MiroThinker"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    }
+  ],
+  "submissions": [
+    {
+      "systemName": "LongCat-Flash-Thinking-2601",
+      "kind": "model",
+      "modelIds": ["longcat-flash-thinking-2601"],
+      "harnessCode": "not-applicable",
+      "notes": "Heavy Thinking Mode uses parallel thinking; the score is not the standard single-pass result.",
+      "sources": [
+        {
+          "title": "meituan-longcat/LongCat-Flash-Thinking-2601 model card",
+          "url": "https://huggingface.co/meituan-longcat/LongCat-Flash-Thinking-2601"
+        }
+      ]
+    },
+    {
+      "systemName": "Step-3.5-Flash",
+      "kind": "model",
+      "modelIds": ["step-3-5-flash"],
+      "harnessCode": "not-applicable",
+      "notes": "Context-managed model result; Flash is a product name, while total parameters place it in Large.",
+      "sources": [
+        {
+          "title": "stepfun-ai/Step-3.5-Flash model card",
+          "url": "https://huggingface.co/stepfun-ai/Step-3.5-Flash"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-4.7",
+      "kind": "model",
+      "modelIds": ["glm-4-7"],
+      "harnessCode": "not-applicable",
+      "notes": "Context-managed model result; size follows total weight count, not its API price.",
+      "sources": [
+        {
+          "title": "zai-org/GLM-4.7 model card",
+          "url": "https://huggingface.co/zai-org/GLM-4.7"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.2",
+      "kind": "model",
+      "modelIds": ["gpt-5-2"],
+      "harnessCode": "not-applicable",
+      "notes": "GPT-5.2 Thinking is a reasoning configuration of GPT-5.2.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.2 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.2"
+        }
+      ]
+    },
+    {
+      "systemName": "Qwen3.5-122B-A10B",
+      "kind": "model",
+      "modelIds": ["qwen3-5-122b-a10b"],
+      "harnessCode": "not-applicable",
+      "notes": "Search Agent evaluation of the named model.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen3.5-122B-A10B model card",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B"
+        }
+      ]
+    },
+    {
+      "systemName": "MiniMax M2.1",
+      "kind": "model",
+      "modelIds": ["minimax-m2-1"],
+      "harnessCode": "not-applicable",
+      "notes": "Context-managed model evaluation; Large uses total parameters.",
+      "sources": [
+        {
+          "title": "MiniMaxAI/MiniMax-M2.1 model card",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.1"
+        }
+      ]
+    },
+    {
+      "systemName": "LongSeeker",
+      "kind": "system",
+      "modelIds": ["longseeker-30b-sft", "longseeker-summary-unknown"],
+      "harnessCode": "open",
+      "notes": "Finetuned model plus Context-ReAct orchestration. Public eval.py verified. Paper reports a 200-question BrowseComp sample and up to five discard-all rounds; not directly equivalent to a full-set single-pass evaluation. Runtime page summaries use a separately configured, undisclosed LLM; the full stack is Uncertain weights and provisionally Medium. Training-teacher identity does not resolve that helper.",
+      "sources": [
+        {
+          "title": "LongSeeker paper",
+          "url": "https://arxiv.org/html/2605.05191"
+        },
+        {
+          "title": "LongSeeker evaluation code",
+          "url": "https://github.com/PolarSeeker/LongSeeker"
+        },
+        {
+          "title": "LongSeeker runtime summary client",
+          "url": "https://github.com/PolarSeeker/LongSeeker/blob/main/tools/utils.py"
+        }
+      ]
+    },
+    {
+      "systemName": "Qwen3.5-27B",
+      "kind": "model",
+      "modelIds": ["qwen3-5-27b"],
+      "harnessCode": "not-applicable",
+      "notes": "Search Agent evaluation of the named dense model.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen3.5-27B model card",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-27B"
+        }
+      ]
+    },
+    {
+      "systemName": "Qwen3.5-35B-A3B",
+      "kind": "model",
+      "modelIds": ["qwen3-5-35b-a3b"],
+      "harnessCode": "not-applicable",
+      "notes": "Search Agent evaluation; category uses total rather than active parameters.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen3.5-35B-A3B model card",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B"
+        }
+      ]
+    },
+    {
+      "systemName": "Kimi K2-Thinking-0905",
+      "kind": "model",
+      "modelIds": ["kimi-k2-thinking"],
+      "harnessCode": "not-applicable",
+      "notes": "Stored label retained. The cited card’s 60.2 result belongs to K2 Thinking; its separate K2 0905 comparison is 7.4. The 0905 suffix is therefore treated as a historical label ambiguity, not a distinct Thinking checkpoint.",
+      "sources": [
+        {
+          "title": "moonshotai/Kimi-K2-Thinking model card",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2-Thinking"
+        }
+      ]
+    },
+    {
+      "systemName": "Gemini 3 Pro",
+      "kind": "model",
+      "modelIds": ["gemini-3-pro"],
+      "harnessCode": "not-applicable",
+      "notes": "Historical Gemini 3 Pro Thinking High comparison result; not Gemini 3.1 Pro.",
+      "sources": [
+        {
+          "title": "Google Gemini 3.1 Pro model card, including Gemini 3 Pro comparison",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+        }
+      ]
+    },
+    {
+      "systemName": "MiMo-V2-Flash",
+      "kind": "model",
+      "modelIds": ["mimo-v2-flash"],
+      "harnessCode": "not-applicable",
+      "notes": "Post-trained Flash checkpoint, not the Base checkpoint named in the original source URL.",
+      "sources": [
+        {
+          "title": "XiaomiMiMo/MiMo-V2-Flash model card",
+          "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2-Flash"
+        }
+      ]
+    },
+    {
+      "systemName": "Parallel Ultra8x",
+      "kind": "system",
+      "modelIds": ["parallel-task-ultra-stack"],
+      "harnessCode": "closed",
+      "notes": "Hosted Task API configuration on a fixed random 100-question BrowseComp subset, measured August 11–29, 2025. The dated September 2025 report directly confirms this historical score; exact underlying model stack remains undisclosed.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        }
+      ]
+    },
+    {
+      "systemName": "Parallel Ultra4x",
+      "kind": "system",
+      "modelIds": ["parallel-task-ultra-stack"],
+      "harnessCode": "closed",
+      "notes": "Hosted Task API configuration on a fixed random 100-question BrowseComp subset, measured August 11–29, 2025. The dated September 2025 report directly confirms this historical score; exact underlying model stack remains undisclosed.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5",
+      "kind": "model",
+      "modelIds": ["gpt-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Thinking-enabled GPT-5 model result.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5"
+        },
+        {
+          "title": "OpenAI launch BrowseComp chart, GPT-5 with thinking 54.9%",
+          "url": "https://openai.com/index/introducing-gpt-5/"
+        }
+      ]
+    },
+    {
+      "systemName": "Parallel Basic + GPT-5.4 harness",
+      "kind": "harness",
+      "modelIds": ["gpt-5-4"],
+      "harnessCode": "uncertain",
+      "notes": "The dated April 21, 2026 report explicitly identifies a shared single GPT-5.4 actor with search/fetch tools and up to 25 tool calls, tested April 19–21. The separate GPT-5.4 scoring judge is excluded. Search-provider identity does not determine model size or weight availability; original harness code release remains unverified.",
+      "sources": [
+        {
+          "title": "Parallel April 2026 Search and Extract API benchmarks and GPT-5.4 harness",
+          "url": "https://parallel.ai/blog/parallel-search-api"
+        }
+      ]
+    },
+    {
+      "systemName": "Exa Agent Medium",
+      "kind": "system",
+      "modelIds": ["exa-agent-medium-stack"],
+      "harnessCode": "closed",
+      "notes": "Hosted research agent with model fusion; Medium describes effort, not a parameter-size category.",
+      "sources": [
+        {
+          "title": "Exa Agent launch and model-fusion description",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ]
+    },
+    {
+      "systemName": "o4-mini",
+      "kind": "model",
+      "modelIds": ["o4-mini"],
+      "harnessCode": "not-applicable",
+      "notes": "With Python and browsing at high reasoning effort; OpenAI’s source chart labels o4-mini 28.3%, separately from Deep Research 51.5%. The price rule classifies o4-mini as Large (blended $1.925/M) despite mini branding.",
+      "sources": [
+        {
+          "title": "OpenAI o4-mini API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/o4-mini"
+        },
+        {
+          "title": "OpenAI o3 and o4-mini launch BrowseComp chart",
+          "url": "https://openai.com/index/introducing-o3-and-o4-mini/"
+        }
+      ]
+    },
+    {
+      "systemName": "OpenAI Deep Research",
+      "kind": "system",
+      "modelIds": ["openai-deep-research-original"],
+      "harnessCode": "closed",
+      "notes": "Original benchmark research system; kept distinct from o3, o4-mini, and later named deep-research API snapshots.",
+      "sources": [
+        {
+          "title": "BrowseComp benchmark source",
+          "url": "https://openai.com/index/browsecomp/"
+        },
+        {
+          "title": "Deep research API snapshot documentation",
+          "url": "https://developers.openai.com/api/docs/models/o3-deep-research"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepSeek-V3.2",
+      "kind": "model",
+      "modelIds": ["deepseek-v3-2"],
+      "harnessCode": "not-applicable",
+      "notes": "Both stored rows map to the same V3.2 weights; Thinking is an inference mode, not an additional model.",
+      "sources": [
+        {
+          "title": "deepseek-ai/DeepSeek-V3.2 model card",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepSeek-V3.2 (Thinking)",
+      "kind": "model",
+      "modelIds": ["deepseek-v3-2"],
+      "harnessCode": "not-applicable",
+      "notes": "Both stored rows map to the same V3.2 weights; Thinking is an inference mode, not an additional model.",
+      "sources": [
+        {
+          "title": "deepseek-ai/DeepSeek-V3.2 model card",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"
+        }
+      ]
+    },
+    {
+      "systemName": "Parallel Advanced + GPT-5.4 harness",
+      "kind": "harness",
+      "modelIds": ["gpt-5-4"],
+      "harnessCode": "uncertain",
+      "notes": "The dated April 21, 2026 report explicitly identifies a shared single GPT-5.4 actor with search/fetch tools and up to 25 tool calls, tested April 19–21. The separate GPT-5.4 scoring judge is excluded. Search-provider identity does not determine model size or weight availability; original harness code release remains unverified.",
+      "sources": [
+        {
+          "title": "Parallel April 2026 Search and Extract API benchmarks and GPT-5.4 harness",
+          "url": "https://parallel.ai/blog/parallel-search-api"
+        }
+      ]
+    },
+    {
+      "systemName": "Parallel Ultra2x",
+      "kind": "system",
+      "modelIds": ["parallel-task-ultra-stack"],
+      "harnessCode": "closed",
+      "notes": "Hosted Task API configuration on a fixed random 100-question BrowseComp subset, measured August 11–29, 2025. The dated September 2025 report directly confirms this historical score; exact underlying model stack remains undisclosed.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        }
+      ]
+    },
+    {
+      "systemName": "o3",
+      "kind": "model",
+      "modelIds": ["o3"],
+      "harnessCode": "not-applicable",
+      "notes": "With Python and browsing; standard API token price is used only as a size proxy.",
+      "sources": [
+        {
+          "title": "OpenAI o3 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/o3"
+        }
+      ]
+    },
+    {
+      "systemName": "Sarvam-105B",
+      "kind": "model",
+      "modelIds": ["sarvam-105b"],
+      "harnessCode": "not-applicable",
+      "notes": "Size is Medium by total parameters; open means downloadable weights.",
+      "sources": [
+        {
+          "title": "sarvamai/sarvam-105b model card",
+          "url": "https://huggingface.co/sarvamai/sarvam-105b"
+        }
+      ]
+    },
+    {
+      "systemName": "Perplexity Agent Advanced",
+      "kind": "system",
+      "modelIds": ["perplexity-agent-advanced-historical-stack"],
+      "harnessCode": "closed",
+      "notes": "Exa reports this competitor result. Historical preset model identity remains unresolved; current preset values should not be backdated.",
+      "sources": [
+        {
+          "title": "Perplexity preset configuration and versioning",
+          "url": "https://docs.perplexity.ai/docs/agent-api/presets"
+        }
+      ]
+    },
+    {
+      "systemName": "SMTL",
+      "kind": "system",
+      "modelIds": ["smtl-30b", "deepseek-v3-2"],
+      "harnessCode": "uncertain",
+      "notes": "48.6 is the paper’s SMTL-300 configuration (300 interaction budget). The linked GitHub repo has AFM code but no clearly identified SMTL-specific implementation in the checked tree. The paper explicitly uses DeepSeek-V3.2 for runtime goal-conditioned webpage summarization; this required open helper makes the full stack Large. It is not merely a training teacher.",
+      "sources": [
+        {
+          "title": "SMTL technical report, runtime Visit and summary tool",
+          "url": "https://arxiv.org/html/2602.22675"
+        },
+        {
+          "title": "Linked code repository",
+          "url": "https://github.com/OPPO-PersonalAI/Agent_Foundation_Models"
+        }
+      ]
+    },
+    {
+      "systemName": "MiroThinker v1.0-72B",
+      "kind": "system",
+      "modelIds": ["mirothinker-v1-0-72b", "mirothinker-v1-0-summary-unknown"],
+      "harnessCode": "open",
+      "notes": "Finetuned model and MiroFlow research orchestration; v1.0 evaluation configuration remains in the public code. Runtime webpage extraction calls a lightweight summary LLM whose exact evaluated identity is unpinned. The main 72B model keeps the full stack in Medium, but full-stack weights are Uncertain. Post-run evaluation judges are excluded.",
+      "sources": [
+        {
+          "title": "Model card",
+          "url": "https://huggingface.co/miromind-ai/MiroThinker-v1.0-72B"
+        },
+        {
+          "title": "MiroThinker framework",
+          "url": "https://github.com/MiroMindAI/MiroThinker"
+        },
+        {
+          "title": "MiroThinker v1.0 tool configuration",
+          "url": "https://github.com/MiroMindAI/MiroThinker/blob/main/apps/miroflow-agent/conf/agent/mirothinker_v1.0.yaml"
+        }
+      ]
+    },
+    {
+      "systemName": "Perplexity Agent Deep",
+      "kind": "system",
+      "modelIds": ["perplexity-agent-deep-historical-stack"],
+      "harnessCode": "closed",
+      "notes": "Exa reports this competitor result; preserve historical identity instead of substituting today’s dynamic preset backbone.",
+      "sources": [
+        {
+          "title": "Perplexity preset configuration and versioning",
+          "url": "https://docs.perplexity.ai/docs/agent-api/presets"
+        }
+      ]
+    },
+    {
+      "systemName": "OpenSeeker-v2",
+      "kind": "system",
+      "modelIds": ["openseeker-v2-30b-sft", "openseeker-summary-unknown"],
+      "harnessCode": "open",
+      "notes": "SFT checkpoint plus ReAct search loop. Public v2 generation/evaluation code is available. The Visit tool also calls an unpinned SUMMARY_MODEL_NAME model, so checkpoint availability alone does not establish full-stack open weights. Category is provisionally Medium; training-only teachers are excluded.",
+      "sources": [
+        {
+          "title": "OpenSeeker-v2 paper",
+          "url": "https://arxiv.org/html/2605.04036"
+        },
+        {
+          "title": "OpenSeeker evaluation code",
+          "url": "https://github.com/PolarSeeker/OpenSeeker"
+        },
+        {
+          "title": "OpenSeeker runtime Visit implementation",
+          "url": "https://github.com/PolarSeeker/OpenSeeker/blob/main/src/tools/visit.py"
+        }
+      ]
+    },
+    {
+      "systemName": "WebAnchor-30B",
+      "kind": "system",
+      "modelIds": ["webanchor-30b"],
+      "harnessCode": "uncertain",
+      "notes": "Anchor-GRPO finetuned research agent. Public base weights are distinct from the unretrieved WebAnchor checkpoint.",
+      "sources": [
+        {
+          "title": "WebAnchor paper, base policies and training",
+          "url": "https://arxiv.org/html/2601.03164"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-4.6",
+      "kind": "model",
+      "modelIds": ["glm-4-6"],
+      "harnessCode": "not-applicable",
+      "notes": "Model evaluation; total parameters take precedence over the price proxy.",
+      "sources": [
+        {
+          "title": "zai-org/GLM-4.6 model card",
+          "url": "https://huggingface.co/zai-org/GLM-4.6"
+        }
+      ]
+    },
+    {
+      "systemName": "Parallel Ultra",
+      "kind": "system",
+      "modelIds": ["parallel-task-ultra-stack"],
+      "harnessCode": "closed",
+      "notes": "Hosted Task API configuration on a fixed random 100-question BrowseComp subset, measured August 11–29, 2025. The dated September 2025 report directly confirms this historical score; exact underlying model stack remains undisclosed.",
+      "sources": [
+        {
+          "title": "Parallel September 2025 benchmark report and 100-question methodology",
+          "url": "https://parallel.ai/blog/deep-research-benchmarks"
+        }
+      ]
+    }
+  ]
+}

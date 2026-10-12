@@ -1,0 +1,111 @@
+{
+  "models": [
+    {
+      "id": "arex-2-27b",
+      "name": "AREX-2",
+      "weights": "open",
+      "totalParametersB": 27,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "BAAI fine-tune of Qwen3.8-27B; 27B is the published nominal total. Publisher repository BAAI/AREX-2 is public, Apache-2.0, and contains 11 safetensors shards (27.3567B serialized parameters). The official research profile reuses this policy for page summaries; external judges only score benchmark answers.",
+      "sources": [
+        {
+          "title": "AREX-2 paper, model and evaluation protocol",
+          "url": "https://arxiv.org/html/2609.38288v1"
+        },
+        {
+          "title": "BAAI AREX-2 released model and checkpoint inventory",
+          "url": "https://huggingface.co/api/models/BAAI/AREX-2"
+        },
+        {
+          "title": "AREX-2 research profile and summary-model configuration",
+          "url": "https://github.com/VectorSpaceLab/AREX-2/blob/main/docs/evaluation/configuration.md"
+        }
+      ],
+      "checkedAt": "2026-10-11"
+    },
+    {
+      "id": "traverse-35b",
+      "name": "Traverse-35B",
+      "weights": "uncertain",
+      "totalParametersB": 35,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Qwen3.5-35B-A3B-based trained search policy; 35B nominal total determines Small, with 3B active per token. The official runtime repository is public but separates policy weights from the harness. No exact evaluated checkpoint inventory was located; weights remain uncertain. The evaluated system also has a separate page-summary tool whose backbone is undisclosed.",
+      "sources": [
+        {
+          "title": "Traverse paper, implementation details and Table 1",
+          "url": "https://arxiv.org/html/2609.37082v2"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "activeParametersB": 3
+    },
+    {
+      "id": "traverse-summary-unknown",
+      "name": "Traverse page-summary backend (undisclosed)",
+      "weights": "uncertain",
+      "size": "medium",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Paper Appendix F.1.2 supplies question-conditioned synthesized page answers and permits a reader-plus-LLM fallback. The public runtime delegates link_summary_tool to a deployment-specific callable and does not identify its evaluated backbone, parameters, or token rate. Medium is a provisional estimate for this bounded summarization role, consistent with other unresolved research summarizers; its actual size and whether it reuses the actor remain unknown. No parameter count is invented.",
+      "sources": [
+        {
+          "title": "Traverse page-summary interface and reader-plus-LLM fallback",
+          "url": "https://arxiv.org/html/2609.37082v2#A6.SS1.SSS2"
+        },
+        {
+          "title": "Traverse deployment-specific search and summary backends",
+          "url": "https://github.com/ByteDance-BandAI/Traverse#search-tools"
+        },
+        {
+          "title": "Traverse FunctionLinkSummaryTool wrapper",
+          "url": "https://github.com/ByteDance-BandAI/Traverse/blob/main/tools/function_tools.py"
+        }
+      ],
+      "checkedAt": "2026-10-11"
+    }
+  ],
+  "submissions": [
+    {
+      "systemName": "AREX-2",
+      "kind": "system",
+      "modelIds": ["arex-2-27b"],
+      "harnessCode": "open",
+      "notes": "Released 27B fine-tuned policy and public evaluation harness verified. Research-profile page summaries reuse the inference policy. The paper’s BrowseComp process uses self-confidence rather than correctness feedback; external scoring judges and training teachers are excluded from the runtime model stack.",
+      "sources": [
+        {
+          "title": "AREX-2 paper, research evaluation results",
+          "url": "https://arxiv.org/html/2609.38288v1"
+        },
+        {
+          "title": "AREX-2 official evaluation harness",
+          "url": "https://github.com/VectorSpaceLab/AREX-2"
+        },
+        {
+          "title": "AREX-2 research-profile model configuration",
+          "url": "https://github.com/VectorSpaceLab/AREX-2/blob/main/docs/evaluation/configuration.md"
+        }
+      ]
+    },
+    {
+      "systemName": "Traverse-35B",
+      "kind": "system",
+      "modelIds": ["traverse-35b", "traverse-summary-unknown"],
+      "harnessCode": "open",
+      "notes": "Full BrowseComp score is 72.83% (Table 1 rounds to 72.8); the 185-question BC-185 subset is used only for ablations. Actor is a trained Qwen3.5-35B-A3B policy with unverified checkpoint availability. Runtime link_summary_tool returns synthesized page answers through an undisclosed deployment backend, so this stack includes a provisional Medium summarizer and remains uncertain. Memory sealing and self-verification use the actor; external benchmark judges and training teachers are excluded.",
+      "sources": [
+        {
+          "title": "Traverse paper, search and memory harness",
+          "url": "https://arxiv.org/html/2609.37082v2"
+        },
+        {
+          "title": "Traverse official inference and evaluation harness",
+          "url": "https://github.com/ByteDance-BandAI/Traverse"
+        }
+      ]
+    }
+  ]
+}

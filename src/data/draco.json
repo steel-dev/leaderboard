@@ -13,6 +13,17 @@
     },
     {
       "rank": 2,
+      "systemName": "Claude Opus 5.5",
+      "organization": "Anthropic",
+      "scoreDisplay": "87.4%",
+      "scoreValue": 87.4,
+      "sourceUrl": "https://www.anthropic.com/claude-opus-5-5-system-card",
+      "notesShort": "Opus 4.6 judge; Anthropic self-eval at max adaptive-thinking effort with search/fetch/code tools, a 980k-token task budget and five grading runs of the final report; exact label in Figure 8.11.2.A (page 187), not directly comparable to other judges.",
+      "reportedAt": "2026-09-22",
+      "isNew": true
+    },
+    {
+      "rank": 3,
       "systemName": "Claude Sonnet 5.5",
       "organization": "Anthropic",
       "scoreDisplay": "87.0%",
@@ -23,7 +34,7 @@
       "isNew": true
     },
     {
-      "rank": 3,
+      "rank": 4,
       "systemName": "Claude Mythos 5",
       "organization": "Anthropic",
       "scoreDisplay": "86.4%",
@@ -34,7 +45,7 @@
       "isNew": true
     },
     {
-      "rank": 4,
+      "rank": 5,
       "systemName": "Claude Mythos Preview",
       "organization": "Anthropic",
       "scoreDisplay": "83.6%",
@@ -44,7 +55,18 @@
       "reportedAt": "2026-06"
     },
     {
-      "rank": 5,
+      "rank": 6,
+      "systemName": "Claude Haiku 5.5",
+      "organization": "Anthropic",
+      "scoreDisplay": "81.5%",
+      "scoreValue": 81.5,
+      "sourceUrl": "https://www.anthropic.com/claude-haiku-5-5-system-card",
+      "notesShort": "Opus 4.6 judge; Anthropic self-eval at max adaptive-thinking effort with search/fetch/code tools, a 980k-token task budget and five grading runs of the final report; exact label in Figure 8.8.2.A (page 121), not directly comparable to other judges.",
+      "reportedAt": "2026-10-07",
+      "isNew": true
+    },
+    {
+      "rank": 7,
       "systemName": "Claude Opus 4.8",
       "organization": "Anthropic",
       "scoreDisplay": "80.4%",
@@ -54,7 +76,7 @@
       "reportedAt": "2026-06"
     },
     {
-      "rank": 6,
+      "rank": 8,
       "systemName": "Claude Opus 4.7",
       "organization": "Anthropic",
       "scoreDisplay": "77.7%",
@@ -64,7 +86,7 @@
       "reportedAt": "2026-04-16"
     },
     {
-      "rank": 7,
+      "rank": 9,
       "systemName": "MiniMax M3",
       "organization": "MiniMax",
       "scoreDisplay": "73.23%",
@@ -75,7 +97,7 @@
       "isNew": true
     },
     {
-      "rank": 8,
+      "rank": 10,
       "systemName": "Perplexity Deep Research (Opus 4.6)",
       "organization": "Perplexity",
       "scoreDisplay": "70.5%",
@@ -85,7 +107,7 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 9,
+      "rank": 11,
       "systemName": "Perplexity Deep Research (Opus 4.5)",
       "organization": "Perplexity",
       "scoreDisplay": "67.2%",
@@ -95,7 +117,7 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 10,
+      "rank": 12,
       "systemName": "Claude Fable 5",
       "organization": "Anthropic",
       "scoreDisplay": "65.3%",
@@ -106,7 +128,7 @@
       "isNew": true
     },
     {
-      "rank": 11,
+      "rank": 13,
       "systemName": "Claude Opus 4.6",
       "organization": "Anthropic",
       "scoreDisplay": "59.8%",
@@ -116,7 +138,7 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 12,
+      "rank": 14,
       "systemName": "Gemini Deep Research",
       "organization": "Google",
       "scoreDisplay": "59.0%",
@@ -126,7 +148,7 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 13,
+      "rank": 15,
       "systemName": "OpenAI Deep Research (o3)",
       "organization": "OpenAI",
       "scoreDisplay": "52.1%",
@@ -136,7 +158,7 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 14,
+      "rank": 16,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "46.7%",
@@ -146,7 +168,7 @@
       "reportedAt": "2026-02-12"
     },
     {
-      "rank": 15,
+      "rank": 17,
       "systemName": "OpenAI Deep Research (o4-mini)",
       "organization": "OpenAI",
       "scoreDisplay": "41.9%",

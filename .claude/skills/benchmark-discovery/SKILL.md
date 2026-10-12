@@ -73,9 +73,17 @@ Decide one of four outcomes per candidate. The reason for being strict here is t
 - The score is on the *original* benchmark, not a variant.
 - The system or method name can be extracted cleanly from the abstract.
 
+Apply `CONTRIBUTING.md`'s comparability rules before promoting a candidate to a ranked row.
+Documented custom harnesses and judges are admissible with caveats; they do not alone make a
+benchmark a variant. Keep filtered task sets separate unless the target page explicitly permits
+that filtering and the source identifies the denominator and exclusions. Exact printed chart
+labels are valid evidence during full-source review; scores estimated from chart geometry are not.
+The abstract-only rules here are triage requirements, not stricter admission rules for full-source
+manual curation or the automated research/judge pipeline.
+
 If the abstract gives only an improvement delta ("improves by 8 points"), a truncated number ("achieves state-of-the-art scores of 41..."), or claims SOTA without a concrete number, do NOT propose it — drop silently. The maintainer should not be asked to chase down a number we couldn't read; that work belongs upstream, in our discovery loop, not on their plate.
 
-**Variant candidate.** The paper scores on a *variant* benchmark — these vary by parent, but examples include BrowseComp-Plus, BrowseComp-V³, LiveBrowseComp, MM-BrowseComp, BrowseComp-ZH, BrowseComp-lite, BrowseComp+, SWE-bench Multilingual, SWE-bench Pro, RepoMirage (built-on SWE-bench Verified), Online-Mind2Web. List the paper under the *parent* benchmark in a variants subsection. Variants do not need an absolute score — even mentioning the variant is useful signal because the project might want to spin up a sibling leaderboard page.
+**Variant candidate.** The paper scores on a *variant* benchmark — these vary by parent, but examples include BrowseComp-Plus, BrowseComp-V³, LiveBrowseComp, MM-BrowseComp, BrowseComp-ZH, BrowseComp-lite, BrowseComp+, SWE-bench Multilingual, SWE-bench Pro, RepoMirage (built-on SWE-bench Verified), and Online-Mind2Web when researching original Mind2Web. Online-Mind2Web results on its own tracked page are not variants. List the paper under the *parent* benchmark in a variants subsection. Variants do not need an absolute score — even mentioning the variant is useful signal because the project might want to spin up a sibling leaderboard page.
 
 **Methodology note.** The paper makes a claim *about* the benchmark itself rather than reporting a new agent's score — e.g. "filtering bad tasks shifts SWE-bench Verified ranks by +9pp", "the WebVoyager judge has ≥45% false-positive rate", "evaluator disagreement is X% on this benchmark". These feed the benchmark's `importantNotes` in `benchmark-hub.ts`, not new rows. They go in a separate methodology subsection so the maintainer can route them differently.
 
@@ -135,6 +143,7 @@ After all per-benchmark tables, if the sweep surfaced patterns that span multipl
 ```
 
 Reserve this for things like:
+
 - Variant proliferation across multiple parents in one sweep (e.g. BrowseComp variants stacking)
 - A paper that scores on 3+ benchmarks we track (cross-cutting system)
 - A methodology finding that affects multiple `importantNotes`

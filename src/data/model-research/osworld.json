@@ -1,0 +1,686 @@
+{
+  "models": [
+    {
+      "id": "qwen3-8-max-launch",
+      "name": "Qwen3.8-Max (August 2026 launch)",
+      "weights": "uncertain",
+      "totalParametersB": 2400,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "Alibaba publishes 2.4T total parameters for the evaluated multimodal flagship. The related public Qwen3.8-2.4T-A95B checkpoint has 213 weight shards, but its card explicitly says text-only and distinguishes the hosted Max version with vision. That release does not establish availability of the evaluated visual checkpoint. The live Max alias was upgraded in September; this record preserves the August launch identity.",
+      "sources": [
+        {
+          "title": "Alibaba Qwen3.8-Max launch announcement, August 3, 2026",
+          "url": "https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen3-8-max?_p_lc=1"
+        },
+        {
+          "title": "Qwen/Qwen3.8-2.4T-A95B model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+        },
+        {
+          "title": "Qwen/Qwen3.8-2.4T-A95B checkpoint inventory",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen3.8-2.4T-A95B"
+        },
+        {
+          "title": "Qwen3.8-Max September alias upgrade notice",
+          "url": "https://www.alibabacloud.com/en/notice/model_studio_update_notice_for_qwen38max_models_863?_p_lc=1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "mimo-v2-6-pro-rl",
+      "name": "MiMo-V2.6-Pro-RL",
+      "weights": "open",
+      "totalParametersB": 1020,
+      "activeParametersB": 42,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The official MIT-licensed card identifies this released RL checkpoint and publishes 1020B total/42B activated parameters. Public inventory contains 132 safetensor files. Its stored tensor inventory is about 1024.2B including auxiliary/quantization tensors; the explicitly published architectural total drives classification. OSWorld numbers are in the shared evaluation table; no separate inference helper is identified.",
+      "sources": [
+        {
+          "title": "XiaomiMiMo/MiMo-V2.6-Pro-RL model card and released files",
+          "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"
+        },
+        {
+          "title": "XiaomiMiMo/MiMo-V2.6-Pro-RL checkpoint inventory",
+          "url": "https://huggingface.co/api/models/XiaomiMiMo/MiMo-V2.6-Pro-RL"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "mimo-v2-6-flash-rl",
+      "name": "MiMo-V2.6-Flash-RL",
+      "weights": "open",
+      "totalParametersB": 309,
+      "activeParametersB": 15,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The official MIT-licensed card identifies this released RL checkpoint and publishes 309B total/15B activated parameters. Public inventory contains 67 safetensor files. Its stored tensor inventory is about 310.8B including auxiliary/quantization tensors; the explicitly published architectural total drives classification. OSWorld numbers are in the shared evaluation table; no separate inference helper is identified.",
+      "sources": [
+        {
+          "title": "XiaomiMiMo/MiMo-V2.6-Flash-RL model card and released files",
+          "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL"
+        },
+        {
+          "title": "XiaomiMiMo/MiMo-V2.6-Flash-RL checkpoint inventory",
+          "url": "https://huggingface.co/api/models/XiaomiMiMo/MiMo-V2.6-Flash-RL"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "osagent-2025-undisclosed",
+      "name": "OSAgent (October 2025 undisclosed policy)",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "The launch describes an end-to-end RL computer-use policy trained from an unnamed general-reasoning base. Neither exact backbone, parameter count, token prices, nor evaluated weights are published there. Large is a provisional frontier reasoning-policy estimate, not a measured parameter claim. An agi-inc 32B repository created in April 2026 has no model card and cannot establish this October 2025 model identity.",
+      "sources": [
+        {
+          "title": "OSAgent launch and training description",
+          "url": "https://www.theagi.company/blog/osworld"
+        },
+        {
+          "title": "Later AGI checkpoint metadata; not proof of historical identity",
+          "url": "https://huggingface.co/api/models/agi-inc/Qwen3-VL-32B-Instruct-L2-click-006-arena-step30"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen3-vl-235b-a22b-instruct",
+      "name": "Qwen3-VL-235B-A22B-Instruct",
+      "weights": "open",
+      "totalParametersB": 235,
+      "activeParametersB": 22,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The official report specifies 235B total and 22B active parameters. Its Table 2 distinguishes the Instruct model's 31.6 OSWorld score from its 66.7 OSWorldG grounding score. The exact Instruct checkpoint inventory is public and ungated, with 96 safetensors shards at revision 710c13861be6c466e66de3f484069440b8f31389. Stored tensors total 235.670022896B including auxiliary components; the published architectural total determines the unchanged Large category.",
+      "sources": [
+        {
+          "title": "Qwen3-VL technical report, Table 2 (page 15)",
+          "url": "https://arxiv.org/pdf/2511.21631v1#page=15"
+        },
+        {
+          "title": "Qwen3-VL-235B-A22B-Instruct model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Instruct"
+        },
+        {
+          "title": "Qwen3-VL-235B-A22B-Instruct checkpoint inventory",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen3-VL-235B-A22B-Instruct"
+        }
+      ],
+      "checkedAt": "2026-10-11"
+    },
+    {
+      "id": "claude-opus-4-5",
+      "name": "Claude Opus 4.5",
+      "weights": "closed",
+      "inputUsdPerMillion": 5,
+      "outputUsdPerMillion": 25,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Closed hosted model with undisclosed parameter count. Published standard uncached first-party text prices are $5 input/$25 output per million tokens, giving a $10/M blend and Large price-proxy category. Cache, batch, and tool charges are excluded.",
+      "sources": [
+        {
+          "title": "Claude Opus 4.5 launch announcement",
+          "url": "https://www.anthropic.com/news/claude-opus-4-5"
+        },
+        {
+          "title": "Anthropic standard API pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-sonnet-4-5",
+      "name": "Claude Sonnet 4.5",
+      "weights": "closed",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Closed hosted model with undisclosed parameter count. Published standard uncached first-party text prices are $3 input/$15 output per million tokens, giving a $6/M blend and Large price-proxy category. Cache, batch, and tool charges are excluded. This uses the standard context tier (up to 200K input tokens), not long-context premium pricing.",
+      "sources": [
+        {
+          "title": "Claude Sonnet 4.5 launch announcement",
+          "url": "https://www.anthropic.com/news/claude-sonnet-4-5"
+        },
+        {
+          "title": "Anthropic standard API pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "name": "Claude Haiku 4.5",
+      "weights": "closed",
+      "inputUsdPerMillion": 1,
+      "outputUsdPerMillion": 5,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Closed hosted model with undisclosed parameter count. Published standard uncached first-party text prices are $1 input/$5 output per million tokens, giving a $2/M blend and Large price-proxy category. Cache, batch, and tool charges are excluded.",
+      "sources": [
+        {
+          "title": "Claude Haiku 4.5 launch announcement",
+          "url": "https://www.anthropic.com/news/claude-haiku-4-5"
+        },
+        {
+          "title": "Anthropic standard API pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-3-7-sonnet",
+      "name": "Claude 3.7 Sonnet",
+      "weights": "closed",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Closed hosted model with undisclosed parameter count. Published standard uncached first-party text prices are $3 input/$15 output per million tokens, giving a $6/M blend and Large price-proxy category. Cache, batch, and tool charges are excluded. The launch announcement supplies historical rates; current pricing tables omit this retired model. Thinking tokens are billed as output.",
+      "sources": [
+        {
+          "title": "Claude 3.7 Sonnet launch announcement",
+          "url": "https://www.anthropic.com/news/claude-3-7-sonnet"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-5v-turbo",
+      "name": "GLM-5V-Turbo",
+      "weights": "uncertain",
+      "inputUsdPerMillion": 1.2,
+      "outputUsdPerMillion": 4,
+      "size": "large",
+      "basis": "price",
+      "confidence": "medium",
+      "notes": "Exact multimodal API model is documented, but its parameter count and evaluated weights are not verified. The Z.AI pricing page currently omits this model; the serving Vercel AI Gateway directly lists its Z.AI route at standard $1.20 input/$4 output per million tokens (200K context), a $1.90/M blend. This is a provider price proxy, not a claim about parameter size. The exact zai-org checkpoint lookup returns HTTP 401 and the author search has no 5V release.",
+      "sources": [
+        {
+          "title": "GLM-5V-Turbo official model overview",
+          "url": "https://docs.z.ai/guides/vlm/glm-5v-turbo"
+        },
+        {
+          "title": "Vercel AI Gateway GLM-5V-Turbo Z.AI route pricing",
+          "url": "https://vercel.com/ai-gateway/models/glm-5v-turbo"
+        },
+        {
+          "title": "Z.AI current pricing; exact model absent",
+          "url": "https://docs.z.ai/guides/overview/pricing"
+        },
+        {
+          "title": "Z.AI author checkpoint search",
+          "url": "https://huggingface.co/api/models?author=zai-org&search=5V&limit=100"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "ui-tars-72b-dpo",
+      "name": "UI-TARS-72B-DPO",
+      "weights": "open",
+      "totalParametersB": 73.4056,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Public Apache-2.0 visual grounding checkpoint used by Agent S2. The model is published as 72B; its inventory includes about 73.4B tensors, including the vision stack, across 31 safetensor shards. Both totals are Medium. Keep this original DPO release distinct from later UI-TARS-1.5.",
+      "sources": [
+        {
+          "title": "ByteDance-Seed/UI-TARS-72B-DPO model card and released files",
+          "url": "https://huggingface.co/ByteDance-Seed/UI-TARS-72B-DPO"
+        },
+        {
+          "title": "ByteDance-Seed/UI-TARS-72B-DPO checkpoint inventory",
+          "url": "https://huggingface.co/api/models/ByteDance-Seed/UI-TARS-72B-DPO"
+        },
+        {
+          "title": "Agent S2 paper, section 4.1",
+          "url": "https://arxiv.org/html/2504.00906v1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "text-embedding-3-small",
+      "name": "OpenAI text-embedding-3-small",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.02,
+      "size": "small",
+      "basis": "estimate",
+      "confidence": "medium",
+      "notes": "Agent S2 v0.2.0 hard-codes this model for narrative/episodic memory retrieval when embeddings are not cached. Official embedding price is $0.02 per million input tokens. It has no generative output-token rate, so the 3:1 text-generation price formula does not apply and output price is not fabricated as zero. Small is a provisional low-cost embedding-service category; parameter count is undisclosed.",
+      "sources": [
+        {
+          "title": "text-embedding-3-small official model documentation",
+          "url": "https://developers.openai.com/api/docs/models/text-embedding-3-small"
+        },
+        {
+          "title": "Agent S2 v0.2.0 embedding engine",
+          "url": "https://github.com/simular-ai/Agent-S/blob/v0.2.0/gui_agents/s2/core/engine.py"
+        },
+        {
+          "title": "Agent S2 v0.2.0 retrieval implementation",
+          "url": "https://github.com/simular-ai/Agent-S/blob/v0.2.0/gui_agents/s2/core/knowledge.py"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "openai-cua-original",
+      "name": "OpenAI original Computer-Using Agent (January 2025)",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "medium",
+      "notes": "The original Operator CUA combines GPT-4o vision with reinforcement-learned reasoning. Its parameter count and January evaluation token prices are undisclosed. Large is a provisional category informed by the GPT-4o-based frontier architecture and later computer-use-preview pricing, not a parameter estimate or assertion that the March API snapshot is identical. Do not substitute later o3-based Operator or computer-use-preview-2025-03-11 for this historical model.",
+      "sources": [
+        {
+          "title": "OpenAI original CUA announcement and evaluation",
+          "url": "https://openai.com/index/computer-using-agent/"
+        },
+        {
+          "title": "Later computer-use-preview model and dated snapshot; comparative evidence only",
+          "url": "https://developers.openai.com/api/docs/models/computer-use-preview"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen2-5-vl-72b-instruct",
+      "name": "Qwen2.5-VL-72B-Instruct",
+      "weights": "open",
+      "totalParametersB": 73.4108,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The official card identifies the instruction-tuned 72B model and includes the OSWorld result. Public checkpoint inventory verifies 38 safetensor shards and approximately 73.4108B stored parameters including vision components. This full inventory drives the total; it falls in the same category as the nominal language-model size. The 72B release uses the Qwen license; 32B uses Apache-2.0. Open weights is not an assertion of identical license terms.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen2.5-VL-72B-Instruct model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct"
+        },
+        {
+          "title": "Qwen/Qwen2.5-VL-72B-Instruct checkpoint inventory",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen2.5-VL-72B-Instruct"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen2-5-vl-32b-instruct",
+      "name": "Qwen2.5-VL-32B-Instruct",
+      "weights": "open",
+      "totalParametersB": 33.4527,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "The official card identifies the instruction-tuned 32B model and includes the OSWorld result. Public checkpoint inventory verifies 18 safetensor shards and approximately 33.4527B stored parameters including vision components. This full inventory drives the total; it falls in the same category as the nominal language-model size. The 72B release uses the Qwen license; 32B uses Apache-2.0. Open weights is not an assertion of identical license terms.",
+      "sources": [
+        {
+          "title": "Qwen/Qwen2.5-VL-32B-Instruct model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct"
+        },
+        {
+          "title": "Qwen/Qwen2.5-VL-32B-Instruct checkpoint inventory",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen2.5-VL-32B-Instruct"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    }
+  ],
+  "submissions": [
+    {
+      "systemName": "Qwen3.8-Max",
+      "kind": "model",
+      "modelIds": ["qwen3-8-max-launch"],
+      "harnessCode": "uncertain",
+      "notes": "Preserves the launch evaluation of the visual Max model. Related text-only open weights are insufficient to mark this GUI result open.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://qwen.ai/blog?id=qwen3.8"
+        },
+        {
+          "title": "Alibaba Qwen3.8-Max launch announcement, August 3, 2026",
+          "url": "https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen3-8-max?_p_lc=1"
+        },
+        {
+          "title": "Qwen/Qwen3.8-2.4T-A95B model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Mythos Preview",
+      "kind": "model",
+      "modelIds": ["claude-mythos-preview"],
+      "harnessCode": "uncertain",
+      "notes": "Reuses the exact Claude model version already researched for BrowseComp. The retrieved Claude 5 system card section 8.16.3 describes a revised OSWorld computer-use harness, 100 steps and five runs; no separate inference model is identified. Full internal evaluation harness availability is unverified.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Mythos 5",
+      "kind": "model",
+      "modelIds": ["claude-mythos-5"],
+      "harnessCode": "uncertain",
+      "notes": "Reuses the exact Claude model version already researched for BrowseComp. The retrieved Claude 5 system card section 8.16.3 describes a revised OSWorld computer-use harness, 100 steps and five runs; no separate inference model is identified. Full internal evaluation harness availability is unverified.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Fable 5",
+      "kind": "model",
+      "modelIds": ["claude-fable-5"],
+      "harnessCode": "uncertain",
+      "notes": "Reuses the exact Claude model version already researched for BrowseComp. The retrieved Claude 5 system card section 8.16.3 describes a revised OSWorld computer-use harness, 100 steps and five runs; no separate inference model is identified. Full internal evaluation harness availability is unverified.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Opus 4.8",
+      "kind": "model",
+      "modelIds": ["claude-opus-4-8"],
+      "harnessCode": "uncertain",
+      "notes": "Named model on Anthropic\u2019s revised computer-use harness. Reuses its existing model record; the launch explicitly notes evaluation changes, which remain in the result notes.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www.anthropic.com/news/claude-opus-4-8"
+        }
+      ]
+    },
+    {
+      "systemName": "MiMo-V2.6-Pro",
+      "kind": "model",
+      "modelIds": ["mimo-v2-6-pro-rl"],
+      "harnessCode": "not-applicable",
+      "notes": "Maps the official result to the released MiMo-V2.6-Pro-RL checkpoint; card and actual weight inventory verified. No additional runtime model is identified.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Sonnet 5",
+      "kind": "model",
+      "modelIds": ["claude-sonnet-5"],
+      "harnessCode": "uncertain",
+      "notes": "Reuses the exact Sonnet 5 model. Retrieved system card section 8.10.2 identifies the revised 100-step GUI evaluation; no separate inference helper is specified.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "MiMo-V2.6-Flash",
+      "kind": "model",
+      "modelIds": ["mimo-v2-6-flash-rl"],
+      "harnessCode": "not-applicable",
+      "notes": "Maps the official result to the released MiMo-V2.6-Flash-RL checkpoint; card and actual weight inventory verified. No additional runtime model is identified.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Sonnet 4.6",
+      "kind": "model",
+      "modelIds": ["claude-sonnet-4-6"],
+      "harnessCode": "uncertain",
+      "notes": "Sonnet 4.6 was re-evaluated in the Sonnet 5 card using the revised zoom tool and per-turn token limit. It remains the Sonnet 4.6 model, with the changed harness preserved in result context.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "OSAgent",
+      "kind": "system",
+      "modelIds": ["osagent-2025-undisclosed"],
+      "harnessCode": "uncertain",
+      "notes": "The launch identifies a trained policy, but not its general-reasoning base or released checkpoint. Runtime identity and full implementation remain unverified; Large is explicitly provisional.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www.theagi.company/blog/osworld"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.4",
+      "kind": "model",
+      "modelIds": ["gpt-5-4"],
+      "harnessCode": "uncertain",
+      "notes": "The launch reports native screenshot-based computer use for GPT-5.4. Reuses the GPT-5.4 record; no additional model is identified for this result.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://openai.com/index/introducing-gpt-5-4/"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Opus 4.6",
+      "kind": "model",
+      "modelIds": ["claude-opus-4-6"],
+      "harnessCode": "uncertain",
+      "notes": "Maps the Glasswing OSWorld comparator to Claude Opus 4.6. Later revised-harness scores are not substituted.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www.anthropic.com/glasswing"
+        }
+      ]
+    },
+    {
+      "systemName": "Qwen3-VL-235B-A22B-Instruct",
+      "kind": "model",
+      "modelIds": ["qwen3-vl-235b-a22b-instruct"],
+      "harnessCode": "uncertain",
+      "notes": "Exact Instruct checkpoint identified by Table 2 of the primary technical report. Corrected a previously imported OSWorldG grounding score to the matching 31.6 OSWorld result; Thinking is a distinct evaluated variant and is not substituted. Official downloadable Instruct weights verified; exact evaluation harness release remains unverified.",
+      "sources": [
+        {
+          "title": "Qwen3-VL technical report, Table 2 (page 15)",
+          "url": "https://arxiv.org/pdf/2511.21631v1#page=15"
+        },
+        {
+          "title": "Qwen3-VL-235B-A22B-Instruct model card and released files",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Instruct"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Opus 4.5",
+      "kind": "model",
+      "modelIds": ["claude-opus-4-5"],
+      "harnessCode": "uncertain",
+      "notes": "Direct named-model computer-use evaluation. UiPath\u2019s separate scaffold result is mapped separately rather than conflated with this baseline.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www.anthropic.com/news/claude-opus-4-5"
+        }
+      ]
+    },
+    {
+      "systemName": "Kimi K2.5",
+      "kind": "model",
+      "modelIds": ["kimi-k2-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Technical paper section 5.1.2 explicitly reports GUI-only OSWorld actions without external tools; no external runtime language model is included. Reuses the existing Kimi K2.5 checkpoint record.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://arxiv.org/html/2602.02276v1"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-5V-Turbo",
+      "kind": "model",
+      "modelIds": ["glm-5v-turbo"],
+      "harnessCode": "uncertain",
+      "notes": "Named multimodal API model; exact parameter count and weight release remain unverified. Uses current standard provider token prices for the exact named model, excluding tool and cache fees.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://docs.z.ai/guides/vlm/glm-5v-turbo"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Sonnet 4.5",
+      "kind": "model",
+      "modelIds": ["claude-sonnet-4-5"],
+      "harnessCode": "uncertain",
+      "notes": "Named-model computer-use evaluation. The official launch and standard API rates establish identity and price category.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www.anthropic.com/news/claude-sonnet-4-5"
+        }
+      ]
+    },
+    {
+      "systemName": "UiPath Screen Agent w/ GPT-5",
+      "kind": "harness",
+      "modelIds": ["gpt-5"],
+      "harnessCode": "uncertain",
+      "notes": "The official OSWorld-Verified workbook identifies the 53.63% (stored rounded 53.6%) result as UiPath Screen Agent w/ GPT-5, 50 steps, dated September 14, 2025. Opus 4.5 results in the same workbook are separate later runs. Exact historical scaffold release and auxiliary-model configuration are unverified; current UiPath evaluation code does not prove the older run was released.",
+      "sources": [
+        {
+          "title": "Official OSWorld-Verified results workbook",
+          "url": "https://osworld-v1.xlang.ai/static/data/osworld_verified_results.xlsx"
+        },
+        {
+          "title": "Official benchmark and workbook host",
+          "url": "https://osworld-v1.xlang.ai/"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Haiku 4.5",
+      "kind": "model",
+      "modelIds": ["claude-haiku-4-5"],
+      "harnessCode": "uncertain",
+      "notes": "The official launch identifies Haiku 4.5 and its computer-use result. Its $1/$5 standard rates put it in Large by the prescribed price proxy despite the Haiku product name.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://www.anthropic.com/news/claude-haiku-4-5"
+        }
+      ]
+    },
+    {
+      "systemName": "Agent S2 + Claude 3.7",
+      "kind": "harness",
+      "modelIds": ["claude-3-7-sonnet", "ui-tars-72b-dpo", "text-embedding-3-small"],
+      "harnessCode": "open",
+      "notes": "The paper pins Claude 3.7 Sonnet as manager/worker and UI-TARS-72B-DPO as visual grounding. Release v0.2.0 also uses text-embedding-3-small for uncached memory retrieval; include it conservatively. Tesseract OCR and UNO are conventional tools. Optional Perplexica is disabled in the release CLI and is not asserted as a required evaluated model. The open harness thus has mixed model weights and Large largest-component size.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://simular.ai"
+        },
+        {
+          "title": "Agent S2 original launch result",
+          "url": "https://www.simular.ai/articles/agent-s2"
+        },
+        {
+          "title": "Agent S2 paper, section 4.1",
+          "url": "https://arxiv.org/html/2504.00906v1"
+        },
+        {
+          "title": "Agent S2 release v0.2.0",
+          "url": "https://github.com/simular-ai/Agent-S/tree/v0.2.0"
+        },
+        {
+          "title": "Agent S2 v0.2.0 CLI optional search configuration",
+          "url": "https://github.com/simular-ai/Agent-S/blob/v0.2.0/gui_agents/s2/cli_app.py"
+        }
+      ]
+    },
+    {
+      "systemName": "OpenAI Operator (CUA)",
+      "kind": "system",
+      "modelIds": ["openai-cua-original"],
+      "harnessCode": "closed",
+      "notes": "Original January 2025 CUA evaluated at 50 steps; Agent S2\u2019s published baseline table corroborates the 32.6 setting. The broader launch page also reports 38.1 with a different step budget. Do not map this result to later Operator updates. Product-side safety monitors are not claimed as components of the benchmark policy absent evidence.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://openai.com/index/computer-using-agent/"
+        },
+        {
+          "title": "Agent S2 baseline table with 50-step original CUA",
+          "url": "https://arxiv.org/html/2504.00906v1"
+        }
+      ]
+    },
+    {
+      "systemName": "Qwen2.5 VL 72B Instruct",
+      "kind": "model",
+      "modelIds": ["qwen2-5-vl-72b-instruct"],
+      "harnessCode": "not-applicable",
+      "notes": "Exact named instruction-tuned checkpoint; model card and public safetensor inventory verified. No separate learned runtime helper is identified.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct"
+        }
+      ]
+    },
+    {
+      "systemName": "Qwen2.5 VL 32B Instruct",
+      "kind": "model",
+      "modelIds": ["qwen2-5-vl-32b-instruct"],
+      "harnessCode": "not-applicable",
+      "notes": "Exact named instruction-tuned checkpoint; model card and public safetensor inventory verified. No separate learned runtime helper is identified.",
+      "sources": [
+        {
+          "title": "Reported OSWorld evaluation",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct"
+        }
+      ]
+    }
+  ]
+}

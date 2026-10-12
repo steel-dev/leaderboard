@@ -133,16 +133,6 @@
     },
     {
       "rank": 13,
-      "systemName": "Qwen3 VL 235B",
-      "organization": "Alibaba",
-      "scoreDisplay": "66.7%",
-      "scoreValue": 66.7,
-      "sourceUrl": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B",
-      "notesShort": "Strongest open-source model on OSWorld; self-reported.",
-      "reportedAt": "2025-09-23"
-    },
-    {
-      "rank": 14,
       "systemName": "Claude Opus 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "66.3%",
@@ -152,7 +142,7 @@
       "reportedAt": "2025-11-24"
     },
     {
-      "rank": 15,
+      "rank": 14,
       "systemName": "Kimi K2.5",
       "organization": "Moonshot AI",
       "scoreDisplay": "63.3%",
@@ -162,7 +152,7 @@
       "reportedAt": "2026-01-27"
     },
     {
-      "rank": 16,
+      "rank": 15,
       "systemName": "GLM-5V-Turbo",
       "organization": "Zhipu AI",
       "scoreDisplay": "62.3%",
@@ -172,7 +162,7 @@
       "reportedAt": "2026-04-01"
     },
     {
-      "rank": 17,
+      "rank": 16,
       "systemName": "Claude Sonnet 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "61.4%",
@@ -182,17 +172,17 @@
       "reportedAt": "2025-09-29"
     },
     {
-      "rank": 18,
-      "systemName": "UiPath Screen Agent",
+      "rank": 17,
+      "systemName": "UiPath Screen Agent w/ GPT-5",
       "organization": "UiPath",
       "scoreDisplay": "53.6%",
       "scoreValue": 53.6,
-      "sourceUrl": "https://www.uipath.com/newsroom/uipath-screenagent-osworld-benchmark-top-ranking",
-      "notesShort": "OSWorld-Verified independently verified result; enterprise automation scaffold on Claude Opus 4.5.",
-      "reportedAt": "2026-01-14"
+      "sourceUrl": "https://osworld-v1.xlang.ai/static/data/osworld_verified_results.xlsx",
+      "notesShort": "Official OSWorld-Verified workbook reports 53.63% with GPT-5 at 50 steps, rounded here to 53.6%; this is the September 2025 run.",
+      "reportedAt": "2025-09-14"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "systemName": "Claude Haiku 4.5",
       "organization": "Anthropic",
       "scoreDisplay": "50.7%",
@@ -202,24 +192,34 @@
       "reportedAt": "2025-10-15"
     },
     {
-      "rank": 20,
+      "rank": 19,
       "systemName": "Agent S2 + Claude 3.7",
       "organization": "Simular AI",
       "scoreDisplay": "34.5%",
       "scoreValue": 34.5,
-      "sourceUrl": "https://simular.ai",
+      "sourceUrl": "https://www.simular.ai/articles/agent-s2",
       "notesShort": "Open-source modular agent; evaluated on 50-step OSWorld tasks.",
       "reportedAt": "2025-03-12"
     },
     {
-      "rank": 21,
+      "rank": 20,
       "systemName": "OpenAI Operator (CUA)",
       "organization": "OpenAI",
       "scoreDisplay": "32.6%",
       "scoreValue": 32.6,
-      "sourceUrl": "https://openai.com/index/computer-using-agent/",
-      "notesShort": "Self-reported on 50-step OSWorld tasks at Operator launch.",
+      "sourceUrl": "https://arxiv.org/html/2504.00906v1",
+      "notesShort": "Original January 2025 CUA; Agent S2 reports the 32.6% baseline at 50 steps. The OpenAI launch score used a different step budget.",
       "reportedAt": "2025-01-23"
+    },
+    {
+      "rank": 21,
+      "systemName": "Qwen3-VL-235B-A22B-Instruct",
+      "organization": "Alibaba",
+      "scoreDisplay": "31.6%",
+      "scoreValue": 31.6,
+      "sourceUrl": "https://arxiv.org/pdf/2511.21631v1#page=15",
+      "notesShort": "Self-reported OSWorld result from Qwen3-VL technical report Table 2 (Instruct variant). The separate OSWorldG grounding score is 66.7%; it is not an OSWorld task-success result.",
+      "reportedAt": "2025-11-26"
     },
     {
       "rank": 22,

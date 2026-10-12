@@ -1,0 +1,1160 @@
+{
+  "models": [
+    {
+      "id": "gpt-5-6-sol",
+      "name": "GPT-5.6 Sol",
+      "weights": "closed",
+      "inputUsdPerMillion": 4,
+      "outputUsdPerMillion": 20,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Category uses published standard uncached API token prices, not an estimated parameter count. Prices exclude tools and long-context surcharges. Published $4/$20 rate is promotional through at least November 21, 2026.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.6 Sol API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "weights": "closed",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 50,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Category uses published standard uncached API token prices, not an estimated parameter count. Prices exclude tools and long-context surcharges.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-6 Astra API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-5-pro",
+      "name": "GPT-5.5 Pro",
+      "weights": "closed",
+      "inputUsdPerMillion": 30,
+      "outputUsdPerMillion": 180,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Category uses published standard uncached API token prices, not an estimated parameter count. Prices exclude tools and long-context surcharges.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.5 Pro API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5-pro"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-4-pro",
+      "name": "GPT-5.4 Pro",
+      "weights": "closed",
+      "inputUsdPerMillion": 30,
+      "outputUsdPerMillion": 180,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Category uses published standard uncached API token prices, not an estimated parameter count. Prices exclude tools and long-context surcharges.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.4 Pro API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4-pro"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-5",
+      "name": "GPT-5.5",
+      "weights": "closed",
+      "inputUsdPerMillion": 5,
+      "outputUsdPerMillion": 30,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Category uses published standard uncached API token prices, not an estimated parameter count. Prices exclude tools and long-context surcharges.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.5 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-4",
+      "name": "GPT-5.4",
+      "weights": "closed",
+      "inputUsdPerMillion": 2.5,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Category uses published standard uncached API token prices, not an estimated parameter count. Prices exclude tools and long-context surcharges.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.4 API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-2-pro",
+      "name": "GPT-5.2 Pro",
+      "weights": "closed",
+      "inputUsdPerMillion": 21,
+      "outputUsdPerMillion": 168,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Category uses published standard uncached API token prices, not an estimated parameter count. Prices exclude tools and long-context surcharges.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.2 Pro API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.2-pro"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-5-3-codex",
+      "name": "GPT-5.3-Codex",
+      "weights": "closed",
+      "inputUsdPerMillion": 1.75,
+      "outputUsdPerMillion": 14,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Category uses published standard uncached API token prices, not an estimated parameter count. Prices exclude tools and long-context surcharges.",
+      "sources": [
+        {
+          "title": "OpenAI GPT-5.3-Codex API model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-opus-5",
+      "name": "Claude Opus 5",
+      "weights": "closed",
+      "inputUsdPerMillion": 5,
+      "outputUsdPerMillion": 25,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters; size uses standard uncached token pricing. Tool charges excluded.",
+      "sources": [
+        {
+          "title": "Anthropic model pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-mythos-5",
+      "name": "Claude Mythos 5",
+      "weights": "closed",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 50,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters; size uses standard uncached token pricing. Tool charges excluded.",
+      "sources": [
+        {
+          "title": "Anthropic model pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-fable-5",
+      "name": "Claude Fable 5",
+      "weights": "closed",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 50,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters; size uses standard uncached token pricing. Tool charges excluded.",
+      "sources": [
+        {
+          "title": "Anthropic model pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "weights": "closed",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters; size uses standard uncached token pricing. Tool charges excluded.",
+      "sources": [
+        {
+          "title": "Anthropic model pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-opus-4-8",
+      "name": "Claude Opus 4.8",
+      "weights": "closed",
+      "inputUsdPerMillion": 5,
+      "outputUsdPerMillion": 25,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters; size uses standard uncached token pricing. Tool charges excluded.",
+      "sources": [
+        {
+          "title": "Anthropic model pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-opus-4-6",
+      "name": "Claude Opus 4.6",
+      "weights": "closed",
+      "inputUsdPerMillion": 5,
+      "outputUsdPerMillion": 25,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters; size uses standard uncached token pricing. Tool charges excluded.",
+      "sources": [
+        {
+          "title": "Anthropic model pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-opus-4-7",
+      "name": "Claude Opus 4.7",
+      "weights": "closed",
+      "inputUsdPerMillion": 5,
+      "outputUsdPerMillion": 25,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters; size uses standard uncached token pricing. Tool charges excluded.",
+      "sources": [
+        {
+          "title": "Anthropic model pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "name": "Claude Sonnet 4.6",
+      "weights": "closed",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters; size uses standard uncached token pricing. Tool charges excluded.",
+      "sources": [
+        {
+          "title": "Anthropic model pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "claude-mythos-preview",
+      "name": "Claude Mythos Preview",
+      "weights": "closed",
+      "inputUsdPerMillion": 25,
+      "outputUsdPerMillion": 125,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Undisclosed parameters. Published participant API price; limited research-preview access, with initial usage credits. Token pricing excludes tools.",
+      "sources": [
+        {
+          "title": "Anthropic Project Glasswing",
+          "url": "https://www.anthropic.com/glasswing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gemini-3-1-pro",
+      "name": "Gemini 3.1 Pro",
+      "weights": "closed",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 12,
+      "size": "large",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Parameters are undisclosed. Gemini 3.1 Pro Preview standard text rates for prompts up to 200K tokens; larger prompts and grounding cost more.",
+      "sources": [
+        {
+          "title": "Google Gemini API pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "kimi-k3",
+      "name": "Kimi K3",
+      "weights": "open",
+      "totalParametersB": 2800,
+      "activeParametersB": 104,
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Released Kimi K3 License weights verified in the public repository (96 safetensors shards). Total parameters determine category; active parameters describe inference. Launch API uncached rates shown.",
+      "sources": [
+        {
+          "title": "Moonshot Kimi K3 model card",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3"
+        },
+        {
+          "title": "Moonshot Kimi K3 announcement",
+          "url": "https://www.kimi.com/blog/kimi-k3"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "kimi-k2-6",
+      "name": "Kimi K2.6",
+      "weights": "open",
+      "totalParametersB": 1000,
+      "activeParametersB": 32,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Modified-MIT weights verified in public repository (64 safetensors shards). Swarm orchestration is distinct from these model weights. Price table was absent from retrieved pricing text and direct retrieval was blocked; token rates omitted.",
+      "sources": [
+        {
+          "title": "Moonshot Kimi K2.6 model card",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2.6"
+        },
+        {
+          "title": "Kimi API pricing",
+          "url": "https://platform.kimi.ai/docs/pricing/chat"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "kimi-k2-5",
+      "name": "Kimi K2.5",
+      "weights": "open",
+      "totalParametersB": 1000,
+      "activeParametersB": 32,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Modified-MIT weights verified in public repository (64 safetensors shards). Swarm orchestration is distinct from these model weights. Price table was absent from retrieved pricing text and direct retrieval was blocked; token rates omitted.",
+      "sources": [
+        {
+          "title": "Moonshot Kimi K2.5 model card",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2.5"
+        },
+        {
+          "title": "Kimi API pricing",
+          "url": "https://platform.kimi.ai/docs/pricing/chat"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "mirothinker-h1-stack",
+      "name": "MiroThinker-H1 model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Provisional large: H1 extends the 235B-class MiroThinker-1.7 with local/global verification, but exact H1 models, weights and token prices are not disclosed. The public repository explicitly calls H1 proprietary; released 1.7 weights do not establish that the entire H1 stack is open.",
+      "sources": [
+        {
+          "title": "MiroThinker official repository",
+          "url": "https://github.com/MiroMindAI/MiroThinker"
+        },
+        {
+          "title": "MiroThinker-1.7 and H1 paper",
+          "url": "https://arxiv.org/html/2603.15726v1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek-V4-Pro",
+      "weights": "open",
+      "totalParametersB": 1600,
+      "activeParametersB": 49,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT weights verified in public repository. Max is a reasoning-effort mode of this checkpoint, not a larger model. Current API pricing names later checkpoints, so it is not attributed to this April benchmark model.",
+      "sources": [
+        {
+          "title": "DeepSeek V4 Pro model card",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
+        },
+        {
+          "title": "DeepSeek API model versions and pricing",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "name": "DeepSeek-V4-Flash",
+      "weights": "open",
+      "totalParametersB": 284,
+      "activeParametersB": 13,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT weights verified in public repository. Max is a reasoning-effort mode of this checkpoint, not a larger model. Current API pricing names later checkpoints, so it is not attributed to this April benchmark model.",
+      "sources": [
+        {
+          "title": "DeepSeek V4 Flash model card",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+        },
+        {
+          "title": "DeepSeek API model versions and pricing",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-5-1",
+      "name": "GLM-5.1",
+      "weights": "open",
+      "totalParametersB": 744,
+      "activeParametersB": 40,
+      "inputUsdPerMillion": 1.4,
+      "outputUsdPerMillion": 4.4,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT weights verified. Official GLM repository model table specifies 744B total / 40B active; category uses total. Published Z.ai API rates exclude search charges.",
+      "sources": [
+        {
+          "title": "GLM official model table",
+          "url": "https://github.com/zai-org/GLM-5"
+        },
+        {
+          "title": "GLM-5.1 model card",
+          "url": "https://huggingface.co/zai-org/GLM-5.1"
+        },
+        {
+          "title": "Z.ai API pricing",
+          "url": "https://docs.z.ai/guides/overview/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "glm-5",
+      "name": "GLM-5",
+      "weights": "open",
+      "totalParametersB": 744,
+      "activeParametersB": 40,
+      "inputUsdPerMillion": 1,
+      "outputUsdPerMillion": 3.2,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "MIT weights verified. Official GLM repository model table specifies 744B total / 40B active; category uses total. Published Z.ai API rates exclude search charges.",
+      "sources": [
+        {
+          "title": "GLM official model table",
+          "url": "https://github.com/zai-org/GLM-5"
+        },
+        {
+          "title": "GLM-5 model card",
+          "url": "https://huggingface.co/zai-org/GLM-5"
+        },
+        {
+          "title": "Z.ai API pricing",
+          "url": "https://docs.z.ai/guides/overview/pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "qwen3-5-397b-a17b",
+      "name": "Qwen3.5-397B-A17B",
+      "weights": "open",
+      "totalParametersB": 397,
+      "activeParametersB": 17,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 weights verified (94 safetensors shards); published architecture gives 397B total / 17B active. No version-matched first-party token price verified.",
+      "sources": [
+        {
+          "title": "Qwen official model card",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "seed-2-0-pro",
+      "name": "Seed 2.0 Pro",
+      "weights": "closed",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Provisional large for the proprietary flagship. Parameters and standard USD rates for the evaluated 0215 snapshot were not verified. BytePlus current pricing embeds a later 260328 snapshot; those rates are not assigned to this model.",
+      "sources": [
+        {
+          "title": "ByteDance Seed2 release",
+          "url": "https://seed.bytedance.com/en/seed2"
+        },
+        {
+          "title": "BytePlus model pricing",
+          "url": "https://docs.byteplus.com/en/docs/modelark/model-pricing"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "inkling",
+      "name": "Inkling",
+      "weights": "open",
+      "totalParametersB": 975,
+      "activeParametersB": 41,
+      "inputUsdPerMillion": 1,
+      "outputUsdPerMillion": 4.05,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 full weights verified. Publisher reports 975B total / 41B active. Rates are Tinker serverless inference beta, standard uncached prefill/sample, excluding training.",
+      "sources": [
+        {
+          "title": "Thinking Machines Inkling announcement",
+          "url": "https://thinkingmachines.ai/news/introducing-inkling/"
+        },
+        {
+          "title": "Inkling released weights",
+          "url": "https://huggingface.co/thinkingmachines/Inkling"
+        },
+        {
+          "title": "Tinker models and serverless pricing",
+          "url": "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "minimax-m2-5",
+      "name": "MiniMax M2.5",
+      "weights": "open",
+      "totalParametersB": 229.9,
+      "activeParametersB": 9.8,
+      "inputUsdPerMillion": 0.3,
+      "outputUsdPerMillion": 1.2,
+      "size": "large",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Modified-MIT weights verified. M2-series report gives 229.9B total / 9.8B active backbone. Current standard API rates shown; launch-card input pricing differs. Category uses total parameters.",
+      "sources": [
+        {
+          "title": "MiniMax M2.5 weights",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5"
+        },
+        {
+          "title": "MiniMax M2-series technical report",
+          "url": "https://arxiv.org/html/2605.26494v1"
+        },
+        {
+          "title": "MiniMax API pricing",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agents-a1",
+      "name": "Agents-A1",
+      "weights": "open",
+      "totalParametersB": 35,
+      "activeParametersB": 3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "Apache-2.0 35B model weights verified (14 safetensors shards). Fine-tuned from Qwen3.5-35B-A3B; 3B active, but total parameters set the small category. No standard API token price verified.",
+      "sources": [
+        {
+          "title": "Agents-A1 model card",
+          "url": "https://huggingface.co/InternScience/Agents-A1"
+        },
+        {
+          "title": "Agents-A1 paper",
+          "url": "https://arxiv.org/html/2606.30616v1"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "agents-a1-sft",
+      "name": "Agents-A1-SFT",
+      "weights": "uncertain",
+      "totalParametersB": 35,
+      "activeParametersB": 3,
+      "size": "small",
+      "basis": "parameters",
+      "confidence": "medium",
+      "notes": "35B/3B SFT-stage checkpoint from the Agents-A1 paper. Its exact weights were not found in the publisher model listing; the guessed SFT repository returned HTTP 401. The released final Agents-A1 does not prove release of the SFT checkpoint. No API token price verified.",
+      "sources": [
+        {
+          "title": "Agents-A1 paper",
+          "url": "https://arxiv.org/html/2606.30616v1"
+        },
+        {
+          "title": "InternScience model listing",
+          "url": "https://huggingface.co/InternScience/models"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "exa-agent-stack",
+      "name": "Exa Agent model stack",
+      "weights": "uncertain",
+      "size": "large",
+      "basis": "estimate",
+      "confidence": "low",
+      "notes": "Provisional large: Exa describes a mixture of frontier and cost-effective models with its search/highlights tools. Exact model IDs, weights, parameters and token prices are undisclosed. Per-query service costs cannot substitute for per-token model pricing.",
+      "sources": [
+        {
+          "title": "Exa Agent announcement",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "gpt-4o-mini",
+      "name": "GPT-4o mini",
+      "weights": "closed",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "size": "medium",
+      "basis": "price",
+      "confidence": "high",
+      "notes": "Standard uncached input/output pricing gives a $0.2625/M blend: Medium price proxy. InfoAgent uses this hosted model for search snippets. Parameter count is undisclosed.",
+      "sources": [
+        {
+          "title": "GPT-4o mini model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4o-mini"
+        }
+      ],
+      "checkedAt": "2026-10-10"
+    }
+  ],
+  "submissions": [
+    {
+      "systemName": "GPT-5.6 Sol Ultra",
+      "kind": "system",
+      "modelIds": ["gpt-5-6-sol"],
+      "harnessCode": "closed",
+      "notes": "Four-agent Ultra configuration of GPT-5.6 Sol. Parallel agents and effort do not multiply the underlying model parameter count.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/gpt-5-6/"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-6 Astra",
+      "kind": "model",
+      "modelIds": ["gpt-6-astra"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/gpt-6-astra/"
+        }
+      ]
+    },
+    {
+      "systemName": "Kimi K3",
+      "kind": "model",
+      "modelIds": ["kimi-k3"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www.kimi.com/blog/kimi-k3"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Opus 5",
+      "kind": "model",
+      "modelIds": ["claude-opus-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Single-agent score 90.8% appears in system-card summary and Figure 8.10.2.B at max effort with a 10M-token budget, compaction at 200k, and an external Opus 4.7 scoring judge. The separate token-scaling chart uses an unreleased effort setting and reports 90.2%; it is not the stored run.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.6 Sol",
+      "kind": "model",
+      "modelIds": ["gpt-5-6-sol"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/gpt-5-6/"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.5 Pro",
+      "kind": "model",
+      "modelIds": ["gpt-5-5-pro"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/introducing-gpt-5-5/"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.4 Pro",
+      "kind": "model",
+      "modelIds": ["gpt-5-4-pro"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/introducing-gpt-5-5/"
+        }
+      ]
+    },
+    {
+      "systemName": "MiroThinker-H1",
+      "kind": "system",
+      "modelIds": ["mirothinker-h1-stack"],
+      "harnessCode": "closed",
+      "notes": "Proprietary heavy-duty verification system, distinct from open MiroThinker-1.7. Exact participating models remain uncertain.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www.prnewswire.com/news-releases/miromind-team-unveils-mirothinker-1-7--mirothinker-h1-a-new-era-of-verification-centric-heavy-duty-research-agents-302714500.html"
+        },
+        {
+          "title": "Official H1 release distinction",
+          "url": "https://github.com/MiroMindAI/MiroThinker"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Mythos 5",
+      "kind": "model",
+      "modelIds": ["claude-mythos-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Fable 5",
+      "kind": "model",
+      "modelIds": ["claude-fable-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://thinkingmachines.ai/news/introducing-inkling"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Mythos Preview",
+      "kind": "model",
+      "modelIds": ["claude-mythos-preview"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www.anthropic.com/glasswing"
+        }
+      ]
+    },
+    {
+      "systemName": "Kimi K2.6",
+      "kind": "system",
+      "modelIds": ["kimi-k2-6"],
+      "harnessCode": "closed",
+      "notes": "Hosted Agent Swarm result. The K2.6 weights are open; this does not establish release of the hosted swarm workflow.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www.kimi.com/blog/kimi-k2-6"
+        }
+      ]
+    },
+    {
+      "systemName": "Gemini 3.1 Pro",
+      "kind": "model",
+      "modelIds": ["gemini-3-1-pro"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-1_pro_model_evaluation.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Sonnet 5",
+      "kind": "model",
+      "modelIds": ["claude-sonnet-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.5",
+      "kind": "model",
+      "modelIds": ["gpt-5-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/introducing-gpt-5-5/"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Opus 4.8",
+      "kind": "model",
+      "modelIds": ["claude-opus-4-8"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www.anthropic.com/news/claude-opus-4-8"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Opus 4.6",
+      "kind": "model",
+      "modelIds": ["claude-opus-4-6"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www.anthropic.com/glasswing"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepSeek-V4-Pro-Max",
+      "kind": "model",
+      "modelIds": ["deepseek-v4-pro"],
+      "harnessCode": "not-applicable",
+      "notes": "Max reasoning mode of DeepSeek-V4-Pro, using the same released weights.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.4",
+      "kind": "model",
+      "modelIds": ["gpt-5-4"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/introducing-gpt-5-4/"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Opus 4.7",
+      "kind": "model",
+      "modelIds": ["claude-opus-4-7"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www.anthropic.com/news/claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-5.1",
+      "kind": "model",
+      "modelIds": ["glm-5-1"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://docs.z.ai/guides/llm/glm-5.1"
+        }
+      ]
+    },
+    {
+      "systemName": "Qwen3.5-397B-A17B",
+      "kind": "model",
+      "modelIds": ["qwen3-5-397b-a17b"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
+        }
+      ]
+    },
+    {
+      "systemName": "Kimi K2.5",
+      "kind": "system",
+      "modelIds": ["kimi-k2-5"],
+      "harnessCode": "closed",
+      "notes": "Agent Swarm result. Released model weights and the hosted orchestration are tracked separately.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2.5"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.2 Pro",
+      "kind": "model",
+      "modelIds": ["gpt-5-2-pro"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/introducing-gpt-5-2/"
+        }
+      ]
+    },
+    {
+      "systemName": "GPT-5.3-Codex",
+      "kind": "model",
+      "modelIds": ["gpt-5-3-codex"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://openai.com/index/introducing-gpt-5-4/"
+        }
+      ]
+    },
+    {
+      "systemName": "Seed 2.0 Pro",
+      "kind": "model",
+      "modelIds": ["seed-2-0-pro"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://seed.bytedance.com/en/seed2"
+        }
+      ]
+    },
+    {
+      "systemName": "Inkling",
+      "kind": "model",
+      "modelIds": ["inkling"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://thinkingmachines.ai/news/introducing-inkling"
+        }
+      ]
+    },
+    {
+      "systemName": "MiniMax M2.5",
+      "kind": "model",
+      "modelIds": ["minimax-m2-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www.minimax.io/news/minimax-m25"
+        }
+      ]
+    },
+    {
+      "systemName": "Claude Sonnet 4.6",
+      "kind": "model",
+      "modelIds": ["claude-sonnet-4-6"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+        }
+      ]
+    },
+    {
+      "systemName": "GLM-5",
+      "kind": "model",
+      "modelIds": ["glm-5"],
+      "harnessCode": "not-applicable",
+      "notes": "Named model evaluated with the benchmark tooling described by its source.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://docs.z.ai/guides/llm/glm-5"
+        }
+      ]
+    },
+    {
+      "systemName": "Agents-A1",
+      "kind": "system",
+      "modelIds": ["agents-a1", "gpt-4o-mini"],
+      "harnessCode": "open",
+      "notes": "Trained model evaluated with search, visit and code tools; official evaluation code is open. Runtime Visit calls a separate summary LLM; the released evaluation environment defaults SUMMARY_MODEL_NAME to GPT-4o-mini, so this mapping includes that closed helper. This is the public reproduction default, not a pinned manifest proving the original run used it; a changed helper can change the category/weights. Evaluation-only judges and training teachers are excluded.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://arxiv.org/abs/2606.30616"
+        },
+        {
+          "title": "Agents-A1 evaluation code",
+          "url": "https://github.com/InternScience/Agents-A1/tree/main/evaluation"
+        },
+        {
+          "title": "Agents-A1 released evaluation environment",
+          "url": "https://github.com/InternScience/Agents-A1/blob/main/evaluation/Search/.env.example"
+        },
+        {
+          "title": "Agents-A1 runtime Visit implementation",
+          "url": "https://github.com/InternScience/Agents-A1/blob/main/evaluation/Search/inference/tool_visit.py"
+        }
+      ]
+    },
+    {
+      "systemName": "Agents-A1-SFT",
+      "kind": "system",
+      "modelIds": ["agents-a1-sft", "gpt-4o-mini"],
+      "harnessCode": "open",
+      "notes": "SFT-stage model evaluated in the paper. Evaluation code is public; this does not imply this intermediate checkpoint is released. Runtime Visit calls a separate summary LLM; the released evaluation environment defaults SUMMARY_MODEL_NAME to GPT-4o-mini, so this mapping includes that closed helper. This is the public reproduction default, not a pinned manifest proving the original run used it; a changed helper can change the category/weights. Evaluation-only judges and training teachers are excluded.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://arxiv.org/abs/2606.30616"
+        },
+        {
+          "title": "Agents-A1 evaluation code",
+          "url": "https://github.com/InternScience/Agents-A1/tree/main/evaluation"
+        },
+        {
+          "title": "Agents-A1 released evaluation environment",
+          "url": "https://github.com/InternScience/Agents-A1/blob/main/evaluation/Search/.env.example"
+        },
+        {
+          "title": "Agents-A1 runtime Visit implementation",
+          "url": "https://github.com/InternScience/Agents-A1/blob/main/evaluation/Search/inference/tool_visit.py"
+        }
+      ]
+    },
+    {
+      "systemName": "Exa Agent High",
+      "kind": "system",
+      "modelIds": ["exa-agent-stack"],
+      "harnessCode": "closed",
+      "notes": "High-effort hosted service combining models and Exa search. Exact model mixture is undisclosed.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://exa.ai/blog/exa-agent"
+        }
+      ]
+    },
+    {
+      "systemName": "DeepSeek-V4-Flash-Max",
+      "kind": "model",
+      "modelIds": ["deepseek-v4-flash"],
+      "harnessCode": "not-applicable",
+      "notes": "Max reasoning mode of DeepSeek-V4-Flash, using the same released weights.",
+      "sources": [
+        {
+          "title": "Reported BrowseComp evaluation",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+        }
+      ]
+    }
+  ]
+}
