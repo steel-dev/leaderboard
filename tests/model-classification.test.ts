@@ -494,7 +494,7 @@ test("rows without research stay on the board unclassified instead of failing th
     await import("../src/lib/benchmark-charts");
   const extra = { ...browsecomp.browsecomp[0], systemName: "Unresearched model" };
   const rows = getBenchmarkChartRows("browsecomp", [...browsecomp.browsecomp, extra])!;
-  assert.equal(rows.length, 103);
+  assert.equal(rows.length, 105);
   assert.equal(rows.at(-1)!.classification, null);
   assert.ok(rows.slice(0, -1).every((row) => row.classification !== null));
   assert.deepEqual(getChartResearchGaps("browsecomp", [...browsecomp.browsecomp, extra]), {
@@ -518,7 +518,7 @@ test("all four featured benchmarks have complete classifications and preserve ev
   );
   assert.deepEqual(
     benchmarks.map(({ rows }) => rows.length),
-    [102, 22, 50, 23]
+    [104, 22, 52, 23]
   );
   for (const benchmark of benchmarks) {
     const originals = getBenchmarkPage(benchmark.slug)!.results;

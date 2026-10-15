@@ -66,6 +66,42 @@
         }
       ],
       "checkedAt": "2026-10-11"
+    },
+    {
+      "id": "nemotron-3-5-bolt-74b-a9b-24gb",
+      "name": "Nemotron 3.5 Bolt 74B-A9B-24GB",
+      "weights": "open",
+      "totalParametersB": 74,
+      "activeParametersB": 9,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "NVIDIA publishes 74B total / 9B active parameters. IQ2-quantized checkpoint, about 24GB. Open weights under the OpenMDW License Agreement v1.1.",
+      "sources": [
+        {
+          "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB model card",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+        }
+      ],
+      "checkedAt": "2026-10-14"
+    },
+    {
+      "id": "nemotron-3-5-bolt-74b-a9b-24gb-bf16",
+      "name": "Nemotron 3.5 Bolt 74B-A9B-24GB (BF16)",
+      "weights": "open",
+      "totalParametersB": 74,
+      "activeParametersB": 9,
+      "size": "medium",
+      "basis": "parameters",
+      "confidence": "high",
+      "notes": "NVIDIA publishes 74B total / 9B active parameters. Full-precision BF16 checkpoint. Open weights under the OpenMDW License Agreement v1.1.",
+      "sources": [
+        {
+          "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-BF16 model card",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-BF16"
+        }
+      ],
+      "checkedAt": "2026-10-14"
     }
   ],
   "submissions": [
@@ -104,6 +140,32 @@
         {
           "title": "Traverse official inference and evaluation harness",
           "url": "https://github.com/ByteDance-BandAI/Traverse"
+        }
+      ]
+    },
+    {
+      "systemName": "Nemotron 3.5 Bolt 74B-A9B-24GB",
+      "kind": "model",
+      "modelIds": ["nemotron-3-5-bolt-74b-a9b-24gb"],
+      "harnessCode": "uncertain",
+      "notes": "IQ2-quantized 24GB checkpoint with Exa search and a 400-step limit; self-reported on the NVIDIA model card.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+        }
+      ]
+    },
+    {
+      "systemName": "Nemotron 3.5 Bolt 74B-A9B-24GB (BF16)",
+      "kind": "model",
+      "modelIds": ["nemotron-3-5-bolt-74b-a9b-24gb-bf16"],
+      "harnessCode": "uncertain",
+      "notes": "BF16 checkpoint with Exa search and a 400-step limit; self-reported on the NVIDIA model card.",
+      "sources": [
+        {
+          "title": "Reported evaluation",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
         }
       ]
     }
