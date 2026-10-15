@@ -31,7 +31,7 @@
       "scoreDisplay": "97.72%",
       "scoreValue": 97.72,
       "sourceUrl": "https://github.com/weiyali1/webwright-webvoyager-results",
-      "notesShort": "Self-reported system-level result: 601/615 on browser-control-fable-5 with stale-task dates updated; custom critical-point judge, per-task internal self-healing and self-check, and reruns for stale-date, model API, or browser-crash failures.",
+      "notesShort": "Self-reported system-level result: 601/615 on the filtered and updated WebVoyager-derived browser-control-fable-5 variant, with stale dates additionally updated; custom critical-point judge, per-task internal self-healing and self-check, and reruns for stale-date, model API, or browser-crash failures.",
       "reportedAt": "2026-10-15",
       "isNew": true
     },
