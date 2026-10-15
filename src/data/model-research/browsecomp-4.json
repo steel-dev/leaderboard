@@ -87,7 +87,7 @@
     },
     {
       "id": "nemotron-3-5-bolt-74b-a9b-24gb-bf16",
-      "name": "Nemotron 3.5 Bolt 74B-A9B-24GB (BF16)",
+      "name": "Nemotron 3.5 Bolt 74B-A9B-BF16",
       "weights": "open",
       "totalParametersB": 74,
       "activeParametersB": 9,
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "systemName": "Nemotron 3.5 Bolt 74B-A9B-24GB (BF16)",
+      "systemName": "Nemotron 3.5 Bolt 74B-A9B-BF16",
       "kind": "model",
       "modelIds": ["nemotron-3-5-bolt-74b-a9b-24gb-bf16"],
       "harnessCode": "uncertain",

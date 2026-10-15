@@ -398,7 +398,7 @@
     },
     {
       "rank": 38,
-      "systemName": "Nemotron 3.5 Bolt 74B-A9B-24GB (BF16)",
+      "systemName": "Nemotron 3.5 Bolt 74B-A9B-BF16",
       "organization": "NVIDIA",
       "scoreDisplay": "70.00%",
       "scoreValue": 70.0,
