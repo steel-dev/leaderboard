@@ -162,6 +162,30 @@
     },
     {
       "rank": 16,
+      "systemName": "Nemotron 3.5 Bolt 74B-A9B-24GB",
+      "organization": "NVIDIA",
+      "scoreDisplay": "50.86%",
+      "scoreValue": 50.86,
+      "sourceUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+      "repoUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+      "notesShort": "IQ2-quantized (24GB) release of the open-weight 74B-A9B model; full 812-task set with a 100-step limit. Self-reported on the NVIDIA model card.",
+      "reportedAt": "2026-10-15",
+      "isNew": true
+    },
+    {
+      "rank": 17,
+      "systemName": "Nemotron 3.5 Bolt 74B-A9B-24GB (BF16)",
+      "organization": "NVIDIA",
+      "scoreDisplay": "50.25%",
+      "scoreValue": 50.25,
+      "sourceUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+      "repoUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-BF16",
+      "notesShort": "Full-precision BF16 weights of the open-weight 74B-A9B model; full 812-task set with a 100-step limit. Self-reported on the NVIDIA model card.",
+      "reportedAt": "2026-10-15",
+      "isNew": true
+    },
+    {
+      "rank": 18,
       "systemName": "Learn-by-Interact",
       "organization": "Academic Research",
       "scoreDisplay": "48.0%",
@@ -171,7 +195,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 17,
+      "rank": 19,
       "systemName": "WebUncertainty + GPT-4-Turbo",
       "organization": "Academic Research",
       "scoreDisplay": "46.9%",
@@ -183,7 +207,7 @@
       "isNew": true
     },
     {
-      "rank": 18,
+      "rank": 20,
       "systemName": "AgentOccam-Judge",
       "organization": "Amazon Science",
       "scoreDisplay": "45.7%",
@@ -194,7 +218,7 @@
       "reportedAt": "2024-10"
     },
     {
-      "rank": 19,
+      "rank": 21,
       "systemName": "A3-Qwen3.5-9B",
       "organization": "McGill NLP",
       "scoreDisplay": "42.1%",
@@ -206,7 +230,7 @@
       "isNew": true
     },
     {
-      "rank": 20,
+      "rank": 22,
       "systemName": "GUI-API Hybrid Agent",
       "organization": "Academic Research",
       "scoreDisplay": "38.9%",
@@ -216,7 +240,7 @@
       "reportedAt": "2025-06"
     },
     {
-      "rank": 21,
+      "rank": 23,
       "systemName": "WebPilot",
       "organization": "Academic Research",
       "scoreDisplay": "37.2%",
@@ -226,7 +250,7 @@
       "reportedAt": "2024-08"
     },
     {
-      "rank": 22,
+      "rank": 24,
       "systemName": "Agent Workflow Memory",
       "organization": "Academic Research",
       "scoreDisplay": "35.5%",
@@ -237,7 +261,7 @@
       "reportedAt": "2024-09"
     },
     {
-      "rank": 23,
+      "rank": 25,
       "systemName": "SteP",
       "organization": "ASAPP Research",
       "scoreDisplay": "33.5%",
@@ -248,7 +272,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 24,
+      "rank": 26,
       "systemName": "TTI",
       "organization": "Academic Research",
       "scoreDisplay": "26.1%",
@@ -259,7 +283,7 @@
       "reportedAt": "2025-06"
     },
     {
-      "rank": 25,
+      "rank": 27,
       "systemName": "BrowserGym + GPT-4o",
       "organization": "ServiceNow Research",
       "scoreDisplay": "23.5%",
@@ -270,7 +294,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 26,
+      "rank": 28,
       "systemName": "AgentTrek-1.0-32B",
       "organization": "xLang AI",
       "scoreDisplay": "22.4%",
@@ -281,7 +305,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 27,
+      "rank": 29,
       "systemName": "GPT-4 + Auto Eval",
       "organization": "Academic Research",
       "scoreDisplay": "20.2%",
@@ -291,7 +315,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 28,
+      "rank": 30,
       "systemName": "GPT-4o + Tree Search",
       "organization": "Academic Research",
       "scoreDisplay": "19.2%",
@@ -301,7 +325,7 @@
       "reportedAt": "2024-06"
     },
     {
-      "rank": 29,
+      "rank": 31,
       "systemName": "AutoWebGLM",
       "organization": "THUDM",
       "scoreDisplay": "18.2%",
@@ -312,7 +336,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 30,
+      "rank": 32,
       "systemName": "NNetNav",
       "organization": "Stanford NLP",
       "scoreDisplay": "16.3%",
@@ -323,7 +347,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 31,
+      "rank": 33,
       "systemName": "gpt-4-0613 (no not-achievable hint)",
       "organization": "OpenAI",
       "scoreDisplay": "14.9%",
@@ -333,7 +357,7 @@
       "reportedAt": "2023-06"
     },
     {
-      "rank": 32,
+      "rank": 34,
       "systemName": "gpt-4o-2024-05-13",
       "organization": "OpenAI",
       "scoreDisplay": "13.05%",
@@ -343,7 +367,7 @@
       "reportedAt": "2024-05"
     },
     {
-      "rank": 33,
+      "rank": 35,
       "systemName": "gpt-4-0613 (with not-achievable hint)",
       "organization": "OpenAI",
       "scoreDisplay": "11.7%",
@@ -353,7 +377,7 @@
       "reportedAt": "2023-06"
     },
     {
-      "rank": 34,
+      "rank": 36,
       "systemName": "Patel et al. (Qwen1.5-72B, Mixture B)",
       "organization": "Academic Research",
       "scoreDisplay": "9.36%",
@@ -363,7 +387,7 @@
       "reportedAt": "2024-05"
     },
     {
-      "rank": 35,
+      "rank": 37,
       "systemName": "gpt-3.5-turbo-16k-0613",
       "organization": "OpenAI",
       "scoreDisplay": "8.87%",
@@ -373,7 +397,7 @@
       "reportedAt": "2023-03"
     },
     {
-      "rank": 36,
+      "rank": 38,
       "systemName": "Qwen-1.5-chat-72b",
       "organization": "Qwen",
       "scoreDisplay": "7.14%",
@@ -384,7 +408,7 @@
       "reportedAt": "2023-09"
     },
     {
-      "rank": 37,
+      "rank": 39,
       "systemName": "Gemini Pro",
       "organization": "Google",
       "scoreDisplay": "7.12%",
@@ -394,7 +418,7 @@
       "reportedAt": "2023-12"
     },
     {
-      "rank": 38,
+      "rank": 40,
       "systemName": "Llama3-chat-70b",
       "organization": "Meta",
       "scoreDisplay": "7.02%",
@@ -405,7 +429,7 @@
       "reportedAt": "2024-04-02"
     },
     {
-      "rank": 39,
+      "rank": 41,
       "systemName": "Synatra-CodeLLama7b",
       "organization": "Academic Research",
       "scoreDisplay": "6.28%",
@@ -415,7 +439,7 @@
       "reportedAt": "2024-10"
     },
     {
-      "rank": 40,
+      "rank": 42,
       "systemName": "Lemur-chat-70b",
       "organization": "OpenLemur",
       "scoreDisplay": "5.3%",
@@ -426,7 +450,7 @@
       "reportedAt": "2023-10"
     },
     {
-      "rank": 41,
+      "rank": 43,
       "systemName": "Agent-FLAN",
       "organization": "InternLM",
       "scoreDisplay": "4.68%",
@@ -437,7 +461,7 @@
       "reportedAt": "2024-03"
     },
     {
-      "rank": 42,
+      "rank": 44,
       "systemName": "CodeLlama-instruct-34b",
       "organization": "Meta",
       "scoreDisplay": "4.06%",
@@ -448,7 +472,7 @@
       "reportedAt": "2023-08"
     },
     {
-      "rank": 43,
+      "rank": 45,
       "systemName": "AgentLM-70b",
       "organization": "THUDM",
       "scoreDisplay": "3.81%",
@@ -459,7 +483,7 @@
       "reportedAt": "2023-10"
     },
     {
-      "rank": 44,
+      "rank": 46,
       "systemName": "Llama3-chat-8b",
       "organization": "Meta",
       "scoreDisplay": "3.32%",
@@ -470,7 +494,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 45,
+      "rank": 47,
       "systemName": "CodeAct Agent",
       "organization": "Academic Research",
       "scoreDisplay": "2.3%",
@@ -481,7 +505,7 @@
       "reportedAt": "2024-02"
     },
     {
-      "rank": 46,
+      "rank": 48,
       "systemName": "AgentLM-13b",
       "organization": "THUDM",
       "scoreDisplay": "1.6%",
@@ -492,7 +516,7 @@
       "reportedAt": "2023-10"
     },
     {
-      "rank": 47,
+      "rank": 49,
       "systemName": "Mixtral-8x7B",
       "organization": "Mistral AI",
       "scoreDisplay": "1.39%",
@@ -503,7 +527,7 @@
       "reportedAt": "2024-01"
     },
     {
-      "rank": 48,
+      "rank": 50,
       "systemName": "AgentLM-7b",
       "organization": "THUDM",
       "scoreDisplay": "0.74%",
@@ -514,7 +538,7 @@
       "reportedAt": "2023-10"
     },
     {
-      "rank": 49,
+      "rank": 51,
       "systemName": "FireAct",
       "organization": "Academic Research",
       "scoreDisplay": "0.25%",
@@ -524,7 +548,7 @@
       "reportedAt": "2023-10"
     },
     {
-      "rank": 50,
+      "rank": 52,
       "systemName": "CodeLlama-instruct-7b",
       "organization": "Meta",
       "scoreDisplay": "0.0%",

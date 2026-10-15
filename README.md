@@ -32,7 +32,7 @@ Browser agents · Agent scope · 22 entries tracked
 
 ### [BrowseComp](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
-Research/search · Mixed scope · 102 entries tracked
+Research/search · Mixed scope · 104 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -42,7 +42,7 @@ Research/search · Mixed scope · 102 entries tracked
 | 4 | Claude Opus 5 **(new)** | Anthropic | [90.8%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
 | 5 | GPT-5.6 Sol **(new)** | OpenAI | [90.4%](https://openai.com/index/gpt-5-6/) |
 
-[See all 102 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
+[See all 104 entries →](https://leaderboard.steel.dev/leaderboards/browsecomp)
 
 ---
 
@@ -64,7 +64,7 @@ Research/search · Mixed scope · 17 entries tracked
 
 ### [WebArena](https://leaderboard.steel.dev/leaderboards/webarena)
 
-Browser agents · Agent scope · 50 entries tracked
+Browser agents · Agent scope · 52 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -74,7 +74,7 @@ Browser agents · Agent scope · 50 entries tracked
 | 4 | Claude Code + GBOX MCP | GBOX AI | [68.0%](https://github.com/babelcloud/webarena/blob/main/gbox/report.md) |
 | 5 | DeepSky Agent | DeepSky | [66.9%](https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ) |
 
-[See all 50 entries →](https://leaderboard.steel.dev/leaderboards/webarena)
+[See all 52 entries →](https://leaderboard.steel.dev/leaderboards/webarena)
 
 ---
 
