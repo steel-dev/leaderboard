@@ -8,6 +8,7 @@ import {
   benchmarkChartHref,
   benchmarkResultHref,
   blendedPrice,
+  chartLabels,
   chartResultIds,
   defaultFilters,
   filterResults,
@@ -286,6 +287,10 @@ function ChartMarks({
   const bars = useRef<(SVGRectElement | null)[]>([]);
   const pointerType = useRef("");
   if (!chart.ready) return null;
+  const labels = chartLabels(
+    rows.map(({ systemName }) => systemName),
+    compact ? 22 : 25
+  );
   return (
     <g>
       <g aria-hidden="true">
@@ -315,11 +320,6 @@ function ChartMarks({
         const top = chart.y(row.scoreValue ?? 0);
         const slot = chart.barSlot(index, 0, 1);
         const active = previewIndex === index;
-        const labelLength = compact ? 22 : 25;
-        const label =
-          row.systemName.length > labelLength
-            ? `${row.systemName.slice(0, labelLength - 1)}…`
-            : row.systemName;
         return (
           <g key={rowIds[index]}>
             <text
@@ -337,7 +337,7 @@ function ChartMarks({
               className={`chart-x-label${active ? " is-active" : ""}`}
               aria-hidden="true"
             >
-              {label}
+              {labels[index]}
             </text>
             <rect
               ref={(element) => {

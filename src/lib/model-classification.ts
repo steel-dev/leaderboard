@@ -174,6 +174,24 @@ export function chartResultIds(rows: { systemName: string }[]): string[] {
   });
 }
 
+/**
+ * Axis labels cut to `max` characters. Names that would collide once cut (variants of one
+ * model) keep their last word instead: "Nemotron 3.5…74B-A9B-24GB" vs "Nemotron 3.5…74B-A9B-BF16".
+ */
+export function chartLabels(names: string[], max: number): string[] {
+  const cut = names.map((name) => (name.length > max ? `${name.slice(0, max - 1)}…` : name));
+  return names.map((name, index) => {
+    const label = cut[index];
+    if (name.length <= max || cut.indexOf(label) === cut.lastIndexOf(label)) return label;
+    const lastWord = name.slice(name.lastIndexOf(" ") + 1);
+    const tail = lastWord.length <= max - 9 ? lastWord : name.slice(-(max - 9));
+    let head = name.slice(0, max - 1 - tail.length);
+    if (name[head.length] !== " " && head.includes(" "))
+      head = head.slice(0, head.lastIndexOf(" "));
+    return `${head.trimEnd()}…${tail}`;
+  });
+}
+
 export function benchmarkResultHref(slug: string, filters: ChartFilters, resultId: string): string {
   // Encode the ID again for the URL fragment so native anchor navigation resolves it.
   return `${benchmarkChartHref(slug, filters)}#${encodeURIComponent(resultId)}`;
