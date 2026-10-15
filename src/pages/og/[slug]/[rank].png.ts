@@ -31,6 +31,9 @@ const TEXT_STRONG = "#f7f7f7";
 const ACCENT = "#30A46C";
 const TEXT_MUTED = "#aeb6b0";
 const MONO = "JetBrains Mono";
+// satori already turns text into paths, so resvg needs no fonts. Loading system fonts costs
+// ~1s per image on machines with many installed fonts (e.g. macOS) and changes nothing.
+const RESVG_OPTIONS = { font: { loadSystemFonts: false } };
 
 async function loadFont(weight: "Regular" | "Bold"): Promise<ArrayBuffer> {
   const file = await fs.readFile(path.resolve(`public/fonts/JetBrainsMono-${weight}.ttf`));
@@ -269,7 +272,7 @@ export const GET: APIRoute = async ({ params }) => {
     }
   );
 
-  const png = new Resvg(svg).render().asPng();
+  const png = new Resvg(svg, RESVG_OPTIONS).render().asPng();
   return new Response(Uint8Array.from(png), {
     headers: {
       "Content-Type": "image/png",
