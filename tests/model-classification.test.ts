@@ -507,6 +507,25 @@ test("rows without research stay on the board unclassified instead of failing th
   });
 });
 
+test("WebOperator includes GPT-4o alongside its tiny open helper and stays out of open/tiny filters", async () => {
+  const { getChartBenchmarks } = await import("../src/lib/benchmark-charts");
+  const rows = getChartBenchmarks().find(({ slug }) => slug === "webarena")!.rows;
+  const row = rows.find(({ systemName }) => systemName === "WebOperator + GPT-4o")!;
+  const classification = row.classification!;
+  assert.deepEqual(
+    classification.models.map(({ id, weights, size }) => ({ id, weights, size })),
+    [
+      { id: "gpt-4o-unspecified-historical", weights: "closed", size: "large" },
+      { id: "all-minilm-l6-v2", weights: "open", size: "tiny" },
+    ]
+  );
+  assert.equal(classification.weights, "mixed");
+  assert.equal(classification.size, "large");
+  assert.equal(filterResults([row], { weights: "open", sizes: [] }).length, 0);
+  assert.equal(filterResults([row], { weights: "all", sizes: ["tiny"] }).length, 0);
+  assert.deepEqual(filterResults([row], { weights: "other", sizes: ["large"] }), [row]);
+});
+
 test("all four featured benchmarks have complete classifications and preserve every result field", async () => {
   const { getChartBenchmarks, getBenchmarkChartRows, getChartResearchGaps } =
     await import("../src/lib/benchmark-charts");
