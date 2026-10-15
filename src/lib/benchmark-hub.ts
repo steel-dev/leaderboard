@@ -225,7 +225,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         { label: "Emergence WebVoyager evaluation audit", url: "https://arxiv.org/abs/2603.29020" },
       ],
       relatedBenchmarks: ["webarena", "online-mind2web", "clawbench"],
-      lastUpdated: "2026-10-11",
+      lastUpdated: "2026-10-15",
       customFaqs: [
         {
           q: "How is WebVoyager different from WebArena?",
