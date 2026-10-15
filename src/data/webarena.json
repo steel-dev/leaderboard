@@ -178,8 +178,8 @@
       "organization": "NVIDIA",
       "scoreDisplay": "50.25%",
       "scoreValue": 50.25,
-      "sourceUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
-      "repoUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-BF16",
+      "sourceUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16",
+      "repoUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16",
       "notesShort": "Full-precision BF16 weights of the open-weight 74B-A9B model; full 812-task set with a 100-step limit. Self-reported on the NVIDIA model card.",
       "reportedAt": "2026-10-15",
       "isNew": true

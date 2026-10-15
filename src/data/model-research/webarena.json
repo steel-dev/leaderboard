@@ -922,8 +922,8 @@
       "notes": "NVIDIA publishes 74B total / 9B active parameters. Full-precision BF16 checkpoint. Open weights under the OpenMDW License Agreement v1.1.",
       "sources": [
         {
-          "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-BF16 model card",
-          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-BF16"
+          "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16 model card",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16"
         }
       ],
       "checkedAt": "2026-10-14"
@@ -1742,7 +1742,7 @@
       "sources": [
         {
           "title": "Reported evaluation",
-          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16"
         }
       ]
     }
