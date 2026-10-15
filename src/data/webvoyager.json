@@ -26,6 +26,17 @@
     },
     {
       "rank": 3,
+      "systemName": "Webwright + Qwen3.8-Max",
+      "organization": "Independent",
+      "scoreDisplay": "97.72%",
+      "scoreValue": 97.72,
+      "sourceUrl": "https://github.com/weiyali1/webwright-webvoyager-results",
+      "notesShort": "Self-reported system-level result: 601/615 on the filtered and updated WebVoyager-derived browser-control-fable-5 variant, with stale dates additionally updated; custom critical-point judge, per-task internal self-healing and self-check, and reruns for stale-date, model API, or browser-crash failures.",
+      "reportedAt": "2026-10-15",
+      "isNew": true
+    },
+    {
+      "rank": 4,
       "systemName": "Surfer 2",
       "organization": "H Company",
       "scoreDisplay": "97.1%",
@@ -35,7 +46,7 @@
       "reportedAt": "2025-10"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "systemName": "Magnitude",
       "organization": "Magnitude",
       "scoreDisplay": "93.9%",
@@ -46,7 +57,7 @@
       "reportedAt": "2025-07"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "systemName": "Surfer-H + Holo1",
       "organization": "H Company",
       "scoreDisplay": "92.2%",
@@ -57,7 +68,7 @@
       "reportedAt": "2025-06"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "browser-control (Opus 4.8)",
       "organization": "browser-control",
       "scoreDisplay": "90.41%",
@@ -69,7 +80,7 @@
       "isNew": true
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "Browserable",
       "organization": "Browserable",
       "scoreDisplay": "90.4%",
@@ -80,7 +91,7 @@
       "reportedAt": "2025-04"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "Browser Use",
       "organization": "Browser Use",
       "scoreDisplay": "89.1%",
@@ -91,7 +102,7 @@
       "reportedAt": "2024-12"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "systemName": "GLM-5V-Turbo",
       "organization": "Z.ai",
       "scoreDisplay": "88.5%",
@@ -102,7 +113,7 @@
       "isNew": true
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "Agent Kura",
       "organization": "Kura",
       "scoreDisplay": "87.0%",
@@ -112,7 +123,7 @@
       "reportedAt": "2024-11"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "Operator",
       "organization": "OpenAI",
       "scoreDisplay": "87%",
@@ -122,7 +133,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "systemName": "Notte",
       "organization": "Notte",
       "scoreDisplay": "86.2%",
@@ -133,7 +144,7 @@
       "reportedAt": "2025-04"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Skyvern 2.0",
       "organization": "Skyvern",
       "scoreDisplay": "85.85%",
@@ -144,7 +155,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "Project Mariner",
       "organization": "Google",
       "scoreDisplay": "83.5%",
@@ -154,7 +165,7 @@
       "reportedAt": "2024-12"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "Wuying-Browser-Agent-27B",
       "organization": "Alibaba Cloud",
       "scoreDisplay": "80.6%",
@@ -165,7 +176,7 @@
       "isNew": true
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "Agent-E",
       "organization": "Emergence AI",
       "scoreDisplay": "73.2%",
@@ -176,7 +187,7 @@
       "reportedAt": "2024-07"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "systemName": "WebSight",
       "organization": "Academic Research",
       "scoreDisplay": "68%",
@@ -186,7 +197,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "Runner H 0.1",
       "organization": "H Company",
       "scoreDisplay": "67%",
@@ -196,7 +207,7 @@
       "reportedAt": "2025-03"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "WebVoyager",
       "organization": "Academic Research",
       "scoreDisplay": "59.1%",
@@ -207,7 +218,7 @@
       "reportedAt": "2024-01"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "systemName": "Anthropic Computer Use 3.5",
       "organization": "Anthropic",
       "scoreDisplay": "56.0%",
@@ -217,7 +228,7 @@
       "reportedAt": "2024-11"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "systemName": "WILBUR",
       "organization": "Bardeen / UC Berkeley",
       "scoreDisplay": "53%",
@@ -227,7 +238,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 22,
+      "rank": 23,
       "systemName": "GPT-4 (All Tools)",
       "organization": "OpenAI",
       "scoreDisplay": "30.8%",
