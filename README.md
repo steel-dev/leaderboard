@@ -16,17 +16,17 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
-Browser agents · Agent scope · 22 entries tracked
+Browser agents · Agent scope · 23 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | browser-control (Fable 5) **(new)** | Om Labs | [99.19%](https://github.com/omxyz/webvoyager) |
-| 2 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
-| 3 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
-| 4 | Magnitude | Magnitude | [93.9%](https://github.com/magnitudedev/webvoyager) |
-| 5 | Surfer-H + Holo1 | H Company | [92.2%](https://arxiv.org/pdf/2506.02865) |
+| 1 | browser-cmd (Codex gpt-6.1-sol) **(new)** | Elmyx Labs | [99.35%](https://github.com/elmyx-labs/browser-cmd-webvoyager) |
+| 2 | browser-control (Fable 5) **(new)** | Om Labs | [99.19%](https://github.com/omxyz/webvoyager) |
+| 3 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
+| 4 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
+| 5 | Magnitude | Magnitude | [93.9%](https://github.com/magnitudedev/webvoyager) |
 
-[See all 22 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
+[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 ---
 
