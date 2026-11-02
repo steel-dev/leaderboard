@@ -16,7 +16,7 @@ The tables below show the current top entries on each tracked benchmark. Each se
 
 ### [WebVoyager](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
-Browser agents · Agent scope · 22 entries tracked
+Browser agents · Agent scope · 23 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
@@ -26,7 +26,7 @@ Browser agents · Agent scope · 22 entries tracked
 | 4 | Magnitude | Magnitude | [93.9%](https://github.com/magnitudedev/webvoyager) |
 | 5 | Surfer-H + Holo1 | H Company | [92.2%](https://arxiv.org/pdf/2506.02865) |
 
-[See all 22 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
+[See all 23 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
 
 ---
 

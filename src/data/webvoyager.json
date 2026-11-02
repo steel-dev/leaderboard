@@ -155,6 +155,17 @@
     },
     {
       "rank": 15,
+      "systemName": "Auto Browser (DeepSeek V4.1 Flash)",
+      "organization": "Astralab",
+      "scoreDisplay": "82.8%",
+      "scoreValue": 82.8,
+      "sourceUrl": "https://autobrowser.dev/blog/webvoyager-mini-results",
+      "notesShort": "Chrome-extension agent driving DeepSeek V4.1 Flash; 77/93 graded on wv-mini, a 105-task subset (7 per site) with 12 bot-check-blocked tasks excluded; one attempt per task; GPT-5.5 judge with own prompt; $2.75 model cost. Self-reported.",
+      "reportedAt": "2026-11-02",
+      "isNew": true
+    },
+    {
+      "rank": 16,
       "systemName": "Wuying-Browser-Agent-27B",
       "organization": "Alibaba Cloud",
       "scoreDisplay": "80.6%",
@@ -165,7 +176,7 @@
       "isNew": true
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "Agent-E",
       "organization": "Emergence AI",
       "scoreDisplay": "73.2%",
@@ -176,7 +187,7 @@
       "reportedAt": "2024-07"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "systemName": "WebSight",
       "organization": "Academic Research",
       "scoreDisplay": "68%",
@@ -186,7 +197,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "Runner H 0.1",
       "organization": "H Company",
       "scoreDisplay": "67%",
@@ -196,7 +207,7 @@
       "reportedAt": "2025-03"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "WebVoyager",
       "organization": "Academic Research",
       "scoreDisplay": "59.1%",
@@ -207,7 +218,7 @@
       "reportedAt": "2024-01"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "systemName": "Anthropic Computer Use 3.5",
       "organization": "Anthropic",
       "scoreDisplay": "56.0%",
@@ -217,7 +228,7 @@
       "reportedAt": "2024-11"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "systemName": "WILBUR",
       "organization": "Bardeen / UC Berkeley",
       "scoreDisplay": "53%",
@@ -227,7 +238,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 22,
+      "rank": 23,
       "systemName": "GPT-4 (All Tools)",
       "organization": "OpenAI",
       "scoreDisplay": "30.8%",
