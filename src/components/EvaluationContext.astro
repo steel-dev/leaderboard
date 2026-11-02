@@ -1,0 +1,59 @@
+---
+import { evaluationDimensions, getEvaluationContext } from "../lib/evaluation-context";
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const context = getEvaluationContext(slug);
+---
+
+<section id="evaluation-context" class="mt-8 scroll-mt-8">
+  <h2 class="m-0 text-xl font-medium tracking-[-0.03em] text-(--color-text-strong)">
+    Evaluation context
+  </h2>
+  <p class="mt-3 max-w-3xl text-sm leading-6 muted">
+    These fields describe the benchmark protocol. Individual runs can change the setup. A task score
+    does not measure every behavior below.
+  </p>
+  <dl class="mt-5">
+    {
+      evaluationDimensions.map(({ key, label }) => {
+        const entry = context[key];
+        return (
+          <div class="context-row border-t border-(--color-border) py-4">
+            <dt class="text-sm font-medium text-(--color-text-strong)">{label}</dt>
+            <dd class="m-0">
+              <span class="text-xs muted">
+                {entry.status === "documented" ? "Source documented" : "Not documented in this hub"}
+              </span>
+              <p class="mb-0 mt-1 text-sm leading-6 muted">{entry.summary}</p>
+              {entry.status === "documented" && (
+                <a
+                  class="mt-2 inline-block text-xs"
+                  href={entry.sourceUrl}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {entry.sourceLabel}
+                </a>
+              )}
+            </dd>
+          </div>
+        );
+      })
+    }
+  </dl>
+</section>
+<style>
+  .context-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  @media (min-width: 640px) {
+    .context-row {
+      grid-template-columns: 11rem minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+  }
+</style>
