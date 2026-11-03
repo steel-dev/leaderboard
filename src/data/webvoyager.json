@@ -30,7 +30,7 @@
       "organization": "XYDT",
       "scoreDisplay": "97.56%",
       "scoreValue": 97.56,
-      "sourceUrl": "https://github.com/weiyali1/webwright-webvoyager-results/blob/b86af389761c7490f04323c8cc44fa1dee9d1bdd/submissions/webvoyager-2026-11-03/README.md",
+      "sourceUrl": "https://github.com/weiyali1/webwright-webvoyager-results/blob/73bb79945646d65ada6ad9cd6b14257bdce0daec/submissions/webvoyager-2026-11-03/README.md",
       "notesShort": "Self-reported system-level 600/615 on date-updated browser-control-fable-5 (49 month-edited instructions); internal script validation/repair, with 360 selected final run indices >=2 and maximum index 20; GLM-5.3-Flash with the official WebVoyager prompt; earliest definitive verdict under upstream parsing; missing evidence counts as unsuccessful.",
       "reportedAt": "2026-11-03",
       "isNew": true
