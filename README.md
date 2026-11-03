@@ -22,7 +22,7 @@ Browser agents · Agent scope · 23 entries tracked
 | ---: | ------ | ------------ | ----- |
 | 1 | browser-control (Fable 5) **(new)** | Om Labs | [99.19%](https://github.com/omxyz/webvoyager) |
 | 2 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
-| 3 | webwright（qwen3.8max） **(new)** | XYDT | [97.56%](https://github.com/weiyali1/webwright-webvoyager-results/blob/6946f095bc551064fb110c50c5feb2c39c94e1b4/submissions/webvoyager-2026-11-03/README.md) |
+| 3 | webwright（qwen3.8max） **(new)** | XYDT | [97.56%](https://github.com/weiyali1/webwright-webvoyager-results/blob/100700bd55329d6ba4b67d9b4db5f77ba4641a23/submissions/webvoyager-2026-11-03/README.md) |
 | 4 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
 | 5 | Magnitude | Magnitude | [93.9%](https://github.com/magnitudedev/webvoyager) |
 
