@@ -24,7 +24,7 @@ Browser agents · Agent scope · 23 entries tracked
 | 2 | Alumnium **(new)** | Alumnium | [98.5%](https://alumnium.ai/blog/webvoyager-benchmark/) |
 | 3 | Surfer 2 | H Company | [97.1%](https://hcompany.ai/surfer-2) |
 | 4 | Magnitude | Magnitude | [93.9%](https://github.com/magnitudedev/webvoyager) |
-| 5 | Surfer-H + Holo1 | H Company | [92.2%](https://arxiv.org/pdf/2506.02865) |
+| 5 | Auto Browser (DeepSeek V4.1 Flash) **(new)** | Vin Lim | [92.7%](https://autobrowser.dev/blog/webvoyager-mini-final-results) |
 
 [See all 23 entries →](https://leaderboard.steel.dev/leaderboards/webvoyager)
 

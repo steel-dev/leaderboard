@@ -47,6 +47,17 @@
     },
     {
       "rank": 5,
+      "systemName": "Auto Browser (DeepSeek V4.1 Flash)",
+      "organization": "Vin Lim",
+      "scoreDisplay": "92.7%",
+      "scoreValue": 92.7,
+      "sourceUrl": "https://autobrowser.dev/blog/webvoyager-mini-final-results",
+      "notesShort": "Chrome-extension agent (v1.6.0) driving DeepSeek V4.1 Flash; mean of two runs, 82/89 and 84/90 graded, on wv-mini, a 103-task subset (7 per site, 2 retired) with 13 to 14 bot-check-blocked tasks excluded per run; one attempt per task; GPT-5.5 judge with own prompt; about $1.37 model cost per run. Self-reported.",
+      "reportedAt": "2026-11-08",
+      "isNew": true
+    },
+    {
+      "rank": 6,
       "systemName": "Surfer-H + Holo1",
       "organization": "H Company",
       "scoreDisplay": "92.2%",
@@ -57,7 +68,7 @@
       "reportedAt": "2025-06"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "browser-control (Opus 4.8)",
       "organization": "browser-control",
       "scoreDisplay": "90.41%",
@@ -69,7 +80,7 @@
       "isNew": true
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "Browserable",
       "organization": "Browserable",
       "scoreDisplay": "90.4%",
@@ -80,7 +91,7 @@
       "reportedAt": "2025-04"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "Browser Use",
       "organization": "Browser Use",
       "scoreDisplay": "89.1%",
@@ -91,7 +102,7 @@
       "reportedAt": "2024-12"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "systemName": "GLM-5V-Turbo",
       "organization": "Z.ai",
       "scoreDisplay": "88.5%",
@@ -102,7 +113,7 @@
       "isNew": true
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "Agent Kura",
       "organization": "Kura",
       "scoreDisplay": "87.0%",
@@ -112,7 +123,7 @@
       "reportedAt": "2024-11"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "Operator",
       "organization": "OpenAI",
       "scoreDisplay": "87%",
@@ -122,7 +133,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "systemName": "Notte",
       "organization": "Notte",
       "scoreDisplay": "86.2%",
@@ -133,7 +144,7 @@
       "reportedAt": "2025-04"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Skyvern 2.0",
       "organization": "Skyvern",
       "scoreDisplay": "85.85%",
@@ -144,7 +155,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "Project Mariner",
       "organization": "Google",
       "scoreDisplay": "83.5%",
@@ -152,17 +163,6 @@
       "sourceUrl": "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/",
       "notesShort": "Gemini-powered reasoning with precise visual grounding.",
       "reportedAt": "2024-12"
-    },
-    {
-      "rank": 15,
-      "systemName": "Auto Browser (DeepSeek V4.1 Flash)",
-      "organization": "Astralab",
-      "scoreDisplay": "82.8%",
-      "scoreValue": 82.8,
-      "sourceUrl": "https://autobrowser.dev/blog/webvoyager-mini-results",
-      "notesShort": "Chrome-extension agent driving DeepSeek V4.1 Flash; 77/93 graded on wv-mini, a 105-task subset (7 per site) with 12 bot-check-blocked tasks excluded; one attempt per task; GPT-5.5 judge with own prompt; $2.75 model cost. Self-reported.",
-      "reportedAt": "2026-11-02",
-      "isNew": true
     },
     {
       "rank": 16,
