@@ -134,6 +134,17 @@
     },
     {
       "rank": 13,
+      "systemName": "Lingxi AI Assistant",
+      "organization": "China Mobile (Hangzhou) Information Technology Co., Ltd (中移（杭州）信息技术有限公司)",
+      "scoreDisplay": "86.18%",
+      "scoreValue": 86.18,
+      "sourceUrl": "https://github.com/LingxiClaw/lingxiclaw-webvoyager-results/blob/main/REPORT.md",
+      "notesShort": "Self-reported system result: 530/615 on a date-adjusted subset (28 exclusions, 99 edited prompts); one archived pass, 40 counted browser host calls/task, DeepSeek-V4.1-Flash request and custom Doubao text-and-image judge.",
+      "reportedAt": "2026-11-11",
+      "isNew": true
+    },
+    {
+      "rank": 14,
       "systemName": "Skyvern 2.0",
       "organization": "Skyvern",
       "scoreDisplay": "85.85%",
@@ -144,7 +155,7 @@
       "reportedAt": "2025-01"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "Project Mariner",
       "organization": "Google",
       "scoreDisplay": "83.5%",
@@ -154,7 +165,7 @@
       "reportedAt": "2024-12"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "Wuying-Browser-Agent-27B",
       "organization": "Alibaba Cloud",
       "scoreDisplay": "80.6%",
@@ -165,7 +176,7 @@
       "isNew": true
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "Agent-E",
       "organization": "Emergence AI",
       "scoreDisplay": "73.2%",
@@ -176,7 +187,7 @@
       "reportedAt": "2024-07"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "systemName": "WebSight",
       "organization": "Academic Research",
       "scoreDisplay": "68%",
@@ -186,7 +197,7 @@
       "reportedAt": "2025-08"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "Runner H 0.1",
       "organization": "H Company",
       "scoreDisplay": "67%",
@@ -196,7 +207,7 @@
       "reportedAt": "2025-03"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "WebVoyager",
       "organization": "Academic Research",
       "scoreDisplay": "59.1%",
@@ -207,7 +218,7 @@
       "reportedAt": "2024-01"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "systemName": "Anthropic Computer Use 3.5",
       "organization": "Anthropic",
       "scoreDisplay": "56.0%",
@@ -217,7 +228,7 @@
       "reportedAt": "2024-11"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "systemName": "WILBUR",
       "organization": "Bardeen / UC Berkeley",
       "scoreDisplay": "53%",
@@ -227,7 +238,7 @@
       "reportedAt": "2024-04"
     },
     {
-      "rank": 22,
+      "rank": 23,
       "systemName": "GPT-4 (All Tools)",
       "organization": "OpenAI",
       "scoreDisplay": "30.8%",
