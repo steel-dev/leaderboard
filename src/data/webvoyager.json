@@ -31,7 +31,7 @@
       "scoreDisplay": "97.39%",
       "scoreValue": 97.39,
       "sourceUrl": "https://github.com/weiyali1/webwright-webvoyager/blob/8189c98db3fae10e72142bee21a1baee48889e7f/README.md",
-      "notesShort": "Self-reported system result; 599/615 on date-edited browser-control-fable-5 (50 month-edited tasks); agent retries until its own check passes or limits/errors stop it; GLM-5.3-Flash judge.",
+      "notesShort": "Self-reported; 599/615 on date-edited browser-control-fable-5 (50 month-edited tasks); agent retries until its own check passes or limits/errors stop it (max selected run index 22); GLM-5.3-Flash judge.",
       "reportedAt": "2026-11-17",
       "isNew": true
     },
