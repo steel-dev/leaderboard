@@ -1,0 +1,34 @@
+{
+  "gpqaDiamond": [
+    {
+      "rank": 1,
+      "systemName": "o1",
+      "organization": "OpenAI",
+      "scoreDisplay": "77.3%",
+      "scoreValue": 77.3,
+      "sourceUrl": "https://openai.com/index/learning-to-reason-with-llms/#appendix-a",
+      "notesShort": "Historical OpenAI self-report; GPQA Diamond pass@1, model reasoning; no consensus@64 score.",
+      "reportedAt": "2024-09-12"
+    },
+    {
+      "rank": 2,
+      "systemName": "o1-preview",
+      "organization": "OpenAI",
+      "scoreDisplay": "73.3%",
+      "scoreValue": 73.3,
+      "sourceUrl": "https://openai.com/index/learning-to-reason-with-llms/#appendix-a",
+      "notesShort": "Historical OpenAI self-report; GPQA Diamond pass@1, model reasoning; no consensus@64 score.",
+      "reportedAt": "2024-09-12"
+    },
+    {
+      "rank": 3,
+      "systemName": "GPT-4o",
+      "organization": "OpenAI",
+      "scoreDisplay": "50.6%",
+      "scoreValue": 50.6,
+      "sourceUrl": "https://openai.com/index/learning-to-reason-with-llms/#appendix-a",
+      "notesShort": "Historical OpenAI self-report; GPQA Diamond pass@1, model reasoning; no consensus@64 score.",
+      "reportedAt": "2024-09-12"
+    }
+  ]
+}

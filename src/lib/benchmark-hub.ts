@@ -4,6 +4,7 @@ import {
   browsecomp,
   clawbench,
   draco,
+  gpqaDiamond,
   gaia,
   healthAdminBench,
   mind2web,
@@ -21,6 +22,7 @@ type BenchmarkMap = {
   browsecomp: Record<string, BenchmarkResultRow[]>;
   clawbench: Record<string, BenchmarkResultRow[]>;
   draco: Record<string, BenchmarkResultRow[]>;
+  gpqaDiamond: Record<string, BenchmarkResultRow[]>;
   gaia: Record<string, BenchmarkResultRow[]>;
   healthAdminBench: Record<string, BenchmarkResultRow[]>;
   mind2web: Record<string, BenchmarkResultRow[]>;
@@ -38,6 +40,7 @@ const benchmarkMap: BenchmarkMap = {
   browsecomp,
   clawbench,
   draco,
+  gpqaDiamond,
   gaia,
   healthAdminBench,
   mind2web,
@@ -173,6 +176,88 @@ export function renderBenchmarkDescription(meta: BenchmarkPageMeta): string {
 }
 
 export const benchmarkPages: BenchmarkPageData[] = [
+  {
+    meta: {
+      slug: "gpqa-diamond",
+      name: "GPQA Diamond",
+      seoTitle: "GPQA Diamond Leaderboard: Historical Model Scores | Steel.dev",
+      seoDescription:
+        "Compare historical GPQA Diamond benchmark pass@1 scores from September 2024, with exact source citations, public examples, and evaluation notes.",
+      description:
+        "GPQA Diamond leaderboard for the GPQA Diamond benchmark: graduate-level biology, chemistry, and physics questions scored by multiple-choice accuracy.",
+      categoryLabel: "Model",
+      category: "model_eval",
+      scope: "model",
+      about: [
+        "GPQA means Graduate-Level Google-Proof Question Answering. The benchmark contains expert-written multiple-choice questions in biology, chemistry, and physics.",
+        "Diamond contains 198 questions selected through expert and non-expert validation. Each question has one correct choice and three distractors.",
+        "This page starts with historical September 2024 results from one OpenAI report. These rows provide a documented baseline, not a complete ranking of current models.",
+      ],
+      methodology: [
+        "The metric is accuracy on GPQA Diamond, expressed as a percentage of correct answers.",
+        "All listed scores are pass@1 from Appendix A of the September 12, 2024 OpenAI report.",
+        "The report evaluates o1 at maximal test-time compute unless specified otherwise; o1 here is the research model in that report.",
+        "Consensus across 64 samples, pass@k, tool access, and different prompting protocols must be labeled separately.",
+      ],
+      taskExamples: [
+        {
+          quote:
+            "All the following statements about the molecular biology of Severe Acute Respiratory Syndrome Coronavirus 2 (SARS‑CoV‑2) are correct except\n\n\n\n\nProgrammed ribosomal frameshifting creates two polyproteins near to 5` end of the genome by moving back by 1 nucleotide with the help of slippery nucleotides, and pseudoknot. The SARS-CoV-2 programmed ribosomal frameshifting mostly has the same conformation as the SARS-CoV programmed ribosomal frameshifting.\nSARS-CoV-2 nsp10/nsp14-ExoN operates as heterodimers in a mismatch repair mechanism. The N-terminal ExoN domain of nsp14 could bind to nsp10 making an active exonuclease complex that prevents the breakdown of dsRNA. \nThe rate of frameshifting in vitro is linearly correlated with the number of conformations that a pseudoknot can adopt. Both SARS-CoV and SARS-CoV-2 Programmed -1 Frameshift Signals show two conformations when under tension, similar to other pseudoknots that induce comparable frameshifting rates. \nSARS-CoV-2 ORF3a has the ability to trigger caspase-8 activation/cleavage, without affecting the expression levels of Bcl-2. Caspase-8 activation is recognized as a characteristic feature of the extrinsic apoptotic pathway via death receptors, while Bcl-2 plays a crucial role in initiating the mitochondrial pathway. This suggests that the mechanism through which SARS-CoV-2 ORF3a induces apoptosis is via the extrinsic apoptotic pathway.\n",
+          sourceLabel:
+            "GPQA Diamond dataset, Biology; question and four answer choices (CC BY 4.0)",
+          sourceUrl:
+            "https://github.com/idavidrein/gpqa/blob/56686c06f5e19865c153de0fdb11be3890014df7/dataset.zip",
+        },
+        {
+          quote:
+            "Which of the following physical theories never requires regularization at high energies?\n\nClassical Electrodynamics\nSuperstring Theory\nQuantum Electrodynamics\nQuantum Chromodynamics",
+          sourceLabel:
+            "GPQA Diamond dataset, Physics; question and four answer choices (CC BY 4.0)",
+          sourceUrl:
+            "https://github.com/idavidrein/gpqa/blob/56686c06f5e19865c153de0fdb11be3890014df7/dataset.zip",
+        },
+        {
+          quote:
+            "5-fluorocyclopenta-1,3-diene is reacted with maleic anhydride. What is the major product?\n\n(3aR,4S,7R,7aS,8r)-8-fluoro-3a,4,7,7a-tetrahydro-4,7-methanoisobenzofuran-1,3-dione\n(3aR,4R,7S,7aS,8r)-8-fluoro-3a,4,7,7a-tetrahydro-4,7-methanoisobenzofuran-1,3-dione\n(3aR,4R,7S,7aS,8s)-8-fluoro-3a,4,7,7a-tetrahydro-4,7-methanoisobenzofuran-1,3-dione\n(3aR,4S,7R,7aS,8s)-8-fluoro-3a,4,7,7a-tetrahydro-4,7-methanoisobenzofuran-1,3-dione",
+          sourceLabel:
+            "GPQA Diamond dataset, Chemistry; question and four answer choices (CC BY 4.0)",
+          sourceUrl:
+            "https://github.com/idavidrein/gpqa/blob/56686c06f5e19865c153de0fdb11be3890014df7/dataset.zip",
+        },
+      ],
+      importantNotes: [
+        "GPQA is a model reasoning benchmark. It does not measure browser control or completion of software tasks.",
+        "The authors publish the dataset under CC BY 4.0 with a canary string and a password-protected archive to reduce accidental training exposure.",
+        "The three examples reproduce published question and answer-choice fields; choice order is changed and correct-answer labels are omitted. Attribution: Irving David Rein and the GPQA authors.",
+        "Historical self-reported rows do not establish which current model leads; newer scores require their own public setup citations.",
+      ],
+      links: [
+        {
+          label: "GPQA paper",
+          url: "https://arxiv.org/abs/2311.12022",
+        },
+        {
+          label: "Authors’ dataset and baseline repository",
+          url: "https://github.com/idavidrein/gpqa",
+        },
+        {
+          label: "Dataset on Hugging Face",
+          url: "https://huggingface.co/datasets/idavidrein/gpqa",
+        },
+        {
+          label: "OpenAI historical evaluation table",
+          url: "https://openai.com/index/learning-to-reason-with-llms/#appendix-a",
+        },
+        {
+          label: "Dataset license: CC BY 4.0",
+          url: "https://creativecommons.org/licenses/by/4.0/",
+        },
+      ],
+      relatedBenchmarks: ["gaia", "agentbench"],
+      lastUpdated: "2026-09-27",
+    },
+    results: benchmarkResults("gpqaDiamond"),
+  },
   {
     meta: {
       slug: "webvoyager",
@@ -1131,12 +1216,14 @@ export function generateBenchmarkFaq(
   facts: BenchmarkFaqFacts
 ): BenchmarkFaqItem[] {
   const scopeTarget =
-    facts.scope === "model" ? "model currently leading" : "system/agent setup currently leading";
+    facts.scope === "model"
+      ? "model with the highest tracked score"
+      : "system/agent setup with the highest tracked score";
 
   const items: BenchmarkFaqItem[] = [
     {
-      q: `Which system is currently best on ${meta.name}?`,
-      a: `${facts.bestCurrentLabel} is the ${scopeTarget} with a tracked score of ${facts.bestCurrentScore}. ${getScopeOwnershipCopy(
+      q: `Which system has the highest tracked score on ${meta.name}?`,
+      a: `${meta.slug === "gpqa-diamond" ? "These are historical September 2024 results, not a current model ranking. " : ""}${facts.bestCurrentLabel} is the ${scopeTarget} with a tracked score of ${facts.bestCurrentScore}. ${getScopeOwnershipCopy(
         facts.scope
       )} Based on our latest tracked results, last updated ${formatDate(facts.lastUpdated)}.`,
     },
