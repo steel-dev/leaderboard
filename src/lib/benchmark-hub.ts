@@ -763,7 +763,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
       slug: "clawbench",
       name: "ClawBench",
       description:
-        "ClawBench leaderboard for browser agents completing 153 everyday state-changing tasks on 144 live production websites.",
+        "ClawBench leaderboard for the April 2026 paper evaluation: browser agents on 153 state-changing tasks across 144 live websites.",
       categoryLabel: "Browser Agent",
       seoHook: "browser agents on 153 live state-changing tasks across 144 websites",
       category: "browser_agents",
@@ -771,7 +771,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
       about: [
         "ClawBench evaluates browser agents on 153 everyday online tasks across 144 live platforms in 15 categories, including purchases, appointments, job applications, and detailed forms.",
         "Its emphasis is on state-changing, write-heavy workflows. A lightweight interception layer blocks final submissions so agents can be evaluated safely on production sites without causing real-world side effects.",
-        "The first reported results show a large gap: the best of seven frontier models completed 33.3%, making ClawBench useful for measuring robustness beyond navigation-only or read-only web tasks.",
+        "This page preserves the April 9, 2026 paper evaluation. Its seven OpenClaw-based systems use the original 153-task set and binary success rate.",
       ],
       methodology: [
         "Evaluation uses human ground truth and an agentic evaluator over session replay, screenshots, HTTP traffic, reasoning traces, and browser actions.",
@@ -803,15 +803,19 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       importantNotes: [
-        "New benchmark with limited independent submissions; current rows mainly reflect the initial paper's model suite.",
+        "The project leaderboard separates task corpus, harness, and scoring rubric. Its Reward and Reward (strict) columns must not be merged into this paper ranking.",
+        "Historical paper snapshot: scores come from Table 2 of arXiv version 1, not the current project leaderboard.",
       ],
       links: [
-        { label: "ClawBench paper", url: "https://arxiv.org/abs/2604.08523" },
-        { label: "Project page", url: "https://claw-bench.com" },
-        { label: "ClawBench repository", url: "https://github.com/reacher-z/ClawBench" },
+        {
+          label: "Original paper (version 1, Table 2)",
+          url: "https://arxiv.org/html/2604.08523v1#S2.T2",
+        },
+        { label: "Project leaderboard (other variants)", url: "https://claw-bench.com" },
+        { label: "ClawBench repository", url: "https://github.com/TIGER-AI-Lab/ClawBench" },
       ],
       relatedBenchmarks: ["webvoyager", "online-mind2web", "webarena"],
-      lastUpdated: "2026-04-16",
+      lastUpdated: "2026-09-27",
     },
     results: benchmarkResults("clawbench") ?? [],
   },
