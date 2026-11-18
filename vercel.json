@@ -10,6 +10,9 @@
     { "source": "/registry/benchmarks/webarena", "destination": "/leaderboards/webarena/", "permanent": true },
     { "source": "/registry/benchmarks/webarena/:path*", "destination": "/leaderboards/webarena/", "permanent": true },
 
+    { "source": "/registry/benchmarks/swe-bench-pro", "destination": "/leaderboards/swe-bench-pro/", "permanent": true },
+    { "source": "/registry/benchmarks/swe-bench-pro/:path*", "destination": "/leaderboards/swe-bench-pro/", "permanent": true },
+
     { "source": "/registry/benchmarks/swe-bench-verified", "destination": "/leaderboards/swe-bench-verified/", "permanent": true },
     { "source": "/registry/benchmarks/swe-bench-verified/:path*", "destination": "/leaderboards/swe-bench-verified/", "permanent": true },
 

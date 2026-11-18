@@ -24,6 +24,7 @@ export const BENCHMARK_SLUG_TO_DATA_KEY: Record<string, string> = {
   browsecomp: "browsecomp",
   draco: "draco",
   webarena: "webarena",
+  "swe-bench-pro": "sweBenchPro",
   "swe-bench-verified": "sweBenchVerified",
   aider: "aiderPolyglot",
   osworld: "osworld",

@@ -1,0 +1,40 @@
+{
+  "sweBenchPro": [
+    {
+      "rank": 1,
+      "systemName": "Muse Spark 1.1",
+      "organization": "Meta",
+      "scoreDisplay": "61.50%",
+      "scoreValue": 61.5,
+      "sourceUrl": "https://labs.scale.com/leaderboard/swe_bench_pro",
+      "notesShort": "Scale public leaderboard; mini-swe-agent, 250-turn limit, uncapped cost; reported interval \u00b13.10 points."
+    },
+    {
+      "rank": 2,
+      "systemName": "gpt-5.4 (xHigh)",
+      "organization": "OpenAI",
+      "scoreDisplay": "59.10%",
+      "scoreValue": 59.1,
+      "sourceUrl": "https://labs.scale.com/leaderboard/swe_bench_pro",
+      "notesShort": "Scale public leaderboard; mini-swe-agent, 250-turn limit, uncapped cost; reported interval \u00b13.56 points."
+    },
+    {
+      "rank": 3,
+      "systemName": "Muse Spark",
+      "organization": "Meta",
+      "scoreDisplay": "55.00%",
+      "scoreValue": 55.0,
+      "sourceUrl": "https://labs.scale.com/leaderboard/swe_bench_pro",
+      "notesShort": "Scale public leaderboard; mini-swe-agent, 250-turn limit, uncapped cost; reported interval \u00b13.60 points."
+    },
+    {
+      "rank": 4,
+      "systemName": "claude-opus-4-6 (thinking)",
+      "organization": "Anthropic",
+      "scoreDisplay": "51.90%",
+      "scoreValue": 51.9,
+      "sourceUrl": "https://labs.scale.com/leaderboard/swe_bench_pro",
+      "notesShort": "Scale public leaderboard; mini-swe-agent, 250-turn limit, uncapped cost; reported interval \u00b13.61 points."
+    }
+  ]
+}
