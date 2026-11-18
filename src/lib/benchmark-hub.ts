@@ -13,6 +13,7 @@ import {
   tauBench,
   webarena,
   webvoyager,
+  webshop,
 } from "../data/index.js";
 
 type BenchmarkMap = {
@@ -30,6 +31,7 @@ type BenchmarkMap = {
   tauBench: Record<string, BenchmarkResultRow[]>;
   webarena: Record<string, BenchmarkResultRow[]>;
   webvoyager: Record<string, BenchmarkResultRow[]>;
+  webshop: Record<string, BenchmarkResultRow[]>;
 };
 
 const benchmarkMap: BenchmarkMap = {
@@ -47,6 +49,7 @@ const benchmarkMap: BenchmarkMap = {
   tauBench,
   webarena,
   webvoyager,
+  webshop,
 };
 
 type BenchmarkSlug = keyof typeof benchmarkMap;
@@ -57,11 +60,7 @@ export function benchmarkResults(slug: BenchmarkSlug): BenchmarkResultRow[] {
 }
 
 export type BenchmarkCategory =
-  | "browser_agents"
-  | "computer_use"
-  | "research_search"
-  | "coding"
-  | "model_eval";
+  "browser_agents" | "computer_use" | "research_search" | "coding" | "model_eval";
 
 export type BenchmarkScope = "agent" | "model" | "mixed";
 
@@ -173,6 +172,81 @@ export function renderBenchmarkDescription(meta: BenchmarkPageMeta): string {
 }
 
 export const benchmarkPages: BenchmarkPageData[] = [
+  {
+    meta: {
+      slug: "webshop",
+      name: "WebShop",
+      description:
+        "WebShop benchmark leaderboard for shopping agents in a simulated web environment, with historical paper success rates on 500 test tasks.",
+      seoTitle: "WebShop Leaderboard: Shopping Agent Benchmark Results | Steel.dev",
+      seoDescription:
+        "Compare WebShop leaderboard success rates. Explore the WebShop benchmark environment, test split, interaction setup, sources, and public tasks.",
+      category: "browser_agents",
+      scope: "agent",
+      about: [
+        "WebShop is a simulated shopping website. Agents search, inspect products, select options, and buy an item that matches an instruction.",
+        "The environment supports HTML and simple observations. Its repository provides product data, public instructions, and baseline implementations.",
+        "This page tracks three historical baselines from the original paper. Coverage of later systems is limited.",
+      ],
+      methodology: [
+        "Rank by success rate: the percentage of tasks with reward exactly 1. Higher is better.",
+        "The paper uses 500 test instructions and reports model results over three trials in simple mode.",
+        "Task score is 100 times mean reward and includes partial credit. It is not the displayed success rate.",
+        "IL means imitation learning; RL means reinforcement learning. The learned baselines use language models for search and action selection.",
+      ],
+      taskExamples: [
+        {
+          quote: "i'm looking for a blue wireless bluetooth headphones.",
+          sourceLabel: "WebShop public instruction for B09QKP7XQL",
+          sourceUrl:
+            "https://github.com/princeton-nlp/WebShop/blob/64fa2a5c15c7daa698b9ac93f5bb5437b634c9bd/baseline_models/data/items_human_ins.json",
+        },
+        {
+          quote: "i need 12 inch blue hair extensions that are made from natural hair.",
+          sourceLabel: "WebShop public instruction for B08Y865MTQ",
+          sourceUrl:
+            "https://github.com/princeton-nlp/WebShop/blob/64fa2a5c15c7daa698b9ac93f5bb5437b634c9bd/baseline_models/data/items_human_ins.json",
+        },
+        {
+          quote: "i'm looking for shampoo & conditioner sets for damaged hair.",
+          sourceLabel: "WebShop public instruction for B01LOUY5M8",
+          sourceUrl:
+            "https://github.com/princeton-nlp/WebShop/blob/64fa2a5c15c7daa698b9ac93f5bb5437b634c9bd/baseline_models/data/items_human_ins.json",
+        },
+      ],
+      importantNotes: [
+        "These rows reproduce Figure 4 in paper version 4, dated February 8, 2023. They are paper reports, not an official submission tracker.",
+        "Do not mix 500-task test results with 100-task subsets, small product catalogs, or runs on live Amazon and eBay websites.",
+        "Browser rendering, text observations, and image features can change the setup. These rows use the paper baseline configuration.",
+      ],
+      links: [
+        {
+          label: "WebShop paper and baseline results",
+          url: "https://arxiv.org/pdf/2207.01206v4#page=7",
+        },
+        {
+          label: "WebShop project",
+          url: "https://webshop-pnlp.github.io/",
+        },
+        {
+          label: "WebShop repository",
+          url: "https://github.com/princeton-nlp/WebShop",
+        },
+        {
+          label: "Dataset download setup",
+          url: "https://github.com/princeton-nlp/WebShop#setup",
+        },
+        {
+          label: "Public task data",
+          url: "https://github.com/princeton-nlp/WebShop/blob/64fa2a5c15c7daa698b9ac93f5bb5437b634c9bd/baseline_models/data/items_human_ins.json",
+        },
+      ],
+      relatedBenchmarks: ["webarena", "webvoyager", "agentbench"],
+      lastUpdated: "2026-09-27",
+    },
+    results: benchmarkResults("webshop") ?? [],
+  },
+
   {
     meta: {
       slug: "webvoyager",
