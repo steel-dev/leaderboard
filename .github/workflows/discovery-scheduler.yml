@@ -63,6 +63,7 @@ jobs:
         if: steps.cadence.outputs.run == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
           SINCE_DAYS: ${{ inputs.since_days || '21' }}
         run: |
           echo "Dispatching discover-results.yml (lookback ${SINCE_DAYS} days)…"
@@ -74,14 +75,15 @@ jobs:
   # Catches the case the discover-results notify job cannot: the dispatch itself failing.
   notify:
     needs: trigger
-    # 'cancelled' (e.g. the 5-min gh dispatch timeout) must also alert — == 'failure' would miss it.
-    if: always() && needs.trigger.result != 'success'
+    # Disabled discovery skips the trigger; only failed or cancelled dispatches need an alert.
+    if: always() && (needs.trigger.result == 'failure' || needs.trigger.result == 'cancelled')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - name: Report scheduler failure
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           # Alert issues use a SEPARATE label (discovery-alert) from the rolling tracker (discovery).
