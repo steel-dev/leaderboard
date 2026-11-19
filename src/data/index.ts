@@ -11,4 +11,5 @@ export { default as osworld2 } from "./osworld2.json" with { type: "json" };
 export { default as sweBenchVerified } from "./sweBenchVerified.json" with { type: "json" };
 export { default as tauBench } from "./tauBench.json" with { type: "json" };
 export { default as webarena } from "./webarena.json" with { type: "json" };
+export { default as websiteBench } from "./websiteBench.json" with { type: "json" };
 export { default as webvoyager } from "./webvoyager.json" with { type: "json" };

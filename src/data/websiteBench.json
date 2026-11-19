@@ -1,0 +1,84 @@
+{
+  "websiteBench": [
+    {
+      "rank": 1,
+      "systemName": "Claude Opus 5.5",
+      "organization": "Anthropic",
+      "scoreDisplay": "26.2%",
+      "scoreValue": 26.2,
+      "sourceUrl": "https://website-bench.com/#results",
+      "notesShort": "Benchmark-author result with 11,812 of 45,091 hidden tests passed across 70 scored websites.",
+      "reportedAt": "2026-11"
+    },
+    {
+      "rank": 2,
+      "systemName": "GPT 6.1 Sol",
+      "organization": "OpenAI",
+      "scoreDisplay": "20.2%",
+      "scoreValue": 20.2,
+      "sourceUrl": "https://website-bench.com/#results",
+      "notesShort": "Benchmark-author result with 8,870 of 43,970 hidden tests passed across 68 scored websites.",
+      "reportedAt": "2026-11"
+    },
+    {
+      "rank": 3,
+      "systemName": "Claude Opus 5",
+      "organization": "Anthropic",
+      "scoreDisplay": "17.1%",
+      "scoreValue": 17.1,
+      "sourceUrl": "https://website-bench.com/#results",
+      "notesShort": "Benchmark-author result with 7,930 of 46,379 hidden tests passed across 69 scored websites.",
+      "reportedAt": "2026-11"
+    },
+    {
+      "rank": 4,
+      "systemName": "GLM 5.3 Flash",
+      "organization": "Z.ai",
+      "scoreDisplay": "14.7%",
+      "scoreValue": 14.7,
+      "sourceUrl": "https://website-bench.com/#results",
+      "notesShort": "Benchmark-author result with 6,875 of 46,916 hidden tests passed across 70 scored websites.",
+      "reportedAt": "2026-11"
+    },
+    {
+      "rank": 5,
+      "systemName": "DeepSeek V4.1 Flash",
+      "organization": "DeepSeek",
+      "scoreDisplay": "13.5%",
+      "scoreValue": 13.5,
+      "sourceUrl": "https://website-bench.com/#results",
+      "notesShort": "Benchmark-author result with 5,990 of 44,485 hidden tests passed across 67 scored websites.",
+      "reportedAt": "2026-11"
+    },
+    {
+      "rank": 6,
+      "systemName": "Grok 4.6",
+      "organization": "xAI",
+      "scoreDisplay": "12.1%",
+      "scoreValue": 12.1,
+      "sourceUrl": "https://website-bench.com/#results",
+      "notesShort": "Benchmark-author result with 5,699 of 46,916 hidden tests passed across 70 scored websites.",
+      "reportedAt": "2026-11"
+    },
+    {
+      "rank": 7,
+      "systemName": "Kimi K3",
+      "organization": "Moonshot AI",
+      "scoreDisplay": "10.6%",
+      "scoreValue": 10.6,
+      "sourceUrl": "https://website-bench.com/#results",
+      "notesShort": "Benchmark-author result with 4,824 of 45,345 hidden tests passed across 68 scored websites.",
+      "reportedAt": "2026-11"
+    },
+    {
+      "rank": 8,
+      "systemName": "Qwen 3.8 Max",
+      "organization": "Qwen Team",
+      "scoreDisplay": "7.3%",
+      "scoreValue": 7.3,
+      "sourceUrl": "https://website-bench.com/#results",
+      "notesShort": "Benchmark-author result with 3,372 of 46,216 hidden tests passed across 69 scored websites.",
+      "reportedAt": "2026-11"
+    }
+  ]
+}
