@@ -694,7 +694,7 @@ export const benchmarkPages: BenchmarkPageData[] = [
         },
       ],
       relatedBenchmarks: ["osworld", "webarena"],
-      lastUpdated: "2026-09-30",
+      lastUpdated: "2026-11-19",
     },
     results: benchmarkResults("osworld2") ?? [],
   },
