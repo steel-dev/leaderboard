@@ -128,17 +128,17 @@ Computer use · Agent scope · 23 entries tracked
 
 ### [OSWorld 2.0](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
-Computer use · Agent scope · 24 entries tracked
+Computer use · Agent scope · 25 entries tracked
 
 | Rank | System | Organization | Score |
 | ---: | ------ | ------------ | ----- |
-| 1 | Claude Fable 5.1 **(new)** | Anthropic | [77.9%](https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf) |
-| 2 | Simular Sai **(new)** | Simular AI | [73.0%](https://www.simular.ai/articles/sai-tops-osworld-2-0) |
-| 3 | GPT-6 Astra **(new)** | OpenAI | [72.6%](https://openai.com/index/gpt-6-astra/) |
-| 4 | Claude Opus 5 **(new)** | Anthropic | [70.6%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
-| 5 | GPT-6.1 Sol **(new)** | OpenAI | [70.5%](https://openai.com/index/introducing-gpt-6-1-sol/) |
+| 1 | Utalis **(new)** | Utalis | [79.6%](https://utalis.com/blog/utalis-osworld-2) |
+| 2 | Claude Fable 5.1 **(new)** | Anthropic | [77.9%](https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf) |
+| 3 | Simular Sai **(new)** | Simular AI | [73.0%](https://www.simular.ai/articles/sai-tops-osworld-2-0) |
+| 4 | GPT-6 Astra **(new)** | OpenAI | [72.6%](https://openai.com/index/gpt-6-astra/) |
+| 5 | Claude Opus 5 **(new)** | Anthropic | [70.6%](https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf) |
 
-[See all 24 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
+[See all 25 entries →](https://leaderboard.steel.dev/leaderboards/osworld-2)
 
 ---
 

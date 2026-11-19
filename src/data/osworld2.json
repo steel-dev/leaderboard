@@ -2,6 +2,17 @@
   "osworld2": [
     {
       "rank": 1,
+      "systemName": "Utalis",
+      "organization": "Utalis",
+      "scoreDisplay": "79.6%",
+      "scoreValue": 79.6,
+      "sourceUrl": "https://utalis.com/blog/utalis-osworld-2",
+      "notesShort": "Partial score (40.2% binary) on the 2026.08.08 offline subset (82 tasks) at 1080p and 500 steps, official evaluator with Gemini 3.1 Pro as model grader and simulated user; best per task across attempts, $3.49 average model cost per task. Self-reported.",
+      "reportedAt": "2026-11-19",
+      "isNew": true
+    },
+    {
+      "rank": 2,
       "systemName": "Claude Fable 5.1",
       "organization": "Anthropic",
       "scoreDisplay": "77.9%",
@@ -12,7 +23,7 @@
       "isNew": true
     },
     {
-      "rank": 2,
+      "rank": 3,
       "systemName": "Simular Sai",
       "organization": "Simular AI",
       "scoreDisplay": "73.0%",
@@ -23,7 +34,7 @@
       "isNew": true
     },
     {
-      "rank": 3,
+      "rank": 4,
       "systemName": "GPT-6 Astra",
       "organization": "OpenAI",
       "scoreDisplay": "72.6%",
@@ -34,7 +45,7 @@
       "isNew": true
     },
     {
-      "rank": 4,
+      "rank": 5,
       "systemName": "Claude Opus 5",
       "organization": "Anthropic",
       "scoreDisplay": "70.6%",
@@ -45,7 +56,7 @@
       "isNew": true
     },
     {
-      "rank": 5,
+      "rank": 6,
       "systemName": "GPT-6.1 Sol",
       "organization": "OpenAI",
       "scoreDisplay": "70.5%",
@@ -56,7 +67,7 @@
       "isNew": true
     },
     {
-      "rank": 6,
+      "rank": 7,
       "systemName": "Gemini 4 Argon",
       "organization": "Google",
       "scoreDisplay": "69.2%",
@@ -67,7 +78,7 @@
       "isNew": true
     },
     {
-      "rank": 7,
+      "rank": 8,
       "systemName": "Claude Opus 5 (Snorkel run)",
       "organization": "Snorkel AI",
       "scoreDisplay": "68.31%",
@@ -78,7 +89,7 @@
       "isNew": true
     },
     {
-      "rank": 8,
+      "rank": 9,
       "systemName": "Muse Spark 1.3",
       "organization": "Meta",
       "scoreDisplay": "66.9%",
@@ -89,7 +100,7 @@
       "isNew": true
     },
     {
-      "rank": 9,
+      "rank": 10,
       "systemName": "Claude Fable 5",
       "organization": "Anthropic",
       "scoreDisplay": "66.1%",
@@ -100,7 +111,7 @@
       "isNew": true
     },
     {
-      "rank": 10,
+      "rank": 11,
       "systemName": "GPT-5.6 Sol (offline subset)",
       "organization": "OpenAI",
       "scoreDisplay": "65.7%",
@@ -111,7 +122,7 @@
       "isNew": true
     },
     {
-      "rank": 11,
+      "rank": 12,
       "systemName": "GPT-5.6 Sol (Snorkel run)",
       "organization": "Snorkel AI",
       "scoreDisplay": "62.72%",
@@ -122,7 +133,7 @@
       "isNew": true
     },
     {
-      "rank": 12,
+      "rank": 13,
       "systemName": "GPT-5.6 Sol",
       "organization": "OpenAI",
       "scoreDisplay": "62.6%",
@@ -133,7 +144,7 @@
       "isNew": true
     },
     {
-      "rank": 13,
+      "rank": 14,
       "systemName": "Claude Opus 4.8 (Opus 5 card table)",
       "organization": "Anthropic",
       "scoreDisplay": "55.7%",
@@ -144,7 +155,7 @@
       "isNew": true
     },
     {
-      "rank": 14,
+      "rank": 15,
       "systemName": "Claude Opus 4.8 (batched tools)",
       "organization": "Anthropic",
       "scoreDisplay": "54.8%",
@@ -155,7 +166,7 @@
       "isNew": true
     },
     {
-      "rank": 15,
+      "rank": 16,
       "systemName": "Qwen3.8-Flash-Next",
       "organization": "Alibaba",
       "scoreDisplay": "52.3%",
@@ -166,7 +177,7 @@
       "isNew": true
     },
     {
-      "rank": 16,
+      "rank": 17,
       "systemName": "GPT-5.5 (batched tools)",
       "organization": "OpenAI",
       "scoreDisplay": "49.5%",
@@ -177,7 +188,7 @@
       "isNew": true
     },
     {
-      "rank": 17,
+      "rank": 18,
       "systemName": "Claude Opus 4.8",
       "organization": "Anthropic",
       "scoreDisplay": "49.33%",
@@ -188,7 +199,7 @@
       "isNew": true
     },
     {
-      "rank": 18,
+      "rank": 19,
       "systemName": "Claude Opus 4.7",
       "organization": "Anthropic",
       "scoreDisplay": "49.1%",
@@ -199,7 +210,7 @@
       "isNew": true
     },
     {
-      "rank": 19,
+      "rank": 20,
       "systemName": "Claude Opus 4.7 (batched tools)",
       "organization": "Anthropic",
       "scoreDisplay": "48.91%",
@@ -210,7 +221,7 @@
       "isNew": true
     },
     {
-      "rank": 20,
+      "rank": 21,
       "systemName": "Claude Sonnet 4.6 (max thinking)",
       "organization": "Anthropic",
       "scoreDisplay": "41.5%",
@@ -221,7 +232,7 @@
       "isNew": true
     },
     {
-      "rank": 21,
+      "rank": 22,
       "systemName": "Claude Sonnet 4.6 (medium thinking)",
       "organization": "Anthropic",
       "scoreDisplay": "33.9%",
@@ -232,7 +243,7 @@
       "isNew": true
     },
     {
-      "rank": 22,
+      "rank": 23,
       "systemName": "MiniMax M3",
       "organization": "MiniMax",
       "scoreDisplay": "22.3%",
@@ -243,7 +254,7 @@
       "isNew": true
     },
     {
-      "rank": 23,
+      "rank": 24,
       "systemName": "Kimi 2.6",
       "organization": "Moonshot AI",
       "scoreDisplay": "22.1%",
@@ -254,7 +265,7 @@
       "isNew": true
     },
     {
-      "rank": 24,
+      "rank": 25,
       "systemName": "Qwen 3.7-Plus",
       "organization": "Alibaba",
       "scoreDisplay": "21.5%",
