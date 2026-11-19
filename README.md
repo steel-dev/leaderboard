@@ -174,6 +174,22 @@ Browser agents · Agent scope · 7 entries tracked
 
 ---
 
+### [WebsiteBench](https://leaderboard.steel.dev/leaderboards/website-bench)
+
+Coding · Agent scope · 8 entries tracked
+
+| Rank | System | Organization | Score |
+| ---: | ------ | ------------ | ----- |
+| 1 | Claude Opus 5.5 | Anthropic | [26.2%](https://website-bench.com/#results) |
+| 2 | GPT 6.1 Sol | OpenAI | [20.2%](https://website-bench.com/#results) |
+| 3 | Claude Opus 5 | Anthropic | [17.1%](https://website-bench.com/#results) |
+| 4 | GLM 5.3 Flash | Z.ai | [14.7%](https://website-bench.com/#results) |
+| 5 | DeepSeek V4.1 Flash | DeepSeek | [13.5%](https://website-bench.com/#results) |
+
+[See all 8 entries →](https://leaderboard.steel.dev/leaderboards/website-bench)
+
+---
+
 ### [HealthAdminBench](https://leaderboard.steel.dev/leaderboards/healthadminbench)
 
 Browser agents · Agent scope · 11 entries tracked

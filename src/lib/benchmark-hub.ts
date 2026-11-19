@@ -12,6 +12,7 @@ import {
   sweBenchVerified,
   tauBench,
   webarena,
+  websiteBench,
   webvoyager,
 } from "../data/index.js";
 
@@ -29,6 +30,7 @@ type BenchmarkMap = {
   sweBenchVerified: Record<string, BenchmarkResultRow[]>;
   tauBench: Record<string, BenchmarkResultRow[]>;
   webarena: Record<string, BenchmarkResultRow[]>;
+  websiteBench: Record<string, BenchmarkResultRow[]>;
   webvoyager: Record<string, BenchmarkResultRow[]>;
 };
 
@@ -46,6 +48,7 @@ const benchmarkMap: BenchmarkMap = {
   sweBenchVerified,
   tauBench,
   webarena,
+  websiteBench,
   webvoyager,
 };
 
@@ -814,6 +817,67 @@ export const benchmarkPages: BenchmarkPageData[] = [
       lastUpdated: "2026-04-16",
     },
     results: benchmarkResults("clawbench") ?? [],
+  },
+  {
+    meta: {
+      slug: "website-bench",
+      name: "WebsiteBench",
+      description:
+        "WebsiteBench leaderboard for coding agents rebuilding full-stack websites from browser exploration, ranked by hidden-test pass rate.",
+      categoryLabel: "Coding Agent",
+      category: "coding",
+      scope: "agent",
+      about: [
+        "WebsiteBench asks coding agents to explore a reference website through a browser and build a local application that reproduces how it looks and works.",
+        "The benchmark includes 70 website tasks and 46,916 hidden tests. Rebuilds must support user workflows and preserve state across restarts.",
+        "Harbor runs each task in a sandbox with browser and coding tools. Each row reflects the published result for a model in its agent setup.",
+      ],
+      methodology: [
+        "Agents explore an offline reference through the browser and submit a runnable frontend and backend.",
+        "Tests cover HTTP requests, browser workflows, and system behavior such as offline builds and restarts.",
+        "A test passes when its functional checks pass and every required screenshot checkpoint reaches a normalized SSIM of at least 0.99.",
+        "The leaderboard ranks by Overall, the pooled percentage of hidden tests passed among the tests scored for each row.",
+      ],
+      taskExamples: [
+        {
+          quote: "Reconstruct the browser-only offline site Medium",
+          sourceLabel: "WebsiteBench Medium task configuration",
+          sourceUrl:
+            "https://github.com/TIGER-AI-Lab/WebsiteBench/blob/3868d82d137f4ff8f5b2bd858ed8c279da3aeda1/tasks/medium/task.toml#L8",
+        },
+        {
+          quote: "Reconstruct the browser-only offline site Etsy Offline Clone",
+          sourceLabel: "WebsiteBench Etsy task configuration",
+          sourceUrl:
+            "https://github.com/TIGER-AI-Lab/WebsiteBench/blob/3868d82d137f4ff8f5b2bd858ed8c279da3aeda1/tasks/etsy/task.toml#L8",
+        },
+        {
+          quote: "Reconstruct the browser-only offline site Notion Offline Clone",
+          sourceLabel: "WebsiteBench Notion task configuration",
+          sourceUrl:
+            "https://github.com/TIGER-AI-Lab/WebsiteBench/blob/3868d82d137f4ff8f5b2bd858ed8c279da3aeda1/tasks/notion/task.toml#L8",
+        },
+      ],
+      importantNotes: [
+        "The initial rows come from the WebsiteBench authors' public leaderboard.",
+        "The scored site and test counts vary by row. Each score measures individual tests passed, so it can include partial progress on a website.",
+        "The benchmark sets a 16-hour limit for the agent on each task. Agent tools, context budgets, and run coverage can affect comparisons.",
+      ],
+      links: [
+        { label: "Official leaderboard", url: "https://website-bench.com/#results" },
+        { label: "Evaluation methodology", url: "https://website-bench.com/eval" },
+        { label: "Run settings", url: "https://website-bench.com/run" },
+        { label: "Per-task results", url: "https://website-bench.com/data/waffle-overview.csv" },
+        { label: "WebsiteBench repository", url: "https://github.com/TIGER-AI-Lab/WebsiteBench" },
+        {
+          label: "Harbor Hub dataset",
+          url: "https://hub.harborframework.com/datasets/websitebench/WebsiteBench",
+        },
+      ],
+      relatedBenchmarks: ["clawbench", "webarena", "swe-bench-verified"],
+      lastUpdated: "2026-11-19",
+    },
+    results: benchmarkResults("websiteBench") ?? [],
   },
   {
     meta: {
